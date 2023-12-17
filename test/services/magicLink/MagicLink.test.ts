@@ -38,23 +38,23 @@ describe('test MagicLink', () => {
   describe('test getMagicLink', () => {
     test('test api call', () => {
       const scope = nock('https://api-demo.panora.dev')
-        .get('/magic-link/single?id=3979783217')
+        .get('/magic-link/single?id=1278880476')
         .reply(200, { data: {} });
-      return sdk.magicLink.getMagicLink('3979783217').then((r: any) => expect(r.data).toEqual({}));
+      return sdk.magicLink.getMagicLink('1278880476').then((r: any) => expect(r.data).toEqual({}));
     });
 
     test('test will throw error if required fields missing', () => {
       const scope = nock('https://api-demo.panora.dev')
-        .get('/magic-link/single?id=6915185407')
+        .get('/magic-link/single?id=6454840714')
         .reply(200, { data: {} });
       return expect(async () => await sdk.magicLink.getMagicLink()).rejects.toThrow();
     });
 
     test('test will throw error on a non-200 response', () => {
       const scope = nock('https://api-demo.panora.dev')
-        .get('/magic-link/single?id=9271406830')
+        .get('/magic-link/single?id=4884970299')
         .reply(404, { data: {} });
-      return expect(async () => await sdk.magicLink.getMagicLink('9271406830')).rejects.toThrow();
+      return expect(async () => await sdk.magicLink.getMagicLink('4884970299')).rejects.toThrow();
     });
   });
 });

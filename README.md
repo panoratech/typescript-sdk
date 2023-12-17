@@ -183,10 +183,10 @@ A list of all services and services methods.
 
 | Method    | Description|
 | :-------- | :----------|
-| [addContact](#addcontact) |  |
+| [addContact](#addcontact) | Create CRM Contact |
 | [getContacts](#getcontacts) |  |
 | [updateContact](#updatecontact) |  |
-| [getContact](#getcontact) |  |
+| [getContact](#getcontact) | Retrive a CRM Contact |
 | [addContacts](#addcontacts) |  |
 
 
@@ -1028,7 +1028,7 @@ import { PanoraSDK } from './src';
 const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
 
 (async () => {
-  const input = { data: {}, headers_: {}, method: 'PATCH', path: 'path' };
+  const input = { data: {}, headers_: {}, method: 'GET', path: 'path' };
   const result = await sdk.passthrough.passthroughRequest(input, 'integrationId', 'linkedUserId');
   console.log(result);
 })();
@@ -1037,7 +1037,7 @@ const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
 
 
 ### **addContact**
-
+Create CRM Contact
 - HTTP Method: POST
 - Endpoint: /crm/contact
 
@@ -1155,7 +1155,7 @@ const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
 ```
 
 ### **getContact**
-
+Retrive a CRM Contact
 - HTTP Method: GET
 - Endpoint: /crm/contact/{id}
 
