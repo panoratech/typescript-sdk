@@ -46,6 +46,16 @@ export class CrmContactService extends BaseService {
     return responseModel;
   }
 
+  /**
+   * @summary Create CRM Contact
+   * @description Create a contact in any supported CRM
+
+   * @param integrationId Needed input variable
+   * @param linkedUserId Needed input variable
+   * @param optionalParams - Optional parameters
+   * @param optionalParams.remoteData - Needed input variable
+   * @returns {Promise<AddContactResponse>} - The promise with the result
+   */
   async addContact(
     input: UnifiedContactInput,
     integrationId: string,
@@ -107,6 +117,15 @@ export class CrmContactService extends BaseService {
     return responseModel;
   }
 
+  /**
+   * @summary Retrive a CRM Contact
+   * @description Retrive a contact in any supported CRM
+
+   * @param id Needed input variable
+   * @param optionalParams - Optional parameters
+   * @param optionalParams.remoteData - Needed input variable
+   * @returns {Promise<GetContactResponse>} - The promise with the result
+   */
   async getContact(
     id: string,
     optionalParams: { remoteData?: boolean } = {},
