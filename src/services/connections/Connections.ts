@@ -3,6 +3,14 @@ import BaseService from '../../BaseService';
 import { serializeQuery } from '../../http/QuerySerializer';
 
 export class ConnectionsService extends BaseService {
+  /**
+   * @summary Capture oAuth Callback
+
+   * @param state Needed input variable
+   * @param code Needed input variable
+   * @param location Needed input variable
+   * @returns {Promise<any>} - The promise with the result
+   */
   async handleOauthCallback(state: string, code: string, location: string): Promise<any> {
     if (state === undefined || code === undefined || location === undefined) {
       throw new Error(
@@ -33,6 +41,11 @@ export class ConnectionsService extends BaseService {
     return responseModel;
   }
 
+  /**
+   * @summary Retrieve Connections
+
+   * @returns {Promise<any>} - The promise with the result
+   */
   async getConnections(): Promise<any> {
     const urlEndpoint = '/connections';
     const finalUrl = encodeURI(`${this.baseUrl + urlEndpoint}`);

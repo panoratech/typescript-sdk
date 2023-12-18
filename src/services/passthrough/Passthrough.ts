@@ -6,6 +6,13 @@ import { PassThroughRequestDto } from './models/PassThroughRequestDto';
 import { serializeQuery } from '../../http/QuerySerializer';
 
 export class PassthroughService extends BaseService {
+  /**
+   * @summary Make a passthrough request
+
+   * @param integrationId Needed input variable
+   * @param linkedUserId Needed input variable
+   * @returns {Promise<PassThroughResponse>} - The promise with the result
+   */
   async passthroughRequest(
     input: PassThroughRequestDto,
     integrationId: string,

@@ -5,6 +5,11 @@ import { CreateMagicLinkDto } from './models/CreateMagicLinkDto';
 import { serializeQuery } from '../../http/QuerySerializer';
 
 export class MagicLinkService extends BaseService {
+  /**
+   * @summary Create a Magic Link
+
+   * @returns {Promise<any>} - The promise with the result
+   */
   async createMagicLink(input: CreateMagicLinkDto): Promise<any> {
     const headers: { [key: string]: string } = { 'Content-type': 'application/json' };
     const urlEndpoint = '/magic-link/create';
@@ -22,6 +27,11 @@ export class MagicLinkService extends BaseService {
     return responseModel;
   }
 
+  /**
+   * @summary Retrieve Magic Links
+
+   * @returns {Promise<any>} - The promise with the result
+   */
   async getMagicLinks(): Promise<any> {
     const urlEndpoint = '/magic-link';
     const finalUrl = encodeURI(`${this.baseUrl + urlEndpoint}`);
@@ -37,6 +47,12 @@ export class MagicLinkService extends BaseService {
     return responseModel;
   }
 
+  /**
+   * @summary Retrieve a Magic Link
+
+   * @param id Needed input variable
+   * @returns {Promise<any>} - The promise with the result
+   */
   async getMagicLink(id: string): Promise<any> {
     if (id === undefined) {
       throw new Error('The following parameter is required: id, cannot be empty or blank');

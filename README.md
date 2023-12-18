@@ -95,99 +95,99 @@ A list of all services and services methods.
 
 | Method    | Description|
 | :-------- | :----------|
-| [signUp](#signup) |  |
-| [signIn](#signin) |  |
-| [getUsers](#getusers) |  |
-| [getApiKeys](#getapikeys) |  |
-| [generateApiKey](#generateapikey) |  |
+| [signUp](#signup) | Register |
+| [signIn](#signin) | Log In |
+| [getUsers](#getusers) | Get users |
+| [getApiKeys](#getapikeys) | Retrieve API Keys |
+| [generateApiKey](#generateapikey) | Create API Key |
 
 
 ## Connections
 
 | Method    | Description|
 | :-------- | :----------|
-| [handleOAuthCallback](#handleoauthcallback) |  |
-| [getConnections](#getconnections) |  |
+| [handleOAuthCallback](#handleoauthcallback) | Capture oAuth Callback |
+| [getConnections](#getconnections) | Retrieve Connections |
 
 
 ## Webhook
 
 | Method    | Description|
 | :-------- | :----------|
-| [createWebhookMetadata](#createwebhookmetadata) |  |
-| [getWebhooksMetadata](#getwebhooksmetadata) |  |
-| [updateWebhookStatus](#updatewebhookstatus) |  |
+| [createWebhookMetadata](#createwebhookmetadata) | Add webhook metadata |
+| [getWebhooksMetadata](#getwebhooksmetadata) | Retrieve webhooks metadata  |
+| [updateWebhookStatus](#updatewebhookstatus) | Update webhook status |
 
 
 ## LinkedUsers
 
 | Method    | Description|
 | :-------- | :----------|
-| [addLinkedUser](#addlinkeduser) |  |
-| [getLinkedUsers](#getlinkedusers) |  |
-| [getLinkedUser](#getlinkeduser) |  |
+| [addLinkedUser](#addlinkeduser) | Add Linked User |
+| [getLinkedUsers](#getlinkedusers) | Retrieve Linked Users |
+| [getLinkedUser](#getlinkeduser) | Retrieve a Linked User |
 
 
 ## Organisations
 
 | Method    | Description|
 | :-------- | :----------|
-| [getOrganisations](#getorganisations) |  |
-| [createOrganisation](#createorganisation) |  |
+| [getOrganisations](#getorganisations) | Retrieve Organisations |
+| [createOrganisation](#createorganisation) | Create an Organisation |
 
 
 ## Projects
 
 | Method    | Description|
 | :-------- | :----------|
-| [getProjects](#getprojects) |  |
-| [createProject](#createproject) |  |
+| [getProjects](#getprojects) | Retrieve projects |
+| [createProject](#createproject) | Create a project |
 
 
 ## FieldMapping
 
 | Method    | Description|
 | :-------- | :----------|
-| [getFieldMappingsEntities](#getfieldmappingsentities) |  |
-| [getFieldMappings](#getfieldmappings) |  |
-| [getFieldMappingValues](#getfieldmappingvalues) |  |
-| [defineTargetField](#definetargetfield) |  |
-| [mapField](#mapfield) |  |
-| [getCustomProviderProperties](#getcustomproviderproperties) |  |
+| [getFieldMappingsEntities](#getfieldmappingsentities) | Retrieve field mapping entities |
+| [getFieldMappings](#getfieldmappings) | Retrieve field mappings |
+| [getFieldMappingValues](#getfieldmappingvalues) | Retrieve field mappings values |
+| [defineTargetField](#definetargetfield) | Define target Field |
+| [mapField](#mapfield) | Map Custom Field |
+| [getCustomProviderProperties](#getcustomproviderproperties) | Retrieve Custom Properties |
 
 
 ## Events
 
 | Method    | Description|
 | :-------- | :----------|
-| [getEvents](#getevents) |  |
+| [getEvents](#getevents) | Retrieve Events |
 
 
 ## MagicLink
 
 | Method    | Description|
 | :-------- | :----------|
-| [createMagicLink](#createmagiclink) |  |
-| [getMagicLinks](#getmagiclinks) |  |
-| [getMagicLink](#getmagiclink) |  |
+| [createMagicLink](#createmagiclink) | Create a Magic Link |
+| [getMagicLinks](#getmagiclinks) | Retrieve Magic Links |
+| [getMagicLink](#getmagiclink) | Retrieve a Magic Link |
 
 
 ## Passthrough
 
 | Method    | Description|
 | :-------- | :----------|
-| [passthroughRequest](#passthroughrequest) |  |
+| [passthroughRequest](#passthroughrequest) | Make a passthrough request |
 
 
 ## CrmContact
 
 | Method    | Description|
 | :-------- | :----------|
-| [addContact](#addcontact) |  |
-| [getContacts](#getcontacts) |  |
-| [updateContact](#updatecontact) |  |
-| [getContact](#getcontact) |  |
-| [addContacts](#addcontacts) |  |
+| [addContact](#addcontact) | Create CRM Contact |
+| [getContacts](#getcontacts) | Retrieve a batch of CRM Contacts |
+| [updateContact](#updatecontact) | Update a CRM Contact |
+| [getContact](#getcontact) | Retrieve a CRM Contact |
+| [addContacts](#addcontacts) | Add a batch of CRM Contacts |
 
 
 
@@ -222,7 +222,7 @@ const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
 
 
 ### **signUp**
-
+Register
 - HTTP Method: POST
 - Endpoint: /auth/register
 
@@ -256,7 +256,7 @@ const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
 ```
 
 ### **signIn**
-
+Log In
 - HTTP Method: POST
 - Endpoint: /auth/login
 
@@ -285,7 +285,7 @@ const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
 ```
 
 ### **getUsers**
-
+Get users
 - HTTP Method: GET
 - Endpoint: /auth/users
 
@@ -310,7 +310,7 @@ const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
 ```
 
 ### **getApiKeys**
-
+Retrieve API Keys
 - HTTP Method: GET
 - Endpoint: /auth/api-keys
 
@@ -335,7 +335,7 @@ const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
 ```
 
 ### **generateApiKey**
-
+Create API Key
 - HTTP Method: POST
 - Endpoint: /auth/generate-apikey
 
@@ -365,7 +365,7 @@ const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
 
 
 ### **handleOAuthCallback**
-
+Capture oAuth Callback
 - HTTP Method: GET
 - Endpoint: /connections/oauth/callback
 
@@ -397,7 +397,7 @@ const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
 ```
 
 ### **getConnections**
-
+Retrieve Connections
 - HTTP Method: GET
 - Endpoint: /connections
 
@@ -423,7 +423,7 @@ const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
 
 
 ### **createWebhookMetadata**
-
+Add webhook metadata
 - HTTP Method: POST
 - Endpoint: /webhook
 
@@ -457,7 +457,7 @@ const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
 ```
 
 ### **getWebhooksMetadata**
-
+Retrieve webhooks metadata 
 - HTTP Method: GET
 - Endpoint: /webhook
 
@@ -482,7 +482,7 @@ const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
 ```
 
 ### **updateWebhookStatus**
-
+Update webhook status
 - HTTP Method: PUT
 - Endpoint: /webhook/{id}
 
@@ -513,7 +513,7 @@ const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
 
 
 ### **addLinkedUser**
-
+Add Linked User
 - HTTP Method: POST
 - Endpoint: /linked-users/create
 
@@ -546,7 +546,7 @@ const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
 ```
 
 ### **getLinkedUsers**
-
+Retrieve Linked Users
 - HTTP Method: GET
 - Endpoint: /linked-users
 
@@ -571,7 +571,7 @@ const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
 ```
 
 ### **getLinkedUser**
-
+Retrieve a Linked User
 - HTTP Method: GET
 - Endpoint: /linked-users/single
 
@@ -602,7 +602,7 @@ const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
 
 
 ### **getOrganisations**
-
+Retrieve Organisations
 - HTTP Method: GET
 - Endpoint: /organisations
 
@@ -627,7 +627,7 @@ const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
 ```
 
 ### **createOrganisation**
-
+Create an Organisation
 - HTTP Method: POST
 - Endpoint: /organisations/create
 
@@ -657,7 +657,7 @@ const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
 
 
 ### **getProjects**
-
+Retrieve projects
 - HTTP Method: GET
 - Endpoint: /projects
 
@@ -682,7 +682,7 @@ const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
 ```
 
 ### **createProject**
-
+Create a project
 - HTTP Method: POST
 - Endpoint: /projects/create
 
@@ -712,7 +712,7 @@ const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
 
 
 ### **getFieldMappingsEntities**
-
+Retrieve field mapping entities
 - HTTP Method: GET
 - Endpoint: /field-mapping/entities
 
@@ -737,7 +737,7 @@ const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
 ```
 
 ### **getFieldMappings**
-
+Retrieve field mappings
 - HTTP Method: GET
 - Endpoint: /field-mapping/attribute
 
@@ -762,7 +762,7 @@ const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
 ```
 
 ### **getFieldMappingValues**
-
+Retrieve field mappings values
 - HTTP Method: GET
 - Endpoint: /field-mapping/value
 
@@ -787,7 +787,7 @@ const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
 ```
 
 ### **defineTargetField**
-
+Define target Field
 - HTTP Method: POST
 - Endpoint: /field-mapping/define
 
@@ -821,7 +821,7 @@ const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
 ```
 
 ### **mapField**
-
+Map Custom Field
 - HTTP Method: POST
 - Endpoint: /field-mapping/map
 
@@ -855,7 +855,7 @@ const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
 ```
 
 ### **getCustomProviderProperties**
-
+Retrieve Custom Properties
 - HTTP Method: GET
 - Endpoint: /field-mapping/properties
 
@@ -887,7 +887,7 @@ const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
 
 
 ### **getEvents**
-
+Retrieve Events
 - HTTP Method: GET
 - Endpoint: /events
 
@@ -913,7 +913,7 @@ const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
 
 
 ### **createMagicLink**
-
+Create a Magic Link
 - HTTP Method: POST
 - Endpoint: /magic-link/create
 
@@ -947,7 +947,7 @@ const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
 ```
 
 ### **getMagicLinks**
-
+Retrieve Magic Links
 - HTTP Method: GET
 - Endpoint: /magic-link
 
@@ -972,7 +972,7 @@ const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
 ```
 
 ### **getMagicLink**
-
+Retrieve a Magic Link
 - HTTP Method: GET
 - Endpoint: /magic-link/single
 
@@ -1003,7 +1003,7 @@ const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
 
 
 ### **passthroughRequest**
-
+Make a passthrough request
 - HTTP Method: POST
 - Endpoint: /passthrough
 
@@ -1037,7 +1037,7 @@ const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
 
 
 ### **addContact**
-
+Create CRM Contact
 - HTTP Method: POST
 - Endpoint: /crm/contact
 
@@ -1085,7 +1085,7 @@ const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
 ```
 
 ### **getContacts**
-
+Retrieve a batch of CRM Contacts
 - HTTP Method: GET
 - Endpoint: /crm/contact
 
@@ -1125,7 +1125,7 @@ const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
 ```
 
 ### **updateContact**
-
+Update a CRM Contact
 - HTTP Method: PATCH
 - Endpoint: /crm/contact
 
@@ -1155,7 +1155,7 @@ const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
 ```
 
 ### **getContact**
-
+Retrieve a CRM Contact
 - HTTP Method: GET
 - Endpoint: /crm/contact/{id}
 
@@ -1192,7 +1192,7 @@ const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
 ```
 
 ### **addContacts**
-
+Add a batch of CRM Contacts
 - HTTP Method: POST
 - Endpoint: /crm/contact/batch
 

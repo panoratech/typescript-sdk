@@ -10,6 +10,15 @@ import { AddContactsRequest } from './models/AddContactsRequest';
 import { serializeQuery, serializePath } from '../../http/QuerySerializer';
 
 export class CrmContactService extends BaseService {
+  /**
+   * @summary Retrieve a batch of CRM Contacts
+
+   * @param integrationId Needed input variable
+   * @param linkedUserId Needed input variable
+   * @param optionalParams - Optional parameters
+   * @param optionalParams.remoteData - Needed input variable
+   * @returns {Promise<GetContactsResponse>} - The promise with the result
+   */
   async getContacts(
     integrationId: string,
     linkedUserId: string,
@@ -46,6 +55,16 @@ export class CrmContactService extends BaseService {
     return responseModel;
   }
 
+  /**
+   * @summary Create CRM Contact
+   * @description Create a contact in any supported CRM
+
+   * @param integrationId Needed input variable
+   * @param linkedUserId Needed input variable
+   * @param optionalParams - Optional parameters
+   * @param optionalParams.remoteData - Needed input variable
+   * @returns {Promise<AddContactResponse>} - The promise with the result
+   */
   async addContact(
     input: UnifiedContactInput,
     integrationId: string,
@@ -85,6 +104,12 @@ export class CrmContactService extends BaseService {
     return responseModel;
   }
 
+  /**
+   * @summary Update a CRM Contact
+
+   * @param id Needed input variable
+   * @returns {Promise<any>} - The promise with the result
+   */
   async updateContact(id: string): Promise<any> {
     if (id === undefined) {
       throw new Error('The following parameter is required: id, cannot be empty or blank');
@@ -107,6 +132,15 @@ export class CrmContactService extends BaseService {
     return responseModel;
   }
 
+  /**
+   * @summary Retrieve a CRM Contact
+   * @description Retrive a contact in any supported CRM
+
+   * @param id Needed input variable
+   * @param optionalParams - Optional parameters
+   * @param optionalParams.remoteData - Needed input variable
+   * @returns {Promise<GetContactResponse>} - The promise with the result
+   */
   async getContact(
     id: string,
     optionalParams: { remoteData?: boolean } = {},
@@ -135,6 +169,15 @@ export class CrmContactService extends BaseService {
     return responseModel;
   }
 
+  /**
+   * @summary Add a batch of CRM Contacts
+
+   * @param integrationId Needed input variable
+   * @param linkedUserId Needed input variable
+   * @param optionalParams - Optional parameters
+   * @param optionalParams.remoteData - Needed input variable
+   * @returns {Promise<AddContactsResponse>} - The promise with the result
+   */
   async addContacts(
     input: AddContactsRequest,
     integrationId: string,

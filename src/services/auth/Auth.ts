@@ -5,6 +5,11 @@ import { LoginDto } from './models/LoginDto';
 import { ApiKeyDto } from './models/ApiKeyDto';
 
 export class AuthService extends BaseService {
+  /**
+   * @summary Register
+
+   * @returns {Promise<any>} - The promise with the result
+   */
   async signUp(input: CreateUserDto): Promise<any> {
     const headers: { [key: string]: string } = { 'Content-type': 'application/json' };
     const urlEndpoint = '/auth/register';
@@ -22,6 +27,11 @@ export class AuthService extends BaseService {
     return responseModel;
   }
 
+  /**
+   * @summary Log In
+
+   * @returns {Promise<any>} - The promise with the result
+   */
   async signIn(input: LoginDto): Promise<any> {
     const headers: { [key: string]: string } = { 'Content-type': 'application/json' };
     const urlEndpoint = '/auth/login';
@@ -39,6 +49,11 @@ export class AuthService extends BaseService {
     return responseModel;
   }
 
+  /**
+   * @summary Get users
+
+   * @returns {Promise<any>} - The promise with the result
+   */
   async getUsers(): Promise<any> {
     const urlEndpoint = '/auth/users';
     const finalUrl = encodeURI(`${this.baseUrl + urlEndpoint}`);
@@ -54,6 +69,11 @@ export class AuthService extends BaseService {
     return responseModel;
   }
 
+  /**
+   * @summary Retrieve API Keys
+
+   * @returns {Promise<any>} - The promise with the result
+   */
   async getApiKeys(): Promise<any> {
     const urlEndpoint = '/auth/api-keys';
     const finalUrl = encodeURI(`${this.baseUrl + urlEndpoint}`);
@@ -69,6 +89,11 @@ export class AuthService extends BaseService {
     return responseModel;
   }
 
+  /**
+   * @summary Create API Key
+
+   * @returns {Promise<any>} - The promise with the result
+   */
   async generateApiKey(input: ApiKeyDto): Promise<any> {
     const headers: { [key: string]: string } = { 'Content-type': 'application/json' };
     const urlEndpoint = '/auth/generate-apikey';
