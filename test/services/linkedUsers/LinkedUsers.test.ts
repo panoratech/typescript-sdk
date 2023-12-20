@@ -40,26 +40,26 @@ describe('test LinkedUsers', () => {
   describe('test getLinkedUser', () => {
     test('test api call', () => {
       const scope = nock('https://api-demo.panora.dev')
-        .get('/linked-users/single?id=8180787802')
+        .get('/linked-users/single?id=5899236796')
         .reply(200, { data: {} });
       return sdk.linkedUsers
-        .getLinkedUser('8180787802')
+        .getLinkedUser('5899236796')
         .then((r: any) => expect(r.data).toEqual({}));
     });
 
     test('test will throw error if required fields missing', () => {
       const scope = nock('https://api-demo.panora.dev')
-        .get('/linked-users/single?id=9846280326')
+        .get('/linked-users/single?id=7921072010')
         .reply(200, { data: {} });
       return expect(async () => await sdk.linkedUsers.getLinkedUser()).rejects.toThrow();
     });
 
     test('test will throw error on a non-200 response', () => {
       const scope = nock('https://api-demo.panora.dev')
-        .get('/linked-users/single?id=6935052515')
+        .get('/linked-users/single?id=9097305160')
         .reply(404, { data: {} });
       return expect(
-        async () => await sdk.linkedUsers.getLinkedUser('6935052515'),
+        async () => await sdk.linkedUsers.getLinkedUser('9097305160'),
       ).rejects.toThrow();
     });
   });
