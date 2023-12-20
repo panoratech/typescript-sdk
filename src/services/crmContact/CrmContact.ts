@@ -59,10 +59,10 @@ export class CrmContactService extends BaseService {
    * @summary Create CRM Contact
    * @description Create a contact in any supported CRM
 
-   * @param integrationId Needed input variable
-   * @param linkedUserId Needed input variable
+   * @param integrationId The integration ID
+   * @param linkedUserId The linked user ID
    * @param optionalParams - Optional parameters
-   * @param optionalParams.remoteData - Needed input variable
+   * @param optionalParams.remoteData - Set to true to include data from the original CRM software.
    * @returns {Promise<AddContactResponse>} - The promise with the result
    */
   async addContact(
