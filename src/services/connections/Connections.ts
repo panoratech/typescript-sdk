@@ -42,7 +42,7 @@ export class ConnectionsService extends BaseService {
   }
 
   /**
-   * @summary Retrieve Connections
+   * @summary List Connections
 
    * @returns {Promise<any>} - The promise with the result
    */
