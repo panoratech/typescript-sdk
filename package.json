@@ -15,11 +15,10 @@
     "README.md"
   ],
   "devDependencies": {
-    "@changesets/cli": "^2.27.1",
-    "@types/jest": "^29.5.6",
-    "@types/node": "^17.0.23",
     "@typescript-eslint/eslint-plugin": "^5.43.0",
     "@typescript-eslint/parser": "^5.43.0",
+    "@types/node": "^17.0.23",
+    "@types/jest": "^29.5.6",
     "eslint": "^8.20.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^17.0.0",
@@ -45,13 +44,11 @@
     "test": "jest --detectOpenHandles",
     "watch": "rm -rf dist/ && tsc -w",
     "version": "tsc --version",
-    "prepublishOnly": "npm run build",
-    "release": "changeset publish",
-    "cversion": "changeset version"
+    "prepublishOnly": "npm run build"
   },
-  "name": "@panora/typescript-sdk",
+  "name": "panorasdk",
   "description": "PanoraSDK - The Panora API description",
-  "version": "1.0.5",
+  "version": "1.0.0",
   "author": "PanoraSDK",
   "dependencies": {
     "axios": "^1.5.1"
