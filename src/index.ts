@@ -9,6 +9,7 @@ import { MainService } from './services/main/Main';
 import { OrganisationsService } from './services/organisations/Organisations';
 import { PassthroughService } from './services/passthrough/Passthrough';
 import { ProjectsService } from './services/projects/Projects';
+import { ProtectedService } from './services/protected/Protected';
 import { WebhookService } from './services/webhook/Webhook';
 
 export * from './models';
@@ -44,6 +45,7 @@ export class PanoraSDK {
   public organisations: OrganisationsService;
   public passthrough: PassthroughService;
   public projects: ProjectsService;
+  public protected: ProtectedService;
   public webhook: WebhookService;
 
   constructor({ accessToken = '' }: Config) {
@@ -58,6 +60,7 @@ export class PanoraSDK {
     this.organisations = new OrganisationsService(accessToken);
     this.passthrough = new PassthroughService(accessToken);
     this.projects = new ProjectsService(accessToken);
+    this.protected = new ProtectedService(accessToken);
     this.webhook = new WebhookService(accessToken);
   }
 
@@ -77,6 +80,7 @@ export class PanoraSDK {
     this.organisations.setBaseUrl(url);
     this.passthrough.setBaseUrl(url);
     this.projects.setBaseUrl(url);
+    this.protected.setBaseUrl(url);
     this.webhook.setBaseUrl(url);
   }
 
@@ -96,6 +100,7 @@ export class PanoraSDK {
     this.organisations.setAccessToken(accessToken);
     this.passthrough.setAccessToken(accessToken);
     this.projects.setAccessToken(accessToken);
+    this.protected.setAccessToken(accessToken);
     this.webhook.setAccessToken(accessToken);
   }
 }
