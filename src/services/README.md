@@ -4,6 +4,8 @@ A list of all services and services methods.
 
     - [Main](#main)
 
+    - [Protected](#protected)
+
     - [Auth](#auth)
 
     - [Connections](#connections)
@@ -35,6 +37,13 @@ A list of all services and services methods.
 | [appControllerGetHello](#appcontrollergethello) |  |
 
 
+## Protected
+
+| Method    | Description|
+| :-------- | :----------|
+| [appControllerGetHello2](#appcontrollergethello2) |  |
+
+
 ## Auth
 
 | Method    | Description|
@@ -51,7 +60,7 @@ A list of all services and services methods.
 | Method    | Description|
 | :-------- | :----------|
 | [handleOAuthCallback](#handleoauthcallback) | Capture oAuth Callback |
-| [getConnections](#getconnections) | Retrieve Connections |
+| [getConnections](#getconnections) | List Connections |
 
 
 ## Webhook
@@ -165,6 +174,32 @@ const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
 ```
 
 
+### **appControllerGetHello2**
+
+- HTTP Method: GET
+- Endpoint: /protected
+
+
+
+
+**Return Type**
+
+Returns a dict object.
+
+**Example Usage Code Snippet**
+```Typescript
+import { PanoraSDK } from './src';
+
+const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
+
+(async () => {
+  const result = await sdk.protected.appControllerGetHello2();
+  console.log(result);
+})();
+
+```
+
+
 ### **signUp**
 Register
 - HTTP Method: POST
@@ -190,6 +225,7 @@ const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
   const input = {
     email: 'email',
     first_name: 'first_name',
+    id_organisation: 'id_organisation',
     last_name: 'last_name',
     password_hash: 'password_hash',
   };
@@ -341,7 +377,7 @@ const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
 ```
 
 ### **getConnections**
-Retrieve Connections
+List Connections
 - HTTP Method: GET
 - Endpoint: /connections
 
@@ -391,7 +427,7 @@ const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
   const input = {
     description: 'description',
     id_project: 'id_project',
-    scope: 'scope',
+    scope: ['ut velit in', 'Ut anim in'],
     url: 'url',
   };
   const result = await sdk.webhook.createWebhookMetadata(input);
@@ -972,7 +1008,7 @@ import { PanoraSDK } from './src';
 const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
 
 (async () => {
-  const input = { data: {}, headers_: {}, method: 'POST', path: 'path' };
+  const input = { data: {}, headers_: {}, method: 'PATCH', path: 'path' };
   const result = await sdk.passthrough.passthroughRequest(input, 'integrationId', 'linkedUserId');
   console.log(result);
 })();
@@ -989,8 +1025,8 @@ Create CRM Contact
 
 | Name    | Type| Description |
 | :-------- | :----------| :----------|
-| integrationId | string |  |
-| linkedUserId | string |  |
+| integrationId | string | The integration ID |
+| linkedUserId | string | The linked user ID |
 | input | object | Request body. |
 
 **Optional Parameters**
@@ -999,7 +1035,7 @@ Optional parameters are passed as part of the last parameter to the method. Ex. 
 
 | Name    | Type| Description |
 | :-------- | :----------| :----------|
-| remoteData | boolean |  |
+| remoteData | boolean | Set to true to include data from the original CRM software. |
 
 
 **Return Type**
@@ -1046,7 +1082,7 @@ Optional parameters are passed as part of the last parameter to the method. Ex. 
 
 | Name    | Type| Description |
 | :-------- | :----------| :----------|
-| remoteData | boolean |  |
+| remoteData | boolean | Set to true to include data from the original CRM software. |
 
 
 **Return Type**
@@ -1107,7 +1143,7 @@ Retrieve a CRM Contact
 
 | Name    | Type| Description |
 | :-------- | :----------| :----------|
-| id | string |  |
+| id | string | id of the `contact` you want to retrive. |
 
 **Optional Parameters**
 
@@ -1115,7 +1151,7 @@ Optional parameters are passed as part of the last parameter to the method. Ex. 
 
 | Name    | Type| Description |
 | :-------- | :----------| :----------|
-| remoteData | boolean |  |
+| remoteData | boolean | Set to true to include data from the original CRM software. |
 
 
 **Return Type**
@@ -1154,7 +1190,7 @@ Optional parameters are passed as part of the last parameter to the method. Ex. 
 
 | Name    | Type| Description |
 | :-------- | :----------| :----------|
-| remoteData | boolean |  |
+| remoteData | boolean | Set to true to include data from the original CRM software. |
 
 
 **Return Type**
