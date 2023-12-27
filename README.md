@@ -32,20 +32,20 @@ To see whether an endpoint needs a specific type of authentication check the end
 
 The PanoraSDK API uses access tokens as a form of authentication. You can set the access token when initializing the SDK through the constructor:
 
-```
+```Typescript
 const sdk = new PanoraSDK('YOUR_ACCESS_TOKEN')
 ```
 
 Or through the `setAccessToken` method:
 
-```
+```Typescript
 const sdk = new PanoraSDK()
 sdk.setAccessToken('YOUR_ACCESS_TOKEN')
 ```
 
 You can also set it for each service individually:
 
-```
+```Typescript
 const sdk = new PanoraSDK()
 sdk.main.setAccessToken('YOUR_ACCESS_TOKEN')
 ```
@@ -59,7 +59,6 @@ When running the sample make sure to use `npm install` to install all the depend
 ```Typescript
 import { PanoraSDK } from '@panora/typescript-sdk';
 
-
 const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
 
 (async () => {
@@ -67,7 +66,6 @@ const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
     .appControllerGetHello();
   console.log(result);
 })();
- 
 
 ```
 
@@ -76,29 +74,17 @@ const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
 A list of all services and services methods.
 
 - Services
-
   - [Main](#main)
-
   - [Auth](#auth)
-
   - [Connections](#connections)
-
   - [Webhook](#webhook)
-
   - [LinkedUsers](#linkedusers)
-
   - [Organisations](#organisations)
-
   - [Projects](#projects)
-
   - [FieldMapping](#fieldmapping)
-
   - [Events](#events)
-
   - [MagicLink](#magiclink)
-
   - [Passthrough](#passthrough)
-
   - [CrmContact](#crmcontact)
 - [All Methods](#all-methods)
 
@@ -1250,4 +1236,4 @@ const sdk = new PanoraSDK({ accessToken: process.env.PANORASDK_ACCESS_TOKEN });
 
 ## License
 
-License: MIT. See license in LICENSE.
+License: MIT. [See license in LICENSE](/LICENSE).
