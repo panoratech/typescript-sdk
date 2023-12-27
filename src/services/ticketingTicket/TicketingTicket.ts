@@ -1,21 +1,21 @@
 import BaseService from '../../BaseService';
 
-import { UnifiedContactInput } from './models/UnifiedContactInput';
-import { AddContactsRequest } from './models/AddContactsRequest';
+import { UnifiedTicketInput } from './models/UnifiedTicketInput';
+import { AddTicketsRequest } from './models/AddTicketsRequest';
 
 import { serializeQuery, serializePath } from '../../http/QuerySerializer';
 
-export class CrmContactService extends BaseService {
+export class TicketingTicketService extends BaseService {
   /**
-   * @summary List a batch of CRM Contacts
+   * @summary List a batch of Tickets
 
    * @param integrationId Needed input variable
    * @param linkedUserId Needed input variable
    * @param optionalParams - Optional parameters
-   * @param optionalParams.remoteData - Set to true to include data from the original CRM software.
+   * @param optionalParams.remoteData - Set to true to include data from the original Ticketing software.
    * @returns {Promise<any>} - The promise with the result
    */
-  async getContacts(
+  async getTickets(
     integrationId: string,
     linkedUserId: string,
     optionalParams: { remoteData?: boolean } = {},
@@ -36,7 +36,7 @@ export class CrmContactService extends BaseService {
     if (remoteData) {
       queryParams.push(serializeQuery('form', true, 'remote_data', remoteData));
     }
-    const urlEndpoint = '/crm/contact';
+    const urlEndpoint = '/ticketing/ticket';
     const urlParams = queryParams.length > 0 ? `?${queryParams.join('&')}` : '';
     const finalUrl = encodeURI(`${this.baseUrl + urlEndpoint}${urlParams}`);
     const response: any = await this.httpClient.get(
@@ -52,17 +52,17 @@ export class CrmContactService extends BaseService {
   }
 
   /**
-   * @summary Create CRM Contact
-   * @description Create a contact in any supported CRM
+   * @summary Create a Ticket
+   * @description Create a ticket in any supported Ticketing software
 
    * @param integrationId The integration ID
    * @param linkedUserId The linked user ID
    * @param optionalParams - Optional parameters
-   * @param optionalParams.remoteData - Set to true to include data from the original CRM software.
+   * @param optionalParams.remoteData - Set to true to include data from the original Ticketing software.
    * @returns {Promise<any>} - The promise with the result
    */
-  async addContact(
-    input: UnifiedContactInput,
+  async addTicket(
+    input: UnifiedTicketInput,
     integrationId: string,
     linkedUserId: string,
     optionalParams: { remoteData?: boolean } = {},
@@ -84,7 +84,7 @@ export class CrmContactService extends BaseService {
     if (remoteData) {
       queryParams.push(serializeQuery('form', true, 'remote_data', remoteData));
     }
-    const urlEndpoint = '/crm/contact';
+    const urlEndpoint = '/ticketing/ticket';
     const urlParams = queryParams.length > 0 ? `?${queryParams.join('&')}` : '';
     const finalUrl = encodeURI(`${this.baseUrl + urlEndpoint}${urlParams}`);
     const response: any = await this.httpClient.post(
@@ -101,12 +101,12 @@ export class CrmContactService extends BaseService {
   }
 
   /**
-   * @summary Update a CRM Contact
+   * @summary Update a Ticket
 
    * @param id Needed input variable
    * @returns {Promise<any>} - The promise with the result
    */
-  async updateContact(id: string): Promise<any> {
+  async updateTicket(id: string): Promise<any> {
     if (id === undefined) {
       throw new Error('The following parameter is required: id, cannot be empty or blank');
     }
@@ -114,7 +114,7 @@ export class CrmContactService extends BaseService {
     if (id) {
       queryParams.push(serializeQuery('form', true, 'id', id));
     }
-    const urlEndpoint = '/crm/contact';
+    const urlEndpoint = '/ticketing/ticket';
     const finalUrl = encodeURI(`${this.baseUrl + urlEndpoint}?${queryParams.join('&')}`);
     const response: any = await this.httpClient.patch(
       finalUrl,
@@ -129,21 +129,21 @@ export class CrmContactService extends BaseService {
   }
 
   /**
-   * @summary Retrieve a CRM Contact
-   * @description Retrieve a contact from any connected CRM
+   * @summary Retrieve a Ticket
+   * @description Retrieve a ticket from any connected Ticketing software
 
-   * @param id id of the `contact` you want to retrive.
+   * @param id id of the `ticket` you want to retrive.
    * @param optionalParams - Optional parameters
-   * @param optionalParams.remoteData - Set to true to include data from the original CRM software.
+   * @param optionalParams.remoteData - Set to true to include data from the original Ticketing software.
    * @returns {Promise<any>} - The promise with the result
    */
-  async getContact(id: string, optionalParams: { remoteData?: boolean } = {}): Promise<any> {
+  async getTicket(id: string, optionalParams: { remoteData?: boolean } = {}): Promise<any> {
     const { remoteData } = optionalParams;
     if (id === undefined) {
       throw new Error('The following parameter is required: id, cannot be empty or blank');
     }
     const queryParams: string[] = [];
-    let urlEndpoint = '/crm/contact/{id}';
+    let urlEndpoint = '/ticketing/ticket/{id}';
     urlEndpoint = urlEndpoint.replace('{id}', serializePath('simple', false, id, undefined));
     if (remoteData) {
       queryParams.push(serializeQuery('form', true, 'remote_data', remoteData));
@@ -163,16 +163,16 @@ export class CrmContactService extends BaseService {
   }
 
   /**
-   * @summary Add a batch of CRM Contacts
+   * @summary Add a batch of Tickets
 
    * @param integrationId Needed input variable
    * @param linkedUserId Needed input variable
    * @param optionalParams - Optional parameters
-   * @param optionalParams.remoteData - Set to true to include data from the original CRM software.
+   * @param optionalParams.remoteData - Set to true to include data from the original Ticketing software.
    * @returns {Promise<any>} - The promise with the result
    */
-  async addContacts(
-    input: AddContactsRequest,
+  async addTickets(
+    input: AddTicketsRequest,
     integrationId: string,
     linkedUserId: string,
     optionalParams: { remoteData?: boolean } = {},
@@ -194,7 +194,7 @@ export class CrmContactService extends BaseService {
     if (remoteData) {
       queryParams.push(serializeQuery('form', true, 'remote_data', remoteData));
     }
-    const urlEndpoint = '/crm/contact/batch';
+    const urlEndpoint = '/ticketing/ticket/batch';
     const urlParams = queryParams.length > 0 ? `?${queryParams.join('&')}` : '';
     const finalUrl = encodeURI(`${this.baseUrl + urlEndpoint}${urlParams}`);
     const response: any = await this.httpClient.post(
