@@ -2,15 +2,15 @@ import nock from 'nock';
 
 import { PanoraSDK } from '../../../src';
 
-import { CrmContactService } from '../../../src/services/crmContact/CrmContact';
+import { TicketingCommentService } from '../../../src/services/ticketingComment/TicketingComment';
 
-describe('test CrmContactService object', () => {
+describe('test TicketingCommentService object', () => {
   it('should be an object', () => {
-    expect(typeof CrmContactService).toBe('function');
+    expect(typeof TicketingCommentService).toBe('function');
   });
 });
 
-describe('test CrmContact', () => {
+describe('test TicketingComment', () => {
   let sdk: any;
 
   beforeEach(() => {
@@ -19,136 +19,141 @@ describe('test CrmContact', () => {
     nock.cleanAll();
   });
 
-  describe('test getContacts', () => {
+  describe('test getComments', () => {
     test('test api call', () => {
       const scope = nock('https://api-demo.panora.dev')
-        .get('/crm/contact?integrationId=omnis&linkedUserId=voluptas&remote_data=true')
+        .get('/ticketing/comment?remoteData=true')
         .reply(200, { data: {} });
-      return sdk.crmContact
-        .getContacts('omnis', 'voluptas', { remoteData: true })
+      return sdk.ticketingComment
+        .getComments('sit', 'quam', { remoteData: true })
         .then((r: any) => expect(r.data).toEqual({}));
     });
 
     test('test will throw error if required fields missing', () => {
       const scope = nock('https://api-demo.panora.dev')
-        .get('/crm/contact?integrationId=quibusdam&linkedUserId=enim&remote_data=true')
+        .get('/ticketing/comment?remoteData=true')
         .reply(200, { data: {} });
-      return expect(async () => await sdk.crmContact.getContacts()).rejects.toThrow();
+      return expect(async () => await sdk.ticketingComment.getComments()).rejects.toThrow();
     });
 
     test('test will throw error on a non-200 response', () => {
       const scope = nock('https://api-demo.panora.dev')
-        .get('/crm/contact?integrationId=dicta&linkedUserId=saepe&remote_data=true')
+        .get('/ticketing/comment?remoteData=true')
         .reply(404, { data: {} });
       return expect(
-        async () => await sdk.crmContact.getContacts('dicta', 'saepe', { remoteData: true }),
+        async () => await sdk.ticketingComment.getComments('ea', 'deserunt', { remoteData: true }),
       ).rejects.toThrow();
     });
   });
 
-  describe('test addContact', () => {
+  describe('test addComment', () => {
     test('test api call', () => {
       const scope = nock('https://api-demo.panora.dev')
-        .post('/crm/contact?integrationId=amet&linkedUserId=quae&remote_data=true')
+        .post('/ticketing/comment?remoteData=true')
         .reply(200, { data: {} });
-      return sdk.crmContact
-        .addContact({}, 'amet', 'quae', { remoteData: true })
+      return sdk.ticketingComment
+        .addComment({}, 'vitae', 'et', { remoteData: true })
         .then((r: any) => expect(r.data).toEqual({}));
     });
 
     test('test will throw error if required fields missing', () => {
       const scope = nock('https://api-demo.panora.dev')
-        .post('/crm/contact?integrationId=dicta&linkedUserId=culpa&remote_data=true')
+        .post('/ticketing/comment?remoteData=true')
         .reply(200, { data: {} });
-      return expect(async () => await sdk.crmContact.addContact()).rejects.toThrow();
+      return expect(async () => await sdk.ticketingComment.addComment()).rejects.toThrow();
     });
 
     test('test will throw error on a non-200 response', () => {
       const scope = nock('https://api-demo.panora.dev')
-        .post('/crm/contact?integrationId=accusantium&linkedUserId=asperiores&remote_data=true')
+        .post('/ticketing/comment?remoteData=true')
         .reply(404, { data: {} });
       return expect(
         async () =>
-          await sdk.crmContact.addContact({}, 'accusantium', 'asperiores', { remoteData: true }),
+          await sdk.ticketingComment.addComment({}, 'praesentium', 'voluptates', {
+            remoteData: true,
+          }),
       ).rejects.toThrow();
     });
   });
 
-  describe('test updateContact', () => {
+  describe('test updateComment', () => {
     test('test api call', () => {
       const scope = nock('https://api-demo.panora.dev')
-        .patch('/crm/contact?id=5659012665')
+        .patch('/ticketing/comment?id=2432060934')
         .reply(200, { data: {} });
-      return sdk.crmContact
-        .updateContact('5659012665')
+      return sdk.ticketingComment
+        .updateComment('2432060934')
         .then((r: any) => expect(r.data).toEqual({}));
     });
 
     test('test will throw error if required fields missing', () => {
       const scope = nock('https://api-demo.panora.dev')
-        .patch('/crm/contact?id=1107599970')
+        .patch('/ticketing/comment?id=3838579316')
         .reply(200, { data: {} });
-      return expect(async () => await sdk.crmContact.updateContact()).rejects.toThrow();
+      return expect(async () => await sdk.ticketingComment.updateComment()).rejects.toThrow();
     });
 
     test('test will throw error on a non-200 response', () => {
       const scope = nock('https://api-demo.panora.dev')
-        .patch('/crm/contact?id=5114738142')
-        .reply(404, { data: {} });
-      return expect(async () => await sdk.crmContact.updateContact('5114738142')).rejects.toThrow();
-    });
-  });
-
-  describe('test getContact', () => {
-    test('test api call', () => {
-      const scope = nock('https://api-demo.panora.dev')
-        .get('/crm/contact/9268728890?remote_data=true')
-        .reply(200, { data: {} });
-      return sdk.crmContact
-        .getContact('9268728890', { remoteData: true })
-        .then((r: any) => expect(r.data).toEqual({}));
-    });
-
-    test('test will throw error if required fields missing', () => {
-      const scope = nock('https://api-demo.panora.dev')
-        .get('/crm/contact/9184225347?remote_data=true')
-        .reply(200, { data: {} });
-      return expect(async () => await sdk.crmContact.getContact()).rejects.toThrow();
-    });
-
-    test('test will throw error on a non-200 response', () => {
-      const scope = nock('https://api-demo.panora.dev')
-        .get('/crm/contact/2332803956?remote_data=true')
+        .patch('/ticketing/comment?id=9517101145')
         .reply(404, { data: {} });
       return expect(
-        async () => await sdk.crmContact.getContact('2332803956', { remoteData: true }),
+        async () => await sdk.ticketingComment.updateComment('9517101145'),
       ).rejects.toThrow();
     });
   });
 
-  describe('test addContacts', () => {
+  describe('test getComment', () => {
     test('test api call', () => {
       const scope = nock('https://api-demo.panora.dev')
-        .post('/crm/contact/batch?integrationId=voluptate&linkedUserId=saepe&remote_data=true')
+        .get('/ticketing/comment/3306214887?remoteData=true')
         .reply(200, { data: {} });
-      return sdk.crmContact
-        .addContacts({}, 'voluptate', 'saepe', { remoteData: true })
+      return sdk.ticketingComment
+        .getComment('3306214887', { remoteData: true })
         .then((r: any) => expect(r.data).toEqual({}));
     });
 
     test('test will throw error if required fields missing', () => {
       const scope = nock('https://api-demo.panora.dev')
-        .post('/crm/contact/batch?integrationId=nesciunt&linkedUserId=aut&remote_data=true')
+        .get('/ticketing/comment/3963860219?remoteData=true')
         .reply(200, { data: {} });
-      return expect(async () => await sdk.crmContact.addContacts()).rejects.toThrow();
+      return expect(async () => await sdk.ticketingComment.getComment()).rejects.toThrow();
     });
 
     test('test will throw error on a non-200 response', () => {
       const scope = nock('https://api-demo.panora.dev')
-        .post('/crm/contact/batch?integrationId=ipsum&linkedUserId=eligendi&remote_data=true')
+        .get('/ticketing/comment/8744094060?remoteData=true')
         .reply(404, { data: {} });
       return expect(
-        async () => await sdk.crmContact.addContacts({}, 'ipsum', 'eligendi', { remoteData: true }),
+        async () => await sdk.ticketingComment.getComment('8744094060', { remoteData: true }),
+      ).rejects.toThrow();
+    });
+  });
+
+  describe('test addComments', () => {
+    test('test api call', () => {
+      const scope = nock('https://api-demo.panora.dev')
+        .post('/ticketing/comment/batch?remoteData=true')
+        .reply(200, { data: {} });
+      return sdk.ticketingComment
+        .addComments({}, 'a', 'fugiat', { remoteData: true })
+        .then((r: any) => expect(r.data).toEqual({}));
+    });
+
+    test('test will throw error if required fields missing', () => {
+      const scope = nock('https://api-demo.panora.dev')
+        .post('/ticketing/comment/batch?remoteData=true')
+        .reply(200, { data: {} });
+      return expect(async () => await sdk.ticketingComment.addComments()).rejects.toThrow();
+    });
+
+    test('test will throw error on a non-200 response', () => {
+      const scope = nock('https://api-demo.panora.dev')
+        .post('/ticketing/comment/batch?remoteData=true')
+        .reply(404, { data: {} });
+      return expect(
+        async () =>
+          await sdk.ticketingComment.addComments({}, 'blanditiis', 'alias', { remoteData: true }),
       ).rejects.toThrow();
     });
   });
