@@ -80,3 +80,10 @@ export function serializePath(
     return method(key, value, explode);
   }
 }
+
+export function serializeHeader(explode: Explode, value: unknown): string {
+  if (!styleMethods.simple) {
+    return '';
+  }
+  return styleMethods.simple(value, explode);
+}
