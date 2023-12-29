@@ -9,6 +9,9 @@ import { MainService } from './services/main/Main';
 import { OrganisationsService } from './services/organisations/Organisations';
 import { PassthroughService } from './services/passthrough/Passthrough';
 import { ProjectsService } from './services/projects/Projects';
+import { ProtectedService } from './services/protected/Protected';
+import { TicketingCommentService } from './services/ticketingComment/TicketingComment';
+import { TicketingTicketService } from './services/ticketingTicket/TicketingTicket';
 import { WebhookService } from './services/webhook/Webhook';
 
 export * from './models';
@@ -21,6 +24,8 @@ export * as MagicLinkModels from './services/magicLink';
 export * as OrganisationsModels from './services/organisations';
 export * as PassthroughModels from './services/passthrough';
 export * as ProjectsModels from './services/projects';
+export * as TicketingCommentModels from './services/ticketingComment';
+export * as TicketingTicketModels from './services/ticketingTicket';
 export * as WebhookModels from './services/webhook';
 
 type Config = {
@@ -44,6 +49,9 @@ export class PanoraSDK {
   public organisations: OrganisationsService;
   public passthrough: PassthroughService;
   public projects: ProjectsService;
+  public protected: ProtectedService;
+  public ticketingComment: TicketingCommentService;
+  public ticketingTicket: TicketingTicketService;
   public webhook: WebhookService;
 
   constructor({ accessToken = '' }: Config) {
@@ -58,6 +66,9 @@ export class PanoraSDK {
     this.organisations = new OrganisationsService(accessToken);
     this.passthrough = new PassthroughService(accessToken);
     this.projects = new ProjectsService(accessToken);
+    this.protected = new ProtectedService(accessToken);
+    this.ticketingComment = new TicketingCommentService(accessToken);
+    this.ticketingTicket = new TicketingTicketService(accessToken);
     this.webhook = new WebhookService(accessToken);
   }
 
@@ -77,6 +88,9 @@ export class PanoraSDK {
     this.organisations.setBaseUrl(url);
     this.passthrough.setBaseUrl(url);
     this.projects.setBaseUrl(url);
+    this.protected.setBaseUrl(url);
+    this.ticketingComment.setBaseUrl(url);
+    this.ticketingTicket.setBaseUrl(url);
     this.webhook.setBaseUrl(url);
   }
 
@@ -96,6 +110,9 @@ export class PanoraSDK {
     this.organisations.setAccessToken(accessToken);
     this.passthrough.setAccessToken(accessToken);
     this.projects.setAccessToken(accessToken);
+    this.protected.setAccessToken(accessToken);
+    this.ticketingComment.setAccessToken(accessToken);
+    this.ticketingTicket.setAccessToken(accessToken);
     this.webhook.setAccessToken(accessToken);
   }
 }
