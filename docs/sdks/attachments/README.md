@@ -1,0 +1,144 @@
+# Attachments
+(*ticketing.attachments*)
+
+### Available Operations
+
+* [list](#list) - List a batch of Attachments
+* [create](#create) - Create a Attachment
+* [retrieve](#retrieve) - Retrieve a Attachment
+
+## list
+
+List a batch of Attachments
+
+### Example Usage
+
+```typescript
+import { Panora } from "@panora/sdk";
+
+const panora = new Panora({
+  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await panora.ticketing.attachments.list({
+    xConnectionToken: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.ListTicketingAttachmentsRequest](../../models/operations/listticketingattachmentsrequest.md)                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+
+
+### Response
+
+**Promise\<[operations.ListTicketingAttachmentsResponse](../../models/operations/listticketingattachmentsresponse.md)\>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+## create
+
+Create a attachment in any supported Ticketing software
+
+### Example Usage
+
+```typescript
+import { Panora } from "@panora/sdk";
+
+const panora = new Panora({
+  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await panora.ticketing.attachments.create({
+    xConnectionToken: "<value>",
+    unifiedTicketingAttachmentInput: {
+      fileName: "your_file_here",
+      fileUrl: "<value>",
+      uploader: "<value>",
+      fieldMappings: {},
+    },
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.CreateTicketingAttachmentRequest](../../models/operations/createticketingattachmentrequest.md)                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+
+
+### Response
+
+**Promise\<[operations.CreateTicketingAttachmentResponse](../../models/operations/createticketingattachmentresponse.md)\>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+## retrieve
+
+Retrieve a attachment from any connected Ticketing software
+
+### Example Usage
+
+```typescript
+import { Panora } from "@panora/sdk";
+
+const panora = new Panora({
+  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await panora.ticketing.attachments.retrieve({
+    xConnectionToken: "<value>",
+    id: "<id>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.RetrieveTicketingAttachmentRequest](../../models/operations/retrieveticketingattachmentrequest.md)                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+
+
+### Response
+
+**Promise\<[operations.RetrieveTicketingAttachmentResponse](../../models/operations/retrieveticketingattachmentresponse.md)\>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |

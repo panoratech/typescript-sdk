@@ -1,0 +1,9 @@
+# RetrieveTicketingAccountResponse
+
+
+## Fields
+
+| Field                                                                                                | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `httpMeta`                                                                                           | [components.HTTPMetadata](../../models/components/httpmetadata.md)                                   | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
+| `unifiedTicketingAccountOutput`                                                                      | [components.UnifiedTicketingAccountOutput](../../models/components/unifiedticketingaccountoutput.md) | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |

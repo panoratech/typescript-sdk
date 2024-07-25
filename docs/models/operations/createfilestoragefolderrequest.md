@@ -1,0 +1,10 @@
+# CreateFilestorageFolderRequest
+
+
+## Fields
+
+| Field                                                                                                | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `xConnectionToken`                                                                                   | *string*                                                                                             | :heavy_check_mark:                                                                                   | The connection token                                                                                 |
+| `remoteData`                                                                                         | *boolean*                                                                                            | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
+| `unifiedFilestorageFolderInput`                                                                      | [components.UnifiedFilestorageFolderInput](../../models/components/unifiedfilestoragefolderinput.md) | :heavy_check_mark:                                                                                   | N/A                                                                                                  |

@@ -1,0 +1,10 @@
+# ListFilestorageDrivesResponseBody
+
+
+## Fields
+
+| Field                                                                                                  | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `prevCursor`                                                                                           | *string*                                                                                               | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
+| `nextCursor`                                                                                           | *string*                                                                                               | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
+| `data`                                                                                                 | [components.UnifiedFilestorageDriveOutput](../../models/components/unifiedfilestoragedriveoutput.md)[] | :heavy_check_mark:                                                                                     | N/A                                                                                                    |

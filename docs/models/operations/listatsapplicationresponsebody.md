@@ -1,0 +1,10 @@
+# ListAtsApplicationResponseBody
+
+
+## Fields
+
+| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `prevCursor`                                                                                       | *string*                                                                                           | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `nextCursor`                                                                                       | *string*                                                                                           | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `data`                                                                                             | [components.UnifiedAtsApplicationOutput](../../models/components/unifiedatsapplicationoutput.md)[] | :heavy_check_mark:                                                                                 | N/A                                                                                                |

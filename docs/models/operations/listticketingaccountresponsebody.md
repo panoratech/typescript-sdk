@@ -1,0 +1,10 @@
+# ListTicketingAccountResponseBody
+
+
+## Fields
+
+| Field                                                                                                  | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `prevCursor`                                                                                           | *string*                                                                                               | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
+| `nextCursor`                                                                                           | *string*                                                                                               | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
+| `data`                                                                                                 | [components.UnifiedTicketingAccountOutput](../../models/components/unifiedticketingaccountoutput.md)[] | :heavy_check_mark:                                                                                     | N/A                                                                                                    |

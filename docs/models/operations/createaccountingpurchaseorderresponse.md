@@ -1,0 +1,9 @@
+# CreateAccountingPurchaseOrderResponse
+
+
+## Fields
+
+| Field                                                                                                              | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| `httpMeta`                                                                                                         | [components.HTTPMetadata](../../models/components/httpmetadata.md)                                                 | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
+| `unifiedAccountingPurchaseorderOutput`                                                                             | [components.UnifiedAccountingPurchaseorderOutput](../../models/components/unifiedaccountingpurchaseorderoutput.md) | :heavy_minus_sign:                                                                                                 | N/A                                                                                                                |

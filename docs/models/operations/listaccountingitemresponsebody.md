@@ -1,0 +1,10 @@
+# ListAccountingItemResponseBody
+
+
+## Fields
+
+| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `prevCursor`                                                                                       | *string*                                                                                           | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `nextCursor`                                                                                       | *string*                                                                                           | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `data`                                                                                             | [components.UnifiedAccountingItemOutput](../../models/components/unifiedaccountingitemoutput.md)[] | :heavy_check_mark:                                                                                 | N/A                                                                                                |

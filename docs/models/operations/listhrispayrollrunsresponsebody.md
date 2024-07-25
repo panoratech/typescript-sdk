@@ -1,0 +1,10 @@
+# ListHrisPayrollRunsResponseBody
+
+
+## Fields
+
+| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `prevCursor`                                                                                       | *string*                                                                                           | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `nextCursor`                                                                                       | *string*                                                                                           | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `data`                                                                                             | [components.UnifiedHrisPayrollrunOutput](../../models/components/unifiedhrispayrollrunoutput.md)[] | :heavy_check_mark:                                                                                 | N/A                                                                                                |

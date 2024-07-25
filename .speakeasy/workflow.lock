@@ -1,0 +1,27 @@
+speakeasyVersion: 1.312.1
+sources:
+    panora-open-api-swagger:
+        sourceNamespace: panora-open-api-swagger
+        sourceRevisionDigest: sha256:b9f137773d782f0a2d6cb291328883321b832af65853ecbcfa4d91ca29b9c7c3
+        sourceBlobDigest: sha256:6ed6491b448c3f05d4836b9956f9e590ac719445aee7197ac143618f4f55b94b
+        tags:
+            - latest
+targets:
+    my-first-target:
+        source: panora-open-api-swagger
+        sourceNamespace: panora-open-api-swagger
+        sourceRevisionDigest: sha256:b9f137773d782f0a2d6cb291328883321b832af65853ecbcfa4d91ca29b9c7c3
+        sourceBlobDigest: sha256:6ed6491b448c3f05d4836b9956f9e590ac719445aee7197ac143618f4f55b94b
+        outLocation: /Users/nael/Desktop/typescript-sdk/panora-typescript
+workflow:
+    workflowVersion: 1.0.0
+    sources:
+        panora-open-api-swagger:
+            inputs:
+                - location: https://raw.githubusercontent.com/panoratech/Panora/main/packages/api/swagger/swagger-spec.yaml
+            registry:
+                location: registry.speakeasyapi.dev/panora/panora/panora-open-api-swagger
+    targets:
+        my-first-target:
+            target: typescript
+            source: panora-open-api-swagger

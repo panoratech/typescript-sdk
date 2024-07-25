@@ -1,0 +1,10 @@
+# ListAtsInterviewResponseBody
+
+
+## Fields
+
+| Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `prevCursor`                                                                                   | *string*                                                                                       | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| `nextCursor`                                                                                   | *string*                                                                                       | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| `data`                                                                                         | [components.UnifiedAtsInterviewOutput](../../models/components/unifiedatsinterviewoutput.md)[] | :heavy_check_mark:                                                                             | N/A                                                                                            |

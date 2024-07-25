@@ -1,0 +1,10 @@
+# ListHrisPaygroupResponseBody
+
+
+## Fields
+
+| Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `prevCursor`                                                                                   | *string*                                                                                       | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| `nextCursor`                                                                                   | *string*                                                                                       | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| `data`                                                                                         | [components.UnifiedHrisPaygroupOutput](../../models/components/unifiedhrispaygroupoutput.md)[] | :heavy_check_mark:                                                                             | N/A                                                                                            |

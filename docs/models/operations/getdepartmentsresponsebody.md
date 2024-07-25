@@ -1,0 +1,10 @@
+# GetDepartmentsResponseBody
+
+
+## Fields
+
+| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `prevCursor`                                                                                     | *string*                                                                                         | :heavy_check_mark:                                                                               | N/A                                                                                              |
+| `nextCursor`                                                                                     | *string*                                                                                         | :heavy_check_mark:                                                                               | N/A                                                                                              |
+| `data`                                                                                           | [components.UnifiedAtsDepartmentOutput](../../models/components/unifiedatsdepartmentoutput.md)[] | :heavy_check_mark:                                                                               | N/A                                                                                              |
