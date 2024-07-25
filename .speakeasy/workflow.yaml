@@ -13,3 +13,7 @@ targets:
         publish:
             npm:
                 token: $npm_token
+        codeSamples:
+            output: codeSamples.yaml
+            registry:
+                location: registry.speakeasyapi.dev/panora/panora/code-samples-typescript-my-first-target
