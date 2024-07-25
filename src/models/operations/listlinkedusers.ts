@@ -11,28 +11,49 @@ export type ListLinkedUsersResponse = {
 };
 
 /** @internal */
+export const ListLinkedUsersResponse$inboundSchema: z.ZodType<
+    ListLinkedUsersResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+        });
+    });
+
+/** @internal */
+export type ListLinkedUsersResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+};
+
+/** @internal */
+export const ListLinkedUsersResponse$outboundSchema: z.ZodType<
+    ListLinkedUsersResponse$Outbound,
+    z.ZodTypeDef,
+    ListLinkedUsersResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListLinkedUsersResponse$ {
-    export const inboundSchema: z.ZodType<ListLinkedUsersResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListLinkedUsersResponse> = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-            });
-        });
+    /** @deprecated use `ListLinkedUsersResponse$inboundSchema` instead. */
+    export const inboundSchema = ListLinkedUsersResponse$inboundSchema;
+    /** @deprecated use `ListLinkedUsersResponse$outboundSchema` instead. */
+    export const outboundSchema = ListLinkedUsersResponse$outboundSchema;
+    /** @deprecated use `ListLinkedUsersResponse$Outbound` instead. */
+    export type Outbound = ListLinkedUsersResponse$Outbound;
 }

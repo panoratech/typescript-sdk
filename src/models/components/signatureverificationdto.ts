@@ -25,33 +25,67 @@ export type SignatureVerificationDto = {
 };
 
 /** @internal */
+export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> = z.object({});
+
+/** @internal */
+export type Payload$Outbound = {};
+
+/** @internal */
+export const Payload$outboundSchema: z.ZodType<Payload$Outbound, z.ZodTypeDef, Payload> = z.object(
+    {}
+);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Payload$ {
-    export const inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Payload> = z.object({});
+    /** @deprecated use `Payload$inboundSchema` instead. */
+    export const inboundSchema = Payload$inboundSchema;
+    /** @deprecated use `Payload$outboundSchema` instead. */
+    export const outboundSchema = Payload$outboundSchema;
+    /** @deprecated use `Payload$Outbound` instead. */
+    export type Outbound = Payload$Outbound;
 }
 
 /** @internal */
+export const SignatureVerificationDto$inboundSchema: z.ZodType<
+    SignatureVerificationDto,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    payload: z.lazy(() => Payload$inboundSchema),
+    signature: z.string(),
+    secret: z.string(),
+});
+
+/** @internal */
+export type SignatureVerificationDto$Outbound = {
+    payload: Payload$Outbound;
+    signature: string;
+    secret: string;
+};
+
+/** @internal */
+export const SignatureVerificationDto$outboundSchema: z.ZodType<
+    SignatureVerificationDto$Outbound,
+    z.ZodTypeDef,
+    SignatureVerificationDto
+> = z.object({
+    payload: z.lazy(() => Payload$outboundSchema),
+    signature: z.string(),
+    secret: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace SignatureVerificationDto$ {
-    export const inboundSchema: z.ZodType<SignatureVerificationDto, z.ZodTypeDef, unknown> =
-        z.object({
-            payload: z.lazy(() => Payload$.inboundSchema),
-            signature: z.string(),
-            secret: z.string(),
-        });
-
-    export type Outbound = {
-        payload: Payload$.Outbound;
-        signature: string;
-        secret: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SignatureVerificationDto> =
-        z.object({
-            payload: z.lazy(() => Payload$.outboundSchema),
-            signature: z.string(),
-            secret: z.string(),
-        });
+    /** @deprecated use `SignatureVerificationDto$inboundSchema` instead. */
+    export const inboundSchema = SignatureVerificationDto$inboundSchema;
+    /** @deprecated use `SignatureVerificationDto$outboundSchema` instead. */
+    export const outboundSchema = SignatureVerificationDto$outboundSchema;
+    /** @deprecated use `SignatureVerificationDto$Outbound` instead. */
+    export type Outbound = SignatureVerificationDto$Outbound;
 }

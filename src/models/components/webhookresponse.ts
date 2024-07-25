@@ -45,66 +45,83 @@ export type WebhookResponse = {
 };
 
 /** @internal */
+export const WebhookResponse$inboundSchema: z.ZodType<WebhookResponse, z.ZodTypeDef, unknown> = z
+    .object({
+        id_webhook_endpoint: z.string(),
+        endpoint_description: z.string(),
+        url: z.string(),
+        secret: z.string(),
+        active: z.boolean(),
+        created_at: z
+            .string()
+            .datetime({ offset: true })
+            .transform((v) => new Date(v)),
+        scope: z.array(z.string()),
+        id_project: z.string(),
+        last_update: z
+            .string()
+            .datetime({ offset: true })
+            .transform((v) => new Date(v)),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            id_webhook_endpoint: "idWebhookEndpoint",
+            endpoint_description: "endpointDescription",
+            created_at: "createdAt",
+            id_project: "idProject",
+            last_update: "lastUpdate",
+        });
+    });
+
+/** @internal */
+export type WebhookResponse$Outbound = {
+    id_webhook_endpoint: string;
+    endpoint_description: string;
+    url: string;
+    secret: string;
+    active: boolean;
+    created_at: string;
+    scope: Array<string>;
+    id_project: string;
+    last_update: string;
+};
+
+/** @internal */
+export const WebhookResponse$outboundSchema: z.ZodType<
+    WebhookResponse$Outbound,
+    z.ZodTypeDef,
+    WebhookResponse
+> = z
+    .object({
+        idWebhookEndpoint: z.string(),
+        endpointDescription: z.string(),
+        url: z.string(),
+        secret: z.string(),
+        active: z.boolean(),
+        createdAt: z.date().transform((v) => v.toISOString()),
+        scope: z.array(z.string()),
+        idProject: z.string(),
+        lastUpdate: z.date().transform((v) => v.toISOString()),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            idWebhookEndpoint: "id_webhook_endpoint",
+            endpointDescription: "endpoint_description",
+            createdAt: "created_at",
+            idProject: "id_project",
+            lastUpdate: "last_update",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace WebhookResponse$ {
-    export const inboundSchema: z.ZodType<WebhookResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            id_webhook_endpoint: z.string(),
-            endpoint_description: z.string(),
-            url: z.string(),
-            secret: z.string(),
-            active: z.boolean(),
-            created_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v)),
-            scope: z.array(z.string()),
-            id_project: z.string(),
-            last_update: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v)),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                id_webhook_endpoint: "idWebhookEndpoint",
-                endpoint_description: "endpointDescription",
-                created_at: "createdAt",
-                id_project: "idProject",
-                last_update: "lastUpdate",
-            });
-        });
-
-    export type Outbound = {
-        id_webhook_endpoint: string;
-        endpoint_description: string;
-        url: string;
-        secret: string;
-        active: boolean;
-        created_at: string;
-        scope: Array<string>;
-        id_project: string;
-        last_update: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, WebhookResponse> = z
-        .object({
-            idWebhookEndpoint: z.string(),
-            endpointDescription: z.string(),
-            url: z.string(),
-            secret: z.string(),
-            active: z.boolean(),
-            createdAt: z.date().transform((v) => v.toISOString()),
-            scope: z.array(z.string()),
-            idProject: z.string(),
-            lastUpdate: z.date().transform((v) => v.toISOString()),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                idWebhookEndpoint: "id_webhook_endpoint",
-                endpointDescription: "endpoint_description",
-                createdAt: "created_at",
-                idProject: "id_project",
-                lastUpdate: "last_update",
-            });
-        });
+    /** @deprecated use `WebhookResponse$inboundSchema` instead. */
+    export const inboundSchema = WebhookResponse$inboundSchema;
+    /** @deprecated use `WebhookResponse$outboundSchema` instead. */
+    export const outboundSchema = WebhookResponse$outboundSchema;
+    /** @deprecated use `WebhookResponse$Outbound` instead. */
+    export type Outbound = WebhookResponse$Outbound;
 }

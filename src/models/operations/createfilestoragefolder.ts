@@ -21,81 +21,114 @@ export type CreateFilestorageFolderResponse = {
 };
 
 /** @internal */
-export namespace CreateFilestorageFolderRequest$ {
-    export const inboundSchema: z.ZodType<CreateFilestorageFolderRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            "x-connection-token": z.string(),
-            remote_data: z.boolean(),
-            UnifiedFilestorageFolderInput: components.UnifiedFilestorageFolderInput$.inboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-                UnifiedFilestorageFolderInput: "unifiedFilestorageFolderInput",
-            });
+export const CreateFilestorageFolderRequest$inboundSchema: z.ZodType<
+    CreateFilestorageFolderRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        remote_data: z.boolean(),
+        UnifiedFilestorageFolderInput: components.UnifiedFilestorageFolderInput$inboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+            UnifiedFilestorageFolderInput: "unifiedFilestorageFolderInput",
         });
+    });
 
-    export type Outbound = {
-        "x-connection-token": string;
-        remote_data: boolean;
-        UnifiedFilestorageFolderInput: components.UnifiedFilestorageFolderInput$.Outbound;
-    };
+/** @internal */
+export type CreateFilestorageFolderRequest$Outbound = {
+    "x-connection-token": string;
+    remote_data: boolean;
+    UnifiedFilestorageFolderInput: components.UnifiedFilestorageFolderInput$Outbound;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateFilestorageFolderRequest> =
-        z
-            .object({
-                xConnectionToken: z.string(),
-                remoteData: z.boolean(),
-                unifiedFilestorageFolderInput:
-                    components.UnifiedFilestorageFolderInput$.outboundSchema,
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    xConnectionToken: "x-connection-token",
-                    remoteData: "remote_data",
-                    unifiedFilestorageFolderInput: "UnifiedFilestorageFolderInput",
-                });
-            });
+/** @internal */
+export const CreateFilestorageFolderRequest$outboundSchema: z.ZodType<
+    CreateFilestorageFolderRequest$Outbound,
+    z.ZodTypeDef,
+    CreateFilestorageFolderRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        remoteData: z.boolean(),
+        unifiedFilestorageFolderInput: components.UnifiedFilestorageFolderInput$outboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+            unifiedFilestorageFolderInput: "UnifiedFilestorageFolderInput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateFilestorageFolderRequest$ {
+    /** @deprecated use `CreateFilestorageFolderRequest$inboundSchema` instead. */
+    export const inboundSchema = CreateFilestorageFolderRequest$inboundSchema;
+    /** @deprecated use `CreateFilestorageFolderRequest$outboundSchema` instead. */
+    export const outboundSchema = CreateFilestorageFolderRequest$outboundSchema;
+    /** @deprecated use `CreateFilestorageFolderRequest$Outbound` instead. */
+    export type Outbound = CreateFilestorageFolderRequest$Outbound;
 }
 
 /** @internal */
-export namespace CreateFilestorageFolderResponse$ {
-    export const inboundSchema: z.ZodType<CreateFilestorageFolderResponse, z.ZodTypeDef, unknown> =
-        z
-            .object({
-                HttpMeta: components.HTTPMetadata$.inboundSchema,
-                UnifiedFilestorageFolderOutput:
-                    components.UnifiedFilestorageFolderOutput$.inboundSchema.optional(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    HttpMeta: "httpMeta",
-                    UnifiedFilestorageFolderOutput: "unifiedFilestorageFolderOutput",
-                });
-            });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        UnifiedFilestorageFolderOutput?:
-            | components.UnifiedFilestorageFolderOutput$.Outbound
-            | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        CreateFilestorageFolderResponse
-    > = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            unifiedFilestorageFolderOutput:
-                components.UnifiedFilestorageFolderOutput$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-                unifiedFilestorageFolderOutput: "UnifiedFilestorageFolderOutput",
-            });
+export const CreateFilestorageFolderResponse$inboundSchema: z.ZodType<
+    CreateFilestorageFolderResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        UnifiedFilestorageFolderOutput:
+            components.UnifiedFilestorageFolderOutput$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            UnifiedFilestorageFolderOutput: "unifiedFilestorageFolderOutput",
         });
+    });
+
+/** @internal */
+export type CreateFilestorageFolderResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    UnifiedFilestorageFolderOutput?: components.UnifiedFilestorageFolderOutput$Outbound | undefined;
+};
+
+/** @internal */
+export const CreateFilestorageFolderResponse$outboundSchema: z.ZodType<
+    CreateFilestorageFolderResponse$Outbound,
+    z.ZodTypeDef,
+    CreateFilestorageFolderResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        unifiedFilestorageFolderOutput:
+            components.UnifiedFilestorageFolderOutput$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            unifiedFilestorageFolderOutput: "UnifiedFilestorageFolderOutput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateFilestorageFolderResponse$ {
+    /** @deprecated use `CreateFilestorageFolderResponse$inboundSchema` instead. */
+    export const inboundSchema = CreateFilestorageFolderResponse$inboundSchema;
+    /** @deprecated use `CreateFilestorageFolderResponse$outboundSchema` instead. */
+    export const outboundSchema = CreateFilestorageFolderResponse$outboundSchema;
+    /** @deprecated use `CreateFilestorageFolderResponse$Outbound` instead. */
+    export type Outbound = CreateFilestorageFolderResponse$Outbound;
 }

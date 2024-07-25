@@ -37,118 +37,167 @@ export type ListHrisEmployerBenefitResponse = {
 };
 
 /** @internal */
+export const ListHrisEmployerBenefitRequest$inboundSchema: z.ZodType<
+    ListHrisEmployerBenefitRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        remote_data: z.boolean().optional(),
+        limit: z.number().default(50),
+        cursor: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+        });
+    });
+
+/** @internal */
+export type ListHrisEmployerBenefitRequest$Outbound = {
+    "x-connection-token": string;
+    remote_data?: boolean | undefined;
+    limit: number;
+    cursor?: string | undefined;
+};
+
+/** @internal */
+export const ListHrisEmployerBenefitRequest$outboundSchema: z.ZodType<
+    ListHrisEmployerBenefitRequest$Outbound,
+    z.ZodTypeDef,
+    ListHrisEmployerBenefitRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        remoteData: z.boolean().optional(),
+        limit: z.number().default(50),
+        cursor: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListHrisEmployerBenefitRequest$ {
-    export const inboundSchema: z.ZodType<ListHrisEmployerBenefitRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            "x-connection-token": z.string(),
-            remote_data: z.boolean().optional(),
-            limit: z.number().default(50),
-            cursor: z.string().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        remote_data?: boolean | undefined;
-        limit: number;
-        cursor?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListHrisEmployerBenefitRequest> =
-        z
-            .object({
-                xConnectionToken: z.string(),
-                remoteData: z.boolean().optional(),
-                limit: z.number().default(50),
-                cursor: z.string().optional(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    xConnectionToken: "x-connection-token",
-                    remoteData: "remote_data",
-                });
-            });
+    /** @deprecated use `ListHrisEmployerBenefitRequest$inboundSchema` instead. */
+    export const inboundSchema = ListHrisEmployerBenefitRequest$inboundSchema;
+    /** @deprecated use `ListHrisEmployerBenefitRequest$outboundSchema` instead. */
+    export const outboundSchema = ListHrisEmployerBenefitRequest$outboundSchema;
+    /** @deprecated use `ListHrisEmployerBenefitRequest$Outbound` instead. */
+    export type Outbound = ListHrisEmployerBenefitRequest$Outbound;
 }
 
 /** @internal */
+export const ListHrisEmployerBenefitResponseBody$inboundSchema: z.ZodType<
+    ListHrisEmployerBenefitResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        prev_cursor: z.string(),
+        next_cursor: z.string(),
+        data: z.array(components.UnifiedHrisEmployerbenefitOutput$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            prev_cursor: "prevCursor",
+            next_cursor: "nextCursor",
+        });
+    });
+
+/** @internal */
+export type ListHrisEmployerBenefitResponseBody$Outbound = {
+    prev_cursor: string;
+    next_cursor: string;
+    data: Array<components.UnifiedHrisEmployerbenefitOutput$Outbound>;
+};
+
+/** @internal */
+export const ListHrisEmployerBenefitResponseBody$outboundSchema: z.ZodType<
+    ListHrisEmployerBenefitResponseBody$Outbound,
+    z.ZodTypeDef,
+    ListHrisEmployerBenefitResponseBody
+> = z
+    .object({
+        prevCursor: z.string(),
+        nextCursor: z.string(),
+        data: z.array(components.UnifiedHrisEmployerbenefitOutput$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            prevCursor: "prev_cursor",
+            nextCursor: "next_cursor",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListHrisEmployerBenefitResponseBody$ {
-    export const inboundSchema: z.ZodType<
-        ListHrisEmployerBenefitResponseBody,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            prev_cursor: z.string(),
-            next_cursor: z.string(),
-            data: z.array(components.UnifiedHrisEmployerbenefitOutput$.inboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                prev_cursor: "prevCursor",
-                next_cursor: "nextCursor",
-            });
-        });
-
-    export type Outbound = {
-        prev_cursor: string;
-        next_cursor: string;
-        data: Array<components.UnifiedHrisEmployerbenefitOutput$.Outbound>;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        ListHrisEmployerBenefitResponseBody
-    > = z
-        .object({
-            prevCursor: z.string(),
-            nextCursor: z.string(),
-            data: z.array(components.UnifiedHrisEmployerbenefitOutput$.outboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                prevCursor: "prev_cursor",
-                nextCursor: "next_cursor",
-            });
-        });
+    /** @deprecated use `ListHrisEmployerBenefitResponseBody$inboundSchema` instead. */
+    export const inboundSchema = ListHrisEmployerBenefitResponseBody$inboundSchema;
+    /** @deprecated use `ListHrisEmployerBenefitResponseBody$outboundSchema` instead. */
+    export const outboundSchema = ListHrisEmployerBenefitResponseBody$outboundSchema;
+    /** @deprecated use `ListHrisEmployerBenefitResponseBody$Outbound` instead. */
+    export type Outbound = ListHrisEmployerBenefitResponseBody$Outbound;
 }
 
 /** @internal */
-export namespace ListHrisEmployerBenefitResponse$ {
-    export const inboundSchema: z.ZodType<ListHrisEmployerBenefitResponse, z.ZodTypeDef, unknown> =
-        z
-            .object({
-                HttpMeta: components.HTTPMetadata$.inboundSchema,
-                object: z.lazy(() => ListHrisEmployerBenefitResponseBody$.inboundSchema).optional(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    HttpMeta: "httpMeta",
-                });
-            });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        object?: ListHrisEmployerBenefitResponseBody$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        ListHrisEmployerBenefitResponse
-    > = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            object: z.lazy(() => ListHrisEmployerBenefitResponseBody$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-            });
+export const ListHrisEmployerBenefitResponse$inboundSchema: z.ZodType<
+    ListHrisEmployerBenefitResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        object: z.lazy(() => ListHrisEmployerBenefitResponseBody$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
         });
+    });
+
+/** @internal */
+export type ListHrisEmployerBenefitResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    object?: ListHrisEmployerBenefitResponseBody$Outbound | undefined;
+};
+
+/** @internal */
+export const ListHrisEmployerBenefitResponse$outboundSchema: z.ZodType<
+    ListHrisEmployerBenefitResponse$Outbound,
+    z.ZodTypeDef,
+    ListHrisEmployerBenefitResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        object: z.lazy(() => ListHrisEmployerBenefitResponseBody$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListHrisEmployerBenefitResponse$ {
+    /** @deprecated use `ListHrisEmployerBenefitResponse$inboundSchema` instead. */
+    export const inboundSchema = ListHrisEmployerBenefitResponse$inboundSchema;
+    /** @deprecated use `ListHrisEmployerBenefitResponse$outboundSchema` instead. */
+    export const outboundSchema = ListHrisEmployerBenefitResponse$outboundSchema;
+    /** @deprecated use `ListHrisEmployerBenefitResponse$Outbound` instead. */
+    export type Outbound = ListHrisEmployerBenefitResponse$Outbound;
 }

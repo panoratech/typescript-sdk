@@ -29,88 +29,114 @@ export type RetrieveAccountingTrackingCategoryResponse = {
 };
 
 /** @internal */
+export const RetrieveAccountingTrackingCategoryRequest$inboundSchema: z.ZodType<
+    RetrieveAccountingTrackingCategoryRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        id: z.string(),
+        remote_data: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+        });
+    });
+
+/** @internal */
+export type RetrieveAccountingTrackingCategoryRequest$Outbound = {
+    "x-connection-token": string;
+    id: string;
+    remote_data?: boolean | undefined;
+};
+
+/** @internal */
+export const RetrieveAccountingTrackingCategoryRequest$outboundSchema: z.ZodType<
+    RetrieveAccountingTrackingCategoryRequest$Outbound,
+    z.ZodTypeDef,
+    RetrieveAccountingTrackingCategoryRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        id: z.string(),
+        remoteData: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveAccountingTrackingCategoryRequest$ {
-    export const inboundSchema: z.ZodType<
-        RetrieveAccountingTrackingCategoryRequest,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            "x-connection-token": z.string(),
-            id: z.string(),
-            remote_data: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        id: string;
-        remote_data?: boolean | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        RetrieveAccountingTrackingCategoryRequest
-    > = z
-        .object({
-            xConnectionToken: z.string(),
-            id: z.string(),
-            remoteData: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
-        });
+    /** @deprecated use `RetrieveAccountingTrackingCategoryRequest$inboundSchema` instead. */
+    export const inboundSchema = RetrieveAccountingTrackingCategoryRequest$inboundSchema;
+    /** @deprecated use `RetrieveAccountingTrackingCategoryRequest$outboundSchema` instead. */
+    export const outboundSchema = RetrieveAccountingTrackingCategoryRequest$outboundSchema;
+    /** @deprecated use `RetrieveAccountingTrackingCategoryRequest$Outbound` instead. */
+    export type Outbound = RetrieveAccountingTrackingCategoryRequest$Outbound;
 }
 
 /** @internal */
+export const RetrieveAccountingTrackingCategoryResponse$inboundSchema: z.ZodType<
+    RetrieveAccountingTrackingCategoryResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        UnifiedAccountingTrackingcategoryOutput:
+            components.UnifiedAccountingTrackingcategoryOutput$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            UnifiedAccountingTrackingcategoryOutput: "unifiedAccountingTrackingcategoryOutput",
+        });
+    });
+
+/** @internal */
+export type RetrieveAccountingTrackingCategoryResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    UnifiedAccountingTrackingcategoryOutput?:
+        | components.UnifiedAccountingTrackingcategoryOutput$Outbound
+        | undefined;
+};
+
+/** @internal */
+export const RetrieveAccountingTrackingCategoryResponse$outboundSchema: z.ZodType<
+    RetrieveAccountingTrackingCategoryResponse$Outbound,
+    z.ZodTypeDef,
+    RetrieveAccountingTrackingCategoryResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        unifiedAccountingTrackingcategoryOutput:
+            components.UnifiedAccountingTrackingcategoryOutput$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            unifiedAccountingTrackingcategoryOutput: "UnifiedAccountingTrackingcategoryOutput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveAccountingTrackingCategoryResponse$ {
-    export const inboundSchema: z.ZodType<
-        RetrieveAccountingTrackingCategoryResponse,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            UnifiedAccountingTrackingcategoryOutput:
-                components.UnifiedAccountingTrackingcategoryOutput$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-                UnifiedAccountingTrackingcategoryOutput: "unifiedAccountingTrackingcategoryOutput",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        UnifiedAccountingTrackingcategoryOutput?:
-            | components.UnifiedAccountingTrackingcategoryOutput$.Outbound
-            | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        RetrieveAccountingTrackingCategoryResponse
-    > = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            unifiedAccountingTrackingcategoryOutput:
-                components.UnifiedAccountingTrackingcategoryOutput$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-                unifiedAccountingTrackingcategoryOutput: "UnifiedAccountingTrackingcategoryOutput",
-            });
-        });
+    /** @deprecated use `RetrieveAccountingTrackingCategoryResponse$inboundSchema` instead. */
+    export const inboundSchema = RetrieveAccountingTrackingCategoryResponse$inboundSchema;
+    /** @deprecated use `RetrieveAccountingTrackingCategoryResponse$outboundSchema` instead. */
+    export const outboundSchema = RetrieveAccountingTrackingCategoryResponse$outboundSchema;
+    /** @deprecated use `RetrieveAccountingTrackingCategoryResponse$Outbound` instead. */
+    export type Outbound = RetrieveAccountingTrackingCategoryResponse$Outbound;
 }

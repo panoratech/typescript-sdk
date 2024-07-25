@@ -27,88 +27,114 @@ export type RetrieveAtsJobInterviewStageResponse = {
 };
 
 /** @internal */
+export const RetrieveAtsJobInterviewStageRequest$inboundSchema: z.ZodType<
+    RetrieveAtsJobInterviewStageRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        id: z.string(),
+        remote_data: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+        });
+    });
+
+/** @internal */
+export type RetrieveAtsJobInterviewStageRequest$Outbound = {
+    "x-connection-token": string;
+    id: string;
+    remote_data?: boolean | undefined;
+};
+
+/** @internal */
+export const RetrieveAtsJobInterviewStageRequest$outboundSchema: z.ZodType<
+    RetrieveAtsJobInterviewStageRequest$Outbound,
+    z.ZodTypeDef,
+    RetrieveAtsJobInterviewStageRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        id: z.string(),
+        remoteData: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveAtsJobInterviewStageRequest$ {
-    export const inboundSchema: z.ZodType<
-        RetrieveAtsJobInterviewStageRequest,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            "x-connection-token": z.string(),
-            id: z.string(),
-            remote_data: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        id: string;
-        remote_data?: boolean | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        RetrieveAtsJobInterviewStageRequest
-    > = z
-        .object({
-            xConnectionToken: z.string(),
-            id: z.string(),
-            remoteData: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
-        });
+    /** @deprecated use `RetrieveAtsJobInterviewStageRequest$inboundSchema` instead. */
+    export const inboundSchema = RetrieveAtsJobInterviewStageRequest$inboundSchema;
+    /** @deprecated use `RetrieveAtsJobInterviewStageRequest$outboundSchema` instead. */
+    export const outboundSchema = RetrieveAtsJobInterviewStageRequest$outboundSchema;
+    /** @deprecated use `RetrieveAtsJobInterviewStageRequest$Outbound` instead. */
+    export type Outbound = RetrieveAtsJobInterviewStageRequest$Outbound;
 }
 
 /** @internal */
+export const RetrieveAtsJobInterviewStageResponse$inboundSchema: z.ZodType<
+    RetrieveAtsJobInterviewStageResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        UnifiedAtsJobinterviewstageOutput:
+            components.UnifiedAtsJobinterviewstageOutput$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            UnifiedAtsJobinterviewstageOutput: "unifiedAtsJobinterviewstageOutput",
+        });
+    });
+
+/** @internal */
+export type RetrieveAtsJobInterviewStageResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    UnifiedAtsJobinterviewstageOutput?:
+        | components.UnifiedAtsJobinterviewstageOutput$Outbound
+        | undefined;
+};
+
+/** @internal */
+export const RetrieveAtsJobInterviewStageResponse$outboundSchema: z.ZodType<
+    RetrieveAtsJobInterviewStageResponse$Outbound,
+    z.ZodTypeDef,
+    RetrieveAtsJobInterviewStageResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        unifiedAtsJobinterviewstageOutput:
+            components.UnifiedAtsJobinterviewstageOutput$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            unifiedAtsJobinterviewstageOutput: "UnifiedAtsJobinterviewstageOutput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveAtsJobInterviewStageResponse$ {
-    export const inboundSchema: z.ZodType<
-        RetrieveAtsJobInterviewStageResponse,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            UnifiedAtsJobinterviewstageOutput:
-                components.UnifiedAtsJobinterviewstageOutput$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-                UnifiedAtsJobinterviewstageOutput: "unifiedAtsJobinterviewstageOutput",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        UnifiedAtsJobinterviewstageOutput?:
-            | components.UnifiedAtsJobinterviewstageOutput$.Outbound
-            | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        RetrieveAtsJobInterviewStageResponse
-    > = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            unifiedAtsJobinterviewstageOutput:
-                components.UnifiedAtsJobinterviewstageOutput$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-                unifiedAtsJobinterviewstageOutput: "UnifiedAtsJobinterviewstageOutput",
-            });
-        });
+    /** @deprecated use `RetrieveAtsJobInterviewStageResponse$inboundSchema` instead. */
+    export const inboundSchema = RetrieveAtsJobInterviewStageResponse$inboundSchema;
+    /** @deprecated use `RetrieveAtsJobInterviewStageResponse$outboundSchema` instead. */
+    export const outboundSchema = RetrieveAtsJobInterviewStageResponse$outboundSchema;
+    /** @deprecated use `RetrieveAtsJobInterviewStageResponse$Outbound` instead. */
+    export type Outbound = RetrieveAtsJobInterviewStageResponse$Outbound;
 }

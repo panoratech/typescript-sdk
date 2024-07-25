@@ -27,68 +27,110 @@ export type RetrieveHrisGroupResponse = {
 };
 
 /** @internal */
+export const RetrieveHrisGroupRequest$inboundSchema: z.ZodType<
+    RetrieveHrisGroupRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        id: z.string(),
+        remote_data: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+        });
+    });
+
+/** @internal */
+export type RetrieveHrisGroupRequest$Outbound = {
+    "x-connection-token": string;
+    id: string;
+    remote_data?: boolean | undefined;
+};
+
+/** @internal */
+export const RetrieveHrisGroupRequest$outboundSchema: z.ZodType<
+    RetrieveHrisGroupRequest$Outbound,
+    z.ZodTypeDef,
+    RetrieveHrisGroupRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        id: z.string(),
+        remoteData: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveHrisGroupRequest$ {
-    export const inboundSchema: z.ZodType<RetrieveHrisGroupRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            "x-connection-token": z.string(),
-            id: z.string(),
-            remote_data: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        id: string;
-        remote_data?: boolean | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RetrieveHrisGroupRequest> = z
-        .object({
-            xConnectionToken: z.string(),
-            id: z.string(),
-            remoteData: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
-        });
+    /** @deprecated use `RetrieveHrisGroupRequest$inboundSchema` instead. */
+    export const inboundSchema = RetrieveHrisGroupRequest$inboundSchema;
+    /** @deprecated use `RetrieveHrisGroupRequest$outboundSchema` instead. */
+    export const outboundSchema = RetrieveHrisGroupRequest$outboundSchema;
+    /** @deprecated use `RetrieveHrisGroupRequest$Outbound` instead. */
+    export type Outbound = RetrieveHrisGroupRequest$Outbound;
 }
 
 /** @internal */
+export const RetrieveHrisGroupResponse$inboundSchema: z.ZodType<
+    RetrieveHrisGroupResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        UnifiedHrisGroupOutput: components.UnifiedHrisGroupOutput$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            UnifiedHrisGroupOutput: "unifiedHrisGroupOutput",
+        });
+    });
+
+/** @internal */
+export type RetrieveHrisGroupResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    UnifiedHrisGroupOutput?: components.UnifiedHrisGroupOutput$Outbound | undefined;
+};
+
+/** @internal */
+export const RetrieveHrisGroupResponse$outboundSchema: z.ZodType<
+    RetrieveHrisGroupResponse$Outbound,
+    z.ZodTypeDef,
+    RetrieveHrisGroupResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        unifiedHrisGroupOutput: components.UnifiedHrisGroupOutput$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            unifiedHrisGroupOutput: "UnifiedHrisGroupOutput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveHrisGroupResponse$ {
-    export const inboundSchema: z.ZodType<RetrieveHrisGroupResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            UnifiedHrisGroupOutput: components.UnifiedHrisGroupOutput$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-                UnifiedHrisGroupOutput: "unifiedHrisGroupOutput",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        UnifiedHrisGroupOutput?: components.UnifiedHrisGroupOutput$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RetrieveHrisGroupResponse> = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            unifiedHrisGroupOutput: components.UnifiedHrisGroupOutput$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-                unifiedHrisGroupOutput: "UnifiedHrisGroupOutput",
-            });
-        });
+    /** @deprecated use `RetrieveHrisGroupResponse$inboundSchema` instead. */
+    export const inboundSchema = RetrieveHrisGroupResponse$inboundSchema;
+    /** @deprecated use `RetrieveHrisGroupResponse$outboundSchema` instead. */
+    export const outboundSchema = RetrieveHrisGroupResponse$outboundSchema;
+    /** @deprecated use `RetrieveHrisGroupResponse$Outbound` instead. */
+    export type Outbound = RetrieveHrisGroupResponse$Outbound;
 }

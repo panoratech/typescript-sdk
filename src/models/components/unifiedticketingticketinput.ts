@@ -5,7 +5,9 @@
 import { remap as remap$ } from "../../lib/primitives.js";
 import {
     UnifiedTicketingCommentInput,
-    UnifiedTicketingCommentInput$,
+    UnifiedTicketingCommentInput$inboundSchema,
+    UnifiedTicketingCommentInput$Outbound,
+    UnifiedTicketingCommentInput$outboundSchema,
 } from "./unifiedticketingcommentinput.js";
 import * as z from "zod";
 
@@ -76,116 +78,150 @@ export type UnifiedTicketingTicketInput = {
 };
 
 /** @internal */
+export const UnifiedTicketingTicketInputFieldMappings$inboundSchema: z.ZodType<
+    UnifiedTicketingTicketInputFieldMappings,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedTicketingTicketInputFieldMappings$Outbound = {};
+
+/** @internal */
+export const UnifiedTicketingTicketInputFieldMappings$outboundSchema: z.ZodType<
+    UnifiedTicketingTicketInputFieldMappings$Outbound,
+    z.ZodTypeDef,
+    UnifiedTicketingTicketInputFieldMappings
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedTicketingTicketInputFieldMappings$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedTicketingTicketInputFieldMappings,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedTicketingTicketInputFieldMappings
-    > = z.object({});
+    /** @deprecated use `UnifiedTicketingTicketInputFieldMappings$inboundSchema` instead. */
+    export const inboundSchema = UnifiedTicketingTicketInputFieldMappings$inboundSchema;
+    /** @deprecated use `UnifiedTicketingTicketInputFieldMappings$outboundSchema` instead. */
+    export const outboundSchema = UnifiedTicketingTicketInputFieldMappings$outboundSchema;
+    /** @deprecated use `UnifiedTicketingTicketInputFieldMappings$Outbound` instead. */
+    export type Outbound = UnifiedTicketingTicketInputFieldMappings$Outbound;
 }
 
 /** @internal */
+export const UnifiedTicketingTicketInput$inboundSchema: z.ZodType<
+    UnifiedTicketingTicketInput,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        name: z.string(),
+        status: z.string().optional(),
+        description: z.string(),
+        due_date: z
+            .string()
+            .datetime({ offset: true })
+            .transform((v) => new Date(v))
+            .optional(),
+        type: z.string().optional(),
+        parent_ticket: z.string().optional(),
+        collections: z.string().optional(),
+        tags: z.array(z.string()).optional(),
+        completed_at: z
+            .string()
+            .datetime({ offset: true })
+            .transform((v) => new Date(v))
+            .optional(),
+        priority: z.string().optional(),
+        assigned_to: z.array(z.string()).optional(),
+        comment: UnifiedTicketingCommentInput$inboundSchema.optional(),
+        account_id: z.string().optional(),
+        contact_id: z.string().optional(),
+        attachments: z.array(z.string()).optional(),
+        field_mappings: z.lazy(() => UnifiedTicketingTicketInputFieldMappings$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            due_date: "dueDate",
+            parent_ticket: "parentTicket",
+            completed_at: "completedAt",
+            assigned_to: "assignedTo",
+            account_id: "accountId",
+            contact_id: "contactId",
+            field_mappings: "fieldMappings",
+        });
+    });
+
+/** @internal */
+export type UnifiedTicketingTicketInput$Outbound = {
+    name: string;
+    status?: string | undefined;
+    description: string;
+    due_date?: string | undefined;
+    type?: string | undefined;
+    parent_ticket?: string | undefined;
+    collections?: string | undefined;
+    tags?: Array<string> | undefined;
+    completed_at?: string | undefined;
+    priority?: string | undefined;
+    assigned_to?: Array<string> | undefined;
+    comment?: UnifiedTicketingCommentInput$Outbound | undefined;
+    account_id?: string | undefined;
+    contact_id?: string | undefined;
+    attachments?: Array<string> | undefined;
+    field_mappings: UnifiedTicketingTicketInputFieldMappings$Outbound;
+};
+
+/** @internal */
+export const UnifiedTicketingTicketInput$outboundSchema: z.ZodType<
+    UnifiedTicketingTicketInput$Outbound,
+    z.ZodTypeDef,
+    UnifiedTicketingTicketInput
+> = z
+    .object({
+        name: z.string(),
+        status: z.string().optional(),
+        description: z.string(),
+        dueDate: z
+            .date()
+            .transform((v) => v.toISOString())
+            .optional(),
+        type: z.string().optional(),
+        parentTicket: z.string().optional(),
+        collections: z.string().optional(),
+        tags: z.array(z.string()).optional(),
+        completedAt: z
+            .date()
+            .transform((v) => v.toISOString())
+            .optional(),
+        priority: z.string().optional(),
+        assignedTo: z.array(z.string()).optional(),
+        comment: UnifiedTicketingCommentInput$outboundSchema.optional(),
+        accountId: z.string().optional(),
+        contactId: z.string().optional(),
+        attachments: z.array(z.string()).optional(),
+        fieldMappings: z.lazy(() => UnifiedTicketingTicketInputFieldMappings$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            dueDate: "due_date",
+            parentTicket: "parent_ticket",
+            completedAt: "completed_at",
+            assignedTo: "assigned_to",
+            accountId: "account_id",
+            contactId: "contact_id",
+            fieldMappings: "field_mappings",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedTicketingTicketInput$ {
-    export const inboundSchema: z.ZodType<UnifiedTicketingTicketInput, z.ZodTypeDef, unknown> = z
-        .object({
-            name: z.string(),
-            status: z.string().optional(),
-            description: z.string(),
-            due_date: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .optional(),
-            type: z.string().optional(),
-            parent_ticket: z.string().optional(),
-            collections: z.string().optional(),
-            tags: z.array(z.string()).optional(),
-            completed_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .optional(),
-            priority: z.string().optional(),
-            assigned_to: z.array(z.string()).optional(),
-            comment: UnifiedTicketingCommentInput$.inboundSchema.optional(),
-            account_id: z.string().optional(),
-            contact_id: z.string().optional(),
-            attachments: z.array(z.string()).optional(),
-            field_mappings: z.lazy(() => UnifiedTicketingTicketInputFieldMappings$.inboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                due_date: "dueDate",
-                parent_ticket: "parentTicket",
-                completed_at: "completedAt",
-                assigned_to: "assignedTo",
-                account_id: "accountId",
-                contact_id: "contactId",
-                field_mappings: "fieldMappings",
-            });
-        });
-
-    export type Outbound = {
-        name: string;
-        status?: string | undefined;
-        description: string;
-        due_date?: string | undefined;
-        type?: string | undefined;
-        parent_ticket?: string | undefined;
-        collections?: string | undefined;
-        tags?: Array<string> | undefined;
-        completed_at?: string | undefined;
-        priority?: string | undefined;
-        assigned_to?: Array<string> | undefined;
-        comment?: UnifiedTicketingCommentInput$.Outbound | undefined;
-        account_id?: string | undefined;
-        contact_id?: string | undefined;
-        attachments?: Array<string> | undefined;
-        field_mappings: UnifiedTicketingTicketInputFieldMappings$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnifiedTicketingTicketInput> = z
-        .object({
-            name: z.string(),
-            status: z.string().optional(),
-            description: z.string(),
-            dueDate: z
-                .date()
-                .transform((v) => v.toISOString())
-                .optional(),
-            type: z.string().optional(),
-            parentTicket: z.string().optional(),
-            collections: z.string().optional(),
-            tags: z.array(z.string()).optional(),
-            completedAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .optional(),
-            priority: z.string().optional(),
-            assignedTo: z.array(z.string()).optional(),
-            comment: UnifiedTicketingCommentInput$.outboundSchema.optional(),
-            accountId: z.string().optional(),
-            contactId: z.string().optional(),
-            attachments: z.array(z.string()).optional(),
-            fieldMappings: z.lazy(() => UnifiedTicketingTicketInputFieldMappings$.outboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                dueDate: "due_date",
-                parentTicket: "parent_ticket",
-                completedAt: "completed_at",
-                assignedTo: "assigned_to",
-                accountId: "account_id",
-                contactId: "contact_id",
-                fieldMappings: "field_mappings",
-            });
-        });
+    /** @deprecated use `UnifiedTicketingTicketInput$inboundSchema` instead. */
+    export const inboundSchema = UnifiedTicketingTicketInput$inboundSchema;
+    /** @deprecated use `UnifiedTicketingTicketInput$outboundSchema` instead. */
+    export const outboundSchema = UnifiedTicketingTicketInput$outboundSchema;
+    /** @deprecated use `UnifiedTicketingTicketInput$Outbound` instead. */
+    export type Outbound = UnifiedTicketingTicketInput$Outbound;
 }

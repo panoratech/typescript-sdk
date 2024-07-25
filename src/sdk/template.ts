@@ -3,7 +3,7 @@
  */
 
 import { SDKHooks } from "../hooks/hooks.js";
-import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config.js";
+import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
 import {
     encodeFormQuery as encodeFormQuery$,
     encodeJSON as encodeJSON$,
@@ -44,18 +44,16 @@ export class Template extends ClientSDK {
     /**
      * List a batch of Templates
      */
-    async getTemplates(
-        request: operations.GetTemplatesRequest,
+    async list(
+        request: operations.ListMarketingautomationTemplatesRequest,
         options?: RequestOptions
-    ): Promise<operations.GetTemplatesResponse> {
+    ): Promise<operations.ListMarketingautomationTemplatesResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetTemplatesRequest$.outboundSchema.parse(value$),
+            (value$) =>
+                operations.ListMarketingautomationTemplatesRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -68,13 +66,14 @@ export class Template extends ClientSDK {
             remote_data: payload$.remote_data,
         });
 
-        headers$.set(
-            "x-connection-token",
-            encodeSimple$("x-connection-token", payload$["x-connection-token"], {
-                explode: false,
-                charEncoding: "none",
-            })
-        );
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-connection-token": encodeSimple$(
+                "x-connection-token",
+                payload$["x-connection-token"],
+                { explode: false, charEncoding: "none" }
+            ),
+        });
 
         let security$;
         if (typeof this.options$.bearer === "function") {
@@ -85,13 +84,12 @@ export class Template extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "getTemplates",
+            operationID: "listMarketingautomationTemplates",
             oAuth2Scopes: [],
             securitySource: this.options$.bearer,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -101,18 +99,26 @@ export class Template extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
-        const [result$] = await this.matcher<operations.GetTemplatesResponse>()
-            .json(200, operations.GetTemplatesResponse$, { key: "object" })
+        const [result$] = await this.matcher<operations.ListMarketingautomationTemplatesResponse>()
+            .json(200, operations.ListMarketingautomationTemplatesResponse$inboundSchema, {
+                key: "object",
+            })
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 
@@ -125,19 +131,16 @@ export class Template extends ClientSDK {
      * @remarks
      * Create a template in any supported Marketingautomation software
      */
-    async addTemplate(
-        request: operations.AddTemplateRequest,
+    async create(
+        request: operations.CreateMarketingautomationTemplateRequest,
         options?: RequestOptions
-    ): Promise<operations.AddTemplateResponse> {
+    ): Promise<operations.CreateMarketingautomationTemplateResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.AddTemplateRequest$.outboundSchema.parse(value$),
+            (value$) =>
+                operations.CreateMarketingautomationTemplateRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.UnifiedMarketingautomationTemplateInput, {
@@ -150,13 +153,15 @@ export class Template extends ClientSDK {
             remote_data: payload$.remote_data,
         });
 
-        headers$.set(
-            "x-connection-token",
-            encodeSimple$("x-connection-token", payload$["x-connection-token"], {
-                explode: false,
-                charEncoding: "none",
-            })
-        );
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            "x-connection-token": encodeSimple$(
+                "x-connection-token",
+                payload$["x-connection-token"],
+                { explode: false, charEncoding: "none" }
+            ),
+        });
 
         let security$;
         if (typeof this.options$.bearer === "function") {
@@ -167,13 +172,12 @@ export class Template extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "addTemplate",
+            operationID: "createMarketingautomationTemplate",
             oAuth2Scopes: [],
             securitySource: this.options$.bearer,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -183,18 +187,24 @@ export class Template extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
-        const [result$] = await this.matcher<operations.AddTemplateResponse>()
-            .json(201, operations.AddTemplateResponse$, {
+        const [result$] = await this.matcher<operations.CreateMarketingautomationTemplateResponse>()
+            .json(201, operations.CreateMarketingautomationTemplateResponse$inboundSchema, {
                 key: "UnifiedMarketingautomationTemplateOutput",
             })
             .fail(["4XX", "5XX"])
@@ -209,18 +219,16 @@ export class Template extends ClientSDK {
      * @remarks
      * Retrieve a template from any connected Marketingautomation software
      */
-    async getTemplate(
-        request: operations.GetTemplateRequest,
+    async retrieve(
+        request: operations.RetrieveMarketingautomationTemplateRequest,
         options?: RequestOptions
-    ): Promise<operations.GetTemplateResponse> {
+    ): Promise<operations.RetrieveMarketingautomationTemplateResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetTemplateRequest$.outboundSchema.parse(value$),
+            (value$) =>
+                operations.RetrieveMarketingautomationTemplateRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -234,13 +242,14 @@ export class Template extends ClientSDK {
             remote_data: payload$.remote_data,
         });
 
-        headers$.set(
-            "x-connection-token",
-            encodeSimple$("x-connection-token", payload$["x-connection-token"], {
-                explode: false,
-                charEncoding: "none",
-            })
-        );
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-connection-token": encodeSimple$(
+                "x-connection-token",
+                payload$["x-connection-token"],
+                { explode: false, charEncoding: "none" }
+            ),
+        });
 
         let security$;
         if (typeof this.options$.bearer === "function") {
@@ -251,13 +260,12 @@ export class Template extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "getTemplate",
+            operationID: "retrieveMarketingautomationTemplate",
             oAuth2Scopes: [],
             securitySource: this.options$.bearer,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -267,22 +275,29 @@ export class Template extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
-        const [result$] = await this.matcher<operations.GetTemplateResponse>()
-            .json(200, operations.GetTemplateResponse$, {
-                key: "UnifiedMarketingautomationTemplateOutput",
-            })
-            .fail(["4XX", "5XX"])
-            .match(response, request$, { extraFields: responseFields$ });
+        const [result$] =
+            await this.matcher<operations.RetrieveMarketingautomationTemplateResponse>()
+                .json(200, operations.RetrieveMarketingautomationTemplateResponse$inboundSchema, {
+                    key: "UnifiedMarketingautomationTemplateOutput",
+                })
+                .fail(["4XX", "5XX"])
+                .match(response, request$, { extraFields: responseFields$ });
 
         return result$;
     }

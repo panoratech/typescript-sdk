@@ -58,134 +58,193 @@ export type UnifiedTicketingCommentOutput = {
 };
 
 /** @internal */
+export const UnifiedTicketingCommentOutputRemoteData$inboundSchema: z.ZodType<
+    UnifiedTicketingCommentOutputRemoteData,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedTicketingCommentOutputRemoteData$Outbound = {};
+
+/** @internal */
+export const UnifiedTicketingCommentOutputRemoteData$outboundSchema: z.ZodType<
+    UnifiedTicketingCommentOutputRemoteData$Outbound,
+    z.ZodTypeDef,
+    UnifiedTicketingCommentOutputRemoteData
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedTicketingCommentOutputRemoteData$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedTicketingCommentOutputRemoteData,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedTicketingCommentOutputRemoteData
-    > = z.object({});
+    /** @deprecated use `UnifiedTicketingCommentOutputRemoteData$inboundSchema` instead. */
+    export const inboundSchema = UnifiedTicketingCommentOutputRemoteData$inboundSchema;
+    /** @deprecated use `UnifiedTicketingCommentOutputRemoteData$outboundSchema` instead. */
+    export const outboundSchema = UnifiedTicketingCommentOutputRemoteData$outboundSchema;
+    /** @deprecated use `UnifiedTicketingCommentOutputRemoteData$Outbound` instead. */
+    export type Outbound = UnifiedTicketingCommentOutputRemoteData$Outbound;
 }
 
 /** @internal */
+export const UnifiedTicketingCommentOutputCreatedAt$inboundSchema: z.ZodType<
+    UnifiedTicketingCommentOutputCreatedAt,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedTicketingCommentOutputCreatedAt$Outbound = {};
+
+/** @internal */
+export const UnifiedTicketingCommentOutputCreatedAt$outboundSchema: z.ZodType<
+    UnifiedTicketingCommentOutputCreatedAt$Outbound,
+    z.ZodTypeDef,
+    UnifiedTicketingCommentOutputCreatedAt
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedTicketingCommentOutputCreatedAt$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedTicketingCommentOutputCreatedAt,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedTicketingCommentOutputCreatedAt
-    > = z.object({});
+    /** @deprecated use `UnifiedTicketingCommentOutputCreatedAt$inboundSchema` instead. */
+    export const inboundSchema = UnifiedTicketingCommentOutputCreatedAt$inboundSchema;
+    /** @deprecated use `UnifiedTicketingCommentOutputCreatedAt$outboundSchema` instead. */
+    export const outboundSchema = UnifiedTicketingCommentOutputCreatedAt$outboundSchema;
+    /** @deprecated use `UnifiedTicketingCommentOutputCreatedAt$Outbound` instead. */
+    export type Outbound = UnifiedTicketingCommentOutputCreatedAt$Outbound;
 }
 
 /** @internal */
+export const UnifiedTicketingCommentOutputModifiedAt$inboundSchema: z.ZodType<
+    UnifiedTicketingCommentOutputModifiedAt,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedTicketingCommentOutputModifiedAt$Outbound = {};
+
+/** @internal */
+export const UnifiedTicketingCommentOutputModifiedAt$outboundSchema: z.ZodType<
+    UnifiedTicketingCommentOutputModifiedAt$Outbound,
+    z.ZodTypeDef,
+    UnifiedTicketingCommentOutputModifiedAt
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedTicketingCommentOutputModifiedAt$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedTicketingCommentOutputModifiedAt,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedTicketingCommentOutputModifiedAt
-    > = z.object({});
+    /** @deprecated use `UnifiedTicketingCommentOutputModifiedAt$inboundSchema` instead. */
+    export const inboundSchema = UnifiedTicketingCommentOutputModifiedAt$inboundSchema;
+    /** @deprecated use `UnifiedTicketingCommentOutputModifiedAt$outboundSchema` instead. */
+    export const outboundSchema = UnifiedTicketingCommentOutputModifiedAt$outboundSchema;
+    /** @deprecated use `UnifiedTicketingCommentOutputModifiedAt$Outbound` instead. */
+    export type Outbound = UnifiedTicketingCommentOutputModifiedAt$Outbound;
 }
 
 /** @internal */
-export namespace UnifiedTicketingCommentOutput$ {
-    export const inboundSchema: z.ZodType<UnifiedTicketingCommentOutput, z.ZodTypeDef, unknown> = z
-        .object({
-            body: z.string(),
-            html_body: z.string().optional(),
-            is_private: z.boolean().optional(),
-            creator_type: z.string().optional(),
-            ticket_id: z.string().optional(),
-            contact_id: z.string().optional(),
-            user_id: z.string().optional(),
-            attachments: z.array(z.string()).optional(),
-            id: z.string().optional(),
-            remote_id: z.string().optional(),
-            remote_data: z.lazy(() => UnifiedTicketingCommentOutputRemoteData$.inboundSchema),
-            created_at: z.lazy(() => UnifiedTicketingCommentOutputCreatedAt$.inboundSchema),
-            modified_at: z.lazy(() => UnifiedTicketingCommentOutputModifiedAt$.inboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                html_body: "htmlBody",
-                is_private: "isPrivate",
-                creator_type: "creatorType",
-                ticket_id: "ticketId",
-                contact_id: "contactId",
-                user_id: "userId",
-                remote_id: "remoteId",
-                remote_data: "remoteData",
-                created_at: "createdAt",
-                modified_at: "modifiedAt",
-            });
+export const UnifiedTicketingCommentOutput$inboundSchema: z.ZodType<
+    UnifiedTicketingCommentOutput,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        body: z.string(),
+        html_body: z.string().optional(),
+        is_private: z.boolean().optional(),
+        creator_type: z.string().optional(),
+        ticket_id: z.string().optional(),
+        contact_id: z.string().optional(),
+        user_id: z.string().optional(),
+        attachments: z.array(z.string()).optional(),
+        id: z.string().optional(),
+        remote_id: z.string().optional(),
+        remote_data: z.lazy(() => UnifiedTicketingCommentOutputRemoteData$inboundSchema),
+        created_at: z.lazy(() => UnifiedTicketingCommentOutputCreatedAt$inboundSchema),
+        modified_at: z.lazy(() => UnifiedTicketingCommentOutputModifiedAt$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            html_body: "htmlBody",
+            is_private: "isPrivate",
+            creator_type: "creatorType",
+            ticket_id: "ticketId",
+            contact_id: "contactId",
+            user_id: "userId",
+            remote_id: "remoteId",
+            remote_data: "remoteData",
+            created_at: "createdAt",
+            modified_at: "modifiedAt",
         });
+    });
 
-    export type Outbound = {
-        body: string;
-        html_body?: string | undefined;
-        is_private?: boolean | undefined;
-        creator_type?: string | undefined;
-        ticket_id?: string | undefined;
-        contact_id?: string | undefined;
-        user_id?: string | undefined;
-        attachments?: Array<string> | undefined;
-        id?: string | undefined;
-        remote_id?: string | undefined;
-        remote_data: UnifiedTicketingCommentOutputRemoteData$.Outbound;
-        created_at: UnifiedTicketingCommentOutputCreatedAt$.Outbound;
-        modified_at: UnifiedTicketingCommentOutputModifiedAt$.Outbound;
-    };
+/** @internal */
+export type UnifiedTicketingCommentOutput$Outbound = {
+    body: string;
+    html_body?: string | undefined;
+    is_private?: boolean | undefined;
+    creator_type?: string | undefined;
+    ticket_id?: string | undefined;
+    contact_id?: string | undefined;
+    user_id?: string | undefined;
+    attachments?: Array<string> | undefined;
+    id?: string | undefined;
+    remote_id?: string | undefined;
+    remote_data: UnifiedTicketingCommentOutputRemoteData$Outbound;
+    created_at: UnifiedTicketingCommentOutputCreatedAt$Outbound;
+    modified_at: UnifiedTicketingCommentOutputModifiedAt$Outbound;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnifiedTicketingCommentOutput> =
-        z
-            .object({
-                body: z.string(),
-                htmlBody: z.string().optional(),
-                isPrivate: z.boolean().optional(),
-                creatorType: z.string().optional(),
-                ticketId: z.string().optional(),
-                contactId: z.string().optional(),
-                userId: z.string().optional(),
-                attachments: z.array(z.string()).optional(),
-                id: z.string().optional(),
-                remoteId: z.string().optional(),
-                remoteData: z.lazy(() => UnifiedTicketingCommentOutputRemoteData$.outboundSchema),
-                createdAt: z.lazy(() => UnifiedTicketingCommentOutputCreatedAt$.outboundSchema),
-                modifiedAt: z.lazy(() => UnifiedTicketingCommentOutputModifiedAt$.outboundSchema),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    htmlBody: "html_body",
-                    isPrivate: "is_private",
-                    creatorType: "creator_type",
-                    ticketId: "ticket_id",
-                    contactId: "contact_id",
-                    userId: "user_id",
-                    remoteId: "remote_id",
-                    remoteData: "remote_data",
-                    createdAt: "created_at",
-                    modifiedAt: "modified_at",
-                });
-            });
+/** @internal */
+export const UnifiedTicketingCommentOutput$outboundSchema: z.ZodType<
+    UnifiedTicketingCommentOutput$Outbound,
+    z.ZodTypeDef,
+    UnifiedTicketingCommentOutput
+> = z
+    .object({
+        body: z.string(),
+        htmlBody: z.string().optional(),
+        isPrivate: z.boolean().optional(),
+        creatorType: z.string().optional(),
+        ticketId: z.string().optional(),
+        contactId: z.string().optional(),
+        userId: z.string().optional(),
+        attachments: z.array(z.string()).optional(),
+        id: z.string().optional(),
+        remoteId: z.string().optional(),
+        remoteData: z.lazy(() => UnifiedTicketingCommentOutputRemoteData$outboundSchema),
+        createdAt: z.lazy(() => UnifiedTicketingCommentOutputCreatedAt$outboundSchema),
+        modifiedAt: z.lazy(() => UnifiedTicketingCommentOutputModifiedAt$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            htmlBody: "html_body",
+            isPrivate: "is_private",
+            creatorType: "creator_type",
+            ticketId: "ticket_id",
+            contactId: "contact_id",
+            userId: "user_id",
+            remoteId: "remote_id",
+            remoteData: "remote_data",
+            createdAt: "created_at",
+            modifiedAt: "modified_at",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UnifiedTicketingCommentOutput$ {
+    /** @deprecated use `UnifiedTicketingCommentOutput$inboundSchema` instead. */
+    export const inboundSchema = UnifiedTicketingCommentOutput$inboundSchema;
+    /** @deprecated use `UnifiedTicketingCommentOutput$outboundSchema` instead. */
+    export const outboundSchema = UnifiedTicketingCommentOutput$outboundSchema;
+    /** @deprecated use `UnifiedTicketingCommentOutput$Outbound` instead. */
+    export type Outbound = UnifiedTicketingCommentOutput$Outbound;
 }

@@ -12,33 +12,54 @@ export type ListWebhooksResponse = {
 };
 
 /** @internal */
+export const ListWebhooksResponse$inboundSchema: z.ZodType<
+    ListWebhooksResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        WebhookResponses: z.array(components.WebhookResponse$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            WebhookResponses: "webhookResponses",
+        });
+    });
+
+/** @internal */
+export type ListWebhooksResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    WebhookResponses?: Array<components.WebhookResponse$Outbound> | undefined;
+};
+
+/** @internal */
+export const ListWebhooksResponse$outboundSchema: z.ZodType<
+    ListWebhooksResponse$Outbound,
+    z.ZodTypeDef,
+    ListWebhooksResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        webhookResponses: z.array(components.WebhookResponse$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            webhookResponses: "WebhookResponses",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListWebhooksResponse$ {
-    export const inboundSchema: z.ZodType<ListWebhooksResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            WebhookResponses: z.array(components.WebhookResponse$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-                WebhookResponses: "webhookResponses",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        WebhookResponses?: Array<components.WebhookResponse$.Outbound> | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListWebhooksResponse> = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            webhookResponses: z.array(components.WebhookResponse$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-                webhookResponses: "WebhookResponses",
-            });
-        });
+    /** @deprecated use `ListWebhooksResponse$inboundSchema` instead. */
+    export const inboundSchema = ListWebhooksResponse$inboundSchema;
+    /** @deprecated use `ListWebhooksResponse$outboundSchema` instead. */
+    export const outboundSchema = ListWebhooksResponse$outboundSchema;
+    /** @deprecated use `ListWebhooksResponse$Outbound` instead. */
+    export type Outbound = ListWebhooksResponse$Outbound;
 }

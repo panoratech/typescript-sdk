@@ -77,152 +77,246 @@ export type UnifiedAtsJobOutput = {
 };
 
 /** @internal */
+export const UnifiedAtsJobOutputFieldMappings$inboundSchema: z.ZodType<
+    UnifiedAtsJobOutputFieldMappings,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedAtsJobOutputFieldMappings$Outbound = {};
+
+/** @internal */
+export const UnifiedAtsJobOutputFieldMappings$outboundSchema: z.ZodType<
+    UnifiedAtsJobOutputFieldMappings$Outbound,
+    z.ZodTypeDef,
+    UnifiedAtsJobOutputFieldMappings
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedAtsJobOutputFieldMappings$ {
-    export const inboundSchema: z.ZodType<UnifiedAtsJobOutputFieldMappings, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedAtsJobOutputFieldMappings
-    > = z.object({});
+    /** @deprecated use `UnifiedAtsJobOutputFieldMappings$inboundSchema` instead. */
+    export const inboundSchema = UnifiedAtsJobOutputFieldMappings$inboundSchema;
+    /** @deprecated use `UnifiedAtsJobOutputFieldMappings$outboundSchema` instead. */
+    export const outboundSchema = UnifiedAtsJobOutputFieldMappings$outboundSchema;
+    /** @deprecated use `UnifiedAtsJobOutputFieldMappings$Outbound` instead. */
+    export type Outbound = UnifiedAtsJobOutputFieldMappings$Outbound;
 }
 
 /** @internal */
+export const UnifiedAtsJobOutputRemoteData$inboundSchema: z.ZodType<
+    UnifiedAtsJobOutputRemoteData,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedAtsJobOutputRemoteData$Outbound = {};
+
+/** @internal */
+export const UnifiedAtsJobOutputRemoteData$outboundSchema: z.ZodType<
+    UnifiedAtsJobOutputRemoteData$Outbound,
+    z.ZodTypeDef,
+    UnifiedAtsJobOutputRemoteData
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedAtsJobOutputRemoteData$ {
-    export const inboundSchema: z.ZodType<UnifiedAtsJobOutputRemoteData, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnifiedAtsJobOutputRemoteData> =
-        z.object({});
+    /** @deprecated use `UnifiedAtsJobOutputRemoteData$inboundSchema` instead. */
+    export const inboundSchema = UnifiedAtsJobOutputRemoteData$inboundSchema;
+    /** @deprecated use `UnifiedAtsJobOutputRemoteData$outboundSchema` instead. */
+    export const outboundSchema = UnifiedAtsJobOutputRemoteData$outboundSchema;
+    /** @deprecated use `UnifiedAtsJobOutputRemoteData$Outbound` instead. */
+    export type Outbound = UnifiedAtsJobOutputRemoteData$Outbound;
 }
 
 /** @internal */
+export const UnifiedAtsJobOutputCreatedAt$inboundSchema: z.ZodType<
+    UnifiedAtsJobOutputCreatedAt,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedAtsJobOutputCreatedAt$Outbound = {};
+
+/** @internal */
+export const UnifiedAtsJobOutputCreatedAt$outboundSchema: z.ZodType<
+    UnifiedAtsJobOutputCreatedAt$Outbound,
+    z.ZodTypeDef,
+    UnifiedAtsJobOutputCreatedAt
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedAtsJobOutputCreatedAt$ {
-    export const inboundSchema: z.ZodType<UnifiedAtsJobOutputCreatedAt, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnifiedAtsJobOutputCreatedAt> =
-        z.object({});
+    /** @deprecated use `UnifiedAtsJobOutputCreatedAt$inboundSchema` instead. */
+    export const inboundSchema = UnifiedAtsJobOutputCreatedAt$inboundSchema;
+    /** @deprecated use `UnifiedAtsJobOutputCreatedAt$outboundSchema` instead. */
+    export const outboundSchema = UnifiedAtsJobOutputCreatedAt$outboundSchema;
+    /** @deprecated use `UnifiedAtsJobOutputCreatedAt$Outbound` instead. */
+    export type Outbound = UnifiedAtsJobOutputCreatedAt$Outbound;
 }
 
 /** @internal */
+export const UnifiedAtsJobOutputModifiedAt$inboundSchema: z.ZodType<
+    UnifiedAtsJobOutputModifiedAt,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedAtsJobOutputModifiedAt$Outbound = {};
+
+/** @internal */
+export const UnifiedAtsJobOutputModifiedAt$outboundSchema: z.ZodType<
+    UnifiedAtsJobOutputModifiedAt$Outbound,
+    z.ZodTypeDef,
+    UnifiedAtsJobOutputModifiedAt
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedAtsJobOutputModifiedAt$ {
-    export const inboundSchema: z.ZodType<UnifiedAtsJobOutputModifiedAt, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnifiedAtsJobOutputModifiedAt> =
-        z.object({});
+    /** @deprecated use `UnifiedAtsJobOutputModifiedAt$inboundSchema` instead. */
+    export const inboundSchema = UnifiedAtsJobOutputModifiedAt$inboundSchema;
+    /** @deprecated use `UnifiedAtsJobOutputModifiedAt$outboundSchema` instead. */
+    export const outboundSchema = UnifiedAtsJobOutputModifiedAt$outboundSchema;
+    /** @deprecated use `UnifiedAtsJobOutputModifiedAt$Outbound` instead. */
+    export type Outbound = UnifiedAtsJobOutputModifiedAt$Outbound;
 }
 
 /** @internal */
+export const UnifiedAtsJobOutput$inboundSchema: z.ZodType<
+    UnifiedAtsJobOutput,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        name: z.string().optional(),
+        description: z.string().optional(),
+        code: z.string().optional(),
+        status: z.string().optional(),
+        type: z.string().optional(),
+        confidential: z.boolean().optional(),
+        departments: z.array(z.string()).optional(),
+        offices: z.array(z.string()).optional(),
+        managers: z.array(z.string()).optional(),
+        recruiters: z.array(z.string()).optional(),
+        remote_created_at: z
+            .string()
+            .datetime({ offset: true })
+            .transform((v) => new Date(v))
+            .optional(),
+        remote_updated_at: z
+            .string()
+            .datetime({ offset: true })
+            .transform((v) => new Date(v))
+            .optional(),
+        field_mappings: z.lazy(() => UnifiedAtsJobOutputFieldMappings$inboundSchema),
+        id: z.string().optional(),
+        remote_id: z.string().optional(),
+        remote_data: z.lazy(() => UnifiedAtsJobOutputRemoteData$inboundSchema),
+        created_at: z.lazy(() => UnifiedAtsJobOutputCreatedAt$inboundSchema),
+        modified_at: z.lazy(() => UnifiedAtsJobOutputModifiedAt$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            remote_created_at: "remoteCreatedAt",
+            remote_updated_at: "remoteUpdatedAt",
+            field_mappings: "fieldMappings",
+            remote_id: "remoteId",
+            remote_data: "remoteData",
+            created_at: "createdAt",
+            modified_at: "modifiedAt",
+        });
+    });
+
+/** @internal */
+export type UnifiedAtsJobOutput$Outbound = {
+    name?: string | undefined;
+    description?: string | undefined;
+    code?: string | undefined;
+    status?: string | undefined;
+    type?: string | undefined;
+    confidential?: boolean | undefined;
+    departments?: Array<string> | undefined;
+    offices?: Array<string> | undefined;
+    managers?: Array<string> | undefined;
+    recruiters?: Array<string> | undefined;
+    remote_created_at?: string | undefined;
+    remote_updated_at?: string | undefined;
+    field_mappings: UnifiedAtsJobOutputFieldMappings$Outbound;
+    id?: string | undefined;
+    remote_id?: string | undefined;
+    remote_data: UnifiedAtsJobOutputRemoteData$Outbound;
+    created_at: UnifiedAtsJobOutputCreatedAt$Outbound;
+    modified_at: UnifiedAtsJobOutputModifiedAt$Outbound;
+};
+
+/** @internal */
+export const UnifiedAtsJobOutput$outboundSchema: z.ZodType<
+    UnifiedAtsJobOutput$Outbound,
+    z.ZodTypeDef,
+    UnifiedAtsJobOutput
+> = z
+    .object({
+        name: z.string().optional(),
+        description: z.string().optional(),
+        code: z.string().optional(),
+        status: z.string().optional(),
+        type: z.string().optional(),
+        confidential: z.boolean().optional(),
+        departments: z.array(z.string()).optional(),
+        offices: z.array(z.string()).optional(),
+        managers: z.array(z.string()).optional(),
+        recruiters: z.array(z.string()).optional(),
+        remoteCreatedAt: z
+            .date()
+            .transform((v) => v.toISOString())
+            .optional(),
+        remoteUpdatedAt: z
+            .date()
+            .transform((v) => v.toISOString())
+            .optional(),
+        fieldMappings: z.lazy(() => UnifiedAtsJobOutputFieldMappings$outboundSchema),
+        id: z.string().optional(),
+        remoteId: z.string().optional(),
+        remoteData: z.lazy(() => UnifiedAtsJobOutputRemoteData$outboundSchema),
+        createdAt: z.lazy(() => UnifiedAtsJobOutputCreatedAt$outboundSchema),
+        modifiedAt: z.lazy(() => UnifiedAtsJobOutputModifiedAt$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            remoteCreatedAt: "remote_created_at",
+            remoteUpdatedAt: "remote_updated_at",
+            fieldMappings: "field_mappings",
+            remoteId: "remote_id",
+            remoteData: "remote_data",
+            createdAt: "created_at",
+            modifiedAt: "modified_at",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedAtsJobOutput$ {
-    export const inboundSchema: z.ZodType<UnifiedAtsJobOutput, z.ZodTypeDef, unknown> = z
-        .object({
-            name: z.string().optional(),
-            description: z.string().optional(),
-            code: z.string().optional(),
-            status: z.string().optional(),
-            type: z.string().optional(),
-            confidential: z.boolean().optional(),
-            departments: z.array(z.string()).optional(),
-            offices: z.array(z.string()).optional(),
-            managers: z.array(z.string()).optional(),
-            recruiters: z.array(z.string()).optional(),
-            remote_created_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .optional(),
-            remote_updated_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .optional(),
-            field_mappings: z.lazy(() => UnifiedAtsJobOutputFieldMappings$.inboundSchema),
-            id: z.string().optional(),
-            remote_id: z.string().optional(),
-            remote_data: z.lazy(() => UnifiedAtsJobOutputRemoteData$.inboundSchema),
-            created_at: z.lazy(() => UnifiedAtsJobOutputCreatedAt$.inboundSchema),
-            modified_at: z.lazy(() => UnifiedAtsJobOutputModifiedAt$.inboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                remote_created_at: "remoteCreatedAt",
-                remote_updated_at: "remoteUpdatedAt",
-                field_mappings: "fieldMappings",
-                remote_id: "remoteId",
-                remote_data: "remoteData",
-                created_at: "createdAt",
-                modified_at: "modifiedAt",
-            });
-        });
-
-    export type Outbound = {
-        name?: string | undefined;
-        description?: string | undefined;
-        code?: string | undefined;
-        status?: string | undefined;
-        type?: string | undefined;
-        confidential?: boolean | undefined;
-        departments?: Array<string> | undefined;
-        offices?: Array<string> | undefined;
-        managers?: Array<string> | undefined;
-        recruiters?: Array<string> | undefined;
-        remote_created_at?: string | undefined;
-        remote_updated_at?: string | undefined;
-        field_mappings: UnifiedAtsJobOutputFieldMappings$.Outbound;
-        id?: string | undefined;
-        remote_id?: string | undefined;
-        remote_data: UnifiedAtsJobOutputRemoteData$.Outbound;
-        created_at: UnifiedAtsJobOutputCreatedAt$.Outbound;
-        modified_at: UnifiedAtsJobOutputModifiedAt$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnifiedAtsJobOutput> = z
-        .object({
-            name: z.string().optional(),
-            description: z.string().optional(),
-            code: z.string().optional(),
-            status: z.string().optional(),
-            type: z.string().optional(),
-            confidential: z.boolean().optional(),
-            departments: z.array(z.string()).optional(),
-            offices: z.array(z.string()).optional(),
-            managers: z.array(z.string()).optional(),
-            recruiters: z.array(z.string()).optional(),
-            remoteCreatedAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .optional(),
-            remoteUpdatedAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .optional(),
-            fieldMappings: z.lazy(() => UnifiedAtsJobOutputFieldMappings$.outboundSchema),
-            id: z.string().optional(),
-            remoteId: z.string().optional(),
-            remoteData: z.lazy(() => UnifiedAtsJobOutputRemoteData$.outboundSchema),
-            createdAt: z.lazy(() => UnifiedAtsJobOutputCreatedAt$.outboundSchema),
-            modifiedAt: z.lazy(() => UnifiedAtsJobOutputModifiedAt$.outboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                remoteCreatedAt: "remote_created_at",
-                remoteUpdatedAt: "remote_updated_at",
-                fieldMappings: "field_mappings",
-                remoteId: "remote_id",
-                remoteData: "remote_data",
-                createdAt: "created_at",
-                modifiedAt: "modified_at",
-            });
-        });
+    /** @deprecated use `UnifiedAtsJobOutput$inboundSchema` instead. */
+    export const inboundSchema = UnifiedAtsJobOutput$inboundSchema;
+    /** @deprecated use `UnifiedAtsJobOutput$outboundSchema` instead. */
+    export const outboundSchema = UnifiedAtsJobOutput$outboundSchema;
+    /** @deprecated use `UnifiedAtsJobOutput$Outbound` instead. */
+    export type Outbound = UnifiedAtsJobOutput$Outbound;
 }

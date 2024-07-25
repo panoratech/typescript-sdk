@@ -13,41 +13,62 @@ export type MapFieldToProviderDto = {
 };
 
 /** @internal */
+export const MapFieldToProviderDto$inboundSchema: z.ZodType<
+    MapFieldToProviderDto,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        attributeId: z.string(),
+        source_custom_field_id: z.string(),
+        source_provider: z.string(),
+        linked_user_id: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_custom_field_id: "sourceCustomFieldId",
+            source_provider: "sourceProvider",
+            linked_user_id: "linkedUserId",
+        });
+    });
+
+/** @internal */
+export type MapFieldToProviderDto$Outbound = {
+    attributeId: string;
+    source_custom_field_id: string;
+    source_provider: string;
+    linked_user_id: string;
+};
+
+/** @internal */
+export const MapFieldToProviderDto$outboundSchema: z.ZodType<
+    MapFieldToProviderDto$Outbound,
+    z.ZodTypeDef,
+    MapFieldToProviderDto
+> = z
+    .object({
+        attributeId: z.string(),
+        sourceCustomFieldId: z.string(),
+        sourceProvider: z.string(),
+        linkedUserId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceCustomFieldId: "source_custom_field_id",
+            sourceProvider: "source_provider",
+            linkedUserId: "linked_user_id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace MapFieldToProviderDto$ {
-    export const inboundSchema: z.ZodType<MapFieldToProviderDto, z.ZodTypeDef, unknown> = z
-        .object({
-            attributeId: z.string(),
-            source_custom_field_id: z.string(),
-            source_provider: z.string(),
-            linked_user_id: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_custom_field_id: "sourceCustomFieldId",
-                source_provider: "sourceProvider",
-                linked_user_id: "linkedUserId",
-            });
-        });
-
-    export type Outbound = {
-        attributeId: string;
-        source_custom_field_id: string;
-        source_provider: string;
-        linked_user_id: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, MapFieldToProviderDto> = z
-        .object({
-            attributeId: z.string(),
-            sourceCustomFieldId: z.string(),
-            sourceProvider: z.string(),
-            linkedUserId: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceCustomFieldId: "source_custom_field_id",
-                sourceProvider: "source_provider",
-                linkedUserId: "linked_user_id",
-            });
-        });
+    /** @deprecated use `MapFieldToProviderDto$inboundSchema` instead. */
+    export const inboundSchema = MapFieldToProviderDto$inboundSchema;
+    /** @deprecated use `MapFieldToProviderDto$outboundSchema` instead. */
+    export const outboundSchema = MapFieldToProviderDto$outboundSchema;
+    /** @deprecated use `MapFieldToProviderDto$Outbound` instead. */
+    export type Outbound = MapFieldToProviderDto$Outbound;
 }

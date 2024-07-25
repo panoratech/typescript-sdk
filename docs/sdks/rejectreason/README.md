@@ -3,10 +3,10 @@
 
 ### Available Operations
 
-* [getRejectReasons](#getrejectreasons) - List a batch of RejectReasons
-* [getRejectReason](#getrejectreason) - Retrieve a RejectReason
+* [list](#list) - List a batch of RejectReasons
+* [retrieve](#retrieve) - Retrieve a RejectReason
 
-## getRejectReasons
+## list
 
 List a batch of RejectReasons
 
@@ -20,7 +20,7 @@ const panora = new Panora({
 });
 
 async function run() {
-  const result = await panora.ats.rejectreason.getRejectReasons({
+  const result = await panora.ats.rejectreason.list({
     xConnectionToken: "<value>",
   });
 
@@ -35,21 +35,22 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetRejectReasonsRequest](../../models/operations/getrejectreasonsrequest.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.ListAtsRejectReasonsRequest](../../models/operations/listatsrejectreasonsrequest.md)                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 
 ### Response
 
-**Promise\<[operations.GetRejectReasonsResponse](../../models/operations/getrejectreasonsresponse.md)\>**
+**Promise\<[operations.ListAtsRejectReasonsResponse](../../models/operations/listatsrejectreasonsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
 
-## getRejectReason
+## retrieve
 
 Retrieve a rejectreason from any connected Ats software
 
@@ -63,7 +64,7 @@ const panora = new Panora({
 });
 
 async function run() {
-  const result = await panora.ats.rejectreason.getRejectReason({
+  const result = await panora.ats.rejectreason.retrieve({
     xConnectionToken: "<value>",
     id: "<id>",
   });
@@ -79,14 +80,15 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetRejectReasonRequest](../../models/operations/getrejectreasonrequest.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.RetrieveAtsRejectReasonRequest](../../models/operations/retrieveatsrejectreasonrequest.md)                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 
 ### Response
 
-**Promise\<[operations.GetRejectReasonResponse](../../models/operations/getrejectreasonresponse.md)\>**
+**Promise\<[operations.RetrieveAtsRejectReasonResponse](../../models/operations/retrieveatsrejectreasonresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

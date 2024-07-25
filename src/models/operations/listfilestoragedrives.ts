@@ -37,113 +37,167 @@ export type ListFilestorageDrivesResponse = {
 };
 
 /** @internal */
+export const ListFilestorageDrivesRequest$inboundSchema: z.ZodType<
+    ListFilestorageDrivesRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        remote_data: z.boolean().optional(),
+        limit: z.number().default(50),
+        cursor: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+        });
+    });
+
+/** @internal */
+export type ListFilestorageDrivesRequest$Outbound = {
+    "x-connection-token": string;
+    remote_data?: boolean | undefined;
+    limit: number;
+    cursor?: string | undefined;
+};
+
+/** @internal */
+export const ListFilestorageDrivesRequest$outboundSchema: z.ZodType<
+    ListFilestorageDrivesRequest$Outbound,
+    z.ZodTypeDef,
+    ListFilestorageDrivesRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        remoteData: z.boolean().optional(),
+        limit: z.number().default(50),
+        cursor: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListFilestorageDrivesRequest$ {
-    export const inboundSchema: z.ZodType<ListFilestorageDrivesRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            "x-connection-token": z.string(),
-            remote_data: z.boolean().optional(),
-            limit: z.number().default(50),
-            cursor: z.string().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        remote_data?: boolean | undefined;
-        limit: number;
-        cursor?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListFilestorageDrivesRequest> = z
-        .object({
-            xConnectionToken: z.string(),
-            remoteData: z.boolean().optional(),
-            limit: z.number().default(50),
-            cursor: z.string().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
-        });
+    /** @deprecated use `ListFilestorageDrivesRequest$inboundSchema` instead. */
+    export const inboundSchema = ListFilestorageDrivesRequest$inboundSchema;
+    /** @deprecated use `ListFilestorageDrivesRequest$outboundSchema` instead. */
+    export const outboundSchema = ListFilestorageDrivesRequest$outboundSchema;
+    /** @deprecated use `ListFilestorageDrivesRequest$Outbound` instead. */
+    export type Outbound = ListFilestorageDrivesRequest$Outbound;
 }
 
 /** @internal */
+export const ListFilestorageDrivesResponseBody$inboundSchema: z.ZodType<
+    ListFilestorageDrivesResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        prev_cursor: z.string(),
+        next_cursor: z.string(),
+        data: z.array(components.UnifiedFilestorageDriveOutput$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            prev_cursor: "prevCursor",
+            next_cursor: "nextCursor",
+        });
+    });
+
+/** @internal */
+export type ListFilestorageDrivesResponseBody$Outbound = {
+    prev_cursor: string;
+    next_cursor: string;
+    data: Array<components.UnifiedFilestorageDriveOutput$Outbound>;
+};
+
+/** @internal */
+export const ListFilestorageDrivesResponseBody$outboundSchema: z.ZodType<
+    ListFilestorageDrivesResponseBody$Outbound,
+    z.ZodTypeDef,
+    ListFilestorageDrivesResponseBody
+> = z
+    .object({
+        prevCursor: z.string(),
+        nextCursor: z.string(),
+        data: z.array(components.UnifiedFilestorageDriveOutput$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            prevCursor: "prev_cursor",
+            nextCursor: "next_cursor",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListFilestorageDrivesResponseBody$ {
-    export const inboundSchema: z.ZodType<
-        ListFilestorageDrivesResponseBody,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            prev_cursor: z.string(),
-            next_cursor: z.string(),
-            data: z.array(components.UnifiedFilestorageDriveOutput$.inboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                prev_cursor: "prevCursor",
-                next_cursor: "nextCursor",
-            });
-        });
-
-    export type Outbound = {
-        prev_cursor: string;
-        next_cursor: string;
-        data: Array<components.UnifiedFilestorageDriveOutput$.Outbound>;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        ListFilestorageDrivesResponseBody
-    > = z
-        .object({
-            prevCursor: z.string(),
-            nextCursor: z.string(),
-            data: z.array(components.UnifiedFilestorageDriveOutput$.outboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                prevCursor: "prev_cursor",
-                nextCursor: "next_cursor",
-            });
-        });
+    /** @deprecated use `ListFilestorageDrivesResponseBody$inboundSchema` instead. */
+    export const inboundSchema = ListFilestorageDrivesResponseBody$inboundSchema;
+    /** @deprecated use `ListFilestorageDrivesResponseBody$outboundSchema` instead. */
+    export const outboundSchema = ListFilestorageDrivesResponseBody$outboundSchema;
+    /** @deprecated use `ListFilestorageDrivesResponseBody$Outbound` instead. */
+    export type Outbound = ListFilestorageDrivesResponseBody$Outbound;
 }
 
 /** @internal */
-export namespace ListFilestorageDrivesResponse$ {
-    export const inboundSchema: z.ZodType<ListFilestorageDrivesResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            object: z.lazy(() => ListFilestorageDrivesResponseBody$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-            });
+export const ListFilestorageDrivesResponse$inboundSchema: z.ZodType<
+    ListFilestorageDrivesResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        object: z.lazy(() => ListFilestorageDrivesResponseBody$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
         });
+    });
 
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        object?: ListFilestorageDrivesResponseBody$.Outbound | undefined;
-    };
+/** @internal */
+export type ListFilestorageDrivesResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    object?: ListFilestorageDrivesResponseBody$Outbound | undefined;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListFilestorageDrivesResponse> =
-        z
-            .object({
-                httpMeta: components.HTTPMetadata$.outboundSchema,
-                object: z.lazy(() => ListFilestorageDrivesResponseBody$.outboundSchema).optional(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    httpMeta: "HttpMeta",
-                });
-            });
+/** @internal */
+export const ListFilestorageDrivesResponse$outboundSchema: z.ZodType<
+    ListFilestorageDrivesResponse$Outbound,
+    z.ZodTypeDef,
+    ListFilestorageDrivesResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        object: z.lazy(() => ListFilestorageDrivesResponseBody$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListFilestorageDrivesResponse$ {
+    /** @deprecated use `ListFilestorageDrivesResponse$inboundSchema` instead. */
+    export const inboundSchema = ListFilestorageDrivesResponse$inboundSchema;
+    /** @deprecated use `ListFilestorageDrivesResponse$outboundSchema` instead. */
+    export const outboundSchema = ListFilestorageDrivesResponse$outboundSchema;
+    /** @deprecated use `ListFilestorageDrivesResponse$Outbound` instead. */
+    export type Outbound = ListFilestorageDrivesResponse$Outbound;
 }

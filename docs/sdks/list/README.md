@@ -3,11 +3,11 @@
 
 ### Available Operations
 
-* [getLists](#getlists) - List a batch of Lists
-* [addList](#addlist) - Create a List
-* [getList](#getlist) - Retrieve a List
+* [list](#list) - List a batch of Lists
+* [create](#create) - Create a List
+* [retrieve](#retrieve) - Retrieve a List
 
-## getLists
+## list
 
 List a batch of Lists
 
@@ -21,7 +21,7 @@ const panora = new Panora({
 });
 
 async function run() {
-  const result = await panora.marketingautomation.list.getLists({
+  const result = await panora.marketingautomation.list.list({
     xConnectionToken: "<value>",
   });
 
@@ -36,21 +36,22 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetListsRequest](../../models/operations/getlistsrequest.md)                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.ListMarketingautomationListsRequest](../../models/operations/listmarketingautomationlistsrequest.md)                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 
 ### Response
 
-**Promise\<[operations.GetListsResponse](../../models/operations/getlistsresponse.md)\>**
+**Promise\<[operations.ListMarketingautomationListsResponse](../../models/operations/listmarketingautomationlistsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
 
-## addList
+## create
 
 Create a list in any supported Marketingautomation software
 
@@ -64,7 +65,7 @@ const panora = new Panora({
 });
 
 async function run() {
-  const result = await panora.marketingautomation.list.addList({
+  const result = await panora.marketingautomation.list.create({
     xConnectionToken: "<value>",
     unifiedMarketingautomationListInput: {},
   });
@@ -80,21 +81,22 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.AddListRequest](../../models/operations/addlistrequest.md)                                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.CreateMarketingautomationListRequest](../../models/operations/createmarketingautomationlistrequest.md)                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 
 ### Response
 
-**Promise\<[operations.AddListResponse](../../models/operations/addlistresponse.md)\>**
+**Promise\<[operations.CreateMarketingautomationListResponse](../../models/operations/createmarketingautomationlistresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
 
-## getList
+## retrieve
 
 Retrieve a list from any connected Marketingautomation software
 
@@ -108,7 +110,7 @@ const panora = new Panora({
 });
 
 async function run() {
-  const result = await panora.marketingautomation.list.getList({
+  const result = await panora.marketingautomation.list.retrieve({
     xConnectionToken: "<value>",
     id: "<id>",
   });
@@ -124,14 +126,15 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetListRequest](../../models/operations/getlistrequest.md)                                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.RetrieveMarketingautomationListRequest](../../models/operations/retrievemarketingautomationlistrequest.md)                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 
 ### Response
 
-**Promise\<[operations.GetListResponse](../../models/operations/getlistresponse.md)\>**
+**Promise\<[operations.RetrieveMarketingautomationListResponse](../../models/operations/retrievemarketingautomationlistresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

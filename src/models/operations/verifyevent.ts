@@ -12,33 +12,54 @@ export type VerifyEventResponse = {
 };
 
 /** @internal */
+export const VerifyEventResponse$inboundSchema: z.ZodType<
+    VerifyEventResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        EventPayload: components.EventPayload$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            EventPayload: "eventPayload",
+        });
+    });
+
+/** @internal */
+export type VerifyEventResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    EventPayload?: components.EventPayload$Outbound | undefined;
+};
+
+/** @internal */
+export const VerifyEventResponse$outboundSchema: z.ZodType<
+    VerifyEventResponse$Outbound,
+    z.ZodTypeDef,
+    VerifyEventResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        eventPayload: components.EventPayload$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            eventPayload: "EventPayload",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace VerifyEventResponse$ {
-    export const inboundSchema: z.ZodType<VerifyEventResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            EventPayload: components.EventPayload$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-                EventPayload: "eventPayload",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        EventPayload?: components.EventPayload$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, VerifyEventResponse> = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            eventPayload: components.EventPayload$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-                eventPayload: "EventPayload",
-            });
-        });
+    /** @deprecated use `VerifyEventResponse$inboundSchema` instead. */
+    export const inboundSchema = VerifyEventResponse$inboundSchema;
+    /** @deprecated use `VerifyEventResponse$outboundSchema` instead. */
+    export const outboundSchema = VerifyEventResponse$outboundSchema;
+    /** @deprecated use `VerifyEventResponse$Outbound` instead. */
+    export type Outbound = VerifyEventResponse$Outbound;
 }

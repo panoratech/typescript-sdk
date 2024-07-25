@@ -29,88 +29,114 @@ export type RetrieveAccountingJournalEntryResponse = {
 };
 
 /** @internal */
+export const RetrieveAccountingJournalEntryRequest$inboundSchema: z.ZodType<
+    RetrieveAccountingJournalEntryRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        id: z.string(),
+        remote_data: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+        });
+    });
+
+/** @internal */
+export type RetrieveAccountingJournalEntryRequest$Outbound = {
+    "x-connection-token": string;
+    id: string;
+    remote_data?: boolean | undefined;
+};
+
+/** @internal */
+export const RetrieveAccountingJournalEntryRequest$outboundSchema: z.ZodType<
+    RetrieveAccountingJournalEntryRequest$Outbound,
+    z.ZodTypeDef,
+    RetrieveAccountingJournalEntryRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        id: z.string(),
+        remoteData: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveAccountingJournalEntryRequest$ {
-    export const inboundSchema: z.ZodType<
-        RetrieveAccountingJournalEntryRequest,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            "x-connection-token": z.string(),
-            id: z.string(),
-            remote_data: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        id: string;
-        remote_data?: boolean | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        RetrieveAccountingJournalEntryRequest
-    > = z
-        .object({
-            xConnectionToken: z.string(),
-            id: z.string(),
-            remoteData: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
-        });
+    /** @deprecated use `RetrieveAccountingJournalEntryRequest$inboundSchema` instead. */
+    export const inboundSchema = RetrieveAccountingJournalEntryRequest$inboundSchema;
+    /** @deprecated use `RetrieveAccountingJournalEntryRequest$outboundSchema` instead. */
+    export const outboundSchema = RetrieveAccountingJournalEntryRequest$outboundSchema;
+    /** @deprecated use `RetrieveAccountingJournalEntryRequest$Outbound` instead. */
+    export type Outbound = RetrieveAccountingJournalEntryRequest$Outbound;
 }
 
 /** @internal */
+export const RetrieveAccountingJournalEntryResponse$inboundSchema: z.ZodType<
+    RetrieveAccountingJournalEntryResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        UnifiedAccountingJournalentryOutput:
+            components.UnifiedAccountingJournalentryOutput$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            UnifiedAccountingJournalentryOutput: "unifiedAccountingJournalentryOutput",
+        });
+    });
+
+/** @internal */
+export type RetrieveAccountingJournalEntryResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    UnifiedAccountingJournalentryOutput?:
+        | components.UnifiedAccountingJournalentryOutput$Outbound
+        | undefined;
+};
+
+/** @internal */
+export const RetrieveAccountingJournalEntryResponse$outboundSchema: z.ZodType<
+    RetrieveAccountingJournalEntryResponse$Outbound,
+    z.ZodTypeDef,
+    RetrieveAccountingJournalEntryResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        unifiedAccountingJournalentryOutput:
+            components.UnifiedAccountingJournalentryOutput$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            unifiedAccountingJournalentryOutput: "UnifiedAccountingJournalentryOutput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveAccountingJournalEntryResponse$ {
-    export const inboundSchema: z.ZodType<
-        RetrieveAccountingJournalEntryResponse,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            UnifiedAccountingJournalentryOutput:
-                components.UnifiedAccountingJournalentryOutput$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-                UnifiedAccountingJournalentryOutput: "unifiedAccountingJournalentryOutput",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        UnifiedAccountingJournalentryOutput?:
-            | components.UnifiedAccountingJournalentryOutput$.Outbound
-            | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        RetrieveAccountingJournalEntryResponse
-    > = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            unifiedAccountingJournalentryOutput:
-                components.UnifiedAccountingJournalentryOutput$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-                unifiedAccountingJournalentryOutput: "UnifiedAccountingJournalentryOutput",
-            });
-        });
+    /** @deprecated use `RetrieveAccountingJournalEntryResponse$inboundSchema` instead. */
+    export const inboundSchema = RetrieveAccountingJournalEntryResponse$inboundSchema;
+    /** @deprecated use `RetrieveAccountingJournalEntryResponse$outboundSchema` instead. */
+    export const outboundSchema = RetrieveAccountingJournalEntryResponse$outboundSchema;
+    /** @deprecated use `RetrieveAccountingJournalEntryResponse$Outbound` instead. */
+    export type Outbound = RetrieveAccountingJournalEntryResponse$Outbound;
 }

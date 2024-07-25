@@ -3,11 +3,11 @@
 
 ### Available Operations
 
-* [getTemplates](#gettemplates) - List a batch of Templates
-* [addTemplate](#addtemplate) - Create a Template
-* [getTemplate](#gettemplate) - Retrieve a Template
+* [list](#list) - List a batch of Templates
+* [create](#create) - Create a Template
+* [retrieve](#retrieve) - Retrieve a Template
 
-## getTemplates
+## list
 
 List a batch of Templates
 
@@ -21,7 +21,7 @@ const panora = new Panora({
 });
 
 async function run() {
-  const result = await panora.marketingautomation.template.getTemplates({
+  const result = await panora.marketingautomation.template.list({
     xConnectionToken: "<value>",
   });
 
@@ -36,21 +36,22 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetTemplatesRequest](../../models/operations/gettemplatesrequest.md)                                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.ListMarketingautomationTemplatesRequest](../../models/operations/listmarketingautomationtemplatesrequest.md)                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 
 ### Response
 
-**Promise\<[operations.GetTemplatesResponse](../../models/operations/gettemplatesresponse.md)\>**
+**Promise\<[operations.ListMarketingautomationTemplatesResponse](../../models/operations/listmarketingautomationtemplatesresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
 
-## addTemplate
+## create
 
 Create a template in any supported Marketingautomation software
 
@@ -64,7 +65,7 @@ const panora = new Panora({
 });
 
 async function run() {
-  const result = await panora.marketingautomation.template.addTemplate({
+  const result = await panora.marketingautomation.template.create({
     xConnectionToken: "<value>",
     unifiedMarketingautomationTemplateInput: {},
   });
@@ -80,21 +81,22 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.AddTemplateRequest](../../models/operations/addtemplaterequest.md)                                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.CreateMarketingautomationTemplateRequest](../../models/operations/createmarketingautomationtemplaterequest.md)                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 
 ### Response
 
-**Promise\<[operations.AddTemplateResponse](../../models/operations/addtemplateresponse.md)\>**
+**Promise\<[operations.CreateMarketingautomationTemplateResponse](../../models/operations/createmarketingautomationtemplateresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
 
-## getTemplate
+## retrieve
 
 Retrieve a template from any connected Marketingautomation software
 
@@ -108,7 +110,7 @@ const panora = new Panora({
 });
 
 async function run() {
-  const result = await panora.marketingautomation.template.getTemplate({
+  const result = await panora.marketingautomation.template.retrieve({
     xConnectionToken: "<value>",
     id: "<id>",
   });
@@ -124,14 +126,15 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetTemplateRequest](../../models/operations/gettemplaterequest.md)                                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.RetrieveMarketingautomationTemplateRequest](../../models/operations/retrievemarketingautomationtemplaterequest.md)                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 
 ### Response
 
-**Promise\<[operations.GetTemplateResponse](../../models/operations/gettemplateresponse.md)\>**
+**Promise\<[operations.RetrieveMarketingautomationTemplateResponse](../../models/operations/retrievemarketingautomationtemplateresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

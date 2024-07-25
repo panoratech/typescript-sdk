@@ -7,18 +7,31 @@ import * as z from "zod";
 export type UnifiedHrisEmployeepayrollrunOutput = {};
 
 /** @internal */
+export const UnifiedHrisEmployeepayrollrunOutput$inboundSchema: z.ZodType<
+    UnifiedHrisEmployeepayrollrunOutput,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedHrisEmployeepayrollrunOutput$Outbound = {};
+
+/** @internal */
+export const UnifiedHrisEmployeepayrollrunOutput$outboundSchema: z.ZodType<
+    UnifiedHrisEmployeepayrollrunOutput$Outbound,
+    z.ZodTypeDef,
+    UnifiedHrisEmployeepayrollrunOutput
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedHrisEmployeepayrollrunOutput$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedHrisEmployeepayrollrunOutput,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedHrisEmployeepayrollrunOutput
-    > = z.object({});
+    /** @deprecated use `UnifiedHrisEmployeepayrollrunOutput$inboundSchema` instead. */
+    export const inboundSchema = UnifiedHrisEmployeepayrollrunOutput$inboundSchema;
+    /** @deprecated use `UnifiedHrisEmployeepayrollrunOutput$outboundSchema` instead. */
+    export const outboundSchema = UnifiedHrisEmployeepayrollrunOutput$outboundSchema;
+    /** @deprecated use `UnifiedHrisEmployeepayrollrunOutput$Outbound` instead. */
+    export type Outbound = UnifiedHrisEmployeepayrollrunOutput$Outbound;
 }

@@ -15,45 +15,85 @@ export type RetrieveLinkedUserResponse = {
 };
 
 /** @internal */
+export const RetrieveLinkedUserRequest$inboundSchema: z.ZodType<
+    RetrieveLinkedUserRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    id: z.string(),
+});
+
+/** @internal */
+export type RetrieveLinkedUserRequest$Outbound = {
+    id: string;
+};
+
+/** @internal */
+export const RetrieveLinkedUserRequest$outboundSchema: z.ZodType<
+    RetrieveLinkedUserRequest$Outbound,
+    z.ZodTypeDef,
+    RetrieveLinkedUserRequest
+> = z.object({
+    id: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveLinkedUserRequest$ {
-    export const inboundSchema: z.ZodType<RetrieveLinkedUserRequest, z.ZodTypeDef, unknown> =
-        z.object({
-            id: z.string(),
-        });
-
-    export type Outbound = {
-        id: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RetrieveLinkedUserRequest> =
-        z.object({
-            id: z.string(),
-        });
+    /** @deprecated use `RetrieveLinkedUserRequest$inboundSchema` instead. */
+    export const inboundSchema = RetrieveLinkedUserRequest$inboundSchema;
+    /** @deprecated use `RetrieveLinkedUserRequest$outboundSchema` instead. */
+    export const outboundSchema = RetrieveLinkedUserRequest$outboundSchema;
+    /** @deprecated use `RetrieveLinkedUserRequest$Outbound` instead. */
+    export type Outbound = RetrieveLinkedUserRequest$Outbound;
 }
 
 /** @internal */
+export const RetrieveLinkedUserResponse$inboundSchema: z.ZodType<
+    RetrieveLinkedUserResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+        });
+    });
+
+/** @internal */
+export type RetrieveLinkedUserResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+};
+
+/** @internal */
+export const RetrieveLinkedUserResponse$outboundSchema: z.ZodType<
+    RetrieveLinkedUserResponse$Outbound,
+    z.ZodTypeDef,
+    RetrieveLinkedUserResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveLinkedUserResponse$ {
-    export const inboundSchema: z.ZodType<RetrieveLinkedUserResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RetrieveLinkedUserResponse> = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-            });
-        });
+    /** @deprecated use `RetrieveLinkedUserResponse$inboundSchema` instead. */
+    export const inboundSchema = RetrieveLinkedUserResponse$inboundSchema;
+    /** @deprecated use `RetrieveLinkedUserResponse$outboundSchema` instead. */
+    export const outboundSchema = RetrieveLinkedUserResponse$outboundSchema;
+    /** @deprecated use `RetrieveLinkedUserResponse$Outbound` instead. */
+    export type Outbound = RetrieveLinkedUserResponse$Outbound;
 }

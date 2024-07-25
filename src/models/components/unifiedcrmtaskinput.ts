@@ -44,90 +44,127 @@ export type UnifiedCrmTaskInput = {
 };
 
 /** @internal */
+export const UnifiedCrmTaskInputFieldMappings$inboundSchema: z.ZodType<
+    UnifiedCrmTaskInputFieldMappings,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedCrmTaskInputFieldMappings$Outbound = {};
+
+/** @internal */
+export const UnifiedCrmTaskInputFieldMappings$outboundSchema: z.ZodType<
+    UnifiedCrmTaskInputFieldMappings$Outbound,
+    z.ZodTypeDef,
+    UnifiedCrmTaskInputFieldMappings
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedCrmTaskInputFieldMappings$ {
-    export const inboundSchema: z.ZodType<UnifiedCrmTaskInputFieldMappings, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedCrmTaskInputFieldMappings
-    > = z.object({});
+    /** @deprecated use `UnifiedCrmTaskInputFieldMappings$inboundSchema` instead. */
+    export const inboundSchema = UnifiedCrmTaskInputFieldMappings$inboundSchema;
+    /** @deprecated use `UnifiedCrmTaskInputFieldMappings$outboundSchema` instead. */
+    export const outboundSchema = UnifiedCrmTaskInputFieldMappings$outboundSchema;
+    /** @deprecated use `UnifiedCrmTaskInputFieldMappings$Outbound` instead. */
+    export type Outbound = UnifiedCrmTaskInputFieldMappings$Outbound;
 }
 
 /** @internal */
+export const UnifiedCrmTaskInput$inboundSchema: z.ZodType<
+    UnifiedCrmTaskInput,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        subject: z.string(),
+        content: z.string(),
+        status: z.string(),
+        due_date: z
+            .string()
+            .datetime({ offset: true })
+            .transform((v) => new Date(v))
+            .optional(),
+        finished_date: z
+            .string()
+            .datetime({ offset: true })
+            .transform((v) => new Date(v))
+            .optional(),
+        user_id: z.string().optional(),
+        company_id: z.string().optional(),
+        deal_id: z.string().optional(),
+        field_mappings: z.lazy(() => UnifiedCrmTaskInputFieldMappings$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            due_date: "dueDate",
+            finished_date: "finishedDate",
+            user_id: "userId",
+            company_id: "companyId",
+            deal_id: "dealId",
+            field_mappings: "fieldMappings",
+        });
+    });
+
+/** @internal */
+export type UnifiedCrmTaskInput$Outbound = {
+    subject: string;
+    content: string;
+    status: string;
+    due_date?: string | undefined;
+    finished_date?: string | undefined;
+    user_id?: string | undefined;
+    company_id?: string | undefined;
+    deal_id?: string | undefined;
+    field_mappings: UnifiedCrmTaskInputFieldMappings$Outbound;
+};
+
+/** @internal */
+export const UnifiedCrmTaskInput$outboundSchema: z.ZodType<
+    UnifiedCrmTaskInput$Outbound,
+    z.ZodTypeDef,
+    UnifiedCrmTaskInput
+> = z
+    .object({
+        subject: z.string(),
+        content: z.string(),
+        status: z.string(),
+        dueDate: z
+            .date()
+            .transform((v) => v.toISOString())
+            .optional(),
+        finishedDate: z
+            .date()
+            .transform((v) => v.toISOString())
+            .optional(),
+        userId: z.string().optional(),
+        companyId: z.string().optional(),
+        dealId: z.string().optional(),
+        fieldMappings: z.lazy(() => UnifiedCrmTaskInputFieldMappings$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            dueDate: "due_date",
+            finishedDate: "finished_date",
+            userId: "user_id",
+            companyId: "company_id",
+            dealId: "deal_id",
+            fieldMappings: "field_mappings",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedCrmTaskInput$ {
-    export const inboundSchema: z.ZodType<UnifiedCrmTaskInput, z.ZodTypeDef, unknown> = z
-        .object({
-            subject: z.string(),
-            content: z.string(),
-            status: z.string(),
-            due_date: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .optional(),
-            finished_date: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .optional(),
-            user_id: z.string().optional(),
-            company_id: z.string().optional(),
-            deal_id: z.string().optional(),
-            field_mappings: z.lazy(() => UnifiedCrmTaskInputFieldMappings$.inboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                due_date: "dueDate",
-                finished_date: "finishedDate",
-                user_id: "userId",
-                company_id: "companyId",
-                deal_id: "dealId",
-                field_mappings: "fieldMappings",
-            });
-        });
-
-    export type Outbound = {
-        subject: string;
-        content: string;
-        status: string;
-        due_date?: string | undefined;
-        finished_date?: string | undefined;
-        user_id?: string | undefined;
-        company_id?: string | undefined;
-        deal_id?: string | undefined;
-        field_mappings: UnifiedCrmTaskInputFieldMappings$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnifiedCrmTaskInput> = z
-        .object({
-            subject: z.string(),
-            content: z.string(),
-            status: z.string(),
-            dueDate: z
-                .date()
-                .transform((v) => v.toISOString())
-                .optional(),
-            finishedDate: z
-                .date()
-                .transform((v) => v.toISOString())
-                .optional(),
-            userId: z.string().optional(),
-            companyId: z.string().optional(),
-            dealId: z.string().optional(),
-            fieldMappings: z.lazy(() => UnifiedCrmTaskInputFieldMappings$.outboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                dueDate: "due_date",
-                finishedDate: "finished_date",
-                userId: "user_id",
-                companyId: "company_id",
-                dealId: "deal_id",
-                fieldMappings: "field_mappings",
-            });
-        });
+    /** @deprecated use `UnifiedCrmTaskInput$inboundSchema` instead. */
+    export const inboundSchema = UnifiedCrmTaskInput$inboundSchema;
+    /** @deprecated use `UnifiedCrmTaskInput$outboundSchema` instead. */
+    export const outboundSchema = UnifiedCrmTaskInput$outboundSchema;
+    /** @deprecated use `UnifiedCrmTaskInput$Outbound` instead. */
+    export type Outbound = UnifiedCrmTaskInput$Outbound;
 }

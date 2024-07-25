@@ -37,128 +37,167 @@ export type ListAccountingJournalEntryResponse = {
 };
 
 /** @internal */
+export const ListAccountingJournalEntryRequest$inboundSchema: z.ZodType<
+    ListAccountingJournalEntryRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        remote_data: z.boolean().optional(),
+        limit: z.number().default(50),
+        cursor: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+        });
+    });
+
+/** @internal */
+export type ListAccountingJournalEntryRequest$Outbound = {
+    "x-connection-token": string;
+    remote_data?: boolean | undefined;
+    limit: number;
+    cursor?: string | undefined;
+};
+
+/** @internal */
+export const ListAccountingJournalEntryRequest$outboundSchema: z.ZodType<
+    ListAccountingJournalEntryRequest$Outbound,
+    z.ZodTypeDef,
+    ListAccountingJournalEntryRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        remoteData: z.boolean().optional(),
+        limit: z.number().default(50),
+        cursor: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListAccountingJournalEntryRequest$ {
-    export const inboundSchema: z.ZodType<
-        ListAccountingJournalEntryRequest,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            "x-connection-token": z.string(),
-            remote_data: z.boolean().optional(),
-            limit: z.number().default(50),
-            cursor: z.string().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        remote_data?: boolean | undefined;
-        limit: number;
-        cursor?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        ListAccountingJournalEntryRequest
-    > = z
-        .object({
-            xConnectionToken: z.string(),
-            remoteData: z.boolean().optional(),
-            limit: z.number().default(50),
-            cursor: z.string().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
-        });
+    /** @deprecated use `ListAccountingJournalEntryRequest$inboundSchema` instead. */
+    export const inboundSchema = ListAccountingJournalEntryRequest$inboundSchema;
+    /** @deprecated use `ListAccountingJournalEntryRequest$outboundSchema` instead. */
+    export const outboundSchema = ListAccountingJournalEntryRequest$outboundSchema;
+    /** @deprecated use `ListAccountingJournalEntryRequest$Outbound` instead. */
+    export type Outbound = ListAccountingJournalEntryRequest$Outbound;
 }
 
 /** @internal */
+export const ListAccountingJournalEntryResponseBody$inboundSchema: z.ZodType<
+    ListAccountingJournalEntryResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        prev_cursor: z.string(),
+        next_cursor: z.string(),
+        data: z.array(components.UnifiedAccountingJournalentryOutput$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            prev_cursor: "prevCursor",
+            next_cursor: "nextCursor",
+        });
+    });
+
+/** @internal */
+export type ListAccountingJournalEntryResponseBody$Outbound = {
+    prev_cursor: string;
+    next_cursor: string;
+    data: Array<components.UnifiedAccountingJournalentryOutput$Outbound>;
+};
+
+/** @internal */
+export const ListAccountingJournalEntryResponseBody$outboundSchema: z.ZodType<
+    ListAccountingJournalEntryResponseBody$Outbound,
+    z.ZodTypeDef,
+    ListAccountingJournalEntryResponseBody
+> = z
+    .object({
+        prevCursor: z.string(),
+        nextCursor: z.string(),
+        data: z.array(components.UnifiedAccountingJournalentryOutput$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            prevCursor: "prev_cursor",
+            nextCursor: "next_cursor",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListAccountingJournalEntryResponseBody$ {
-    export const inboundSchema: z.ZodType<
-        ListAccountingJournalEntryResponseBody,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            prev_cursor: z.string(),
-            next_cursor: z.string(),
-            data: z.array(components.UnifiedAccountingJournalentryOutput$.inboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                prev_cursor: "prevCursor",
-                next_cursor: "nextCursor",
-            });
-        });
-
-    export type Outbound = {
-        prev_cursor: string;
-        next_cursor: string;
-        data: Array<components.UnifiedAccountingJournalentryOutput$.Outbound>;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        ListAccountingJournalEntryResponseBody
-    > = z
-        .object({
-            prevCursor: z.string(),
-            nextCursor: z.string(),
-            data: z.array(components.UnifiedAccountingJournalentryOutput$.outboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                prevCursor: "prev_cursor",
-                nextCursor: "next_cursor",
-            });
-        });
+    /** @deprecated use `ListAccountingJournalEntryResponseBody$inboundSchema` instead. */
+    export const inboundSchema = ListAccountingJournalEntryResponseBody$inboundSchema;
+    /** @deprecated use `ListAccountingJournalEntryResponseBody$outboundSchema` instead. */
+    export const outboundSchema = ListAccountingJournalEntryResponseBody$outboundSchema;
+    /** @deprecated use `ListAccountingJournalEntryResponseBody$Outbound` instead. */
+    export type Outbound = ListAccountingJournalEntryResponseBody$Outbound;
 }
 
 /** @internal */
+export const ListAccountingJournalEntryResponse$inboundSchema: z.ZodType<
+    ListAccountingJournalEntryResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        object: z.lazy(() => ListAccountingJournalEntryResponseBody$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+        });
+    });
+
+/** @internal */
+export type ListAccountingJournalEntryResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    object?: ListAccountingJournalEntryResponseBody$Outbound | undefined;
+};
+
+/** @internal */
+export const ListAccountingJournalEntryResponse$outboundSchema: z.ZodType<
+    ListAccountingJournalEntryResponse$Outbound,
+    z.ZodTypeDef,
+    ListAccountingJournalEntryResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        object: z.lazy(() => ListAccountingJournalEntryResponseBody$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListAccountingJournalEntryResponse$ {
-    export const inboundSchema: z.ZodType<
-        ListAccountingJournalEntryResponse,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            object: z.lazy(() => ListAccountingJournalEntryResponseBody$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        object?: ListAccountingJournalEntryResponseBody$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        ListAccountingJournalEntryResponse
-    > = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            object: z.lazy(() => ListAccountingJournalEntryResponseBody$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-            });
-        });
+    /** @deprecated use `ListAccountingJournalEntryResponse$inboundSchema` instead. */
+    export const inboundSchema = ListAccountingJournalEntryResponse$inboundSchema;
+    /** @deprecated use `ListAccountingJournalEntryResponse$outboundSchema` instead. */
+    export const outboundSchema = ListAccountingJournalEntryResponse$outboundSchema;
+    /** @deprecated use `ListAccountingJournalEntryResponse$Outbound` instead. */
+    export type Outbound = ListAccountingJournalEntryResponse$Outbound;
 }

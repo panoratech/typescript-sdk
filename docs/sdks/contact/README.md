@@ -3,11 +3,11 @@
 
 ### Available Operations
 
-* [getMarketingAutomationContacts](#getmarketingautomationcontacts) - List a batch of Contacts
-* [addMarketingAutomationContact](#addmarketingautomationcontact) - Create a Contact
-* [getMarketingAutomationContact](#getmarketingautomationcontact) - Retrieve a Contact
+* [list](#list) - List a batch of Contacts
+* [create](#create) - Create a Contact
+* [retrieve](#retrieve) - Retrieve a Contact
 
-## getMarketingAutomationContacts
+## list
 
 List a batch of Contacts
 
@@ -21,7 +21,7 @@ const panora = new Panora({
 });
 
 async function run() {
-  const result = await panora.marketingautomation.contact.getMarketingAutomationContacts({
+  const result = await panora.marketingautomation.contact.list({
     xConnectionToken: "<value>",
   });
 
@@ -36,21 +36,22 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetMarketingAutomationContactsRequest](../../models/operations/getmarketingautomationcontactsrequest.md)                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.ListMarketingAutomationContactsRequest](../../models/operations/listmarketingautomationcontactsrequest.md)                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 
 ### Response
 
-**Promise\<[operations.GetMarketingAutomationContactsResponse](../../models/operations/getmarketingautomationcontactsresponse.md)\>**
+**Promise\<[operations.ListMarketingAutomationContactsResponse](../../models/operations/listmarketingautomationcontactsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
 
-## addMarketingAutomationContact
+## create
 
 Create a contact in any supported Marketingautomation software
 
@@ -64,7 +65,7 @@ const panora = new Panora({
 });
 
 async function run() {
-  const result = await panora.marketingautomation.contact.addMarketingAutomationContact({
+  const result = await panora.marketingautomation.contact.create({
     xConnectionToken: "<value>",
     unifiedMarketingautomationContactInput: {},
   });
@@ -80,21 +81,22 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.AddMarketingAutomationContactRequest](../../models/operations/addmarketingautomationcontactrequest.md)                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.CreateMarketingAutomationContactRequest](../../models/operations/createmarketingautomationcontactrequest.md)                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 
 ### Response
 
-**Promise\<[operations.AddMarketingAutomationContactResponse](../../models/operations/addmarketingautomationcontactresponse.md)\>**
+**Promise\<[operations.CreateMarketingAutomationContactResponse](../../models/operations/createmarketingautomationcontactresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
 
-## getMarketingAutomationContact
+## retrieve
 
 Retrieve a contact from any connected Marketingautomation software
 
@@ -108,7 +110,7 @@ const panora = new Panora({
 });
 
 async function run() {
-  const result = await panora.marketingautomation.contact.getMarketingAutomationContact({
+  const result = await panora.marketingautomation.contact.retrieve({
     xConnectionToken: "<value>",
     id: "<id>",
   });
@@ -124,14 +126,15 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetMarketingAutomationContactRequest](../../models/operations/getmarketingautomationcontactrequest.md)                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.RetrieveMarketingAutomationContactRequest](../../models/operations/retrievemarketingautomationcontactrequest.md)                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 
 ### Response
 
-**Promise\<[operations.GetMarketingAutomationContactResponse](../../models/operations/getmarketingautomationcontactresponse.md)\>**
+**Promise\<[operations.RetrieveMarketingAutomationContactResponse](../../models/operations/retrievemarketingautomationcontactresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

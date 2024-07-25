@@ -27,85 +27,112 @@ export type RetrieveAccountingInvoiceResponse = {
 };
 
 /** @internal */
-export namespace RetrieveAccountingInvoiceRequest$ {
-    export const inboundSchema: z.ZodType<RetrieveAccountingInvoiceRequest, z.ZodTypeDef, unknown> =
-        z
-            .object({
-                "x-connection-token": z.string(),
-                id: z.string(),
-                remote_data: z.boolean().optional(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    "x-connection-token": "xConnectionToken",
-                    remote_data: "remoteData",
-                });
-            });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        id: string;
-        remote_data?: boolean | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        RetrieveAccountingInvoiceRequest
-    > = z
-        .object({
-            xConnectionToken: z.string(),
-            id: z.string(),
-            remoteData: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
+export const RetrieveAccountingInvoiceRequest$inboundSchema: z.ZodType<
+    RetrieveAccountingInvoiceRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        id: z.string(),
+        remote_data: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
         });
+    });
+
+/** @internal */
+export type RetrieveAccountingInvoiceRequest$Outbound = {
+    "x-connection-token": string;
+    id: string;
+    remote_data?: boolean | undefined;
+};
+
+/** @internal */
+export const RetrieveAccountingInvoiceRequest$outboundSchema: z.ZodType<
+    RetrieveAccountingInvoiceRequest$Outbound,
+    z.ZodTypeDef,
+    RetrieveAccountingInvoiceRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        id: z.string(),
+        remoteData: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RetrieveAccountingInvoiceRequest$ {
+    /** @deprecated use `RetrieveAccountingInvoiceRequest$inboundSchema` instead. */
+    export const inboundSchema = RetrieveAccountingInvoiceRequest$inboundSchema;
+    /** @deprecated use `RetrieveAccountingInvoiceRequest$outboundSchema` instead. */
+    export const outboundSchema = RetrieveAccountingInvoiceRequest$outboundSchema;
+    /** @deprecated use `RetrieveAccountingInvoiceRequest$Outbound` instead. */
+    export type Outbound = RetrieveAccountingInvoiceRequest$Outbound;
 }
 
 /** @internal */
+export const RetrieveAccountingInvoiceResponse$inboundSchema: z.ZodType<
+    RetrieveAccountingInvoiceResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        UnifiedAccountingInvoiceOutput:
+            components.UnifiedAccountingInvoiceOutput$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            UnifiedAccountingInvoiceOutput: "unifiedAccountingInvoiceOutput",
+        });
+    });
+
+/** @internal */
+export type RetrieveAccountingInvoiceResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    UnifiedAccountingInvoiceOutput?: components.UnifiedAccountingInvoiceOutput$Outbound | undefined;
+};
+
+/** @internal */
+export const RetrieveAccountingInvoiceResponse$outboundSchema: z.ZodType<
+    RetrieveAccountingInvoiceResponse$Outbound,
+    z.ZodTypeDef,
+    RetrieveAccountingInvoiceResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        unifiedAccountingInvoiceOutput:
+            components.UnifiedAccountingInvoiceOutput$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            unifiedAccountingInvoiceOutput: "UnifiedAccountingInvoiceOutput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveAccountingInvoiceResponse$ {
-    export const inboundSchema: z.ZodType<
-        RetrieveAccountingInvoiceResponse,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            UnifiedAccountingInvoiceOutput:
-                components.UnifiedAccountingInvoiceOutput$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-                UnifiedAccountingInvoiceOutput: "unifiedAccountingInvoiceOutput",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        UnifiedAccountingInvoiceOutput?:
-            | components.UnifiedAccountingInvoiceOutput$.Outbound
-            | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        RetrieveAccountingInvoiceResponse
-    > = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            unifiedAccountingInvoiceOutput:
-                components.UnifiedAccountingInvoiceOutput$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-                unifiedAccountingInvoiceOutput: "UnifiedAccountingInvoiceOutput",
-            });
-        });
+    /** @deprecated use `RetrieveAccountingInvoiceResponse$inboundSchema` instead. */
+    export const inboundSchema = RetrieveAccountingInvoiceResponse$inboundSchema;
+    /** @deprecated use `RetrieveAccountingInvoiceResponse$outboundSchema` instead. */
+    export const outboundSchema = RetrieveAccountingInvoiceResponse$outboundSchema;
+    /** @deprecated use `RetrieveAccountingInvoiceResponse$Outbound` instead. */
+    export type Outbound = RetrieveAccountingInvoiceResponse$Outbound;
 }

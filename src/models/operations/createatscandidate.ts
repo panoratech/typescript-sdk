@@ -24,72 +24,112 @@ export type CreateAtsCandidateResponse = {
 };
 
 /** @internal */
+export const CreateAtsCandidateRequest$inboundSchema: z.ZodType<
+    CreateAtsCandidateRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        remote_data: z.boolean().optional(),
+        UnifiedAtsCandidateInput: components.UnifiedAtsCandidateInput$inboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+            UnifiedAtsCandidateInput: "unifiedAtsCandidateInput",
+        });
+    });
+
+/** @internal */
+export type CreateAtsCandidateRequest$Outbound = {
+    "x-connection-token": string;
+    remote_data?: boolean | undefined;
+    UnifiedAtsCandidateInput: components.UnifiedAtsCandidateInput$Outbound;
+};
+
+/** @internal */
+export const CreateAtsCandidateRequest$outboundSchema: z.ZodType<
+    CreateAtsCandidateRequest$Outbound,
+    z.ZodTypeDef,
+    CreateAtsCandidateRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        remoteData: z.boolean().optional(),
+        unifiedAtsCandidateInput: components.UnifiedAtsCandidateInput$outboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+            unifiedAtsCandidateInput: "UnifiedAtsCandidateInput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateAtsCandidateRequest$ {
-    export const inboundSchema: z.ZodType<CreateAtsCandidateRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            "x-connection-token": z.string(),
-            remote_data: z.boolean().optional(),
-            UnifiedAtsCandidateInput: components.UnifiedAtsCandidateInput$.inboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-                UnifiedAtsCandidateInput: "unifiedAtsCandidateInput",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        remote_data?: boolean | undefined;
-        UnifiedAtsCandidateInput: components.UnifiedAtsCandidateInput$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateAtsCandidateRequest> = z
-        .object({
-            xConnectionToken: z.string(),
-            remoteData: z.boolean().optional(),
-            unifiedAtsCandidateInput: components.UnifiedAtsCandidateInput$.outboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-                unifiedAtsCandidateInput: "UnifiedAtsCandidateInput",
-            });
-        });
+    /** @deprecated use `CreateAtsCandidateRequest$inboundSchema` instead. */
+    export const inboundSchema = CreateAtsCandidateRequest$inboundSchema;
+    /** @deprecated use `CreateAtsCandidateRequest$outboundSchema` instead. */
+    export const outboundSchema = CreateAtsCandidateRequest$outboundSchema;
+    /** @deprecated use `CreateAtsCandidateRequest$Outbound` instead. */
+    export type Outbound = CreateAtsCandidateRequest$Outbound;
 }
 
 /** @internal */
+export const CreateAtsCandidateResponse$inboundSchema: z.ZodType<
+    CreateAtsCandidateResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        UnifiedAtsCandidateOutput: components.UnifiedAtsCandidateOutput$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            UnifiedAtsCandidateOutput: "unifiedAtsCandidateOutput",
+        });
+    });
+
+/** @internal */
+export type CreateAtsCandidateResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    UnifiedAtsCandidateOutput?: components.UnifiedAtsCandidateOutput$Outbound | undefined;
+};
+
+/** @internal */
+export const CreateAtsCandidateResponse$outboundSchema: z.ZodType<
+    CreateAtsCandidateResponse$Outbound,
+    z.ZodTypeDef,
+    CreateAtsCandidateResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        unifiedAtsCandidateOutput: components.UnifiedAtsCandidateOutput$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            unifiedAtsCandidateOutput: "UnifiedAtsCandidateOutput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateAtsCandidateResponse$ {
-    export const inboundSchema: z.ZodType<CreateAtsCandidateResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            UnifiedAtsCandidateOutput:
-                components.UnifiedAtsCandidateOutput$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-                UnifiedAtsCandidateOutput: "unifiedAtsCandidateOutput",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        UnifiedAtsCandidateOutput?: components.UnifiedAtsCandidateOutput$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateAtsCandidateResponse> = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            unifiedAtsCandidateOutput:
-                components.UnifiedAtsCandidateOutput$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-                unifiedAtsCandidateOutput: "UnifiedAtsCandidateOutput",
-            });
-        });
+    /** @deprecated use `CreateAtsCandidateResponse$inboundSchema` instead. */
+    export const inboundSchema = CreateAtsCandidateResponse$inboundSchema;
+    /** @deprecated use `CreateAtsCandidateResponse$outboundSchema` instead. */
+    export const outboundSchema = CreateAtsCandidateResponse$outboundSchema;
+    /** @deprecated use `CreateAtsCandidateResponse$Outbound` instead. */
+    export type Outbound = CreateAtsCandidateResponse$Outbound;
 }

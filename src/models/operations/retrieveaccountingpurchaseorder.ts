@@ -29,88 +29,114 @@ export type RetrieveAccountingPurchaseOrderResponse = {
 };
 
 /** @internal */
+export const RetrieveAccountingPurchaseOrderRequest$inboundSchema: z.ZodType<
+    RetrieveAccountingPurchaseOrderRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        id: z.string(),
+        remote_data: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+        });
+    });
+
+/** @internal */
+export type RetrieveAccountingPurchaseOrderRequest$Outbound = {
+    "x-connection-token": string;
+    id: string;
+    remote_data?: boolean | undefined;
+};
+
+/** @internal */
+export const RetrieveAccountingPurchaseOrderRequest$outboundSchema: z.ZodType<
+    RetrieveAccountingPurchaseOrderRequest$Outbound,
+    z.ZodTypeDef,
+    RetrieveAccountingPurchaseOrderRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        id: z.string(),
+        remoteData: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveAccountingPurchaseOrderRequest$ {
-    export const inboundSchema: z.ZodType<
-        RetrieveAccountingPurchaseOrderRequest,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            "x-connection-token": z.string(),
-            id: z.string(),
-            remote_data: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        id: string;
-        remote_data?: boolean | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        RetrieveAccountingPurchaseOrderRequest
-    > = z
-        .object({
-            xConnectionToken: z.string(),
-            id: z.string(),
-            remoteData: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
-        });
+    /** @deprecated use `RetrieveAccountingPurchaseOrderRequest$inboundSchema` instead. */
+    export const inboundSchema = RetrieveAccountingPurchaseOrderRequest$inboundSchema;
+    /** @deprecated use `RetrieveAccountingPurchaseOrderRequest$outboundSchema` instead. */
+    export const outboundSchema = RetrieveAccountingPurchaseOrderRequest$outboundSchema;
+    /** @deprecated use `RetrieveAccountingPurchaseOrderRequest$Outbound` instead. */
+    export type Outbound = RetrieveAccountingPurchaseOrderRequest$Outbound;
 }
 
 /** @internal */
+export const RetrieveAccountingPurchaseOrderResponse$inboundSchema: z.ZodType<
+    RetrieveAccountingPurchaseOrderResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        UnifiedAccountingPurchaseorderOutput:
+            components.UnifiedAccountingPurchaseorderOutput$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            UnifiedAccountingPurchaseorderOutput: "unifiedAccountingPurchaseorderOutput",
+        });
+    });
+
+/** @internal */
+export type RetrieveAccountingPurchaseOrderResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    UnifiedAccountingPurchaseorderOutput?:
+        | components.UnifiedAccountingPurchaseorderOutput$Outbound
+        | undefined;
+};
+
+/** @internal */
+export const RetrieveAccountingPurchaseOrderResponse$outboundSchema: z.ZodType<
+    RetrieveAccountingPurchaseOrderResponse$Outbound,
+    z.ZodTypeDef,
+    RetrieveAccountingPurchaseOrderResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        unifiedAccountingPurchaseorderOutput:
+            components.UnifiedAccountingPurchaseorderOutput$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            unifiedAccountingPurchaseorderOutput: "UnifiedAccountingPurchaseorderOutput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveAccountingPurchaseOrderResponse$ {
-    export const inboundSchema: z.ZodType<
-        RetrieveAccountingPurchaseOrderResponse,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            UnifiedAccountingPurchaseorderOutput:
-                components.UnifiedAccountingPurchaseorderOutput$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-                UnifiedAccountingPurchaseorderOutput: "unifiedAccountingPurchaseorderOutput",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        UnifiedAccountingPurchaseorderOutput?:
-            | components.UnifiedAccountingPurchaseorderOutput$.Outbound
-            | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        RetrieveAccountingPurchaseOrderResponse
-    > = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            unifiedAccountingPurchaseorderOutput:
-                components.UnifiedAccountingPurchaseorderOutput$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-                unifiedAccountingPurchaseorderOutput: "UnifiedAccountingPurchaseorderOutput",
-            });
-        });
+    /** @deprecated use `RetrieveAccountingPurchaseOrderResponse$inboundSchema` instead. */
+    export const inboundSchema = RetrieveAccountingPurchaseOrderResponse$inboundSchema;
+    /** @deprecated use `RetrieveAccountingPurchaseOrderResponse$outboundSchema` instead. */
+    export const outboundSchema = RetrieveAccountingPurchaseOrderResponse$outboundSchema;
+    /** @deprecated use `RetrieveAccountingPurchaseOrderResponse$Outbound` instead. */
+    export type Outbound = RetrieveAccountingPurchaseOrderResponse$Outbound;
 }

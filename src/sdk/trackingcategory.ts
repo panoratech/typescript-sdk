@@ -3,7 +3,7 @@
  */
 
 import { SDKHooks } from "../hooks/hooks.js";
-import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config.js";
+import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
 import {
     encodeFormQuery as encodeFormQuery$,
     encodeSimple as encodeSimple$,
@@ -48,14 +48,11 @@ export class Trackingcategory extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.ListAccountingTrackingCategorysResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
             (value$) =>
-                operations.ListAccountingTrackingCategorysRequest$.outboundSchema.parse(value$),
+                operations.ListAccountingTrackingCategorysRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -68,13 +65,14 @@ export class Trackingcategory extends ClientSDK {
             remote_data: payload$.remote_data,
         });
 
-        headers$.set(
-            "x-connection-token",
-            encodeSimple$("x-connection-token", payload$["x-connection-token"], {
-                explode: false,
-                charEncoding: "none",
-            })
-        );
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-connection-token": encodeSimple$(
+                "x-connection-token",
+                payload$["x-connection-token"],
+                { explode: false, charEncoding: "none" }
+            ),
+        });
 
         let security$;
         if (typeof this.options$.bearer === "function") {
@@ -91,7 +89,6 @@ export class Trackingcategory extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -101,18 +98,26 @@ export class Trackingcategory extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
         const [result$] = await this.matcher<operations.ListAccountingTrackingCategorysResponse>()
-            .json(200, operations.ListAccountingTrackingCategorysResponse$, { key: "object" })
+            .json(200, operations.ListAccountingTrackingCategorysResponse$inboundSchema, {
+                key: "object",
+            })
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 
@@ -130,14 +135,11 @@ export class Trackingcategory extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.RetrieveAccountingTrackingCategoryResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
             (value$) =>
-                operations.RetrieveAccountingTrackingCategoryRequest$.outboundSchema.parse(value$),
+                operations.RetrieveAccountingTrackingCategoryRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -151,13 +153,14 @@ export class Trackingcategory extends ClientSDK {
             remote_data: payload$.remote_data,
         });
 
-        headers$.set(
-            "x-connection-token",
-            encodeSimple$("x-connection-token", payload$["x-connection-token"], {
-                explode: false,
-                charEncoding: "none",
-            })
-        );
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-connection-token": encodeSimple$(
+                "x-connection-token",
+                payload$["x-connection-token"],
+                { explode: false, charEncoding: "none" }
+            ),
+        });
 
         let security$;
         if (typeof this.options$.bearer === "function") {
@@ -174,7 +177,6 @@ export class Trackingcategory extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -184,11 +186,17 @@ export class Trackingcategory extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
@@ -196,7 +204,7 @@ export class Trackingcategory extends ClientSDK {
 
         const [result$] =
             await this.matcher<operations.RetrieveAccountingTrackingCategoryResponse>()
-                .json(200, operations.RetrieveAccountingTrackingCategoryResponse$, {
+                .json(200, operations.RetrieveAccountingTrackingCategoryResponse$inboundSchema, {
                     key: "UnifiedAccountingTrackingcategoryOutput",
                 })
                 .fail(["4XX", "5XX"])

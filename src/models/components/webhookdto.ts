@@ -20,22 +20,36 @@ export type WebhookDto = {
 };
 
 /** @internal */
+export const WebhookDto$inboundSchema: z.ZodType<WebhookDto, z.ZodTypeDef, unknown> = z.object({
+    url: z.string(),
+    description: z.string(),
+    scope: z.array(z.string()),
+});
+
+/** @internal */
+export type WebhookDto$Outbound = {
+    url: string;
+    description: string;
+    scope: Array<string>;
+};
+
+/** @internal */
+export const WebhookDto$outboundSchema: z.ZodType<WebhookDto$Outbound, z.ZodTypeDef, WebhookDto> =
+    z.object({
+        url: z.string(),
+        description: z.string(),
+        scope: z.array(z.string()),
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace WebhookDto$ {
-    export const inboundSchema: z.ZodType<WebhookDto, z.ZodTypeDef, unknown> = z.object({
-        url: z.string(),
-        description: z.string(),
-        scope: z.array(z.string()),
-    });
-
-    export type Outbound = {
-        url: string;
-        description: string;
-        scope: Array<string>;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, WebhookDto> = z.object({
-        url: z.string(),
-        description: z.string(),
-        scope: z.array(z.string()),
-    });
+    /** @deprecated use `WebhookDto$inboundSchema` instead. */
+    export const inboundSchema = WebhookDto$inboundSchema;
+    /** @deprecated use `WebhookDto$outboundSchema` instead. */
+    export const outboundSchema = WebhookDto$outboundSchema;
+    /** @deprecated use `WebhookDto$Outbound` instead. */
+    export type Outbound = WebhookDto$Outbound;
 }

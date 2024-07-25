@@ -27,71 +27,110 @@ export type RetrieveHrisDependentResponse = {
 };
 
 /** @internal */
+export const RetrieveHrisDependentRequest$inboundSchema: z.ZodType<
+    RetrieveHrisDependentRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        id: z.string(),
+        remote_data: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+        });
+    });
+
+/** @internal */
+export type RetrieveHrisDependentRequest$Outbound = {
+    "x-connection-token": string;
+    id: string;
+    remote_data?: boolean | undefined;
+};
+
+/** @internal */
+export const RetrieveHrisDependentRequest$outboundSchema: z.ZodType<
+    RetrieveHrisDependentRequest$Outbound,
+    z.ZodTypeDef,
+    RetrieveHrisDependentRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        id: z.string(),
+        remoteData: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveHrisDependentRequest$ {
-    export const inboundSchema: z.ZodType<RetrieveHrisDependentRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            "x-connection-token": z.string(),
-            id: z.string(),
-            remote_data: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        id: string;
-        remote_data?: boolean | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RetrieveHrisDependentRequest> = z
-        .object({
-            xConnectionToken: z.string(),
-            id: z.string(),
-            remoteData: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
-        });
+    /** @deprecated use `RetrieveHrisDependentRequest$inboundSchema` instead. */
+    export const inboundSchema = RetrieveHrisDependentRequest$inboundSchema;
+    /** @deprecated use `RetrieveHrisDependentRequest$outboundSchema` instead. */
+    export const outboundSchema = RetrieveHrisDependentRequest$outboundSchema;
+    /** @deprecated use `RetrieveHrisDependentRequest$Outbound` instead. */
+    export type Outbound = RetrieveHrisDependentRequest$Outbound;
 }
 
 /** @internal */
-export namespace RetrieveHrisDependentResponse$ {
-    export const inboundSchema: z.ZodType<RetrieveHrisDependentResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            UnifiedHrisDependentOutput:
-                components.UnifiedHrisDependentOutput$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-                UnifiedHrisDependentOutput: "unifiedHrisDependentOutput",
-            });
+export const RetrieveHrisDependentResponse$inboundSchema: z.ZodType<
+    RetrieveHrisDependentResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        UnifiedHrisDependentOutput: components.UnifiedHrisDependentOutput$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            UnifiedHrisDependentOutput: "unifiedHrisDependentOutput",
         });
+    });
 
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        UnifiedHrisDependentOutput?: components.UnifiedHrisDependentOutput$.Outbound | undefined;
-    };
+/** @internal */
+export type RetrieveHrisDependentResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    UnifiedHrisDependentOutput?: components.UnifiedHrisDependentOutput$Outbound | undefined;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RetrieveHrisDependentResponse> =
-        z
-            .object({
-                httpMeta: components.HTTPMetadata$.outboundSchema,
-                unifiedHrisDependentOutput:
-                    components.UnifiedHrisDependentOutput$.outboundSchema.optional(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    httpMeta: "HttpMeta",
-                    unifiedHrisDependentOutput: "UnifiedHrisDependentOutput",
-                });
-            });
+/** @internal */
+export const RetrieveHrisDependentResponse$outboundSchema: z.ZodType<
+    RetrieveHrisDependentResponse$Outbound,
+    z.ZodTypeDef,
+    RetrieveHrisDependentResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        unifiedHrisDependentOutput: components.UnifiedHrisDependentOutput$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            unifiedHrisDependentOutput: "UnifiedHrisDependentOutput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RetrieveHrisDependentResponse$ {
+    /** @deprecated use `RetrieveHrisDependentResponse$inboundSchema` instead. */
+    export const inboundSchema = RetrieveHrisDependentResponse$inboundSchema;
+    /** @deprecated use `RetrieveHrisDependentResponse$outboundSchema` instead. */
+    export const outboundSchema = RetrieveHrisDependentResponse$outboundSchema;
+    /** @deprecated use `RetrieveHrisDependentResponse$Outbound` instead. */
+    export type Outbound = RetrieveHrisDependentResponse$Outbound;
 }

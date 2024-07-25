@@ -27,88 +27,114 @@ export type RetrieveAccountingTransactionResponse = {
 };
 
 /** @internal */
+export const RetrieveAccountingTransactionRequest$inboundSchema: z.ZodType<
+    RetrieveAccountingTransactionRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        id: z.string(),
+        remote_data: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+        });
+    });
+
+/** @internal */
+export type RetrieveAccountingTransactionRequest$Outbound = {
+    "x-connection-token": string;
+    id: string;
+    remote_data?: boolean | undefined;
+};
+
+/** @internal */
+export const RetrieveAccountingTransactionRequest$outboundSchema: z.ZodType<
+    RetrieveAccountingTransactionRequest$Outbound,
+    z.ZodTypeDef,
+    RetrieveAccountingTransactionRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        id: z.string(),
+        remoteData: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveAccountingTransactionRequest$ {
-    export const inboundSchema: z.ZodType<
-        RetrieveAccountingTransactionRequest,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            "x-connection-token": z.string(),
-            id: z.string(),
-            remote_data: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        id: string;
-        remote_data?: boolean | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        RetrieveAccountingTransactionRequest
-    > = z
-        .object({
-            xConnectionToken: z.string(),
-            id: z.string(),
-            remoteData: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
-        });
+    /** @deprecated use `RetrieveAccountingTransactionRequest$inboundSchema` instead. */
+    export const inboundSchema = RetrieveAccountingTransactionRequest$inboundSchema;
+    /** @deprecated use `RetrieveAccountingTransactionRequest$outboundSchema` instead. */
+    export const outboundSchema = RetrieveAccountingTransactionRequest$outboundSchema;
+    /** @deprecated use `RetrieveAccountingTransactionRequest$Outbound` instead. */
+    export type Outbound = RetrieveAccountingTransactionRequest$Outbound;
 }
 
 /** @internal */
+export const RetrieveAccountingTransactionResponse$inboundSchema: z.ZodType<
+    RetrieveAccountingTransactionResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        UnifiedAccountingTransactionOutput:
+            components.UnifiedAccountingTransactionOutput$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            UnifiedAccountingTransactionOutput: "unifiedAccountingTransactionOutput",
+        });
+    });
+
+/** @internal */
+export type RetrieveAccountingTransactionResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    UnifiedAccountingTransactionOutput?:
+        | components.UnifiedAccountingTransactionOutput$Outbound
+        | undefined;
+};
+
+/** @internal */
+export const RetrieveAccountingTransactionResponse$outboundSchema: z.ZodType<
+    RetrieveAccountingTransactionResponse$Outbound,
+    z.ZodTypeDef,
+    RetrieveAccountingTransactionResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        unifiedAccountingTransactionOutput:
+            components.UnifiedAccountingTransactionOutput$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            unifiedAccountingTransactionOutput: "UnifiedAccountingTransactionOutput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveAccountingTransactionResponse$ {
-    export const inboundSchema: z.ZodType<
-        RetrieveAccountingTransactionResponse,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            UnifiedAccountingTransactionOutput:
-                components.UnifiedAccountingTransactionOutput$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-                UnifiedAccountingTransactionOutput: "unifiedAccountingTransactionOutput",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        UnifiedAccountingTransactionOutput?:
-            | components.UnifiedAccountingTransactionOutput$.Outbound
-            | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        RetrieveAccountingTransactionResponse
-    > = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            unifiedAccountingTransactionOutput:
-                components.UnifiedAccountingTransactionOutput$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-                unifiedAccountingTransactionOutput: "UnifiedAccountingTransactionOutput",
-            });
-        });
+    /** @deprecated use `RetrieveAccountingTransactionResponse$inboundSchema` instead. */
+    export const inboundSchema = RetrieveAccountingTransactionResponse$inboundSchema;
+    /** @deprecated use `RetrieveAccountingTransactionResponse$outboundSchema` instead. */
+    export const outboundSchema = RetrieveAccountingTransactionResponse$outboundSchema;
+    /** @deprecated use `RetrieveAccountingTransactionResponse$Outbound` instead. */
+    export type Outbound = RetrieveAccountingTransactionResponse$Outbound;
 }

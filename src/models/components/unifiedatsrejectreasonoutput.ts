@@ -33,122 +33,195 @@ export type UnifiedAtsRejectreasonOutput = {
 };
 
 /** @internal */
+export const UnifiedAtsRejectreasonOutputFieldMappings$inboundSchema: z.ZodType<
+    UnifiedAtsRejectreasonOutputFieldMappings,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedAtsRejectreasonOutputFieldMappings$Outbound = {};
+
+/** @internal */
+export const UnifiedAtsRejectreasonOutputFieldMappings$outboundSchema: z.ZodType<
+    UnifiedAtsRejectreasonOutputFieldMappings$Outbound,
+    z.ZodTypeDef,
+    UnifiedAtsRejectreasonOutputFieldMappings
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedAtsRejectreasonOutputFieldMappings$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedAtsRejectreasonOutputFieldMappings,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedAtsRejectreasonOutputFieldMappings
-    > = z.object({});
+    /** @deprecated use `UnifiedAtsRejectreasonOutputFieldMappings$inboundSchema` instead. */
+    export const inboundSchema = UnifiedAtsRejectreasonOutputFieldMappings$inboundSchema;
+    /** @deprecated use `UnifiedAtsRejectreasonOutputFieldMappings$outboundSchema` instead. */
+    export const outboundSchema = UnifiedAtsRejectreasonOutputFieldMappings$outboundSchema;
+    /** @deprecated use `UnifiedAtsRejectreasonOutputFieldMappings$Outbound` instead. */
+    export type Outbound = UnifiedAtsRejectreasonOutputFieldMappings$Outbound;
 }
 
 /** @internal */
+export const UnifiedAtsRejectreasonOutputRemoteData$inboundSchema: z.ZodType<
+    UnifiedAtsRejectreasonOutputRemoteData,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedAtsRejectreasonOutputRemoteData$Outbound = {};
+
+/** @internal */
+export const UnifiedAtsRejectreasonOutputRemoteData$outboundSchema: z.ZodType<
+    UnifiedAtsRejectreasonOutputRemoteData$Outbound,
+    z.ZodTypeDef,
+    UnifiedAtsRejectreasonOutputRemoteData
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedAtsRejectreasonOutputRemoteData$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedAtsRejectreasonOutputRemoteData,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedAtsRejectreasonOutputRemoteData
-    > = z.object({});
+    /** @deprecated use `UnifiedAtsRejectreasonOutputRemoteData$inboundSchema` instead. */
+    export const inboundSchema = UnifiedAtsRejectreasonOutputRemoteData$inboundSchema;
+    /** @deprecated use `UnifiedAtsRejectreasonOutputRemoteData$outboundSchema` instead. */
+    export const outboundSchema = UnifiedAtsRejectreasonOutputRemoteData$outboundSchema;
+    /** @deprecated use `UnifiedAtsRejectreasonOutputRemoteData$Outbound` instead. */
+    export type Outbound = UnifiedAtsRejectreasonOutputRemoteData$Outbound;
 }
 
 /** @internal */
+export const UnifiedAtsRejectreasonOutputCreatedAt$inboundSchema: z.ZodType<
+    UnifiedAtsRejectreasonOutputCreatedAt,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedAtsRejectreasonOutputCreatedAt$Outbound = {};
+
+/** @internal */
+export const UnifiedAtsRejectreasonOutputCreatedAt$outboundSchema: z.ZodType<
+    UnifiedAtsRejectreasonOutputCreatedAt$Outbound,
+    z.ZodTypeDef,
+    UnifiedAtsRejectreasonOutputCreatedAt
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedAtsRejectreasonOutputCreatedAt$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedAtsRejectreasonOutputCreatedAt,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedAtsRejectreasonOutputCreatedAt
-    > = z.object({});
+    /** @deprecated use `UnifiedAtsRejectreasonOutputCreatedAt$inboundSchema` instead. */
+    export const inboundSchema = UnifiedAtsRejectreasonOutputCreatedAt$inboundSchema;
+    /** @deprecated use `UnifiedAtsRejectreasonOutputCreatedAt$outboundSchema` instead. */
+    export const outboundSchema = UnifiedAtsRejectreasonOutputCreatedAt$outboundSchema;
+    /** @deprecated use `UnifiedAtsRejectreasonOutputCreatedAt$Outbound` instead. */
+    export type Outbound = UnifiedAtsRejectreasonOutputCreatedAt$Outbound;
 }
 
 /** @internal */
+export const UnifiedAtsRejectreasonOutputModifiedAt$inboundSchema: z.ZodType<
+    UnifiedAtsRejectreasonOutputModifiedAt,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedAtsRejectreasonOutputModifiedAt$Outbound = {};
+
+/** @internal */
+export const UnifiedAtsRejectreasonOutputModifiedAt$outboundSchema: z.ZodType<
+    UnifiedAtsRejectreasonOutputModifiedAt$Outbound,
+    z.ZodTypeDef,
+    UnifiedAtsRejectreasonOutputModifiedAt
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedAtsRejectreasonOutputModifiedAt$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedAtsRejectreasonOutputModifiedAt,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedAtsRejectreasonOutputModifiedAt
-    > = z.object({});
+    /** @deprecated use `UnifiedAtsRejectreasonOutputModifiedAt$inboundSchema` instead. */
+    export const inboundSchema = UnifiedAtsRejectreasonOutputModifiedAt$inboundSchema;
+    /** @deprecated use `UnifiedAtsRejectreasonOutputModifiedAt$outboundSchema` instead. */
+    export const outboundSchema = UnifiedAtsRejectreasonOutputModifiedAt$outboundSchema;
+    /** @deprecated use `UnifiedAtsRejectreasonOutputModifiedAt$Outbound` instead. */
+    export type Outbound = UnifiedAtsRejectreasonOutputModifiedAt$Outbound;
 }
 
 /** @internal */
+export const UnifiedAtsRejectreasonOutput$inboundSchema: z.ZodType<
+    UnifiedAtsRejectreasonOutput,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        name: z.string().optional(),
+        field_mappings: z.lazy(() => UnifiedAtsRejectreasonOutputFieldMappings$inboundSchema),
+        id: z.string().optional(),
+        remote_id: z.string().optional(),
+        remote_data: z.lazy(() => UnifiedAtsRejectreasonOutputRemoteData$inboundSchema),
+        created_at: z.lazy(() => UnifiedAtsRejectreasonOutputCreatedAt$inboundSchema),
+        modified_at: z.lazy(() => UnifiedAtsRejectreasonOutputModifiedAt$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            field_mappings: "fieldMappings",
+            remote_id: "remoteId",
+            remote_data: "remoteData",
+            created_at: "createdAt",
+            modified_at: "modifiedAt",
+        });
+    });
+
+/** @internal */
+export type UnifiedAtsRejectreasonOutput$Outbound = {
+    name?: string | undefined;
+    field_mappings: UnifiedAtsRejectreasonOutputFieldMappings$Outbound;
+    id?: string | undefined;
+    remote_id?: string | undefined;
+    remote_data: UnifiedAtsRejectreasonOutputRemoteData$Outbound;
+    created_at: UnifiedAtsRejectreasonOutputCreatedAt$Outbound;
+    modified_at: UnifiedAtsRejectreasonOutputModifiedAt$Outbound;
+};
+
+/** @internal */
+export const UnifiedAtsRejectreasonOutput$outboundSchema: z.ZodType<
+    UnifiedAtsRejectreasonOutput$Outbound,
+    z.ZodTypeDef,
+    UnifiedAtsRejectreasonOutput
+> = z
+    .object({
+        name: z.string().optional(),
+        fieldMappings: z.lazy(() => UnifiedAtsRejectreasonOutputFieldMappings$outboundSchema),
+        id: z.string().optional(),
+        remoteId: z.string().optional(),
+        remoteData: z.lazy(() => UnifiedAtsRejectreasonOutputRemoteData$outboundSchema),
+        createdAt: z.lazy(() => UnifiedAtsRejectreasonOutputCreatedAt$outboundSchema),
+        modifiedAt: z.lazy(() => UnifiedAtsRejectreasonOutputModifiedAt$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            fieldMappings: "field_mappings",
+            remoteId: "remote_id",
+            remoteData: "remote_data",
+            createdAt: "created_at",
+            modifiedAt: "modified_at",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedAtsRejectreasonOutput$ {
-    export const inboundSchema: z.ZodType<UnifiedAtsRejectreasonOutput, z.ZodTypeDef, unknown> = z
-        .object({
-            name: z.string().optional(),
-            field_mappings: z.lazy(() => UnifiedAtsRejectreasonOutputFieldMappings$.inboundSchema),
-            id: z.string().optional(),
-            remote_id: z.string().optional(),
-            remote_data: z.lazy(() => UnifiedAtsRejectreasonOutputRemoteData$.inboundSchema),
-            created_at: z.lazy(() => UnifiedAtsRejectreasonOutputCreatedAt$.inboundSchema),
-            modified_at: z.lazy(() => UnifiedAtsRejectreasonOutputModifiedAt$.inboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                field_mappings: "fieldMappings",
-                remote_id: "remoteId",
-                remote_data: "remoteData",
-                created_at: "createdAt",
-                modified_at: "modifiedAt",
-            });
-        });
-
-    export type Outbound = {
-        name?: string | undefined;
-        field_mappings: UnifiedAtsRejectreasonOutputFieldMappings$.Outbound;
-        id?: string | undefined;
-        remote_id?: string | undefined;
-        remote_data: UnifiedAtsRejectreasonOutputRemoteData$.Outbound;
-        created_at: UnifiedAtsRejectreasonOutputCreatedAt$.Outbound;
-        modified_at: UnifiedAtsRejectreasonOutputModifiedAt$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnifiedAtsRejectreasonOutput> = z
-        .object({
-            name: z.string().optional(),
-            fieldMappings: z.lazy(() => UnifiedAtsRejectreasonOutputFieldMappings$.outboundSchema),
-            id: z.string().optional(),
-            remoteId: z.string().optional(),
-            remoteData: z.lazy(() => UnifiedAtsRejectreasonOutputRemoteData$.outboundSchema),
-            createdAt: z.lazy(() => UnifiedAtsRejectreasonOutputCreatedAt$.outboundSchema),
-            modifiedAt: z.lazy(() => UnifiedAtsRejectreasonOutputModifiedAt$.outboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                fieldMappings: "field_mappings",
-                remoteId: "remote_id",
-                remoteData: "remote_data",
-                createdAt: "created_at",
-                modifiedAt: "modified_at",
-            });
-        });
+    /** @deprecated use `UnifiedAtsRejectreasonOutput$inboundSchema` instead. */
+    export const inboundSchema = UnifiedAtsRejectreasonOutput$inboundSchema;
+    /** @deprecated use `UnifiedAtsRejectreasonOutput$outboundSchema` instead. */
+    export const outboundSchema = UnifiedAtsRejectreasonOutput$outboundSchema;
+    /** @deprecated use `UnifiedAtsRejectreasonOutput$Outbound` instead. */
+    export type Outbound = UnifiedAtsRejectreasonOutput$Outbound;
 }

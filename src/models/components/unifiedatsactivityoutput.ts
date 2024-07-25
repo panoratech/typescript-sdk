@@ -53,150 +53,223 @@ export type UnifiedAtsActivityOutput = {
 };
 
 /** @internal */
+export const UnifiedAtsActivityOutputFieldMappings$inboundSchema: z.ZodType<
+    UnifiedAtsActivityOutputFieldMappings,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedAtsActivityOutputFieldMappings$Outbound = {};
+
+/** @internal */
+export const UnifiedAtsActivityOutputFieldMappings$outboundSchema: z.ZodType<
+    UnifiedAtsActivityOutputFieldMappings$Outbound,
+    z.ZodTypeDef,
+    UnifiedAtsActivityOutputFieldMappings
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedAtsActivityOutputFieldMappings$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedAtsActivityOutputFieldMappings,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedAtsActivityOutputFieldMappings
-    > = z.object({});
+    /** @deprecated use `UnifiedAtsActivityOutputFieldMappings$inboundSchema` instead. */
+    export const inboundSchema = UnifiedAtsActivityOutputFieldMappings$inboundSchema;
+    /** @deprecated use `UnifiedAtsActivityOutputFieldMappings$outboundSchema` instead. */
+    export const outboundSchema = UnifiedAtsActivityOutputFieldMappings$outboundSchema;
+    /** @deprecated use `UnifiedAtsActivityOutputFieldMappings$Outbound` instead. */
+    export type Outbound = UnifiedAtsActivityOutputFieldMappings$Outbound;
 }
 
 /** @internal */
+export const UnifiedAtsActivityOutputRemoteData$inboundSchema: z.ZodType<
+    UnifiedAtsActivityOutputRemoteData,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedAtsActivityOutputRemoteData$Outbound = {};
+
+/** @internal */
+export const UnifiedAtsActivityOutputRemoteData$outboundSchema: z.ZodType<
+    UnifiedAtsActivityOutputRemoteData$Outbound,
+    z.ZodTypeDef,
+    UnifiedAtsActivityOutputRemoteData
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedAtsActivityOutputRemoteData$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedAtsActivityOutputRemoteData,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedAtsActivityOutputRemoteData
-    > = z.object({});
+    /** @deprecated use `UnifiedAtsActivityOutputRemoteData$inboundSchema` instead. */
+    export const inboundSchema = UnifiedAtsActivityOutputRemoteData$inboundSchema;
+    /** @deprecated use `UnifiedAtsActivityOutputRemoteData$outboundSchema` instead. */
+    export const outboundSchema = UnifiedAtsActivityOutputRemoteData$outboundSchema;
+    /** @deprecated use `UnifiedAtsActivityOutputRemoteData$Outbound` instead. */
+    export type Outbound = UnifiedAtsActivityOutputRemoteData$Outbound;
 }
 
 /** @internal */
+export const UnifiedAtsActivityOutputCreatedAt$inboundSchema: z.ZodType<
+    UnifiedAtsActivityOutputCreatedAt,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedAtsActivityOutputCreatedAt$Outbound = {};
+
+/** @internal */
+export const UnifiedAtsActivityOutputCreatedAt$outboundSchema: z.ZodType<
+    UnifiedAtsActivityOutputCreatedAt$Outbound,
+    z.ZodTypeDef,
+    UnifiedAtsActivityOutputCreatedAt
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedAtsActivityOutputCreatedAt$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedAtsActivityOutputCreatedAt,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedAtsActivityOutputCreatedAt
-    > = z.object({});
+    /** @deprecated use `UnifiedAtsActivityOutputCreatedAt$inboundSchema` instead. */
+    export const inboundSchema = UnifiedAtsActivityOutputCreatedAt$inboundSchema;
+    /** @deprecated use `UnifiedAtsActivityOutputCreatedAt$outboundSchema` instead. */
+    export const outboundSchema = UnifiedAtsActivityOutputCreatedAt$outboundSchema;
+    /** @deprecated use `UnifiedAtsActivityOutputCreatedAt$Outbound` instead. */
+    export type Outbound = UnifiedAtsActivityOutputCreatedAt$Outbound;
 }
 
 /** @internal */
+export const UnifiedAtsActivityOutputModifiedAt$inboundSchema: z.ZodType<
+    UnifiedAtsActivityOutputModifiedAt,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedAtsActivityOutputModifiedAt$Outbound = {};
+
+/** @internal */
+export const UnifiedAtsActivityOutputModifiedAt$outboundSchema: z.ZodType<
+    UnifiedAtsActivityOutputModifiedAt$Outbound,
+    z.ZodTypeDef,
+    UnifiedAtsActivityOutputModifiedAt
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedAtsActivityOutputModifiedAt$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedAtsActivityOutputModifiedAt,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedAtsActivityOutputModifiedAt
-    > = z.object({});
+    /** @deprecated use `UnifiedAtsActivityOutputModifiedAt$inboundSchema` instead. */
+    export const inboundSchema = UnifiedAtsActivityOutputModifiedAt$inboundSchema;
+    /** @deprecated use `UnifiedAtsActivityOutputModifiedAt$outboundSchema` instead. */
+    export const outboundSchema = UnifiedAtsActivityOutputModifiedAt$outboundSchema;
+    /** @deprecated use `UnifiedAtsActivityOutputModifiedAt$Outbound` instead. */
+    export type Outbound = UnifiedAtsActivityOutputModifiedAt$Outbound;
 }
 
 /** @internal */
+export const UnifiedAtsActivityOutput$inboundSchema: z.ZodType<
+    UnifiedAtsActivityOutput,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        activity_type: z.string().optional(),
+        subject: z.string().optional(),
+        body: z.string().optional(),
+        visibility: z.string().optional(),
+        candidate_id: z.string().optional(),
+        remote_created_at: z
+            .string()
+            .datetime({ offset: true })
+            .transform((v) => new Date(v))
+            .optional(),
+        field_mappings: z.lazy(() => UnifiedAtsActivityOutputFieldMappings$inboundSchema),
+        id: z.string().optional(),
+        remote_id: z.string().optional(),
+        remote_data: z.lazy(() => UnifiedAtsActivityOutputRemoteData$inboundSchema),
+        created_at: z.lazy(() => UnifiedAtsActivityOutputCreatedAt$inboundSchema),
+        modified_at: z.lazy(() => UnifiedAtsActivityOutputModifiedAt$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            activity_type: "activityType",
+            candidate_id: "candidateId",
+            remote_created_at: "remoteCreatedAt",
+            field_mappings: "fieldMappings",
+            remote_id: "remoteId",
+            remote_data: "remoteData",
+            created_at: "createdAt",
+            modified_at: "modifiedAt",
+        });
+    });
+
+/** @internal */
+export type UnifiedAtsActivityOutput$Outbound = {
+    activity_type?: string | undefined;
+    subject?: string | undefined;
+    body?: string | undefined;
+    visibility?: string | undefined;
+    candidate_id?: string | undefined;
+    remote_created_at?: string | undefined;
+    field_mappings: UnifiedAtsActivityOutputFieldMappings$Outbound;
+    id?: string | undefined;
+    remote_id?: string | undefined;
+    remote_data: UnifiedAtsActivityOutputRemoteData$Outbound;
+    created_at: UnifiedAtsActivityOutputCreatedAt$Outbound;
+    modified_at: UnifiedAtsActivityOutputModifiedAt$Outbound;
+};
+
+/** @internal */
+export const UnifiedAtsActivityOutput$outboundSchema: z.ZodType<
+    UnifiedAtsActivityOutput$Outbound,
+    z.ZodTypeDef,
+    UnifiedAtsActivityOutput
+> = z
+    .object({
+        activityType: z.string().optional(),
+        subject: z.string().optional(),
+        body: z.string().optional(),
+        visibility: z.string().optional(),
+        candidateId: z.string().optional(),
+        remoteCreatedAt: z
+            .date()
+            .transform((v) => v.toISOString())
+            .optional(),
+        fieldMappings: z.lazy(() => UnifiedAtsActivityOutputFieldMappings$outboundSchema),
+        id: z.string().optional(),
+        remoteId: z.string().optional(),
+        remoteData: z.lazy(() => UnifiedAtsActivityOutputRemoteData$outboundSchema),
+        createdAt: z.lazy(() => UnifiedAtsActivityOutputCreatedAt$outboundSchema),
+        modifiedAt: z.lazy(() => UnifiedAtsActivityOutputModifiedAt$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            activityType: "activity_type",
+            candidateId: "candidate_id",
+            remoteCreatedAt: "remote_created_at",
+            fieldMappings: "field_mappings",
+            remoteId: "remote_id",
+            remoteData: "remote_data",
+            createdAt: "created_at",
+            modifiedAt: "modified_at",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedAtsActivityOutput$ {
-    export const inboundSchema: z.ZodType<UnifiedAtsActivityOutput, z.ZodTypeDef, unknown> = z
-        .object({
-            activity_type: z.string().optional(),
-            subject: z.string().optional(),
-            body: z.string().optional(),
-            visibility: z.string().optional(),
-            candidate_id: z.string().optional(),
-            remote_created_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .optional(),
-            field_mappings: z.lazy(() => UnifiedAtsActivityOutputFieldMappings$.inboundSchema),
-            id: z.string().optional(),
-            remote_id: z.string().optional(),
-            remote_data: z.lazy(() => UnifiedAtsActivityOutputRemoteData$.inboundSchema),
-            created_at: z.lazy(() => UnifiedAtsActivityOutputCreatedAt$.inboundSchema),
-            modified_at: z.lazy(() => UnifiedAtsActivityOutputModifiedAt$.inboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                activity_type: "activityType",
-                candidate_id: "candidateId",
-                remote_created_at: "remoteCreatedAt",
-                field_mappings: "fieldMappings",
-                remote_id: "remoteId",
-                remote_data: "remoteData",
-                created_at: "createdAt",
-                modified_at: "modifiedAt",
-            });
-        });
-
-    export type Outbound = {
-        activity_type?: string | undefined;
-        subject?: string | undefined;
-        body?: string | undefined;
-        visibility?: string | undefined;
-        candidate_id?: string | undefined;
-        remote_created_at?: string | undefined;
-        field_mappings: UnifiedAtsActivityOutputFieldMappings$.Outbound;
-        id?: string | undefined;
-        remote_id?: string | undefined;
-        remote_data: UnifiedAtsActivityOutputRemoteData$.Outbound;
-        created_at: UnifiedAtsActivityOutputCreatedAt$.Outbound;
-        modified_at: UnifiedAtsActivityOutputModifiedAt$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnifiedAtsActivityOutput> = z
-        .object({
-            activityType: z.string().optional(),
-            subject: z.string().optional(),
-            body: z.string().optional(),
-            visibility: z.string().optional(),
-            candidateId: z.string().optional(),
-            remoteCreatedAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .optional(),
-            fieldMappings: z.lazy(() => UnifiedAtsActivityOutputFieldMappings$.outboundSchema),
-            id: z.string().optional(),
-            remoteId: z.string().optional(),
-            remoteData: z.lazy(() => UnifiedAtsActivityOutputRemoteData$.outboundSchema),
-            createdAt: z.lazy(() => UnifiedAtsActivityOutputCreatedAt$.outboundSchema),
-            modifiedAt: z.lazy(() => UnifiedAtsActivityOutputModifiedAt$.outboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                activityType: "activity_type",
-                candidateId: "candidate_id",
-                remoteCreatedAt: "remote_created_at",
-                fieldMappings: "field_mappings",
-                remoteId: "remote_id",
-                remoteData: "remote_data",
-                createdAt: "created_at",
-                modifiedAt: "modified_at",
-            });
-        });
+    /** @deprecated use `UnifiedAtsActivityOutput$inboundSchema` instead. */
+    export const inboundSchema = UnifiedAtsActivityOutput$inboundSchema;
+    /** @deprecated use `UnifiedAtsActivityOutput$outboundSchema` instead. */
+    export const outboundSchema = UnifiedAtsActivityOutput$outboundSchema;
+    /** @deprecated use `UnifiedAtsActivityOutput$Outbound` instead. */
+    export type Outbound = UnifiedAtsActivityOutput$Outbound;
 }

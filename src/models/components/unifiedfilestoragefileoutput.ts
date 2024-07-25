@@ -57,148 +57,221 @@ export type UnifiedFilestorageFileOutput = {
 };
 
 /** @internal */
+export const UnifiedFilestorageFileOutputFieldMappings$inboundSchema: z.ZodType<
+    UnifiedFilestorageFileOutputFieldMappings,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedFilestorageFileOutputFieldMappings$Outbound = {};
+
+/** @internal */
+export const UnifiedFilestorageFileOutputFieldMappings$outboundSchema: z.ZodType<
+    UnifiedFilestorageFileOutputFieldMappings$Outbound,
+    z.ZodTypeDef,
+    UnifiedFilestorageFileOutputFieldMappings
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedFilestorageFileOutputFieldMappings$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedFilestorageFileOutputFieldMappings,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedFilestorageFileOutputFieldMappings
-    > = z.object({});
+    /** @deprecated use `UnifiedFilestorageFileOutputFieldMappings$inboundSchema` instead. */
+    export const inboundSchema = UnifiedFilestorageFileOutputFieldMappings$inboundSchema;
+    /** @deprecated use `UnifiedFilestorageFileOutputFieldMappings$outboundSchema` instead. */
+    export const outboundSchema = UnifiedFilestorageFileOutputFieldMappings$outboundSchema;
+    /** @deprecated use `UnifiedFilestorageFileOutputFieldMappings$Outbound` instead. */
+    export type Outbound = UnifiedFilestorageFileOutputFieldMappings$Outbound;
 }
 
 /** @internal */
+export const UnifiedFilestorageFileOutputRemoteData$inboundSchema: z.ZodType<
+    UnifiedFilestorageFileOutputRemoteData,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedFilestorageFileOutputRemoteData$Outbound = {};
+
+/** @internal */
+export const UnifiedFilestorageFileOutputRemoteData$outboundSchema: z.ZodType<
+    UnifiedFilestorageFileOutputRemoteData$Outbound,
+    z.ZodTypeDef,
+    UnifiedFilestorageFileOutputRemoteData
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedFilestorageFileOutputRemoteData$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedFilestorageFileOutputRemoteData,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedFilestorageFileOutputRemoteData
-    > = z.object({});
+    /** @deprecated use `UnifiedFilestorageFileOutputRemoteData$inboundSchema` instead. */
+    export const inboundSchema = UnifiedFilestorageFileOutputRemoteData$inboundSchema;
+    /** @deprecated use `UnifiedFilestorageFileOutputRemoteData$outboundSchema` instead. */
+    export const outboundSchema = UnifiedFilestorageFileOutputRemoteData$outboundSchema;
+    /** @deprecated use `UnifiedFilestorageFileOutputRemoteData$Outbound` instead. */
+    export type Outbound = UnifiedFilestorageFileOutputRemoteData$Outbound;
 }
 
 /** @internal */
+export const UnifiedFilestorageFileOutputCreatedAt$inboundSchema: z.ZodType<
+    UnifiedFilestorageFileOutputCreatedAt,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedFilestorageFileOutputCreatedAt$Outbound = {};
+
+/** @internal */
+export const UnifiedFilestorageFileOutputCreatedAt$outboundSchema: z.ZodType<
+    UnifiedFilestorageFileOutputCreatedAt$Outbound,
+    z.ZodTypeDef,
+    UnifiedFilestorageFileOutputCreatedAt
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedFilestorageFileOutputCreatedAt$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedFilestorageFileOutputCreatedAt,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedFilestorageFileOutputCreatedAt
-    > = z.object({});
+    /** @deprecated use `UnifiedFilestorageFileOutputCreatedAt$inboundSchema` instead. */
+    export const inboundSchema = UnifiedFilestorageFileOutputCreatedAt$inboundSchema;
+    /** @deprecated use `UnifiedFilestorageFileOutputCreatedAt$outboundSchema` instead. */
+    export const outboundSchema = UnifiedFilestorageFileOutputCreatedAt$outboundSchema;
+    /** @deprecated use `UnifiedFilestorageFileOutputCreatedAt$Outbound` instead. */
+    export type Outbound = UnifiedFilestorageFileOutputCreatedAt$Outbound;
 }
 
 /** @internal */
+export const UnifiedFilestorageFileOutputModifiedAt$inboundSchema: z.ZodType<
+    UnifiedFilestorageFileOutputModifiedAt,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedFilestorageFileOutputModifiedAt$Outbound = {};
+
+/** @internal */
+export const UnifiedFilestorageFileOutputModifiedAt$outboundSchema: z.ZodType<
+    UnifiedFilestorageFileOutputModifiedAt$Outbound,
+    z.ZodTypeDef,
+    UnifiedFilestorageFileOutputModifiedAt
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedFilestorageFileOutputModifiedAt$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedFilestorageFileOutputModifiedAt,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedFilestorageFileOutputModifiedAt
-    > = z.object({});
+    /** @deprecated use `UnifiedFilestorageFileOutputModifiedAt$inboundSchema` instead. */
+    export const inboundSchema = UnifiedFilestorageFileOutputModifiedAt$inboundSchema;
+    /** @deprecated use `UnifiedFilestorageFileOutputModifiedAt$outboundSchema` instead. */
+    export const outboundSchema = UnifiedFilestorageFileOutputModifiedAt$outboundSchema;
+    /** @deprecated use `UnifiedFilestorageFileOutputModifiedAt$Outbound` instead. */
+    export type Outbound = UnifiedFilestorageFileOutputModifiedAt$Outbound;
 }
 
 /** @internal */
+export const UnifiedFilestorageFileOutput$inboundSchema: z.ZodType<
+    UnifiedFilestorageFileOutput,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        name: z.string(),
+        file_url: z.string(),
+        mime_type: z.string(),
+        size: z.string(),
+        folder_id: z.string(),
+        permission: z.string(),
+        shared_link: z.string(),
+        field_mappings: z.lazy(() => UnifiedFilestorageFileOutputFieldMappings$inboundSchema),
+        id: z.string().optional(),
+        remote_id: z.string().optional(),
+        remote_data: z.lazy(() => UnifiedFilestorageFileOutputRemoteData$inboundSchema),
+        created_at: z.lazy(() => UnifiedFilestorageFileOutputCreatedAt$inboundSchema),
+        modified_at: z.lazy(() => UnifiedFilestorageFileOutputModifiedAt$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            file_url: "fileUrl",
+            mime_type: "mimeType",
+            folder_id: "folderId",
+            shared_link: "sharedLink",
+            field_mappings: "fieldMappings",
+            remote_id: "remoteId",
+            remote_data: "remoteData",
+            created_at: "createdAt",
+            modified_at: "modifiedAt",
+        });
+    });
+
+/** @internal */
+export type UnifiedFilestorageFileOutput$Outbound = {
+    name: string;
+    file_url: string;
+    mime_type: string;
+    size: string;
+    folder_id: string;
+    permission: string;
+    shared_link: string;
+    field_mappings: UnifiedFilestorageFileOutputFieldMappings$Outbound;
+    id?: string | undefined;
+    remote_id?: string | undefined;
+    remote_data: UnifiedFilestorageFileOutputRemoteData$Outbound;
+    created_at: UnifiedFilestorageFileOutputCreatedAt$Outbound;
+    modified_at: UnifiedFilestorageFileOutputModifiedAt$Outbound;
+};
+
+/** @internal */
+export const UnifiedFilestorageFileOutput$outboundSchema: z.ZodType<
+    UnifiedFilestorageFileOutput$Outbound,
+    z.ZodTypeDef,
+    UnifiedFilestorageFileOutput
+> = z
+    .object({
+        name: z.string(),
+        fileUrl: z.string(),
+        mimeType: z.string(),
+        size: z.string(),
+        folderId: z.string(),
+        permission: z.string(),
+        sharedLink: z.string(),
+        fieldMappings: z.lazy(() => UnifiedFilestorageFileOutputFieldMappings$outboundSchema),
+        id: z.string().optional(),
+        remoteId: z.string().optional(),
+        remoteData: z.lazy(() => UnifiedFilestorageFileOutputRemoteData$outboundSchema),
+        createdAt: z.lazy(() => UnifiedFilestorageFileOutputCreatedAt$outboundSchema),
+        modifiedAt: z.lazy(() => UnifiedFilestorageFileOutputModifiedAt$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            fileUrl: "file_url",
+            mimeType: "mime_type",
+            folderId: "folder_id",
+            sharedLink: "shared_link",
+            fieldMappings: "field_mappings",
+            remoteId: "remote_id",
+            remoteData: "remote_data",
+            createdAt: "created_at",
+            modifiedAt: "modified_at",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedFilestorageFileOutput$ {
-    export const inboundSchema: z.ZodType<UnifiedFilestorageFileOutput, z.ZodTypeDef, unknown> = z
-        .object({
-            name: z.string(),
-            file_url: z.string(),
-            mime_type: z.string(),
-            size: z.string(),
-            folder_id: z.string(),
-            permission: z.string(),
-            shared_link: z.string(),
-            field_mappings: z.lazy(() => UnifiedFilestorageFileOutputFieldMappings$.inboundSchema),
-            id: z.string().optional(),
-            remote_id: z.string().optional(),
-            remote_data: z.lazy(() => UnifiedFilestorageFileOutputRemoteData$.inboundSchema),
-            created_at: z.lazy(() => UnifiedFilestorageFileOutputCreatedAt$.inboundSchema),
-            modified_at: z.lazy(() => UnifiedFilestorageFileOutputModifiedAt$.inboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                file_url: "fileUrl",
-                mime_type: "mimeType",
-                folder_id: "folderId",
-                shared_link: "sharedLink",
-                field_mappings: "fieldMappings",
-                remote_id: "remoteId",
-                remote_data: "remoteData",
-                created_at: "createdAt",
-                modified_at: "modifiedAt",
-            });
-        });
-
-    export type Outbound = {
-        name: string;
-        file_url: string;
-        mime_type: string;
-        size: string;
-        folder_id: string;
-        permission: string;
-        shared_link: string;
-        field_mappings: UnifiedFilestorageFileOutputFieldMappings$.Outbound;
-        id?: string | undefined;
-        remote_id?: string | undefined;
-        remote_data: UnifiedFilestorageFileOutputRemoteData$.Outbound;
-        created_at: UnifiedFilestorageFileOutputCreatedAt$.Outbound;
-        modified_at: UnifiedFilestorageFileOutputModifiedAt$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnifiedFilestorageFileOutput> = z
-        .object({
-            name: z.string(),
-            fileUrl: z.string(),
-            mimeType: z.string(),
-            size: z.string(),
-            folderId: z.string(),
-            permission: z.string(),
-            sharedLink: z.string(),
-            fieldMappings: z.lazy(() => UnifiedFilestorageFileOutputFieldMappings$.outboundSchema),
-            id: z.string().optional(),
-            remoteId: z.string().optional(),
-            remoteData: z.lazy(() => UnifiedFilestorageFileOutputRemoteData$.outboundSchema),
-            createdAt: z.lazy(() => UnifiedFilestorageFileOutputCreatedAt$.outboundSchema),
-            modifiedAt: z.lazy(() => UnifiedFilestorageFileOutputModifiedAt$.outboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                fileUrl: "file_url",
-                mimeType: "mime_type",
-                folderId: "folder_id",
-                sharedLink: "shared_link",
-                fieldMappings: "field_mappings",
-                remoteId: "remote_id",
-                remoteData: "remote_data",
-                createdAt: "created_at",
-                modifiedAt: "modified_at",
-            });
-        });
+    /** @deprecated use `UnifiedFilestorageFileOutput$inboundSchema` instead. */
+    export const inboundSchema = UnifiedFilestorageFileOutput$inboundSchema;
+    /** @deprecated use `UnifiedFilestorageFileOutput$outboundSchema` instead. */
+    export const outboundSchema = UnifiedFilestorageFileOutput$outboundSchema;
+    /** @deprecated use `UnifiedFilestorageFileOutput$Outbound` instead. */
+    export type Outbound = UnifiedFilestorageFileOutput$Outbound;
 }

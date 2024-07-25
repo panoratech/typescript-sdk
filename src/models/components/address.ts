@@ -41,57 +41,70 @@ export type Address = {
 };
 
 /** @internal */
+export const Address$inboundSchema: z.ZodType<Address, z.ZodTypeDef, unknown> = z
+    .object({
+        street_1: z.string(),
+        street_2: z.string(),
+        city: z.string(),
+        state: z.string(),
+        postal_code: z.string(),
+        country: z.string(),
+        address_type: z.string(),
+        owner_type: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            street_1: "street1",
+            street_2: "street2",
+            postal_code: "postalCode",
+            address_type: "addressType",
+            owner_type: "ownerType",
+        });
+    });
+
+/** @internal */
+export type Address$Outbound = {
+    street_1: string;
+    street_2: string;
+    city: string;
+    state: string;
+    postal_code: string;
+    country: string;
+    address_type: string;
+    owner_type: string;
+};
+
+/** @internal */
+export const Address$outboundSchema: z.ZodType<Address$Outbound, z.ZodTypeDef, Address> = z
+    .object({
+        street1: z.string(),
+        street2: z.string(),
+        city: z.string(),
+        state: z.string(),
+        postalCode: z.string(),
+        country: z.string(),
+        addressType: z.string(),
+        ownerType: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            street1: "street_1",
+            street2: "street_2",
+            postalCode: "postal_code",
+            addressType: "address_type",
+            ownerType: "owner_type",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Address$ {
-    export const inboundSchema: z.ZodType<Address, z.ZodTypeDef, unknown> = z
-        .object({
-            street_1: z.string(),
-            street_2: z.string(),
-            city: z.string(),
-            state: z.string(),
-            postal_code: z.string(),
-            country: z.string(),
-            address_type: z.string(),
-            owner_type: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                street_1: "street1",
-                street_2: "street2",
-                postal_code: "postalCode",
-                address_type: "addressType",
-                owner_type: "ownerType",
-            });
-        });
-
-    export type Outbound = {
-        street_1: string;
-        street_2: string;
-        city: string;
-        state: string;
-        postal_code: string;
-        country: string;
-        address_type: string;
-        owner_type: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Address> = z
-        .object({
-            street1: z.string(),
-            street2: z.string(),
-            city: z.string(),
-            state: z.string(),
-            postalCode: z.string(),
-            country: z.string(),
-            addressType: z.string(),
-            ownerType: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                street1: "street_1",
-                street2: "street_2",
-                postalCode: "postal_code",
-                addressType: "address_type",
-                ownerType: "owner_type",
-            });
-        });
+    /** @deprecated use `Address$inboundSchema` instead. */
+    export const inboundSchema = Address$inboundSchema;
+    /** @deprecated use `Address$outboundSchema` instead. */
+    export const outboundSchema = Address$outboundSchema;
+    /** @deprecated use `Address$Outbound` instead. */
+    export type Outbound = Address$Outbound;
 }

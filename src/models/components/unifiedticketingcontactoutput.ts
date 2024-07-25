@@ -45,138 +45,208 @@ export type UnifiedTicketingContactOutput = {
 };
 
 /** @internal */
+export const UnifiedTicketingContactOutputFieldMappings$inboundSchema: z.ZodType<
+    UnifiedTicketingContactOutputFieldMappings,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedTicketingContactOutputFieldMappings$Outbound = {};
+
+/** @internal */
+export const UnifiedTicketingContactOutputFieldMappings$outboundSchema: z.ZodType<
+    UnifiedTicketingContactOutputFieldMappings$Outbound,
+    z.ZodTypeDef,
+    UnifiedTicketingContactOutputFieldMappings
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedTicketingContactOutputFieldMappings$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedTicketingContactOutputFieldMappings,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedTicketingContactOutputFieldMappings
-    > = z.object({});
+    /** @deprecated use `UnifiedTicketingContactOutputFieldMappings$inboundSchema` instead. */
+    export const inboundSchema = UnifiedTicketingContactOutputFieldMappings$inboundSchema;
+    /** @deprecated use `UnifiedTicketingContactOutputFieldMappings$outboundSchema` instead. */
+    export const outboundSchema = UnifiedTicketingContactOutputFieldMappings$outboundSchema;
+    /** @deprecated use `UnifiedTicketingContactOutputFieldMappings$Outbound` instead. */
+    export type Outbound = UnifiedTicketingContactOutputFieldMappings$Outbound;
 }
 
 /** @internal */
+export const UnifiedTicketingContactOutputRemoteData$inboundSchema: z.ZodType<
+    UnifiedTicketingContactOutputRemoteData,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedTicketingContactOutputRemoteData$Outbound = {};
+
+/** @internal */
+export const UnifiedTicketingContactOutputRemoteData$outboundSchema: z.ZodType<
+    UnifiedTicketingContactOutputRemoteData$Outbound,
+    z.ZodTypeDef,
+    UnifiedTicketingContactOutputRemoteData
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedTicketingContactOutputRemoteData$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedTicketingContactOutputRemoteData,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedTicketingContactOutputRemoteData
-    > = z.object({});
+    /** @deprecated use `UnifiedTicketingContactOutputRemoteData$inboundSchema` instead. */
+    export const inboundSchema = UnifiedTicketingContactOutputRemoteData$inboundSchema;
+    /** @deprecated use `UnifiedTicketingContactOutputRemoteData$outboundSchema` instead. */
+    export const outboundSchema = UnifiedTicketingContactOutputRemoteData$outboundSchema;
+    /** @deprecated use `UnifiedTicketingContactOutputRemoteData$Outbound` instead. */
+    export type Outbound = UnifiedTicketingContactOutputRemoteData$Outbound;
 }
 
 /** @internal */
+export const UnifiedTicketingContactOutputCreatedAt$inboundSchema: z.ZodType<
+    UnifiedTicketingContactOutputCreatedAt,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedTicketingContactOutputCreatedAt$Outbound = {};
+
+/** @internal */
+export const UnifiedTicketingContactOutputCreatedAt$outboundSchema: z.ZodType<
+    UnifiedTicketingContactOutputCreatedAt$Outbound,
+    z.ZodTypeDef,
+    UnifiedTicketingContactOutputCreatedAt
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedTicketingContactOutputCreatedAt$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedTicketingContactOutputCreatedAt,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedTicketingContactOutputCreatedAt
-    > = z.object({});
+    /** @deprecated use `UnifiedTicketingContactOutputCreatedAt$inboundSchema` instead. */
+    export const inboundSchema = UnifiedTicketingContactOutputCreatedAt$inboundSchema;
+    /** @deprecated use `UnifiedTicketingContactOutputCreatedAt$outboundSchema` instead. */
+    export const outboundSchema = UnifiedTicketingContactOutputCreatedAt$outboundSchema;
+    /** @deprecated use `UnifiedTicketingContactOutputCreatedAt$Outbound` instead. */
+    export type Outbound = UnifiedTicketingContactOutputCreatedAt$Outbound;
 }
 
 /** @internal */
+export const UnifiedTicketingContactOutputModifiedAt$inboundSchema: z.ZodType<
+    UnifiedTicketingContactOutputModifiedAt,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedTicketingContactOutputModifiedAt$Outbound = {};
+
+/** @internal */
+export const UnifiedTicketingContactOutputModifiedAt$outboundSchema: z.ZodType<
+    UnifiedTicketingContactOutputModifiedAt$Outbound,
+    z.ZodTypeDef,
+    UnifiedTicketingContactOutputModifiedAt
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedTicketingContactOutputModifiedAt$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedTicketingContactOutputModifiedAt,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedTicketingContactOutputModifiedAt
-    > = z.object({});
+    /** @deprecated use `UnifiedTicketingContactOutputModifiedAt$inboundSchema` instead. */
+    export const inboundSchema = UnifiedTicketingContactOutputModifiedAt$inboundSchema;
+    /** @deprecated use `UnifiedTicketingContactOutputModifiedAt$outboundSchema` instead. */
+    export const outboundSchema = UnifiedTicketingContactOutputModifiedAt$outboundSchema;
+    /** @deprecated use `UnifiedTicketingContactOutputModifiedAt$Outbound` instead. */
+    export type Outbound = UnifiedTicketingContactOutputModifiedAt$Outbound;
 }
 
 /** @internal */
-export namespace UnifiedTicketingContactOutput$ {
-    export const inboundSchema: z.ZodType<UnifiedTicketingContactOutput, z.ZodTypeDef, unknown> = z
-        .object({
-            name: z.string(),
-            email_address: z.string(),
-            phone_number: z.string().optional(),
-            details: z.string().optional(),
-            field_mappings: z.lazy(() => UnifiedTicketingContactOutputFieldMappings$.inboundSchema),
-            id: z.string().optional(),
-            remote_id: z.string().optional(),
-            remote_data: z.lazy(() => UnifiedTicketingContactOutputRemoteData$.inboundSchema),
-            created_at: z.lazy(() => UnifiedTicketingContactOutputCreatedAt$.inboundSchema),
-            modified_at: z.lazy(() => UnifiedTicketingContactOutputModifiedAt$.inboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                email_address: "emailAddress",
-                phone_number: "phoneNumber",
-                field_mappings: "fieldMappings",
-                remote_id: "remoteId",
-                remote_data: "remoteData",
-                created_at: "createdAt",
-                modified_at: "modifiedAt",
-            });
+export const UnifiedTicketingContactOutput$inboundSchema: z.ZodType<
+    UnifiedTicketingContactOutput,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        name: z.string(),
+        email_address: z.string(),
+        phone_number: z.string().optional(),
+        details: z.string().optional(),
+        field_mappings: z.lazy(() => UnifiedTicketingContactOutputFieldMappings$inboundSchema),
+        id: z.string().optional(),
+        remote_id: z.string().optional(),
+        remote_data: z.lazy(() => UnifiedTicketingContactOutputRemoteData$inboundSchema),
+        created_at: z.lazy(() => UnifiedTicketingContactOutputCreatedAt$inboundSchema),
+        modified_at: z.lazy(() => UnifiedTicketingContactOutputModifiedAt$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            email_address: "emailAddress",
+            phone_number: "phoneNumber",
+            field_mappings: "fieldMappings",
+            remote_id: "remoteId",
+            remote_data: "remoteData",
+            created_at: "createdAt",
+            modified_at: "modifiedAt",
         });
+    });
 
-    export type Outbound = {
-        name: string;
-        email_address: string;
-        phone_number?: string | undefined;
-        details?: string | undefined;
-        field_mappings: UnifiedTicketingContactOutputFieldMappings$.Outbound;
-        id?: string | undefined;
-        remote_id?: string | undefined;
-        remote_data: UnifiedTicketingContactOutputRemoteData$.Outbound;
-        created_at: UnifiedTicketingContactOutputCreatedAt$.Outbound;
-        modified_at: UnifiedTicketingContactOutputModifiedAt$.Outbound;
-    };
+/** @internal */
+export type UnifiedTicketingContactOutput$Outbound = {
+    name: string;
+    email_address: string;
+    phone_number?: string | undefined;
+    details?: string | undefined;
+    field_mappings: UnifiedTicketingContactOutputFieldMappings$Outbound;
+    id?: string | undefined;
+    remote_id?: string | undefined;
+    remote_data: UnifiedTicketingContactOutputRemoteData$Outbound;
+    created_at: UnifiedTicketingContactOutputCreatedAt$Outbound;
+    modified_at: UnifiedTicketingContactOutputModifiedAt$Outbound;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnifiedTicketingContactOutput> =
-        z
-            .object({
-                name: z.string(),
-                emailAddress: z.string(),
-                phoneNumber: z.string().optional(),
-                details: z.string().optional(),
-                fieldMappings: z.lazy(
-                    () => UnifiedTicketingContactOutputFieldMappings$.outboundSchema
-                ),
-                id: z.string().optional(),
-                remoteId: z.string().optional(),
-                remoteData: z.lazy(() => UnifiedTicketingContactOutputRemoteData$.outboundSchema),
-                createdAt: z.lazy(() => UnifiedTicketingContactOutputCreatedAt$.outboundSchema),
-                modifiedAt: z.lazy(() => UnifiedTicketingContactOutputModifiedAt$.outboundSchema),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    emailAddress: "email_address",
-                    phoneNumber: "phone_number",
-                    fieldMappings: "field_mappings",
-                    remoteId: "remote_id",
-                    remoteData: "remote_data",
-                    createdAt: "created_at",
-                    modifiedAt: "modified_at",
-                });
-            });
+/** @internal */
+export const UnifiedTicketingContactOutput$outboundSchema: z.ZodType<
+    UnifiedTicketingContactOutput$Outbound,
+    z.ZodTypeDef,
+    UnifiedTicketingContactOutput
+> = z
+    .object({
+        name: z.string(),
+        emailAddress: z.string(),
+        phoneNumber: z.string().optional(),
+        details: z.string().optional(),
+        fieldMappings: z.lazy(() => UnifiedTicketingContactOutputFieldMappings$outboundSchema),
+        id: z.string().optional(),
+        remoteId: z.string().optional(),
+        remoteData: z.lazy(() => UnifiedTicketingContactOutputRemoteData$outboundSchema),
+        createdAt: z.lazy(() => UnifiedTicketingContactOutputCreatedAt$outboundSchema),
+        modifiedAt: z.lazy(() => UnifiedTicketingContactOutputModifiedAt$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            emailAddress: "email_address",
+            phoneNumber: "phone_number",
+            fieldMappings: "field_mappings",
+            remoteId: "remote_id",
+            remoteData: "remote_data",
+            createdAt: "created_at",
+            modifiedAt: "modified_at",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UnifiedTicketingContactOutput$ {
+    /** @deprecated use `UnifiedTicketingContactOutput$inboundSchema` instead. */
+    export const inboundSchema = UnifiedTicketingContactOutput$inboundSchema;
+    /** @deprecated use `UnifiedTicketingContactOutput$outboundSchema` instead. */
+    export const outboundSchema = UnifiedTicketingContactOutput$outboundSchema;
+    /** @deprecated use `UnifiedTicketingContactOutput$Outbound` instead. */
+    export type Outbound = UnifiedTicketingContactOutput$Outbound;
 }

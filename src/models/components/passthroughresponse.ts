@@ -13,33 +13,73 @@ export type PassThroughResponse = {
 };
 
 /** @internal */
+export const PassThroughResponseData$inboundSchema: z.ZodType<
+    PassThroughResponseData,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type PassThroughResponseData$Outbound = {};
+
+/** @internal */
+export const PassThroughResponseData$outboundSchema: z.ZodType<
+    PassThroughResponseData$Outbound,
+    z.ZodTypeDef,
+    PassThroughResponseData
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace PassThroughResponseData$ {
-    export const inboundSchema: z.ZodType<PassThroughResponseData, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PassThroughResponseData> =
-        z.object({});
+    /** @deprecated use `PassThroughResponseData$inboundSchema` instead. */
+    export const inboundSchema = PassThroughResponseData$inboundSchema;
+    /** @deprecated use `PassThroughResponseData$outboundSchema` instead. */
+    export const outboundSchema = PassThroughResponseData$outboundSchema;
+    /** @deprecated use `PassThroughResponseData$Outbound` instead. */
+    export type Outbound = PassThroughResponseData$Outbound;
 }
 
 /** @internal */
+export const PassThroughResponse$inboundSchema: z.ZodType<
+    PassThroughResponse,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    url: z.string(),
+    status: z.number(),
+    data: z.lazy(() => PassThroughResponseData$inboundSchema),
+});
+
+/** @internal */
+export type PassThroughResponse$Outbound = {
+    url: string;
+    status: number;
+    data: PassThroughResponseData$Outbound;
+};
+
+/** @internal */
+export const PassThroughResponse$outboundSchema: z.ZodType<
+    PassThroughResponse$Outbound,
+    z.ZodTypeDef,
+    PassThroughResponse
+> = z.object({
+    url: z.string(),
+    status: z.number(),
+    data: z.lazy(() => PassThroughResponseData$outboundSchema),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace PassThroughResponse$ {
-    export const inboundSchema: z.ZodType<PassThroughResponse, z.ZodTypeDef, unknown> = z.object({
-        url: z.string(),
-        status: z.number(),
-        data: z.lazy(() => PassThroughResponseData$.inboundSchema),
-    });
-
-    export type Outbound = {
-        url: string;
-        status: number;
-        data: PassThroughResponseData$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PassThroughResponse> = z.object({
-        url: z.string(),
-        status: z.number(),
-        data: z.lazy(() => PassThroughResponseData$.outboundSchema),
-    });
+    /** @deprecated use `PassThroughResponse$inboundSchema` instead. */
+    export const inboundSchema = PassThroughResponse$inboundSchema;
+    /** @deprecated use `PassThroughResponse$outboundSchema` instead. */
+    export const outboundSchema = PassThroughResponse$outboundSchema;
+    /** @deprecated use `PassThroughResponse$Outbound` instead. */
+    export type Outbound = PassThroughResponse$Outbound;
 }

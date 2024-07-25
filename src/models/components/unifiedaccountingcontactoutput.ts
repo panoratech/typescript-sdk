@@ -7,12 +7,31 @@ import * as z from "zod";
 export type UnifiedAccountingContactOutput = {};
 
 /** @internal */
+export const UnifiedAccountingContactOutput$inboundSchema: z.ZodType<
+    UnifiedAccountingContactOutput,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedAccountingContactOutput$Outbound = {};
+
+/** @internal */
+export const UnifiedAccountingContactOutput$outboundSchema: z.ZodType<
+    UnifiedAccountingContactOutput$Outbound,
+    z.ZodTypeDef,
+    UnifiedAccountingContactOutput
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedAccountingContactOutput$ {
-    export const inboundSchema: z.ZodType<UnifiedAccountingContactOutput, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnifiedAccountingContactOutput> =
-        z.object({});
+    /** @deprecated use `UnifiedAccountingContactOutput$inboundSchema` instead. */
+    export const inboundSchema = UnifiedAccountingContactOutput$inboundSchema;
+    /** @deprecated use `UnifiedAccountingContactOutput$outboundSchema` instead. */
+    export const outboundSchema = UnifiedAccountingContactOutput$outboundSchema;
+    /** @deprecated use `UnifiedAccountingContactOutput$Outbound` instead. */
+    export type Outbound = UnifiedAccountingContactOutput$Outbound;
 }

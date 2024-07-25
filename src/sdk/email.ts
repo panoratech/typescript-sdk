@@ -3,7 +3,7 @@
  */
 
 import { SDKHooks } from "../hooks/hooks.js";
-import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config.js";
+import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
 import {
     encodeFormQuery as encodeFormQuery$,
     encodeSimple as encodeSimple$,
@@ -43,18 +43,16 @@ export class Email extends ClientSDK {
     /**
      * List a batch of Emails
      */
-    async getEmails(
-        request: operations.GetEmailsRequest,
+    async list(
+        request: operations.ListMarketingautomationEmailsRequest,
         options?: RequestOptions
-    ): Promise<operations.GetEmailsResponse> {
+    ): Promise<operations.ListMarketingautomationEmailsResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetEmailsRequest$.outboundSchema.parse(value$),
+            (value$) =>
+                operations.ListMarketingautomationEmailsRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -67,13 +65,14 @@ export class Email extends ClientSDK {
             remote_data: payload$.remote_data,
         });
 
-        headers$.set(
-            "x-connection-token",
-            encodeSimple$("x-connection-token", payload$["x-connection-token"], {
-                explode: false,
-                charEncoding: "none",
-            })
-        );
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-connection-token": encodeSimple$(
+                "x-connection-token",
+                payload$["x-connection-token"],
+                { explode: false, charEncoding: "none" }
+            ),
+        });
 
         let security$;
         if (typeof this.options$.bearer === "function") {
@@ -84,13 +83,12 @@ export class Email extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "getEmails",
+            operationID: "listMarketingautomationEmails",
             oAuth2Scopes: [],
             securitySource: this.options$.bearer,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -100,18 +98,26 @@ export class Email extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
-        const [result$] = await this.matcher<operations.GetEmailsResponse>()
-            .json(200, operations.GetEmailsResponse$, { key: "object" })
+        const [result$] = await this.matcher<operations.ListMarketingautomationEmailsResponse>()
+            .json(200, operations.ListMarketingautomationEmailsResponse$inboundSchema, {
+                key: "object",
+            })
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 
@@ -124,18 +130,16 @@ export class Email extends ClientSDK {
      * @remarks
      * Retrieve a email from any connected Marketingautomation software
      */
-    async getEmail(
-        request: operations.GetEmailRequest,
+    async retrieve(
+        request: operations.RetrieveMarketingautomationEmailRequest,
         options?: RequestOptions
-    ): Promise<operations.GetEmailResponse> {
+    ): Promise<operations.RetrieveMarketingautomationEmailResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetEmailRequest$.outboundSchema.parse(value$),
+            (value$) =>
+                operations.RetrieveMarketingautomationEmailRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -149,13 +153,14 @@ export class Email extends ClientSDK {
             remote_data: payload$.remote_data,
         });
 
-        headers$.set(
-            "x-connection-token",
-            encodeSimple$("x-connection-token", payload$["x-connection-token"], {
-                explode: false,
-                charEncoding: "none",
-            })
-        );
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-connection-token": encodeSimple$(
+                "x-connection-token",
+                payload$["x-connection-token"],
+                { explode: false, charEncoding: "none" }
+            ),
+        });
 
         let security$;
         if (typeof this.options$.bearer === "function") {
@@ -166,13 +171,12 @@ export class Email extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "getEmail",
+            operationID: "retrieveMarketingautomationEmail",
             oAuth2Scopes: [],
             securitySource: this.options$.bearer,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -182,18 +186,24 @@ export class Email extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
-        const [result$] = await this.matcher<operations.GetEmailResponse>()
-            .json(200, operations.GetEmailResponse$, {
+        const [result$] = await this.matcher<operations.RetrieveMarketingautomationEmailResponse>()
+            .json(200, operations.RetrieveMarketingautomationEmailResponse$inboundSchema, {
                 key: "UnifiedMarketingautomationEmailOutput",
             })
             .fail(["4XX", "5XX"])

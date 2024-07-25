@@ -27,88 +27,114 @@ export type RetrieveAccountingCreditNoteResponse = {
 };
 
 /** @internal */
+export const RetrieveAccountingCreditNoteRequest$inboundSchema: z.ZodType<
+    RetrieveAccountingCreditNoteRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        id: z.string(),
+        remote_data: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+        });
+    });
+
+/** @internal */
+export type RetrieveAccountingCreditNoteRequest$Outbound = {
+    "x-connection-token": string;
+    id: string;
+    remote_data?: boolean | undefined;
+};
+
+/** @internal */
+export const RetrieveAccountingCreditNoteRequest$outboundSchema: z.ZodType<
+    RetrieveAccountingCreditNoteRequest$Outbound,
+    z.ZodTypeDef,
+    RetrieveAccountingCreditNoteRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        id: z.string(),
+        remoteData: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveAccountingCreditNoteRequest$ {
-    export const inboundSchema: z.ZodType<
-        RetrieveAccountingCreditNoteRequest,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            "x-connection-token": z.string(),
-            id: z.string(),
-            remote_data: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        id: string;
-        remote_data?: boolean | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        RetrieveAccountingCreditNoteRequest
-    > = z
-        .object({
-            xConnectionToken: z.string(),
-            id: z.string(),
-            remoteData: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
-        });
+    /** @deprecated use `RetrieveAccountingCreditNoteRequest$inboundSchema` instead. */
+    export const inboundSchema = RetrieveAccountingCreditNoteRequest$inboundSchema;
+    /** @deprecated use `RetrieveAccountingCreditNoteRequest$outboundSchema` instead. */
+    export const outboundSchema = RetrieveAccountingCreditNoteRequest$outboundSchema;
+    /** @deprecated use `RetrieveAccountingCreditNoteRequest$Outbound` instead. */
+    export type Outbound = RetrieveAccountingCreditNoteRequest$Outbound;
 }
 
 /** @internal */
+export const RetrieveAccountingCreditNoteResponse$inboundSchema: z.ZodType<
+    RetrieveAccountingCreditNoteResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        UnifiedAccountingCreditnoteOutput:
+            components.UnifiedAccountingCreditnoteOutput$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            UnifiedAccountingCreditnoteOutput: "unifiedAccountingCreditnoteOutput",
+        });
+    });
+
+/** @internal */
+export type RetrieveAccountingCreditNoteResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    UnifiedAccountingCreditnoteOutput?:
+        | components.UnifiedAccountingCreditnoteOutput$Outbound
+        | undefined;
+};
+
+/** @internal */
+export const RetrieveAccountingCreditNoteResponse$outboundSchema: z.ZodType<
+    RetrieveAccountingCreditNoteResponse$Outbound,
+    z.ZodTypeDef,
+    RetrieveAccountingCreditNoteResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        unifiedAccountingCreditnoteOutput:
+            components.UnifiedAccountingCreditnoteOutput$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            unifiedAccountingCreditnoteOutput: "UnifiedAccountingCreditnoteOutput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveAccountingCreditNoteResponse$ {
-    export const inboundSchema: z.ZodType<
-        RetrieveAccountingCreditNoteResponse,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            UnifiedAccountingCreditnoteOutput:
-                components.UnifiedAccountingCreditnoteOutput$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-                UnifiedAccountingCreditnoteOutput: "unifiedAccountingCreditnoteOutput",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        UnifiedAccountingCreditnoteOutput?:
-            | components.UnifiedAccountingCreditnoteOutput$.Outbound
-            | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        RetrieveAccountingCreditNoteResponse
-    > = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            unifiedAccountingCreditnoteOutput:
-                components.UnifiedAccountingCreditnoteOutput$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-                unifiedAccountingCreditnoteOutput: "UnifiedAccountingCreditnoteOutput",
-            });
-        });
+    /** @deprecated use `RetrieveAccountingCreditNoteResponse$inboundSchema` instead. */
+    export const inboundSchema = RetrieveAccountingCreditNoteResponse$inboundSchema;
+    /** @deprecated use `RetrieveAccountingCreditNoteResponse$outboundSchema` instead. */
+    export const outboundSchema = RetrieveAccountingCreditNoteResponse$outboundSchema;
+    /** @deprecated use `RetrieveAccountingCreditNoteResponse$Outbound` instead. */
+    export type Outbound = RetrieveAccountingCreditNoteResponse$Outbound;
 }

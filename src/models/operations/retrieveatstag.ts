@@ -27,68 +27,110 @@ export type RetrieveAtsTagResponse = {
 };
 
 /** @internal */
+export const RetrieveAtsTagRequest$inboundSchema: z.ZodType<
+    RetrieveAtsTagRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        id: z.string(),
+        remote_data: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+        });
+    });
+
+/** @internal */
+export type RetrieveAtsTagRequest$Outbound = {
+    "x-connection-token": string;
+    id: string;
+    remote_data?: boolean | undefined;
+};
+
+/** @internal */
+export const RetrieveAtsTagRequest$outboundSchema: z.ZodType<
+    RetrieveAtsTagRequest$Outbound,
+    z.ZodTypeDef,
+    RetrieveAtsTagRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        id: z.string(),
+        remoteData: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveAtsTagRequest$ {
-    export const inboundSchema: z.ZodType<RetrieveAtsTagRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            "x-connection-token": z.string(),
-            id: z.string(),
-            remote_data: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        id: string;
-        remote_data?: boolean | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RetrieveAtsTagRequest> = z
-        .object({
-            xConnectionToken: z.string(),
-            id: z.string(),
-            remoteData: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
-        });
+    /** @deprecated use `RetrieveAtsTagRequest$inboundSchema` instead. */
+    export const inboundSchema = RetrieveAtsTagRequest$inboundSchema;
+    /** @deprecated use `RetrieveAtsTagRequest$outboundSchema` instead. */
+    export const outboundSchema = RetrieveAtsTagRequest$outboundSchema;
+    /** @deprecated use `RetrieveAtsTagRequest$Outbound` instead. */
+    export type Outbound = RetrieveAtsTagRequest$Outbound;
 }
 
 /** @internal */
+export const RetrieveAtsTagResponse$inboundSchema: z.ZodType<
+    RetrieveAtsTagResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        UnifiedAtsTagOutput: components.UnifiedAtsTagOutput$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            UnifiedAtsTagOutput: "unifiedAtsTagOutput",
+        });
+    });
+
+/** @internal */
+export type RetrieveAtsTagResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    UnifiedAtsTagOutput?: components.UnifiedAtsTagOutput$Outbound | undefined;
+};
+
+/** @internal */
+export const RetrieveAtsTagResponse$outboundSchema: z.ZodType<
+    RetrieveAtsTagResponse$Outbound,
+    z.ZodTypeDef,
+    RetrieveAtsTagResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        unifiedAtsTagOutput: components.UnifiedAtsTagOutput$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            unifiedAtsTagOutput: "UnifiedAtsTagOutput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveAtsTagResponse$ {
-    export const inboundSchema: z.ZodType<RetrieveAtsTagResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            UnifiedAtsTagOutput: components.UnifiedAtsTagOutput$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-                UnifiedAtsTagOutput: "unifiedAtsTagOutput",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        UnifiedAtsTagOutput?: components.UnifiedAtsTagOutput$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RetrieveAtsTagResponse> = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            unifiedAtsTagOutput: components.UnifiedAtsTagOutput$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-                unifiedAtsTagOutput: "UnifiedAtsTagOutput",
-            });
-        });
+    /** @deprecated use `RetrieveAtsTagResponse$inboundSchema` instead. */
+    export const inboundSchema = RetrieveAtsTagResponse$inboundSchema;
+    /** @deprecated use `RetrieveAtsTagResponse$outboundSchema` instead. */
+    export const outboundSchema = RetrieveAtsTagResponse$outboundSchema;
+    /** @deprecated use `RetrieveAtsTagResponse$Outbound` instead. */
+    export type Outbound = RetrieveAtsTagResponse$Outbound;
 }

@@ -11,28 +11,49 @@ export type CreateLinkedUserResponse = {
 };
 
 /** @internal */
+export const CreateLinkedUserResponse$inboundSchema: z.ZodType<
+    CreateLinkedUserResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+        });
+    });
+
+/** @internal */
+export type CreateLinkedUserResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+};
+
+/** @internal */
+export const CreateLinkedUserResponse$outboundSchema: z.ZodType<
+    CreateLinkedUserResponse$Outbound,
+    z.ZodTypeDef,
+    CreateLinkedUserResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateLinkedUserResponse$ {
-    export const inboundSchema: z.ZodType<CreateLinkedUserResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateLinkedUserResponse> = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-            });
-        });
+    /** @deprecated use `CreateLinkedUserResponse$inboundSchema` instead. */
+    export const inboundSchema = CreateLinkedUserResponse$inboundSchema;
+    /** @deprecated use `CreateLinkedUserResponse$outboundSchema` instead. */
+    export const outboundSchema = CreateLinkedUserResponse$outboundSchema;
+    /** @deprecated use `CreateLinkedUserResponse$Outbound` instead. */
+    export type Outbound = CreateLinkedUserResponse$Outbound;
 }

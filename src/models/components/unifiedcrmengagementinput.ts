@@ -48,94 +48,128 @@ export type UnifiedCrmEngagementInput = {
 };
 
 /** @internal */
+export const UnifiedCrmEngagementInputFieldMappings$inboundSchema: z.ZodType<
+    UnifiedCrmEngagementInputFieldMappings,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedCrmEngagementInputFieldMappings$Outbound = {};
+
+/** @internal */
+export const UnifiedCrmEngagementInputFieldMappings$outboundSchema: z.ZodType<
+    UnifiedCrmEngagementInputFieldMappings$Outbound,
+    z.ZodTypeDef,
+    UnifiedCrmEngagementInputFieldMappings
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedCrmEngagementInputFieldMappings$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedCrmEngagementInputFieldMappings,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedCrmEngagementInputFieldMappings
-    > = z.object({});
+    /** @deprecated use `UnifiedCrmEngagementInputFieldMappings$inboundSchema` instead. */
+    export const inboundSchema = UnifiedCrmEngagementInputFieldMappings$inboundSchema;
+    /** @deprecated use `UnifiedCrmEngagementInputFieldMappings$outboundSchema` instead. */
+    export const outboundSchema = UnifiedCrmEngagementInputFieldMappings$outboundSchema;
+    /** @deprecated use `UnifiedCrmEngagementInputFieldMappings$Outbound` instead. */
+    export type Outbound = UnifiedCrmEngagementInputFieldMappings$Outbound;
 }
 
 /** @internal */
+export const UnifiedCrmEngagementInput$inboundSchema: z.ZodType<
+    UnifiedCrmEngagementInput,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        content: z.string().optional(),
+        direction: z.string().optional(),
+        subject: z.string().optional(),
+        start_at: z
+            .string()
+            .datetime({ offset: true })
+            .transform((v) => new Date(v))
+            .optional(),
+        end_time: z
+            .string()
+            .datetime({ offset: true })
+            .transform((v) => new Date(v))
+            .optional(),
+        type: z.string(),
+        user_id: z.string().optional(),
+        company_id: z.string().optional(),
+        contacts: z.array(z.string()).optional(),
+        field_mappings: z.lazy(() => UnifiedCrmEngagementInputFieldMappings$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            start_at: "startAt",
+            end_time: "endTime",
+            user_id: "userId",
+            company_id: "companyId",
+            field_mappings: "fieldMappings",
+        });
+    });
+
+/** @internal */
+export type UnifiedCrmEngagementInput$Outbound = {
+    content?: string | undefined;
+    direction?: string | undefined;
+    subject?: string | undefined;
+    start_at?: string | undefined;
+    end_time?: string | undefined;
+    type: string;
+    user_id?: string | undefined;
+    company_id?: string | undefined;
+    contacts?: Array<string> | undefined;
+    field_mappings: UnifiedCrmEngagementInputFieldMappings$Outbound;
+};
+
+/** @internal */
+export const UnifiedCrmEngagementInput$outboundSchema: z.ZodType<
+    UnifiedCrmEngagementInput$Outbound,
+    z.ZodTypeDef,
+    UnifiedCrmEngagementInput
+> = z
+    .object({
+        content: z.string().optional(),
+        direction: z.string().optional(),
+        subject: z.string().optional(),
+        startAt: z
+            .date()
+            .transform((v) => v.toISOString())
+            .optional(),
+        endTime: z
+            .date()
+            .transform((v) => v.toISOString())
+            .optional(),
+        type: z.string(),
+        userId: z.string().optional(),
+        companyId: z.string().optional(),
+        contacts: z.array(z.string()).optional(),
+        fieldMappings: z.lazy(() => UnifiedCrmEngagementInputFieldMappings$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            startAt: "start_at",
+            endTime: "end_time",
+            userId: "user_id",
+            companyId: "company_id",
+            fieldMappings: "field_mappings",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedCrmEngagementInput$ {
-    export const inboundSchema: z.ZodType<UnifiedCrmEngagementInput, z.ZodTypeDef, unknown> = z
-        .object({
-            content: z.string().optional(),
-            direction: z.string().optional(),
-            subject: z.string().optional(),
-            start_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .optional(),
-            end_time: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .optional(),
-            type: z.string(),
-            user_id: z.string().optional(),
-            company_id: z.string().optional(),
-            contacts: z.array(z.string()).optional(),
-            field_mappings: z.lazy(() => UnifiedCrmEngagementInputFieldMappings$.inboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                start_at: "startAt",
-                end_time: "endTime",
-                user_id: "userId",
-                company_id: "companyId",
-                field_mappings: "fieldMappings",
-            });
-        });
-
-    export type Outbound = {
-        content?: string | undefined;
-        direction?: string | undefined;
-        subject?: string | undefined;
-        start_at?: string | undefined;
-        end_time?: string | undefined;
-        type: string;
-        user_id?: string | undefined;
-        company_id?: string | undefined;
-        contacts?: Array<string> | undefined;
-        field_mappings: UnifiedCrmEngagementInputFieldMappings$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnifiedCrmEngagementInput> = z
-        .object({
-            content: z.string().optional(),
-            direction: z.string().optional(),
-            subject: z.string().optional(),
-            startAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .optional(),
-            endTime: z
-                .date()
-                .transform((v) => v.toISOString())
-                .optional(),
-            type: z.string(),
-            userId: z.string().optional(),
-            companyId: z.string().optional(),
-            contacts: z.array(z.string()).optional(),
-            fieldMappings: z.lazy(() => UnifiedCrmEngagementInputFieldMappings$.outboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                startAt: "start_at",
-                endTime: "end_time",
-                userId: "user_id",
-                companyId: "company_id",
-                fieldMappings: "field_mappings",
-            });
-        });
+    /** @deprecated use `UnifiedCrmEngagementInput$inboundSchema` instead. */
+    export const inboundSchema = UnifiedCrmEngagementInput$inboundSchema;
+    /** @deprecated use `UnifiedCrmEngagementInput$outboundSchema` instead. */
+    export const outboundSchema = UnifiedCrmEngagementInput$outboundSchema;
+    /** @deprecated use `UnifiedCrmEngagementInput$Outbound` instead. */
+    export type Outbound = UnifiedCrmEngagementInput$Outbound;
 }

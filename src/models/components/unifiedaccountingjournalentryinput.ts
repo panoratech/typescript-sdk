@@ -7,18 +7,31 @@ import * as z from "zod";
 export type UnifiedAccountingJournalentryInput = {};
 
 /** @internal */
+export const UnifiedAccountingJournalentryInput$inboundSchema: z.ZodType<
+    UnifiedAccountingJournalentryInput,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedAccountingJournalentryInput$Outbound = {};
+
+/** @internal */
+export const UnifiedAccountingJournalentryInput$outboundSchema: z.ZodType<
+    UnifiedAccountingJournalentryInput$Outbound,
+    z.ZodTypeDef,
+    UnifiedAccountingJournalentryInput
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedAccountingJournalentryInput$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedAccountingJournalentryInput,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedAccountingJournalentryInput
-    > = z.object({});
+    /** @deprecated use `UnifiedAccountingJournalentryInput$inboundSchema` instead. */
+    export const inboundSchema = UnifiedAccountingJournalentryInput$inboundSchema;
+    /** @deprecated use `UnifiedAccountingJournalentryInput$outboundSchema` instead. */
+    export const outboundSchema = UnifiedAccountingJournalentryInput$outboundSchema;
+    /** @deprecated use `UnifiedAccountingJournalentryInput$Outbound` instead. */
+    export type Outbound = UnifiedAccountingJournalentryInput$Outbound;
 }

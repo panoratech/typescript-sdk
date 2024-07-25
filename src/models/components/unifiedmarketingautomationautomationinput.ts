@@ -7,18 +7,31 @@ import * as z from "zod";
 export type UnifiedMarketingautomationAutomationInput = {};
 
 /** @internal */
+export const UnifiedMarketingautomationAutomationInput$inboundSchema: z.ZodType<
+    UnifiedMarketingautomationAutomationInput,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedMarketingautomationAutomationInput$Outbound = {};
+
+/** @internal */
+export const UnifiedMarketingautomationAutomationInput$outboundSchema: z.ZodType<
+    UnifiedMarketingautomationAutomationInput$Outbound,
+    z.ZodTypeDef,
+    UnifiedMarketingautomationAutomationInput
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedMarketingautomationAutomationInput$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedMarketingautomationAutomationInput,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedMarketingautomationAutomationInput
-    > = z.object({});
+    /** @deprecated use `UnifiedMarketingautomationAutomationInput$inboundSchema` instead. */
+    export const inboundSchema = UnifiedMarketingautomationAutomationInput$inboundSchema;
+    /** @deprecated use `UnifiedMarketingautomationAutomationInput$outboundSchema` instead. */
+    export const outboundSchema = UnifiedMarketingautomationAutomationInput$outboundSchema;
+    /** @deprecated use `UnifiedMarketingautomationAutomationInput$Outbound` instead. */
+    export type Outbound = UnifiedMarketingautomationAutomationInput$Outbound;
 }

@@ -7,18 +7,31 @@ import * as z from "zod";
 export type UnifiedAccountingTrackingcategoryOutput = {};
 
 /** @internal */
+export const UnifiedAccountingTrackingcategoryOutput$inboundSchema: z.ZodType<
+    UnifiedAccountingTrackingcategoryOutput,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedAccountingTrackingcategoryOutput$Outbound = {};
+
+/** @internal */
+export const UnifiedAccountingTrackingcategoryOutput$outboundSchema: z.ZodType<
+    UnifiedAccountingTrackingcategoryOutput$Outbound,
+    z.ZodTypeDef,
+    UnifiedAccountingTrackingcategoryOutput
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedAccountingTrackingcategoryOutput$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedAccountingTrackingcategoryOutput,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedAccountingTrackingcategoryOutput
-    > = z.object({});
+    /** @deprecated use `UnifiedAccountingTrackingcategoryOutput$inboundSchema` instead. */
+    export const inboundSchema = UnifiedAccountingTrackingcategoryOutput$inboundSchema;
+    /** @deprecated use `UnifiedAccountingTrackingcategoryOutput$outboundSchema` instead. */
+    export const outboundSchema = UnifiedAccountingTrackingcategoryOutput$outboundSchema;
+    /** @deprecated use `UnifiedAccountingTrackingcategoryOutput$Outbound` instead. */
+    export type Outbound = UnifiedAccountingTrackingcategoryOutput$Outbound;
 }

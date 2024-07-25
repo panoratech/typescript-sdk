@@ -1,20 +1,22 @@
-speakeasyVersion: 1.312.1
+speakeasyVersion: 1.345.4
 sources:
     panora-open-api-swagger:
         sourceNamespace: panora-open-api-swagger
-        sourceRevisionDigest: sha256:b9f137773d782f0a2d6cb291328883321b832af65853ecbcfa4d91ca29b9c7c3
-        sourceBlobDigest: sha256:6ed6491b448c3f05d4836b9956f9e590ac719445aee7197ac143618f4f55b94b
+        sourceRevisionDigest: sha256:894b7cceb58624301f7d7ca1ab6a8993d3c06fffea031804fcdca248c859a387
+        sourceBlobDigest: sha256:a4bcf6678cf4d234dd01f12982b30dbbcd8fd33ace1f7f797b77e9f79fafc52b
         tags:
             - latest
+            - main
 targets:
     my-first-target:
         source: panora-open-api-swagger
         sourceNamespace: panora-open-api-swagger
-        sourceRevisionDigest: sha256:b9f137773d782f0a2d6cb291328883321b832af65853ecbcfa4d91ca29b9c7c3
-        sourceBlobDigest: sha256:6ed6491b448c3f05d4836b9956f9e590ac719445aee7197ac143618f4f55b94b
-        outLocation: /Users/nael/Desktop/typescript-sdk/panora-typescript
+        sourceRevisionDigest: sha256:894b7cceb58624301f7d7ca1ab6a8993d3c06fffea031804fcdca248c859a387
+        sourceBlobDigest: sha256:a4bcf6678cf4d234dd01f12982b30dbbcd8fd33ace1f7f797b77e9f79fafc52b
+        outLocation: /github/workspace/repo
 workflow:
     workflowVersion: 1.0.0
+    speakeasyVersion: latest
     sources:
         panora-open-api-swagger:
             inputs:
@@ -25,3 +27,6 @@ workflow:
         my-first-target:
             target: typescript
             source: panora-open-api-swagger
+            publish:
+                npm:
+                    token: $npm_token

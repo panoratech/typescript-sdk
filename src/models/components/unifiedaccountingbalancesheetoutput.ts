@@ -7,18 +7,31 @@ import * as z from "zod";
 export type UnifiedAccountingBalancesheetOutput = {};
 
 /** @internal */
+export const UnifiedAccountingBalancesheetOutput$inboundSchema: z.ZodType<
+    UnifiedAccountingBalancesheetOutput,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedAccountingBalancesheetOutput$Outbound = {};
+
+/** @internal */
+export const UnifiedAccountingBalancesheetOutput$outboundSchema: z.ZodType<
+    UnifiedAccountingBalancesheetOutput$Outbound,
+    z.ZodTypeDef,
+    UnifiedAccountingBalancesheetOutput
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedAccountingBalancesheetOutput$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedAccountingBalancesheetOutput,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedAccountingBalancesheetOutput
-    > = z.object({});
+    /** @deprecated use `UnifiedAccountingBalancesheetOutput$inboundSchema` instead. */
+    export const inboundSchema = UnifiedAccountingBalancesheetOutput$inboundSchema;
+    /** @deprecated use `UnifiedAccountingBalancesheetOutput$outboundSchema` instead. */
+    export const outboundSchema = UnifiedAccountingBalancesheetOutput$outboundSchema;
+    /** @deprecated use `UnifiedAccountingBalancesheetOutput$Outbound` instead. */
+    export type Outbound = UnifiedAccountingBalancesheetOutput$Outbound;
 }

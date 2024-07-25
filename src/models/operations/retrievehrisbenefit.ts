@@ -27,69 +27,110 @@ export type RetrieveHrisBenefitResponse = {
 };
 
 /** @internal */
+export const RetrieveHrisBenefitRequest$inboundSchema: z.ZodType<
+    RetrieveHrisBenefitRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        id: z.string(),
+        remote_data: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+        });
+    });
+
+/** @internal */
+export type RetrieveHrisBenefitRequest$Outbound = {
+    "x-connection-token": string;
+    id: string;
+    remote_data?: boolean | undefined;
+};
+
+/** @internal */
+export const RetrieveHrisBenefitRequest$outboundSchema: z.ZodType<
+    RetrieveHrisBenefitRequest$Outbound,
+    z.ZodTypeDef,
+    RetrieveHrisBenefitRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        id: z.string(),
+        remoteData: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveHrisBenefitRequest$ {
-    export const inboundSchema: z.ZodType<RetrieveHrisBenefitRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            "x-connection-token": z.string(),
-            id: z.string(),
-            remote_data: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        id: string;
-        remote_data?: boolean | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RetrieveHrisBenefitRequest> = z
-        .object({
-            xConnectionToken: z.string(),
-            id: z.string(),
-            remoteData: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
-        });
+    /** @deprecated use `RetrieveHrisBenefitRequest$inboundSchema` instead. */
+    export const inboundSchema = RetrieveHrisBenefitRequest$inboundSchema;
+    /** @deprecated use `RetrieveHrisBenefitRequest$outboundSchema` instead. */
+    export const outboundSchema = RetrieveHrisBenefitRequest$outboundSchema;
+    /** @deprecated use `RetrieveHrisBenefitRequest$Outbound` instead. */
+    export type Outbound = RetrieveHrisBenefitRequest$Outbound;
 }
 
 /** @internal */
+export const RetrieveHrisBenefitResponse$inboundSchema: z.ZodType<
+    RetrieveHrisBenefitResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        UnifiedHrisBenefitOutput: components.UnifiedHrisBenefitOutput$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            UnifiedHrisBenefitOutput: "unifiedHrisBenefitOutput",
+        });
+    });
+
+/** @internal */
+export type RetrieveHrisBenefitResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    UnifiedHrisBenefitOutput?: components.UnifiedHrisBenefitOutput$Outbound | undefined;
+};
+
+/** @internal */
+export const RetrieveHrisBenefitResponse$outboundSchema: z.ZodType<
+    RetrieveHrisBenefitResponse$Outbound,
+    z.ZodTypeDef,
+    RetrieveHrisBenefitResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        unifiedHrisBenefitOutput: components.UnifiedHrisBenefitOutput$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            unifiedHrisBenefitOutput: "UnifiedHrisBenefitOutput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveHrisBenefitResponse$ {
-    export const inboundSchema: z.ZodType<RetrieveHrisBenefitResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            UnifiedHrisBenefitOutput: components.UnifiedHrisBenefitOutput$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-                UnifiedHrisBenefitOutput: "unifiedHrisBenefitOutput",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        UnifiedHrisBenefitOutput?: components.UnifiedHrisBenefitOutput$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RetrieveHrisBenefitResponse> = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            unifiedHrisBenefitOutput:
-                components.UnifiedHrisBenefitOutput$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-                unifiedHrisBenefitOutput: "UnifiedHrisBenefitOutput",
-            });
-        });
+    /** @deprecated use `RetrieveHrisBenefitResponse$inboundSchema` instead. */
+    export const inboundSchema = RetrieveHrisBenefitResponse$inboundSchema;
+    /** @deprecated use `RetrieveHrisBenefitResponse$outboundSchema` instead. */
+    export const outboundSchema = RetrieveHrisBenefitResponse$outboundSchema;
+    /** @deprecated use `RetrieveHrisBenefitResponse$Outbound` instead. */
+    export type Outbound = RetrieveHrisBenefitResponse$Outbound;
 }

@@ -69,191 +69,264 @@ export type UnifiedAtsInterviewOutput = {
 };
 
 /** @internal */
+export const UnifiedAtsInterviewOutputFieldMappings$inboundSchema: z.ZodType<
+    UnifiedAtsInterviewOutputFieldMappings,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedAtsInterviewOutputFieldMappings$Outbound = {};
+
+/** @internal */
+export const UnifiedAtsInterviewOutputFieldMappings$outboundSchema: z.ZodType<
+    UnifiedAtsInterviewOutputFieldMappings$Outbound,
+    z.ZodTypeDef,
+    UnifiedAtsInterviewOutputFieldMappings
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedAtsInterviewOutputFieldMappings$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedAtsInterviewOutputFieldMappings,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedAtsInterviewOutputFieldMappings
-    > = z.object({});
+    /** @deprecated use `UnifiedAtsInterviewOutputFieldMappings$inboundSchema` instead. */
+    export const inboundSchema = UnifiedAtsInterviewOutputFieldMappings$inboundSchema;
+    /** @deprecated use `UnifiedAtsInterviewOutputFieldMappings$outboundSchema` instead. */
+    export const outboundSchema = UnifiedAtsInterviewOutputFieldMappings$outboundSchema;
+    /** @deprecated use `UnifiedAtsInterviewOutputFieldMappings$Outbound` instead. */
+    export type Outbound = UnifiedAtsInterviewOutputFieldMappings$Outbound;
 }
 
 /** @internal */
+export const UnifiedAtsInterviewOutputRemoteData$inboundSchema: z.ZodType<
+    UnifiedAtsInterviewOutputRemoteData,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedAtsInterviewOutputRemoteData$Outbound = {};
+
+/** @internal */
+export const UnifiedAtsInterviewOutputRemoteData$outboundSchema: z.ZodType<
+    UnifiedAtsInterviewOutputRemoteData$Outbound,
+    z.ZodTypeDef,
+    UnifiedAtsInterviewOutputRemoteData
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedAtsInterviewOutputRemoteData$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedAtsInterviewOutputRemoteData,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedAtsInterviewOutputRemoteData
-    > = z.object({});
+    /** @deprecated use `UnifiedAtsInterviewOutputRemoteData$inboundSchema` instead. */
+    export const inboundSchema = UnifiedAtsInterviewOutputRemoteData$inboundSchema;
+    /** @deprecated use `UnifiedAtsInterviewOutputRemoteData$outboundSchema` instead. */
+    export const outboundSchema = UnifiedAtsInterviewOutputRemoteData$outboundSchema;
+    /** @deprecated use `UnifiedAtsInterviewOutputRemoteData$Outbound` instead. */
+    export type Outbound = UnifiedAtsInterviewOutputRemoteData$Outbound;
 }
 
 /** @internal */
+export const UnifiedAtsInterviewOutputCreatedAt$inboundSchema: z.ZodType<
+    UnifiedAtsInterviewOutputCreatedAt,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedAtsInterviewOutputCreatedAt$Outbound = {};
+
+/** @internal */
+export const UnifiedAtsInterviewOutputCreatedAt$outboundSchema: z.ZodType<
+    UnifiedAtsInterviewOutputCreatedAt$Outbound,
+    z.ZodTypeDef,
+    UnifiedAtsInterviewOutputCreatedAt
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedAtsInterviewOutputCreatedAt$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedAtsInterviewOutputCreatedAt,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedAtsInterviewOutputCreatedAt
-    > = z.object({});
+    /** @deprecated use `UnifiedAtsInterviewOutputCreatedAt$inboundSchema` instead. */
+    export const inboundSchema = UnifiedAtsInterviewOutputCreatedAt$inboundSchema;
+    /** @deprecated use `UnifiedAtsInterviewOutputCreatedAt$outboundSchema` instead. */
+    export const outboundSchema = UnifiedAtsInterviewOutputCreatedAt$outboundSchema;
+    /** @deprecated use `UnifiedAtsInterviewOutputCreatedAt$Outbound` instead. */
+    export type Outbound = UnifiedAtsInterviewOutputCreatedAt$Outbound;
 }
 
 /** @internal */
+export const UnifiedAtsInterviewOutputModifiedAt$inboundSchema: z.ZodType<
+    UnifiedAtsInterviewOutputModifiedAt,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedAtsInterviewOutputModifiedAt$Outbound = {};
+
+/** @internal */
+export const UnifiedAtsInterviewOutputModifiedAt$outboundSchema: z.ZodType<
+    UnifiedAtsInterviewOutputModifiedAt$Outbound,
+    z.ZodTypeDef,
+    UnifiedAtsInterviewOutputModifiedAt
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedAtsInterviewOutputModifiedAt$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedAtsInterviewOutputModifiedAt,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedAtsInterviewOutputModifiedAt
-    > = z.object({});
+    /** @deprecated use `UnifiedAtsInterviewOutputModifiedAt$inboundSchema` instead. */
+    export const inboundSchema = UnifiedAtsInterviewOutputModifiedAt$inboundSchema;
+    /** @deprecated use `UnifiedAtsInterviewOutputModifiedAt$outboundSchema` instead. */
+    export const outboundSchema = UnifiedAtsInterviewOutputModifiedAt$outboundSchema;
+    /** @deprecated use `UnifiedAtsInterviewOutputModifiedAt$Outbound` instead. */
+    export type Outbound = UnifiedAtsInterviewOutputModifiedAt$Outbound;
 }
 
 /** @internal */
+export const UnifiedAtsInterviewOutput$inboundSchema: z.ZodType<
+    UnifiedAtsInterviewOutput,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        status: z.string().optional(),
+        application_id: z.string().optional(),
+        job_interview_stage_id: z.string().optional(),
+        organized_by: z.string().optional(),
+        interviewers: z.array(z.string()).optional(),
+        location: z.string().optional(),
+        start_at: z
+            .string()
+            .datetime({ offset: true })
+            .transform((v) => new Date(v))
+            .optional(),
+        end_at: z
+            .string()
+            .datetime({ offset: true })
+            .transform((v) => new Date(v))
+            .optional(),
+        remote_created_at: z
+            .string()
+            .datetime({ offset: true })
+            .transform((v) => new Date(v))
+            .optional(),
+        remote_updated_at: z
+            .string()
+            .datetime({ offset: true })
+            .transform((v) => new Date(v))
+            .optional(),
+        field_mappings: z.lazy(() => UnifiedAtsInterviewOutputFieldMappings$inboundSchema),
+        id: z.string().optional(),
+        remote_id: z.string().optional(),
+        remote_data: z.lazy(() => UnifiedAtsInterviewOutputRemoteData$inboundSchema),
+        created_at: z.lazy(() => UnifiedAtsInterviewOutputCreatedAt$inboundSchema),
+        modified_at: z.lazy(() => UnifiedAtsInterviewOutputModifiedAt$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            application_id: "applicationId",
+            job_interview_stage_id: "jobInterviewStageId",
+            organized_by: "organizedBy",
+            start_at: "startAt",
+            end_at: "endAt",
+            remote_created_at: "remoteCreatedAt",
+            remote_updated_at: "remoteUpdatedAt",
+            field_mappings: "fieldMappings",
+            remote_id: "remoteId",
+            remote_data: "remoteData",
+            created_at: "createdAt",
+            modified_at: "modifiedAt",
+        });
+    });
+
+/** @internal */
+export type UnifiedAtsInterviewOutput$Outbound = {
+    status?: string | undefined;
+    application_id?: string | undefined;
+    job_interview_stage_id?: string | undefined;
+    organized_by?: string | undefined;
+    interviewers?: Array<string> | undefined;
+    location?: string | undefined;
+    start_at?: string | undefined;
+    end_at?: string | undefined;
+    remote_created_at?: string | undefined;
+    remote_updated_at?: string | undefined;
+    field_mappings: UnifiedAtsInterviewOutputFieldMappings$Outbound;
+    id?: string | undefined;
+    remote_id?: string | undefined;
+    remote_data: UnifiedAtsInterviewOutputRemoteData$Outbound;
+    created_at: UnifiedAtsInterviewOutputCreatedAt$Outbound;
+    modified_at: UnifiedAtsInterviewOutputModifiedAt$Outbound;
+};
+
+/** @internal */
+export const UnifiedAtsInterviewOutput$outboundSchema: z.ZodType<
+    UnifiedAtsInterviewOutput$Outbound,
+    z.ZodTypeDef,
+    UnifiedAtsInterviewOutput
+> = z
+    .object({
+        status: z.string().optional(),
+        applicationId: z.string().optional(),
+        jobInterviewStageId: z.string().optional(),
+        organizedBy: z.string().optional(),
+        interviewers: z.array(z.string()).optional(),
+        location: z.string().optional(),
+        startAt: z
+            .date()
+            .transform((v) => v.toISOString())
+            .optional(),
+        endAt: z
+            .date()
+            .transform((v) => v.toISOString())
+            .optional(),
+        remoteCreatedAt: z
+            .date()
+            .transform((v) => v.toISOString())
+            .optional(),
+        remoteUpdatedAt: z
+            .date()
+            .transform((v) => v.toISOString())
+            .optional(),
+        fieldMappings: z.lazy(() => UnifiedAtsInterviewOutputFieldMappings$outboundSchema),
+        id: z.string().optional(),
+        remoteId: z.string().optional(),
+        remoteData: z.lazy(() => UnifiedAtsInterviewOutputRemoteData$outboundSchema),
+        createdAt: z.lazy(() => UnifiedAtsInterviewOutputCreatedAt$outboundSchema),
+        modifiedAt: z.lazy(() => UnifiedAtsInterviewOutputModifiedAt$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            applicationId: "application_id",
+            jobInterviewStageId: "job_interview_stage_id",
+            organizedBy: "organized_by",
+            startAt: "start_at",
+            endAt: "end_at",
+            remoteCreatedAt: "remote_created_at",
+            remoteUpdatedAt: "remote_updated_at",
+            fieldMappings: "field_mappings",
+            remoteId: "remote_id",
+            remoteData: "remote_data",
+            createdAt: "created_at",
+            modifiedAt: "modified_at",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedAtsInterviewOutput$ {
-    export const inboundSchema: z.ZodType<UnifiedAtsInterviewOutput, z.ZodTypeDef, unknown> = z
-        .object({
-            status: z.string().optional(),
-            application_id: z.string().optional(),
-            job_interview_stage_id: z.string().optional(),
-            organized_by: z.string().optional(),
-            interviewers: z.array(z.string()).optional(),
-            location: z.string().optional(),
-            start_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .optional(),
-            end_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .optional(),
-            remote_created_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .optional(),
-            remote_updated_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .optional(),
-            field_mappings: z.lazy(() => UnifiedAtsInterviewOutputFieldMappings$.inboundSchema),
-            id: z.string().optional(),
-            remote_id: z.string().optional(),
-            remote_data: z.lazy(() => UnifiedAtsInterviewOutputRemoteData$.inboundSchema),
-            created_at: z.lazy(() => UnifiedAtsInterviewOutputCreatedAt$.inboundSchema),
-            modified_at: z.lazy(() => UnifiedAtsInterviewOutputModifiedAt$.inboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                application_id: "applicationId",
-                job_interview_stage_id: "jobInterviewStageId",
-                organized_by: "organizedBy",
-                start_at: "startAt",
-                end_at: "endAt",
-                remote_created_at: "remoteCreatedAt",
-                remote_updated_at: "remoteUpdatedAt",
-                field_mappings: "fieldMappings",
-                remote_id: "remoteId",
-                remote_data: "remoteData",
-                created_at: "createdAt",
-                modified_at: "modifiedAt",
-            });
-        });
-
-    export type Outbound = {
-        status?: string | undefined;
-        application_id?: string | undefined;
-        job_interview_stage_id?: string | undefined;
-        organized_by?: string | undefined;
-        interviewers?: Array<string> | undefined;
-        location?: string | undefined;
-        start_at?: string | undefined;
-        end_at?: string | undefined;
-        remote_created_at?: string | undefined;
-        remote_updated_at?: string | undefined;
-        field_mappings: UnifiedAtsInterviewOutputFieldMappings$.Outbound;
-        id?: string | undefined;
-        remote_id?: string | undefined;
-        remote_data: UnifiedAtsInterviewOutputRemoteData$.Outbound;
-        created_at: UnifiedAtsInterviewOutputCreatedAt$.Outbound;
-        modified_at: UnifiedAtsInterviewOutputModifiedAt$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnifiedAtsInterviewOutput> = z
-        .object({
-            status: z.string().optional(),
-            applicationId: z.string().optional(),
-            jobInterviewStageId: z.string().optional(),
-            organizedBy: z.string().optional(),
-            interviewers: z.array(z.string()).optional(),
-            location: z.string().optional(),
-            startAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .optional(),
-            endAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .optional(),
-            remoteCreatedAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .optional(),
-            remoteUpdatedAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .optional(),
-            fieldMappings: z.lazy(() => UnifiedAtsInterviewOutputFieldMappings$.outboundSchema),
-            id: z.string().optional(),
-            remoteId: z.string().optional(),
-            remoteData: z.lazy(() => UnifiedAtsInterviewOutputRemoteData$.outboundSchema),
-            createdAt: z.lazy(() => UnifiedAtsInterviewOutputCreatedAt$.outboundSchema),
-            modifiedAt: z.lazy(() => UnifiedAtsInterviewOutputModifiedAt$.outboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                applicationId: "application_id",
-                jobInterviewStageId: "job_interview_stage_id",
-                organizedBy: "organized_by",
-                startAt: "start_at",
-                endAt: "end_at",
-                remoteCreatedAt: "remote_created_at",
-                remoteUpdatedAt: "remote_updated_at",
-                fieldMappings: "field_mappings",
-                remoteId: "remote_id",
-                remoteData: "remote_data",
-                createdAt: "created_at",
-                modifiedAt: "modified_at",
-            });
-        });
+    /** @deprecated use `UnifiedAtsInterviewOutput$inboundSchema` instead. */
+    export const inboundSchema = UnifiedAtsInterviewOutput$inboundSchema;
+    /** @deprecated use `UnifiedAtsInterviewOutput$outboundSchema` instead. */
+    export const outboundSchema = UnifiedAtsInterviewOutput$outboundSchema;
+    /** @deprecated use `UnifiedAtsInterviewOutput$Outbound` instead. */
+    export type Outbound = UnifiedAtsInterviewOutput$Outbound;
 }

@@ -7,10 +7,23 @@ import * as z from "zod";
 export type Url = {};
 
 /** @internal */
+export const Url$inboundSchema: z.ZodType<Url, z.ZodTypeDef, unknown> = z.object({});
+
+/** @internal */
+export type Url$Outbound = {};
+
+/** @internal */
+export const Url$outboundSchema: z.ZodType<Url$Outbound, z.ZodTypeDef, Url> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Url$ {
-    export const inboundSchema: z.ZodType<Url, z.ZodTypeDef, unknown> = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Url> = z.object({});
+    /** @deprecated use `Url$inboundSchema` instead. */
+    export const inboundSchema = Url$inboundSchema;
+    /** @deprecated use `Url$outboundSchema` instead. */
+    export const outboundSchema = Url$outboundSchema;
+    /** @deprecated use `Url$Outbound` instead. */
+    export type Outbound = Url$Outbound;
 }

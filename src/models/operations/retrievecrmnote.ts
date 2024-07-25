@@ -27,68 +27,110 @@ export type RetrieveCrmNoteResponse = {
 };
 
 /** @internal */
+export const RetrieveCrmNoteRequest$inboundSchema: z.ZodType<
+    RetrieveCrmNoteRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        id: z.string(),
+        remote_data: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+        });
+    });
+
+/** @internal */
+export type RetrieveCrmNoteRequest$Outbound = {
+    "x-connection-token": string;
+    id: string;
+    remote_data?: boolean | undefined;
+};
+
+/** @internal */
+export const RetrieveCrmNoteRequest$outboundSchema: z.ZodType<
+    RetrieveCrmNoteRequest$Outbound,
+    z.ZodTypeDef,
+    RetrieveCrmNoteRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        id: z.string(),
+        remoteData: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveCrmNoteRequest$ {
-    export const inboundSchema: z.ZodType<RetrieveCrmNoteRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            "x-connection-token": z.string(),
-            id: z.string(),
-            remote_data: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        id: string;
-        remote_data?: boolean | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RetrieveCrmNoteRequest> = z
-        .object({
-            xConnectionToken: z.string(),
-            id: z.string(),
-            remoteData: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
-        });
+    /** @deprecated use `RetrieveCrmNoteRequest$inboundSchema` instead. */
+    export const inboundSchema = RetrieveCrmNoteRequest$inboundSchema;
+    /** @deprecated use `RetrieveCrmNoteRequest$outboundSchema` instead. */
+    export const outboundSchema = RetrieveCrmNoteRequest$outboundSchema;
+    /** @deprecated use `RetrieveCrmNoteRequest$Outbound` instead. */
+    export type Outbound = RetrieveCrmNoteRequest$Outbound;
 }
 
 /** @internal */
+export const RetrieveCrmNoteResponse$inboundSchema: z.ZodType<
+    RetrieveCrmNoteResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        UnifiedCrmNoteOutput: components.UnifiedCrmNoteOutput$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            UnifiedCrmNoteOutput: "unifiedCrmNoteOutput",
+        });
+    });
+
+/** @internal */
+export type RetrieveCrmNoteResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    UnifiedCrmNoteOutput?: components.UnifiedCrmNoteOutput$Outbound | undefined;
+};
+
+/** @internal */
+export const RetrieveCrmNoteResponse$outboundSchema: z.ZodType<
+    RetrieveCrmNoteResponse$Outbound,
+    z.ZodTypeDef,
+    RetrieveCrmNoteResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        unifiedCrmNoteOutput: components.UnifiedCrmNoteOutput$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            unifiedCrmNoteOutput: "UnifiedCrmNoteOutput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveCrmNoteResponse$ {
-    export const inboundSchema: z.ZodType<RetrieveCrmNoteResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            UnifiedCrmNoteOutput: components.UnifiedCrmNoteOutput$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-                UnifiedCrmNoteOutput: "unifiedCrmNoteOutput",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        UnifiedCrmNoteOutput?: components.UnifiedCrmNoteOutput$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RetrieveCrmNoteResponse> = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            unifiedCrmNoteOutput: components.UnifiedCrmNoteOutput$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-                unifiedCrmNoteOutput: "UnifiedCrmNoteOutput",
-            });
-        });
+    /** @deprecated use `RetrieveCrmNoteResponse$inboundSchema` instead. */
+    export const inboundSchema = RetrieveCrmNoteResponse$inboundSchema;
+    /** @deprecated use `RetrieveCrmNoteResponse$outboundSchema` instead. */
+    export const outboundSchema = RetrieveCrmNoteResponse$outboundSchema;
+    /** @deprecated use `RetrieveCrmNoteResponse$Outbound` instead. */
+    export type Outbound = RetrieveCrmNoteResponse$Outbound;
 }

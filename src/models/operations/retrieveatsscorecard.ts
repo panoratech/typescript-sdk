@@ -27,70 +27,110 @@ export type RetrieveAtsScorecardResponse = {
 };
 
 /** @internal */
+export const RetrieveAtsScorecardRequest$inboundSchema: z.ZodType<
+    RetrieveAtsScorecardRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        id: z.string(),
+        remote_data: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+        });
+    });
+
+/** @internal */
+export type RetrieveAtsScorecardRequest$Outbound = {
+    "x-connection-token": string;
+    id: string;
+    remote_data?: boolean | undefined;
+};
+
+/** @internal */
+export const RetrieveAtsScorecardRequest$outboundSchema: z.ZodType<
+    RetrieveAtsScorecardRequest$Outbound,
+    z.ZodTypeDef,
+    RetrieveAtsScorecardRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        id: z.string(),
+        remoteData: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveAtsScorecardRequest$ {
-    export const inboundSchema: z.ZodType<RetrieveAtsScorecardRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            "x-connection-token": z.string(),
-            id: z.string(),
-            remote_data: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        id: string;
-        remote_data?: boolean | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RetrieveAtsScorecardRequest> = z
-        .object({
-            xConnectionToken: z.string(),
-            id: z.string(),
-            remoteData: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
-        });
+    /** @deprecated use `RetrieveAtsScorecardRequest$inboundSchema` instead. */
+    export const inboundSchema = RetrieveAtsScorecardRequest$inboundSchema;
+    /** @deprecated use `RetrieveAtsScorecardRequest$outboundSchema` instead. */
+    export const outboundSchema = RetrieveAtsScorecardRequest$outboundSchema;
+    /** @deprecated use `RetrieveAtsScorecardRequest$Outbound` instead. */
+    export type Outbound = RetrieveAtsScorecardRequest$Outbound;
 }
 
 /** @internal */
+export const RetrieveAtsScorecardResponse$inboundSchema: z.ZodType<
+    RetrieveAtsScorecardResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        UnifiedAtsScorecardOutput: components.UnifiedAtsScorecardOutput$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            UnifiedAtsScorecardOutput: "unifiedAtsScorecardOutput",
+        });
+    });
+
+/** @internal */
+export type RetrieveAtsScorecardResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    UnifiedAtsScorecardOutput?: components.UnifiedAtsScorecardOutput$Outbound | undefined;
+};
+
+/** @internal */
+export const RetrieveAtsScorecardResponse$outboundSchema: z.ZodType<
+    RetrieveAtsScorecardResponse$Outbound,
+    z.ZodTypeDef,
+    RetrieveAtsScorecardResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        unifiedAtsScorecardOutput: components.UnifiedAtsScorecardOutput$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            unifiedAtsScorecardOutput: "UnifiedAtsScorecardOutput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveAtsScorecardResponse$ {
-    export const inboundSchema: z.ZodType<RetrieveAtsScorecardResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            UnifiedAtsScorecardOutput:
-                components.UnifiedAtsScorecardOutput$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-                UnifiedAtsScorecardOutput: "unifiedAtsScorecardOutput",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        UnifiedAtsScorecardOutput?: components.UnifiedAtsScorecardOutput$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RetrieveAtsScorecardResponse> = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            unifiedAtsScorecardOutput:
-                components.UnifiedAtsScorecardOutput$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-                unifiedAtsScorecardOutput: "UnifiedAtsScorecardOutput",
-            });
-        });
+    /** @deprecated use `RetrieveAtsScorecardResponse$inboundSchema` instead. */
+    export const inboundSchema = RetrieveAtsScorecardResponse$inboundSchema;
+    /** @deprecated use `RetrieveAtsScorecardResponse$outboundSchema` instead. */
+    export const outboundSchema = RetrieveAtsScorecardResponse$outboundSchema;
+    /** @deprecated use `RetrieveAtsScorecardResponse$Outbound` instead. */
+    export type Outbound = RetrieveAtsScorecardResponse$Outbound;
 }

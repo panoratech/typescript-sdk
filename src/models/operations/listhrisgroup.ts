@@ -37,104 +37,167 @@ export type ListHrisGroupResponse = {
 };
 
 /** @internal */
+export const ListHrisGroupRequest$inboundSchema: z.ZodType<
+    ListHrisGroupRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        remote_data: z.boolean().optional(),
+        limit: z.number().default(50),
+        cursor: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+        });
+    });
+
+/** @internal */
+export type ListHrisGroupRequest$Outbound = {
+    "x-connection-token": string;
+    remote_data?: boolean | undefined;
+    limit: number;
+    cursor?: string | undefined;
+};
+
+/** @internal */
+export const ListHrisGroupRequest$outboundSchema: z.ZodType<
+    ListHrisGroupRequest$Outbound,
+    z.ZodTypeDef,
+    ListHrisGroupRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        remoteData: z.boolean().optional(),
+        limit: z.number().default(50),
+        cursor: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListHrisGroupRequest$ {
-    export const inboundSchema: z.ZodType<ListHrisGroupRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            "x-connection-token": z.string(),
-            remote_data: z.boolean().optional(),
-            limit: z.number().default(50),
-            cursor: z.string().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        remote_data?: boolean | undefined;
-        limit: number;
-        cursor?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListHrisGroupRequest> = z
-        .object({
-            xConnectionToken: z.string(),
-            remoteData: z.boolean().optional(),
-            limit: z.number().default(50),
-            cursor: z.string().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
-        });
+    /** @deprecated use `ListHrisGroupRequest$inboundSchema` instead. */
+    export const inboundSchema = ListHrisGroupRequest$inboundSchema;
+    /** @deprecated use `ListHrisGroupRequest$outboundSchema` instead. */
+    export const outboundSchema = ListHrisGroupRequest$outboundSchema;
+    /** @deprecated use `ListHrisGroupRequest$Outbound` instead. */
+    export type Outbound = ListHrisGroupRequest$Outbound;
 }
 
 /** @internal */
+export const ListHrisGroupResponseBody$inboundSchema: z.ZodType<
+    ListHrisGroupResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        prev_cursor: z.string(),
+        next_cursor: z.string(),
+        data: z.array(components.UnifiedHrisGroupOutput$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            prev_cursor: "prevCursor",
+            next_cursor: "nextCursor",
+        });
+    });
+
+/** @internal */
+export type ListHrisGroupResponseBody$Outbound = {
+    prev_cursor: string;
+    next_cursor: string;
+    data: Array<components.UnifiedHrisGroupOutput$Outbound>;
+};
+
+/** @internal */
+export const ListHrisGroupResponseBody$outboundSchema: z.ZodType<
+    ListHrisGroupResponseBody$Outbound,
+    z.ZodTypeDef,
+    ListHrisGroupResponseBody
+> = z
+    .object({
+        prevCursor: z.string(),
+        nextCursor: z.string(),
+        data: z.array(components.UnifiedHrisGroupOutput$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            prevCursor: "prev_cursor",
+            nextCursor: "next_cursor",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListHrisGroupResponseBody$ {
-    export const inboundSchema: z.ZodType<ListHrisGroupResponseBody, z.ZodTypeDef, unknown> = z
-        .object({
-            prev_cursor: z.string(),
-            next_cursor: z.string(),
-            data: z.array(components.UnifiedHrisGroupOutput$.inboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                prev_cursor: "prevCursor",
-                next_cursor: "nextCursor",
-            });
-        });
-
-    export type Outbound = {
-        prev_cursor: string;
-        next_cursor: string;
-        data: Array<components.UnifiedHrisGroupOutput$.Outbound>;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListHrisGroupResponseBody> = z
-        .object({
-            prevCursor: z.string(),
-            nextCursor: z.string(),
-            data: z.array(components.UnifiedHrisGroupOutput$.outboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                prevCursor: "prev_cursor",
-                nextCursor: "next_cursor",
-            });
-        });
+    /** @deprecated use `ListHrisGroupResponseBody$inboundSchema` instead. */
+    export const inboundSchema = ListHrisGroupResponseBody$inboundSchema;
+    /** @deprecated use `ListHrisGroupResponseBody$outboundSchema` instead. */
+    export const outboundSchema = ListHrisGroupResponseBody$outboundSchema;
+    /** @deprecated use `ListHrisGroupResponseBody$Outbound` instead. */
+    export type Outbound = ListHrisGroupResponseBody$Outbound;
 }
 
 /** @internal */
+export const ListHrisGroupResponse$inboundSchema: z.ZodType<
+    ListHrisGroupResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        object: z.lazy(() => ListHrisGroupResponseBody$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+        });
+    });
+
+/** @internal */
+export type ListHrisGroupResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    object?: ListHrisGroupResponseBody$Outbound | undefined;
+};
+
+/** @internal */
+export const ListHrisGroupResponse$outboundSchema: z.ZodType<
+    ListHrisGroupResponse$Outbound,
+    z.ZodTypeDef,
+    ListHrisGroupResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        object: z.lazy(() => ListHrisGroupResponseBody$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListHrisGroupResponse$ {
-    export const inboundSchema: z.ZodType<ListHrisGroupResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            object: z.lazy(() => ListHrisGroupResponseBody$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        object?: ListHrisGroupResponseBody$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListHrisGroupResponse> = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            object: z.lazy(() => ListHrisGroupResponseBody$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-            });
-        });
+    /** @deprecated use `ListHrisGroupResponse$inboundSchema` instead. */
+    export const inboundSchema = ListHrisGroupResponse$inboundSchema;
+    /** @deprecated use `ListHrisGroupResponse$outboundSchema` instead. */
+    export const outboundSchema = ListHrisGroupResponse$outboundSchema;
+    /** @deprecated use `ListHrisGroupResponse$Outbound` instead. */
+    export type Outbound = ListHrisGroupResponse$Outbound;
 }

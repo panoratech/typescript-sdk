@@ -37,113 +37,167 @@ export type ListTicketingContactsResponse = {
 };
 
 /** @internal */
+export const ListTicketingContactsRequest$inboundSchema: z.ZodType<
+    ListTicketingContactsRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        remote_data: z.boolean().optional(),
+        limit: z.number().default(50),
+        cursor: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+        });
+    });
+
+/** @internal */
+export type ListTicketingContactsRequest$Outbound = {
+    "x-connection-token": string;
+    remote_data?: boolean | undefined;
+    limit: number;
+    cursor?: string | undefined;
+};
+
+/** @internal */
+export const ListTicketingContactsRequest$outboundSchema: z.ZodType<
+    ListTicketingContactsRequest$Outbound,
+    z.ZodTypeDef,
+    ListTicketingContactsRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        remoteData: z.boolean().optional(),
+        limit: z.number().default(50),
+        cursor: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListTicketingContactsRequest$ {
-    export const inboundSchema: z.ZodType<ListTicketingContactsRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            "x-connection-token": z.string(),
-            remote_data: z.boolean().optional(),
-            limit: z.number().default(50),
-            cursor: z.string().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        remote_data?: boolean | undefined;
-        limit: number;
-        cursor?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListTicketingContactsRequest> = z
-        .object({
-            xConnectionToken: z.string(),
-            remoteData: z.boolean().optional(),
-            limit: z.number().default(50),
-            cursor: z.string().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
-        });
+    /** @deprecated use `ListTicketingContactsRequest$inboundSchema` instead. */
+    export const inboundSchema = ListTicketingContactsRequest$inboundSchema;
+    /** @deprecated use `ListTicketingContactsRequest$outboundSchema` instead. */
+    export const outboundSchema = ListTicketingContactsRequest$outboundSchema;
+    /** @deprecated use `ListTicketingContactsRequest$Outbound` instead. */
+    export type Outbound = ListTicketingContactsRequest$Outbound;
 }
 
 /** @internal */
+export const ListTicketingContactsResponseBody$inboundSchema: z.ZodType<
+    ListTicketingContactsResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        prev_cursor: z.string(),
+        next_cursor: z.string(),
+        data: z.array(components.UnifiedTicketingContactOutput$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            prev_cursor: "prevCursor",
+            next_cursor: "nextCursor",
+        });
+    });
+
+/** @internal */
+export type ListTicketingContactsResponseBody$Outbound = {
+    prev_cursor: string;
+    next_cursor: string;
+    data: Array<components.UnifiedTicketingContactOutput$Outbound>;
+};
+
+/** @internal */
+export const ListTicketingContactsResponseBody$outboundSchema: z.ZodType<
+    ListTicketingContactsResponseBody$Outbound,
+    z.ZodTypeDef,
+    ListTicketingContactsResponseBody
+> = z
+    .object({
+        prevCursor: z.string(),
+        nextCursor: z.string(),
+        data: z.array(components.UnifiedTicketingContactOutput$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            prevCursor: "prev_cursor",
+            nextCursor: "next_cursor",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListTicketingContactsResponseBody$ {
-    export const inboundSchema: z.ZodType<
-        ListTicketingContactsResponseBody,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            prev_cursor: z.string(),
-            next_cursor: z.string(),
-            data: z.array(components.UnifiedTicketingContactOutput$.inboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                prev_cursor: "prevCursor",
-                next_cursor: "nextCursor",
-            });
-        });
-
-    export type Outbound = {
-        prev_cursor: string;
-        next_cursor: string;
-        data: Array<components.UnifiedTicketingContactOutput$.Outbound>;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        ListTicketingContactsResponseBody
-    > = z
-        .object({
-            prevCursor: z.string(),
-            nextCursor: z.string(),
-            data: z.array(components.UnifiedTicketingContactOutput$.outboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                prevCursor: "prev_cursor",
-                nextCursor: "next_cursor",
-            });
-        });
+    /** @deprecated use `ListTicketingContactsResponseBody$inboundSchema` instead. */
+    export const inboundSchema = ListTicketingContactsResponseBody$inboundSchema;
+    /** @deprecated use `ListTicketingContactsResponseBody$outboundSchema` instead. */
+    export const outboundSchema = ListTicketingContactsResponseBody$outboundSchema;
+    /** @deprecated use `ListTicketingContactsResponseBody$Outbound` instead. */
+    export type Outbound = ListTicketingContactsResponseBody$Outbound;
 }
 
 /** @internal */
-export namespace ListTicketingContactsResponse$ {
-    export const inboundSchema: z.ZodType<ListTicketingContactsResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            object: z.lazy(() => ListTicketingContactsResponseBody$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-            });
+export const ListTicketingContactsResponse$inboundSchema: z.ZodType<
+    ListTicketingContactsResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        object: z.lazy(() => ListTicketingContactsResponseBody$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
         });
+    });
 
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        object?: ListTicketingContactsResponseBody$.Outbound | undefined;
-    };
+/** @internal */
+export type ListTicketingContactsResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    object?: ListTicketingContactsResponseBody$Outbound | undefined;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListTicketingContactsResponse> =
-        z
-            .object({
-                httpMeta: components.HTTPMetadata$.outboundSchema,
-                object: z.lazy(() => ListTicketingContactsResponseBody$.outboundSchema).optional(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    httpMeta: "HttpMeta",
-                });
-            });
+/** @internal */
+export const ListTicketingContactsResponse$outboundSchema: z.ZodType<
+    ListTicketingContactsResponse$Outbound,
+    z.ZodTypeDef,
+    ListTicketingContactsResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        object: z.lazy(() => ListTicketingContactsResponseBody$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListTicketingContactsResponse$ {
+    /** @deprecated use `ListTicketingContactsResponse$inboundSchema` instead. */
+    export const inboundSchema = ListTicketingContactsResponse$inboundSchema;
+    /** @deprecated use `ListTicketingContactsResponse$outboundSchema` instead. */
+    export const outboundSchema = ListTicketingContactsResponse$outboundSchema;
+    /** @deprecated use `ListTicketingContactsResponse$Outbound` instead. */
+    export type Outbound = ListTicketingContactsResponse$Outbound;
 }

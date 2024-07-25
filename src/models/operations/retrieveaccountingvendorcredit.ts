@@ -29,88 +29,114 @@ export type RetrieveAccountingVendorCreditResponse = {
 };
 
 /** @internal */
+export const RetrieveAccountingVendorCreditRequest$inboundSchema: z.ZodType<
+    RetrieveAccountingVendorCreditRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        id: z.string(),
+        remote_data: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+        });
+    });
+
+/** @internal */
+export type RetrieveAccountingVendorCreditRequest$Outbound = {
+    "x-connection-token": string;
+    id: string;
+    remote_data?: boolean | undefined;
+};
+
+/** @internal */
+export const RetrieveAccountingVendorCreditRequest$outboundSchema: z.ZodType<
+    RetrieveAccountingVendorCreditRequest$Outbound,
+    z.ZodTypeDef,
+    RetrieveAccountingVendorCreditRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        id: z.string(),
+        remoteData: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveAccountingVendorCreditRequest$ {
-    export const inboundSchema: z.ZodType<
-        RetrieveAccountingVendorCreditRequest,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            "x-connection-token": z.string(),
-            id: z.string(),
-            remote_data: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        id: string;
-        remote_data?: boolean | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        RetrieveAccountingVendorCreditRequest
-    > = z
-        .object({
-            xConnectionToken: z.string(),
-            id: z.string(),
-            remoteData: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
-        });
+    /** @deprecated use `RetrieveAccountingVendorCreditRequest$inboundSchema` instead. */
+    export const inboundSchema = RetrieveAccountingVendorCreditRequest$inboundSchema;
+    /** @deprecated use `RetrieveAccountingVendorCreditRequest$outboundSchema` instead. */
+    export const outboundSchema = RetrieveAccountingVendorCreditRequest$outboundSchema;
+    /** @deprecated use `RetrieveAccountingVendorCreditRequest$Outbound` instead. */
+    export type Outbound = RetrieveAccountingVendorCreditRequest$Outbound;
 }
 
 /** @internal */
+export const RetrieveAccountingVendorCreditResponse$inboundSchema: z.ZodType<
+    RetrieveAccountingVendorCreditResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        UnifiedAccountingVendorcreditOutput:
+            components.UnifiedAccountingVendorcreditOutput$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            UnifiedAccountingVendorcreditOutput: "unifiedAccountingVendorcreditOutput",
+        });
+    });
+
+/** @internal */
+export type RetrieveAccountingVendorCreditResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    UnifiedAccountingVendorcreditOutput?:
+        | components.UnifiedAccountingVendorcreditOutput$Outbound
+        | undefined;
+};
+
+/** @internal */
+export const RetrieveAccountingVendorCreditResponse$outboundSchema: z.ZodType<
+    RetrieveAccountingVendorCreditResponse$Outbound,
+    z.ZodTypeDef,
+    RetrieveAccountingVendorCreditResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        unifiedAccountingVendorcreditOutput:
+            components.UnifiedAccountingVendorcreditOutput$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            unifiedAccountingVendorcreditOutput: "UnifiedAccountingVendorcreditOutput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveAccountingVendorCreditResponse$ {
-    export const inboundSchema: z.ZodType<
-        RetrieveAccountingVendorCreditResponse,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            UnifiedAccountingVendorcreditOutput:
-                components.UnifiedAccountingVendorcreditOutput$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-                UnifiedAccountingVendorcreditOutput: "unifiedAccountingVendorcreditOutput",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        UnifiedAccountingVendorcreditOutput?:
-            | components.UnifiedAccountingVendorcreditOutput$.Outbound
-            | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        RetrieveAccountingVendorCreditResponse
-    > = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            unifiedAccountingVendorcreditOutput:
-                components.UnifiedAccountingVendorcreditOutput$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-                unifiedAccountingVendorcreditOutput: "UnifiedAccountingVendorcreditOutput",
-            });
-        });
+    /** @deprecated use `RetrieveAccountingVendorCreditResponse$inboundSchema` instead. */
+    export const inboundSchema = RetrieveAccountingVendorCreditResponse$inboundSchema;
+    /** @deprecated use `RetrieveAccountingVendorCreditResponse$outboundSchema` instead. */
+    export const outboundSchema = RetrieveAccountingVendorCreditResponse$outboundSchema;
+    /** @deprecated use `RetrieveAccountingVendorCreditResponse$Outbound` instead. */
+    export type Outbound = RetrieveAccountingVendorCreditResponse$Outbound;
 }

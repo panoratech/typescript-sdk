@@ -4,8 +4,8 @@
 ### Available Operations
 
 * [list](#list) - List CRM Contacts
-* [addCrmContact](#addcrmcontact) - Create CRM Contact
-* [getCrmContact](#getcrmcontact) - Retrieve a CRM Contact
+* [create](#create) - Create CRM Contact
+* [retrieve](#retrieve) - Retrieve a CRM Contact
 
 ## list
 
@@ -39,6 +39,7 @@ run();
 | `request`                                                                                                                                                                      | [operations.ListCrmContactsRequest](../../models/operations/listcrmcontactsrequest.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 
 ### Response
@@ -50,7 +51,7 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
 
-## addCrmContact
+## create
 
 Create a contact in any supported CRM
 
@@ -64,11 +65,11 @@ const panora = new Panora({
 });
 
 async function run() {
-  const result = await panora.crm.contacts.addCrmContact({
+  const result = await panora.crm.contacts.create({
     xConnectionToken: "<value>",
     unifiedCrmContactInput: {
-      firstName: "Jailyn",
-      lastName: "Witting",
+      firstName: "Jed",
+      lastName: "Kuhn",
       fieldMappings: {},
     },
   });
@@ -84,21 +85,22 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.AddCrmContactRequest](../../models/operations/addcrmcontactrequest.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.CreateCrmContactRequest](../../models/operations/createcrmcontactrequest.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 
 ### Response
 
-**Promise\<[operations.AddCrmContactResponse](../../models/operations/addcrmcontactresponse.md)\>**
+**Promise\<[operations.CreateCrmContactResponse](../../models/operations/createcrmcontactresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
 
-## getCrmContact
+## retrieve
 
 Retrieve a contact from any connected CRM
 
@@ -112,7 +114,7 @@ const panora = new Panora({
 });
 
 async function run() {
-  const result = await panora.crm.contacts.getCrmContact({
+  const result = await panora.crm.contacts.retrieve({
     xConnectionToken: "<value>",
     id: "<id>",
   });
@@ -128,14 +130,15 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetCrmContactRequest](../../models/operations/getcrmcontactrequest.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.RetrieveCrmContactRequest](../../models/operations/retrievecrmcontactrequest.md)                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 
 ### Response
 
-**Promise\<[operations.GetCrmContactResponse](../../models/operations/getcrmcontactresponse.md)\>**
+**Promise\<[operations.RetrieveCrmContactResponse](../../models/operations/retrievecrmcontactresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

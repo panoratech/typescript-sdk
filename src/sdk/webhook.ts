@@ -3,7 +3,7 @@
  */
 
 import { SDKHooks } from "../hooks/hooks.js";
-import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config.js";
+import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
 import { encodeJSON as encodeJSON$, encodeSimple as encodeSimple$ } from "../lib/encodings.js";
 import { HTTPClient } from "../lib/http.js";
 import * as schemas$ from "../lib/schemas.js";
@@ -42,13 +42,13 @@ export class Webhook extends ClientSDK {
      * List webhooks
      */
     async list(options?: RequestOptions): Promise<operations.ListWebhooksResponse> {
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
-
         const path$ = this.templateURLComponent("/webhook")();
 
         const query$ = "";
+
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
 
         let security$;
         if (typeof this.options$.bearer === "function") {
@@ -65,7 +65,6 @@ export class Webhook extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -74,18 +73,24 @@ export class Webhook extends ClientSDK {
                 path: path$,
                 headers: headers$,
                 query: query$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
         const [result$] = await this.matcher<operations.ListWebhooksResponse>()
-            .json(200, operations.ListWebhooksResponse$, { key: "WebhookResponses" })
+            .json(200, operations.ListWebhooksResponse$inboundSchema, { key: "WebhookResponses" })
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 
@@ -100,14 +105,10 @@ export class Webhook extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.CreateWebhookResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => components.WebhookDto$.outboundSchema.parse(value$),
+            (value$) => components.WebhookDto$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$, { explode: true });
@@ -115,6 +116,11 @@ export class Webhook extends ClientSDK {
         const path$ = this.templateURLComponent("/webhook")();
 
         const query$ = "";
+
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        });
 
         let security$;
         if (typeof this.options$.bearer === "function") {
@@ -131,7 +137,6 @@ export class Webhook extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -141,18 +146,24 @@ export class Webhook extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
         const [result$] = await this.matcher<operations.CreateWebhookResponse>()
-            .json(201, operations.CreateWebhookResponse$, { key: "WebhookResponse" })
+            .json(201, operations.CreateWebhookResponse$inboundSchema, { key: "WebhookResponse" })
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 
@@ -162,18 +173,15 @@ export class Webhook extends ClientSDK {
     /**
      * Delete Webhook
      */
-    async deleteWebhook(
-        request: operations.DeleteWebhookRequest,
+    async delete(
+        request: operations.DeleteRequest,
         options?: RequestOptions
-    ): Promise<operations.DeleteWebhookResponse> {
+    ): Promise<operations.DeleteResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.DeleteWebhookRequest$.outboundSchema.parse(value$),
+            (value$) => operations.DeleteRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -185,6 +193,10 @@ export class Webhook extends ClientSDK {
 
         const query$ = "";
 
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
+
         let security$;
         if (typeof this.options$.bearer === "function") {
             security$ = { bearer: await this.options$.bearer() };
@@ -194,13 +206,12 @@ export class Webhook extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "deleteWebhook",
+            operationID: "delete",
             oAuth2Scopes: [],
             securitySource: this.options$.bearer,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -210,18 +221,24 @@ export class Webhook extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
-        const [result$] = await this.matcher<operations.DeleteWebhookResponse>()
-            .json(201, operations.DeleteWebhookResponse$, { key: "WebhookResponse" })
+        const [result$] = await this.matcher<operations.DeleteResponse>()
+            .json(201, operations.DeleteResponse$inboundSchema, { key: "WebhookResponse" })
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 
@@ -231,18 +248,15 @@ export class Webhook extends ClientSDK {
     /**
      * Update webhook status
      */
-    async updateWebhookStatus(
-        request: operations.UpdateWebhookStatusRequest,
+    async updateStatus(
+        request: operations.UpdateStatusRequest,
         options?: RequestOptions
-    ): Promise<operations.UpdateWebhookStatusResponse> {
+    ): Promise<operations.UpdateStatusResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.UpdateWebhookStatusRequest$.outboundSchema.parse(value$),
+            (value$) => operations.UpdateStatusRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -254,6 +268,10 @@ export class Webhook extends ClientSDK {
 
         const query$ = "";
 
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
+
         let security$;
         if (typeof this.options$.bearer === "function") {
             security$ = { bearer: await this.options$.bearer() };
@@ -263,13 +281,12 @@ export class Webhook extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "updateWebhookStatus",
+            operationID: "updateStatus",
             oAuth2Scopes: [],
             securitySource: this.options$.bearer,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -279,18 +296,24 @@ export class Webhook extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
-        const [result$] = await this.matcher<operations.UpdateWebhookStatusResponse>()
-            .json(201, operations.UpdateWebhookStatusResponse$, { key: "WebhookResponse" })
+        const [result$] = await this.matcher<operations.UpdateStatusResponse>()
+            .json(201, operations.UpdateStatusResponse$inboundSchema, { key: "WebhookResponse" })
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 
@@ -305,14 +328,10 @@ export class Webhook extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.VerifyEventResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => components.SignatureVerificationDto$.outboundSchema.parse(value$),
+            (value$) => components.SignatureVerificationDto$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$, { explode: true });
@@ -320,6 +339,11 @@ export class Webhook extends ClientSDK {
         const path$ = this.templateURLComponent("/webhook/verifyEvent")();
 
         const query$ = "";
+
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        });
 
         let security$;
         if (typeof this.options$.bearer === "function") {
@@ -336,7 +360,6 @@ export class Webhook extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -346,18 +369,24 @@ export class Webhook extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
         const [result$] = await this.matcher<operations.VerifyEventResponse>()
-            .json(201, operations.VerifyEventResponse$, { key: "EventPayload" })
+            .json(201, operations.VerifyEventResponse$inboundSchema, { key: "EventPayload" })
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 

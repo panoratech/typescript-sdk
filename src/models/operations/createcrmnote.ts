@@ -24,70 +24,112 @@ export type CreateCrmNoteResponse = {
 };
 
 /** @internal */
+export const CreateCrmNoteRequest$inboundSchema: z.ZodType<
+    CreateCrmNoteRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        remote_data: z.boolean().optional(),
+        UnifiedCrmNoteInput: components.UnifiedCrmNoteInput$inboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+            UnifiedCrmNoteInput: "unifiedCrmNoteInput",
+        });
+    });
+
+/** @internal */
+export type CreateCrmNoteRequest$Outbound = {
+    "x-connection-token": string;
+    remote_data?: boolean | undefined;
+    UnifiedCrmNoteInput: components.UnifiedCrmNoteInput$Outbound;
+};
+
+/** @internal */
+export const CreateCrmNoteRequest$outboundSchema: z.ZodType<
+    CreateCrmNoteRequest$Outbound,
+    z.ZodTypeDef,
+    CreateCrmNoteRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        remoteData: z.boolean().optional(),
+        unifiedCrmNoteInput: components.UnifiedCrmNoteInput$outboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+            unifiedCrmNoteInput: "UnifiedCrmNoteInput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateCrmNoteRequest$ {
-    export const inboundSchema: z.ZodType<CreateCrmNoteRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            "x-connection-token": z.string(),
-            remote_data: z.boolean().optional(),
-            UnifiedCrmNoteInput: components.UnifiedCrmNoteInput$.inboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-                UnifiedCrmNoteInput: "unifiedCrmNoteInput",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        remote_data?: boolean | undefined;
-        UnifiedCrmNoteInput: components.UnifiedCrmNoteInput$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateCrmNoteRequest> = z
-        .object({
-            xConnectionToken: z.string(),
-            remoteData: z.boolean().optional(),
-            unifiedCrmNoteInput: components.UnifiedCrmNoteInput$.outboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-                unifiedCrmNoteInput: "UnifiedCrmNoteInput",
-            });
-        });
+    /** @deprecated use `CreateCrmNoteRequest$inboundSchema` instead. */
+    export const inboundSchema = CreateCrmNoteRequest$inboundSchema;
+    /** @deprecated use `CreateCrmNoteRequest$outboundSchema` instead. */
+    export const outboundSchema = CreateCrmNoteRequest$outboundSchema;
+    /** @deprecated use `CreateCrmNoteRequest$Outbound` instead. */
+    export type Outbound = CreateCrmNoteRequest$Outbound;
 }
 
 /** @internal */
+export const CreateCrmNoteResponse$inboundSchema: z.ZodType<
+    CreateCrmNoteResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        UnifiedCrmNoteOutput: components.UnifiedCrmNoteOutput$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            UnifiedCrmNoteOutput: "unifiedCrmNoteOutput",
+        });
+    });
+
+/** @internal */
+export type CreateCrmNoteResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    UnifiedCrmNoteOutput?: components.UnifiedCrmNoteOutput$Outbound | undefined;
+};
+
+/** @internal */
+export const CreateCrmNoteResponse$outboundSchema: z.ZodType<
+    CreateCrmNoteResponse$Outbound,
+    z.ZodTypeDef,
+    CreateCrmNoteResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        unifiedCrmNoteOutput: components.UnifiedCrmNoteOutput$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            unifiedCrmNoteOutput: "UnifiedCrmNoteOutput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateCrmNoteResponse$ {
-    export const inboundSchema: z.ZodType<CreateCrmNoteResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            UnifiedCrmNoteOutput: components.UnifiedCrmNoteOutput$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-                UnifiedCrmNoteOutput: "unifiedCrmNoteOutput",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        UnifiedCrmNoteOutput?: components.UnifiedCrmNoteOutput$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateCrmNoteResponse> = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            unifiedCrmNoteOutput: components.UnifiedCrmNoteOutput$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-                unifiedCrmNoteOutput: "UnifiedCrmNoteOutput",
-            });
-        });
+    /** @deprecated use `CreateCrmNoteResponse$inboundSchema` instead. */
+    export const inboundSchema = CreateCrmNoteResponse$inboundSchema;
+    /** @deprecated use `CreateCrmNoteResponse$outboundSchema` instead. */
+    export const outboundSchema = CreateCrmNoteResponse$outboundSchema;
+    /** @deprecated use `CreateCrmNoteResponse$Outbound` instead. */
+    export type Outbound = CreateCrmNoteResponse$Outbound;
 }

@@ -7,12 +7,31 @@ import * as z from "zod";
 export type UnifiedHrisDependentOutput = {};
 
 /** @internal */
+export const UnifiedHrisDependentOutput$inboundSchema: z.ZodType<
+    UnifiedHrisDependentOutput,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedHrisDependentOutput$Outbound = {};
+
+/** @internal */
+export const UnifiedHrisDependentOutput$outboundSchema: z.ZodType<
+    UnifiedHrisDependentOutput$Outbound,
+    z.ZodTypeDef,
+    UnifiedHrisDependentOutput
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedHrisDependentOutput$ {
-    export const inboundSchema: z.ZodType<UnifiedHrisDependentOutput, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnifiedHrisDependentOutput> =
-        z.object({});
+    /** @deprecated use `UnifiedHrisDependentOutput$inboundSchema` instead. */
+    export const inboundSchema = UnifiedHrisDependentOutput$inboundSchema;
+    /** @deprecated use `UnifiedHrisDependentOutput$outboundSchema` instead. */
+    export const outboundSchema = UnifiedHrisDependentOutput$outboundSchema;
+    /** @deprecated use `UnifiedHrisDependentOutput$Outbound` instead. */
+    export type Outbound = UnifiedHrisDependentOutput$Outbound;
 }

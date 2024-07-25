@@ -12,33 +12,54 @@ export type CreateWebhookResponse = {
 };
 
 /** @internal */
+export const CreateWebhookResponse$inboundSchema: z.ZodType<
+    CreateWebhookResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        WebhookResponse: components.WebhookResponse$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            WebhookResponse: "webhookResponse",
+        });
+    });
+
+/** @internal */
+export type CreateWebhookResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    WebhookResponse?: components.WebhookResponse$Outbound | undefined;
+};
+
+/** @internal */
+export const CreateWebhookResponse$outboundSchema: z.ZodType<
+    CreateWebhookResponse$Outbound,
+    z.ZodTypeDef,
+    CreateWebhookResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        webhookResponse: components.WebhookResponse$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            webhookResponse: "WebhookResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateWebhookResponse$ {
-    export const inboundSchema: z.ZodType<CreateWebhookResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            WebhookResponse: components.WebhookResponse$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-                WebhookResponse: "webhookResponse",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        WebhookResponse?: components.WebhookResponse$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateWebhookResponse> = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            webhookResponse: components.WebhookResponse$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-                webhookResponse: "WebhookResponse",
-            });
-        });
+    /** @deprecated use `CreateWebhookResponse$inboundSchema` instead. */
+    export const inboundSchema = CreateWebhookResponse$inboundSchema;
+    /** @deprecated use `CreateWebhookResponse$outboundSchema` instead. */
+    export const outboundSchema = CreateWebhookResponse$outboundSchema;
+    /** @deprecated use `CreateWebhookResponse$Outbound` instead. */
+    export type Outbound = CreateWebhookResponse$Outbound;
 }

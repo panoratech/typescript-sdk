@@ -27,72 +27,114 @@ export type RetrieveCollectionResponse = {
 };
 
 /** @internal */
+export const RetrieveCollectionRequest$inboundSchema: z.ZodType<
+    RetrieveCollectionRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        id: z.string(),
+        remote_data: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+        });
+    });
+
+/** @internal */
+export type RetrieveCollectionRequest$Outbound = {
+    "x-connection-token": string;
+    id: string;
+    remote_data?: boolean | undefined;
+};
+
+/** @internal */
+export const RetrieveCollectionRequest$outboundSchema: z.ZodType<
+    RetrieveCollectionRequest$Outbound,
+    z.ZodTypeDef,
+    RetrieveCollectionRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        id: z.string(),
+        remoteData: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveCollectionRequest$ {
-    export const inboundSchema: z.ZodType<RetrieveCollectionRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            "x-connection-token": z.string(),
-            id: z.string(),
-            remote_data: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        id: string;
-        remote_data?: boolean | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RetrieveCollectionRequest> = z
-        .object({
-            xConnectionToken: z.string(),
-            id: z.string(),
-            remoteData: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
-        });
+    /** @deprecated use `RetrieveCollectionRequest$inboundSchema` instead. */
+    export const inboundSchema = RetrieveCollectionRequest$inboundSchema;
+    /** @deprecated use `RetrieveCollectionRequest$outboundSchema` instead. */
+    export const outboundSchema = RetrieveCollectionRequest$outboundSchema;
+    /** @deprecated use `RetrieveCollectionRequest$Outbound` instead. */
+    export type Outbound = RetrieveCollectionRequest$Outbound;
 }
 
 /** @internal */
+export const RetrieveCollectionResponse$inboundSchema: z.ZodType<
+    RetrieveCollectionResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        UnifiedTicketingCollectionOutput:
+            components.UnifiedTicketingCollectionOutput$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            UnifiedTicketingCollectionOutput: "unifiedTicketingCollectionOutput",
+        });
+    });
+
+/** @internal */
+export type RetrieveCollectionResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    UnifiedTicketingCollectionOutput?:
+        | components.UnifiedTicketingCollectionOutput$Outbound
+        | undefined;
+};
+
+/** @internal */
+export const RetrieveCollectionResponse$outboundSchema: z.ZodType<
+    RetrieveCollectionResponse$Outbound,
+    z.ZodTypeDef,
+    RetrieveCollectionResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        unifiedTicketingCollectionOutput:
+            components.UnifiedTicketingCollectionOutput$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            unifiedTicketingCollectionOutput: "UnifiedTicketingCollectionOutput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveCollectionResponse$ {
-    export const inboundSchema: z.ZodType<RetrieveCollectionResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            UnifiedTicketingCollectionOutput:
-                components.UnifiedTicketingCollectionOutput$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-                UnifiedTicketingCollectionOutput: "unifiedTicketingCollectionOutput",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        UnifiedTicketingCollectionOutput?:
-            | components.UnifiedTicketingCollectionOutput$.Outbound
-            | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RetrieveCollectionResponse> = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            unifiedTicketingCollectionOutput:
-                components.UnifiedTicketingCollectionOutput$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-                unifiedTicketingCollectionOutput: "UnifiedTicketingCollectionOutput",
-            });
-        });
+    /** @deprecated use `RetrieveCollectionResponse$inboundSchema` instead. */
+    export const inboundSchema = RetrieveCollectionResponse$inboundSchema;
+    /** @deprecated use `RetrieveCollectionResponse$outboundSchema` instead. */
+    export const outboundSchema = RetrieveCollectionResponse$outboundSchema;
+    /** @deprecated use `RetrieveCollectionResponse$Outbound` instead. */
+    export type Outbound = RetrieveCollectionResponse$Outbound;
 }

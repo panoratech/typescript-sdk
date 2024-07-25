@@ -33,122 +33,195 @@ export type UnifiedAtsDepartmentOutput = {
 };
 
 /** @internal */
+export const UnifiedAtsDepartmentOutputFieldMappings$inboundSchema: z.ZodType<
+    UnifiedAtsDepartmentOutputFieldMappings,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedAtsDepartmentOutputFieldMappings$Outbound = {};
+
+/** @internal */
+export const UnifiedAtsDepartmentOutputFieldMappings$outboundSchema: z.ZodType<
+    UnifiedAtsDepartmentOutputFieldMappings$Outbound,
+    z.ZodTypeDef,
+    UnifiedAtsDepartmentOutputFieldMappings
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedAtsDepartmentOutputFieldMappings$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedAtsDepartmentOutputFieldMappings,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedAtsDepartmentOutputFieldMappings
-    > = z.object({});
+    /** @deprecated use `UnifiedAtsDepartmentOutputFieldMappings$inboundSchema` instead. */
+    export const inboundSchema = UnifiedAtsDepartmentOutputFieldMappings$inboundSchema;
+    /** @deprecated use `UnifiedAtsDepartmentOutputFieldMappings$outboundSchema` instead. */
+    export const outboundSchema = UnifiedAtsDepartmentOutputFieldMappings$outboundSchema;
+    /** @deprecated use `UnifiedAtsDepartmentOutputFieldMappings$Outbound` instead. */
+    export type Outbound = UnifiedAtsDepartmentOutputFieldMappings$Outbound;
 }
 
 /** @internal */
+export const UnifiedAtsDepartmentOutputRemoteData$inboundSchema: z.ZodType<
+    UnifiedAtsDepartmentOutputRemoteData,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedAtsDepartmentOutputRemoteData$Outbound = {};
+
+/** @internal */
+export const UnifiedAtsDepartmentOutputRemoteData$outboundSchema: z.ZodType<
+    UnifiedAtsDepartmentOutputRemoteData$Outbound,
+    z.ZodTypeDef,
+    UnifiedAtsDepartmentOutputRemoteData
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedAtsDepartmentOutputRemoteData$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedAtsDepartmentOutputRemoteData,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedAtsDepartmentOutputRemoteData
-    > = z.object({});
+    /** @deprecated use `UnifiedAtsDepartmentOutputRemoteData$inboundSchema` instead. */
+    export const inboundSchema = UnifiedAtsDepartmentOutputRemoteData$inboundSchema;
+    /** @deprecated use `UnifiedAtsDepartmentOutputRemoteData$outboundSchema` instead. */
+    export const outboundSchema = UnifiedAtsDepartmentOutputRemoteData$outboundSchema;
+    /** @deprecated use `UnifiedAtsDepartmentOutputRemoteData$Outbound` instead. */
+    export type Outbound = UnifiedAtsDepartmentOutputRemoteData$Outbound;
 }
 
 /** @internal */
+export const UnifiedAtsDepartmentOutputCreatedAt$inboundSchema: z.ZodType<
+    UnifiedAtsDepartmentOutputCreatedAt,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedAtsDepartmentOutputCreatedAt$Outbound = {};
+
+/** @internal */
+export const UnifiedAtsDepartmentOutputCreatedAt$outboundSchema: z.ZodType<
+    UnifiedAtsDepartmentOutputCreatedAt$Outbound,
+    z.ZodTypeDef,
+    UnifiedAtsDepartmentOutputCreatedAt
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedAtsDepartmentOutputCreatedAt$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedAtsDepartmentOutputCreatedAt,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedAtsDepartmentOutputCreatedAt
-    > = z.object({});
+    /** @deprecated use `UnifiedAtsDepartmentOutputCreatedAt$inboundSchema` instead. */
+    export const inboundSchema = UnifiedAtsDepartmentOutputCreatedAt$inboundSchema;
+    /** @deprecated use `UnifiedAtsDepartmentOutputCreatedAt$outboundSchema` instead. */
+    export const outboundSchema = UnifiedAtsDepartmentOutputCreatedAt$outboundSchema;
+    /** @deprecated use `UnifiedAtsDepartmentOutputCreatedAt$Outbound` instead. */
+    export type Outbound = UnifiedAtsDepartmentOutputCreatedAt$Outbound;
 }
 
 /** @internal */
+export const UnifiedAtsDepartmentOutputModifiedAt$inboundSchema: z.ZodType<
+    UnifiedAtsDepartmentOutputModifiedAt,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedAtsDepartmentOutputModifiedAt$Outbound = {};
+
+/** @internal */
+export const UnifiedAtsDepartmentOutputModifiedAt$outboundSchema: z.ZodType<
+    UnifiedAtsDepartmentOutputModifiedAt$Outbound,
+    z.ZodTypeDef,
+    UnifiedAtsDepartmentOutputModifiedAt
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedAtsDepartmentOutputModifiedAt$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedAtsDepartmentOutputModifiedAt,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedAtsDepartmentOutputModifiedAt
-    > = z.object({});
+    /** @deprecated use `UnifiedAtsDepartmentOutputModifiedAt$inboundSchema` instead. */
+    export const inboundSchema = UnifiedAtsDepartmentOutputModifiedAt$inboundSchema;
+    /** @deprecated use `UnifiedAtsDepartmentOutputModifiedAt$outboundSchema` instead. */
+    export const outboundSchema = UnifiedAtsDepartmentOutputModifiedAt$outboundSchema;
+    /** @deprecated use `UnifiedAtsDepartmentOutputModifiedAt$Outbound` instead. */
+    export type Outbound = UnifiedAtsDepartmentOutputModifiedAt$Outbound;
 }
 
 /** @internal */
+export const UnifiedAtsDepartmentOutput$inboundSchema: z.ZodType<
+    UnifiedAtsDepartmentOutput,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        name: z.string().optional(),
+        field_mappings: z.lazy(() => UnifiedAtsDepartmentOutputFieldMappings$inboundSchema),
+        id: z.string().optional(),
+        remote_id: z.string().optional(),
+        remote_data: z.lazy(() => UnifiedAtsDepartmentOutputRemoteData$inboundSchema),
+        created_at: z.lazy(() => UnifiedAtsDepartmentOutputCreatedAt$inboundSchema),
+        modified_at: z.lazy(() => UnifiedAtsDepartmentOutputModifiedAt$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            field_mappings: "fieldMappings",
+            remote_id: "remoteId",
+            remote_data: "remoteData",
+            created_at: "createdAt",
+            modified_at: "modifiedAt",
+        });
+    });
+
+/** @internal */
+export type UnifiedAtsDepartmentOutput$Outbound = {
+    name?: string | undefined;
+    field_mappings: UnifiedAtsDepartmentOutputFieldMappings$Outbound;
+    id?: string | undefined;
+    remote_id?: string | undefined;
+    remote_data: UnifiedAtsDepartmentOutputRemoteData$Outbound;
+    created_at: UnifiedAtsDepartmentOutputCreatedAt$Outbound;
+    modified_at: UnifiedAtsDepartmentOutputModifiedAt$Outbound;
+};
+
+/** @internal */
+export const UnifiedAtsDepartmentOutput$outboundSchema: z.ZodType<
+    UnifiedAtsDepartmentOutput$Outbound,
+    z.ZodTypeDef,
+    UnifiedAtsDepartmentOutput
+> = z
+    .object({
+        name: z.string().optional(),
+        fieldMappings: z.lazy(() => UnifiedAtsDepartmentOutputFieldMappings$outboundSchema),
+        id: z.string().optional(),
+        remoteId: z.string().optional(),
+        remoteData: z.lazy(() => UnifiedAtsDepartmentOutputRemoteData$outboundSchema),
+        createdAt: z.lazy(() => UnifiedAtsDepartmentOutputCreatedAt$outboundSchema),
+        modifiedAt: z.lazy(() => UnifiedAtsDepartmentOutputModifiedAt$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            fieldMappings: "field_mappings",
+            remoteId: "remote_id",
+            remoteData: "remote_data",
+            createdAt: "created_at",
+            modifiedAt: "modified_at",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedAtsDepartmentOutput$ {
-    export const inboundSchema: z.ZodType<UnifiedAtsDepartmentOutput, z.ZodTypeDef, unknown> = z
-        .object({
-            name: z.string().optional(),
-            field_mappings: z.lazy(() => UnifiedAtsDepartmentOutputFieldMappings$.inboundSchema),
-            id: z.string().optional(),
-            remote_id: z.string().optional(),
-            remote_data: z.lazy(() => UnifiedAtsDepartmentOutputRemoteData$.inboundSchema),
-            created_at: z.lazy(() => UnifiedAtsDepartmentOutputCreatedAt$.inboundSchema),
-            modified_at: z.lazy(() => UnifiedAtsDepartmentOutputModifiedAt$.inboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                field_mappings: "fieldMappings",
-                remote_id: "remoteId",
-                remote_data: "remoteData",
-                created_at: "createdAt",
-                modified_at: "modifiedAt",
-            });
-        });
-
-    export type Outbound = {
-        name?: string | undefined;
-        field_mappings: UnifiedAtsDepartmentOutputFieldMappings$.Outbound;
-        id?: string | undefined;
-        remote_id?: string | undefined;
-        remote_data: UnifiedAtsDepartmentOutputRemoteData$.Outbound;
-        created_at: UnifiedAtsDepartmentOutputCreatedAt$.Outbound;
-        modified_at: UnifiedAtsDepartmentOutputModifiedAt$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnifiedAtsDepartmentOutput> = z
-        .object({
-            name: z.string().optional(),
-            fieldMappings: z.lazy(() => UnifiedAtsDepartmentOutputFieldMappings$.outboundSchema),
-            id: z.string().optional(),
-            remoteId: z.string().optional(),
-            remoteData: z.lazy(() => UnifiedAtsDepartmentOutputRemoteData$.outboundSchema),
-            createdAt: z.lazy(() => UnifiedAtsDepartmentOutputCreatedAt$.outboundSchema),
-            modifiedAt: z.lazy(() => UnifiedAtsDepartmentOutputModifiedAt$.outboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                fieldMappings: "field_mappings",
-                remoteId: "remote_id",
-                remoteData: "remote_data",
-                createdAt: "created_at",
-                modifiedAt: "modified_at",
-            });
-        });
+    /** @deprecated use `UnifiedAtsDepartmentOutput$inboundSchema` instead. */
+    export const inboundSchema = UnifiedAtsDepartmentOutput$inboundSchema;
+    /** @deprecated use `UnifiedAtsDepartmentOutput$outboundSchema` instead. */
+    export const outboundSchema = UnifiedAtsDepartmentOutput$outboundSchema;
+    /** @deprecated use `UnifiedAtsDepartmentOutput$Outbound` instead. */
+    export type Outbound = UnifiedAtsDepartmentOutput$Outbound;
 }

@@ -7,12 +7,31 @@ import * as z from "zod";
 export type UnifiedHrisTimeoffInput = {};
 
 /** @internal */
+export const UnifiedHrisTimeoffInput$inboundSchema: z.ZodType<
+    UnifiedHrisTimeoffInput,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedHrisTimeoffInput$Outbound = {};
+
+/** @internal */
+export const UnifiedHrisTimeoffInput$outboundSchema: z.ZodType<
+    UnifiedHrisTimeoffInput$Outbound,
+    z.ZodTypeDef,
+    UnifiedHrisTimeoffInput
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedHrisTimeoffInput$ {
-    export const inboundSchema: z.ZodType<UnifiedHrisTimeoffInput, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnifiedHrisTimeoffInput> =
-        z.object({});
+    /** @deprecated use `UnifiedHrisTimeoffInput$inboundSchema` instead. */
+    export const inboundSchema = UnifiedHrisTimeoffInput$inboundSchema;
+    /** @deprecated use `UnifiedHrisTimeoffInput$outboundSchema` instead. */
+    export const outboundSchema = UnifiedHrisTimeoffInput$outboundSchema;
+    /** @deprecated use `UnifiedHrisTimeoffInput$Outbound` instead. */
+    export type Outbound = UnifiedHrisTimeoffInput$Outbound;
 }

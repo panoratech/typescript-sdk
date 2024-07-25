@@ -37,114 +37,167 @@ export type ListHrisTimeoffbalanceResponse = {
 };
 
 /** @internal */
+export const ListHrisTimeoffbalanceRequest$inboundSchema: z.ZodType<
+    ListHrisTimeoffbalanceRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        remote_data: z.boolean().optional(),
+        limit: z.number().default(50),
+        cursor: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+        });
+    });
+
+/** @internal */
+export type ListHrisTimeoffbalanceRequest$Outbound = {
+    "x-connection-token": string;
+    remote_data?: boolean | undefined;
+    limit: number;
+    cursor?: string | undefined;
+};
+
+/** @internal */
+export const ListHrisTimeoffbalanceRequest$outboundSchema: z.ZodType<
+    ListHrisTimeoffbalanceRequest$Outbound,
+    z.ZodTypeDef,
+    ListHrisTimeoffbalanceRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        remoteData: z.boolean().optional(),
+        limit: z.number().default(50),
+        cursor: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListHrisTimeoffbalanceRequest$ {
-    export const inboundSchema: z.ZodType<ListHrisTimeoffbalanceRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            "x-connection-token": z.string(),
-            remote_data: z.boolean().optional(),
-            limit: z.number().default(50),
-            cursor: z.string().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        remote_data?: boolean | undefined;
-        limit: number;
-        cursor?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListHrisTimeoffbalanceRequest> =
-        z
-            .object({
-                xConnectionToken: z.string(),
-                remoteData: z.boolean().optional(),
-                limit: z.number().default(50),
-                cursor: z.string().optional(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    xConnectionToken: "x-connection-token",
-                    remoteData: "remote_data",
-                });
-            });
+    /** @deprecated use `ListHrisTimeoffbalanceRequest$inboundSchema` instead. */
+    export const inboundSchema = ListHrisTimeoffbalanceRequest$inboundSchema;
+    /** @deprecated use `ListHrisTimeoffbalanceRequest$outboundSchema` instead. */
+    export const outboundSchema = ListHrisTimeoffbalanceRequest$outboundSchema;
+    /** @deprecated use `ListHrisTimeoffbalanceRequest$Outbound` instead. */
+    export type Outbound = ListHrisTimeoffbalanceRequest$Outbound;
 }
 
 /** @internal */
+export const ListHrisTimeoffbalanceResponseBody$inboundSchema: z.ZodType<
+    ListHrisTimeoffbalanceResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        prev_cursor: z.string(),
+        next_cursor: z.string(),
+        data: z.array(components.UnifiedHrisTimeoffbalanceOutput$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            prev_cursor: "prevCursor",
+            next_cursor: "nextCursor",
+        });
+    });
+
+/** @internal */
+export type ListHrisTimeoffbalanceResponseBody$Outbound = {
+    prev_cursor: string;
+    next_cursor: string;
+    data: Array<components.UnifiedHrisTimeoffbalanceOutput$Outbound>;
+};
+
+/** @internal */
+export const ListHrisTimeoffbalanceResponseBody$outboundSchema: z.ZodType<
+    ListHrisTimeoffbalanceResponseBody$Outbound,
+    z.ZodTypeDef,
+    ListHrisTimeoffbalanceResponseBody
+> = z
+    .object({
+        prevCursor: z.string(),
+        nextCursor: z.string(),
+        data: z.array(components.UnifiedHrisTimeoffbalanceOutput$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            prevCursor: "prev_cursor",
+            nextCursor: "next_cursor",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListHrisTimeoffbalanceResponseBody$ {
-    export const inboundSchema: z.ZodType<
-        ListHrisTimeoffbalanceResponseBody,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            prev_cursor: z.string(),
-            next_cursor: z.string(),
-            data: z.array(components.UnifiedHrisTimeoffbalanceOutput$.inboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                prev_cursor: "prevCursor",
-                next_cursor: "nextCursor",
-            });
-        });
-
-    export type Outbound = {
-        prev_cursor: string;
-        next_cursor: string;
-        data: Array<components.UnifiedHrisTimeoffbalanceOutput$.Outbound>;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        ListHrisTimeoffbalanceResponseBody
-    > = z
-        .object({
-            prevCursor: z.string(),
-            nextCursor: z.string(),
-            data: z.array(components.UnifiedHrisTimeoffbalanceOutput$.outboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                prevCursor: "prev_cursor",
-                nextCursor: "next_cursor",
-            });
-        });
+    /** @deprecated use `ListHrisTimeoffbalanceResponseBody$inboundSchema` instead. */
+    export const inboundSchema = ListHrisTimeoffbalanceResponseBody$inboundSchema;
+    /** @deprecated use `ListHrisTimeoffbalanceResponseBody$outboundSchema` instead. */
+    export const outboundSchema = ListHrisTimeoffbalanceResponseBody$outboundSchema;
+    /** @deprecated use `ListHrisTimeoffbalanceResponseBody$Outbound` instead. */
+    export type Outbound = ListHrisTimeoffbalanceResponseBody$Outbound;
 }
 
 /** @internal */
-export namespace ListHrisTimeoffbalanceResponse$ {
-    export const inboundSchema: z.ZodType<ListHrisTimeoffbalanceResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            object: z.lazy(() => ListHrisTimeoffbalanceResponseBody$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-            });
+export const ListHrisTimeoffbalanceResponse$inboundSchema: z.ZodType<
+    ListHrisTimeoffbalanceResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        object: z.lazy(() => ListHrisTimeoffbalanceResponseBody$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
         });
+    });
 
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        object?: ListHrisTimeoffbalanceResponseBody$.Outbound | undefined;
-    };
+/** @internal */
+export type ListHrisTimeoffbalanceResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    object?: ListHrisTimeoffbalanceResponseBody$Outbound | undefined;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListHrisTimeoffbalanceResponse> =
-        z
-            .object({
-                httpMeta: components.HTTPMetadata$.outboundSchema,
-                object: z.lazy(() => ListHrisTimeoffbalanceResponseBody$.outboundSchema).optional(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    httpMeta: "HttpMeta",
-                });
-            });
+/** @internal */
+export const ListHrisTimeoffbalanceResponse$outboundSchema: z.ZodType<
+    ListHrisTimeoffbalanceResponse$Outbound,
+    z.ZodTypeDef,
+    ListHrisTimeoffbalanceResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        object: z.lazy(() => ListHrisTimeoffbalanceResponseBody$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListHrisTimeoffbalanceResponse$ {
+    /** @deprecated use `ListHrisTimeoffbalanceResponse$inboundSchema` instead. */
+    export const inboundSchema = ListHrisTimeoffbalanceResponse$inboundSchema;
+    /** @deprecated use `ListHrisTimeoffbalanceResponse$outboundSchema` instead. */
+    export const outboundSchema = ListHrisTimeoffbalanceResponse$outboundSchema;
+    /** @deprecated use `ListHrisTimeoffbalanceResponse$Outbound` instead. */
+    export type Outbound = ListHrisTimeoffbalanceResponse$Outbound;
 }

@@ -37,104 +37,167 @@ export type ListAtsOfficeResponse = {
 };
 
 /** @internal */
+export const ListAtsOfficeRequest$inboundSchema: z.ZodType<
+    ListAtsOfficeRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        remote_data: z.boolean().optional(),
+        limit: z.number().default(50),
+        cursor: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+        });
+    });
+
+/** @internal */
+export type ListAtsOfficeRequest$Outbound = {
+    "x-connection-token": string;
+    remote_data?: boolean | undefined;
+    limit: number;
+    cursor?: string | undefined;
+};
+
+/** @internal */
+export const ListAtsOfficeRequest$outboundSchema: z.ZodType<
+    ListAtsOfficeRequest$Outbound,
+    z.ZodTypeDef,
+    ListAtsOfficeRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        remoteData: z.boolean().optional(),
+        limit: z.number().default(50),
+        cursor: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListAtsOfficeRequest$ {
-    export const inboundSchema: z.ZodType<ListAtsOfficeRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            "x-connection-token": z.string(),
-            remote_data: z.boolean().optional(),
-            limit: z.number().default(50),
-            cursor: z.string().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        remote_data?: boolean | undefined;
-        limit: number;
-        cursor?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListAtsOfficeRequest> = z
-        .object({
-            xConnectionToken: z.string(),
-            remoteData: z.boolean().optional(),
-            limit: z.number().default(50),
-            cursor: z.string().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
-        });
+    /** @deprecated use `ListAtsOfficeRequest$inboundSchema` instead. */
+    export const inboundSchema = ListAtsOfficeRequest$inboundSchema;
+    /** @deprecated use `ListAtsOfficeRequest$outboundSchema` instead. */
+    export const outboundSchema = ListAtsOfficeRequest$outboundSchema;
+    /** @deprecated use `ListAtsOfficeRequest$Outbound` instead. */
+    export type Outbound = ListAtsOfficeRequest$Outbound;
 }
 
 /** @internal */
+export const ListAtsOfficeResponseBody$inboundSchema: z.ZodType<
+    ListAtsOfficeResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        prev_cursor: z.string(),
+        next_cursor: z.string(),
+        data: z.array(components.UnifiedAtsOfficeOutput$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            prev_cursor: "prevCursor",
+            next_cursor: "nextCursor",
+        });
+    });
+
+/** @internal */
+export type ListAtsOfficeResponseBody$Outbound = {
+    prev_cursor: string;
+    next_cursor: string;
+    data: Array<components.UnifiedAtsOfficeOutput$Outbound>;
+};
+
+/** @internal */
+export const ListAtsOfficeResponseBody$outboundSchema: z.ZodType<
+    ListAtsOfficeResponseBody$Outbound,
+    z.ZodTypeDef,
+    ListAtsOfficeResponseBody
+> = z
+    .object({
+        prevCursor: z.string(),
+        nextCursor: z.string(),
+        data: z.array(components.UnifiedAtsOfficeOutput$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            prevCursor: "prev_cursor",
+            nextCursor: "next_cursor",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListAtsOfficeResponseBody$ {
-    export const inboundSchema: z.ZodType<ListAtsOfficeResponseBody, z.ZodTypeDef, unknown> = z
-        .object({
-            prev_cursor: z.string(),
-            next_cursor: z.string(),
-            data: z.array(components.UnifiedAtsOfficeOutput$.inboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                prev_cursor: "prevCursor",
-                next_cursor: "nextCursor",
-            });
-        });
-
-    export type Outbound = {
-        prev_cursor: string;
-        next_cursor: string;
-        data: Array<components.UnifiedAtsOfficeOutput$.Outbound>;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListAtsOfficeResponseBody> = z
-        .object({
-            prevCursor: z.string(),
-            nextCursor: z.string(),
-            data: z.array(components.UnifiedAtsOfficeOutput$.outboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                prevCursor: "prev_cursor",
-                nextCursor: "next_cursor",
-            });
-        });
+    /** @deprecated use `ListAtsOfficeResponseBody$inboundSchema` instead. */
+    export const inboundSchema = ListAtsOfficeResponseBody$inboundSchema;
+    /** @deprecated use `ListAtsOfficeResponseBody$outboundSchema` instead. */
+    export const outboundSchema = ListAtsOfficeResponseBody$outboundSchema;
+    /** @deprecated use `ListAtsOfficeResponseBody$Outbound` instead. */
+    export type Outbound = ListAtsOfficeResponseBody$Outbound;
 }
 
 /** @internal */
+export const ListAtsOfficeResponse$inboundSchema: z.ZodType<
+    ListAtsOfficeResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        object: z.lazy(() => ListAtsOfficeResponseBody$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+        });
+    });
+
+/** @internal */
+export type ListAtsOfficeResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    object?: ListAtsOfficeResponseBody$Outbound | undefined;
+};
+
+/** @internal */
+export const ListAtsOfficeResponse$outboundSchema: z.ZodType<
+    ListAtsOfficeResponse$Outbound,
+    z.ZodTypeDef,
+    ListAtsOfficeResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        object: z.lazy(() => ListAtsOfficeResponseBody$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListAtsOfficeResponse$ {
-    export const inboundSchema: z.ZodType<ListAtsOfficeResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            object: z.lazy(() => ListAtsOfficeResponseBody$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        object?: ListAtsOfficeResponseBody$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListAtsOfficeResponse> = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            object: z.lazy(() => ListAtsOfficeResponseBody$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-            });
-        });
+    /** @deprecated use `ListAtsOfficeResponse$inboundSchema` instead. */
+    export const inboundSchema = ListAtsOfficeResponse$inboundSchema;
+    /** @deprecated use `ListAtsOfficeResponse$outboundSchema` instead. */
+    export const outboundSchema = ListAtsOfficeResponse$outboundSchema;
+    /** @deprecated use `ListAtsOfficeResponse$Outbound` instead. */
+    export type Outbound = ListAtsOfficeResponse$Outbound;
 }

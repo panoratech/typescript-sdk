@@ -27,88 +27,114 @@ export type RetrieveAccountingAttachmentResponse = {
 };
 
 /** @internal */
+export const RetrieveAccountingAttachmentRequest$inboundSchema: z.ZodType<
+    RetrieveAccountingAttachmentRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        id: z.string(),
+        remote_data: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+        });
+    });
+
+/** @internal */
+export type RetrieveAccountingAttachmentRequest$Outbound = {
+    "x-connection-token": string;
+    id: string;
+    remote_data?: boolean | undefined;
+};
+
+/** @internal */
+export const RetrieveAccountingAttachmentRequest$outboundSchema: z.ZodType<
+    RetrieveAccountingAttachmentRequest$Outbound,
+    z.ZodTypeDef,
+    RetrieveAccountingAttachmentRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        id: z.string(),
+        remoteData: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveAccountingAttachmentRequest$ {
-    export const inboundSchema: z.ZodType<
-        RetrieveAccountingAttachmentRequest,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            "x-connection-token": z.string(),
-            id: z.string(),
-            remote_data: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        id: string;
-        remote_data?: boolean | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        RetrieveAccountingAttachmentRequest
-    > = z
-        .object({
-            xConnectionToken: z.string(),
-            id: z.string(),
-            remoteData: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
-        });
+    /** @deprecated use `RetrieveAccountingAttachmentRequest$inboundSchema` instead. */
+    export const inboundSchema = RetrieveAccountingAttachmentRequest$inboundSchema;
+    /** @deprecated use `RetrieveAccountingAttachmentRequest$outboundSchema` instead. */
+    export const outboundSchema = RetrieveAccountingAttachmentRequest$outboundSchema;
+    /** @deprecated use `RetrieveAccountingAttachmentRequest$Outbound` instead. */
+    export type Outbound = RetrieveAccountingAttachmentRequest$Outbound;
 }
 
 /** @internal */
+export const RetrieveAccountingAttachmentResponse$inboundSchema: z.ZodType<
+    RetrieveAccountingAttachmentResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        UnifiedAccountingAttachmentOutput:
+            components.UnifiedAccountingAttachmentOutput$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            UnifiedAccountingAttachmentOutput: "unifiedAccountingAttachmentOutput",
+        });
+    });
+
+/** @internal */
+export type RetrieveAccountingAttachmentResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    UnifiedAccountingAttachmentOutput?:
+        | components.UnifiedAccountingAttachmentOutput$Outbound
+        | undefined;
+};
+
+/** @internal */
+export const RetrieveAccountingAttachmentResponse$outboundSchema: z.ZodType<
+    RetrieveAccountingAttachmentResponse$Outbound,
+    z.ZodTypeDef,
+    RetrieveAccountingAttachmentResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        unifiedAccountingAttachmentOutput:
+            components.UnifiedAccountingAttachmentOutput$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            unifiedAccountingAttachmentOutput: "UnifiedAccountingAttachmentOutput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveAccountingAttachmentResponse$ {
-    export const inboundSchema: z.ZodType<
-        RetrieveAccountingAttachmentResponse,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            UnifiedAccountingAttachmentOutput:
-                components.UnifiedAccountingAttachmentOutput$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-                UnifiedAccountingAttachmentOutput: "unifiedAccountingAttachmentOutput",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        UnifiedAccountingAttachmentOutput?:
-            | components.UnifiedAccountingAttachmentOutput$.Outbound
-            | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        RetrieveAccountingAttachmentResponse
-    > = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            unifiedAccountingAttachmentOutput:
-                components.UnifiedAccountingAttachmentOutput$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-                unifiedAccountingAttachmentOutput: "UnifiedAccountingAttachmentOutput",
-            });
-        });
+    /** @deprecated use `RetrieveAccountingAttachmentResponse$inboundSchema` instead. */
+    export const inboundSchema = RetrieveAccountingAttachmentResponse$inboundSchema;
+    /** @deprecated use `RetrieveAccountingAttachmentResponse$outboundSchema` instead. */
+    export const outboundSchema = RetrieveAccountingAttachmentResponse$outboundSchema;
+    /** @deprecated use `RetrieveAccountingAttachmentResponse$Outbound` instead. */
+    export type Outbound = RetrieveAccountingAttachmentResponse$Outbound;
 }

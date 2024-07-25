@@ -24,50 +24,109 @@ export type PassThroughRequestDto = {
 };
 
 /** @internal */
+export const Method$inboundSchema: z.ZodNativeEnum<typeof Method> = z.nativeEnum(Method);
+
+/** @internal */
+export const Method$outboundSchema: z.ZodNativeEnum<typeof Method> = Method$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Method$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof Method> = z.nativeEnum(Method);
-    export const outboundSchema: z.ZodNativeEnum<typeof Method> = inboundSchema;
+    /** @deprecated use `Method$inboundSchema` instead. */
+    export const inboundSchema = Method$inboundSchema;
+    /** @deprecated use `Method$outboundSchema` instead. */
+    export const outboundSchema = Method$outboundSchema;
 }
 
 /** @internal */
+export const Data$inboundSchema: z.ZodType<Data, z.ZodTypeDef, unknown> = z.object({});
+
+/** @internal */
+export type Data$Outbound = {};
+
+/** @internal */
+export const Data$outboundSchema: z.ZodType<Data$Outbound, z.ZodTypeDef, Data> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Data$ {
-    export const inboundSchema: z.ZodType<Data, z.ZodTypeDef, unknown> = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Data> = z.object({});
+    /** @deprecated use `Data$inboundSchema` instead. */
+    export const inboundSchema = Data$inboundSchema;
+    /** @deprecated use `Data$outboundSchema` instead. */
+    export const outboundSchema = Data$outboundSchema;
+    /** @deprecated use `Data$Outbound` instead. */
+    export type Outbound = Data$Outbound;
 }
 
 /** @internal */
+export const Headers$inboundSchema: z.ZodType<Headers, z.ZodTypeDef, unknown> = z.object({});
+
+/** @internal */
+export type Headers$Outbound = {};
+
+/** @internal */
+export const Headers$outboundSchema: z.ZodType<Headers$Outbound, z.ZodTypeDef, Headers> = z.object(
+    {}
+);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Headers$ {
-    export const inboundSchema: z.ZodType<Headers, z.ZodTypeDef, unknown> = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Headers> = z.object({});
+    /** @deprecated use `Headers$inboundSchema` instead. */
+    export const inboundSchema = Headers$inboundSchema;
+    /** @deprecated use `Headers$outboundSchema` instead. */
+    export const outboundSchema = Headers$outboundSchema;
+    /** @deprecated use `Headers$Outbound` instead. */
+    export type Outbound = Headers$Outbound;
 }
 
 /** @internal */
+export const PassThroughRequestDto$inboundSchema: z.ZodType<
+    PassThroughRequestDto,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    method: Method$inboundSchema,
+    path: z.string(),
+    data: z.lazy(() => Data$inboundSchema).optional(),
+    headers: z.lazy(() => Headers$inboundSchema).optional(),
+});
+
+/** @internal */
+export type PassThroughRequestDto$Outbound = {
+    method: string;
+    path: string;
+    data?: Data$Outbound | undefined;
+    headers?: Headers$Outbound | undefined;
+};
+
+/** @internal */
+export const PassThroughRequestDto$outboundSchema: z.ZodType<
+    PassThroughRequestDto$Outbound,
+    z.ZodTypeDef,
+    PassThroughRequestDto
+> = z.object({
+    method: Method$outboundSchema,
+    path: z.string(),
+    data: z.lazy(() => Data$outboundSchema).optional(),
+    headers: z.lazy(() => Headers$outboundSchema).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace PassThroughRequestDto$ {
-    export const inboundSchema: z.ZodType<PassThroughRequestDto, z.ZodTypeDef, unknown> = z.object({
-        method: Method$.inboundSchema,
-        path: z.string(),
-        data: z.lazy(() => Data$.inboundSchema).optional(),
-        headers: z.lazy(() => Headers$.inboundSchema).optional(),
-    });
-
-    export type Outbound = {
-        method: string;
-        path: string;
-        data?: Data$.Outbound | undefined;
-        headers?: Headers$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PassThroughRequestDto> =
-        z.object({
-            method: Method$.outboundSchema,
-            path: z.string(),
-            data: z.lazy(() => Data$.outboundSchema).optional(),
-            headers: z.lazy(() => Headers$.outboundSchema).optional(),
-        });
+    /** @deprecated use `PassThroughRequestDto$inboundSchema` instead. */
+    export const inboundSchema = PassThroughRequestDto$inboundSchema;
+    /** @deprecated use `PassThroughRequestDto$outboundSchema` instead. */
+    export const outboundSchema = PassThroughRequestDto$outboundSchema;
+    /** @deprecated use `PassThroughRequestDto$Outbound` instead. */
+    export type Outbound = PassThroughRequestDto$Outbound;
 }

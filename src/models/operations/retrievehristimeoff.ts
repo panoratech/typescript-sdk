@@ -27,69 +27,110 @@ export type RetrieveHrisTimeoffResponse = {
 };
 
 /** @internal */
+export const RetrieveHrisTimeoffRequest$inboundSchema: z.ZodType<
+    RetrieveHrisTimeoffRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        id: z.string(),
+        remote_data: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+        });
+    });
+
+/** @internal */
+export type RetrieveHrisTimeoffRequest$Outbound = {
+    "x-connection-token": string;
+    id: string;
+    remote_data?: boolean | undefined;
+};
+
+/** @internal */
+export const RetrieveHrisTimeoffRequest$outboundSchema: z.ZodType<
+    RetrieveHrisTimeoffRequest$Outbound,
+    z.ZodTypeDef,
+    RetrieveHrisTimeoffRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        id: z.string(),
+        remoteData: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveHrisTimeoffRequest$ {
-    export const inboundSchema: z.ZodType<RetrieveHrisTimeoffRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            "x-connection-token": z.string(),
-            id: z.string(),
-            remote_data: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        id: string;
-        remote_data?: boolean | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RetrieveHrisTimeoffRequest> = z
-        .object({
-            xConnectionToken: z.string(),
-            id: z.string(),
-            remoteData: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
-        });
+    /** @deprecated use `RetrieveHrisTimeoffRequest$inboundSchema` instead. */
+    export const inboundSchema = RetrieveHrisTimeoffRequest$inboundSchema;
+    /** @deprecated use `RetrieveHrisTimeoffRequest$outboundSchema` instead. */
+    export const outboundSchema = RetrieveHrisTimeoffRequest$outboundSchema;
+    /** @deprecated use `RetrieveHrisTimeoffRequest$Outbound` instead. */
+    export type Outbound = RetrieveHrisTimeoffRequest$Outbound;
 }
 
 /** @internal */
+export const RetrieveHrisTimeoffResponse$inboundSchema: z.ZodType<
+    RetrieveHrisTimeoffResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        UnifiedHrisTimeoffOutput: components.UnifiedHrisTimeoffOutput$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            UnifiedHrisTimeoffOutput: "unifiedHrisTimeoffOutput",
+        });
+    });
+
+/** @internal */
+export type RetrieveHrisTimeoffResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    UnifiedHrisTimeoffOutput?: components.UnifiedHrisTimeoffOutput$Outbound | undefined;
+};
+
+/** @internal */
+export const RetrieveHrisTimeoffResponse$outboundSchema: z.ZodType<
+    RetrieveHrisTimeoffResponse$Outbound,
+    z.ZodTypeDef,
+    RetrieveHrisTimeoffResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        unifiedHrisTimeoffOutput: components.UnifiedHrisTimeoffOutput$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            unifiedHrisTimeoffOutput: "UnifiedHrisTimeoffOutput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveHrisTimeoffResponse$ {
-    export const inboundSchema: z.ZodType<RetrieveHrisTimeoffResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            UnifiedHrisTimeoffOutput: components.UnifiedHrisTimeoffOutput$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-                UnifiedHrisTimeoffOutput: "unifiedHrisTimeoffOutput",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        UnifiedHrisTimeoffOutput?: components.UnifiedHrisTimeoffOutput$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RetrieveHrisTimeoffResponse> = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            unifiedHrisTimeoffOutput:
-                components.UnifiedHrisTimeoffOutput$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-                unifiedHrisTimeoffOutput: "UnifiedHrisTimeoffOutput",
-            });
-        });
+    /** @deprecated use `RetrieveHrisTimeoffResponse$inboundSchema` instead. */
+    export const inboundSchema = RetrieveHrisTimeoffResponse$inboundSchema;
+    /** @deprecated use `RetrieveHrisTimeoffResponse$outboundSchema` instead. */
+    export const outboundSchema = RetrieveHrisTimeoffResponse$outboundSchema;
+    /** @deprecated use `RetrieveHrisTimeoffResponse$Outbound` instead. */
+    export type Outbound = RetrieveHrisTimeoffResponse$Outbound;
 }

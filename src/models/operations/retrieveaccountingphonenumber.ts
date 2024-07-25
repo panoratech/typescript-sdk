@@ -27,88 +27,114 @@ export type RetrieveAccountingPhonenumberResponse = {
 };
 
 /** @internal */
+export const RetrieveAccountingPhonenumberRequest$inboundSchema: z.ZodType<
+    RetrieveAccountingPhonenumberRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        id: z.string(),
+        remote_data: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+        });
+    });
+
+/** @internal */
+export type RetrieveAccountingPhonenumberRequest$Outbound = {
+    "x-connection-token": string;
+    id: string;
+    remote_data?: boolean | undefined;
+};
+
+/** @internal */
+export const RetrieveAccountingPhonenumberRequest$outboundSchema: z.ZodType<
+    RetrieveAccountingPhonenumberRequest$Outbound,
+    z.ZodTypeDef,
+    RetrieveAccountingPhonenumberRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        id: z.string(),
+        remoteData: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveAccountingPhonenumberRequest$ {
-    export const inboundSchema: z.ZodType<
-        RetrieveAccountingPhonenumberRequest,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            "x-connection-token": z.string(),
-            id: z.string(),
-            remote_data: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        id: string;
-        remote_data?: boolean | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        RetrieveAccountingPhonenumberRequest
-    > = z
-        .object({
-            xConnectionToken: z.string(),
-            id: z.string(),
-            remoteData: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
-        });
+    /** @deprecated use `RetrieveAccountingPhonenumberRequest$inboundSchema` instead. */
+    export const inboundSchema = RetrieveAccountingPhonenumberRequest$inboundSchema;
+    /** @deprecated use `RetrieveAccountingPhonenumberRequest$outboundSchema` instead. */
+    export const outboundSchema = RetrieveAccountingPhonenumberRequest$outboundSchema;
+    /** @deprecated use `RetrieveAccountingPhonenumberRequest$Outbound` instead. */
+    export type Outbound = RetrieveAccountingPhonenumberRequest$Outbound;
 }
 
 /** @internal */
+export const RetrieveAccountingPhonenumberResponse$inboundSchema: z.ZodType<
+    RetrieveAccountingPhonenumberResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        UnifiedAccountingPhonenumberOutput:
+            components.UnifiedAccountingPhonenumberOutput$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            UnifiedAccountingPhonenumberOutput: "unifiedAccountingPhonenumberOutput",
+        });
+    });
+
+/** @internal */
+export type RetrieveAccountingPhonenumberResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    UnifiedAccountingPhonenumberOutput?:
+        | components.UnifiedAccountingPhonenumberOutput$Outbound
+        | undefined;
+};
+
+/** @internal */
+export const RetrieveAccountingPhonenumberResponse$outboundSchema: z.ZodType<
+    RetrieveAccountingPhonenumberResponse$Outbound,
+    z.ZodTypeDef,
+    RetrieveAccountingPhonenumberResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        unifiedAccountingPhonenumberOutput:
+            components.UnifiedAccountingPhonenumberOutput$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            unifiedAccountingPhonenumberOutput: "UnifiedAccountingPhonenumberOutput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveAccountingPhonenumberResponse$ {
-    export const inboundSchema: z.ZodType<
-        RetrieveAccountingPhonenumberResponse,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            UnifiedAccountingPhonenumberOutput:
-                components.UnifiedAccountingPhonenumberOutput$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-                UnifiedAccountingPhonenumberOutput: "unifiedAccountingPhonenumberOutput",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        UnifiedAccountingPhonenumberOutput?:
-            | components.UnifiedAccountingPhonenumberOutput$.Outbound
-            | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        RetrieveAccountingPhonenumberResponse
-    > = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            unifiedAccountingPhonenumberOutput:
-                components.UnifiedAccountingPhonenumberOutput$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-                unifiedAccountingPhonenumberOutput: "UnifiedAccountingPhonenumberOutput",
-            });
-        });
+    /** @deprecated use `RetrieveAccountingPhonenumberResponse$inboundSchema` instead. */
+    export const inboundSchema = RetrieveAccountingPhonenumberResponse$inboundSchema;
+    /** @deprecated use `RetrieveAccountingPhonenumberResponse$outboundSchema` instead. */
+    export const outboundSchema = RetrieveAccountingPhonenumberResponse$outboundSchema;
+    /** @deprecated use `RetrieveAccountingPhonenumberResponse$Outbound` instead. */
+    export type Outbound = RetrieveAccountingPhonenumberResponse$Outbound;
 }

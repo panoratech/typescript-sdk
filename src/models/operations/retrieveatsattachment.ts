@@ -27,71 +27,110 @@ export type RetrieveAtsAttachmentResponse = {
 };
 
 /** @internal */
+export const RetrieveAtsAttachmentRequest$inboundSchema: z.ZodType<
+    RetrieveAtsAttachmentRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        id: z.string(),
+        remote_data: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+        });
+    });
+
+/** @internal */
+export type RetrieveAtsAttachmentRequest$Outbound = {
+    "x-connection-token": string;
+    id: string;
+    remote_data?: boolean | undefined;
+};
+
+/** @internal */
+export const RetrieveAtsAttachmentRequest$outboundSchema: z.ZodType<
+    RetrieveAtsAttachmentRequest$Outbound,
+    z.ZodTypeDef,
+    RetrieveAtsAttachmentRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        id: z.string(),
+        remoteData: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveAtsAttachmentRequest$ {
-    export const inboundSchema: z.ZodType<RetrieveAtsAttachmentRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            "x-connection-token": z.string(),
-            id: z.string(),
-            remote_data: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        id: string;
-        remote_data?: boolean | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RetrieveAtsAttachmentRequest> = z
-        .object({
-            xConnectionToken: z.string(),
-            id: z.string(),
-            remoteData: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
-        });
+    /** @deprecated use `RetrieveAtsAttachmentRequest$inboundSchema` instead. */
+    export const inboundSchema = RetrieveAtsAttachmentRequest$inboundSchema;
+    /** @deprecated use `RetrieveAtsAttachmentRequest$outboundSchema` instead. */
+    export const outboundSchema = RetrieveAtsAttachmentRequest$outboundSchema;
+    /** @deprecated use `RetrieveAtsAttachmentRequest$Outbound` instead. */
+    export type Outbound = RetrieveAtsAttachmentRequest$Outbound;
 }
 
 /** @internal */
-export namespace RetrieveAtsAttachmentResponse$ {
-    export const inboundSchema: z.ZodType<RetrieveAtsAttachmentResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            UnifiedAtsAttachmentOutput:
-                components.UnifiedAtsAttachmentOutput$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-                UnifiedAtsAttachmentOutput: "unifiedAtsAttachmentOutput",
-            });
+export const RetrieveAtsAttachmentResponse$inboundSchema: z.ZodType<
+    RetrieveAtsAttachmentResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        UnifiedAtsAttachmentOutput: components.UnifiedAtsAttachmentOutput$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            UnifiedAtsAttachmentOutput: "unifiedAtsAttachmentOutput",
         });
+    });
 
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        UnifiedAtsAttachmentOutput?: components.UnifiedAtsAttachmentOutput$.Outbound | undefined;
-    };
+/** @internal */
+export type RetrieveAtsAttachmentResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    UnifiedAtsAttachmentOutput?: components.UnifiedAtsAttachmentOutput$Outbound | undefined;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RetrieveAtsAttachmentResponse> =
-        z
-            .object({
-                httpMeta: components.HTTPMetadata$.outboundSchema,
-                unifiedAtsAttachmentOutput:
-                    components.UnifiedAtsAttachmentOutput$.outboundSchema.optional(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    httpMeta: "HttpMeta",
-                    unifiedAtsAttachmentOutput: "UnifiedAtsAttachmentOutput",
-                });
-            });
+/** @internal */
+export const RetrieveAtsAttachmentResponse$outboundSchema: z.ZodType<
+    RetrieveAtsAttachmentResponse$Outbound,
+    z.ZodTypeDef,
+    RetrieveAtsAttachmentResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        unifiedAtsAttachmentOutput: components.UnifiedAtsAttachmentOutput$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            unifiedAtsAttachmentOutput: "UnifiedAtsAttachmentOutput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RetrieveAtsAttachmentResponse$ {
+    /** @deprecated use `RetrieveAtsAttachmentResponse$inboundSchema` instead. */
+    export const inboundSchema = RetrieveAtsAttachmentResponse$inboundSchema;
+    /** @deprecated use `RetrieveAtsAttachmentResponse$outboundSchema` instead. */
+    export const outboundSchema = RetrieveAtsAttachmentResponse$outboundSchema;
+    /** @deprecated use `RetrieveAtsAttachmentResponse$Outbound` instead. */
+    export type Outbound = RetrieveAtsAttachmentResponse$Outbound;
 }
