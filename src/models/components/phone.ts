@@ -21,38 +21,51 @@ export type Phone = {
 };
 
 /** @internal */
+export const Phone$inboundSchema: z.ZodType<Phone, z.ZodTypeDef, unknown> = z
+    .object({
+        phone_number: z.string(),
+        phone_type: z.string(),
+        owner_type: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            phone_number: "phoneNumber",
+            phone_type: "phoneType",
+            owner_type: "ownerType",
+        });
+    });
+
+/** @internal */
+export type Phone$Outbound = {
+    phone_number: string;
+    phone_type: string;
+    owner_type?: string | undefined;
+};
+
+/** @internal */
+export const Phone$outboundSchema: z.ZodType<Phone$Outbound, z.ZodTypeDef, Phone> = z
+    .object({
+        phoneNumber: z.string(),
+        phoneType: z.string(),
+        ownerType: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            phoneNumber: "phone_number",
+            phoneType: "phone_type",
+            ownerType: "owner_type",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Phone$ {
-    export const inboundSchema: z.ZodType<Phone, z.ZodTypeDef, unknown> = z
-        .object({
-            phone_number: z.string(),
-            phone_type: z.string(),
-            owner_type: z.string().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                phone_number: "phoneNumber",
-                phone_type: "phoneType",
-                owner_type: "ownerType",
-            });
-        });
-
-    export type Outbound = {
-        phone_number: string;
-        phone_type: string;
-        owner_type?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Phone> = z
-        .object({
-            phoneNumber: z.string(),
-            phoneType: z.string(),
-            ownerType: z.string().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                phoneNumber: "phone_number",
-                phoneType: "phone_type",
-                ownerType: "owner_type",
-            });
-        });
+    /** @deprecated use `Phone$inboundSchema` instead. */
+    export const inboundSchema = Phone$inboundSchema;
+    /** @deprecated use `Phone$outboundSchema` instead. */
+    export const outboundSchema = Phone$outboundSchema;
+    /** @deprecated use `Phone$Outbound` instead. */
+    export type Outbound = Phone$Outbound;
 }

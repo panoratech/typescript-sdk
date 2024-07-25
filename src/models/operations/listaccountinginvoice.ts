@@ -37,113 +37,167 @@ export type ListAccountingInvoiceResponse = {
 };
 
 /** @internal */
+export const ListAccountingInvoiceRequest$inboundSchema: z.ZodType<
+    ListAccountingInvoiceRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        remote_data: z.boolean().optional(),
+        limit: z.number().default(50),
+        cursor: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+        });
+    });
+
+/** @internal */
+export type ListAccountingInvoiceRequest$Outbound = {
+    "x-connection-token": string;
+    remote_data?: boolean | undefined;
+    limit: number;
+    cursor?: string | undefined;
+};
+
+/** @internal */
+export const ListAccountingInvoiceRequest$outboundSchema: z.ZodType<
+    ListAccountingInvoiceRequest$Outbound,
+    z.ZodTypeDef,
+    ListAccountingInvoiceRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        remoteData: z.boolean().optional(),
+        limit: z.number().default(50),
+        cursor: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListAccountingInvoiceRequest$ {
-    export const inboundSchema: z.ZodType<ListAccountingInvoiceRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            "x-connection-token": z.string(),
-            remote_data: z.boolean().optional(),
-            limit: z.number().default(50),
-            cursor: z.string().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        remote_data?: boolean | undefined;
-        limit: number;
-        cursor?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListAccountingInvoiceRequest> = z
-        .object({
-            xConnectionToken: z.string(),
-            remoteData: z.boolean().optional(),
-            limit: z.number().default(50),
-            cursor: z.string().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
-        });
+    /** @deprecated use `ListAccountingInvoiceRequest$inboundSchema` instead. */
+    export const inboundSchema = ListAccountingInvoiceRequest$inboundSchema;
+    /** @deprecated use `ListAccountingInvoiceRequest$outboundSchema` instead. */
+    export const outboundSchema = ListAccountingInvoiceRequest$outboundSchema;
+    /** @deprecated use `ListAccountingInvoiceRequest$Outbound` instead. */
+    export type Outbound = ListAccountingInvoiceRequest$Outbound;
 }
 
 /** @internal */
+export const ListAccountingInvoiceResponseBody$inboundSchema: z.ZodType<
+    ListAccountingInvoiceResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        prev_cursor: z.string(),
+        next_cursor: z.string(),
+        data: z.array(components.UnifiedAccountingInvoiceOutput$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            prev_cursor: "prevCursor",
+            next_cursor: "nextCursor",
+        });
+    });
+
+/** @internal */
+export type ListAccountingInvoiceResponseBody$Outbound = {
+    prev_cursor: string;
+    next_cursor: string;
+    data: Array<components.UnifiedAccountingInvoiceOutput$Outbound>;
+};
+
+/** @internal */
+export const ListAccountingInvoiceResponseBody$outboundSchema: z.ZodType<
+    ListAccountingInvoiceResponseBody$Outbound,
+    z.ZodTypeDef,
+    ListAccountingInvoiceResponseBody
+> = z
+    .object({
+        prevCursor: z.string(),
+        nextCursor: z.string(),
+        data: z.array(components.UnifiedAccountingInvoiceOutput$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            prevCursor: "prev_cursor",
+            nextCursor: "next_cursor",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListAccountingInvoiceResponseBody$ {
-    export const inboundSchema: z.ZodType<
-        ListAccountingInvoiceResponseBody,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            prev_cursor: z.string(),
-            next_cursor: z.string(),
-            data: z.array(components.UnifiedAccountingInvoiceOutput$.inboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                prev_cursor: "prevCursor",
-                next_cursor: "nextCursor",
-            });
-        });
-
-    export type Outbound = {
-        prev_cursor: string;
-        next_cursor: string;
-        data: Array<components.UnifiedAccountingInvoiceOutput$.Outbound>;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        ListAccountingInvoiceResponseBody
-    > = z
-        .object({
-            prevCursor: z.string(),
-            nextCursor: z.string(),
-            data: z.array(components.UnifiedAccountingInvoiceOutput$.outboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                prevCursor: "prev_cursor",
-                nextCursor: "next_cursor",
-            });
-        });
+    /** @deprecated use `ListAccountingInvoiceResponseBody$inboundSchema` instead. */
+    export const inboundSchema = ListAccountingInvoiceResponseBody$inboundSchema;
+    /** @deprecated use `ListAccountingInvoiceResponseBody$outboundSchema` instead. */
+    export const outboundSchema = ListAccountingInvoiceResponseBody$outboundSchema;
+    /** @deprecated use `ListAccountingInvoiceResponseBody$Outbound` instead. */
+    export type Outbound = ListAccountingInvoiceResponseBody$Outbound;
 }
 
 /** @internal */
-export namespace ListAccountingInvoiceResponse$ {
-    export const inboundSchema: z.ZodType<ListAccountingInvoiceResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            object: z.lazy(() => ListAccountingInvoiceResponseBody$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-            });
+export const ListAccountingInvoiceResponse$inboundSchema: z.ZodType<
+    ListAccountingInvoiceResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        object: z.lazy(() => ListAccountingInvoiceResponseBody$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
         });
+    });
 
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        object?: ListAccountingInvoiceResponseBody$.Outbound | undefined;
-    };
+/** @internal */
+export type ListAccountingInvoiceResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    object?: ListAccountingInvoiceResponseBody$Outbound | undefined;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListAccountingInvoiceResponse> =
-        z
-            .object({
-                httpMeta: components.HTTPMetadata$.outboundSchema,
-                object: z.lazy(() => ListAccountingInvoiceResponseBody$.outboundSchema).optional(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    httpMeta: "HttpMeta",
-                });
-            });
+/** @internal */
+export const ListAccountingInvoiceResponse$outboundSchema: z.ZodType<
+    ListAccountingInvoiceResponse$Outbound,
+    z.ZodTypeDef,
+    ListAccountingInvoiceResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        object: z.lazy(() => ListAccountingInvoiceResponseBody$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListAccountingInvoiceResponse$ {
+    /** @deprecated use `ListAccountingInvoiceResponse$inboundSchema` instead. */
+    export const inboundSchema = ListAccountingInvoiceResponse$inboundSchema;
+    /** @deprecated use `ListAccountingInvoiceResponse$outboundSchema` instead. */
+    export const outboundSchema = ListAccountingInvoiceResponse$outboundSchema;
+    /** @deprecated use `ListAccountingInvoiceResponse$Outbound` instead. */
+    export type Outbound = ListAccountingInvoiceResponse$Outbound;
 }

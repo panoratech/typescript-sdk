@@ -11,28 +11,45 @@ export type DefineResponse = {
 };
 
 /** @internal */
+export const DefineResponse$inboundSchema: z.ZodType<DefineResponse, z.ZodTypeDef, unknown> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+        });
+    });
+
+/** @internal */
+export type DefineResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+};
+
+/** @internal */
+export const DefineResponse$outboundSchema: z.ZodType<
+    DefineResponse$Outbound,
+    z.ZodTypeDef,
+    DefineResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace DefineResponse$ {
-    export const inboundSchema: z.ZodType<DefineResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DefineResponse> = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-            });
-        });
+    /** @deprecated use `DefineResponse$inboundSchema` instead. */
+    export const inboundSchema = DefineResponse$inboundSchema;
+    /** @deprecated use `DefineResponse$outboundSchema` instead. */
+    export const outboundSchema = DefineResponse$outboundSchema;
+    /** @deprecated use `DefineResponse$Outbound` instead. */
+    export type Outbound = DefineResponse$Outbound;
 }

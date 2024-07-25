@@ -3,9 +3,14 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
-import { Address, Address$ } from "./address.js";
-import { Email, Email$ } from "./email.js";
-import { Phone, Phone$ } from "./phone.js";
+import {
+    Address,
+    Address$inboundSchema,
+    Address$Outbound,
+    Address$outboundSchema,
+} from "./address.js";
+import { Email, Email$inboundSchema, Email$Outbound, Email$outboundSchema } from "./email.js";
+import { Phone, Phone$inboundSchema, Phone$Outbound, Phone$outboundSchema } from "./phone.js";
 import * as z from "zod";
 
 export type UnifiedCrmContactOutputFieldMappings = {};
@@ -56,144 +61,220 @@ export type UnifiedCrmContactOutput = {
 };
 
 /** @internal */
+export const UnifiedCrmContactOutputFieldMappings$inboundSchema: z.ZodType<
+    UnifiedCrmContactOutputFieldMappings,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedCrmContactOutputFieldMappings$Outbound = {};
+
+/** @internal */
+export const UnifiedCrmContactOutputFieldMappings$outboundSchema: z.ZodType<
+    UnifiedCrmContactOutputFieldMappings$Outbound,
+    z.ZodTypeDef,
+    UnifiedCrmContactOutputFieldMappings
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedCrmContactOutputFieldMappings$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedCrmContactOutputFieldMappings,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedCrmContactOutputFieldMappings
-    > = z.object({});
+    /** @deprecated use `UnifiedCrmContactOutputFieldMappings$inboundSchema` instead. */
+    export const inboundSchema = UnifiedCrmContactOutputFieldMappings$inboundSchema;
+    /** @deprecated use `UnifiedCrmContactOutputFieldMappings$outboundSchema` instead. */
+    export const outboundSchema = UnifiedCrmContactOutputFieldMappings$outboundSchema;
+    /** @deprecated use `UnifiedCrmContactOutputFieldMappings$Outbound` instead. */
+    export type Outbound = UnifiedCrmContactOutputFieldMappings$Outbound;
 }
 
 /** @internal */
+export const UnifiedCrmContactOutputRemoteData$inboundSchema: z.ZodType<
+    UnifiedCrmContactOutputRemoteData,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedCrmContactOutputRemoteData$Outbound = {};
+
+/** @internal */
+export const UnifiedCrmContactOutputRemoteData$outboundSchema: z.ZodType<
+    UnifiedCrmContactOutputRemoteData$Outbound,
+    z.ZodTypeDef,
+    UnifiedCrmContactOutputRemoteData
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedCrmContactOutputRemoteData$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedCrmContactOutputRemoteData,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedCrmContactOutputRemoteData
-    > = z.object({});
+    /** @deprecated use `UnifiedCrmContactOutputRemoteData$inboundSchema` instead. */
+    export const inboundSchema = UnifiedCrmContactOutputRemoteData$inboundSchema;
+    /** @deprecated use `UnifiedCrmContactOutputRemoteData$outboundSchema` instead. */
+    export const outboundSchema = UnifiedCrmContactOutputRemoteData$outboundSchema;
+    /** @deprecated use `UnifiedCrmContactOutputRemoteData$Outbound` instead. */
+    export type Outbound = UnifiedCrmContactOutputRemoteData$Outbound;
 }
 
 /** @internal */
+export const UnifiedCrmContactOutputCreatedAt$inboundSchema: z.ZodType<
+    UnifiedCrmContactOutputCreatedAt,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedCrmContactOutputCreatedAt$Outbound = {};
+
+/** @internal */
+export const UnifiedCrmContactOutputCreatedAt$outboundSchema: z.ZodType<
+    UnifiedCrmContactOutputCreatedAt$Outbound,
+    z.ZodTypeDef,
+    UnifiedCrmContactOutputCreatedAt
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedCrmContactOutputCreatedAt$ {
-    export const inboundSchema: z.ZodType<UnifiedCrmContactOutputCreatedAt, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedCrmContactOutputCreatedAt
-    > = z.object({});
+    /** @deprecated use `UnifiedCrmContactOutputCreatedAt$inboundSchema` instead. */
+    export const inboundSchema = UnifiedCrmContactOutputCreatedAt$inboundSchema;
+    /** @deprecated use `UnifiedCrmContactOutputCreatedAt$outboundSchema` instead. */
+    export const outboundSchema = UnifiedCrmContactOutputCreatedAt$outboundSchema;
+    /** @deprecated use `UnifiedCrmContactOutputCreatedAt$Outbound` instead. */
+    export type Outbound = UnifiedCrmContactOutputCreatedAt$Outbound;
 }
 
 /** @internal */
+export const UnifiedCrmContactOutputModifiedAt$inboundSchema: z.ZodType<
+    UnifiedCrmContactOutputModifiedAt,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedCrmContactOutputModifiedAt$Outbound = {};
+
+/** @internal */
+export const UnifiedCrmContactOutputModifiedAt$outboundSchema: z.ZodType<
+    UnifiedCrmContactOutputModifiedAt$Outbound,
+    z.ZodTypeDef,
+    UnifiedCrmContactOutputModifiedAt
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedCrmContactOutputModifiedAt$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedCrmContactOutputModifiedAt,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedCrmContactOutputModifiedAt
-    > = z.object({});
+    /** @deprecated use `UnifiedCrmContactOutputModifiedAt$inboundSchema` instead. */
+    export const inboundSchema = UnifiedCrmContactOutputModifiedAt$inboundSchema;
+    /** @deprecated use `UnifiedCrmContactOutputModifiedAt$outboundSchema` instead. */
+    export const outboundSchema = UnifiedCrmContactOutputModifiedAt$outboundSchema;
+    /** @deprecated use `UnifiedCrmContactOutputModifiedAt$Outbound` instead. */
+    export type Outbound = UnifiedCrmContactOutputModifiedAt$Outbound;
 }
 
 /** @internal */
+export const UnifiedCrmContactOutput$inboundSchema: z.ZodType<
+    UnifiedCrmContactOutput,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        first_name: z.string(),
+        last_name: z.string(),
+        email_addresses: z.array(Email$inboundSchema).optional(),
+        phone_numbers: z.array(Phone$inboundSchema).optional(),
+        addresses: z.array(Address$inboundSchema).optional(),
+        user_id: z.string().optional(),
+        field_mappings: z.lazy(() => UnifiedCrmContactOutputFieldMappings$inboundSchema),
+        id: z.string().optional(),
+        remote_id: z.string().optional(),
+        remote_data: z.lazy(() => UnifiedCrmContactOutputRemoteData$inboundSchema),
+        created_at: z.lazy(() => UnifiedCrmContactOutputCreatedAt$inboundSchema),
+        modified_at: z.lazy(() => UnifiedCrmContactOutputModifiedAt$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            first_name: "firstName",
+            last_name: "lastName",
+            email_addresses: "emailAddresses",
+            phone_numbers: "phoneNumbers",
+            user_id: "userId",
+            field_mappings: "fieldMappings",
+            remote_id: "remoteId",
+            remote_data: "remoteData",
+            created_at: "createdAt",
+            modified_at: "modifiedAt",
+        });
+    });
+
+/** @internal */
+export type UnifiedCrmContactOutput$Outbound = {
+    first_name: string;
+    last_name: string;
+    email_addresses?: Array<Email$Outbound> | undefined;
+    phone_numbers?: Array<Phone$Outbound> | undefined;
+    addresses?: Array<Address$Outbound> | undefined;
+    user_id?: string | undefined;
+    field_mappings: UnifiedCrmContactOutputFieldMappings$Outbound;
+    id?: string | undefined;
+    remote_id?: string | undefined;
+    remote_data: UnifiedCrmContactOutputRemoteData$Outbound;
+    created_at: UnifiedCrmContactOutputCreatedAt$Outbound;
+    modified_at: UnifiedCrmContactOutputModifiedAt$Outbound;
+};
+
+/** @internal */
+export const UnifiedCrmContactOutput$outboundSchema: z.ZodType<
+    UnifiedCrmContactOutput$Outbound,
+    z.ZodTypeDef,
+    UnifiedCrmContactOutput
+> = z
+    .object({
+        firstName: z.string(),
+        lastName: z.string(),
+        emailAddresses: z.array(Email$outboundSchema).optional(),
+        phoneNumbers: z.array(Phone$outboundSchema).optional(),
+        addresses: z.array(Address$outboundSchema).optional(),
+        userId: z.string().optional(),
+        fieldMappings: z.lazy(() => UnifiedCrmContactOutputFieldMappings$outboundSchema),
+        id: z.string().optional(),
+        remoteId: z.string().optional(),
+        remoteData: z.lazy(() => UnifiedCrmContactOutputRemoteData$outboundSchema),
+        createdAt: z.lazy(() => UnifiedCrmContactOutputCreatedAt$outboundSchema),
+        modifiedAt: z.lazy(() => UnifiedCrmContactOutputModifiedAt$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            firstName: "first_name",
+            lastName: "last_name",
+            emailAddresses: "email_addresses",
+            phoneNumbers: "phone_numbers",
+            userId: "user_id",
+            fieldMappings: "field_mappings",
+            remoteId: "remote_id",
+            remoteData: "remote_data",
+            createdAt: "created_at",
+            modifiedAt: "modified_at",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedCrmContactOutput$ {
-    export const inboundSchema: z.ZodType<UnifiedCrmContactOutput, z.ZodTypeDef, unknown> = z
-        .object({
-            first_name: z.string(),
-            last_name: z.string(),
-            email_addresses: z.array(Email$.inboundSchema).optional(),
-            phone_numbers: z.array(Phone$.inboundSchema).optional(),
-            addresses: z.array(Address$.inboundSchema).optional(),
-            user_id: z.string().optional(),
-            field_mappings: z.lazy(() => UnifiedCrmContactOutputFieldMappings$.inboundSchema),
-            id: z.string().optional(),
-            remote_id: z.string().optional(),
-            remote_data: z.lazy(() => UnifiedCrmContactOutputRemoteData$.inboundSchema),
-            created_at: z.lazy(() => UnifiedCrmContactOutputCreatedAt$.inboundSchema),
-            modified_at: z.lazy(() => UnifiedCrmContactOutputModifiedAt$.inboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                first_name: "firstName",
-                last_name: "lastName",
-                email_addresses: "emailAddresses",
-                phone_numbers: "phoneNumbers",
-                user_id: "userId",
-                field_mappings: "fieldMappings",
-                remote_id: "remoteId",
-                remote_data: "remoteData",
-                created_at: "createdAt",
-                modified_at: "modifiedAt",
-            });
-        });
-
-    export type Outbound = {
-        first_name: string;
-        last_name: string;
-        email_addresses?: Array<Email$.Outbound> | undefined;
-        phone_numbers?: Array<Phone$.Outbound> | undefined;
-        addresses?: Array<Address$.Outbound> | undefined;
-        user_id?: string | undefined;
-        field_mappings: UnifiedCrmContactOutputFieldMappings$.Outbound;
-        id?: string | undefined;
-        remote_id?: string | undefined;
-        remote_data: UnifiedCrmContactOutputRemoteData$.Outbound;
-        created_at: UnifiedCrmContactOutputCreatedAt$.Outbound;
-        modified_at: UnifiedCrmContactOutputModifiedAt$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnifiedCrmContactOutput> = z
-        .object({
-            firstName: z.string(),
-            lastName: z.string(),
-            emailAddresses: z.array(Email$.outboundSchema).optional(),
-            phoneNumbers: z.array(Phone$.outboundSchema).optional(),
-            addresses: z.array(Address$.outboundSchema).optional(),
-            userId: z.string().optional(),
-            fieldMappings: z.lazy(() => UnifiedCrmContactOutputFieldMappings$.outboundSchema),
-            id: z.string().optional(),
-            remoteId: z.string().optional(),
-            remoteData: z.lazy(() => UnifiedCrmContactOutputRemoteData$.outboundSchema),
-            createdAt: z.lazy(() => UnifiedCrmContactOutputCreatedAt$.outboundSchema),
-            modifiedAt: z.lazy(() => UnifiedCrmContactOutputModifiedAt$.outboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                firstName: "first_name",
-                lastName: "last_name",
-                emailAddresses: "email_addresses",
-                phoneNumbers: "phone_numbers",
-                userId: "user_id",
-                fieldMappings: "field_mappings",
-                remoteId: "remote_id",
-                remoteData: "remote_data",
-                createdAt: "created_at",
-                modifiedAt: "modified_at",
-            });
-        });
+    /** @deprecated use `UnifiedCrmContactOutput$inboundSchema` instead. */
+    export const inboundSchema = UnifiedCrmContactOutput$inboundSchema;
+    /** @deprecated use `UnifiedCrmContactOutput$outboundSchema` instead. */
+    export const outboundSchema = UnifiedCrmContactOutput$outboundSchema;
+    /** @deprecated use `UnifiedCrmContactOutput$Outbound` instead. */
+    export type Outbound = UnifiedCrmContactOutput$Outbound;
 }

@@ -11,28 +11,45 @@ export type MapResponse = {
 };
 
 /** @internal */
+export const MapResponse$inboundSchema: z.ZodType<MapResponse, z.ZodTypeDef, unknown> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+        });
+    });
+
+/** @internal */
+export type MapResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+};
+
+/** @internal */
+export const MapResponse$outboundSchema: z.ZodType<
+    MapResponse$Outbound,
+    z.ZodTypeDef,
+    MapResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace MapResponse$ {
-    export const inboundSchema: z.ZodType<MapResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, MapResponse> = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-            });
-        });
+    /** @deprecated use `MapResponse$inboundSchema` instead. */
+    export const inboundSchema = MapResponse$inboundSchema;
+    /** @deprecated use `MapResponse$outboundSchema` instead. */
+    export const outboundSchema = MapResponse$outboundSchema;
+    /** @deprecated use `MapResponse$Outbound` instead. */
+    export type Outbound = MapResponse$Outbound;
 }

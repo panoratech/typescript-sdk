@@ -27,71 +27,110 @@ export type RetrieveTicketingUserResponse = {
 };
 
 /** @internal */
+export const RetrieveTicketingUserRequest$inboundSchema: z.ZodType<
+    RetrieveTicketingUserRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        id: z.string(),
+        remote_data: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+        });
+    });
+
+/** @internal */
+export type RetrieveTicketingUserRequest$Outbound = {
+    "x-connection-token": string;
+    id: string;
+    remote_data?: boolean | undefined;
+};
+
+/** @internal */
+export const RetrieveTicketingUserRequest$outboundSchema: z.ZodType<
+    RetrieveTicketingUserRequest$Outbound,
+    z.ZodTypeDef,
+    RetrieveTicketingUserRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        id: z.string(),
+        remoteData: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveTicketingUserRequest$ {
-    export const inboundSchema: z.ZodType<RetrieveTicketingUserRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            "x-connection-token": z.string(),
-            id: z.string(),
-            remote_data: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        id: string;
-        remote_data?: boolean | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RetrieveTicketingUserRequest> = z
-        .object({
-            xConnectionToken: z.string(),
-            id: z.string(),
-            remoteData: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
-        });
+    /** @deprecated use `RetrieveTicketingUserRequest$inboundSchema` instead. */
+    export const inboundSchema = RetrieveTicketingUserRequest$inboundSchema;
+    /** @deprecated use `RetrieveTicketingUserRequest$outboundSchema` instead. */
+    export const outboundSchema = RetrieveTicketingUserRequest$outboundSchema;
+    /** @deprecated use `RetrieveTicketingUserRequest$Outbound` instead. */
+    export type Outbound = RetrieveTicketingUserRequest$Outbound;
 }
 
 /** @internal */
-export namespace RetrieveTicketingUserResponse$ {
-    export const inboundSchema: z.ZodType<RetrieveTicketingUserResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            UnifiedTicketingUserOutput:
-                components.UnifiedTicketingUserOutput$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-                UnifiedTicketingUserOutput: "unifiedTicketingUserOutput",
-            });
+export const RetrieveTicketingUserResponse$inboundSchema: z.ZodType<
+    RetrieveTicketingUserResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        UnifiedTicketingUserOutput: components.UnifiedTicketingUserOutput$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            UnifiedTicketingUserOutput: "unifiedTicketingUserOutput",
         });
+    });
 
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        UnifiedTicketingUserOutput?: components.UnifiedTicketingUserOutput$.Outbound | undefined;
-    };
+/** @internal */
+export type RetrieveTicketingUserResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    UnifiedTicketingUserOutput?: components.UnifiedTicketingUserOutput$Outbound | undefined;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RetrieveTicketingUserResponse> =
-        z
-            .object({
-                httpMeta: components.HTTPMetadata$.outboundSchema,
-                unifiedTicketingUserOutput:
-                    components.UnifiedTicketingUserOutput$.outboundSchema.optional(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    httpMeta: "HttpMeta",
-                    unifiedTicketingUserOutput: "UnifiedTicketingUserOutput",
-                });
-            });
+/** @internal */
+export const RetrieveTicketingUserResponse$outboundSchema: z.ZodType<
+    RetrieveTicketingUserResponse$Outbound,
+    z.ZodTypeDef,
+    RetrieveTicketingUserResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        unifiedTicketingUserOutput: components.UnifiedTicketingUserOutput$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            unifiedTicketingUserOutput: "UnifiedTicketingUserOutput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RetrieveTicketingUserResponse$ {
+    /** @deprecated use `RetrieveTicketingUserResponse$inboundSchema` instead. */
+    export const inboundSchema = RetrieveTicketingUserResponse$inboundSchema;
+    /** @deprecated use `RetrieveTicketingUserResponse$outboundSchema` instead. */
+    export const outboundSchema = RetrieveTicketingUserResponse$outboundSchema;
+    /** @deprecated use `RetrieveTicketingUserResponse$Outbound` instead. */
+    export type Outbound = RetrieveTicketingUserResponse$Outbound;
 }

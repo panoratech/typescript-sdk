@@ -3,7 +3,7 @@
  */
 
 import { SDKHooks } from "../hooks/hooks.js";
-import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config.js";
+import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
 import {
     encodeFormQuery as encodeFormQuery$,
     encodeSimple as encodeSimple$,
@@ -43,18 +43,15 @@ export class Department extends ClientSDK {
     /**
      * List a batch of Departments
      */
-    async getDepartments(
-        request: operations.GetDepartmentsRequest,
+    async list(
+        request: operations.ListAtsDepartmentsRequest,
         options?: RequestOptions
-    ): Promise<operations.GetDepartmentsResponse> {
+    ): Promise<operations.ListAtsDepartmentsResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetDepartmentsRequest$.outboundSchema.parse(value$),
+            (value$) => operations.ListAtsDepartmentsRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -67,13 +64,14 @@ export class Department extends ClientSDK {
             remote_data: payload$.remote_data,
         });
 
-        headers$.set(
-            "x-connection-token",
-            encodeSimple$("x-connection-token", payload$["x-connection-token"], {
-                explode: false,
-                charEncoding: "none",
-            })
-        );
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-connection-token": encodeSimple$(
+                "x-connection-token",
+                payload$["x-connection-token"],
+                { explode: false, charEncoding: "none" }
+            ),
+        });
 
         let security$;
         if (typeof this.options$.bearer === "function") {
@@ -84,13 +82,12 @@ export class Department extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "getDepartments",
+            operationID: "listAtsDepartments",
             oAuth2Scopes: [],
             securitySource: this.options$.bearer,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -100,18 +97,24 @@ export class Department extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
-        const [result$] = await this.matcher<operations.GetDepartmentsResponse>()
-            .json(200, operations.GetDepartmentsResponse$, { key: "object" })
+        const [result$] = await this.matcher<operations.ListAtsDepartmentsResponse>()
+            .json(200, operations.ListAtsDepartmentsResponse$inboundSchema, { key: "object" })
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 
@@ -124,18 +127,15 @@ export class Department extends ClientSDK {
      * @remarks
      * Retrieve a department from any connected Ats software
      */
-    async getDepartment(
-        request: operations.GetDepartmentRequest,
+    async retrieve(
+        request: operations.RetrieveAtsDepartmentRequest,
         options?: RequestOptions
-    ): Promise<operations.GetDepartmentResponse> {
+    ): Promise<operations.RetrieveAtsDepartmentResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetDepartmentRequest$.outboundSchema.parse(value$),
+            (value$) => operations.RetrieveAtsDepartmentRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -149,13 +149,14 @@ export class Department extends ClientSDK {
             remote_data: payload$.remote_data,
         });
 
-        headers$.set(
-            "x-connection-token",
-            encodeSimple$("x-connection-token", payload$["x-connection-token"], {
-                explode: false,
-                charEncoding: "none",
-            })
-        );
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-connection-token": encodeSimple$(
+                "x-connection-token",
+                payload$["x-connection-token"],
+                { explode: false, charEncoding: "none" }
+            ),
+        });
 
         let security$;
         if (typeof this.options$.bearer === "function") {
@@ -166,13 +167,12 @@ export class Department extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "getDepartment",
+            operationID: "retrieveAtsDepartment",
             oAuth2Scopes: [],
             securitySource: this.options$.bearer,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -182,18 +182,26 @@ export class Department extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
-        const [result$] = await this.matcher<operations.GetDepartmentResponse>()
-            .json(200, operations.GetDepartmentResponse$, { key: "UnifiedAtsDepartmentOutput" })
+        const [result$] = await this.matcher<operations.RetrieveAtsDepartmentResponse>()
+            .json(200, operations.RetrieveAtsDepartmentResponse$inboundSchema, {
+                key: "UnifiedAtsDepartmentOutput",
+            })
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 

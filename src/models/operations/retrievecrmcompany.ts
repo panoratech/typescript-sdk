@@ -27,68 +27,110 @@ export type RetrieveCrmCompanyResponse = {
 };
 
 /** @internal */
+export const RetrieveCrmCompanyRequest$inboundSchema: z.ZodType<
+    RetrieveCrmCompanyRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        id: z.string(),
+        remote_data: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+        });
+    });
+
+/** @internal */
+export type RetrieveCrmCompanyRequest$Outbound = {
+    "x-connection-token": string;
+    id: string;
+    remote_data?: boolean | undefined;
+};
+
+/** @internal */
+export const RetrieveCrmCompanyRequest$outboundSchema: z.ZodType<
+    RetrieveCrmCompanyRequest$Outbound,
+    z.ZodTypeDef,
+    RetrieveCrmCompanyRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        id: z.string(),
+        remoteData: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveCrmCompanyRequest$ {
-    export const inboundSchema: z.ZodType<RetrieveCrmCompanyRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            "x-connection-token": z.string(),
-            id: z.string(),
-            remote_data: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        id: string;
-        remote_data?: boolean | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RetrieveCrmCompanyRequest> = z
-        .object({
-            xConnectionToken: z.string(),
-            id: z.string(),
-            remoteData: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
-        });
+    /** @deprecated use `RetrieveCrmCompanyRequest$inboundSchema` instead. */
+    export const inboundSchema = RetrieveCrmCompanyRequest$inboundSchema;
+    /** @deprecated use `RetrieveCrmCompanyRequest$outboundSchema` instead. */
+    export const outboundSchema = RetrieveCrmCompanyRequest$outboundSchema;
+    /** @deprecated use `RetrieveCrmCompanyRequest$Outbound` instead. */
+    export type Outbound = RetrieveCrmCompanyRequest$Outbound;
 }
 
 /** @internal */
+export const RetrieveCrmCompanyResponse$inboundSchema: z.ZodType<
+    RetrieveCrmCompanyResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        UnifiedCrmCompanyOutput: components.UnifiedCrmCompanyOutput$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            UnifiedCrmCompanyOutput: "unifiedCrmCompanyOutput",
+        });
+    });
+
+/** @internal */
+export type RetrieveCrmCompanyResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    UnifiedCrmCompanyOutput?: components.UnifiedCrmCompanyOutput$Outbound | undefined;
+};
+
+/** @internal */
+export const RetrieveCrmCompanyResponse$outboundSchema: z.ZodType<
+    RetrieveCrmCompanyResponse$Outbound,
+    z.ZodTypeDef,
+    RetrieveCrmCompanyResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        unifiedCrmCompanyOutput: components.UnifiedCrmCompanyOutput$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            unifiedCrmCompanyOutput: "UnifiedCrmCompanyOutput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveCrmCompanyResponse$ {
-    export const inboundSchema: z.ZodType<RetrieveCrmCompanyResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            UnifiedCrmCompanyOutput: components.UnifiedCrmCompanyOutput$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-                UnifiedCrmCompanyOutput: "unifiedCrmCompanyOutput",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        UnifiedCrmCompanyOutput?: components.UnifiedCrmCompanyOutput$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RetrieveCrmCompanyResponse> = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            unifiedCrmCompanyOutput: components.UnifiedCrmCompanyOutput$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-                unifiedCrmCompanyOutput: "UnifiedCrmCompanyOutput",
-            });
-        });
+    /** @deprecated use `RetrieveCrmCompanyResponse$inboundSchema` instead. */
+    export const inboundSchema = RetrieveCrmCompanyResponse$inboundSchema;
+    /** @deprecated use `RetrieveCrmCompanyResponse$outboundSchema` instead. */
+    export const outboundSchema = RetrieveCrmCompanyResponse$outboundSchema;
+    /** @deprecated use `RetrieveCrmCompanyResponse$Outbound` instead. */
+    export type Outbound = RetrieveCrmCompanyResponse$Outbound;
 }

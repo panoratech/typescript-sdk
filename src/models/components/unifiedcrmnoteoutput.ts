@@ -49,124 +49,215 @@ export type UnifiedCrmNoteOutput = {
 };
 
 /** @internal */
+export const UnifiedCrmNoteOutputFieldMappings$inboundSchema: z.ZodType<
+    UnifiedCrmNoteOutputFieldMappings,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedCrmNoteOutputFieldMappings$Outbound = {};
+
+/** @internal */
+export const UnifiedCrmNoteOutputFieldMappings$outboundSchema: z.ZodType<
+    UnifiedCrmNoteOutputFieldMappings$Outbound,
+    z.ZodTypeDef,
+    UnifiedCrmNoteOutputFieldMappings
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedCrmNoteOutputFieldMappings$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedCrmNoteOutputFieldMappings,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedCrmNoteOutputFieldMappings
-    > = z.object({});
+    /** @deprecated use `UnifiedCrmNoteOutputFieldMappings$inboundSchema` instead. */
+    export const inboundSchema = UnifiedCrmNoteOutputFieldMappings$inboundSchema;
+    /** @deprecated use `UnifiedCrmNoteOutputFieldMappings$outboundSchema` instead. */
+    export const outboundSchema = UnifiedCrmNoteOutputFieldMappings$outboundSchema;
+    /** @deprecated use `UnifiedCrmNoteOutputFieldMappings$Outbound` instead. */
+    export type Outbound = UnifiedCrmNoteOutputFieldMappings$Outbound;
 }
 
 /** @internal */
+export const UnifiedCrmNoteOutputRemoteData$inboundSchema: z.ZodType<
+    UnifiedCrmNoteOutputRemoteData,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedCrmNoteOutputRemoteData$Outbound = {};
+
+/** @internal */
+export const UnifiedCrmNoteOutputRemoteData$outboundSchema: z.ZodType<
+    UnifiedCrmNoteOutputRemoteData$Outbound,
+    z.ZodTypeDef,
+    UnifiedCrmNoteOutputRemoteData
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedCrmNoteOutputRemoteData$ {
-    export const inboundSchema: z.ZodType<UnifiedCrmNoteOutputRemoteData, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnifiedCrmNoteOutputRemoteData> =
-        z.object({});
+    /** @deprecated use `UnifiedCrmNoteOutputRemoteData$inboundSchema` instead. */
+    export const inboundSchema = UnifiedCrmNoteOutputRemoteData$inboundSchema;
+    /** @deprecated use `UnifiedCrmNoteOutputRemoteData$outboundSchema` instead. */
+    export const outboundSchema = UnifiedCrmNoteOutputRemoteData$outboundSchema;
+    /** @deprecated use `UnifiedCrmNoteOutputRemoteData$Outbound` instead. */
+    export type Outbound = UnifiedCrmNoteOutputRemoteData$Outbound;
 }
 
 /** @internal */
+export const UnifiedCrmNoteOutputCreatedAt$inboundSchema: z.ZodType<
+    UnifiedCrmNoteOutputCreatedAt,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedCrmNoteOutputCreatedAt$Outbound = {};
+
+/** @internal */
+export const UnifiedCrmNoteOutputCreatedAt$outboundSchema: z.ZodType<
+    UnifiedCrmNoteOutputCreatedAt$Outbound,
+    z.ZodTypeDef,
+    UnifiedCrmNoteOutputCreatedAt
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedCrmNoteOutputCreatedAt$ {
-    export const inboundSchema: z.ZodType<UnifiedCrmNoteOutputCreatedAt, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnifiedCrmNoteOutputCreatedAt> =
-        z.object({});
+    /** @deprecated use `UnifiedCrmNoteOutputCreatedAt$inboundSchema` instead. */
+    export const inboundSchema = UnifiedCrmNoteOutputCreatedAt$inboundSchema;
+    /** @deprecated use `UnifiedCrmNoteOutputCreatedAt$outboundSchema` instead. */
+    export const outboundSchema = UnifiedCrmNoteOutputCreatedAt$outboundSchema;
+    /** @deprecated use `UnifiedCrmNoteOutputCreatedAt$Outbound` instead. */
+    export type Outbound = UnifiedCrmNoteOutputCreatedAt$Outbound;
 }
 
 /** @internal */
+export const UnifiedCrmNoteOutputModifiedAt$inboundSchema: z.ZodType<
+    UnifiedCrmNoteOutputModifiedAt,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedCrmNoteOutputModifiedAt$Outbound = {};
+
+/** @internal */
+export const UnifiedCrmNoteOutputModifiedAt$outboundSchema: z.ZodType<
+    UnifiedCrmNoteOutputModifiedAt$Outbound,
+    z.ZodTypeDef,
+    UnifiedCrmNoteOutputModifiedAt
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedCrmNoteOutputModifiedAt$ {
-    export const inboundSchema: z.ZodType<UnifiedCrmNoteOutputModifiedAt, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnifiedCrmNoteOutputModifiedAt> =
-        z.object({});
+    /** @deprecated use `UnifiedCrmNoteOutputModifiedAt$inboundSchema` instead. */
+    export const inboundSchema = UnifiedCrmNoteOutputModifiedAt$inboundSchema;
+    /** @deprecated use `UnifiedCrmNoteOutputModifiedAt$outboundSchema` instead. */
+    export const outboundSchema = UnifiedCrmNoteOutputModifiedAt$outboundSchema;
+    /** @deprecated use `UnifiedCrmNoteOutputModifiedAt$Outbound` instead. */
+    export type Outbound = UnifiedCrmNoteOutputModifiedAt$Outbound;
 }
 
 /** @internal */
+export const UnifiedCrmNoteOutput$inboundSchema: z.ZodType<
+    UnifiedCrmNoteOutput,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        content: z.string(),
+        user_id: z.string().optional(),
+        company_id: z.string().optional(),
+        contact_id: z.string().optional(),
+        deal_id: z.string().optional(),
+        field_mappings: z.lazy(() => UnifiedCrmNoteOutputFieldMappings$inboundSchema),
+        id: z.string().optional(),
+        remote_id: z.string().optional(),
+        remote_data: z.lazy(() => UnifiedCrmNoteOutputRemoteData$inboundSchema),
+        created_at: z.lazy(() => UnifiedCrmNoteOutputCreatedAt$inboundSchema),
+        modified_at: z.lazy(() => UnifiedCrmNoteOutputModifiedAt$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            user_id: "userId",
+            company_id: "companyId",
+            contact_id: "contactId",
+            deal_id: "dealId",
+            field_mappings: "fieldMappings",
+            remote_id: "remoteId",
+            remote_data: "remoteData",
+            created_at: "createdAt",
+            modified_at: "modifiedAt",
+        });
+    });
+
+/** @internal */
+export type UnifiedCrmNoteOutput$Outbound = {
+    content: string;
+    user_id?: string | undefined;
+    company_id?: string | undefined;
+    contact_id?: string | undefined;
+    deal_id?: string | undefined;
+    field_mappings: UnifiedCrmNoteOutputFieldMappings$Outbound;
+    id?: string | undefined;
+    remote_id?: string | undefined;
+    remote_data: UnifiedCrmNoteOutputRemoteData$Outbound;
+    created_at: UnifiedCrmNoteOutputCreatedAt$Outbound;
+    modified_at: UnifiedCrmNoteOutputModifiedAt$Outbound;
+};
+
+/** @internal */
+export const UnifiedCrmNoteOutput$outboundSchema: z.ZodType<
+    UnifiedCrmNoteOutput$Outbound,
+    z.ZodTypeDef,
+    UnifiedCrmNoteOutput
+> = z
+    .object({
+        content: z.string(),
+        userId: z.string().optional(),
+        companyId: z.string().optional(),
+        contactId: z.string().optional(),
+        dealId: z.string().optional(),
+        fieldMappings: z.lazy(() => UnifiedCrmNoteOutputFieldMappings$outboundSchema),
+        id: z.string().optional(),
+        remoteId: z.string().optional(),
+        remoteData: z.lazy(() => UnifiedCrmNoteOutputRemoteData$outboundSchema),
+        createdAt: z.lazy(() => UnifiedCrmNoteOutputCreatedAt$outboundSchema),
+        modifiedAt: z.lazy(() => UnifiedCrmNoteOutputModifiedAt$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            userId: "user_id",
+            companyId: "company_id",
+            contactId: "contact_id",
+            dealId: "deal_id",
+            fieldMappings: "field_mappings",
+            remoteId: "remote_id",
+            remoteData: "remote_data",
+            createdAt: "created_at",
+            modifiedAt: "modified_at",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedCrmNoteOutput$ {
-    export const inboundSchema: z.ZodType<UnifiedCrmNoteOutput, z.ZodTypeDef, unknown> = z
-        .object({
-            content: z.string(),
-            user_id: z.string().optional(),
-            company_id: z.string().optional(),
-            contact_id: z.string().optional(),
-            deal_id: z.string().optional(),
-            field_mappings: z.lazy(() => UnifiedCrmNoteOutputFieldMappings$.inboundSchema),
-            id: z.string().optional(),
-            remote_id: z.string().optional(),
-            remote_data: z.lazy(() => UnifiedCrmNoteOutputRemoteData$.inboundSchema),
-            created_at: z.lazy(() => UnifiedCrmNoteOutputCreatedAt$.inboundSchema),
-            modified_at: z.lazy(() => UnifiedCrmNoteOutputModifiedAt$.inboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                user_id: "userId",
-                company_id: "companyId",
-                contact_id: "contactId",
-                deal_id: "dealId",
-                field_mappings: "fieldMappings",
-                remote_id: "remoteId",
-                remote_data: "remoteData",
-                created_at: "createdAt",
-                modified_at: "modifiedAt",
-            });
-        });
-
-    export type Outbound = {
-        content: string;
-        user_id?: string | undefined;
-        company_id?: string | undefined;
-        contact_id?: string | undefined;
-        deal_id?: string | undefined;
-        field_mappings: UnifiedCrmNoteOutputFieldMappings$.Outbound;
-        id?: string | undefined;
-        remote_id?: string | undefined;
-        remote_data: UnifiedCrmNoteOutputRemoteData$.Outbound;
-        created_at: UnifiedCrmNoteOutputCreatedAt$.Outbound;
-        modified_at: UnifiedCrmNoteOutputModifiedAt$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnifiedCrmNoteOutput> = z
-        .object({
-            content: z.string(),
-            userId: z.string().optional(),
-            companyId: z.string().optional(),
-            contactId: z.string().optional(),
-            dealId: z.string().optional(),
-            fieldMappings: z.lazy(() => UnifiedCrmNoteOutputFieldMappings$.outboundSchema),
-            id: z.string().optional(),
-            remoteId: z.string().optional(),
-            remoteData: z.lazy(() => UnifiedCrmNoteOutputRemoteData$.outboundSchema),
-            createdAt: z.lazy(() => UnifiedCrmNoteOutputCreatedAt$.outboundSchema),
-            modifiedAt: z.lazy(() => UnifiedCrmNoteOutputModifiedAt$.outboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                userId: "user_id",
-                companyId: "company_id",
-                contactId: "contact_id",
-                dealId: "deal_id",
-                fieldMappings: "field_mappings",
-                remoteId: "remote_id",
-                remoteData: "remote_data",
-                createdAt: "created_at",
-                modifiedAt: "modified_at",
-            });
-        });
+    /** @deprecated use `UnifiedCrmNoteOutput$inboundSchema` instead. */
+    export const inboundSchema = UnifiedCrmNoteOutput$inboundSchema;
+    /** @deprecated use `UnifiedCrmNoteOutput$outboundSchema` instead. */
+    export const outboundSchema = UnifiedCrmNoteOutput$outboundSchema;
+    /** @deprecated use `UnifiedCrmNoteOutput$Outbound` instead. */
+    export type Outbound = UnifiedCrmNoteOutput$Outbound;
 }

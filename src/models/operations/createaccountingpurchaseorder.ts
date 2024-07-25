@@ -26,92 +26,118 @@ export type CreateAccountingPurchaseOrderResponse = {
 };
 
 /** @internal */
+export const CreateAccountingPurchaseOrderRequest$inboundSchema: z.ZodType<
+    CreateAccountingPurchaseOrderRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        remote_data: z.boolean().optional(),
+        UnifiedAccountingPurchaseorderInput:
+            components.UnifiedAccountingPurchaseorderInput$inboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+            UnifiedAccountingPurchaseorderInput: "unifiedAccountingPurchaseorderInput",
+        });
+    });
+
+/** @internal */
+export type CreateAccountingPurchaseOrderRequest$Outbound = {
+    "x-connection-token": string;
+    remote_data?: boolean | undefined;
+    UnifiedAccountingPurchaseorderInput: components.UnifiedAccountingPurchaseorderInput$Outbound;
+};
+
+/** @internal */
+export const CreateAccountingPurchaseOrderRequest$outboundSchema: z.ZodType<
+    CreateAccountingPurchaseOrderRequest$Outbound,
+    z.ZodTypeDef,
+    CreateAccountingPurchaseOrderRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        remoteData: z.boolean().optional(),
+        unifiedAccountingPurchaseorderInput:
+            components.UnifiedAccountingPurchaseorderInput$outboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+            unifiedAccountingPurchaseorderInput: "UnifiedAccountingPurchaseorderInput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateAccountingPurchaseOrderRequest$ {
-    export const inboundSchema: z.ZodType<
-        CreateAccountingPurchaseOrderRequest,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            "x-connection-token": z.string(),
-            remote_data: z.boolean().optional(),
-            UnifiedAccountingPurchaseorderInput:
-                components.UnifiedAccountingPurchaseorderInput$.inboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-                UnifiedAccountingPurchaseorderInput: "unifiedAccountingPurchaseorderInput",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        remote_data?: boolean | undefined;
-        UnifiedAccountingPurchaseorderInput: components.UnifiedAccountingPurchaseorderInput$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        CreateAccountingPurchaseOrderRequest
-    > = z
-        .object({
-            xConnectionToken: z.string(),
-            remoteData: z.boolean().optional(),
-            unifiedAccountingPurchaseorderInput:
-                components.UnifiedAccountingPurchaseorderInput$.outboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-                unifiedAccountingPurchaseorderInput: "UnifiedAccountingPurchaseorderInput",
-            });
-        });
+    /** @deprecated use `CreateAccountingPurchaseOrderRequest$inboundSchema` instead. */
+    export const inboundSchema = CreateAccountingPurchaseOrderRequest$inboundSchema;
+    /** @deprecated use `CreateAccountingPurchaseOrderRequest$outboundSchema` instead. */
+    export const outboundSchema = CreateAccountingPurchaseOrderRequest$outboundSchema;
+    /** @deprecated use `CreateAccountingPurchaseOrderRequest$Outbound` instead. */
+    export type Outbound = CreateAccountingPurchaseOrderRequest$Outbound;
 }
 
 /** @internal */
+export const CreateAccountingPurchaseOrderResponse$inboundSchema: z.ZodType<
+    CreateAccountingPurchaseOrderResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        UnifiedAccountingPurchaseorderOutput:
+            components.UnifiedAccountingPurchaseorderOutput$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            UnifiedAccountingPurchaseorderOutput: "unifiedAccountingPurchaseorderOutput",
+        });
+    });
+
+/** @internal */
+export type CreateAccountingPurchaseOrderResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    UnifiedAccountingPurchaseorderOutput?:
+        | components.UnifiedAccountingPurchaseorderOutput$Outbound
+        | undefined;
+};
+
+/** @internal */
+export const CreateAccountingPurchaseOrderResponse$outboundSchema: z.ZodType<
+    CreateAccountingPurchaseOrderResponse$Outbound,
+    z.ZodTypeDef,
+    CreateAccountingPurchaseOrderResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        unifiedAccountingPurchaseorderOutput:
+            components.UnifiedAccountingPurchaseorderOutput$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            unifiedAccountingPurchaseorderOutput: "UnifiedAccountingPurchaseorderOutput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateAccountingPurchaseOrderResponse$ {
-    export const inboundSchema: z.ZodType<
-        CreateAccountingPurchaseOrderResponse,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            UnifiedAccountingPurchaseorderOutput:
-                components.UnifiedAccountingPurchaseorderOutput$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-                UnifiedAccountingPurchaseorderOutput: "unifiedAccountingPurchaseorderOutput",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        UnifiedAccountingPurchaseorderOutput?:
-            | components.UnifiedAccountingPurchaseorderOutput$.Outbound
-            | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        CreateAccountingPurchaseOrderResponse
-    > = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            unifiedAccountingPurchaseorderOutput:
-                components.UnifiedAccountingPurchaseorderOutput$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-                unifiedAccountingPurchaseorderOutput: "UnifiedAccountingPurchaseorderOutput",
-            });
-        });
+    /** @deprecated use `CreateAccountingPurchaseOrderResponse$inboundSchema` instead. */
+    export const inboundSchema = CreateAccountingPurchaseOrderResponse$inboundSchema;
+    /** @deprecated use `CreateAccountingPurchaseOrderResponse$outboundSchema` instead. */
+    export const outboundSchema = CreateAccountingPurchaseOrderResponse$outboundSchema;
+    /** @deprecated use `CreateAccountingPurchaseOrderResponse$Outbound` instead. */
+    export type Outbound = CreateAccountingPurchaseOrderResponse$Outbound;
 }

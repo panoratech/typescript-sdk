@@ -39,98 +39,154 @@ export type UnifiedAtsTagOutput = {
 };
 
 /** @internal */
+export const UnifiedAtsTagOutputFieldMappings$inboundSchema: z.ZodType<
+    UnifiedAtsTagOutputFieldMappings,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedAtsTagOutputFieldMappings$Outbound = {};
+
+/** @internal */
+export const UnifiedAtsTagOutputFieldMappings$outboundSchema: z.ZodType<
+    UnifiedAtsTagOutputFieldMappings$Outbound,
+    z.ZodTypeDef,
+    UnifiedAtsTagOutputFieldMappings
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedAtsTagOutputFieldMappings$ {
-    export const inboundSchema: z.ZodType<UnifiedAtsTagOutputFieldMappings, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedAtsTagOutputFieldMappings
-    > = z.object({});
+    /** @deprecated use `UnifiedAtsTagOutputFieldMappings$inboundSchema` instead. */
+    export const inboundSchema = UnifiedAtsTagOutputFieldMappings$inboundSchema;
+    /** @deprecated use `UnifiedAtsTagOutputFieldMappings$outboundSchema` instead. */
+    export const outboundSchema = UnifiedAtsTagOutputFieldMappings$outboundSchema;
+    /** @deprecated use `UnifiedAtsTagOutputFieldMappings$Outbound` instead. */
+    export type Outbound = UnifiedAtsTagOutputFieldMappings$Outbound;
 }
 
 /** @internal */
+export const UnifiedAtsTagOutputRemoteData$inboundSchema: z.ZodType<
+    UnifiedAtsTagOutputRemoteData,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedAtsTagOutputRemoteData$Outbound = {};
+
+/** @internal */
+export const UnifiedAtsTagOutputRemoteData$outboundSchema: z.ZodType<
+    UnifiedAtsTagOutputRemoteData$Outbound,
+    z.ZodTypeDef,
+    UnifiedAtsTagOutputRemoteData
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedAtsTagOutputRemoteData$ {
-    export const inboundSchema: z.ZodType<UnifiedAtsTagOutputRemoteData, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnifiedAtsTagOutputRemoteData> =
-        z.object({});
+    /** @deprecated use `UnifiedAtsTagOutputRemoteData$inboundSchema` instead. */
+    export const inboundSchema = UnifiedAtsTagOutputRemoteData$inboundSchema;
+    /** @deprecated use `UnifiedAtsTagOutputRemoteData$outboundSchema` instead. */
+    export const outboundSchema = UnifiedAtsTagOutputRemoteData$outboundSchema;
+    /** @deprecated use `UnifiedAtsTagOutputRemoteData$Outbound` instead. */
+    export type Outbound = UnifiedAtsTagOutputRemoteData$Outbound;
 }
 
 /** @internal */
+export const UnifiedAtsTagOutput$inboundSchema: z.ZodType<
+    UnifiedAtsTagOutput,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        name: z.string().optional(),
+        id_ats_candidate: z.string().optional(),
+        field_mappings: z.lazy(() => UnifiedAtsTagOutputFieldMappings$inboundSchema),
+        id: z.string().optional(),
+        remote_id: z.string().optional(),
+        remote_data: z.lazy(() => UnifiedAtsTagOutputRemoteData$inboundSchema),
+        created_at: z
+            .string()
+            .datetime({ offset: true })
+            .transform((v) => new Date(v))
+            .optional(),
+        modified_at: z
+            .string()
+            .datetime({ offset: true })
+            .transform((v) => new Date(v))
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            id_ats_candidate: "idAtsCandidate",
+            field_mappings: "fieldMappings",
+            remote_id: "remoteId",
+            remote_data: "remoteData",
+            created_at: "createdAt",
+            modified_at: "modifiedAt",
+        });
+    });
+
+/** @internal */
+export type UnifiedAtsTagOutput$Outbound = {
+    name?: string | undefined;
+    id_ats_candidate?: string | undefined;
+    field_mappings: UnifiedAtsTagOutputFieldMappings$Outbound;
+    id?: string | undefined;
+    remote_id?: string | undefined;
+    remote_data: UnifiedAtsTagOutputRemoteData$Outbound;
+    created_at?: string | undefined;
+    modified_at?: string | undefined;
+};
+
+/** @internal */
+export const UnifiedAtsTagOutput$outboundSchema: z.ZodType<
+    UnifiedAtsTagOutput$Outbound,
+    z.ZodTypeDef,
+    UnifiedAtsTagOutput
+> = z
+    .object({
+        name: z.string().optional(),
+        idAtsCandidate: z.string().optional(),
+        fieldMappings: z.lazy(() => UnifiedAtsTagOutputFieldMappings$outboundSchema),
+        id: z.string().optional(),
+        remoteId: z.string().optional(),
+        remoteData: z.lazy(() => UnifiedAtsTagOutputRemoteData$outboundSchema),
+        createdAt: z
+            .date()
+            .transform((v) => v.toISOString())
+            .optional(),
+        modifiedAt: z
+            .date()
+            .transform((v) => v.toISOString())
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            idAtsCandidate: "id_ats_candidate",
+            fieldMappings: "field_mappings",
+            remoteId: "remote_id",
+            remoteData: "remote_data",
+            createdAt: "created_at",
+            modifiedAt: "modified_at",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedAtsTagOutput$ {
-    export const inboundSchema: z.ZodType<UnifiedAtsTagOutput, z.ZodTypeDef, unknown> = z
-        .object({
-            name: z.string().optional(),
-            id_ats_candidate: z.string().optional(),
-            field_mappings: z.lazy(() => UnifiedAtsTagOutputFieldMappings$.inboundSchema),
-            id: z.string().optional(),
-            remote_id: z.string().optional(),
-            remote_data: z.lazy(() => UnifiedAtsTagOutputRemoteData$.inboundSchema),
-            created_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .optional(),
-            modified_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                id_ats_candidate: "idAtsCandidate",
-                field_mappings: "fieldMappings",
-                remote_id: "remoteId",
-                remote_data: "remoteData",
-                created_at: "createdAt",
-                modified_at: "modifiedAt",
-            });
-        });
-
-    export type Outbound = {
-        name?: string | undefined;
-        id_ats_candidate?: string | undefined;
-        field_mappings: UnifiedAtsTagOutputFieldMappings$.Outbound;
-        id?: string | undefined;
-        remote_id?: string | undefined;
-        remote_data: UnifiedAtsTagOutputRemoteData$.Outbound;
-        created_at?: string | undefined;
-        modified_at?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnifiedAtsTagOutput> = z
-        .object({
-            name: z.string().optional(),
-            idAtsCandidate: z.string().optional(),
-            fieldMappings: z.lazy(() => UnifiedAtsTagOutputFieldMappings$.outboundSchema),
-            id: z.string().optional(),
-            remoteId: z.string().optional(),
-            remoteData: z.lazy(() => UnifiedAtsTagOutputRemoteData$.outboundSchema),
-            createdAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .optional(),
-            modifiedAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                idAtsCandidate: "id_ats_candidate",
-                fieldMappings: "field_mappings",
-                remoteId: "remote_id",
-                remoteData: "remote_data",
-                createdAt: "created_at",
-                modifiedAt: "modified_at",
-            });
-        });
+    /** @deprecated use `UnifiedAtsTagOutput$inboundSchema` instead. */
+    export const inboundSchema = UnifiedAtsTagOutput$inboundSchema;
+    /** @deprecated use `UnifiedAtsTagOutput$outboundSchema` instead. */
+    export const outboundSchema = UnifiedAtsTagOutput$outboundSchema;
+    /** @deprecated use `UnifiedAtsTagOutput$Outbound` instead. */
+    export type Outbound = UnifiedAtsTagOutput$Outbound;
 }

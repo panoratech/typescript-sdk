@@ -3,7 +3,7 @@
  */
 
 import { SDKHooks } from "../hooks/hooks.js";
-import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config.js";
+import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
 import {
     encodeFormQuery as encodeFormQuery$,
     encodeJSON as encodeJSON$,
@@ -44,19 +44,16 @@ export class Contact extends ClientSDK {
     /**
      * List a batch of Contacts
      */
-    async getMarketingAutomationContacts(
-        request: operations.GetMarketingAutomationContactsRequest,
+    async list(
+        request: operations.ListMarketingAutomationContactsRequest,
         options?: RequestOptions
-    ): Promise<operations.GetMarketingAutomationContactsResponse> {
+    ): Promise<operations.ListMarketingAutomationContactsResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
             (value$) =>
-                operations.GetMarketingAutomationContactsRequest$.outboundSchema.parse(value$),
+                operations.ListMarketingAutomationContactsRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -69,13 +66,14 @@ export class Contact extends ClientSDK {
             remote_data: payload$.remote_data,
         });
 
-        headers$.set(
-            "x-connection-token",
-            encodeSimple$("x-connection-token", payload$["x-connection-token"], {
-                explode: false,
-                charEncoding: "none",
-            })
-        );
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-connection-token": encodeSimple$(
+                "x-connection-token",
+                payload$["x-connection-token"],
+                { explode: false, charEncoding: "none" }
+            ),
+        });
 
         let security$;
         if (typeof this.options$.bearer === "function") {
@@ -86,13 +84,12 @@ export class Contact extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "getMarketingAutomationContacts",
+            operationID: "listMarketingAutomationContacts",
             oAuth2Scopes: [],
             securitySource: this.options$.bearer,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -102,18 +99,26 @@ export class Contact extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
-        const [result$] = await this.matcher<operations.GetMarketingAutomationContactsResponse>()
-            .json(200, operations.GetMarketingAutomationContactsResponse$, { key: "object" })
+        const [result$] = await this.matcher<operations.ListMarketingAutomationContactsResponse>()
+            .json(200, operations.ListMarketingAutomationContactsResponse$inboundSchema, {
+                key: "object",
+            })
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 
@@ -126,20 +131,16 @@ export class Contact extends ClientSDK {
      * @remarks
      * Create a contact in any supported Marketingautomation software
      */
-    async addMarketingAutomationContact(
-        request: operations.AddMarketingAutomationContactRequest,
+    async create(
+        request: operations.CreateMarketingAutomationContactRequest,
         options?: RequestOptions
-    ): Promise<operations.AddMarketingAutomationContactResponse> {
+    ): Promise<operations.CreateMarketingAutomationContactResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
             (value$) =>
-                operations.AddMarketingAutomationContactRequest$.outboundSchema.parse(value$),
+                operations.CreateMarketingAutomationContactRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.UnifiedMarketingautomationContactInput, {
@@ -152,13 +153,15 @@ export class Contact extends ClientSDK {
             remote_data: payload$.remote_data,
         });
 
-        headers$.set(
-            "x-connection-token",
-            encodeSimple$("x-connection-token", payload$["x-connection-token"], {
-                explode: false,
-                charEncoding: "none",
-            })
-        );
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            "x-connection-token": encodeSimple$(
+                "x-connection-token",
+                payload$["x-connection-token"],
+                { explode: false, charEncoding: "none" }
+            ),
+        });
 
         let security$;
         if (typeof this.options$.bearer === "function") {
@@ -169,13 +172,12 @@ export class Contact extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "addMarketingAutomationContact",
+            operationID: "createMarketingAutomationContact",
             oAuth2Scopes: [],
             securitySource: this.options$.bearer,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -185,18 +187,24 @@ export class Contact extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
-        const [result$] = await this.matcher<operations.AddMarketingAutomationContactResponse>()
-            .json(201, operations.AddMarketingAutomationContactResponse$, {
+        const [result$] = await this.matcher<operations.CreateMarketingAutomationContactResponse>()
+            .json(201, operations.CreateMarketingAutomationContactResponse$inboundSchema, {
                 key: "UnifiedMarketingautomationContactOutput",
             })
             .fail(["4XX", "5XX"])
@@ -211,19 +219,16 @@ export class Contact extends ClientSDK {
      * @remarks
      * Retrieve a contact from any connected Marketingautomation software
      */
-    async getMarketingAutomationContact(
-        request: operations.GetMarketingAutomationContactRequest,
+    async retrieve(
+        request: operations.RetrieveMarketingAutomationContactRequest,
         options?: RequestOptions
-    ): Promise<operations.GetMarketingAutomationContactResponse> {
+    ): Promise<operations.RetrieveMarketingAutomationContactResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
             (value$) =>
-                operations.GetMarketingAutomationContactRequest$.outboundSchema.parse(value$),
+                operations.RetrieveMarketingAutomationContactRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -237,13 +242,14 @@ export class Contact extends ClientSDK {
             remote_data: payload$.remote_data,
         });
 
-        headers$.set(
-            "x-connection-token",
-            encodeSimple$("x-connection-token", payload$["x-connection-token"], {
-                explode: false,
-                charEncoding: "none",
-            })
-        );
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-connection-token": encodeSimple$(
+                "x-connection-token",
+                payload$["x-connection-token"],
+                { explode: false, charEncoding: "none" }
+            ),
+        });
 
         let security$;
         if (typeof this.options$.bearer === "function") {
@@ -254,13 +260,12 @@ export class Contact extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "getMarketingAutomationContact",
+            operationID: "retrieveMarketingAutomationContact",
             oAuth2Scopes: [],
             securitySource: this.options$.bearer,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -270,22 +275,29 @@ export class Contact extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
-        const [result$] = await this.matcher<operations.GetMarketingAutomationContactResponse>()
-            .json(200, operations.GetMarketingAutomationContactResponse$, {
-                key: "UnifiedMarketingautomationContactOutput",
-            })
-            .fail(["4XX", "5XX"])
-            .match(response, request$, { extraFields: responseFields$ });
+        const [result$] =
+            await this.matcher<operations.RetrieveMarketingAutomationContactResponse>()
+                .json(200, operations.RetrieveMarketingAutomationContactResponse$inboundSchema, {
+                    key: "UnifiedMarketingautomationContactOutput",
+                })
+                .fail(["4XX", "5XX"])
+                .match(response, request$, { extraFields: responseFields$ });
 
         return result$;
     }

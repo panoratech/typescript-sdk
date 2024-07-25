@@ -37,130 +37,167 @@ export type ListAccountingBalanceSheetsResponse = {
 };
 
 /** @internal */
+export const ListAccountingBalanceSheetsRequest$inboundSchema: z.ZodType<
+    ListAccountingBalanceSheetsRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        remote_data: z.boolean().optional(),
+        limit: z.number().default(50),
+        cursor: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+        });
+    });
+
+/** @internal */
+export type ListAccountingBalanceSheetsRequest$Outbound = {
+    "x-connection-token": string;
+    remote_data?: boolean | undefined;
+    limit: number;
+    cursor?: string | undefined;
+};
+
+/** @internal */
+export const ListAccountingBalanceSheetsRequest$outboundSchema: z.ZodType<
+    ListAccountingBalanceSheetsRequest$Outbound,
+    z.ZodTypeDef,
+    ListAccountingBalanceSheetsRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        remoteData: z.boolean().optional(),
+        limit: z.number().default(50),
+        cursor: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListAccountingBalanceSheetsRequest$ {
-    export const inboundSchema: z.ZodType<
-        ListAccountingBalanceSheetsRequest,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            "x-connection-token": z.string(),
-            remote_data: z.boolean().optional(),
-            limit: z.number().default(50),
-            cursor: z.string().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        remote_data?: boolean | undefined;
-        limit: number;
-        cursor?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        ListAccountingBalanceSheetsRequest
-    > = z
-        .object({
-            xConnectionToken: z.string(),
-            remoteData: z.boolean().optional(),
-            limit: z.number().default(50),
-            cursor: z.string().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
-        });
+    /** @deprecated use `ListAccountingBalanceSheetsRequest$inboundSchema` instead. */
+    export const inboundSchema = ListAccountingBalanceSheetsRequest$inboundSchema;
+    /** @deprecated use `ListAccountingBalanceSheetsRequest$outboundSchema` instead. */
+    export const outboundSchema = ListAccountingBalanceSheetsRequest$outboundSchema;
+    /** @deprecated use `ListAccountingBalanceSheetsRequest$Outbound` instead. */
+    export type Outbound = ListAccountingBalanceSheetsRequest$Outbound;
 }
 
 /** @internal */
+export const ListAccountingBalanceSheetsResponseBody$inboundSchema: z.ZodType<
+    ListAccountingBalanceSheetsResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        prev_cursor: z.string(),
+        next_cursor: z.string(),
+        data: z.array(components.UnifiedAccountingBalancesheetOutput$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            prev_cursor: "prevCursor",
+            next_cursor: "nextCursor",
+        });
+    });
+
+/** @internal */
+export type ListAccountingBalanceSheetsResponseBody$Outbound = {
+    prev_cursor: string;
+    next_cursor: string;
+    data: Array<components.UnifiedAccountingBalancesheetOutput$Outbound>;
+};
+
+/** @internal */
+export const ListAccountingBalanceSheetsResponseBody$outboundSchema: z.ZodType<
+    ListAccountingBalanceSheetsResponseBody$Outbound,
+    z.ZodTypeDef,
+    ListAccountingBalanceSheetsResponseBody
+> = z
+    .object({
+        prevCursor: z.string(),
+        nextCursor: z.string(),
+        data: z.array(components.UnifiedAccountingBalancesheetOutput$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            prevCursor: "prev_cursor",
+            nextCursor: "next_cursor",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListAccountingBalanceSheetsResponseBody$ {
-    export const inboundSchema: z.ZodType<
-        ListAccountingBalanceSheetsResponseBody,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            prev_cursor: z.string(),
-            next_cursor: z.string(),
-            data: z.array(components.UnifiedAccountingBalancesheetOutput$.inboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                prev_cursor: "prevCursor",
-                next_cursor: "nextCursor",
-            });
-        });
-
-    export type Outbound = {
-        prev_cursor: string;
-        next_cursor: string;
-        data: Array<components.UnifiedAccountingBalancesheetOutput$.Outbound>;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        ListAccountingBalanceSheetsResponseBody
-    > = z
-        .object({
-            prevCursor: z.string(),
-            nextCursor: z.string(),
-            data: z.array(components.UnifiedAccountingBalancesheetOutput$.outboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                prevCursor: "prev_cursor",
-                nextCursor: "next_cursor",
-            });
-        });
+    /** @deprecated use `ListAccountingBalanceSheetsResponseBody$inboundSchema` instead. */
+    export const inboundSchema = ListAccountingBalanceSheetsResponseBody$inboundSchema;
+    /** @deprecated use `ListAccountingBalanceSheetsResponseBody$outboundSchema` instead. */
+    export const outboundSchema = ListAccountingBalanceSheetsResponseBody$outboundSchema;
+    /** @deprecated use `ListAccountingBalanceSheetsResponseBody$Outbound` instead. */
+    export type Outbound = ListAccountingBalanceSheetsResponseBody$Outbound;
 }
 
 /** @internal */
+export const ListAccountingBalanceSheetsResponse$inboundSchema: z.ZodType<
+    ListAccountingBalanceSheetsResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        object: z.lazy(() => ListAccountingBalanceSheetsResponseBody$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+        });
+    });
+
+/** @internal */
+export type ListAccountingBalanceSheetsResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    object?: ListAccountingBalanceSheetsResponseBody$Outbound | undefined;
+};
+
+/** @internal */
+export const ListAccountingBalanceSheetsResponse$outboundSchema: z.ZodType<
+    ListAccountingBalanceSheetsResponse$Outbound,
+    z.ZodTypeDef,
+    ListAccountingBalanceSheetsResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        object: z.lazy(() => ListAccountingBalanceSheetsResponseBody$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListAccountingBalanceSheetsResponse$ {
-    export const inboundSchema: z.ZodType<
-        ListAccountingBalanceSheetsResponse,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            object: z.lazy(() => ListAccountingBalanceSheetsResponseBody$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        object?: ListAccountingBalanceSheetsResponseBody$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        ListAccountingBalanceSheetsResponse
-    > = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            object: z
-                .lazy(() => ListAccountingBalanceSheetsResponseBody$.outboundSchema)
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-            });
-        });
+    /** @deprecated use `ListAccountingBalanceSheetsResponse$inboundSchema` instead. */
+    export const inboundSchema = ListAccountingBalanceSheetsResponse$inboundSchema;
+    /** @deprecated use `ListAccountingBalanceSheetsResponse$outboundSchema` instead. */
+    export const outboundSchema = ListAccountingBalanceSheetsResponse$outboundSchema;
+    /** @deprecated use `ListAccountingBalanceSheetsResponse$Outbound` instead. */
+    export type Outbound = ListAccountingBalanceSheetsResponse$Outbound;
 }

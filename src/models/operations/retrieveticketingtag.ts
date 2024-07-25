@@ -27,70 +27,110 @@ export type RetrieveTicketingTagResponse = {
 };
 
 /** @internal */
+export const RetrieveTicketingTagRequest$inboundSchema: z.ZodType<
+    RetrieveTicketingTagRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        id: z.string(),
+        remote_data: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+        });
+    });
+
+/** @internal */
+export type RetrieveTicketingTagRequest$Outbound = {
+    "x-connection-token": string;
+    id: string;
+    remote_data?: boolean | undefined;
+};
+
+/** @internal */
+export const RetrieveTicketingTagRequest$outboundSchema: z.ZodType<
+    RetrieveTicketingTagRequest$Outbound,
+    z.ZodTypeDef,
+    RetrieveTicketingTagRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        id: z.string(),
+        remoteData: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveTicketingTagRequest$ {
-    export const inboundSchema: z.ZodType<RetrieveTicketingTagRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            "x-connection-token": z.string(),
-            id: z.string(),
-            remote_data: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        id: string;
-        remote_data?: boolean | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RetrieveTicketingTagRequest> = z
-        .object({
-            xConnectionToken: z.string(),
-            id: z.string(),
-            remoteData: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
-        });
+    /** @deprecated use `RetrieveTicketingTagRequest$inboundSchema` instead. */
+    export const inboundSchema = RetrieveTicketingTagRequest$inboundSchema;
+    /** @deprecated use `RetrieveTicketingTagRequest$outboundSchema` instead. */
+    export const outboundSchema = RetrieveTicketingTagRequest$outboundSchema;
+    /** @deprecated use `RetrieveTicketingTagRequest$Outbound` instead. */
+    export type Outbound = RetrieveTicketingTagRequest$Outbound;
 }
 
 /** @internal */
+export const RetrieveTicketingTagResponse$inboundSchema: z.ZodType<
+    RetrieveTicketingTagResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        UnifiedTicketingTagOutput: components.UnifiedTicketingTagOutput$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            UnifiedTicketingTagOutput: "unifiedTicketingTagOutput",
+        });
+    });
+
+/** @internal */
+export type RetrieveTicketingTagResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    UnifiedTicketingTagOutput?: components.UnifiedTicketingTagOutput$Outbound | undefined;
+};
+
+/** @internal */
+export const RetrieveTicketingTagResponse$outboundSchema: z.ZodType<
+    RetrieveTicketingTagResponse$Outbound,
+    z.ZodTypeDef,
+    RetrieveTicketingTagResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        unifiedTicketingTagOutput: components.UnifiedTicketingTagOutput$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            unifiedTicketingTagOutput: "UnifiedTicketingTagOutput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveTicketingTagResponse$ {
-    export const inboundSchema: z.ZodType<RetrieveTicketingTagResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            UnifiedTicketingTagOutput:
-                components.UnifiedTicketingTagOutput$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-                UnifiedTicketingTagOutput: "unifiedTicketingTagOutput",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        UnifiedTicketingTagOutput?: components.UnifiedTicketingTagOutput$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RetrieveTicketingTagResponse> = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            unifiedTicketingTagOutput:
-                components.UnifiedTicketingTagOutput$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-                unifiedTicketingTagOutput: "UnifiedTicketingTagOutput",
-            });
-        });
+    /** @deprecated use `RetrieveTicketingTagResponse$inboundSchema` instead. */
+    export const inboundSchema = RetrieveTicketingTagResponse$inboundSchema;
+    /** @deprecated use `RetrieveTicketingTagResponse$outboundSchema` instead. */
+    export const outboundSchema = RetrieveTicketingTagResponse$outboundSchema;
+    /** @deprecated use `RetrieveTicketingTagResponse$Outbound` instead. */
+    export type Outbound = RetrieveTicketingTagResponse$Outbound;
 }

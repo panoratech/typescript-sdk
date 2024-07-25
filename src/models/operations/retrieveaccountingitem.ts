@@ -27,72 +27,112 @@ export type RetrieveAccountingItemResponse = {
 };
 
 /** @internal */
-export namespace RetrieveAccountingItemRequest$ {
-    export const inboundSchema: z.ZodType<RetrieveAccountingItemRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            "x-connection-token": z.string(),
-            id: z.string(),
-            remote_data: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-            });
+export const RetrieveAccountingItemRequest$inboundSchema: z.ZodType<
+    RetrieveAccountingItemRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        id: z.string(),
+        remote_data: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
         });
+    });
 
-    export type Outbound = {
-        "x-connection-token": string;
-        id: string;
-        remote_data?: boolean | undefined;
-    };
+/** @internal */
+export type RetrieveAccountingItemRequest$Outbound = {
+    "x-connection-token": string;
+    id: string;
+    remote_data?: boolean | undefined;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RetrieveAccountingItemRequest> =
-        z
-            .object({
-                xConnectionToken: z.string(),
-                id: z.string(),
-                remoteData: z.boolean().optional(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    xConnectionToken: "x-connection-token",
-                    remoteData: "remote_data",
-                });
-            });
+/** @internal */
+export const RetrieveAccountingItemRequest$outboundSchema: z.ZodType<
+    RetrieveAccountingItemRequest$Outbound,
+    z.ZodTypeDef,
+    RetrieveAccountingItemRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        id: z.string(),
+        remoteData: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RetrieveAccountingItemRequest$ {
+    /** @deprecated use `RetrieveAccountingItemRequest$inboundSchema` instead. */
+    export const inboundSchema = RetrieveAccountingItemRequest$inboundSchema;
+    /** @deprecated use `RetrieveAccountingItemRequest$outboundSchema` instead. */
+    export const outboundSchema = RetrieveAccountingItemRequest$outboundSchema;
+    /** @deprecated use `RetrieveAccountingItemRequest$Outbound` instead. */
+    export type Outbound = RetrieveAccountingItemRequest$Outbound;
 }
 
 /** @internal */
-export namespace RetrieveAccountingItemResponse$ {
-    export const inboundSchema: z.ZodType<RetrieveAccountingItemResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            UnifiedAccountingItemOutput:
-                components.UnifiedAccountingItemOutput$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-                UnifiedAccountingItemOutput: "unifiedAccountingItemOutput",
-            });
+export const RetrieveAccountingItemResponse$inboundSchema: z.ZodType<
+    RetrieveAccountingItemResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        UnifiedAccountingItemOutput:
+            components.UnifiedAccountingItemOutput$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            UnifiedAccountingItemOutput: "unifiedAccountingItemOutput",
         });
+    });
 
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        UnifiedAccountingItemOutput?: components.UnifiedAccountingItemOutput$.Outbound | undefined;
-    };
+/** @internal */
+export type RetrieveAccountingItemResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    UnifiedAccountingItemOutput?: components.UnifiedAccountingItemOutput$Outbound | undefined;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RetrieveAccountingItemResponse> =
-        z
-            .object({
-                httpMeta: components.HTTPMetadata$.outboundSchema,
-                unifiedAccountingItemOutput:
-                    components.UnifiedAccountingItemOutput$.outboundSchema.optional(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    httpMeta: "HttpMeta",
-                    unifiedAccountingItemOutput: "UnifiedAccountingItemOutput",
-                });
-            });
+/** @internal */
+export const RetrieveAccountingItemResponse$outboundSchema: z.ZodType<
+    RetrieveAccountingItemResponse$Outbound,
+    z.ZodTypeDef,
+    RetrieveAccountingItemResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        unifiedAccountingItemOutput:
+            components.UnifiedAccountingItemOutput$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            unifiedAccountingItemOutput: "UnifiedAccountingItemOutput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RetrieveAccountingItemResponse$ {
+    /** @deprecated use `RetrieveAccountingItemResponse$inboundSchema` instead. */
+    export const inboundSchema = RetrieveAccountingItemResponse$inboundSchema;
+    /** @deprecated use `RetrieveAccountingItemResponse$outboundSchema` instead. */
+    export const outboundSchema = RetrieveAccountingItemResponse$outboundSchema;
+    /** @deprecated use `RetrieveAccountingItemResponse$Outbound` instead. */
+    export type Outbound = RetrieveAccountingItemResponse$Outbound;
 }

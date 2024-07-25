@@ -37,104 +37,167 @@ export type ListCrmDealsResponse = {
 };
 
 /** @internal */
+export const ListCrmDealsRequest$inboundSchema: z.ZodType<
+    ListCrmDealsRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        remote_data: z.boolean().optional(),
+        limit: z.number().default(50),
+        cursor: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+        });
+    });
+
+/** @internal */
+export type ListCrmDealsRequest$Outbound = {
+    "x-connection-token": string;
+    remote_data?: boolean | undefined;
+    limit: number;
+    cursor?: string | undefined;
+};
+
+/** @internal */
+export const ListCrmDealsRequest$outboundSchema: z.ZodType<
+    ListCrmDealsRequest$Outbound,
+    z.ZodTypeDef,
+    ListCrmDealsRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        remoteData: z.boolean().optional(),
+        limit: z.number().default(50),
+        cursor: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListCrmDealsRequest$ {
-    export const inboundSchema: z.ZodType<ListCrmDealsRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            "x-connection-token": z.string(),
-            remote_data: z.boolean().optional(),
-            limit: z.number().default(50),
-            cursor: z.string().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        remote_data?: boolean | undefined;
-        limit: number;
-        cursor?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListCrmDealsRequest> = z
-        .object({
-            xConnectionToken: z.string(),
-            remoteData: z.boolean().optional(),
-            limit: z.number().default(50),
-            cursor: z.string().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
-        });
+    /** @deprecated use `ListCrmDealsRequest$inboundSchema` instead. */
+    export const inboundSchema = ListCrmDealsRequest$inboundSchema;
+    /** @deprecated use `ListCrmDealsRequest$outboundSchema` instead. */
+    export const outboundSchema = ListCrmDealsRequest$outboundSchema;
+    /** @deprecated use `ListCrmDealsRequest$Outbound` instead. */
+    export type Outbound = ListCrmDealsRequest$Outbound;
 }
 
 /** @internal */
+export const ListCrmDealsResponseBody$inboundSchema: z.ZodType<
+    ListCrmDealsResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        prev_cursor: z.string(),
+        next_cursor: z.string(),
+        data: z.array(components.UnifiedCrmDealOutput$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            prev_cursor: "prevCursor",
+            next_cursor: "nextCursor",
+        });
+    });
+
+/** @internal */
+export type ListCrmDealsResponseBody$Outbound = {
+    prev_cursor: string;
+    next_cursor: string;
+    data: Array<components.UnifiedCrmDealOutput$Outbound>;
+};
+
+/** @internal */
+export const ListCrmDealsResponseBody$outboundSchema: z.ZodType<
+    ListCrmDealsResponseBody$Outbound,
+    z.ZodTypeDef,
+    ListCrmDealsResponseBody
+> = z
+    .object({
+        prevCursor: z.string(),
+        nextCursor: z.string(),
+        data: z.array(components.UnifiedCrmDealOutput$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            prevCursor: "prev_cursor",
+            nextCursor: "next_cursor",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListCrmDealsResponseBody$ {
-    export const inboundSchema: z.ZodType<ListCrmDealsResponseBody, z.ZodTypeDef, unknown> = z
-        .object({
-            prev_cursor: z.string(),
-            next_cursor: z.string(),
-            data: z.array(components.UnifiedCrmDealOutput$.inboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                prev_cursor: "prevCursor",
-                next_cursor: "nextCursor",
-            });
-        });
-
-    export type Outbound = {
-        prev_cursor: string;
-        next_cursor: string;
-        data: Array<components.UnifiedCrmDealOutput$.Outbound>;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListCrmDealsResponseBody> = z
-        .object({
-            prevCursor: z.string(),
-            nextCursor: z.string(),
-            data: z.array(components.UnifiedCrmDealOutput$.outboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                prevCursor: "prev_cursor",
-                nextCursor: "next_cursor",
-            });
-        });
+    /** @deprecated use `ListCrmDealsResponseBody$inboundSchema` instead. */
+    export const inboundSchema = ListCrmDealsResponseBody$inboundSchema;
+    /** @deprecated use `ListCrmDealsResponseBody$outboundSchema` instead. */
+    export const outboundSchema = ListCrmDealsResponseBody$outboundSchema;
+    /** @deprecated use `ListCrmDealsResponseBody$Outbound` instead. */
+    export type Outbound = ListCrmDealsResponseBody$Outbound;
 }
 
 /** @internal */
+export const ListCrmDealsResponse$inboundSchema: z.ZodType<
+    ListCrmDealsResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        object: z.lazy(() => ListCrmDealsResponseBody$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+        });
+    });
+
+/** @internal */
+export type ListCrmDealsResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    object?: ListCrmDealsResponseBody$Outbound | undefined;
+};
+
+/** @internal */
+export const ListCrmDealsResponse$outboundSchema: z.ZodType<
+    ListCrmDealsResponse$Outbound,
+    z.ZodTypeDef,
+    ListCrmDealsResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        object: z.lazy(() => ListCrmDealsResponseBody$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListCrmDealsResponse$ {
-    export const inboundSchema: z.ZodType<ListCrmDealsResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            object: z.lazy(() => ListCrmDealsResponseBody$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        object?: ListCrmDealsResponseBody$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListCrmDealsResponse> = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            object: z.lazy(() => ListCrmDealsResponseBody$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-            });
-        });
+    /** @deprecated use `ListCrmDealsResponse$inboundSchema` instead. */
+    export const inboundSchema = ListCrmDealsResponse$inboundSchema;
+    /** @deprecated use `ListCrmDealsResponse$outboundSchema` instead. */
+    export const outboundSchema = ListCrmDealsResponse$outboundSchema;
+    /** @deprecated use `ListCrmDealsResponse$Outbound` instead. */
+    export type Outbound = ListCrmDealsResponse$Outbound;
 }

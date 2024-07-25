@@ -37,104 +37,167 @@ export type ListCrmTaskResponse = {
 };
 
 /** @internal */
+export const ListCrmTaskRequest$inboundSchema: z.ZodType<
+    ListCrmTaskRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        remote_data: z.boolean().optional(),
+        limit: z.number().default(50),
+        cursor: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+        });
+    });
+
+/** @internal */
+export type ListCrmTaskRequest$Outbound = {
+    "x-connection-token": string;
+    remote_data?: boolean | undefined;
+    limit: number;
+    cursor?: string | undefined;
+};
+
+/** @internal */
+export const ListCrmTaskRequest$outboundSchema: z.ZodType<
+    ListCrmTaskRequest$Outbound,
+    z.ZodTypeDef,
+    ListCrmTaskRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        remoteData: z.boolean().optional(),
+        limit: z.number().default(50),
+        cursor: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListCrmTaskRequest$ {
-    export const inboundSchema: z.ZodType<ListCrmTaskRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            "x-connection-token": z.string(),
-            remote_data: z.boolean().optional(),
-            limit: z.number().default(50),
-            cursor: z.string().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        remote_data?: boolean | undefined;
-        limit: number;
-        cursor?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListCrmTaskRequest> = z
-        .object({
-            xConnectionToken: z.string(),
-            remoteData: z.boolean().optional(),
-            limit: z.number().default(50),
-            cursor: z.string().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
-        });
+    /** @deprecated use `ListCrmTaskRequest$inboundSchema` instead. */
+    export const inboundSchema = ListCrmTaskRequest$inboundSchema;
+    /** @deprecated use `ListCrmTaskRequest$outboundSchema` instead. */
+    export const outboundSchema = ListCrmTaskRequest$outboundSchema;
+    /** @deprecated use `ListCrmTaskRequest$Outbound` instead. */
+    export type Outbound = ListCrmTaskRequest$Outbound;
 }
 
 /** @internal */
+export const ListCrmTaskResponseBody$inboundSchema: z.ZodType<
+    ListCrmTaskResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        prev_cursor: z.string(),
+        next_cursor: z.string(),
+        data: z.array(components.UnifiedCrmTaskOutput$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            prev_cursor: "prevCursor",
+            next_cursor: "nextCursor",
+        });
+    });
+
+/** @internal */
+export type ListCrmTaskResponseBody$Outbound = {
+    prev_cursor: string;
+    next_cursor: string;
+    data: Array<components.UnifiedCrmTaskOutput$Outbound>;
+};
+
+/** @internal */
+export const ListCrmTaskResponseBody$outboundSchema: z.ZodType<
+    ListCrmTaskResponseBody$Outbound,
+    z.ZodTypeDef,
+    ListCrmTaskResponseBody
+> = z
+    .object({
+        prevCursor: z.string(),
+        nextCursor: z.string(),
+        data: z.array(components.UnifiedCrmTaskOutput$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            prevCursor: "prev_cursor",
+            nextCursor: "next_cursor",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListCrmTaskResponseBody$ {
-    export const inboundSchema: z.ZodType<ListCrmTaskResponseBody, z.ZodTypeDef, unknown> = z
-        .object({
-            prev_cursor: z.string(),
-            next_cursor: z.string(),
-            data: z.array(components.UnifiedCrmTaskOutput$.inboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                prev_cursor: "prevCursor",
-                next_cursor: "nextCursor",
-            });
-        });
-
-    export type Outbound = {
-        prev_cursor: string;
-        next_cursor: string;
-        data: Array<components.UnifiedCrmTaskOutput$.Outbound>;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListCrmTaskResponseBody> = z
-        .object({
-            prevCursor: z.string(),
-            nextCursor: z.string(),
-            data: z.array(components.UnifiedCrmTaskOutput$.outboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                prevCursor: "prev_cursor",
-                nextCursor: "next_cursor",
-            });
-        });
+    /** @deprecated use `ListCrmTaskResponseBody$inboundSchema` instead. */
+    export const inboundSchema = ListCrmTaskResponseBody$inboundSchema;
+    /** @deprecated use `ListCrmTaskResponseBody$outboundSchema` instead. */
+    export const outboundSchema = ListCrmTaskResponseBody$outboundSchema;
+    /** @deprecated use `ListCrmTaskResponseBody$Outbound` instead. */
+    export type Outbound = ListCrmTaskResponseBody$Outbound;
 }
 
 /** @internal */
+export const ListCrmTaskResponse$inboundSchema: z.ZodType<
+    ListCrmTaskResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        object: z.lazy(() => ListCrmTaskResponseBody$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+        });
+    });
+
+/** @internal */
+export type ListCrmTaskResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    object?: ListCrmTaskResponseBody$Outbound | undefined;
+};
+
+/** @internal */
+export const ListCrmTaskResponse$outboundSchema: z.ZodType<
+    ListCrmTaskResponse$Outbound,
+    z.ZodTypeDef,
+    ListCrmTaskResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        object: z.lazy(() => ListCrmTaskResponseBody$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListCrmTaskResponse$ {
-    export const inboundSchema: z.ZodType<ListCrmTaskResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            object: z.lazy(() => ListCrmTaskResponseBody$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        object?: ListCrmTaskResponseBody$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListCrmTaskResponse> = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            object: z.lazy(() => ListCrmTaskResponseBody$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-            });
-        });
+    /** @deprecated use `ListCrmTaskResponse$inboundSchema` instead. */
+    export const inboundSchema = ListCrmTaskResponse$inboundSchema;
+    /** @deprecated use `ListCrmTaskResponse$outboundSchema` instead. */
+    export const outboundSchema = ListCrmTaskResponse$outboundSchema;
+    /** @deprecated use `ListCrmTaskResponse$Outbound` instead. */
+    export type Outbound = ListCrmTaskResponse$Outbound;
 }

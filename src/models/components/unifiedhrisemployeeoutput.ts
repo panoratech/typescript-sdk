@@ -7,12 +7,31 @@ import * as z from "zod";
 export type UnifiedHrisEmployeeOutput = {};
 
 /** @internal */
+export const UnifiedHrisEmployeeOutput$inboundSchema: z.ZodType<
+    UnifiedHrisEmployeeOutput,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedHrisEmployeeOutput$Outbound = {};
+
+/** @internal */
+export const UnifiedHrisEmployeeOutput$outboundSchema: z.ZodType<
+    UnifiedHrisEmployeeOutput$Outbound,
+    z.ZodTypeDef,
+    UnifiedHrisEmployeeOutput
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedHrisEmployeeOutput$ {
-    export const inboundSchema: z.ZodType<UnifiedHrisEmployeeOutput, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnifiedHrisEmployeeOutput> =
-        z.object({});
+    /** @deprecated use `UnifiedHrisEmployeeOutput$inboundSchema` instead. */
+    export const inboundSchema = UnifiedHrisEmployeeOutput$inboundSchema;
+    /** @deprecated use `UnifiedHrisEmployeeOutput$outboundSchema` instead. */
+    export const outboundSchema = UnifiedHrisEmployeeOutput$outboundSchema;
+    /** @deprecated use `UnifiedHrisEmployeeOutput$Outbound` instead. */
+    export type Outbound = UnifiedHrisEmployeeOutput$Outbound;
 }

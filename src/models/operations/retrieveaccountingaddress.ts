@@ -27,85 +27,112 @@ export type RetrieveAccountingAddressResponse = {
 };
 
 /** @internal */
-export namespace RetrieveAccountingAddressRequest$ {
-    export const inboundSchema: z.ZodType<RetrieveAccountingAddressRequest, z.ZodTypeDef, unknown> =
-        z
-            .object({
-                "x-connection-token": z.string(),
-                id: z.string(),
-                remote_data: z.boolean().optional(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    "x-connection-token": "xConnectionToken",
-                    remote_data: "remoteData",
-                });
-            });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        id: string;
-        remote_data?: boolean | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        RetrieveAccountingAddressRequest
-    > = z
-        .object({
-            xConnectionToken: z.string(),
-            id: z.string(),
-            remoteData: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
+export const RetrieveAccountingAddressRequest$inboundSchema: z.ZodType<
+    RetrieveAccountingAddressRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        id: z.string(),
+        remote_data: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
         });
+    });
+
+/** @internal */
+export type RetrieveAccountingAddressRequest$Outbound = {
+    "x-connection-token": string;
+    id: string;
+    remote_data?: boolean | undefined;
+};
+
+/** @internal */
+export const RetrieveAccountingAddressRequest$outboundSchema: z.ZodType<
+    RetrieveAccountingAddressRequest$Outbound,
+    z.ZodTypeDef,
+    RetrieveAccountingAddressRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        id: z.string(),
+        remoteData: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RetrieveAccountingAddressRequest$ {
+    /** @deprecated use `RetrieveAccountingAddressRequest$inboundSchema` instead. */
+    export const inboundSchema = RetrieveAccountingAddressRequest$inboundSchema;
+    /** @deprecated use `RetrieveAccountingAddressRequest$outboundSchema` instead. */
+    export const outboundSchema = RetrieveAccountingAddressRequest$outboundSchema;
+    /** @deprecated use `RetrieveAccountingAddressRequest$Outbound` instead. */
+    export type Outbound = RetrieveAccountingAddressRequest$Outbound;
 }
 
 /** @internal */
+export const RetrieveAccountingAddressResponse$inboundSchema: z.ZodType<
+    RetrieveAccountingAddressResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        UnifiedAccountingAddressOutput:
+            components.UnifiedAccountingAddressOutput$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            UnifiedAccountingAddressOutput: "unifiedAccountingAddressOutput",
+        });
+    });
+
+/** @internal */
+export type RetrieveAccountingAddressResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    UnifiedAccountingAddressOutput?: components.UnifiedAccountingAddressOutput$Outbound | undefined;
+};
+
+/** @internal */
+export const RetrieveAccountingAddressResponse$outboundSchema: z.ZodType<
+    RetrieveAccountingAddressResponse$Outbound,
+    z.ZodTypeDef,
+    RetrieveAccountingAddressResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        unifiedAccountingAddressOutput:
+            components.UnifiedAccountingAddressOutput$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            unifiedAccountingAddressOutput: "UnifiedAccountingAddressOutput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveAccountingAddressResponse$ {
-    export const inboundSchema: z.ZodType<
-        RetrieveAccountingAddressResponse,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            UnifiedAccountingAddressOutput:
-                components.UnifiedAccountingAddressOutput$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-                UnifiedAccountingAddressOutput: "unifiedAccountingAddressOutput",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        UnifiedAccountingAddressOutput?:
-            | components.UnifiedAccountingAddressOutput$.Outbound
-            | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        RetrieveAccountingAddressResponse
-    > = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            unifiedAccountingAddressOutput:
-                components.UnifiedAccountingAddressOutput$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-                unifiedAccountingAddressOutput: "UnifiedAccountingAddressOutput",
-            });
-        });
+    /** @deprecated use `RetrieveAccountingAddressResponse$inboundSchema` instead. */
+    export const inboundSchema = RetrieveAccountingAddressResponse$inboundSchema;
+    /** @deprecated use `RetrieveAccountingAddressResponse$outboundSchema` instead. */
+    export const outboundSchema = RetrieveAccountingAddressResponse$outboundSchema;
+    /** @deprecated use `RetrieveAccountingAddressResponse$Outbound` instead. */
+    export type Outbound = RetrieveAccountingAddressResponse$Outbound;
 }

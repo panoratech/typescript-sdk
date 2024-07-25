@@ -7,15 +7,31 @@ import * as z from "zod";
 export type UnifiedHrisTimeoffbalanceOutput = {};
 
 /** @internal */
+export const UnifiedHrisTimeoffbalanceOutput$inboundSchema: z.ZodType<
+    UnifiedHrisTimeoffbalanceOutput,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedHrisTimeoffbalanceOutput$Outbound = {};
+
+/** @internal */
+export const UnifiedHrisTimeoffbalanceOutput$outboundSchema: z.ZodType<
+    UnifiedHrisTimeoffbalanceOutput$Outbound,
+    z.ZodTypeDef,
+    UnifiedHrisTimeoffbalanceOutput
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedHrisTimeoffbalanceOutput$ {
-    export const inboundSchema: z.ZodType<UnifiedHrisTimeoffbalanceOutput, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedHrisTimeoffbalanceOutput
-    > = z.object({});
+    /** @deprecated use `UnifiedHrisTimeoffbalanceOutput$inboundSchema` instead. */
+    export const inboundSchema = UnifiedHrisTimeoffbalanceOutput$inboundSchema;
+    /** @deprecated use `UnifiedHrisTimeoffbalanceOutput$outboundSchema` instead. */
+    export const outboundSchema = UnifiedHrisTimeoffbalanceOutput$outboundSchema;
+    /** @deprecated use `UnifiedHrisTimeoffbalanceOutput$Outbound` instead. */
+    export type Outbound = UnifiedHrisTimeoffbalanceOutput$Outbound;
 }

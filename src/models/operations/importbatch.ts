@@ -11,28 +11,49 @@ export type ImportBatchResponse = {
 };
 
 /** @internal */
+export const ImportBatchResponse$inboundSchema: z.ZodType<
+    ImportBatchResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+        });
+    });
+
+/** @internal */
+export type ImportBatchResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+};
+
+/** @internal */
+export const ImportBatchResponse$outboundSchema: z.ZodType<
+    ImportBatchResponse$Outbound,
+    z.ZodTypeDef,
+    ImportBatchResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ImportBatchResponse$ {
-    export const inboundSchema: z.ZodType<ImportBatchResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ImportBatchResponse> = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-            });
-        });
+    /** @deprecated use `ImportBatchResponse$inboundSchema` instead. */
+    export const inboundSchema = ImportBatchResponse$inboundSchema;
+    /** @deprecated use `ImportBatchResponse$outboundSchema` instead. */
+    export const outboundSchema = ImportBatchResponse$outboundSchema;
+    /** @deprecated use `ImportBatchResponse$Outbound` instead. */
+    export type Outbound = ImportBatchResponse$Outbound;
 }

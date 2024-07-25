@@ -27,72 +27,112 @@ export type RetrieveHrisEmploymentResponse = {
 };
 
 /** @internal */
-export namespace RetrieveHrisEmploymentRequest$ {
-    export const inboundSchema: z.ZodType<RetrieveHrisEmploymentRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            "x-connection-token": z.string(),
-            id: z.string(),
-            remote_data: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-            });
+export const RetrieveHrisEmploymentRequest$inboundSchema: z.ZodType<
+    RetrieveHrisEmploymentRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        id: z.string(),
+        remote_data: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
         });
+    });
 
-    export type Outbound = {
-        "x-connection-token": string;
-        id: string;
-        remote_data?: boolean | undefined;
-    };
+/** @internal */
+export type RetrieveHrisEmploymentRequest$Outbound = {
+    "x-connection-token": string;
+    id: string;
+    remote_data?: boolean | undefined;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RetrieveHrisEmploymentRequest> =
-        z
-            .object({
-                xConnectionToken: z.string(),
-                id: z.string(),
-                remoteData: z.boolean().optional(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    xConnectionToken: "x-connection-token",
-                    remoteData: "remote_data",
-                });
-            });
+/** @internal */
+export const RetrieveHrisEmploymentRequest$outboundSchema: z.ZodType<
+    RetrieveHrisEmploymentRequest$Outbound,
+    z.ZodTypeDef,
+    RetrieveHrisEmploymentRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        id: z.string(),
+        remoteData: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RetrieveHrisEmploymentRequest$ {
+    /** @deprecated use `RetrieveHrisEmploymentRequest$inboundSchema` instead. */
+    export const inboundSchema = RetrieveHrisEmploymentRequest$inboundSchema;
+    /** @deprecated use `RetrieveHrisEmploymentRequest$outboundSchema` instead. */
+    export const outboundSchema = RetrieveHrisEmploymentRequest$outboundSchema;
+    /** @deprecated use `RetrieveHrisEmploymentRequest$Outbound` instead. */
+    export type Outbound = RetrieveHrisEmploymentRequest$Outbound;
 }
 
 /** @internal */
-export namespace RetrieveHrisEmploymentResponse$ {
-    export const inboundSchema: z.ZodType<RetrieveHrisEmploymentResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            UnifiedHrisEmploymentOutput:
-                components.UnifiedHrisEmploymentOutput$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-                UnifiedHrisEmploymentOutput: "unifiedHrisEmploymentOutput",
-            });
+export const RetrieveHrisEmploymentResponse$inboundSchema: z.ZodType<
+    RetrieveHrisEmploymentResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        UnifiedHrisEmploymentOutput:
+            components.UnifiedHrisEmploymentOutput$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            UnifiedHrisEmploymentOutput: "unifiedHrisEmploymentOutput",
         });
+    });
 
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        UnifiedHrisEmploymentOutput?: components.UnifiedHrisEmploymentOutput$.Outbound | undefined;
-    };
+/** @internal */
+export type RetrieveHrisEmploymentResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    UnifiedHrisEmploymentOutput?: components.UnifiedHrisEmploymentOutput$Outbound | undefined;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RetrieveHrisEmploymentResponse> =
-        z
-            .object({
-                httpMeta: components.HTTPMetadata$.outboundSchema,
-                unifiedHrisEmploymentOutput:
-                    components.UnifiedHrisEmploymentOutput$.outboundSchema.optional(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    httpMeta: "HttpMeta",
-                    unifiedHrisEmploymentOutput: "UnifiedHrisEmploymentOutput",
-                });
-            });
+/** @internal */
+export const RetrieveHrisEmploymentResponse$outboundSchema: z.ZodType<
+    RetrieveHrisEmploymentResponse$Outbound,
+    z.ZodTypeDef,
+    RetrieveHrisEmploymentResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        unifiedHrisEmploymentOutput:
+            components.UnifiedHrisEmploymentOutput$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            unifiedHrisEmploymentOutput: "UnifiedHrisEmploymentOutput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RetrieveHrisEmploymentResponse$ {
+    /** @deprecated use `RetrieveHrisEmploymentResponse$inboundSchema` instead. */
+    export const inboundSchema = RetrieveHrisEmploymentResponse$inboundSchema;
+    /** @deprecated use `RetrieveHrisEmploymentResponse$outboundSchema` instead. */
+    export const outboundSchema = RetrieveHrisEmploymentResponse$outboundSchema;
+    /** @deprecated use `RetrieveHrisEmploymentResponse$Outbound` instead. */
+    export type Outbound = RetrieveHrisEmploymentResponse$Outbound;
 }

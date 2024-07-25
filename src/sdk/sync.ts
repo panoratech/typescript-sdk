@@ -3,7 +3,7 @@
  */
 
 import { SDKHooks } from "../hooks/hooks.js";
-import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config.js";
+import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
 import { encodeSimple as encodeSimple$ } from "../lib/encodings.js";
 import { HTTPClient } from "../lib/http.js";
 import * as schemas$ from "../lib/schemas.js";
@@ -40,18 +40,15 @@ export class Sync extends ClientSDK {
     /**
      * Retrieve sync status of a certain vertical
      */
-    async getSyncStatus(
-        request: operations.GetSyncStatusRequest,
+    async status(
+        request: operations.StatusRequest,
         options?: RequestOptions
-    ): Promise<operations.GetSyncStatusResponse> {
+    ): Promise<operations.StatusResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "*/*");
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetSyncStatusRequest$.outboundSchema.parse(value$),
+            (value$) => operations.StatusRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -66,6 +63,10 @@ export class Sync extends ClientSDK {
 
         const query$ = "";
 
+        const headers$ = new Headers({
+            Accept: "*/*",
+        });
+
         let security$;
         if (typeof this.options$.bearer === "function") {
             security$ = { bearer: await this.options$.bearer() };
@@ -75,13 +76,12 @@ export class Sync extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "getSyncStatus",
+            operationID: "status",
             oAuth2Scopes: [],
             securitySource: this.options$.bearer,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -91,18 +91,24 @@ export class Sync extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
-        const [result$] = await this.matcher<operations.GetSyncStatusResponse>()
-            .void(200, operations.GetSyncStatusResponse$)
+        const [result$] = await this.matcher<operations.StatusResponse>()
+            .void(200, operations.StatusResponse$inboundSchema)
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 
@@ -113,13 +119,13 @@ export class Sync extends ClientSDK {
      * Resync common objects across a vertical
      */
     async resync(options?: RequestOptions): Promise<operations.ResyncResponse> {
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "*/*");
-
         const path$ = this.templateURLComponent("/sync/resync")();
 
         const query$ = "";
+
+        const headers$ = new Headers({
+            Accept: "*/*",
+        });
 
         let security$;
         if (typeof this.options$.bearer === "function") {
@@ -136,7 +142,6 @@ export class Sync extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -145,18 +150,24 @@ export class Sync extends ClientSDK {
                 path: path$,
                 headers: headers$,
                 query: query$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
         const [result$] = await this.matcher<operations.ResyncResponse>()
-            .void(200, operations.ResyncResponse$)
+            .void(200, operations.ResyncResponse$inboundSchema)
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 

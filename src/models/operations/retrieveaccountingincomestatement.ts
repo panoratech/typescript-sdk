@@ -29,88 +29,114 @@ export type RetrieveAccountingIncomeStatementResponse = {
 };
 
 /** @internal */
+export const RetrieveAccountingIncomeStatementRequest$inboundSchema: z.ZodType<
+    RetrieveAccountingIncomeStatementRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        id: z.string(),
+        remote_data: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+        });
+    });
+
+/** @internal */
+export type RetrieveAccountingIncomeStatementRequest$Outbound = {
+    "x-connection-token": string;
+    id: string;
+    remote_data?: boolean | undefined;
+};
+
+/** @internal */
+export const RetrieveAccountingIncomeStatementRequest$outboundSchema: z.ZodType<
+    RetrieveAccountingIncomeStatementRequest$Outbound,
+    z.ZodTypeDef,
+    RetrieveAccountingIncomeStatementRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        id: z.string(),
+        remoteData: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveAccountingIncomeStatementRequest$ {
-    export const inboundSchema: z.ZodType<
-        RetrieveAccountingIncomeStatementRequest,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            "x-connection-token": z.string(),
-            id: z.string(),
-            remote_data: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        id: string;
-        remote_data?: boolean | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        RetrieveAccountingIncomeStatementRequest
-    > = z
-        .object({
-            xConnectionToken: z.string(),
-            id: z.string(),
-            remoteData: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
-        });
+    /** @deprecated use `RetrieveAccountingIncomeStatementRequest$inboundSchema` instead. */
+    export const inboundSchema = RetrieveAccountingIncomeStatementRequest$inboundSchema;
+    /** @deprecated use `RetrieveAccountingIncomeStatementRequest$outboundSchema` instead. */
+    export const outboundSchema = RetrieveAccountingIncomeStatementRequest$outboundSchema;
+    /** @deprecated use `RetrieveAccountingIncomeStatementRequest$Outbound` instead. */
+    export type Outbound = RetrieveAccountingIncomeStatementRequest$Outbound;
 }
 
 /** @internal */
+export const RetrieveAccountingIncomeStatementResponse$inboundSchema: z.ZodType<
+    RetrieveAccountingIncomeStatementResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        UnifiedAccountingIncomestatementOutput:
+            components.UnifiedAccountingIncomestatementOutput$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            UnifiedAccountingIncomestatementOutput: "unifiedAccountingIncomestatementOutput",
+        });
+    });
+
+/** @internal */
+export type RetrieveAccountingIncomeStatementResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    UnifiedAccountingIncomestatementOutput?:
+        | components.UnifiedAccountingIncomestatementOutput$Outbound
+        | undefined;
+};
+
+/** @internal */
+export const RetrieveAccountingIncomeStatementResponse$outboundSchema: z.ZodType<
+    RetrieveAccountingIncomeStatementResponse$Outbound,
+    z.ZodTypeDef,
+    RetrieveAccountingIncomeStatementResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        unifiedAccountingIncomestatementOutput:
+            components.UnifiedAccountingIncomestatementOutput$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            unifiedAccountingIncomestatementOutput: "UnifiedAccountingIncomestatementOutput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveAccountingIncomeStatementResponse$ {
-    export const inboundSchema: z.ZodType<
-        RetrieveAccountingIncomeStatementResponse,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            UnifiedAccountingIncomestatementOutput:
-                components.UnifiedAccountingIncomestatementOutput$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-                UnifiedAccountingIncomestatementOutput: "unifiedAccountingIncomestatementOutput",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        UnifiedAccountingIncomestatementOutput?:
-            | components.UnifiedAccountingIncomestatementOutput$.Outbound
-            | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        RetrieveAccountingIncomeStatementResponse
-    > = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            unifiedAccountingIncomestatementOutput:
-                components.UnifiedAccountingIncomestatementOutput$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-                unifiedAccountingIncomestatementOutput: "UnifiedAccountingIncomestatementOutput",
-            });
-        });
+    /** @deprecated use `RetrieveAccountingIncomeStatementResponse$inboundSchema` instead. */
+    export const inboundSchema = RetrieveAccountingIncomeStatementResponse$inboundSchema;
+    /** @deprecated use `RetrieveAccountingIncomeStatementResponse$outboundSchema` instead. */
+    export const outboundSchema = RetrieveAccountingIncomeStatementResponse$outboundSchema;
+    /** @deprecated use `RetrieveAccountingIncomeStatementResponse$Outbound` instead. */
+    export type Outbound = RetrieveAccountingIncomeStatementResponse$Outbound;
 }

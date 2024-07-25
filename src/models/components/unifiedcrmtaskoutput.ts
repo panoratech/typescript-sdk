@@ -61,149 +61,240 @@ export type UnifiedCrmTaskOutput = {
 };
 
 /** @internal */
+export const UnifiedCrmTaskOutputFieldMappings$inboundSchema: z.ZodType<
+    UnifiedCrmTaskOutputFieldMappings,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedCrmTaskOutputFieldMappings$Outbound = {};
+
+/** @internal */
+export const UnifiedCrmTaskOutputFieldMappings$outboundSchema: z.ZodType<
+    UnifiedCrmTaskOutputFieldMappings$Outbound,
+    z.ZodTypeDef,
+    UnifiedCrmTaskOutputFieldMappings
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedCrmTaskOutputFieldMappings$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedCrmTaskOutputFieldMappings,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedCrmTaskOutputFieldMappings
-    > = z.object({});
+    /** @deprecated use `UnifiedCrmTaskOutputFieldMappings$inboundSchema` instead. */
+    export const inboundSchema = UnifiedCrmTaskOutputFieldMappings$inboundSchema;
+    /** @deprecated use `UnifiedCrmTaskOutputFieldMappings$outboundSchema` instead. */
+    export const outboundSchema = UnifiedCrmTaskOutputFieldMappings$outboundSchema;
+    /** @deprecated use `UnifiedCrmTaskOutputFieldMappings$Outbound` instead. */
+    export type Outbound = UnifiedCrmTaskOutputFieldMappings$Outbound;
 }
 
 /** @internal */
+export const UnifiedCrmTaskOutputRemoteData$inboundSchema: z.ZodType<
+    UnifiedCrmTaskOutputRemoteData,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedCrmTaskOutputRemoteData$Outbound = {};
+
+/** @internal */
+export const UnifiedCrmTaskOutputRemoteData$outboundSchema: z.ZodType<
+    UnifiedCrmTaskOutputRemoteData$Outbound,
+    z.ZodTypeDef,
+    UnifiedCrmTaskOutputRemoteData
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedCrmTaskOutputRemoteData$ {
-    export const inboundSchema: z.ZodType<UnifiedCrmTaskOutputRemoteData, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnifiedCrmTaskOutputRemoteData> =
-        z.object({});
+    /** @deprecated use `UnifiedCrmTaskOutputRemoteData$inboundSchema` instead. */
+    export const inboundSchema = UnifiedCrmTaskOutputRemoteData$inboundSchema;
+    /** @deprecated use `UnifiedCrmTaskOutputRemoteData$outboundSchema` instead. */
+    export const outboundSchema = UnifiedCrmTaskOutputRemoteData$outboundSchema;
+    /** @deprecated use `UnifiedCrmTaskOutputRemoteData$Outbound` instead. */
+    export type Outbound = UnifiedCrmTaskOutputRemoteData$Outbound;
 }
 
 /** @internal */
+export const UnifiedCrmTaskOutputCreatedAt$inboundSchema: z.ZodType<
+    UnifiedCrmTaskOutputCreatedAt,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedCrmTaskOutputCreatedAt$Outbound = {};
+
+/** @internal */
+export const UnifiedCrmTaskOutputCreatedAt$outboundSchema: z.ZodType<
+    UnifiedCrmTaskOutputCreatedAt$Outbound,
+    z.ZodTypeDef,
+    UnifiedCrmTaskOutputCreatedAt
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedCrmTaskOutputCreatedAt$ {
-    export const inboundSchema: z.ZodType<UnifiedCrmTaskOutputCreatedAt, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnifiedCrmTaskOutputCreatedAt> =
-        z.object({});
+    /** @deprecated use `UnifiedCrmTaskOutputCreatedAt$inboundSchema` instead. */
+    export const inboundSchema = UnifiedCrmTaskOutputCreatedAt$inboundSchema;
+    /** @deprecated use `UnifiedCrmTaskOutputCreatedAt$outboundSchema` instead. */
+    export const outboundSchema = UnifiedCrmTaskOutputCreatedAt$outboundSchema;
+    /** @deprecated use `UnifiedCrmTaskOutputCreatedAt$Outbound` instead. */
+    export type Outbound = UnifiedCrmTaskOutputCreatedAt$Outbound;
 }
 
 /** @internal */
+export const UnifiedCrmTaskOutputModifiedAt$inboundSchema: z.ZodType<
+    UnifiedCrmTaskOutputModifiedAt,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedCrmTaskOutputModifiedAt$Outbound = {};
+
+/** @internal */
+export const UnifiedCrmTaskOutputModifiedAt$outboundSchema: z.ZodType<
+    UnifiedCrmTaskOutputModifiedAt$Outbound,
+    z.ZodTypeDef,
+    UnifiedCrmTaskOutputModifiedAt
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedCrmTaskOutputModifiedAt$ {
-    export const inboundSchema: z.ZodType<UnifiedCrmTaskOutputModifiedAt, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnifiedCrmTaskOutputModifiedAt> =
-        z.object({});
+    /** @deprecated use `UnifiedCrmTaskOutputModifiedAt$inboundSchema` instead. */
+    export const inboundSchema = UnifiedCrmTaskOutputModifiedAt$inboundSchema;
+    /** @deprecated use `UnifiedCrmTaskOutputModifiedAt$outboundSchema` instead. */
+    export const outboundSchema = UnifiedCrmTaskOutputModifiedAt$outboundSchema;
+    /** @deprecated use `UnifiedCrmTaskOutputModifiedAt$Outbound` instead. */
+    export type Outbound = UnifiedCrmTaskOutputModifiedAt$Outbound;
 }
 
 /** @internal */
+export const UnifiedCrmTaskOutput$inboundSchema: z.ZodType<
+    UnifiedCrmTaskOutput,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        subject: z.string(),
+        content: z.string(),
+        status: z.string(),
+        due_date: z
+            .string()
+            .datetime({ offset: true })
+            .transform((v) => new Date(v))
+            .optional(),
+        finished_date: z
+            .string()
+            .datetime({ offset: true })
+            .transform((v) => new Date(v))
+            .optional(),
+        user_id: z.string().optional(),
+        company_id: z.string().optional(),
+        deal_id: z.string().optional(),
+        field_mappings: z.lazy(() => UnifiedCrmTaskOutputFieldMappings$inboundSchema),
+        id: z.string().optional(),
+        remote_id: z.string().optional(),
+        remote_data: z.lazy(() => UnifiedCrmTaskOutputRemoteData$inboundSchema),
+        created_at: z.lazy(() => UnifiedCrmTaskOutputCreatedAt$inboundSchema),
+        modified_at: z.lazy(() => UnifiedCrmTaskOutputModifiedAt$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            due_date: "dueDate",
+            finished_date: "finishedDate",
+            user_id: "userId",
+            company_id: "companyId",
+            deal_id: "dealId",
+            field_mappings: "fieldMappings",
+            remote_id: "remoteId",
+            remote_data: "remoteData",
+            created_at: "createdAt",
+            modified_at: "modifiedAt",
+        });
+    });
+
+/** @internal */
+export type UnifiedCrmTaskOutput$Outbound = {
+    subject: string;
+    content: string;
+    status: string;
+    due_date?: string | undefined;
+    finished_date?: string | undefined;
+    user_id?: string | undefined;
+    company_id?: string | undefined;
+    deal_id?: string | undefined;
+    field_mappings: UnifiedCrmTaskOutputFieldMappings$Outbound;
+    id?: string | undefined;
+    remote_id?: string | undefined;
+    remote_data: UnifiedCrmTaskOutputRemoteData$Outbound;
+    created_at: UnifiedCrmTaskOutputCreatedAt$Outbound;
+    modified_at: UnifiedCrmTaskOutputModifiedAt$Outbound;
+};
+
+/** @internal */
+export const UnifiedCrmTaskOutput$outboundSchema: z.ZodType<
+    UnifiedCrmTaskOutput$Outbound,
+    z.ZodTypeDef,
+    UnifiedCrmTaskOutput
+> = z
+    .object({
+        subject: z.string(),
+        content: z.string(),
+        status: z.string(),
+        dueDate: z
+            .date()
+            .transform((v) => v.toISOString())
+            .optional(),
+        finishedDate: z
+            .date()
+            .transform((v) => v.toISOString())
+            .optional(),
+        userId: z.string().optional(),
+        companyId: z.string().optional(),
+        dealId: z.string().optional(),
+        fieldMappings: z.lazy(() => UnifiedCrmTaskOutputFieldMappings$outboundSchema),
+        id: z.string().optional(),
+        remoteId: z.string().optional(),
+        remoteData: z.lazy(() => UnifiedCrmTaskOutputRemoteData$outboundSchema),
+        createdAt: z.lazy(() => UnifiedCrmTaskOutputCreatedAt$outboundSchema),
+        modifiedAt: z.lazy(() => UnifiedCrmTaskOutputModifiedAt$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            dueDate: "due_date",
+            finishedDate: "finished_date",
+            userId: "user_id",
+            companyId: "company_id",
+            dealId: "deal_id",
+            fieldMappings: "field_mappings",
+            remoteId: "remote_id",
+            remoteData: "remote_data",
+            createdAt: "created_at",
+            modifiedAt: "modified_at",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedCrmTaskOutput$ {
-    export const inboundSchema: z.ZodType<UnifiedCrmTaskOutput, z.ZodTypeDef, unknown> = z
-        .object({
-            subject: z.string(),
-            content: z.string(),
-            status: z.string(),
-            due_date: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .optional(),
-            finished_date: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .optional(),
-            user_id: z.string().optional(),
-            company_id: z.string().optional(),
-            deal_id: z.string().optional(),
-            field_mappings: z.lazy(() => UnifiedCrmTaskOutputFieldMappings$.inboundSchema),
-            id: z.string().optional(),
-            remote_id: z.string().optional(),
-            remote_data: z.lazy(() => UnifiedCrmTaskOutputRemoteData$.inboundSchema),
-            created_at: z.lazy(() => UnifiedCrmTaskOutputCreatedAt$.inboundSchema),
-            modified_at: z.lazy(() => UnifiedCrmTaskOutputModifiedAt$.inboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                due_date: "dueDate",
-                finished_date: "finishedDate",
-                user_id: "userId",
-                company_id: "companyId",
-                deal_id: "dealId",
-                field_mappings: "fieldMappings",
-                remote_id: "remoteId",
-                remote_data: "remoteData",
-                created_at: "createdAt",
-                modified_at: "modifiedAt",
-            });
-        });
-
-    export type Outbound = {
-        subject: string;
-        content: string;
-        status: string;
-        due_date?: string | undefined;
-        finished_date?: string | undefined;
-        user_id?: string | undefined;
-        company_id?: string | undefined;
-        deal_id?: string | undefined;
-        field_mappings: UnifiedCrmTaskOutputFieldMappings$.Outbound;
-        id?: string | undefined;
-        remote_id?: string | undefined;
-        remote_data: UnifiedCrmTaskOutputRemoteData$.Outbound;
-        created_at: UnifiedCrmTaskOutputCreatedAt$.Outbound;
-        modified_at: UnifiedCrmTaskOutputModifiedAt$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnifiedCrmTaskOutput> = z
-        .object({
-            subject: z.string(),
-            content: z.string(),
-            status: z.string(),
-            dueDate: z
-                .date()
-                .transform((v) => v.toISOString())
-                .optional(),
-            finishedDate: z
-                .date()
-                .transform((v) => v.toISOString())
-                .optional(),
-            userId: z.string().optional(),
-            companyId: z.string().optional(),
-            dealId: z.string().optional(),
-            fieldMappings: z.lazy(() => UnifiedCrmTaskOutputFieldMappings$.outboundSchema),
-            id: z.string().optional(),
-            remoteId: z.string().optional(),
-            remoteData: z.lazy(() => UnifiedCrmTaskOutputRemoteData$.outboundSchema),
-            createdAt: z.lazy(() => UnifiedCrmTaskOutputCreatedAt$.outboundSchema),
-            modifiedAt: z.lazy(() => UnifiedCrmTaskOutputModifiedAt$.outboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                dueDate: "due_date",
-                finishedDate: "finished_date",
-                userId: "user_id",
-                companyId: "company_id",
-                dealId: "deal_id",
-                fieldMappings: "field_mappings",
-                remoteId: "remote_id",
-                remoteData: "remote_data",
-                createdAt: "created_at",
-                modifiedAt: "modified_at",
-            });
-        });
+    /** @deprecated use `UnifiedCrmTaskOutput$inboundSchema` instead. */
+    export const inboundSchema = UnifiedCrmTaskOutput$inboundSchema;
+    /** @deprecated use `UnifiedCrmTaskOutput$outboundSchema` instead. */
+    export const outboundSchema = UnifiedCrmTaskOutput$outboundSchema;
+    /** @deprecated use `UnifiedCrmTaskOutput$Outbound` instead. */
+    export type Outbound = UnifiedCrmTaskOutput$Outbound;
 }

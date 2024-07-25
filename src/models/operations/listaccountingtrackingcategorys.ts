@@ -37,132 +37,167 @@ export type ListAccountingTrackingCategorysResponse = {
 };
 
 /** @internal */
+export const ListAccountingTrackingCategorysRequest$inboundSchema: z.ZodType<
+    ListAccountingTrackingCategorysRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        remote_data: z.boolean().optional(),
+        limit: z.number().default(50),
+        cursor: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+        });
+    });
+
+/** @internal */
+export type ListAccountingTrackingCategorysRequest$Outbound = {
+    "x-connection-token": string;
+    remote_data?: boolean | undefined;
+    limit: number;
+    cursor?: string | undefined;
+};
+
+/** @internal */
+export const ListAccountingTrackingCategorysRequest$outboundSchema: z.ZodType<
+    ListAccountingTrackingCategorysRequest$Outbound,
+    z.ZodTypeDef,
+    ListAccountingTrackingCategorysRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        remoteData: z.boolean().optional(),
+        limit: z.number().default(50),
+        cursor: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListAccountingTrackingCategorysRequest$ {
-    export const inboundSchema: z.ZodType<
-        ListAccountingTrackingCategorysRequest,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            "x-connection-token": z.string(),
-            remote_data: z.boolean().optional(),
-            limit: z.number().default(50),
-            cursor: z.string().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        remote_data?: boolean | undefined;
-        limit: number;
-        cursor?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        ListAccountingTrackingCategorysRequest
-    > = z
-        .object({
-            xConnectionToken: z.string(),
-            remoteData: z.boolean().optional(),
-            limit: z.number().default(50),
-            cursor: z.string().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
-        });
+    /** @deprecated use `ListAccountingTrackingCategorysRequest$inboundSchema` instead. */
+    export const inboundSchema = ListAccountingTrackingCategorysRequest$inboundSchema;
+    /** @deprecated use `ListAccountingTrackingCategorysRequest$outboundSchema` instead. */
+    export const outboundSchema = ListAccountingTrackingCategorysRequest$outboundSchema;
+    /** @deprecated use `ListAccountingTrackingCategorysRequest$Outbound` instead. */
+    export type Outbound = ListAccountingTrackingCategorysRequest$Outbound;
 }
 
 /** @internal */
+export const ListAccountingTrackingCategorysResponseBody$inboundSchema: z.ZodType<
+    ListAccountingTrackingCategorysResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        prev_cursor: z.string(),
+        next_cursor: z.string(),
+        data: z.array(components.UnifiedAccountingTrackingcategoryOutput$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            prev_cursor: "prevCursor",
+            next_cursor: "nextCursor",
+        });
+    });
+
+/** @internal */
+export type ListAccountingTrackingCategorysResponseBody$Outbound = {
+    prev_cursor: string;
+    next_cursor: string;
+    data: Array<components.UnifiedAccountingTrackingcategoryOutput$Outbound>;
+};
+
+/** @internal */
+export const ListAccountingTrackingCategorysResponseBody$outboundSchema: z.ZodType<
+    ListAccountingTrackingCategorysResponseBody$Outbound,
+    z.ZodTypeDef,
+    ListAccountingTrackingCategorysResponseBody
+> = z
+    .object({
+        prevCursor: z.string(),
+        nextCursor: z.string(),
+        data: z.array(components.UnifiedAccountingTrackingcategoryOutput$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            prevCursor: "prev_cursor",
+            nextCursor: "next_cursor",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListAccountingTrackingCategorysResponseBody$ {
-    export const inboundSchema: z.ZodType<
-        ListAccountingTrackingCategorysResponseBody,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            prev_cursor: z.string(),
-            next_cursor: z.string(),
-            data: z.array(components.UnifiedAccountingTrackingcategoryOutput$.inboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                prev_cursor: "prevCursor",
-                next_cursor: "nextCursor",
-            });
-        });
-
-    export type Outbound = {
-        prev_cursor: string;
-        next_cursor: string;
-        data: Array<components.UnifiedAccountingTrackingcategoryOutput$.Outbound>;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        ListAccountingTrackingCategorysResponseBody
-    > = z
-        .object({
-            prevCursor: z.string(),
-            nextCursor: z.string(),
-            data: z.array(components.UnifiedAccountingTrackingcategoryOutput$.outboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                prevCursor: "prev_cursor",
-                nextCursor: "next_cursor",
-            });
-        });
+    /** @deprecated use `ListAccountingTrackingCategorysResponseBody$inboundSchema` instead. */
+    export const inboundSchema = ListAccountingTrackingCategorysResponseBody$inboundSchema;
+    /** @deprecated use `ListAccountingTrackingCategorysResponseBody$outboundSchema` instead. */
+    export const outboundSchema = ListAccountingTrackingCategorysResponseBody$outboundSchema;
+    /** @deprecated use `ListAccountingTrackingCategorysResponseBody$Outbound` instead. */
+    export type Outbound = ListAccountingTrackingCategorysResponseBody$Outbound;
 }
 
 /** @internal */
+export const ListAccountingTrackingCategorysResponse$inboundSchema: z.ZodType<
+    ListAccountingTrackingCategorysResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        object: z.lazy(() => ListAccountingTrackingCategorysResponseBody$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+        });
+    });
+
+/** @internal */
+export type ListAccountingTrackingCategorysResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    object?: ListAccountingTrackingCategorysResponseBody$Outbound | undefined;
+};
+
+/** @internal */
+export const ListAccountingTrackingCategorysResponse$outboundSchema: z.ZodType<
+    ListAccountingTrackingCategorysResponse$Outbound,
+    z.ZodTypeDef,
+    ListAccountingTrackingCategorysResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        object: z.lazy(() => ListAccountingTrackingCategorysResponseBody$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListAccountingTrackingCategorysResponse$ {
-    export const inboundSchema: z.ZodType<
-        ListAccountingTrackingCategorysResponse,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            object: z
-                .lazy(() => ListAccountingTrackingCategorysResponseBody$.inboundSchema)
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        object?: ListAccountingTrackingCategorysResponseBody$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        ListAccountingTrackingCategorysResponse
-    > = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            object: z
-                .lazy(() => ListAccountingTrackingCategorysResponseBody$.outboundSchema)
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-            });
-        });
+    /** @deprecated use `ListAccountingTrackingCategorysResponse$inboundSchema` instead. */
+    export const inboundSchema = ListAccountingTrackingCategorysResponse$inboundSchema;
+    /** @deprecated use `ListAccountingTrackingCategorysResponse$outboundSchema` instead. */
+    export const outboundSchema = ListAccountingTrackingCategorysResponse$outboundSchema;
+    /** @deprecated use `ListAccountingTrackingCategorysResponse$Outbound` instead. */
+    export type Outbound = ListAccountingTrackingCategorysResponse$Outbound;
 }

@@ -33,121 +33,164 @@ export type RetrieveTicketingCommentResponse = {
 };
 
 /** @internal */
+export const RetrieveTicketingCommentRequest$inboundSchema: z.ZodType<
+    RetrieveTicketingCommentRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        id: z.string(),
+        remote_data: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+        });
+    });
+
+/** @internal */
+export type RetrieveTicketingCommentRequest$Outbound = {
+    "x-connection-token": string;
+    id: string;
+    remote_data?: boolean | undefined;
+};
+
+/** @internal */
+export const RetrieveTicketingCommentRequest$outboundSchema: z.ZodType<
+    RetrieveTicketingCommentRequest$Outbound,
+    z.ZodTypeDef,
+    RetrieveTicketingCommentRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        id: z.string(),
+        remoteData: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveTicketingCommentRequest$ {
-    export const inboundSchema: z.ZodType<RetrieveTicketingCommentRequest, z.ZodTypeDef, unknown> =
-        z
-            .object({
-                "x-connection-token": z.string(),
-                id: z.string(),
-                remote_data: z.boolean().optional(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    "x-connection-token": "xConnectionToken",
-                    remote_data: "remoteData",
-                });
-            });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        id: string;
-        remote_data?: boolean | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        RetrieveTicketingCommentRequest
-    > = z
-        .object({
-            xConnectionToken: z.string(),
-            id: z.string(),
-            remoteData: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
-        });
+    /** @deprecated use `RetrieveTicketingCommentRequest$inboundSchema` instead. */
+    export const inboundSchema = RetrieveTicketingCommentRequest$inboundSchema;
+    /** @deprecated use `RetrieveTicketingCommentRequest$outboundSchema` instead. */
+    export const outboundSchema = RetrieveTicketingCommentRequest$outboundSchema;
+    /** @deprecated use `RetrieveTicketingCommentRequest$Outbound` instead. */
+    export type Outbound = RetrieveTicketingCommentRequest$Outbound;
 }
 
 /** @internal */
+export const RetrieveTicketingCommentResponseBody$inboundSchema: z.ZodType<
+    RetrieveTicketingCommentResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        prev_cursor: z.string(),
+        next_cursor: z.string(),
+        data: z.array(components.UnifiedTicketingCommentOutput$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            prev_cursor: "prevCursor",
+            next_cursor: "nextCursor",
+        });
+    });
+
+/** @internal */
+export type RetrieveTicketingCommentResponseBody$Outbound = {
+    prev_cursor: string;
+    next_cursor: string;
+    data: Array<components.UnifiedTicketingCommentOutput$Outbound>;
+};
+
+/** @internal */
+export const RetrieveTicketingCommentResponseBody$outboundSchema: z.ZodType<
+    RetrieveTicketingCommentResponseBody$Outbound,
+    z.ZodTypeDef,
+    RetrieveTicketingCommentResponseBody
+> = z
+    .object({
+        prevCursor: z.string(),
+        nextCursor: z.string(),
+        data: z.array(components.UnifiedTicketingCommentOutput$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            prevCursor: "prev_cursor",
+            nextCursor: "next_cursor",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveTicketingCommentResponseBody$ {
-    export const inboundSchema: z.ZodType<
-        RetrieveTicketingCommentResponseBody,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            prev_cursor: z.string(),
-            next_cursor: z.string(),
-            data: z.array(components.UnifiedTicketingCommentOutput$.inboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                prev_cursor: "prevCursor",
-                next_cursor: "nextCursor",
-            });
-        });
-
-    export type Outbound = {
-        prev_cursor: string;
-        next_cursor: string;
-        data: Array<components.UnifiedTicketingCommentOutput$.Outbound>;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        RetrieveTicketingCommentResponseBody
-    > = z
-        .object({
-            prevCursor: z.string(),
-            nextCursor: z.string(),
-            data: z.array(components.UnifiedTicketingCommentOutput$.outboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                prevCursor: "prev_cursor",
-                nextCursor: "next_cursor",
-            });
-        });
+    /** @deprecated use `RetrieveTicketingCommentResponseBody$inboundSchema` instead. */
+    export const inboundSchema = RetrieveTicketingCommentResponseBody$inboundSchema;
+    /** @deprecated use `RetrieveTicketingCommentResponseBody$outboundSchema` instead. */
+    export const outboundSchema = RetrieveTicketingCommentResponseBody$outboundSchema;
+    /** @deprecated use `RetrieveTicketingCommentResponseBody$Outbound` instead. */
+    export type Outbound = RetrieveTicketingCommentResponseBody$Outbound;
 }
 
 /** @internal */
-export namespace RetrieveTicketingCommentResponse$ {
-    export const inboundSchema: z.ZodType<RetrieveTicketingCommentResponse, z.ZodTypeDef, unknown> =
-        z
-            .object({
-                HttpMeta: components.HTTPMetadata$.inboundSchema,
-                object: z
-                    .lazy(() => RetrieveTicketingCommentResponseBody$.inboundSchema)
-                    .optional(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    HttpMeta: "httpMeta",
-                });
-            });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        object?: RetrieveTicketingCommentResponseBody$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        RetrieveTicketingCommentResponse
-    > = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            object: z.lazy(() => RetrieveTicketingCommentResponseBody$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-            });
+export const RetrieveTicketingCommentResponse$inboundSchema: z.ZodType<
+    RetrieveTicketingCommentResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        object: z.lazy(() => RetrieveTicketingCommentResponseBody$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
         });
+    });
+
+/** @internal */
+export type RetrieveTicketingCommentResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    object?: RetrieveTicketingCommentResponseBody$Outbound | undefined;
+};
+
+/** @internal */
+export const RetrieveTicketingCommentResponse$outboundSchema: z.ZodType<
+    RetrieveTicketingCommentResponse$Outbound,
+    z.ZodTypeDef,
+    RetrieveTicketingCommentResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        object: z.lazy(() => RetrieveTicketingCommentResponseBody$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RetrieveTicketingCommentResponse$ {
+    /** @deprecated use `RetrieveTicketingCommentResponse$inboundSchema` instead. */
+    export const inboundSchema = RetrieveTicketingCommentResponse$inboundSchema;
+    /** @deprecated use `RetrieveTicketingCommentResponse$outboundSchema` instead. */
+    export const outboundSchema = RetrieveTicketingCommentResponse$outboundSchema;
+    /** @deprecated use `RetrieveTicketingCommentResponse$Outbound` instead. */
+    export type Outbound = RetrieveTicketingCommentResponse$Outbound;
 }

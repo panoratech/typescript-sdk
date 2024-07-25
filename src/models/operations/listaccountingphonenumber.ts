@@ -37,125 +37,167 @@ export type ListAccountingPhonenumberResponse = {
 };
 
 /** @internal */
+export const ListAccountingPhonenumberRequest$inboundSchema: z.ZodType<
+    ListAccountingPhonenumberRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        remote_data: z.boolean().optional(),
+        limit: z.number().default(50),
+        cursor: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+        });
+    });
+
+/** @internal */
+export type ListAccountingPhonenumberRequest$Outbound = {
+    "x-connection-token": string;
+    remote_data?: boolean | undefined;
+    limit: number;
+    cursor?: string | undefined;
+};
+
+/** @internal */
+export const ListAccountingPhonenumberRequest$outboundSchema: z.ZodType<
+    ListAccountingPhonenumberRequest$Outbound,
+    z.ZodTypeDef,
+    ListAccountingPhonenumberRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        remoteData: z.boolean().optional(),
+        limit: z.number().default(50),
+        cursor: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListAccountingPhonenumberRequest$ {
-    export const inboundSchema: z.ZodType<ListAccountingPhonenumberRequest, z.ZodTypeDef, unknown> =
-        z
-            .object({
-                "x-connection-token": z.string(),
-                remote_data: z.boolean().optional(),
-                limit: z.number().default(50),
-                cursor: z.string().optional(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    "x-connection-token": "xConnectionToken",
-                    remote_data: "remoteData",
-                });
-            });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        remote_data?: boolean | undefined;
-        limit: number;
-        cursor?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        ListAccountingPhonenumberRequest
-    > = z
-        .object({
-            xConnectionToken: z.string(),
-            remoteData: z.boolean().optional(),
-            limit: z.number().default(50),
-            cursor: z.string().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
-        });
+    /** @deprecated use `ListAccountingPhonenumberRequest$inboundSchema` instead. */
+    export const inboundSchema = ListAccountingPhonenumberRequest$inboundSchema;
+    /** @deprecated use `ListAccountingPhonenumberRequest$outboundSchema` instead. */
+    export const outboundSchema = ListAccountingPhonenumberRequest$outboundSchema;
+    /** @deprecated use `ListAccountingPhonenumberRequest$Outbound` instead. */
+    export type Outbound = ListAccountingPhonenumberRequest$Outbound;
 }
 
 /** @internal */
+export const ListAccountingPhonenumberResponseBody$inboundSchema: z.ZodType<
+    ListAccountingPhonenumberResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        prev_cursor: z.string(),
+        next_cursor: z.string(),
+        data: z.array(components.UnifiedAccountingPhonenumberOutput$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            prev_cursor: "prevCursor",
+            next_cursor: "nextCursor",
+        });
+    });
+
+/** @internal */
+export type ListAccountingPhonenumberResponseBody$Outbound = {
+    prev_cursor: string;
+    next_cursor: string;
+    data: Array<components.UnifiedAccountingPhonenumberOutput$Outbound>;
+};
+
+/** @internal */
+export const ListAccountingPhonenumberResponseBody$outboundSchema: z.ZodType<
+    ListAccountingPhonenumberResponseBody$Outbound,
+    z.ZodTypeDef,
+    ListAccountingPhonenumberResponseBody
+> = z
+    .object({
+        prevCursor: z.string(),
+        nextCursor: z.string(),
+        data: z.array(components.UnifiedAccountingPhonenumberOutput$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            prevCursor: "prev_cursor",
+            nextCursor: "next_cursor",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListAccountingPhonenumberResponseBody$ {
-    export const inboundSchema: z.ZodType<
-        ListAccountingPhonenumberResponseBody,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            prev_cursor: z.string(),
-            next_cursor: z.string(),
-            data: z.array(components.UnifiedAccountingPhonenumberOutput$.inboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                prev_cursor: "prevCursor",
-                next_cursor: "nextCursor",
-            });
-        });
-
-    export type Outbound = {
-        prev_cursor: string;
-        next_cursor: string;
-        data: Array<components.UnifiedAccountingPhonenumberOutput$.Outbound>;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        ListAccountingPhonenumberResponseBody
-    > = z
-        .object({
-            prevCursor: z.string(),
-            nextCursor: z.string(),
-            data: z.array(components.UnifiedAccountingPhonenumberOutput$.outboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                prevCursor: "prev_cursor",
-                nextCursor: "next_cursor",
-            });
-        });
+    /** @deprecated use `ListAccountingPhonenumberResponseBody$inboundSchema` instead. */
+    export const inboundSchema = ListAccountingPhonenumberResponseBody$inboundSchema;
+    /** @deprecated use `ListAccountingPhonenumberResponseBody$outboundSchema` instead. */
+    export const outboundSchema = ListAccountingPhonenumberResponseBody$outboundSchema;
+    /** @deprecated use `ListAccountingPhonenumberResponseBody$Outbound` instead. */
+    export type Outbound = ListAccountingPhonenumberResponseBody$Outbound;
 }
 
 /** @internal */
+export const ListAccountingPhonenumberResponse$inboundSchema: z.ZodType<
+    ListAccountingPhonenumberResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        object: z.lazy(() => ListAccountingPhonenumberResponseBody$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+        });
+    });
+
+/** @internal */
+export type ListAccountingPhonenumberResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    object?: ListAccountingPhonenumberResponseBody$Outbound | undefined;
+};
+
+/** @internal */
+export const ListAccountingPhonenumberResponse$outboundSchema: z.ZodType<
+    ListAccountingPhonenumberResponse$Outbound,
+    z.ZodTypeDef,
+    ListAccountingPhonenumberResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        object: z.lazy(() => ListAccountingPhonenumberResponseBody$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListAccountingPhonenumberResponse$ {
-    export const inboundSchema: z.ZodType<
-        ListAccountingPhonenumberResponse,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            object: z.lazy(() => ListAccountingPhonenumberResponseBody$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        object?: ListAccountingPhonenumberResponseBody$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        ListAccountingPhonenumberResponse
-    > = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            object: z.lazy(() => ListAccountingPhonenumberResponseBody$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-            });
-        });
+    /** @deprecated use `ListAccountingPhonenumberResponse$inboundSchema` instead. */
+    export const inboundSchema = ListAccountingPhonenumberResponse$inboundSchema;
+    /** @deprecated use `ListAccountingPhonenumberResponse$outboundSchema` instead. */
+    export const outboundSchema = ListAccountingPhonenumberResponse$outboundSchema;
+    /** @deprecated use `ListAccountingPhonenumberResponse$Outbound` instead. */
+    export type Outbound = ListAccountingPhonenumberResponse$Outbound;
 }

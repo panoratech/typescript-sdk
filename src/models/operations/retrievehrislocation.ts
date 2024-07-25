@@ -27,70 +27,110 @@ export type RetrieveHrisLocationResponse = {
 };
 
 /** @internal */
+export const RetrieveHrisLocationRequest$inboundSchema: z.ZodType<
+    RetrieveHrisLocationRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        id: z.string(),
+        remote_data: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+        });
+    });
+
+/** @internal */
+export type RetrieveHrisLocationRequest$Outbound = {
+    "x-connection-token": string;
+    id: string;
+    remote_data?: boolean | undefined;
+};
+
+/** @internal */
+export const RetrieveHrisLocationRequest$outboundSchema: z.ZodType<
+    RetrieveHrisLocationRequest$Outbound,
+    z.ZodTypeDef,
+    RetrieveHrisLocationRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        id: z.string(),
+        remoteData: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveHrisLocationRequest$ {
-    export const inboundSchema: z.ZodType<RetrieveHrisLocationRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            "x-connection-token": z.string(),
-            id: z.string(),
-            remote_data: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        id: string;
-        remote_data?: boolean | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RetrieveHrisLocationRequest> = z
-        .object({
-            xConnectionToken: z.string(),
-            id: z.string(),
-            remoteData: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
-        });
+    /** @deprecated use `RetrieveHrisLocationRequest$inboundSchema` instead. */
+    export const inboundSchema = RetrieveHrisLocationRequest$inboundSchema;
+    /** @deprecated use `RetrieveHrisLocationRequest$outboundSchema` instead. */
+    export const outboundSchema = RetrieveHrisLocationRequest$outboundSchema;
+    /** @deprecated use `RetrieveHrisLocationRequest$Outbound` instead. */
+    export type Outbound = RetrieveHrisLocationRequest$Outbound;
 }
 
 /** @internal */
+export const RetrieveHrisLocationResponse$inboundSchema: z.ZodType<
+    RetrieveHrisLocationResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        UnifiedHrisLocationOutput: components.UnifiedHrisLocationOutput$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            UnifiedHrisLocationOutput: "unifiedHrisLocationOutput",
+        });
+    });
+
+/** @internal */
+export type RetrieveHrisLocationResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    UnifiedHrisLocationOutput?: components.UnifiedHrisLocationOutput$Outbound | undefined;
+};
+
+/** @internal */
+export const RetrieveHrisLocationResponse$outboundSchema: z.ZodType<
+    RetrieveHrisLocationResponse$Outbound,
+    z.ZodTypeDef,
+    RetrieveHrisLocationResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        unifiedHrisLocationOutput: components.UnifiedHrisLocationOutput$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            unifiedHrisLocationOutput: "UnifiedHrisLocationOutput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveHrisLocationResponse$ {
-    export const inboundSchema: z.ZodType<RetrieveHrisLocationResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            UnifiedHrisLocationOutput:
-                components.UnifiedHrisLocationOutput$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-                UnifiedHrisLocationOutput: "unifiedHrisLocationOutput",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        UnifiedHrisLocationOutput?: components.UnifiedHrisLocationOutput$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RetrieveHrisLocationResponse> = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            unifiedHrisLocationOutput:
-                components.UnifiedHrisLocationOutput$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-                unifiedHrisLocationOutput: "UnifiedHrisLocationOutput",
-            });
-        });
+    /** @deprecated use `RetrieveHrisLocationResponse$inboundSchema` instead. */
+    export const inboundSchema = RetrieveHrisLocationResponse$inboundSchema;
+    /** @deprecated use `RetrieveHrisLocationResponse$outboundSchema` instead. */
+    export const outboundSchema = RetrieveHrisLocationResponse$outboundSchema;
+    /** @deprecated use `RetrieveHrisLocationResponse$Outbound` instead. */
+    export type Outbound = RetrieveHrisLocationResponse$Outbound;
 }

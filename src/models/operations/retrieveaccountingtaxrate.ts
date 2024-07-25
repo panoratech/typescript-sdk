@@ -27,85 +27,112 @@ export type RetrieveAccountingTaxRateResponse = {
 };
 
 /** @internal */
-export namespace RetrieveAccountingTaxRateRequest$ {
-    export const inboundSchema: z.ZodType<RetrieveAccountingTaxRateRequest, z.ZodTypeDef, unknown> =
-        z
-            .object({
-                "x-connection-token": z.string(),
-                id: z.string(),
-                remote_data: z.boolean().optional(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    "x-connection-token": "xConnectionToken",
-                    remote_data: "remoteData",
-                });
-            });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        id: string;
-        remote_data?: boolean | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        RetrieveAccountingTaxRateRequest
-    > = z
-        .object({
-            xConnectionToken: z.string(),
-            id: z.string(),
-            remoteData: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
+export const RetrieveAccountingTaxRateRequest$inboundSchema: z.ZodType<
+    RetrieveAccountingTaxRateRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        id: z.string(),
+        remote_data: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
         });
+    });
+
+/** @internal */
+export type RetrieveAccountingTaxRateRequest$Outbound = {
+    "x-connection-token": string;
+    id: string;
+    remote_data?: boolean | undefined;
+};
+
+/** @internal */
+export const RetrieveAccountingTaxRateRequest$outboundSchema: z.ZodType<
+    RetrieveAccountingTaxRateRequest$Outbound,
+    z.ZodTypeDef,
+    RetrieveAccountingTaxRateRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        id: z.string(),
+        remoteData: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RetrieveAccountingTaxRateRequest$ {
+    /** @deprecated use `RetrieveAccountingTaxRateRequest$inboundSchema` instead. */
+    export const inboundSchema = RetrieveAccountingTaxRateRequest$inboundSchema;
+    /** @deprecated use `RetrieveAccountingTaxRateRequest$outboundSchema` instead. */
+    export const outboundSchema = RetrieveAccountingTaxRateRequest$outboundSchema;
+    /** @deprecated use `RetrieveAccountingTaxRateRequest$Outbound` instead. */
+    export type Outbound = RetrieveAccountingTaxRateRequest$Outbound;
 }
 
 /** @internal */
+export const RetrieveAccountingTaxRateResponse$inboundSchema: z.ZodType<
+    RetrieveAccountingTaxRateResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        UnifiedAccountingTaxrateOutput:
+            components.UnifiedAccountingTaxrateOutput$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            UnifiedAccountingTaxrateOutput: "unifiedAccountingTaxrateOutput",
+        });
+    });
+
+/** @internal */
+export type RetrieveAccountingTaxRateResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    UnifiedAccountingTaxrateOutput?: components.UnifiedAccountingTaxrateOutput$Outbound | undefined;
+};
+
+/** @internal */
+export const RetrieveAccountingTaxRateResponse$outboundSchema: z.ZodType<
+    RetrieveAccountingTaxRateResponse$Outbound,
+    z.ZodTypeDef,
+    RetrieveAccountingTaxRateResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        unifiedAccountingTaxrateOutput:
+            components.UnifiedAccountingTaxrateOutput$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            unifiedAccountingTaxrateOutput: "UnifiedAccountingTaxrateOutput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveAccountingTaxRateResponse$ {
-    export const inboundSchema: z.ZodType<
-        RetrieveAccountingTaxRateResponse,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            UnifiedAccountingTaxrateOutput:
-                components.UnifiedAccountingTaxrateOutput$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-                UnifiedAccountingTaxrateOutput: "unifiedAccountingTaxrateOutput",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        UnifiedAccountingTaxrateOutput?:
-            | components.UnifiedAccountingTaxrateOutput$.Outbound
-            | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        RetrieveAccountingTaxRateResponse
-    > = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            unifiedAccountingTaxrateOutput:
-                components.UnifiedAccountingTaxrateOutput$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-                unifiedAccountingTaxrateOutput: "UnifiedAccountingTaxrateOutput",
-            });
-        });
+    /** @deprecated use `RetrieveAccountingTaxRateResponse$inboundSchema` instead. */
+    export const inboundSchema = RetrieveAccountingTaxRateResponse$inboundSchema;
+    /** @deprecated use `RetrieveAccountingTaxRateResponse$outboundSchema` instead. */
+    export const outboundSchema = RetrieveAccountingTaxRateResponse$outboundSchema;
+    /** @deprecated use `RetrieveAccountingTaxRateResponse$Outbound` instead. */
+    export type Outbound = RetrieveAccountingTaxRateResponse$Outbound;
 }

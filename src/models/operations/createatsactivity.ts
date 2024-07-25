@@ -24,71 +24,112 @@ export type CreateAtsActivityResponse = {
 };
 
 /** @internal */
+export const CreateAtsActivityRequest$inboundSchema: z.ZodType<
+    CreateAtsActivityRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        remote_data: z.boolean().optional(),
+        UnifiedAtsActivityInput: components.UnifiedAtsActivityInput$inboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+            UnifiedAtsActivityInput: "unifiedAtsActivityInput",
+        });
+    });
+
+/** @internal */
+export type CreateAtsActivityRequest$Outbound = {
+    "x-connection-token": string;
+    remote_data?: boolean | undefined;
+    UnifiedAtsActivityInput: components.UnifiedAtsActivityInput$Outbound;
+};
+
+/** @internal */
+export const CreateAtsActivityRequest$outboundSchema: z.ZodType<
+    CreateAtsActivityRequest$Outbound,
+    z.ZodTypeDef,
+    CreateAtsActivityRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        remoteData: z.boolean().optional(),
+        unifiedAtsActivityInput: components.UnifiedAtsActivityInput$outboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+            unifiedAtsActivityInput: "UnifiedAtsActivityInput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateAtsActivityRequest$ {
-    export const inboundSchema: z.ZodType<CreateAtsActivityRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            "x-connection-token": z.string(),
-            remote_data: z.boolean().optional(),
-            UnifiedAtsActivityInput: components.UnifiedAtsActivityInput$.inboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-                UnifiedAtsActivityInput: "unifiedAtsActivityInput",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        remote_data?: boolean | undefined;
-        UnifiedAtsActivityInput: components.UnifiedAtsActivityInput$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateAtsActivityRequest> = z
-        .object({
-            xConnectionToken: z.string(),
-            remoteData: z.boolean().optional(),
-            unifiedAtsActivityInput: components.UnifiedAtsActivityInput$.outboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-                unifiedAtsActivityInput: "UnifiedAtsActivityInput",
-            });
-        });
+    /** @deprecated use `CreateAtsActivityRequest$inboundSchema` instead. */
+    export const inboundSchema = CreateAtsActivityRequest$inboundSchema;
+    /** @deprecated use `CreateAtsActivityRequest$outboundSchema` instead. */
+    export const outboundSchema = CreateAtsActivityRequest$outboundSchema;
+    /** @deprecated use `CreateAtsActivityRequest$Outbound` instead. */
+    export type Outbound = CreateAtsActivityRequest$Outbound;
 }
 
 /** @internal */
+export const CreateAtsActivityResponse$inboundSchema: z.ZodType<
+    CreateAtsActivityResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        UnifiedAtsActivityOutput: components.UnifiedAtsActivityOutput$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            UnifiedAtsActivityOutput: "unifiedAtsActivityOutput",
+        });
+    });
+
+/** @internal */
+export type CreateAtsActivityResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    UnifiedAtsActivityOutput?: components.UnifiedAtsActivityOutput$Outbound | undefined;
+};
+
+/** @internal */
+export const CreateAtsActivityResponse$outboundSchema: z.ZodType<
+    CreateAtsActivityResponse$Outbound,
+    z.ZodTypeDef,
+    CreateAtsActivityResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        unifiedAtsActivityOutput: components.UnifiedAtsActivityOutput$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            unifiedAtsActivityOutput: "UnifiedAtsActivityOutput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateAtsActivityResponse$ {
-    export const inboundSchema: z.ZodType<CreateAtsActivityResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            UnifiedAtsActivityOutput: components.UnifiedAtsActivityOutput$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-                UnifiedAtsActivityOutput: "unifiedAtsActivityOutput",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        UnifiedAtsActivityOutput?: components.UnifiedAtsActivityOutput$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateAtsActivityResponse> = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            unifiedAtsActivityOutput:
-                components.UnifiedAtsActivityOutput$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-                unifiedAtsActivityOutput: "UnifiedAtsActivityOutput",
-            });
-        });
+    /** @deprecated use `CreateAtsActivityResponse$inboundSchema` instead. */
+    export const inboundSchema = CreateAtsActivityResponse$inboundSchema;
+    /** @deprecated use `CreateAtsActivityResponse$outboundSchema` instead. */
+    export const outboundSchema = CreateAtsActivityResponse$outboundSchema;
+    /** @deprecated use `CreateAtsActivityResponse$Outbound` instead. */
+    export type Outbound = CreateAtsActivityResponse$Outbound;
 }

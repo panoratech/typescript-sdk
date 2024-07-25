@@ -37,104 +37,167 @@ export type ListAtsUsersResponse = {
 };
 
 /** @internal */
+export const ListAtsUsersRequest$inboundSchema: z.ZodType<
+    ListAtsUsersRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        remote_data: z.boolean().optional(),
+        limit: z.number().default(50),
+        cursor: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+        });
+    });
+
+/** @internal */
+export type ListAtsUsersRequest$Outbound = {
+    "x-connection-token": string;
+    remote_data?: boolean | undefined;
+    limit: number;
+    cursor?: string | undefined;
+};
+
+/** @internal */
+export const ListAtsUsersRequest$outboundSchema: z.ZodType<
+    ListAtsUsersRequest$Outbound,
+    z.ZodTypeDef,
+    ListAtsUsersRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        remoteData: z.boolean().optional(),
+        limit: z.number().default(50),
+        cursor: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListAtsUsersRequest$ {
-    export const inboundSchema: z.ZodType<ListAtsUsersRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            "x-connection-token": z.string(),
-            remote_data: z.boolean().optional(),
-            limit: z.number().default(50),
-            cursor: z.string().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        remote_data?: boolean | undefined;
-        limit: number;
-        cursor?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListAtsUsersRequest> = z
-        .object({
-            xConnectionToken: z.string(),
-            remoteData: z.boolean().optional(),
-            limit: z.number().default(50),
-            cursor: z.string().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
-        });
+    /** @deprecated use `ListAtsUsersRequest$inboundSchema` instead. */
+    export const inboundSchema = ListAtsUsersRequest$inboundSchema;
+    /** @deprecated use `ListAtsUsersRequest$outboundSchema` instead. */
+    export const outboundSchema = ListAtsUsersRequest$outboundSchema;
+    /** @deprecated use `ListAtsUsersRequest$Outbound` instead. */
+    export type Outbound = ListAtsUsersRequest$Outbound;
 }
 
 /** @internal */
+export const ListAtsUsersResponseBody$inboundSchema: z.ZodType<
+    ListAtsUsersResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        prev_cursor: z.string(),
+        next_cursor: z.string(),
+        data: z.array(components.UnifiedAtsUserOutput$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            prev_cursor: "prevCursor",
+            next_cursor: "nextCursor",
+        });
+    });
+
+/** @internal */
+export type ListAtsUsersResponseBody$Outbound = {
+    prev_cursor: string;
+    next_cursor: string;
+    data: Array<components.UnifiedAtsUserOutput$Outbound>;
+};
+
+/** @internal */
+export const ListAtsUsersResponseBody$outboundSchema: z.ZodType<
+    ListAtsUsersResponseBody$Outbound,
+    z.ZodTypeDef,
+    ListAtsUsersResponseBody
+> = z
+    .object({
+        prevCursor: z.string(),
+        nextCursor: z.string(),
+        data: z.array(components.UnifiedAtsUserOutput$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            prevCursor: "prev_cursor",
+            nextCursor: "next_cursor",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListAtsUsersResponseBody$ {
-    export const inboundSchema: z.ZodType<ListAtsUsersResponseBody, z.ZodTypeDef, unknown> = z
-        .object({
-            prev_cursor: z.string(),
-            next_cursor: z.string(),
-            data: z.array(components.UnifiedAtsUserOutput$.inboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                prev_cursor: "prevCursor",
-                next_cursor: "nextCursor",
-            });
-        });
-
-    export type Outbound = {
-        prev_cursor: string;
-        next_cursor: string;
-        data: Array<components.UnifiedAtsUserOutput$.Outbound>;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListAtsUsersResponseBody> = z
-        .object({
-            prevCursor: z.string(),
-            nextCursor: z.string(),
-            data: z.array(components.UnifiedAtsUserOutput$.outboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                prevCursor: "prev_cursor",
-                nextCursor: "next_cursor",
-            });
-        });
+    /** @deprecated use `ListAtsUsersResponseBody$inboundSchema` instead. */
+    export const inboundSchema = ListAtsUsersResponseBody$inboundSchema;
+    /** @deprecated use `ListAtsUsersResponseBody$outboundSchema` instead. */
+    export const outboundSchema = ListAtsUsersResponseBody$outboundSchema;
+    /** @deprecated use `ListAtsUsersResponseBody$Outbound` instead. */
+    export type Outbound = ListAtsUsersResponseBody$Outbound;
 }
 
 /** @internal */
+export const ListAtsUsersResponse$inboundSchema: z.ZodType<
+    ListAtsUsersResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        object: z.lazy(() => ListAtsUsersResponseBody$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+        });
+    });
+
+/** @internal */
+export type ListAtsUsersResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    object?: ListAtsUsersResponseBody$Outbound | undefined;
+};
+
+/** @internal */
+export const ListAtsUsersResponse$outboundSchema: z.ZodType<
+    ListAtsUsersResponse$Outbound,
+    z.ZodTypeDef,
+    ListAtsUsersResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        object: z.lazy(() => ListAtsUsersResponseBody$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListAtsUsersResponse$ {
-    export const inboundSchema: z.ZodType<ListAtsUsersResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            object: z.lazy(() => ListAtsUsersResponseBody$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        object?: ListAtsUsersResponseBody$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListAtsUsersResponse> = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            object: z.lazy(() => ListAtsUsersResponseBody$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-            });
-        });
+    /** @deprecated use `ListAtsUsersResponse$inboundSchema` instead. */
+    export const inboundSchema = ListAtsUsersResponse$inboundSchema;
+    /** @deprecated use `ListAtsUsersResponse$outboundSchema` instead. */
+    export const outboundSchema = ListAtsUsersResponse$outboundSchema;
+    /** @deprecated use `ListAtsUsersResponse$Outbound` instead. */
+    export type Outbound = ListAtsUsersResponse$Outbound;
 }

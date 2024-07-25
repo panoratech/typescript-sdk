@@ -41,62 +41,138 @@ export type UnifiedUserOutput = {
 };
 
 /** @internal */
+export const UnifiedUserOutputFieldMappings$inboundSchema: z.ZodType<
+    UnifiedUserOutputFieldMappings,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedUserOutputFieldMappings$Outbound = {};
+
+/** @internal */
+export const UnifiedUserOutputFieldMappings$outboundSchema: z.ZodType<
+    UnifiedUserOutputFieldMappings$Outbound,
+    z.ZodTypeDef,
+    UnifiedUserOutputFieldMappings
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedUserOutputFieldMappings$ {
-    export const inboundSchema: z.ZodType<UnifiedUserOutputFieldMappings, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnifiedUserOutputFieldMappings> =
-        z.object({});
+    /** @deprecated use `UnifiedUserOutputFieldMappings$inboundSchema` instead. */
+    export const inboundSchema = UnifiedUserOutputFieldMappings$inboundSchema;
+    /** @deprecated use `UnifiedUserOutputFieldMappings$outboundSchema` instead. */
+    export const outboundSchema = UnifiedUserOutputFieldMappings$outboundSchema;
+    /** @deprecated use `UnifiedUserOutputFieldMappings$Outbound` instead. */
+    export type Outbound = UnifiedUserOutputFieldMappings$Outbound;
 }
 
 /** @internal */
+export const UnifiedUserOutputRemoteData$inboundSchema: z.ZodType<
+    UnifiedUserOutputRemoteData,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedUserOutputRemoteData$Outbound = {};
+
+/** @internal */
+export const UnifiedUserOutputRemoteData$outboundSchema: z.ZodType<
+    UnifiedUserOutputRemoteData$Outbound,
+    z.ZodTypeDef,
+    UnifiedUserOutputRemoteData
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedUserOutputRemoteData$ {
-    export const inboundSchema: z.ZodType<UnifiedUserOutputRemoteData, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnifiedUserOutputRemoteData> =
-        z.object({});
+    /** @deprecated use `UnifiedUserOutputRemoteData$inboundSchema` instead. */
+    export const inboundSchema = UnifiedUserOutputRemoteData$inboundSchema;
+    /** @deprecated use `UnifiedUserOutputRemoteData$outboundSchema` instead. */
+    export const outboundSchema = UnifiedUserOutputRemoteData$outboundSchema;
+    /** @deprecated use `UnifiedUserOutputRemoteData$Outbound` instead. */
+    export type Outbound = UnifiedUserOutputRemoteData$Outbound;
 }
 
 /** @internal */
+export const UnifiedUserOutputCreatedAt$inboundSchema: z.ZodType<
+    UnifiedUserOutputCreatedAt,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedUserOutputCreatedAt$Outbound = {};
+
+/** @internal */
+export const UnifiedUserOutputCreatedAt$outboundSchema: z.ZodType<
+    UnifiedUserOutputCreatedAt$Outbound,
+    z.ZodTypeDef,
+    UnifiedUserOutputCreatedAt
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedUserOutputCreatedAt$ {
-    export const inboundSchema: z.ZodType<UnifiedUserOutputCreatedAt, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnifiedUserOutputCreatedAt> =
-        z.object({});
+    /** @deprecated use `UnifiedUserOutputCreatedAt$inboundSchema` instead. */
+    export const inboundSchema = UnifiedUserOutputCreatedAt$inboundSchema;
+    /** @deprecated use `UnifiedUserOutputCreatedAt$outboundSchema` instead. */
+    export const outboundSchema = UnifiedUserOutputCreatedAt$outboundSchema;
+    /** @deprecated use `UnifiedUserOutputCreatedAt$Outbound` instead. */
+    export type Outbound = UnifiedUserOutputCreatedAt$Outbound;
 }
 
 /** @internal */
+export const UnifiedUserOutputModifiedAt$inboundSchema: z.ZodType<
+    UnifiedUserOutputModifiedAt,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedUserOutputModifiedAt$Outbound = {};
+
+/** @internal */
+export const UnifiedUserOutputModifiedAt$outboundSchema: z.ZodType<
+    UnifiedUserOutputModifiedAt$Outbound,
+    z.ZodTypeDef,
+    UnifiedUserOutputModifiedAt
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedUserOutputModifiedAt$ {
-    export const inboundSchema: z.ZodType<UnifiedUserOutputModifiedAt, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnifiedUserOutputModifiedAt> =
-        z.object({});
+    /** @deprecated use `UnifiedUserOutputModifiedAt$inboundSchema` instead. */
+    export const inboundSchema = UnifiedUserOutputModifiedAt$inboundSchema;
+    /** @deprecated use `UnifiedUserOutputModifiedAt$outboundSchema` instead. */
+    export const outboundSchema = UnifiedUserOutputModifiedAt$outboundSchema;
+    /** @deprecated use `UnifiedUserOutputModifiedAt$Outbound` instead. */
+    export type Outbound = UnifiedUserOutputModifiedAt$Outbound;
 }
 
 /** @internal */
-export namespace UnifiedUserOutput$ {
-    export const inboundSchema: z.ZodType<UnifiedUserOutput, z.ZodTypeDef, unknown> = z
+export const UnifiedUserOutput$inboundSchema: z.ZodType<UnifiedUserOutput, z.ZodTypeDef, unknown> =
+    z
         .object({
             name: z.string(),
             email: z.string(),
             is_me: z.boolean(),
-            field_mappings: z.lazy(() => UnifiedUserOutputFieldMappings$.inboundSchema),
+            field_mappings: z.lazy(() => UnifiedUserOutputFieldMappings$inboundSchema),
             id: z.string().optional(),
             remote_id: z.string().optional(),
-            remote_data: z.lazy(() => UnifiedUserOutputRemoteData$.inboundSchema),
-            created_at: z.lazy(() => UnifiedUserOutputCreatedAt$.inboundSchema),
-            modified_at: z.lazy(() => UnifiedUserOutputModifiedAt$.inboundSchema),
+            remote_data: z.lazy(() => UnifiedUserOutputRemoteData$inboundSchema),
+            created_at: z.lazy(() => UnifiedUserOutputCreatedAt$inboundSchema),
+            modified_at: z.lazy(() => UnifiedUserOutputModifiedAt$inboundSchema),
         })
         .transform((v) => {
             return remap$(v, {
@@ -109,38 +185,56 @@ export namespace UnifiedUserOutput$ {
             });
         });
 
-    export type Outbound = {
-        name: string;
-        email: string;
-        is_me: boolean;
-        field_mappings: UnifiedUserOutputFieldMappings$.Outbound;
-        id?: string | undefined;
-        remote_id?: string | undefined;
-        remote_data: UnifiedUserOutputRemoteData$.Outbound;
-        created_at: UnifiedUserOutputCreatedAt$.Outbound;
-        modified_at: UnifiedUserOutputModifiedAt$.Outbound;
-    };
+/** @internal */
+export type UnifiedUserOutput$Outbound = {
+    name: string;
+    email: string;
+    is_me: boolean;
+    field_mappings: UnifiedUserOutputFieldMappings$Outbound;
+    id?: string | undefined;
+    remote_id?: string | undefined;
+    remote_data: UnifiedUserOutputRemoteData$Outbound;
+    created_at: UnifiedUserOutputCreatedAt$Outbound;
+    modified_at: UnifiedUserOutputModifiedAt$Outbound;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnifiedUserOutput> = z
-        .object({
-            name: z.string(),
-            email: z.string(),
-            isMe: z.boolean(),
-            fieldMappings: z.lazy(() => UnifiedUserOutputFieldMappings$.outboundSchema),
-            id: z.string().optional(),
-            remoteId: z.string().optional(),
-            remoteData: z.lazy(() => UnifiedUserOutputRemoteData$.outboundSchema),
-            createdAt: z.lazy(() => UnifiedUserOutputCreatedAt$.outboundSchema),
-            modifiedAt: z.lazy(() => UnifiedUserOutputModifiedAt$.outboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                isMe: "is_me",
-                fieldMappings: "field_mappings",
-                remoteId: "remote_id",
-                remoteData: "remote_data",
-                createdAt: "created_at",
-                modifiedAt: "modified_at",
-            });
+/** @internal */
+export const UnifiedUserOutput$outboundSchema: z.ZodType<
+    UnifiedUserOutput$Outbound,
+    z.ZodTypeDef,
+    UnifiedUserOutput
+> = z
+    .object({
+        name: z.string(),
+        email: z.string(),
+        isMe: z.boolean(),
+        fieldMappings: z.lazy(() => UnifiedUserOutputFieldMappings$outboundSchema),
+        id: z.string().optional(),
+        remoteId: z.string().optional(),
+        remoteData: z.lazy(() => UnifiedUserOutputRemoteData$outboundSchema),
+        createdAt: z.lazy(() => UnifiedUserOutputCreatedAt$outboundSchema),
+        modifiedAt: z.lazy(() => UnifiedUserOutputModifiedAt$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            isMe: "is_me",
+            fieldMappings: "field_mappings",
+            remoteId: "remote_id",
+            remoteData: "remote_data",
+            createdAt: "created_at",
+            modifiedAt: "modified_at",
         });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UnifiedUserOutput$ {
+    /** @deprecated use `UnifiedUserOutput$inboundSchema` instead. */
+    export const inboundSchema = UnifiedUserOutput$inboundSchema;
+    /** @deprecated use `UnifiedUserOutput$outboundSchema` instead. */
+    export const outboundSchema = UnifiedUserOutput$outboundSchema;
+    /** @deprecated use `UnifiedUserOutput$Outbound` instead. */
+    export type Outbound = UnifiedUserOutput$Outbound;
 }

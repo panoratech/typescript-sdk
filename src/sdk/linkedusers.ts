@@ -3,7 +3,7 @@
  */
 
 import { SDKHooks } from "../hooks/hooks.js";
-import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config.js";
+import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
 import {
     encodeFormQuery as encodeFormQuery$,
     encodeJSON as encodeJSON$,
@@ -49,14 +49,10 @@ export class LinkedUsers extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.CreateLinkedUserResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "*/*");
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => components.CreateLinkedUserDto$.outboundSchema.parse(value$),
+            (value$) => components.CreateLinkedUserDto$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$, { explode: true });
@@ -64,6 +60,11 @@ export class LinkedUsers extends ClientSDK {
         const path$ = this.templateURLComponent("/linked-users")();
 
         const query$ = "";
+
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "*/*",
+        });
 
         let security$;
         if (typeof this.options$.bearer === "function") {
@@ -80,7 +81,6 @@ export class LinkedUsers extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -90,18 +90,24 @@ export class LinkedUsers extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
         const [result$] = await this.matcher<operations.CreateLinkedUserResponse>()
-            .void(201, operations.CreateLinkedUserResponse$)
+            .void(201, operations.CreateLinkedUserResponse$inboundSchema)
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 
@@ -112,13 +118,13 @@ export class LinkedUsers extends ClientSDK {
      * Retrieve Linked Users
      */
     async list(options?: RequestOptions): Promise<operations.ListLinkedUsersResponse> {
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "*/*");
-
         const path$ = this.templateURLComponent("/linked-users")();
 
         const query$ = "";
+
+        const headers$ = new Headers({
+            Accept: "*/*",
+        });
 
         let security$;
         if (typeof this.options$.bearer === "function") {
@@ -135,7 +141,6 @@ export class LinkedUsers extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -144,18 +149,24 @@ export class LinkedUsers extends ClientSDK {
                 path: path$,
                 headers: headers$,
                 query: query$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
         const [result$] = await this.matcher<operations.ListLinkedUsersResponse>()
-            .void(200, operations.ListLinkedUsersResponse$)
+            .void(200, operations.ListLinkedUsersResponse$inboundSchema)
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 
@@ -170,14 +181,10 @@ export class LinkedUsers extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.ImportBatchResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "*/*");
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => components.CreateBatchLinkedUserDto$.outboundSchema.parse(value$),
+            (value$) => components.CreateBatchLinkedUserDto$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$, { explode: true });
@@ -185,6 +192,11 @@ export class LinkedUsers extends ClientSDK {
         const path$ = this.templateURLComponent("/linked-users/batch")();
 
         const query$ = "";
+
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "*/*",
+        });
 
         let security$;
         if (typeof this.options$.bearer === "function") {
@@ -201,7 +213,6 @@ export class LinkedUsers extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -211,18 +222,24 @@ export class LinkedUsers extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
         const [result$] = await this.matcher<operations.ImportBatchResponse>()
-            .void(201, operations.ImportBatchResponse$)
+            .void(201, operations.ImportBatchResponse$inboundSchema)
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 
@@ -237,13 +254,10 @@ export class LinkedUsers extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.RetrieveLinkedUserResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "*/*");
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.RetrieveLinkedUserRequest$.outboundSchema.parse(value$),
+            (value$) => operations.RetrieveLinkedUserRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -252,6 +266,10 @@ export class LinkedUsers extends ClientSDK {
 
         const query$ = encodeFormQuery$({
             id: payload$.id,
+        });
+
+        const headers$ = new Headers({
+            Accept: "*/*",
         });
 
         let security$;
@@ -269,7 +287,6 @@ export class LinkedUsers extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -279,18 +296,24 @@ export class LinkedUsers extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
         const [result$] = await this.matcher<operations.RetrieveLinkedUserResponse>()
-            .void(200, operations.RetrieveLinkedUserResponse$)
+            .void(200, operations.RetrieveLinkedUserResponse$inboundSchema)
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 
@@ -305,13 +328,10 @@ export class LinkedUsers extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.RemoteIdResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "*/*");
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.RemoteIdRequest$.outboundSchema.parse(value$),
+            (value$) => operations.RemoteIdRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -320,6 +340,10 @@ export class LinkedUsers extends ClientSDK {
 
         const query$ = encodeFormQuery$({
             remoteId: payload$.remoteId,
+        });
+
+        const headers$ = new Headers({
+            Accept: "*/*",
         });
 
         let security$;
@@ -337,7 +361,6 @@ export class LinkedUsers extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -347,18 +370,24 @@ export class LinkedUsers extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
         const [result$] = await this.matcher<operations.RemoteIdResponse>()
-            .void(200, operations.RemoteIdResponse$)
+            .void(200, operations.RemoteIdResponse$inboundSchema)
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 

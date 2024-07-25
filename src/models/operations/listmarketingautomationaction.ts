@@ -37,132 +37,167 @@ export type ListMarketingautomationActionResponse = {
 };
 
 /** @internal */
+export const ListMarketingautomationActionRequest$inboundSchema: z.ZodType<
+    ListMarketingautomationActionRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        remote_data: z.boolean().optional(),
+        limit: z.number().default(50),
+        cursor: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+        });
+    });
+
+/** @internal */
+export type ListMarketingautomationActionRequest$Outbound = {
+    "x-connection-token": string;
+    remote_data?: boolean | undefined;
+    limit: number;
+    cursor?: string | undefined;
+};
+
+/** @internal */
+export const ListMarketingautomationActionRequest$outboundSchema: z.ZodType<
+    ListMarketingautomationActionRequest$Outbound,
+    z.ZodTypeDef,
+    ListMarketingautomationActionRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        remoteData: z.boolean().optional(),
+        limit: z.number().default(50),
+        cursor: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListMarketingautomationActionRequest$ {
-    export const inboundSchema: z.ZodType<
-        ListMarketingautomationActionRequest,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            "x-connection-token": z.string(),
-            remote_data: z.boolean().optional(),
-            limit: z.number().default(50),
-            cursor: z.string().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        remote_data?: boolean | undefined;
-        limit: number;
-        cursor?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        ListMarketingautomationActionRequest
-    > = z
-        .object({
-            xConnectionToken: z.string(),
-            remoteData: z.boolean().optional(),
-            limit: z.number().default(50),
-            cursor: z.string().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
-        });
+    /** @deprecated use `ListMarketingautomationActionRequest$inboundSchema` instead. */
+    export const inboundSchema = ListMarketingautomationActionRequest$inboundSchema;
+    /** @deprecated use `ListMarketingautomationActionRequest$outboundSchema` instead. */
+    export const outboundSchema = ListMarketingautomationActionRequest$outboundSchema;
+    /** @deprecated use `ListMarketingautomationActionRequest$Outbound` instead. */
+    export type Outbound = ListMarketingautomationActionRequest$Outbound;
 }
 
 /** @internal */
+export const ListMarketingautomationActionResponseBody$inboundSchema: z.ZodType<
+    ListMarketingautomationActionResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        prev_cursor: z.string(),
+        next_cursor: z.string(),
+        data: z.array(components.UnifiedMarketingautomationActionOutput$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            prev_cursor: "prevCursor",
+            next_cursor: "nextCursor",
+        });
+    });
+
+/** @internal */
+export type ListMarketingautomationActionResponseBody$Outbound = {
+    prev_cursor: string;
+    next_cursor: string;
+    data: Array<components.UnifiedMarketingautomationActionOutput$Outbound>;
+};
+
+/** @internal */
+export const ListMarketingautomationActionResponseBody$outboundSchema: z.ZodType<
+    ListMarketingautomationActionResponseBody$Outbound,
+    z.ZodTypeDef,
+    ListMarketingautomationActionResponseBody
+> = z
+    .object({
+        prevCursor: z.string(),
+        nextCursor: z.string(),
+        data: z.array(components.UnifiedMarketingautomationActionOutput$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            prevCursor: "prev_cursor",
+            nextCursor: "next_cursor",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListMarketingautomationActionResponseBody$ {
-    export const inboundSchema: z.ZodType<
-        ListMarketingautomationActionResponseBody,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            prev_cursor: z.string(),
-            next_cursor: z.string(),
-            data: z.array(components.UnifiedMarketingautomationActionOutput$.inboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                prev_cursor: "prevCursor",
-                next_cursor: "nextCursor",
-            });
-        });
-
-    export type Outbound = {
-        prev_cursor: string;
-        next_cursor: string;
-        data: Array<components.UnifiedMarketingautomationActionOutput$.Outbound>;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        ListMarketingautomationActionResponseBody
-    > = z
-        .object({
-            prevCursor: z.string(),
-            nextCursor: z.string(),
-            data: z.array(components.UnifiedMarketingautomationActionOutput$.outboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                prevCursor: "prev_cursor",
-                nextCursor: "next_cursor",
-            });
-        });
+    /** @deprecated use `ListMarketingautomationActionResponseBody$inboundSchema` instead. */
+    export const inboundSchema = ListMarketingautomationActionResponseBody$inboundSchema;
+    /** @deprecated use `ListMarketingautomationActionResponseBody$outboundSchema` instead. */
+    export const outboundSchema = ListMarketingautomationActionResponseBody$outboundSchema;
+    /** @deprecated use `ListMarketingautomationActionResponseBody$Outbound` instead. */
+    export type Outbound = ListMarketingautomationActionResponseBody$Outbound;
 }
 
 /** @internal */
+export const ListMarketingautomationActionResponse$inboundSchema: z.ZodType<
+    ListMarketingautomationActionResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        object: z.lazy(() => ListMarketingautomationActionResponseBody$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+        });
+    });
+
+/** @internal */
+export type ListMarketingautomationActionResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    object?: ListMarketingautomationActionResponseBody$Outbound | undefined;
+};
+
+/** @internal */
+export const ListMarketingautomationActionResponse$outboundSchema: z.ZodType<
+    ListMarketingautomationActionResponse$Outbound,
+    z.ZodTypeDef,
+    ListMarketingautomationActionResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        object: z.lazy(() => ListMarketingautomationActionResponseBody$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListMarketingautomationActionResponse$ {
-    export const inboundSchema: z.ZodType<
-        ListMarketingautomationActionResponse,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            object: z
-                .lazy(() => ListMarketingautomationActionResponseBody$.inboundSchema)
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        object?: ListMarketingautomationActionResponseBody$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        ListMarketingautomationActionResponse
-    > = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            object: z
-                .lazy(() => ListMarketingautomationActionResponseBody$.outboundSchema)
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-            });
-        });
+    /** @deprecated use `ListMarketingautomationActionResponse$inboundSchema` instead. */
+    export const inboundSchema = ListMarketingautomationActionResponse$inboundSchema;
+    /** @deprecated use `ListMarketingautomationActionResponse$outboundSchema` instead. */
+    export const outboundSchema = ListMarketingautomationActionResponse$outboundSchema;
+    /** @deprecated use `ListMarketingautomationActionResponse$Outbound` instead. */
+    export type Outbound = ListMarketingautomationActionResponse$Outbound;
 }

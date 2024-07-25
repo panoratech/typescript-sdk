@@ -24,72 +24,112 @@ export type CreateCrmEngagementResponse = {
 };
 
 /** @internal */
+export const CreateCrmEngagementRequest$inboundSchema: z.ZodType<
+    CreateCrmEngagementRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        remote_data: z.boolean().optional(),
+        UnifiedCrmEngagementInput: components.UnifiedCrmEngagementInput$inboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+            UnifiedCrmEngagementInput: "unifiedCrmEngagementInput",
+        });
+    });
+
+/** @internal */
+export type CreateCrmEngagementRequest$Outbound = {
+    "x-connection-token": string;
+    remote_data?: boolean | undefined;
+    UnifiedCrmEngagementInput: components.UnifiedCrmEngagementInput$Outbound;
+};
+
+/** @internal */
+export const CreateCrmEngagementRequest$outboundSchema: z.ZodType<
+    CreateCrmEngagementRequest$Outbound,
+    z.ZodTypeDef,
+    CreateCrmEngagementRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        remoteData: z.boolean().optional(),
+        unifiedCrmEngagementInput: components.UnifiedCrmEngagementInput$outboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+            unifiedCrmEngagementInput: "UnifiedCrmEngagementInput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateCrmEngagementRequest$ {
-    export const inboundSchema: z.ZodType<CreateCrmEngagementRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            "x-connection-token": z.string(),
-            remote_data: z.boolean().optional(),
-            UnifiedCrmEngagementInput: components.UnifiedCrmEngagementInput$.inboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-                UnifiedCrmEngagementInput: "unifiedCrmEngagementInput",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        remote_data?: boolean | undefined;
-        UnifiedCrmEngagementInput: components.UnifiedCrmEngagementInput$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateCrmEngagementRequest> = z
-        .object({
-            xConnectionToken: z.string(),
-            remoteData: z.boolean().optional(),
-            unifiedCrmEngagementInput: components.UnifiedCrmEngagementInput$.outboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-                unifiedCrmEngagementInput: "UnifiedCrmEngagementInput",
-            });
-        });
+    /** @deprecated use `CreateCrmEngagementRequest$inboundSchema` instead. */
+    export const inboundSchema = CreateCrmEngagementRequest$inboundSchema;
+    /** @deprecated use `CreateCrmEngagementRequest$outboundSchema` instead. */
+    export const outboundSchema = CreateCrmEngagementRequest$outboundSchema;
+    /** @deprecated use `CreateCrmEngagementRequest$Outbound` instead. */
+    export type Outbound = CreateCrmEngagementRequest$Outbound;
 }
 
 /** @internal */
+export const CreateCrmEngagementResponse$inboundSchema: z.ZodType<
+    CreateCrmEngagementResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        UnifiedCrmEngagementOutput: components.UnifiedCrmEngagementOutput$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            UnifiedCrmEngagementOutput: "unifiedCrmEngagementOutput",
+        });
+    });
+
+/** @internal */
+export type CreateCrmEngagementResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    UnifiedCrmEngagementOutput?: components.UnifiedCrmEngagementOutput$Outbound | undefined;
+};
+
+/** @internal */
+export const CreateCrmEngagementResponse$outboundSchema: z.ZodType<
+    CreateCrmEngagementResponse$Outbound,
+    z.ZodTypeDef,
+    CreateCrmEngagementResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        unifiedCrmEngagementOutput: components.UnifiedCrmEngagementOutput$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            unifiedCrmEngagementOutput: "UnifiedCrmEngagementOutput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateCrmEngagementResponse$ {
-    export const inboundSchema: z.ZodType<CreateCrmEngagementResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            UnifiedCrmEngagementOutput:
-                components.UnifiedCrmEngagementOutput$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-                UnifiedCrmEngagementOutput: "unifiedCrmEngagementOutput",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        UnifiedCrmEngagementOutput?: components.UnifiedCrmEngagementOutput$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateCrmEngagementResponse> = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            unifiedCrmEngagementOutput:
-                components.UnifiedCrmEngagementOutput$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-                unifiedCrmEngagementOutput: "UnifiedCrmEngagementOutput",
-            });
-        });
+    /** @deprecated use `CreateCrmEngagementResponse$inboundSchema` instead. */
+    export const inboundSchema = CreateCrmEngagementResponse$inboundSchema;
+    /** @deprecated use `CreateCrmEngagementResponse$outboundSchema` instead. */
+    export const outboundSchema = CreateCrmEngagementResponse$outboundSchema;
+    /** @deprecated use `CreateCrmEngagementResponse$Outbound` instead. */
+    export type Outbound = CreateCrmEngagementResponse$Outbound;
 }

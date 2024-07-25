@@ -21,75 +21,114 @@ export type CreateFilestorageFileResponse = {
 };
 
 /** @internal */
+export const CreateFilestorageFileRequest$inboundSchema: z.ZodType<
+    CreateFilestorageFileRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        remote_data: z.boolean(),
+        UnifiedFilestorageFileInput: components.UnifiedFilestorageFileInput$inboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+            UnifiedFilestorageFileInput: "unifiedFilestorageFileInput",
+        });
+    });
+
+/** @internal */
+export type CreateFilestorageFileRequest$Outbound = {
+    "x-connection-token": string;
+    remote_data: boolean;
+    UnifiedFilestorageFileInput: components.UnifiedFilestorageFileInput$Outbound;
+};
+
+/** @internal */
+export const CreateFilestorageFileRequest$outboundSchema: z.ZodType<
+    CreateFilestorageFileRequest$Outbound,
+    z.ZodTypeDef,
+    CreateFilestorageFileRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        remoteData: z.boolean(),
+        unifiedFilestorageFileInput: components.UnifiedFilestorageFileInput$outboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+            unifiedFilestorageFileInput: "UnifiedFilestorageFileInput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateFilestorageFileRequest$ {
-    export const inboundSchema: z.ZodType<CreateFilestorageFileRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            "x-connection-token": z.string(),
-            remote_data: z.boolean(),
-            UnifiedFilestorageFileInput: components.UnifiedFilestorageFileInput$.inboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-                UnifiedFilestorageFileInput: "unifiedFilestorageFileInput",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        remote_data: boolean;
-        UnifiedFilestorageFileInput: components.UnifiedFilestorageFileInput$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateFilestorageFileRequest> = z
-        .object({
-            xConnectionToken: z.string(),
-            remoteData: z.boolean(),
-            unifiedFilestorageFileInput: components.UnifiedFilestorageFileInput$.outboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-                unifiedFilestorageFileInput: "UnifiedFilestorageFileInput",
-            });
-        });
+    /** @deprecated use `CreateFilestorageFileRequest$inboundSchema` instead. */
+    export const inboundSchema = CreateFilestorageFileRequest$inboundSchema;
+    /** @deprecated use `CreateFilestorageFileRequest$outboundSchema` instead. */
+    export const outboundSchema = CreateFilestorageFileRequest$outboundSchema;
+    /** @deprecated use `CreateFilestorageFileRequest$Outbound` instead. */
+    export type Outbound = CreateFilestorageFileRequest$Outbound;
 }
 
 /** @internal */
-export namespace CreateFilestorageFileResponse$ {
-    export const inboundSchema: z.ZodType<CreateFilestorageFileResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            UnifiedFilestorageFileOutput:
-                components.UnifiedFilestorageFileOutput$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-                UnifiedFilestorageFileOutput: "unifiedFilestorageFileOutput",
-            });
+export const CreateFilestorageFileResponse$inboundSchema: z.ZodType<
+    CreateFilestorageFileResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        UnifiedFilestorageFileOutput:
+            components.UnifiedFilestorageFileOutput$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            UnifiedFilestorageFileOutput: "unifiedFilestorageFileOutput",
         });
+    });
 
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        UnifiedFilestorageFileOutput?:
-            | components.UnifiedFilestorageFileOutput$.Outbound
-            | undefined;
-    };
+/** @internal */
+export type CreateFilestorageFileResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    UnifiedFilestorageFileOutput?: components.UnifiedFilestorageFileOutput$Outbound | undefined;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateFilestorageFileResponse> =
-        z
-            .object({
-                httpMeta: components.HTTPMetadata$.outboundSchema,
-                unifiedFilestorageFileOutput:
-                    components.UnifiedFilestorageFileOutput$.outboundSchema.optional(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    httpMeta: "HttpMeta",
-                    unifiedFilestorageFileOutput: "UnifiedFilestorageFileOutput",
-                });
-            });
+/** @internal */
+export const CreateFilestorageFileResponse$outboundSchema: z.ZodType<
+    CreateFilestorageFileResponse$Outbound,
+    z.ZodTypeDef,
+    CreateFilestorageFileResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        unifiedFilestorageFileOutput:
+            components.UnifiedFilestorageFileOutput$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            unifiedFilestorageFileOutput: "UnifiedFilestorageFileOutput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateFilestorageFileResponse$ {
+    /** @deprecated use `CreateFilestorageFileResponse$inboundSchema` instead. */
+    export const inboundSchema = CreateFilestorageFileResponse$inboundSchema;
+    /** @deprecated use `CreateFilestorageFileResponse$outboundSchema` instead. */
+    export const outboundSchema = CreateFilestorageFileResponse$outboundSchema;
+    /** @deprecated use `CreateFilestorageFileResponse$Outbound` instead. */
+    export type Outbound = CreateFilestorageFileResponse$Outbound;
 }

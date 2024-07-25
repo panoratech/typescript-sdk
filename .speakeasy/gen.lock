@@ -1,17 +1,21 @@
 lockVersion: 2.0.0
 id: caaaa8c3-6dd7-43a5-841e-c3193e68cc73
 management:
-  docChecksum: 84dafe848c90c6ee89f4b59ae410590c
+  docChecksum: d6e2038538b5382109387fa73ed3af43
   docVersion: "1.0"
-  speakeasyVersion: 1.312.1
-  generationVersion: 2.347.8
-  releaseVersion: 0.0.1
-  configChecksum: 204e761065abbf826f2d9acfe01c9bca
+  speakeasyVersion: 1.345.4
+  generationVersion: 2.378.3
+  releaseVersion: 0.1.0
+  configChecksum: 971f392be517b43cd1543e3907b05fc4
+  repoURL: https://github.com/panoratech/typescript-sdk.git
+  installationURL: https://github.com/panoratech/typescript-sdk
+  published: true
 features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.5
-    core: 3.10.1
+    core: 3.11.9
+    defaultEnabledRetries: 0.1.0
     globalSecurity: 2.82.9
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
@@ -19,6 +23,7 @@ features:
     groups: 2.81.2
     nameOverrides: 2.81.2
     responseFormat: 0.2.3
+    retries: 2.83.0
     sdkHooks: 0.1.0
 generatedFiles:
   - src/sdk/webhook.ts
@@ -141,13 +146,12 @@ generatedFiles:
   - src/types/operations.ts
   - src/types/rfcdate.ts
   - tsconfig.json
-  - src/models/operations/appcontrollerhello.ts
-  - src/models/operations/gethealth.ts
-  - src/models/operations/gethelloprotected.ts
+  - src/models/operations/home.ts
+  - src/models/operations/health.ts
   - src/models/operations/listwebhooks.ts
   - src/models/operations/createwebhook.ts
-  - src/models/operations/deletewebhook.ts
-  - src/models/operations/updatewebhookstatus.ts
+  - src/models/operations/delete.ts
+  - src/models/operations/updatestatus.ts
   - src/models/operations/verifyevent.ts
   - src/models/operations/listticketingticket.ts
   - src/models/operations/createticketingticket.ts
@@ -170,14 +174,14 @@ generatedFiles:
   - src/models/operations/listticketingattachments.ts
   - src/models/operations/createticketingattachment.ts
   - src/models/operations/retrieveticketingattachment.ts
-  - src/models/operations/getsyncstatus.ts
+  - src/models/operations/status.ts
   - src/models/operations/resync.ts
   - src/models/operations/listcrmcompany.ts
   - src/models/operations/createcrmcompany.ts
   - src/models/operations/retrievecrmcompany.ts
   - src/models/operations/listcrmcontacts.ts
-  - src/models/operations/addcrmcontact.ts
-  - src/models/operations/getcrmcontact.ts
+  - src/models/operations/createcrmcontact.ts
+  - src/models/operations/retrievecrmcontact.ts
   - src/models/operations/listcrmdeals.ts
   - src/models/operations/createcrmdeal.ts
   - src/models/operations/retrievecrmdeal.ts
@@ -240,23 +244,23 @@ generatedFiles:
   - src/models/operations/listmarketingautomationcampaign.ts
   - src/models/operations/createmarketingautomationcampaign.ts
   - src/models/operations/retrievemarketingautomationcampaign.ts
-  - src/models/operations/getmarketingautomationcontacts.ts
-  - src/models/operations/addmarketingautomationcontact.ts
-  - src/models/operations/getmarketingautomationcontact.ts
-  - src/models/operations/getemails.ts
-  - src/models/operations/getemail.ts
-  - src/models/operations/getmarketingautomationevents.ts
-  - src/models/operations/getevent.ts
-  - src/models/operations/getlists.ts
-  - src/models/operations/addlist.ts
-  - src/models/operations/getlist.ts
-  - src/models/operations/getmessages.ts
-  - src/models/operations/getmessage.ts
-  - src/models/operations/gettemplates.ts
-  - src/models/operations/addtemplate.ts
-  - src/models/operations/gettemplate.ts
-  - src/models/operations/getmarketingautomationusers.ts
-  - src/models/operations/getmarketingautomationuser.ts
+  - src/models/operations/listmarketingautomationcontacts.ts
+  - src/models/operations/createmarketingautomationcontact.ts
+  - src/models/operations/retrievemarketingautomationcontact.ts
+  - src/models/operations/listmarketingautomationemails.ts
+  - src/models/operations/retrievemarketingautomationemail.ts
+  - src/models/operations/listmarketingautomationevents.ts
+  - src/models/operations/retrievemarketingautomationevent.ts
+  - src/models/operations/listmarketingautomationlists.ts
+  - src/models/operations/createmarketingautomationlist.ts
+  - src/models/operations/retrievemarketingautomationlist.ts
+  - src/models/operations/listmarketingautomationmessages.ts
+  - src/models/operations/retrievemarketingautomationmessage.ts
+  - src/models/operations/listmarketingautomationtemplates.ts
+  - src/models/operations/createmarketingautomationtemplate.ts
+  - src/models/operations/retrievemarketingautomationtemplate.ts
+  - src/models/operations/listmarketingautomationusers.ts
+  - src/models/operations/retrievemarketingautomationuser.ts
   - src/models/operations/listatsactivity.ts
   - src/models/operations/createatsactivity.ts
   - src/models/operations/retrieveatsactivity.ts
@@ -269,8 +273,8 @@ generatedFiles:
   - src/models/operations/listatscandidate.ts
   - src/models/operations/createatscandidate.ts
   - src/models/operations/retrieveatscandidate.ts
-  - src/models/operations/getdepartments.ts
-  - src/models/operations/getdepartment.ts
+  - src/models/operations/listatsdepartments.ts
+  - src/models/operations/retrieveatsdepartment.ts
   - src/models/operations/listatsinterview.ts
   - src/models/operations/createatsinterview.ts
   - src/models/operations/retrieveatsinterview.ts
@@ -282,8 +286,8 @@ generatedFiles:
   - src/models/operations/retrieveatsoffer.ts
   - src/models/operations/listatsoffice.ts
   - src/models/operations/retrieveatsoffice.ts
-  - src/models/operations/getrejectreasons.ts
-  - src/models/operations/getrejectreason.ts
+  - src/models/operations/listatsrejectreasons.ts
+  - src/models/operations/retrieveatsrejectreason.ts
   - src/models/operations/listatsscorecard.ts
   - src/models/operations/retrieveatsscorecard.ts
   - src/models/operations/listatstags.ts
@@ -350,8 +354,8 @@ generatedFiles:
   - src/models/operations/retrievefilestoragefolder.ts
   - src/models/operations/listfilestoragegroup.ts
   - src/models/operations/retrievefilestoragegroup.ts
-  - src/models/operations/getusers.ts
-  - src/models/operations/getuser.ts
+  - src/models/operations/listfilestorageusers.ts
+  - src/models/operations/retrievefilestorageuser.ts
   - src/models/components/httpmetadata.ts
   - src/models/components/webhookresponse.ts
   - src/models/components/webhookdto.ts
@@ -485,15 +489,14 @@ generatedFiles:
   - src/models/errors/index.ts
   - src/models/operations/index.ts
   - src/models/components/index.ts
-  - docs/models/operations/appcontrollerhelloresponse.md
-  - docs/models/operations/gethealthresponse.md
-  - docs/models/operations/gethelloprotectedresponse.md
+  - docs/models/operations/homeresponse.md
+  - docs/models/operations/healthresponse.md
   - docs/models/operations/listwebhooksresponse.md
   - docs/models/operations/createwebhookresponse.md
-  - docs/models/operations/deletewebhookrequest.md
-  - docs/models/operations/deletewebhookresponse.md
-  - docs/models/operations/updatewebhookstatusrequest.md
-  - docs/models/operations/updatewebhookstatusresponse.md
+  - docs/models/operations/deleterequest.md
+  - docs/models/operations/deleteresponse.md
+  - docs/models/operations/updatestatusrequest.md
+  - docs/models/operations/updatestatusresponse.md
   - docs/models/operations/verifyeventresponse.md
   - docs/models/operations/listticketingticketrequest.md
   - docs/models/operations/listticketingticketresponsebody.md
@@ -548,8 +551,8 @@ generatedFiles:
   - docs/models/operations/createticketingattachmentresponse.md
   - docs/models/operations/retrieveticketingattachmentrequest.md
   - docs/models/operations/retrieveticketingattachmentresponse.md
-  - docs/models/operations/getsyncstatusrequest.md
-  - docs/models/operations/getsyncstatusresponse.md
+  - docs/models/operations/statusrequest.md
+  - docs/models/operations/statusresponse.md
   - docs/models/operations/resyncresponse.md
   - docs/models/operations/listcrmcompanyrequest.md
   - docs/models/operations/listcrmcompanyresponsebody.md
@@ -561,10 +564,10 @@ generatedFiles:
   - docs/models/operations/listcrmcontactsrequest.md
   - docs/models/operations/listcrmcontactsresponsebody.md
   - docs/models/operations/listcrmcontactsresponse.md
-  - docs/models/operations/addcrmcontactrequest.md
-  - docs/models/operations/addcrmcontactresponse.md
-  - docs/models/operations/getcrmcontactrequest.md
-  - docs/models/operations/getcrmcontactresponse.md
+  - docs/models/operations/createcrmcontactrequest.md
+  - docs/models/operations/createcrmcontactresponse.md
+  - docs/models/operations/retrievecrmcontactrequest.md
+  - docs/models/operations/retrievecrmcontactresponse.md
   - docs/models/operations/listcrmdealsrequest.md
   - docs/models/operations/listcrmdealsresponsebody.md
   - docs/models/operations/listcrmdealsresponse.md
@@ -706,47 +709,47 @@ generatedFiles:
   - docs/models/operations/createmarketingautomationcampaignresponse.md
   - docs/models/operations/retrievemarketingautomationcampaignrequest.md
   - docs/models/operations/retrievemarketingautomationcampaignresponse.md
-  - docs/models/operations/getmarketingautomationcontactsrequest.md
-  - docs/models/operations/getmarketingautomationcontactsresponsebody.md
-  - docs/models/operations/getmarketingautomationcontactsresponse.md
-  - docs/models/operations/addmarketingautomationcontactrequest.md
-  - docs/models/operations/addmarketingautomationcontactresponse.md
-  - docs/models/operations/getmarketingautomationcontactrequest.md
-  - docs/models/operations/getmarketingautomationcontactresponse.md
-  - docs/models/operations/getemailsrequest.md
-  - docs/models/operations/getemailsresponsebody.md
-  - docs/models/operations/getemailsresponse.md
-  - docs/models/operations/getemailrequest.md
-  - docs/models/operations/getemailresponse.md
-  - docs/models/operations/getmarketingautomationeventsrequest.md
-  - docs/models/operations/getmarketingautomationeventsresponsebody.md
-  - docs/models/operations/getmarketingautomationeventsresponse.md
-  - docs/models/operations/geteventrequest.md
-  - docs/models/operations/geteventresponse.md
-  - docs/models/operations/getlistsrequest.md
-  - docs/models/operations/getlistsresponsebody.md
-  - docs/models/operations/getlistsresponse.md
-  - docs/models/operations/addlistrequest.md
-  - docs/models/operations/addlistresponse.md
-  - docs/models/operations/getlistrequest.md
-  - docs/models/operations/getlistresponse.md
-  - docs/models/operations/getmessagesrequest.md
-  - docs/models/operations/getmessagesresponsebody.md
-  - docs/models/operations/getmessagesresponse.md
-  - docs/models/operations/getmessagerequest.md
-  - docs/models/operations/getmessageresponse.md
-  - docs/models/operations/gettemplatesrequest.md
-  - docs/models/operations/gettemplatesresponsebody.md
-  - docs/models/operations/gettemplatesresponse.md
-  - docs/models/operations/addtemplaterequest.md
-  - docs/models/operations/addtemplateresponse.md
-  - docs/models/operations/gettemplaterequest.md
-  - docs/models/operations/gettemplateresponse.md
-  - docs/models/operations/getmarketingautomationusersrequest.md
-  - docs/models/operations/getmarketingautomationusersresponsebody.md
-  - docs/models/operations/getmarketingautomationusersresponse.md
-  - docs/models/operations/getmarketingautomationuserrequest.md
-  - docs/models/operations/getmarketingautomationuserresponse.md
+  - docs/models/operations/listmarketingautomationcontactsrequest.md
+  - docs/models/operations/listmarketingautomationcontactsresponsebody.md
+  - docs/models/operations/listmarketingautomationcontactsresponse.md
+  - docs/models/operations/createmarketingautomationcontactrequest.md
+  - docs/models/operations/createmarketingautomationcontactresponse.md
+  - docs/models/operations/retrievemarketingautomationcontactrequest.md
+  - docs/models/operations/retrievemarketingautomationcontactresponse.md
+  - docs/models/operations/listmarketingautomationemailsrequest.md
+  - docs/models/operations/listmarketingautomationemailsresponsebody.md
+  - docs/models/operations/listmarketingautomationemailsresponse.md
+  - docs/models/operations/retrievemarketingautomationemailrequest.md
+  - docs/models/operations/retrievemarketingautomationemailresponse.md
+  - docs/models/operations/listmarketingautomationeventsrequest.md
+  - docs/models/operations/listmarketingautomationeventsresponsebody.md
+  - docs/models/operations/listmarketingautomationeventsresponse.md
+  - docs/models/operations/retrievemarketingautomationeventrequest.md
+  - docs/models/operations/retrievemarketingautomationeventresponse.md
+  - docs/models/operations/listmarketingautomationlistsrequest.md
+  - docs/models/operations/listmarketingautomationlistsresponsebody.md
+  - docs/models/operations/listmarketingautomationlistsresponse.md
+  - docs/models/operations/createmarketingautomationlistrequest.md
+  - docs/models/operations/createmarketingautomationlistresponse.md
+  - docs/models/operations/retrievemarketingautomationlistrequest.md
+  - docs/models/operations/retrievemarketingautomationlistresponse.md
+  - docs/models/operations/listmarketingautomationmessagesrequest.md
+  - docs/models/operations/listmarketingautomationmessagesresponsebody.md
+  - docs/models/operations/listmarketingautomationmessagesresponse.md
+  - docs/models/operations/retrievemarketingautomationmessagerequest.md
+  - docs/models/operations/retrievemarketingautomationmessageresponse.md
+  - docs/models/operations/listmarketingautomationtemplatesrequest.md
+  - docs/models/operations/listmarketingautomationtemplatesresponsebody.md
+  - docs/models/operations/listmarketingautomationtemplatesresponse.md
+  - docs/models/operations/createmarketingautomationtemplaterequest.md
+  - docs/models/operations/createmarketingautomationtemplateresponse.md
+  - docs/models/operations/retrievemarketingautomationtemplaterequest.md
+  - docs/models/operations/retrievemarketingautomationtemplateresponse.md
+  - docs/models/operations/listmarketingautomationusersrequest.md
+  - docs/models/operations/listmarketingautomationusersresponsebody.md
+  - docs/models/operations/listmarketingautomationusersresponse.md
+  - docs/models/operations/retrievemarketingautomationuserrequest.md
+  - docs/models/operations/retrievemarketingautomationuserresponse.md
   - docs/models/operations/listatsactivityrequest.md
   - docs/models/operations/listatsactivityresponsebody.md
   - docs/models/operations/listatsactivityresponse.md
@@ -775,11 +778,11 @@ generatedFiles:
   - docs/models/operations/createatscandidateresponse.md
   - docs/models/operations/retrieveatscandidaterequest.md
   - docs/models/operations/retrieveatscandidateresponse.md
-  - docs/models/operations/getdepartmentsrequest.md
-  - docs/models/operations/getdepartmentsresponsebody.md
-  - docs/models/operations/getdepartmentsresponse.md
-  - docs/models/operations/getdepartmentrequest.md
-  - docs/models/operations/getdepartmentresponse.md
+  - docs/models/operations/listatsdepartmentsrequest.md
+  - docs/models/operations/listatsdepartmentsresponsebody.md
+  - docs/models/operations/listatsdepartmentsresponse.md
+  - docs/models/operations/retrieveatsdepartmentrequest.md
+  - docs/models/operations/retrieveatsdepartmentresponse.md
   - docs/models/operations/listatsinterviewrequest.md
   - docs/models/operations/listatsinterviewresponsebody.md
   - docs/models/operations/listatsinterviewresponse.md
@@ -807,11 +810,11 @@ generatedFiles:
   - docs/models/operations/listatsofficeresponse.md
   - docs/models/operations/retrieveatsofficerequest.md
   - docs/models/operations/retrieveatsofficeresponse.md
-  - docs/models/operations/getrejectreasonsrequest.md
-  - docs/models/operations/getrejectreasonsresponsebody.md
-  - docs/models/operations/getrejectreasonsresponse.md
-  - docs/models/operations/getrejectreasonrequest.md
-  - docs/models/operations/getrejectreasonresponse.md
+  - docs/models/operations/listatsrejectreasonsrequest.md
+  - docs/models/operations/listatsrejectreasonsresponsebody.md
+  - docs/models/operations/listatsrejectreasonsresponse.md
+  - docs/models/operations/retrieveatsrejectreasonrequest.md
+  - docs/models/operations/retrieveatsrejectreasonresponse.md
   - docs/models/operations/listatsscorecardrequest.md
   - docs/models/operations/listatsscorecardresponsebody.md
   - docs/models/operations/listatsscorecardresponse.md
@@ -972,11 +975,11 @@ generatedFiles:
   - docs/models/operations/listfilestoragegroupresponse.md
   - docs/models/operations/retrievefilestoragegrouprequest.md
   - docs/models/operations/retrievefilestoragegroupresponse.md
-  - docs/models/operations/getusersrequest.md
-  - docs/models/operations/getusersresponsebody.md
-  - docs/models/operations/getusersresponse.md
-  - docs/models/operations/getuserrequest.md
-  - docs/models/operations/getuserresponse.md
+  - docs/models/operations/listfilestorageusersrequest.md
+  - docs/models/operations/listfilestorageusersresponsebody.md
+  - docs/models/operations/listfilestorageusersresponse.md
+  - docs/models/operations/retrievefilestorageuserrequest.md
+  - docs/models/operations/retrievefilestorageuserresponse.md
   - docs/models/components/httpmetadata.md
   - docs/models/components/webhookresponse.md
   - docs/models/components/webhookdto.md
@@ -1271,6 +1274,7 @@ generatedFiles:
   - docs/models/components/unifieduseroutputmodifiedat.md
   - docs/models/components/unifieduseroutput.md
   - docs/models/components/security.md
+  - docs/lib/utils/retryconfig.md
   - docs/sdks/panora/README.md
   - docs/sdks/webhook/README.md
   - docs/sdks/ticketing/README.md
@@ -1370,3 +1374,4 @@ generatedFiles:
   - src/hooks/hooks.ts
   - src/hooks/types.ts
   - src/hooks/index.ts
+  - CONTRIBUTING.md

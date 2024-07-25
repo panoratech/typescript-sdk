@@ -24,88 +24,114 @@ export type CreateMarketingautomationCampaignResponse = {
 };
 
 /** @internal */
+export const CreateMarketingautomationCampaignRequest$inboundSchema: z.ZodType<
+    CreateMarketingautomationCampaignRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        remote_data: z.boolean().optional(),
+        UnifiedMarketingautomationCampaignInput:
+            components.UnifiedMarketingautomationCampaignInput$inboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+            UnifiedMarketingautomationCampaignInput: "unifiedMarketingautomationCampaignInput",
+        });
+    });
+
+/** @internal */
+export type CreateMarketingautomationCampaignRequest$Outbound = {
+    "x-connection-token": string;
+    remote_data?: boolean | undefined;
+    UnifiedMarketingautomationCampaignInput: components.UnifiedMarketingautomationCampaignInput$Outbound;
+};
+
+/** @internal */
+export const CreateMarketingautomationCampaignRequest$outboundSchema: z.ZodType<
+    CreateMarketingautomationCampaignRequest$Outbound,
+    z.ZodTypeDef,
+    CreateMarketingautomationCampaignRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        remoteData: z.boolean().optional(),
+        unifiedMarketingautomationCampaignInput:
+            components.UnifiedMarketingautomationCampaignInput$outboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+            unifiedMarketingautomationCampaignInput: "UnifiedMarketingautomationCampaignInput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateMarketingautomationCampaignRequest$ {
-    export const inboundSchema: z.ZodType<
-        CreateMarketingautomationCampaignRequest,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            "x-connection-token": z.string(),
-            remote_data: z.boolean().optional(),
-            UnifiedMarketingautomationCampaignInput:
-                components.UnifiedMarketingautomationCampaignInput$.inboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-                UnifiedMarketingautomationCampaignInput: "unifiedMarketingautomationCampaignInput",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        remote_data?: boolean | undefined;
-        UnifiedMarketingautomationCampaignInput: components.UnifiedMarketingautomationCampaignInput$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        CreateMarketingautomationCampaignRequest
-    > = z
-        .object({
-            xConnectionToken: z.string(),
-            remoteData: z.boolean().optional(),
-            unifiedMarketingautomationCampaignInput:
-                components.UnifiedMarketingautomationCampaignInput$.outboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-                unifiedMarketingautomationCampaignInput: "UnifiedMarketingautomationCampaignInput",
-            });
-        });
+    /** @deprecated use `CreateMarketingautomationCampaignRequest$inboundSchema` instead. */
+    export const inboundSchema = CreateMarketingautomationCampaignRequest$inboundSchema;
+    /** @deprecated use `CreateMarketingautomationCampaignRequest$outboundSchema` instead. */
+    export const outboundSchema = CreateMarketingautomationCampaignRequest$outboundSchema;
+    /** @deprecated use `CreateMarketingautomationCampaignRequest$Outbound` instead. */
+    export type Outbound = CreateMarketingautomationCampaignRequest$Outbound;
 }
 
 /** @internal */
+export const CreateMarketingautomationCampaignResponse$inboundSchema: z.ZodType<
+    CreateMarketingautomationCampaignResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        UnifiedCampaignOutput: components.UnifiedCampaignOutput$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            UnifiedCampaignOutput: "unifiedCampaignOutput",
+        });
+    });
+
+/** @internal */
+export type CreateMarketingautomationCampaignResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    UnifiedCampaignOutput?: components.UnifiedCampaignOutput$Outbound | undefined;
+};
+
+/** @internal */
+export const CreateMarketingautomationCampaignResponse$outboundSchema: z.ZodType<
+    CreateMarketingautomationCampaignResponse$Outbound,
+    z.ZodTypeDef,
+    CreateMarketingautomationCampaignResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        unifiedCampaignOutput: components.UnifiedCampaignOutput$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            unifiedCampaignOutput: "UnifiedCampaignOutput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateMarketingautomationCampaignResponse$ {
-    export const inboundSchema: z.ZodType<
-        CreateMarketingautomationCampaignResponse,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            UnifiedCampaignOutput: components.UnifiedCampaignOutput$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-                UnifiedCampaignOutput: "unifiedCampaignOutput",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        UnifiedCampaignOutput?: components.UnifiedCampaignOutput$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        CreateMarketingautomationCampaignResponse
-    > = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            unifiedCampaignOutput: components.UnifiedCampaignOutput$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-                unifiedCampaignOutput: "UnifiedCampaignOutput",
-            });
-        });
+    /** @deprecated use `CreateMarketingautomationCampaignResponse$inboundSchema` instead. */
+    export const inboundSchema = CreateMarketingautomationCampaignResponse$inboundSchema;
+    /** @deprecated use `CreateMarketingautomationCampaignResponse$outboundSchema` instead. */
+    export const outboundSchema = CreateMarketingautomationCampaignResponse$outboundSchema;
+    /** @deprecated use `CreateMarketingautomationCampaignResponse$Outbound` instead. */
+    export type Outbound = CreateMarketingautomationCampaignResponse$Outbound;
 }

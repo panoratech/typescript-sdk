@@ -29,90 +29,116 @@ export type RetrieveMarketingautomationAutomationResponse = {
 };
 
 /** @internal */
+export const RetrieveMarketingautomationAutomationRequest$inboundSchema: z.ZodType<
+    RetrieveMarketingautomationAutomationRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        id: z.string(),
+        remote_data: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+        });
+    });
+
+/** @internal */
+export type RetrieveMarketingautomationAutomationRequest$Outbound = {
+    "x-connection-token": string;
+    id: string;
+    remote_data?: boolean | undefined;
+};
+
+/** @internal */
+export const RetrieveMarketingautomationAutomationRequest$outboundSchema: z.ZodType<
+    RetrieveMarketingautomationAutomationRequest$Outbound,
+    z.ZodTypeDef,
+    RetrieveMarketingautomationAutomationRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        id: z.string(),
+        remoteData: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveMarketingautomationAutomationRequest$ {
-    export const inboundSchema: z.ZodType<
-        RetrieveMarketingautomationAutomationRequest,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            "x-connection-token": z.string(),
-            id: z.string(),
-            remote_data: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        id: string;
-        remote_data?: boolean | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        RetrieveMarketingautomationAutomationRequest
-    > = z
-        .object({
-            xConnectionToken: z.string(),
-            id: z.string(),
-            remoteData: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
-        });
+    /** @deprecated use `RetrieveMarketingautomationAutomationRequest$inboundSchema` instead. */
+    export const inboundSchema = RetrieveMarketingautomationAutomationRequest$inboundSchema;
+    /** @deprecated use `RetrieveMarketingautomationAutomationRequest$outboundSchema` instead. */
+    export const outboundSchema = RetrieveMarketingautomationAutomationRequest$outboundSchema;
+    /** @deprecated use `RetrieveMarketingautomationAutomationRequest$Outbound` instead. */
+    export type Outbound = RetrieveMarketingautomationAutomationRequest$Outbound;
 }
 
 /** @internal */
-export namespace RetrieveMarketingautomationAutomationResponse$ {
-    export const inboundSchema: z.ZodType<
-        RetrieveMarketingautomationAutomationResponse,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
+export const RetrieveMarketingautomationAutomationResponse$inboundSchema: z.ZodType<
+    RetrieveMarketingautomationAutomationResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        UnifiedMarketingautomationAutomationOutput:
+            components.UnifiedMarketingautomationAutomationOutput$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
             UnifiedMarketingautomationAutomationOutput:
-                components.UnifiedMarketingautomationAutomationOutput$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-                UnifiedMarketingautomationAutomationOutput:
-                    "unifiedMarketingautomationAutomationOutput",
-            });
+                "unifiedMarketingautomationAutomationOutput",
         });
+    });
 
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        UnifiedMarketingautomationAutomationOutput?:
-            | components.UnifiedMarketingautomationAutomationOutput$.Outbound
-            | undefined;
-    };
+/** @internal */
+export type RetrieveMarketingautomationAutomationResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    UnifiedMarketingautomationAutomationOutput?:
+        | components.UnifiedMarketingautomationAutomationOutput$Outbound
+        | undefined;
+};
 
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        RetrieveMarketingautomationAutomationResponse
-    > = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
+/** @internal */
+export const RetrieveMarketingautomationAutomationResponse$outboundSchema: z.ZodType<
+    RetrieveMarketingautomationAutomationResponse$Outbound,
+    z.ZodTypeDef,
+    RetrieveMarketingautomationAutomationResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        unifiedMarketingautomationAutomationOutput:
+            components.UnifiedMarketingautomationAutomationOutput$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
             unifiedMarketingautomationAutomationOutput:
-                components.UnifiedMarketingautomationAutomationOutput$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-                unifiedMarketingautomationAutomationOutput:
-                    "UnifiedMarketingautomationAutomationOutput",
-            });
+                "UnifiedMarketingautomationAutomationOutput",
         });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RetrieveMarketingautomationAutomationResponse$ {
+    /** @deprecated use `RetrieveMarketingautomationAutomationResponse$inboundSchema` instead. */
+    export const inboundSchema = RetrieveMarketingautomationAutomationResponse$inboundSchema;
+    /** @deprecated use `RetrieveMarketingautomationAutomationResponse$outboundSchema` instead. */
+    export const outboundSchema = RetrieveMarketingautomationAutomationResponse$outboundSchema;
+    /** @deprecated use `RetrieveMarketingautomationAutomationResponse$Outbound` instead. */
+    export type Outbound = RetrieveMarketingautomationAutomationResponse$Outbound;
 }

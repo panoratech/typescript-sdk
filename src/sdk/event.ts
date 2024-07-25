@@ -3,7 +3,7 @@
  */
 
 import { SDKHooks } from "../hooks/hooks.js";
-import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config.js";
+import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
 import {
     encodeFormQuery as encodeFormQuery$,
     encodeSimple as encodeSimple$,
@@ -43,19 +43,16 @@ export class Event extends ClientSDK {
     /**
      * List a batch of Events
      */
-    async getMarketingAutomationEvents(
-        request: operations.GetMarketingAutomationEventsRequest,
+    async list(
+        request: operations.ListMarketingAutomationEventsRequest,
         options?: RequestOptions
-    ): Promise<operations.GetMarketingAutomationEventsResponse> {
+    ): Promise<operations.ListMarketingAutomationEventsResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
             (value$) =>
-                operations.GetMarketingAutomationEventsRequest$.outboundSchema.parse(value$),
+                operations.ListMarketingAutomationEventsRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -68,13 +65,14 @@ export class Event extends ClientSDK {
             remote_data: payload$.remote_data,
         });
 
-        headers$.set(
-            "x-connection-token",
-            encodeSimple$("x-connection-token", payload$["x-connection-token"], {
-                explode: false,
-                charEncoding: "none",
-            })
-        );
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-connection-token": encodeSimple$(
+                "x-connection-token",
+                payload$["x-connection-token"],
+                { explode: false, charEncoding: "none" }
+            ),
+        });
 
         let security$;
         if (typeof this.options$.bearer === "function") {
@@ -85,13 +83,12 @@ export class Event extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "getMarketingAutomationEvents",
+            operationID: "listMarketingAutomationEvents",
             oAuth2Scopes: [],
             securitySource: this.options$.bearer,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -101,18 +98,26 @@ export class Event extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
-        const [result$] = await this.matcher<operations.GetMarketingAutomationEventsResponse>()
-            .json(200, operations.GetMarketingAutomationEventsResponse$, { key: "object" })
+        const [result$] = await this.matcher<operations.ListMarketingAutomationEventsResponse>()
+            .json(200, operations.ListMarketingAutomationEventsResponse$inboundSchema, {
+                key: "object",
+            })
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 
@@ -125,18 +130,16 @@ export class Event extends ClientSDK {
      * @remarks
      * Retrieve a event from any connected Marketingautomation software
      */
-    async getEvent(
-        request: operations.GetEventRequest,
+    async retrieve(
+        request: operations.RetrieveMarketingautomationEventRequest,
         options?: RequestOptions
-    ): Promise<operations.GetEventResponse> {
+    ): Promise<operations.RetrieveMarketingautomationEventResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetEventRequest$.outboundSchema.parse(value$),
+            (value$) =>
+                operations.RetrieveMarketingautomationEventRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -150,13 +153,14 @@ export class Event extends ClientSDK {
             remote_data: payload$.remote_data,
         });
 
-        headers$.set(
-            "x-connection-token",
-            encodeSimple$("x-connection-token", payload$["x-connection-token"], {
-                explode: false,
-                charEncoding: "none",
-            })
-        );
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-connection-token": encodeSimple$(
+                "x-connection-token",
+                payload$["x-connection-token"],
+                { explode: false, charEncoding: "none" }
+            ),
+        });
 
         let security$;
         if (typeof this.options$.bearer === "function") {
@@ -167,13 +171,12 @@ export class Event extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "getEvent",
+            operationID: "retrieveMarketingautomationEvent",
             oAuth2Scopes: [],
             securitySource: this.options$.bearer,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -183,18 +186,24 @@ export class Event extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
-        const [result$] = await this.matcher<operations.GetEventResponse>()
-            .json(200, operations.GetEventResponse$, {
+        const [result$] = await this.matcher<operations.RetrieveMarketingautomationEventResponse>()
+            .json(200, operations.RetrieveMarketingautomationEventResponse$inboundSchema, {
                 key: "UnifiedMarketingautomationEventOutput",
             })
             .fail(["4XX", "5XX"])

@@ -15,43 +15,78 @@ export type RemoteIdResponse = {
 };
 
 /** @internal */
+export const RemoteIdRequest$inboundSchema: z.ZodType<RemoteIdRequest, z.ZodTypeDef, unknown> =
+    z.object({
+        remoteId: z.string(),
+    });
+
+/** @internal */
+export type RemoteIdRequest$Outbound = {
+    remoteId: string;
+};
+
+/** @internal */
+export const RemoteIdRequest$outboundSchema: z.ZodType<
+    RemoteIdRequest$Outbound,
+    z.ZodTypeDef,
+    RemoteIdRequest
+> = z.object({
+    remoteId: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RemoteIdRequest$ {
-    export const inboundSchema: z.ZodType<RemoteIdRequest, z.ZodTypeDef, unknown> = z.object({
-        remoteId: z.string(),
-    });
-
-    export type Outbound = {
-        remoteId: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RemoteIdRequest> = z.object({
-        remoteId: z.string(),
-    });
+    /** @deprecated use `RemoteIdRequest$inboundSchema` instead. */
+    export const inboundSchema = RemoteIdRequest$inboundSchema;
+    /** @deprecated use `RemoteIdRequest$outboundSchema` instead. */
+    export const outboundSchema = RemoteIdRequest$outboundSchema;
+    /** @deprecated use `RemoteIdRequest$Outbound` instead. */
+    export type Outbound = RemoteIdRequest$Outbound;
 }
 
 /** @internal */
+export const RemoteIdResponse$inboundSchema: z.ZodType<RemoteIdResponse, z.ZodTypeDef, unknown> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+        });
+    });
+
+/** @internal */
+export type RemoteIdResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+};
+
+/** @internal */
+export const RemoteIdResponse$outboundSchema: z.ZodType<
+    RemoteIdResponse$Outbound,
+    z.ZodTypeDef,
+    RemoteIdResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RemoteIdResponse$ {
-    export const inboundSchema: z.ZodType<RemoteIdResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RemoteIdResponse> = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-            });
-        });
+    /** @deprecated use `RemoteIdResponse$inboundSchema` instead. */
+    export const inboundSchema = RemoteIdResponse$inboundSchema;
+    /** @deprecated use `RemoteIdResponse$outboundSchema` instead. */
+    export const outboundSchema = RemoteIdResponse$outboundSchema;
+    /** @deprecated use `RemoteIdResponse$Outbound` instead. */
+    export type Outbound = RemoteIdResponse$Outbound;
 }

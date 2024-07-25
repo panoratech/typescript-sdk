@@ -41,59 +41,80 @@ export type UnifiedTicketingCommentInput = {
 };
 
 /** @internal */
+export const UnifiedTicketingCommentInput$inboundSchema: z.ZodType<
+    UnifiedTicketingCommentInput,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        body: z.string(),
+        html_body: z.string().optional(),
+        is_private: z.boolean().optional(),
+        creator_type: z.string().optional(),
+        ticket_id: z.string().optional(),
+        contact_id: z.string().optional(),
+        user_id: z.string().optional(),
+        attachments: z.array(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            html_body: "htmlBody",
+            is_private: "isPrivate",
+            creator_type: "creatorType",
+            ticket_id: "ticketId",
+            contact_id: "contactId",
+            user_id: "userId",
+        });
+    });
+
+/** @internal */
+export type UnifiedTicketingCommentInput$Outbound = {
+    body: string;
+    html_body?: string | undefined;
+    is_private?: boolean | undefined;
+    creator_type?: string | undefined;
+    ticket_id?: string | undefined;
+    contact_id?: string | undefined;
+    user_id?: string | undefined;
+    attachments?: Array<string> | undefined;
+};
+
+/** @internal */
+export const UnifiedTicketingCommentInput$outboundSchema: z.ZodType<
+    UnifiedTicketingCommentInput$Outbound,
+    z.ZodTypeDef,
+    UnifiedTicketingCommentInput
+> = z
+    .object({
+        body: z.string(),
+        htmlBody: z.string().optional(),
+        isPrivate: z.boolean().optional(),
+        creatorType: z.string().optional(),
+        ticketId: z.string().optional(),
+        contactId: z.string().optional(),
+        userId: z.string().optional(),
+        attachments: z.array(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            htmlBody: "html_body",
+            isPrivate: "is_private",
+            creatorType: "creator_type",
+            ticketId: "ticket_id",
+            contactId: "contact_id",
+            userId: "user_id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedTicketingCommentInput$ {
-    export const inboundSchema: z.ZodType<UnifiedTicketingCommentInput, z.ZodTypeDef, unknown> = z
-        .object({
-            body: z.string(),
-            html_body: z.string().optional(),
-            is_private: z.boolean().optional(),
-            creator_type: z.string().optional(),
-            ticket_id: z.string().optional(),
-            contact_id: z.string().optional(),
-            user_id: z.string().optional(),
-            attachments: z.array(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                html_body: "htmlBody",
-                is_private: "isPrivate",
-                creator_type: "creatorType",
-                ticket_id: "ticketId",
-                contact_id: "contactId",
-                user_id: "userId",
-            });
-        });
-
-    export type Outbound = {
-        body: string;
-        html_body?: string | undefined;
-        is_private?: boolean | undefined;
-        creator_type?: string | undefined;
-        ticket_id?: string | undefined;
-        contact_id?: string | undefined;
-        user_id?: string | undefined;
-        attachments?: Array<string> | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnifiedTicketingCommentInput> = z
-        .object({
-            body: z.string(),
-            htmlBody: z.string().optional(),
-            isPrivate: z.boolean().optional(),
-            creatorType: z.string().optional(),
-            ticketId: z.string().optional(),
-            contactId: z.string().optional(),
-            userId: z.string().optional(),
-            attachments: z.array(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                htmlBody: "html_body",
-                isPrivate: "is_private",
-                creatorType: "creator_type",
-                ticketId: "ticket_id",
-                contactId: "contact_id",
-                userId: "user_id",
-            });
-        });
+    /** @deprecated use `UnifiedTicketingCommentInput$inboundSchema` instead. */
+    export const inboundSchema = UnifiedTicketingCommentInput$inboundSchema;
+    /** @deprecated use `UnifiedTicketingCommentInput$outboundSchema` instead. */
+    export const outboundSchema = UnifiedTicketingCommentInput$outboundSchema;
+    /** @deprecated use `UnifiedTicketingCommentInput$Outbound` instead. */
+    export type Outbound = UnifiedTicketingCommentInput$Outbound;
 }

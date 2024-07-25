@@ -3,9 +3,14 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
-import { Address, Address$ } from "./address.js";
-import { Email, Email$ } from "./email.js";
-import { Phone, Phone$ } from "./phone.js";
+import {
+    Address,
+    Address$inboundSchema,
+    Address$Outbound,
+    Address$outboundSchema,
+} from "./address.js";
+import { Email, Email$inboundSchema, Email$Outbound, Email$outboundSchema } from "./email.js";
+import { Phone, Phone$inboundSchema, Phone$Outbound, Phone$outboundSchema } from "./phone.js";
 import * as z from "zod";
 
 export type UnifiedCrmCompanyInputFieldMappings = {};
@@ -43,74 +48,108 @@ export type UnifiedCrmCompanyInput = {
 };
 
 /** @internal */
+export const UnifiedCrmCompanyInputFieldMappings$inboundSchema: z.ZodType<
+    UnifiedCrmCompanyInputFieldMappings,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedCrmCompanyInputFieldMappings$Outbound = {};
+
+/** @internal */
+export const UnifiedCrmCompanyInputFieldMappings$outboundSchema: z.ZodType<
+    UnifiedCrmCompanyInputFieldMappings$Outbound,
+    z.ZodTypeDef,
+    UnifiedCrmCompanyInputFieldMappings
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedCrmCompanyInputFieldMappings$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedCrmCompanyInputFieldMappings,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedCrmCompanyInputFieldMappings
-    > = z.object({});
+    /** @deprecated use `UnifiedCrmCompanyInputFieldMappings$inboundSchema` instead. */
+    export const inboundSchema = UnifiedCrmCompanyInputFieldMappings$inboundSchema;
+    /** @deprecated use `UnifiedCrmCompanyInputFieldMappings$outboundSchema` instead. */
+    export const outboundSchema = UnifiedCrmCompanyInputFieldMappings$outboundSchema;
+    /** @deprecated use `UnifiedCrmCompanyInputFieldMappings$Outbound` instead. */
+    export type Outbound = UnifiedCrmCompanyInputFieldMappings$Outbound;
 }
 
 /** @internal */
+export const UnifiedCrmCompanyInput$inboundSchema: z.ZodType<
+    UnifiedCrmCompanyInput,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        name: z.string(),
+        industry: z.string().optional(),
+        number_of_employees: z.number().optional(),
+        user_id: z.string().optional(),
+        email_addresses: z.array(Email$inboundSchema).optional(),
+        addresses: z.array(Address$inboundSchema).optional(),
+        phone_numbers: z.array(Phone$inboundSchema).optional(),
+        field_mappings: z.lazy(() => UnifiedCrmCompanyInputFieldMappings$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            number_of_employees: "numberOfEmployees",
+            user_id: "userId",
+            email_addresses: "emailAddresses",
+            phone_numbers: "phoneNumbers",
+            field_mappings: "fieldMappings",
+        });
+    });
+
+/** @internal */
+export type UnifiedCrmCompanyInput$Outbound = {
+    name: string;
+    industry?: string | undefined;
+    number_of_employees?: number | undefined;
+    user_id?: string | undefined;
+    email_addresses?: Array<Email$Outbound> | undefined;
+    addresses?: Array<Address$Outbound> | undefined;
+    phone_numbers?: Array<Phone$Outbound> | undefined;
+    field_mappings: UnifiedCrmCompanyInputFieldMappings$Outbound;
+};
+
+/** @internal */
+export const UnifiedCrmCompanyInput$outboundSchema: z.ZodType<
+    UnifiedCrmCompanyInput$Outbound,
+    z.ZodTypeDef,
+    UnifiedCrmCompanyInput
+> = z
+    .object({
+        name: z.string(),
+        industry: z.string().optional(),
+        numberOfEmployees: z.number().optional(),
+        userId: z.string().optional(),
+        emailAddresses: z.array(Email$outboundSchema).optional(),
+        addresses: z.array(Address$outboundSchema).optional(),
+        phoneNumbers: z.array(Phone$outboundSchema).optional(),
+        fieldMappings: z.lazy(() => UnifiedCrmCompanyInputFieldMappings$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            numberOfEmployees: "number_of_employees",
+            userId: "user_id",
+            emailAddresses: "email_addresses",
+            phoneNumbers: "phone_numbers",
+            fieldMappings: "field_mappings",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedCrmCompanyInput$ {
-    export const inboundSchema: z.ZodType<UnifiedCrmCompanyInput, z.ZodTypeDef, unknown> = z
-        .object({
-            name: z.string(),
-            industry: z.string().optional(),
-            number_of_employees: z.number().optional(),
-            user_id: z.string().optional(),
-            email_addresses: z.array(Email$.inboundSchema).optional(),
-            addresses: z.array(Address$.inboundSchema).optional(),
-            phone_numbers: z.array(Phone$.inboundSchema).optional(),
-            field_mappings: z.lazy(() => UnifiedCrmCompanyInputFieldMappings$.inboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                number_of_employees: "numberOfEmployees",
-                user_id: "userId",
-                email_addresses: "emailAddresses",
-                phone_numbers: "phoneNumbers",
-                field_mappings: "fieldMappings",
-            });
-        });
-
-    export type Outbound = {
-        name: string;
-        industry?: string | undefined;
-        number_of_employees?: number | undefined;
-        user_id?: string | undefined;
-        email_addresses?: Array<Email$.Outbound> | undefined;
-        addresses?: Array<Address$.Outbound> | undefined;
-        phone_numbers?: Array<Phone$.Outbound> | undefined;
-        field_mappings: UnifiedCrmCompanyInputFieldMappings$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnifiedCrmCompanyInput> = z
-        .object({
-            name: z.string(),
-            industry: z.string().optional(),
-            numberOfEmployees: z.number().optional(),
-            userId: z.string().optional(),
-            emailAddresses: z.array(Email$.outboundSchema).optional(),
-            addresses: z.array(Address$.outboundSchema).optional(),
-            phoneNumbers: z.array(Phone$.outboundSchema).optional(),
-            fieldMappings: z.lazy(() => UnifiedCrmCompanyInputFieldMappings$.outboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                numberOfEmployees: "number_of_employees",
-                userId: "user_id",
-                emailAddresses: "email_addresses",
-                phoneNumbers: "phone_numbers",
-                fieldMappings: "field_mappings",
-            });
-        });
+    /** @deprecated use `UnifiedCrmCompanyInput$inboundSchema` instead. */
+    export const inboundSchema = UnifiedCrmCompanyInput$inboundSchema;
+    /** @deprecated use `UnifiedCrmCompanyInput$outboundSchema` instead. */
+    export const outboundSchema = UnifiedCrmCompanyInput$outboundSchema;
+    /** @deprecated use `UnifiedCrmCompanyInput$Outbound` instead. */
+    export type Outbound = UnifiedCrmCompanyInput$Outbound;
 }

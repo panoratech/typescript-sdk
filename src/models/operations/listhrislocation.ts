@@ -37,104 +37,167 @@ export type ListHrisLocationResponse = {
 };
 
 /** @internal */
+export const ListHrisLocationRequest$inboundSchema: z.ZodType<
+    ListHrisLocationRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        remote_data: z.boolean().optional(),
+        limit: z.number().default(50),
+        cursor: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+        });
+    });
+
+/** @internal */
+export type ListHrisLocationRequest$Outbound = {
+    "x-connection-token": string;
+    remote_data?: boolean | undefined;
+    limit: number;
+    cursor?: string | undefined;
+};
+
+/** @internal */
+export const ListHrisLocationRequest$outboundSchema: z.ZodType<
+    ListHrisLocationRequest$Outbound,
+    z.ZodTypeDef,
+    ListHrisLocationRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        remoteData: z.boolean().optional(),
+        limit: z.number().default(50),
+        cursor: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListHrisLocationRequest$ {
-    export const inboundSchema: z.ZodType<ListHrisLocationRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            "x-connection-token": z.string(),
-            remote_data: z.boolean().optional(),
-            limit: z.number().default(50),
-            cursor: z.string().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        remote_data?: boolean | undefined;
-        limit: number;
-        cursor?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListHrisLocationRequest> = z
-        .object({
-            xConnectionToken: z.string(),
-            remoteData: z.boolean().optional(),
-            limit: z.number().default(50),
-            cursor: z.string().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
-        });
+    /** @deprecated use `ListHrisLocationRequest$inboundSchema` instead. */
+    export const inboundSchema = ListHrisLocationRequest$inboundSchema;
+    /** @deprecated use `ListHrisLocationRequest$outboundSchema` instead. */
+    export const outboundSchema = ListHrisLocationRequest$outboundSchema;
+    /** @deprecated use `ListHrisLocationRequest$Outbound` instead. */
+    export type Outbound = ListHrisLocationRequest$Outbound;
 }
 
 /** @internal */
+export const ListHrisLocationResponseBody$inboundSchema: z.ZodType<
+    ListHrisLocationResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        prev_cursor: z.string(),
+        next_cursor: z.string(),
+        data: z.array(components.UnifiedHrisLocationOutput$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            prev_cursor: "prevCursor",
+            next_cursor: "nextCursor",
+        });
+    });
+
+/** @internal */
+export type ListHrisLocationResponseBody$Outbound = {
+    prev_cursor: string;
+    next_cursor: string;
+    data: Array<components.UnifiedHrisLocationOutput$Outbound>;
+};
+
+/** @internal */
+export const ListHrisLocationResponseBody$outboundSchema: z.ZodType<
+    ListHrisLocationResponseBody$Outbound,
+    z.ZodTypeDef,
+    ListHrisLocationResponseBody
+> = z
+    .object({
+        prevCursor: z.string(),
+        nextCursor: z.string(),
+        data: z.array(components.UnifiedHrisLocationOutput$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            prevCursor: "prev_cursor",
+            nextCursor: "next_cursor",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListHrisLocationResponseBody$ {
-    export const inboundSchema: z.ZodType<ListHrisLocationResponseBody, z.ZodTypeDef, unknown> = z
-        .object({
-            prev_cursor: z.string(),
-            next_cursor: z.string(),
-            data: z.array(components.UnifiedHrisLocationOutput$.inboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                prev_cursor: "prevCursor",
-                next_cursor: "nextCursor",
-            });
-        });
-
-    export type Outbound = {
-        prev_cursor: string;
-        next_cursor: string;
-        data: Array<components.UnifiedHrisLocationOutput$.Outbound>;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListHrisLocationResponseBody> = z
-        .object({
-            prevCursor: z.string(),
-            nextCursor: z.string(),
-            data: z.array(components.UnifiedHrisLocationOutput$.outboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                prevCursor: "prev_cursor",
-                nextCursor: "next_cursor",
-            });
-        });
+    /** @deprecated use `ListHrisLocationResponseBody$inboundSchema` instead. */
+    export const inboundSchema = ListHrisLocationResponseBody$inboundSchema;
+    /** @deprecated use `ListHrisLocationResponseBody$outboundSchema` instead. */
+    export const outboundSchema = ListHrisLocationResponseBody$outboundSchema;
+    /** @deprecated use `ListHrisLocationResponseBody$Outbound` instead. */
+    export type Outbound = ListHrisLocationResponseBody$Outbound;
 }
 
 /** @internal */
+export const ListHrisLocationResponse$inboundSchema: z.ZodType<
+    ListHrisLocationResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        object: z.lazy(() => ListHrisLocationResponseBody$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+        });
+    });
+
+/** @internal */
+export type ListHrisLocationResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    object?: ListHrisLocationResponseBody$Outbound | undefined;
+};
+
+/** @internal */
+export const ListHrisLocationResponse$outboundSchema: z.ZodType<
+    ListHrisLocationResponse$Outbound,
+    z.ZodTypeDef,
+    ListHrisLocationResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        object: z.lazy(() => ListHrisLocationResponseBody$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListHrisLocationResponse$ {
-    export const inboundSchema: z.ZodType<ListHrisLocationResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            object: z.lazy(() => ListHrisLocationResponseBody$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        object?: ListHrisLocationResponseBody$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListHrisLocationResponse> = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            object: z.lazy(() => ListHrisLocationResponseBody$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-            });
-        });
+    /** @deprecated use `ListHrisLocationResponse$inboundSchema` instead. */
+    export const inboundSchema = ListHrisLocationResponse$inboundSchema;
+    /** @deprecated use `ListHrisLocationResponse$outboundSchema` instead. */
+    export const outboundSchema = ListHrisLocationResponse$outboundSchema;
+    /** @deprecated use `ListHrisLocationResponse$Outbound` instead. */
+    export type Outbound = ListHrisLocationResponse$Outbound;
 }

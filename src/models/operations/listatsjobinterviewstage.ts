@@ -37,124 +37,167 @@ export type ListAtsJobInterviewStageResponse = {
 };
 
 /** @internal */
+export const ListAtsJobInterviewStageRequest$inboundSchema: z.ZodType<
+    ListAtsJobInterviewStageRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        remote_data: z.boolean().optional(),
+        limit: z.number().default(50),
+        cursor: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+        });
+    });
+
+/** @internal */
+export type ListAtsJobInterviewStageRequest$Outbound = {
+    "x-connection-token": string;
+    remote_data?: boolean | undefined;
+    limit: number;
+    cursor?: string | undefined;
+};
+
+/** @internal */
+export const ListAtsJobInterviewStageRequest$outboundSchema: z.ZodType<
+    ListAtsJobInterviewStageRequest$Outbound,
+    z.ZodTypeDef,
+    ListAtsJobInterviewStageRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        remoteData: z.boolean().optional(),
+        limit: z.number().default(50),
+        cursor: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListAtsJobInterviewStageRequest$ {
-    export const inboundSchema: z.ZodType<ListAtsJobInterviewStageRequest, z.ZodTypeDef, unknown> =
-        z
-            .object({
-                "x-connection-token": z.string(),
-                remote_data: z.boolean().optional(),
-                limit: z.number().default(50),
-                cursor: z.string().optional(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    "x-connection-token": "xConnectionToken",
-                    remote_data: "remoteData",
-                });
-            });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        remote_data?: boolean | undefined;
-        limit: number;
-        cursor?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        ListAtsJobInterviewStageRequest
-    > = z
-        .object({
-            xConnectionToken: z.string(),
-            remoteData: z.boolean().optional(),
-            limit: z.number().default(50),
-            cursor: z.string().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
-        });
+    /** @deprecated use `ListAtsJobInterviewStageRequest$inboundSchema` instead. */
+    export const inboundSchema = ListAtsJobInterviewStageRequest$inboundSchema;
+    /** @deprecated use `ListAtsJobInterviewStageRequest$outboundSchema` instead. */
+    export const outboundSchema = ListAtsJobInterviewStageRequest$outboundSchema;
+    /** @deprecated use `ListAtsJobInterviewStageRequest$Outbound` instead. */
+    export type Outbound = ListAtsJobInterviewStageRequest$Outbound;
 }
 
 /** @internal */
+export const ListAtsJobInterviewStageResponseBody$inboundSchema: z.ZodType<
+    ListAtsJobInterviewStageResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        prev_cursor: z.string(),
+        next_cursor: z.string(),
+        data: z.array(components.UnifiedAtsJobinterviewstageOutput$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            prev_cursor: "prevCursor",
+            next_cursor: "nextCursor",
+        });
+    });
+
+/** @internal */
+export type ListAtsJobInterviewStageResponseBody$Outbound = {
+    prev_cursor: string;
+    next_cursor: string;
+    data: Array<components.UnifiedAtsJobinterviewstageOutput$Outbound>;
+};
+
+/** @internal */
+export const ListAtsJobInterviewStageResponseBody$outboundSchema: z.ZodType<
+    ListAtsJobInterviewStageResponseBody$Outbound,
+    z.ZodTypeDef,
+    ListAtsJobInterviewStageResponseBody
+> = z
+    .object({
+        prevCursor: z.string(),
+        nextCursor: z.string(),
+        data: z.array(components.UnifiedAtsJobinterviewstageOutput$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            prevCursor: "prev_cursor",
+            nextCursor: "next_cursor",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListAtsJobInterviewStageResponseBody$ {
-    export const inboundSchema: z.ZodType<
-        ListAtsJobInterviewStageResponseBody,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            prev_cursor: z.string(),
-            next_cursor: z.string(),
-            data: z.array(components.UnifiedAtsJobinterviewstageOutput$.inboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                prev_cursor: "prevCursor",
-                next_cursor: "nextCursor",
-            });
-        });
-
-    export type Outbound = {
-        prev_cursor: string;
-        next_cursor: string;
-        data: Array<components.UnifiedAtsJobinterviewstageOutput$.Outbound>;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        ListAtsJobInterviewStageResponseBody
-    > = z
-        .object({
-            prevCursor: z.string(),
-            nextCursor: z.string(),
-            data: z.array(components.UnifiedAtsJobinterviewstageOutput$.outboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                prevCursor: "prev_cursor",
-                nextCursor: "next_cursor",
-            });
-        });
+    /** @deprecated use `ListAtsJobInterviewStageResponseBody$inboundSchema` instead. */
+    export const inboundSchema = ListAtsJobInterviewStageResponseBody$inboundSchema;
+    /** @deprecated use `ListAtsJobInterviewStageResponseBody$outboundSchema` instead. */
+    export const outboundSchema = ListAtsJobInterviewStageResponseBody$outboundSchema;
+    /** @deprecated use `ListAtsJobInterviewStageResponseBody$Outbound` instead. */
+    export type Outbound = ListAtsJobInterviewStageResponseBody$Outbound;
 }
 
 /** @internal */
-export namespace ListAtsJobInterviewStageResponse$ {
-    export const inboundSchema: z.ZodType<ListAtsJobInterviewStageResponse, z.ZodTypeDef, unknown> =
-        z
-            .object({
-                HttpMeta: components.HTTPMetadata$.inboundSchema,
-                object: z
-                    .lazy(() => ListAtsJobInterviewStageResponseBody$.inboundSchema)
-                    .optional(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    HttpMeta: "httpMeta",
-                });
-            });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        object?: ListAtsJobInterviewStageResponseBody$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        ListAtsJobInterviewStageResponse
-    > = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            object: z.lazy(() => ListAtsJobInterviewStageResponseBody$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-            });
+export const ListAtsJobInterviewStageResponse$inboundSchema: z.ZodType<
+    ListAtsJobInterviewStageResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        object: z.lazy(() => ListAtsJobInterviewStageResponseBody$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
         });
+    });
+
+/** @internal */
+export type ListAtsJobInterviewStageResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    object?: ListAtsJobInterviewStageResponseBody$Outbound | undefined;
+};
+
+/** @internal */
+export const ListAtsJobInterviewStageResponse$outboundSchema: z.ZodType<
+    ListAtsJobInterviewStageResponse$Outbound,
+    z.ZodTypeDef,
+    ListAtsJobInterviewStageResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        object: z.lazy(() => ListAtsJobInterviewStageResponseBody$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListAtsJobInterviewStageResponse$ {
+    /** @deprecated use `ListAtsJobInterviewStageResponse$inboundSchema` instead. */
+    export const inboundSchema = ListAtsJobInterviewStageResponse$inboundSchema;
+    /** @deprecated use `ListAtsJobInterviewStageResponse$outboundSchema` instead. */
+    export const outboundSchema = ListAtsJobInterviewStageResponse$outboundSchema;
+    /** @deprecated use `ListAtsJobInterviewStageResponse$Outbound` instead. */
+    export type Outbound = ListAtsJobInterviewStageResponse$Outbound;
 }

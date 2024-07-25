@@ -3,7 +3,7 @@
  */
 
 import { SDKHooks } from "../hooks/hooks.js";
-import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config.js";
+import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
 import { HTTPClient } from "../lib/http.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as operations from "../models/operations/index.js";
@@ -107,17 +107,15 @@ export class Panora extends ClientSDK {
         return (this._filestorage ??= new Filestorage(this.options$));
     }
 
-    async appControllerHello(
-        options?: RequestOptions
-    ): Promise<operations.AppControllerHelloResponse> {
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
-
+    async home(options?: RequestOptions): Promise<operations.HomeResponse> {
         const path$ = this.templateURLComponent("/")();
 
         const query$ = "";
 
+        const headers$ = new Headers({
+            Accept: "*/*",
+        });
+
         let security$;
         if (typeof this.options$.bearer === "function") {
             security$ = { bearer: await this.options$.bearer() };
@@ -127,13 +125,12 @@ export class Panora extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "AppController_hello",
+            operationID: "home",
             oAuth2Scopes: [],
             securitySource: this.options$.bearer,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -142,85 +139,38 @@ export class Panora extends ClientSDK {
                 path: path$,
                 headers: headers$,
                 query: query$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
-        const [result$] = await this.matcher<operations.AppControllerHelloResponse>()
-            .json(200, operations.AppControllerHelloResponse$, { key: "string" })
+        const [result$] = await this.matcher<operations.HomeResponse>()
+            .void(200, operations.HomeResponse$inboundSchema)
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 
         return result$;
     }
 
-    async getHealth(options?: RequestOptions): Promise<operations.GetHealthResponse> {
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
-
+    async health(options?: RequestOptions): Promise<operations.HealthResponse> {
         const path$ = this.templateURLComponent("/health")();
 
         const query$ = "";
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
-        const context = {
-            operationID: "getHealth",
-            oAuth2Scopes: [],
-            securitySource: this.options$.bearer,
-        };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
-
-        const doOptions = { context, errorCodes: ["4XX", "5XX"] };
-        const request$ = this.createRequest$(
-            context,
-            {
-                security: securitySettings$,
-                method: "GET",
-                path: path$,
-                headers: headers$,
-                query: query$,
-            },
-            options
-        );
-
-        const response = await this.do$(request$, doOptions);
-
-        const responseFields$ = {
-            HttpMeta: { Response: response, Request: request$ },
-        };
-
-        const [result$] = await this.matcher<operations.GetHealthResponse>()
-            .json(200, operations.GetHealthResponse$, { key: "number" })
-            .fail(["4XX", "5XX"])
-            .match(response, request$, { extraFields: responseFields$ });
-
-        return result$;
-    }
-
-    async getHelloProtected(
-        options?: RequestOptions
-    ): Promise<operations.GetHelloProtectedResponse> {
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
-
-        const path$ = this.templateURLComponent("/protected")();
-
-        const query$ = "";
+        const headers$ = new Headers({
+            Accept: "*/*",
+        });
 
         let security$;
         if (typeof this.options$.bearer === "function") {
@@ -231,13 +181,12 @@ export class Panora extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "getHelloProtected",
+            operationID: "health",
             oAuth2Scopes: [],
             securitySource: this.options$.bearer,
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -246,18 +195,24 @@ export class Panora extends ClientSDK {
                 path: path$,
                 headers: headers$,
                 query: query$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
-        const [result$] = await this.matcher<operations.GetHelloProtectedResponse>()
-            .json(200, operations.GetHelloProtectedResponse$, { key: "string" })
+        const [result$] = await this.matcher<operations.HealthResponse>()
+            .void(200, operations.HealthResponse$inboundSchema)
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 

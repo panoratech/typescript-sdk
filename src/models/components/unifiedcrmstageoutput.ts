@@ -33,112 +33,197 @@ export type UnifiedCrmStageOutput = {
 };
 
 /** @internal */
+export const UnifiedCrmStageOutputFieldMappings$inboundSchema: z.ZodType<
+    UnifiedCrmStageOutputFieldMappings,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedCrmStageOutputFieldMappings$Outbound = {};
+
+/** @internal */
+export const UnifiedCrmStageOutputFieldMappings$outboundSchema: z.ZodType<
+    UnifiedCrmStageOutputFieldMappings$Outbound,
+    z.ZodTypeDef,
+    UnifiedCrmStageOutputFieldMappings
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedCrmStageOutputFieldMappings$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedCrmStageOutputFieldMappings,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedCrmStageOutputFieldMappings
-    > = z.object({});
+    /** @deprecated use `UnifiedCrmStageOutputFieldMappings$inboundSchema` instead. */
+    export const inboundSchema = UnifiedCrmStageOutputFieldMappings$inboundSchema;
+    /** @deprecated use `UnifiedCrmStageOutputFieldMappings$outboundSchema` instead. */
+    export const outboundSchema = UnifiedCrmStageOutputFieldMappings$outboundSchema;
+    /** @deprecated use `UnifiedCrmStageOutputFieldMappings$Outbound` instead. */
+    export type Outbound = UnifiedCrmStageOutputFieldMappings$Outbound;
 }
 
 /** @internal */
+export const UnifiedCrmStageOutputRemoteData$inboundSchema: z.ZodType<
+    UnifiedCrmStageOutputRemoteData,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedCrmStageOutputRemoteData$Outbound = {};
+
+/** @internal */
+export const UnifiedCrmStageOutputRemoteData$outboundSchema: z.ZodType<
+    UnifiedCrmStageOutputRemoteData$Outbound,
+    z.ZodTypeDef,
+    UnifiedCrmStageOutputRemoteData
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedCrmStageOutputRemoteData$ {
-    export const inboundSchema: z.ZodType<UnifiedCrmStageOutputRemoteData, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedCrmStageOutputRemoteData
-    > = z.object({});
+    /** @deprecated use `UnifiedCrmStageOutputRemoteData$inboundSchema` instead. */
+    export const inboundSchema = UnifiedCrmStageOutputRemoteData$inboundSchema;
+    /** @deprecated use `UnifiedCrmStageOutputRemoteData$outboundSchema` instead. */
+    export const outboundSchema = UnifiedCrmStageOutputRemoteData$outboundSchema;
+    /** @deprecated use `UnifiedCrmStageOutputRemoteData$Outbound` instead. */
+    export type Outbound = UnifiedCrmStageOutputRemoteData$Outbound;
 }
 
 /** @internal */
+export const UnifiedCrmStageOutputCreatedAt$inboundSchema: z.ZodType<
+    UnifiedCrmStageOutputCreatedAt,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedCrmStageOutputCreatedAt$Outbound = {};
+
+/** @internal */
+export const UnifiedCrmStageOutputCreatedAt$outboundSchema: z.ZodType<
+    UnifiedCrmStageOutputCreatedAt$Outbound,
+    z.ZodTypeDef,
+    UnifiedCrmStageOutputCreatedAt
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedCrmStageOutputCreatedAt$ {
-    export const inboundSchema: z.ZodType<UnifiedCrmStageOutputCreatedAt, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnifiedCrmStageOutputCreatedAt> =
-        z.object({});
+    /** @deprecated use `UnifiedCrmStageOutputCreatedAt$inboundSchema` instead. */
+    export const inboundSchema = UnifiedCrmStageOutputCreatedAt$inboundSchema;
+    /** @deprecated use `UnifiedCrmStageOutputCreatedAt$outboundSchema` instead. */
+    export const outboundSchema = UnifiedCrmStageOutputCreatedAt$outboundSchema;
+    /** @deprecated use `UnifiedCrmStageOutputCreatedAt$Outbound` instead. */
+    export type Outbound = UnifiedCrmStageOutputCreatedAt$Outbound;
 }
 
 /** @internal */
+export const UnifiedCrmStageOutputModifiedAt$inboundSchema: z.ZodType<
+    UnifiedCrmStageOutputModifiedAt,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedCrmStageOutputModifiedAt$Outbound = {};
+
+/** @internal */
+export const UnifiedCrmStageOutputModifiedAt$outboundSchema: z.ZodType<
+    UnifiedCrmStageOutputModifiedAt$Outbound,
+    z.ZodTypeDef,
+    UnifiedCrmStageOutputModifiedAt
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedCrmStageOutputModifiedAt$ {
-    export const inboundSchema: z.ZodType<UnifiedCrmStageOutputModifiedAt, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedCrmStageOutputModifiedAt
-    > = z.object({});
+    /** @deprecated use `UnifiedCrmStageOutputModifiedAt$inboundSchema` instead. */
+    export const inboundSchema = UnifiedCrmStageOutputModifiedAt$inboundSchema;
+    /** @deprecated use `UnifiedCrmStageOutputModifiedAt$outboundSchema` instead. */
+    export const outboundSchema = UnifiedCrmStageOutputModifiedAt$outboundSchema;
+    /** @deprecated use `UnifiedCrmStageOutputModifiedAt$Outbound` instead. */
+    export type Outbound = UnifiedCrmStageOutputModifiedAt$Outbound;
 }
 
 /** @internal */
+export const UnifiedCrmStageOutput$inboundSchema: z.ZodType<
+    UnifiedCrmStageOutput,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        stage_name: z.string(),
+        field_mappings: z.lazy(() => UnifiedCrmStageOutputFieldMappings$inboundSchema),
+        id: z.string().optional(),
+        remote_id: z.string().optional(),
+        remote_data: z.lazy(() => UnifiedCrmStageOutputRemoteData$inboundSchema),
+        created_at: z.lazy(() => UnifiedCrmStageOutputCreatedAt$inboundSchema),
+        modified_at: z.lazy(() => UnifiedCrmStageOutputModifiedAt$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            stage_name: "stageName",
+            field_mappings: "fieldMappings",
+            remote_id: "remoteId",
+            remote_data: "remoteData",
+            created_at: "createdAt",
+            modified_at: "modifiedAt",
+        });
+    });
+
+/** @internal */
+export type UnifiedCrmStageOutput$Outbound = {
+    stage_name: string;
+    field_mappings: UnifiedCrmStageOutputFieldMappings$Outbound;
+    id?: string | undefined;
+    remote_id?: string | undefined;
+    remote_data: UnifiedCrmStageOutputRemoteData$Outbound;
+    created_at: UnifiedCrmStageOutputCreatedAt$Outbound;
+    modified_at: UnifiedCrmStageOutputModifiedAt$Outbound;
+};
+
+/** @internal */
+export const UnifiedCrmStageOutput$outboundSchema: z.ZodType<
+    UnifiedCrmStageOutput$Outbound,
+    z.ZodTypeDef,
+    UnifiedCrmStageOutput
+> = z
+    .object({
+        stageName: z.string(),
+        fieldMappings: z.lazy(() => UnifiedCrmStageOutputFieldMappings$outboundSchema),
+        id: z.string().optional(),
+        remoteId: z.string().optional(),
+        remoteData: z.lazy(() => UnifiedCrmStageOutputRemoteData$outboundSchema),
+        createdAt: z.lazy(() => UnifiedCrmStageOutputCreatedAt$outboundSchema),
+        modifiedAt: z.lazy(() => UnifiedCrmStageOutputModifiedAt$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            stageName: "stage_name",
+            fieldMappings: "field_mappings",
+            remoteId: "remote_id",
+            remoteData: "remote_data",
+            createdAt: "created_at",
+            modifiedAt: "modified_at",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedCrmStageOutput$ {
-    export const inboundSchema: z.ZodType<UnifiedCrmStageOutput, z.ZodTypeDef, unknown> = z
-        .object({
-            stage_name: z.string(),
-            field_mappings: z.lazy(() => UnifiedCrmStageOutputFieldMappings$.inboundSchema),
-            id: z.string().optional(),
-            remote_id: z.string().optional(),
-            remote_data: z.lazy(() => UnifiedCrmStageOutputRemoteData$.inboundSchema),
-            created_at: z.lazy(() => UnifiedCrmStageOutputCreatedAt$.inboundSchema),
-            modified_at: z.lazy(() => UnifiedCrmStageOutputModifiedAt$.inboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                stage_name: "stageName",
-                field_mappings: "fieldMappings",
-                remote_id: "remoteId",
-                remote_data: "remoteData",
-                created_at: "createdAt",
-                modified_at: "modifiedAt",
-            });
-        });
-
-    export type Outbound = {
-        stage_name: string;
-        field_mappings: UnifiedCrmStageOutputFieldMappings$.Outbound;
-        id?: string | undefined;
-        remote_id?: string | undefined;
-        remote_data: UnifiedCrmStageOutputRemoteData$.Outbound;
-        created_at: UnifiedCrmStageOutputCreatedAt$.Outbound;
-        modified_at: UnifiedCrmStageOutputModifiedAt$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnifiedCrmStageOutput> = z
-        .object({
-            stageName: z.string(),
-            fieldMappings: z.lazy(() => UnifiedCrmStageOutputFieldMappings$.outboundSchema),
-            id: z.string().optional(),
-            remoteId: z.string().optional(),
-            remoteData: z.lazy(() => UnifiedCrmStageOutputRemoteData$.outboundSchema),
-            createdAt: z.lazy(() => UnifiedCrmStageOutputCreatedAt$.outboundSchema),
-            modifiedAt: z.lazy(() => UnifiedCrmStageOutputModifiedAt$.outboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                stageName: "stage_name",
-                fieldMappings: "field_mappings",
-                remoteId: "remote_id",
-                remoteData: "remote_data",
-                createdAt: "created_at",
-                modifiedAt: "modified_at",
-            });
-        });
+    /** @deprecated use `UnifiedCrmStageOutput$inboundSchema` instead. */
+    export const inboundSchema = UnifiedCrmStageOutput$inboundSchema;
+    /** @deprecated use `UnifiedCrmStageOutput$outboundSchema` instead. */
+    export const outboundSchema = UnifiedCrmStageOutput$outboundSchema;
+    /** @deprecated use `UnifiedCrmStageOutput$Outbound` instead. */
+    export type Outbound = UnifiedCrmStageOutput$Outbound;
 }

@@ -3,7 +3,7 @@
  */
 
 import { SDKHooks } from "../hooks/hooks.js";
-import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config.js";
+import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
 import {
     encodeFormQuery as encodeFormQuery$,
     encodeJSON as encodeJSON$,
@@ -49,13 +49,10 @@ export class Interview extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.ListAtsInterviewResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.ListAtsInterviewRequest$.outboundSchema.parse(value$),
+            (value$) => operations.ListAtsInterviewRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -68,13 +65,14 @@ export class Interview extends ClientSDK {
             remote_data: payload$.remote_data,
         });
 
-        headers$.set(
-            "x-connection-token",
-            encodeSimple$("x-connection-token", payload$["x-connection-token"], {
-                explode: false,
-                charEncoding: "none",
-            })
-        );
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-connection-token": encodeSimple$(
+                "x-connection-token",
+                payload$["x-connection-token"],
+                { explode: false, charEncoding: "none" }
+            ),
+        });
 
         let security$;
         if (typeof this.options$.bearer === "function") {
@@ -91,7 +89,6 @@ export class Interview extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -101,18 +98,24 @@ export class Interview extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
         const [result$] = await this.matcher<operations.ListAtsInterviewResponse>()
-            .json(200, operations.ListAtsInterviewResponse$, { key: "object" })
+            .json(200, operations.ListAtsInterviewResponse$inboundSchema, { key: "object" })
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 
@@ -130,14 +133,10 @@ export class Interview extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.CreateAtsInterviewResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.CreateAtsInterviewRequest$.outboundSchema.parse(value$),
+            (value$) => operations.CreateAtsInterviewRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.UnifiedAtsInterviewInput, { explode: true });
@@ -148,13 +147,15 @@ export class Interview extends ClientSDK {
             remote_data: payload$.remote_data,
         });
 
-        headers$.set(
-            "x-connection-token",
-            encodeSimple$("x-connection-token", payload$["x-connection-token"], {
-                explode: false,
-                charEncoding: "none",
-            })
-        );
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            "x-connection-token": encodeSimple$(
+                "x-connection-token",
+                payload$["x-connection-token"],
+                { explode: false, charEncoding: "none" }
+            ),
+        });
 
         let security$;
         if (typeof this.options$.bearer === "function") {
@@ -171,7 +172,6 @@ export class Interview extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -181,18 +181,26 @@ export class Interview extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
         const [result$] = await this.matcher<operations.CreateAtsInterviewResponse>()
-            .json(201, operations.CreateAtsInterviewResponse$, { key: "UnifiedAtsInterviewOutput" })
+            .json(201, operations.CreateAtsInterviewResponse$inboundSchema, {
+                key: "UnifiedAtsInterviewOutput",
+            })
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 
@@ -210,13 +218,10 @@ export class Interview extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.RetrieveAtsInterviewResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.RetrieveAtsInterviewRequest$.outboundSchema.parse(value$),
+            (value$) => operations.RetrieveAtsInterviewRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -230,13 +235,14 @@ export class Interview extends ClientSDK {
             remote_data: payload$.remote_data,
         });
 
-        headers$.set(
-            "x-connection-token",
-            encodeSimple$("x-connection-token", payload$["x-connection-token"], {
-                explode: false,
-                charEncoding: "none",
-            })
-        );
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-connection-token": encodeSimple$(
+                "x-connection-token",
+                payload$["x-connection-token"],
+                { explode: false, charEncoding: "none" }
+            ),
+        });
 
         let security$;
         if (typeof this.options$.bearer === "function") {
@@ -253,7 +259,6 @@ export class Interview extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = { context, errorCodes: ["4XX", "5XX"] };
         const request$ = this.createRequest$(
             context,
             {
@@ -263,18 +268,24 @@ export class Interview extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
 
         const responseFields$ = {
             HttpMeta: { Response: response, Request: request$ },
         };
 
         const [result$] = await this.matcher<operations.RetrieveAtsInterviewResponse>()
-            .json(200, operations.RetrieveAtsInterviewResponse$, {
+            .json(200, operations.RetrieveAtsInterviewResponse$inboundSchema, {
                 key: "UnifiedAtsInterviewOutput",
             })
             .fail(["4XX", "5XX"])

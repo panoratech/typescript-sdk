@@ -49,155 +49,215 @@ export type UnifiedTicketingAttachmentOutput = {
 };
 
 /** @internal */
+export const UnifiedTicketingAttachmentOutputFieldMappings$inboundSchema: z.ZodType<
+    UnifiedTicketingAttachmentOutputFieldMappings,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedTicketingAttachmentOutputFieldMappings$Outbound = {};
+
+/** @internal */
+export const UnifiedTicketingAttachmentOutputFieldMappings$outboundSchema: z.ZodType<
+    UnifiedTicketingAttachmentOutputFieldMappings$Outbound,
+    z.ZodTypeDef,
+    UnifiedTicketingAttachmentOutputFieldMappings
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedTicketingAttachmentOutputFieldMappings$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedTicketingAttachmentOutputFieldMappings,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedTicketingAttachmentOutputFieldMappings
-    > = z.object({});
+    /** @deprecated use `UnifiedTicketingAttachmentOutputFieldMappings$inboundSchema` instead. */
+    export const inboundSchema = UnifiedTicketingAttachmentOutputFieldMappings$inboundSchema;
+    /** @deprecated use `UnifiedTicketingAttachmentOutputFieldMappings$outboundSchema` instead. */
+    export const outboundSchema = UnifiedTicketingAttachmentOutputFieldMappings$outboundSchema;
+    /** @deprecated use `UnifiedTicketingAttachmentOutputFieldMappings$Outbound` instead. */
+    export type Outbound = UnifiedTicketingAttachmentOutputFieldMappings$Outbound;
 }
 
 /** @internal */
+export const UnifiedTicketingAttachmentOutputRemoteData$inboundSchema: z.ZodType<
+    UnifiedTicketingAttachmentOutputRemoteData,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedTicketingAttachmentOutputRemoteData$Outbound = {};
+
+/** @internal */
+export const UnifiedTicketingAttachmentOutputRemoteData$outboundSchema: z.ZodType<
+    UnifiedTicketingAttachmentOutputRemoteData$Outbound,
+    z.ZodTypeDef,
+    UnifiedTicketingAttachmentOutputRemoteData
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedTicketingAttachmentOutputRemoteData$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedTicketingAttachmentOutputRemoteData,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedTicketingAttachmentOutputRemoteData
-    > = z.object({});
+    /** @deprecated use `UnifiedTicketingAttachmentOutputRemoteData$inboundSchema` instead. */
+    export const inboundSchema = UnifiedTicketingAttachmentOutputRemoteData$inboundSchema;
+    /** @deprecated use `UnifiedTicketingAttachmentOutputRemoteData$outboundSchema` instead. */
+    export const outboundSchema = UnifiedTicketingAttachmentOutputRemoteData$outboundSchema;
+    /** @deprecated use `UnifiedTicketingAttachmentOutputRemoteData$Outbound` instead. */
+    export type Outbound = UnifiedTicketingAttachmentOutputRemoteData$Outbound;
 }
 
 /** @internal */
+export const UnifiedTicketingAttachmentOutputCreatedAt$inboundSchema: z.ZodType<
+    UnifiedTicketingAttachmentOutputCreatedAt,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedTicketingAttachmentOutputCreatedAt$Outbound = {};
+
+/** @internal */
+export const UnifiedTicketingAttachmentOutputCreatedAt$outboundSchema: z.ZodType<
+    UnifiedTicketingAttachmentOutputCreatedAt$Outbound,
+    z.ZodTypeDef,
+    UnifiedTicketingAttachmentOutputCreatedAt
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedTicketingAttachmentOutputCreatedAt$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedTicketingAttachmentOutputCreatedAt,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedTicketingAttachmentOutputCreatedAt
-    > = z.object({});
+    /** @deprecated use `UnifiedTicketingAttachmentOutputCreatedAt$inboundSchema` instead. */
+    export const inboundSchema = UnifiedTicketingAttachmentOutputCreatedAt$inboundSchema;
+    /** @deprecated use `UnifiedTicketingAttachmentOutputCreatedAt$outboundSchema` instead. */
+    export const outboundSchema = UnifiedTicketingAttachmentOutputCreatedAt$outboundSchema;
+    /** @deprecated use `UnifiedTicketingAttachmentOutputCreatedAt$Outbound` instead. */
+    export type Outbound = UnifiedTicketingAttachmentOutputCreatedAt$Outbound;
 }
 
 /** @internal */
+export const UnifiedTicketingAttachmentOutputModifiedAt$inboundSchema: z.ZodType<
+    UnifiedTicketingAttachmentOutputModifiedAt,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedTicketingAttachmentOutputModifiedAt$Outbound = {};
+
+/** @internal */
+export const UnifiedTicketingAttachmentOutputModifiedAt$outboundSchema: z.ZodType<
+    UnifiedTicketingAttachmentOutputModifiedAt$Outbound,
+    z.ZodTypeDef,
+    UnifiedTicketingAttachmentOutputModifiedAt
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedTicketingAttachmentOutputModifiedAt$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedTicketingAttachmentOutputModifiedAt,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedTicketingAttachmentOutputModifiedAt
-    > = z.object({});
+    /** @deprecated use `UnifiedTicketingAttachmentOutputModifiedAt$inboundSchema` instead. */
+    export const inboundSchema = UnifiedTicketingAttachmentOutputModifiedAt$inboundSchema;
+    /** @deprecated use `UnifiedTicketingAttachmentOutputModifiedAt$outboundSchema` instead. */
+    export const outboundSchema = UnifiedTicketingAttachmentOutputModifiedAt$outboundSchema;
+    /** @deprecated use `UnifiedTicketingAttachmentOutputModifiedAt$Outbound` instead. */
+    export type Outbound = UnifiedTicketingAttachmentOutputModifiedAt$Outbound;
 }
 
 /** @internal */
-export namespace UnifiedTicketingAttachmentOutput$ {
-    export const inboundSchema: z.ZodType<UnifiedTicketingAttachmentOutput, z.ZodTypeDef, unknown> =
-        z
-            .object({
-                file_name: z.string(),
-                file_url: z.string(),
-                uploader: z.string(),
-                ticket_id: z.string().optional(),
-                comment_id: z.string().optional(),
-                field_mappings: z.lazy(
-                    () => UnifiedTicketingAttachmentOutputFieldMappings$.inboundSchema
-                ),
-                id: z.string().optional(),
-                remote_id: z.string().optional(),
-                remote_data: z.lazy(
-                    () => UnifiedTicketingAttachmentOutputRemoteData$.inboundSchema
-                ),
-                created_at: z.lazy(() => UnifiedTicketingAttachmentOutputCreatedAt$.inboundSchema),
-                modified_at: z.lazy(
-                    () => UnifiedTicketingAttachmentOutputModifiedAt$.inboundSchema
-                ),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    file_name: "fileName",
-                    file_url: "fileUrl",
-                    ticket_id: "ticketId",
-                    comment_id: "commentId",
-                    field_mappings: "fieldMappings",
-                    remote_id: "remoteId",
-                    remote_data: "remoteData",
-                    created_at: "createdAt",
-                    modified_at: "modifiedAt",
-                });
-            });
-
-    export type Outbound = {
-        file_name: string;
-        file_url: string;
-        uploader: string;
-        ticket_id?: string | undefined;
-        comment_id?: string | undefined;
-        field_mappings: UnifiedTicketingAttachmentOutputFieldMappings$.Outbound;
-        id?: string | undefined;
-        remote_id?: string | undefined;
-        remote_data: UnifiedTicketingAttachmentOutputRemoteData$.Outbound;
-        created_at: UnifiedTicketingAttachmentOutputCreatedAt$.Outbound;
-        modified_at: UnifiedTicketingAttachmentOutputModifiedAt$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedTicketingAttachmentOutput
-    > = z
-        .object({
-            fileName: z.string(),
-            fileUrl: z.string(),
-            uploader: z.string(),
-            ticketId: z.string().optional(),
-            commentId: z.string().optional(),
-            fieldMappings: z.lazy(
-                () => UnifiedTicketingAttachmentOutputFieldMappings$.outboundSchema
-            ),
-            id: z.string().optional(),
-            remoteId: z.string().optional(),
-            remoteData: z.lazy(() => UnifiedTicketingAttachmentOutputRemoteData$.outboundSchema),
-            createdAt: z.lazy(() => UnifiedTicketingAttachmentOutputCreatedAt$.outboundSchema),
-            modifiedAt: z.lazy(() => UnifiedTicketingAttachmentOutputModifiedAt$.outboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                fileName: "file_name",
-                fileUrl: "file_url",
-                ticketId: "ticket_id",
-                commentId: "comment_id",
-                fieldMappings: "field_mappings",
-                remoteId: "remote_id",
-                remoteData: "remote_data",
-                createdAt: "created_at",
-                modifiedAt: "modified_at",
-            });
+export const UnifiedTicketingAttachmentOutput$inboundSchema: z.ZodType<
+    UnifiedTicketingAttachmentOutput,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        file_name: z.string(),
+        file_url: z.string(),
+        uploader: z.string(),
+        ticket_id: z.string().optional(),
+        comment_id: z.string().optional(),
+        field_mappings: z.lazy(() => UnifiedTicketingAttachmentOutputFieldMappings$inboundSchema),
+        id: z.string().optional(),
+        remote_id: z.string().optional(),
+        remote_data: z.lazy(() => UnifiedTicketingAttachmentOutputRemoteData$inboundSchema),
+        created_at: z.lazy(() => UnifiedTicketingAttachmentOutputCreatedAt$inboundSchema),
+        modified_at: z.lazy(() => UnifiedTicketingAttachmentOutputModifiedAt$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            file_name: "fileName",
+            file_url: "fileUrl",
+            ticket_id: "ticketId",
+            comment_id: "commentId",
+            field_mappings: "fieldMappings",
+            remote_id: "remoteId",
+            remote_data: "remoteData",
+            created_at: "createdAt",
+            modified_at: "modifiedAt",
         });
+    });
+
+/** @internal */
+export type UnifiedTicketingAttachmentOutput$Outbound = {
+    file_name: string;
+    file_url: string;
+    uploader: string;
+    ticket_id?: string | undefined;
+    comment_id?: string | undefined;
+    field_mappings: UnifiedTicketingAttachmentOutputFieldMappings$Outbound;
+    id?: string | undefined;
+    remote_id?: string | undefined;
+    remote_data: UnifiedTicketingAttachmentOutputRemoteData$Outbound;
+    created_at: UnifiedTicketingAttachmentOutputCreatedAt$Outbound;
+    modified_at: UnifiedTicketingAttachmentOutputModifiedAt$Outbound;
+};
+
+/** @internal */
+export const UnifiedTicketingAttachmentOutput$outboundSchema: z.ZodType<
+    UnifiedTicketingAttachmentOutput$Outbound,
+    z.ZodTypeDef,
+    UnifiedTicketingAttachmentOutput
+> = z
+    .object({
+        fileName: z.string(),
+        fileUrl: z.string(),
+        uploader: z.string(),
+        ticketId: z.string().optional(),
+        commentId: z.string().optional(),
+        fieldMappings: z.lazy(() => UnifiedTicketingAttachmentOutputFieldMappings$outboundSchema),
+        id: z.string().optional(),
+        remoteId: z.string().optional(),
+        remoteData: z.lazy(() => UnifiedTicketingAttachmentOutputRemoteData$outboundSchema),
+        createdAt: z.lazy(() => UnifiedTicketingAttachmentOutputCreatedAt$outboundSchema),
+        modifiedAt: z.lazy(() => UnifiedTicketingAttachmentOutputModifiedAt$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            fileName: "file_name",
+            fileUrl: "file_url",
+            ticketId: "ticket_id",
+            commentId: "comment_id",
+            fieldMappings: "field_mappings",
+            remoteId: "remote_id",
+            remoteData: "remote_data",
+            createdAt: "created_at",
+            modifiedAt: "modified_at",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UnifiedTicketingAttachmentOutput$ {
+    /** @deprecated use `UnifiedTicketingAttachmentOutput$inboundSchema` instead. */
+    export const inboundSchema = UnifiedTicketingAttachmentOutput$inboundSchema;
+    /** @deprecated use `UnifiedTicketingAttachmentOutput$outboundSchema` instead. */
+    export const outboundSchema = UnifiedTicketingAttachmentOutput$outboundSchema;
+    /** @deprecated use `UnifiedTicketingAttachmentOutput$Outbound` instead. */
+    export type Outbound = UnifiedTicketingAttachmentOutput$Outbound;
 }

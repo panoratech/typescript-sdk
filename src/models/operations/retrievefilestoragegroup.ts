@@ -27,82 +27,112 @@ export type RetrieveFilestorageGroupResponse = {
 };
 
 /** @internal */
-export namespace RetrieveFilestorageGroupRequest$ {
-    export const inboundSchema: z.ZodType<RetrieveFilestorageGroupRequest, z.ZodTypeDef, unknown> =
-        z
-            .object({
-                "x-connection-token": z.string(),
-                id: z.string(),
-                remote_data: z.boolean().optional(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    "x-connection-token": "xConnectionToken",
-                    remote_data: "remoteData",
-                });
-            });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        id: string;
-        remote_data?: boolean | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        RetrieveFilestorageGroupRequest
-    > = z
-        .object({
-            xConnectionToken: z.string(),
-            id: z.string(),
-            remoteData: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
+export const RetrieveFilestorageGroupRequest$inboundSchema: z.ZodType<
+    RetrieveFilestorageGroupRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        id: z.string(),
+        remote_data: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
         });
+    });
+
+/** @internal */
+export type RetrieveFilestorageGroupRequest$Outbound = {
+    "x-connection-token": string;
+    id: string;
+    remote_data?: boolean | undefined;
+};
+
+/** @internal */
+export const RetrieveFilestorageGroupRequest$outboundSchema: z.ZodType<
+    RetrieveFilestorageGroupRequest$Outbound,
+    z.ZodTypeDef,
+    RetrieveFilestorageGroupRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        id: z.string(),
+        remoteData: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RetrieveFilestorageGroupRequest$ {
+    /** @deprecated use `RetrieveFilestorageGroupRequest$inboundSchema` instead. */
+    export const inboundSchema = RetrieveFilestorageGroupRequest$inboundSchema;
+    /** @deprecated use `RetrieveFilestorageGroupRequest$outboundSchema` instead. */
+    export const outboundSchema = RetrieveFilestorageGroupRequest$outboundSchema;
+    /** @deprecated use `RetrieveFilestorageGroupRequest$Outbound` instead. */
+    export type Outbound = RetrieveFilestorageGroupRequest$Outbound;
 }
 
 /** @internal */
-export namespace RetrieveFilestorageGroupResponse$ {
-    export const inboundSchema: z.ZodType<RetrieveFilestorageGroupResponse, z.ZodTypeDef, unknown> =
-        z
-            .object({
-                HttpMeta: components.HTTPMetadata$.inboundSchema,
-                UnifiedFilestorageGroupOutput:
-                    components.UnifiedFilestorageGroupOutput$.inboundSchema.optional(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    HttpMeta: "httpMeta",
-                    UnifiedFilestorageGroupOutput: "unifiedFilestorageGroupOutput",
-                });
-            });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        UnifiedFilestorageGroupOutput?:
-            | components.UnifiedFilestorageGroupOutput$.Outbound
-            | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        RetrieveFilestorageGroupResponse
-    > = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            unifiedFilestorageGroupOutput:
-                components.UnifiedFilestorageGroupOutput$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-                unifiedFilestorageGroupOutput: "UnifiedFilestorageGroupOutput",
-            });
+export const RetrieveFilestorageGroupResponse$inboundSchema: z.ZodType<
+    RetrieveFilestorageGroupResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        UnifiedFilestorageGroupOutput:
+            components.UnifiedFilestorageGroupOutput$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            UnifiedFilestorageGroupOutput: "unifiedFilestorageGroupOutput",
         });
+    });
+
+/** @internal */
+export type RetrieveFilestorageGroupResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    UnifiedFilestorageGroupOutput?: components.UnifiedFilestorageGroupOutput$Outbound | undefined;
+};
+
+/** @internal */
+export const RetrieveFilestorageGroupResponse$outboundSchema: z.ZodType<
+    RetrieveFilestorageGroupResponse$Outbound,
+    z.ZodTypeDef,
+    RetrieveFilestorageGroupResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        unifiedFilestorageGroupOutput:
+            components.UnifiedFilestorageGroupOutput$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            unifiedFilestorageGroupOutput: "UnifiedFilestorageGroupOutput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RetrieveFilestorageGroupResponse$ {
+    /** @deprecated use `RetrieveFilestorageGroupResponse$inboundSchema` instead. */
+    export const inboundSchema = RetrieveFilestorageGroupResponse$inboundSchema;
+    /** @deprecated use `RetrieveFilestorageGroupResponse$outboundSchema` instead. */
+    export const outboundSchema = RetrieveFilestorageGroupResponse$outboundSchema;
+    /** @deprecated use `RetrieveFilestorageGroupResponse$Outbound` instead. */
+    export type Outbound = RetrieveFilestorageGroupResponse$Outbound;
 }

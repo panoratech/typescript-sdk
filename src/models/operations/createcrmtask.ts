@@ -24,70 +24,112 @@ export type CreateCrmTaskResponse = {
 };
 
 /** @internal */
+export const CreateCrmTaskRequest$inboundSchema: z.ZodType<
+    CreateCrmTaskRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        remote_data: z.boolean().optional(),
+        UnifiedCrmTaskInput: components.UnifiedCrmTaskInput$inboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+            UnifiedCrmTaskInput: "unifiedCrmTaskInput",
+        });
+    });
+
+/** @internal */
+export type CreateCrmTaskRequest$Outbound = {
+    "x-connection-token": string;
+    remote_data?: boolean | undefined;
+    UnifiedCrmTaskInput: components.UnifiedCrmTaskInput$Outbound;
+};
+
+/** @internal */
+export const CreateCrmTaskRequest$outboundSchema: z.ZodType<
+    CreateCrmTaskRequest$Outbound,
+    z.ZodTypeDef,
+    CreateCrmTaskRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        remoteData: z.boolean().optional(),
+        unifiedCrmTaskInput: components.UnifiedCrmTaskInput$outboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+            unifiedCrmTaskInput: "UnifiedCrmTaskInput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateCrmTaskRequest$ {
-    export const inboundSchema: z.ZodType<CreateCrmTaskRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            "x-connection-token": z.string(),
-            remote_data: z.boolean().optional(),
-            UnifiedCrmTaskInput: components.UnifiedCrmTaskInput$.inboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-                UnifiedCrmTaskInput: "unifiedCrmTaskInput",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        remote_data?: boolean | undefined;
-        UnifiedCrmTaskInput: components.UnifiedCrmTaskInput$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateCrmTaskRequest> = z
-        .object({
-            xConnectionToken: z.string(),
-            remoteData: z.boolean().optional(),
-            unifiedCrmTaskInput: components.UnifiedCrmTaskInput$.outboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-                unifiedCrmTaskInput: "UnifiedCrmTaskInput",
-            });
-        });
+    /** @deprecated use `CreateCrmTaskRequest$inboundSchema` instead. */
+    export const inboundSchema = CreateCrmTaskRequest$inboundSchema;
+    /** @deprecated use `CreateCrmTaskRequest$outboundSchema` instead. */
+    export const outboundSchema = CreateCrmTaskRequest$outboundSchema;
+    /** @deprecated use `CreateCrmTaskRequest$Outbound` instead. */
+    export type Outbound = CreateCrmTaskRequest$Outbound;
 }
 
 /** @internal */
+export const CreateCrmTaskResponse$inboundSchema: z.ZodType<
+    CreateCrmTaskResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        UnifiedCrmTaskOutput: components.UnifiedCrmTaskOutput$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            UnifiedCrmTaskOutput: "unifiedCrmTaskOutput",
+        });
+    });
+
+/** @internal */
+export type CreateCrmTaskResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    UnifiedCrmTaskOutput?: components.UnifiedCrmTaskOutput$Outbound | undefined;
+};
+
+/** @internal */
+export const CreateCrmTaskResponse$outboundSchema: z.ZodType<
+    CreateCrmTaskResponse$Outbound,
+    z.ZodTypeDef,
+    CreateCrmTaskResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        unifiedCrmTaskOutput: components.UnifiedCrmTaskOutput$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            unifiedCrmTaskOutput: "UnifiedCrmTaskOutput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateCrmTaskResponse$ {
-    export const inboundSchema: z.ZodType<CreateCrmTaskResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            UnifiedCrmTaskOutput: components.UnifiedCrmTaskOutput$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-                UnifiedCrmTaskOutput: "unifiedCrmTaskOutput",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        UnifiedCrmTaskOutput?: components.UnifiedCrmTaskOutput$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateCrmTaskResponse> = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            unifiedCrmTaskOutput: components.UnifiedCrmTaskOutput$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-                unifiedCrmTaskOutput: "UnifiedCrmTaskOutput",
-            });
-        });
+    /** @deprecated use `CreateCrmTaskResponse$inboundSchema` instead. */
+    export const inboundSchema = CreateCrmTaskResponse$inboundSchema;
+    /** @deprecated use `CreateCrmTaskResponse$outboundSchema` instead. */
+    export const outboundSchema = CreateCrmTaskResponse$outboundSchema;
+    /** @deprecated use `CreateCrmTaskResponse$Outbound` instead. */
+    export type Outbound = CreateCrmTaskResponse$Outbound;
 }

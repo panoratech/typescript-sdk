@@ -7,18 +7,31 @@ import * as z from "zod";
 export type UnifiedAccountingPurchaseorderOutput = {};
 
 /** @internal */
+export const UnifiedAccountingPurchaseorderOutput$inboundSchema: z.ZodType<
+    UnifiedAccountingPurchaseorderOutput,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedAccountingPurchaseorderOutput$Outbound = {};
+
+/** @internal */
+export const UnifiedAccountingPurchaseorderOutput$outboundSchema: z.ZodType<
+    UnifiedAccountingPurchaseorderOutput$Outbound,
+    z.ZodTypeDef,
+    UnifiedAccountingPurchaseorderOutput
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedAccountingPurchaseorderOutput$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedAccountingPurchaseorderOutput,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedAccountingPurchaseorderOutput
-    > = z.object({});
+    /** @deprecated use `UnifiedAccountingPurchaseorderOutput$inboundSchema` instead. */
+    export const inboundSchema = UnifiedAccountingPurchaseorderOutput$inboundSchema;
+    /** @deprecated use `UnifiedAccountingPurchaseorderOutput$outboundSchema` instead. */
+    export const outboundSchema = UnifiedAccountingPurchaseorderOutput$outboundSchema;
+    /** @deprecated use `UnifiedAccountingPurchaseorderOutput$Outbound` instead. */
+    export type Outbound = UnifiedAccountingPurchaseorderOutput$Outbound;
 }

@@ -27,68 +27,110 @@ export type RetrieveAtsEeocsResponse = {
 };
 
 /** @internal */
+export const RetrieveAtsEeocsRequest$inboundSchema: z.ZodType<
+    RetrieveAtsEeocsRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        id: z.string(),
+        remote_data: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+        });
+    });
+
+/** @internal */
+export type RetrieveAtsEeocsRequest$Outbound = {
+    "x-connection-token": string;
+    id: string;
+    remote_data?: boolean | undefined;
+};
+
+/** @internal */
+export const RetrieveAtsEeocsRequest$outboundSchema: z.ZodType<
+    RetrieveAtsEeocsRequest$Outbound,
+    z.ZodTypeDef,
+    RetrieveAtsEeocsRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        id: z.string(),
+        remoteData: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveAtsEeocsRequest$ {
-    export const inboundSchema: z.ZodType<RetrieveAtsEeocsRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            "x-connection-token": z.string(),
-            id: z.string(),
-            remote_data: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        id: string;
-        remote_data?: boolean | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RetrieveAtsEeocsRequest> = z
-        .object({
-            xConnectionToken: z.string(),
-            id: z.string(),
-            remoteData: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
-        });
+    /** @deprecated use `RetrieveAtsEeocsRequest$inboundSchema` instead. */
+    export const inboundSchema = RetrieveAtsEeocsRequest$inboundSchema;
+    /** @deprecated use `RetrieveAtsEeocsRequest$outboundSchema` instead. */
+    export const outboundSchema = RetrieveAtsEeocsRequest$outboundSchema;
+    /** @deprecated use `RetrieveAtsEeocsRequest$Outbound` instead. */
+    export type Outbound = RetrieveAtsEeocsRequest$Outbound;
 }
 
 /** @internal */
+export const RetrieveAtsEeocsResponse$inboundSchema: z.ZodType<
+    RetrieveAtsEeocsResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        UnifiedAtsEeocsOutput: components.UnifiedAtsEeocsOutput$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            UnifiedAtsEeocsOutput: "unifiedAtsEeocsOutput",
+        });
+    });
+
+/** @internal */
+export type RetrieveAtsEeocsResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    UnifiedAtsEeocsOutput?: components.UnifiedAtsEeocsOutput$Outbound | undefined;
+};
+
+/** @internal */
+export const RetrieveAtsEeocsResponse$outboundSchema: z.ZodType<
+    RetrieveAtsEeocsResponse$Outbound,
+    z.ZodTypeDef,
+    RetrieveAtsEeocsResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        unifiedAtsEeocsOutput: components.UnifiedAtsEeocsOutput$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            unifiedAtsEeocsOutput: "UnifiedAtsEeocsOutput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveAtsEeocsResponse$ {
-    export const inboundSchema: z.ZodType<RetrieveAtsEeocsResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            UnifiedAtsEeocsOutput: components.UnifiedAtsEeocsOutput$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-                UnifiedAtsEeocsOutput: "unifiedAtsEeocsOutput",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        UnifiedAtsEeocsOutput?: components.UnifiedAtsEeocsOutput$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RetrieveAtsEeocsResponse> = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            unifiedAtsEeocsOutput: components.UnifiedAtsEeocsOutput$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-                unifiedAtsEeocsOutput: "UnifiedAtsEeocsOutput",
-            });
-        });
+    /** @deprecated use `RetrieveAtsEeocsResponse$inboundSchema` instead. */
+    export const inboundSchema = RetrieveAtsEeocsResponse$inboundSchema;
+    /** @deprecated use `RetrieveAtsEeocsResponse$outboundSchema` instead. */
+    export const outboundSchema = RetrieveAtsEeocsResponse$outboundSchema;
+    /** @deprecated use `RetrieveAtsEeocsResponse$Outbound` instead. */
+    export type Outbound = RetrieveAtsEeocsResponse$Outbound;
 }

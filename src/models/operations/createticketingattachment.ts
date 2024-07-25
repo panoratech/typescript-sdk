@@ -24,89 +24,116 @@ export type CreateTicketingAttachmentResponse = {
 };
 
 /** @internal */
-export namespace CreateTicketingAttachmentRequest$ {
-    export const inboundSchema: z.ZodType<CreateTicketingAttachmentRequest, z.ZodTypeDef, unknown> =
-        z
-            .object({
-                "x-connection-token": z.string(),
-                remote_data: z.boolean().optional(),
-                UnifiedTicketingAttachmentInput:
-                    components.UnifiedTicketingAttachmentInput$.inboundSchema,
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    "x-connection-token": "xConnectionToken",
-                    remote_data: "remoteData",
-                    UnifiedTicketingAttachmentInput: "unifiedTicketingAttachmentInput",
-                });
-            });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        remote_data?: boolean | undefined;
-        UnifiedTicketingAttachmentInput: components.UnifiedTicketingAttachmentInput$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        CreateTicketingAttachmentRequest
-    > = z
-        .object({
-            xConnectionToken: z.string(),
-            remoteData: z.boolean().optional(),
-            unifiedTicketingAttachmentInput:
-                components.UnifiedTicketingAttachmentInput$.outboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-                unifiedTicketingAttachmentInput: "UnifiedTicketingAttachmentInput",
-            });
+export const CreateTicketingAttachmentRequest$inboundSchema: z.ZodType<
+    CreateTicketingAttachmentRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        remote_data: z.boolean().optional(),
+        UnifiedTicketingAttachmentInput: components.UnifiedTicketingAttachmentInput$inboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+            UnifiedTicketingAttachmentInput: "unifiedTicketingAttachmentInput",
         });
+    });
+
+/** @internal */
+export type CreateTicketingAttachmentRequest$Outbound = {
+    "x-connection-token": string;
+    remote_data?: boolean | undefined;
+    UnifiedTicketingAttachmentInput: components.UnifiedTicketingAttachmentInput$Outbound;
+};
+
+/** @internal */
+export const CreateTicketingAttachmentRequest$outboundSchema: z.ZodType<
+    CreateTicketingAttachmentRequest$Outbound,
+    z.ZodTypeDef,
+    CreateTicketingAttachmentRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        remoteData: z.boolean().optional(),
+        unifiedTicketingAttachmentInput: components.UnifiedTicketingAttachmentInput$outboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+            unifiedTicketingAttachmentInput: "UnifiedTicketingAttachmentInput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateTicketingAttachmentRequest$ {
+    /** @deprecated use `CreateTicketingAttachmentRequest$inboundSchema` instead. */
+    export const inboundSchema = CreateTicketingAttachmentRequest$inboundSchema;
+    /** @deprecated use `CreateTicketingAttachmentRequest$outboundSchema` instead. */
+    export const outboundSchema = CreateTicketingAttachmentRequest$outboundSchema;
+    /** @deprecated use `CreateTicketingAttachmentRequest$Outbound` instead. */
+    export type Outbound = CreateTicketingAttachmentRequest$Outbound;
 }
 
 /** @internal */
+export const CreateTicketingAttachmentResponse$inboundSchema: z.ZodType<
+    CreateTicketingAttachmentResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        UnifiedTicketingAttachmentOutput:
+            components.UnifiedTicketingAttachmentOutput$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            UnifiedTicketingAttachmentOutput: "unifiedTicketingAttachmentOutput",
+        });
+    });
+
+/** @internal */
+export type CreateTicketingAttachmentResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    UnifiedTicketingAttachmentOutput?:
+        | components.UnifiedTicketingAttachmentOutput$Outbound
+        | undefined;
+};
+
+/** @internal */
+export const CreateTicketingAttachmentResponse$outboundSchema: z.ZodType<
+    CreateTicketingAttachmentResponse$Outbound,
+    z.ZodTypeDef,
+    CreateTicketingAttachmentResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        unifiedTicketingAttachmentOutput:
+            components.UnifiedTicketingAttachmentOutput$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            unifiedTicketingAttachmentOutput: "UnifiedTicketingAttachmentOutput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateTicketingAttachmentResponse$ {
-    export const inboundSchema: z.ZodType<
-        CreateTicketingAttachmentResponse,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            UnifiedTicketingAttachmentOutput:
-                components.UnifiedTicketingAttachmentOutput$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-                UnifiedTicketingAttachmentOutput: "unifiedTicketingAttachmentOutput",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        UnifiedTicketingAttachmentOutput?:
-            | components.UnifiedTicketingAttachmentOutput$.Outbound
-            | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        CreateTicketingAttachmentResponse
-    > = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            unifiedTicketingAttachmentOutput:
-                components.UnifiedTicketingAttachmentOutput$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-                unifiedTicketingAttachmentOutput: "UnifiedTicketingAttachmentOutput",
-            });
-        });
+    /** @deprecated use `CreateTicketingAttachmentResponse$inboundSchema` instead. */
+    export const inboundSchema = CreateTicketingAttachmentResponse$inboundSchema;
+    /** @deprecated use `CreateTicketingAttachmentResponse$outboundSchema` instead. */
+    export const outboundSchema = CreateTicketingAttachmentResponse$outboundSchema;
+    /** @deprecated use `CreateTicketingAttachmentResponse$Outbound` instead. */
+    export type Outbound = CreateTicketingAttachmentResponse$Outbound;
 }

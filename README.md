@@ -22,25 +22,25 @@ It has been generated successfully based on your OpenAPI spec. However, it is no
 ### NPM
 
 ```bash
-npm add <UNSET>
+npm add @panora/sdk
 ```
 
 ### PNPM
 
 ```bash
-pnpm add <UNSET>
+pnpm add @panora/sdk
 ```
 
 ### Bun
 
 ```bash
-bun add <UNSET>
+bun add @panora/sdk
 ```
 
 ### Yarn
 
 ```bash
-yarn add <UNSET> zod
+yarn add @panora/sdk zod
 
 # Note that Yarn does not install peer dependencies automatically. You will need
 # to install zod as shown above.
@@ -66,7 +66,7 @@ const panora = new Panora({
 });
 
 async function run() {
-    const result = await panora.appControllerHello();
+    const result = await panora.home();
 
     // Handle the result
     console.log(result);
@@ -82,16 +82,15 @@ run();
 
 ### [Panora SDK](docs/sdks/panora/README.md)
 
-* [appControllerHello](docs/sdks/panora/README.md#appcontrollerhello)
-* [getHealth](docs/sdks/panora/README.md#gethealth)
-* [getHelloProtected](docs/sdks/panora/README.md#gethelloprotected)
+* [home](docs/sdks/panora/README.md#home)
+* [health](docs/sdks/panora/README.md#health)
 
 ### [webhook](docs/sdks/webhook/README.md)
 
 * [list](docs/sdks/webhook/README.md#list) - List webhooks 
 * [create](docs/sdks/webhook/README.md#create) - Add webhook metadata
-* [deleteWebhook](docs/sdks/webhook/README.md#deletewebhook) - Delete Webhook
-* [updateWebhookStatus](docs/sdks/webhook/README.md#updatewebhookstatus) - Update webhook status
+* [delete](docs/sdks/webhook/README.md#delete) - Delete Webhook
+* [updateStatus](docs/sdks/webhook/README.md#updatestatus) - Update webhook status
 * [verifyEvent](docs/sdks/webhook/README.md#verifyevent) - Verify payload sgnature of the webhook
 
 
@@ -145,7 +144,7 @@ run();
 
 ### [sync](docs/sdks/sync/README.md)
 
-* [getSyncStatus](docs/sdks/sync/README.md#getsyncstatus) - Retrieve sync status of a certain vertical
+* [status](docs/sdks/sync/README.md#status) - Retrieve sync status of a certain vertical
 * [resync](docs/sdks/sync/README.md#resync) - Resync common objects across a vertical
 
 
@@ -158,8 +157,8 @@ run();
 ### [crm.contacts](docs/sdks/panoracontacts/README.md)
 
 * [list](docs/sdks/panoracontacts/README.md#list) - List CRM Contacts
-* [addCrmContact](docs/sdks/panoracontacts/README.md#addcrmcontact) - Create CRM Contact
-* [getCrmContact](docs/sdks/panoracontacts/README.md#getcrmcontact) - Retrieve a CRM Contact
+* [create](docs/sdks/panoracontacts/README.md#create) - Create CRM Contact
+* [retrieve](docs/sdks/panoracontacts/README.md#retrieve) - Retrieve a CRM Contact
 
 ### [crm.deals](docs/sdks/deals/README.md)
 
@@ -305,41 +304,41 @@ run();
 
 ### [marketingautomation.contact](docs/sdks/contact/README.md)
 
-* [getMarketingAutomationContacts](docs/sdks/contact/README.md#getmarketingautomationcontacts) - List a batch of Contacts
-* [addMarketingAutomationContact](docs/sdks/contact/README.md#addmarketingautomationcontact) - Create a Contact
-* [getMarketingAutomationContact](docs/sdks/contact/README.md#getmarketingautomationcontact) - Retrieve a Contact
+* [list](docs/sdks/contact/README.md#list) - List a batch of Contacts
+* [create](docs/sdks/contact/README.md#create) - Create a Contact
+* [retrieve](docs/sdks/contact/README.md#retrieve) - Retrieve a Contact
 
 ### [marketingautomation.email](docs/sdks/email/README.md)
 
-* [getEmails](docs/sdks/email/README.md#getemails) - List a batch of Emails
-* [getEmail](docs/sdks/email/README.md#getemail) - Retrieve a Email
+* [list](docs/sdks/email/README.md#list) - List a batch of Emails
+* [retrieve](docs/sdks/email/README.md#retrieve) - Retrieve a Email
 
 ### [marketingautomation.event](docs/sdks/event/README.md)
 
-* [getMarketingAutomationEvents](docs/sdks/event/README.md#getmarketingautomationevents) - List a batch of Events
-* [getEvent](docs/sdks/event/README.md#getevent) - Retrieve a Event
+* [list](docs/sdks/event/README.md#list) - List a batch of Events
+* [retrieve](docs/sdks/event/README.md#retrieve) - Retrieve a Event
 
 ### [marketingautomation.list](docs/sdks/list/README.md)
 
-* [getLists](docs/sdks/list/README.md#getlists) - List a batch of Lists
-* [addList](docs/sdks/list/README.md#addlist) - Create a List
-* [getList](docs/sdks/list/README.md#getlist) - Retrieve a List
+* [list](docs/sdks/list/README.md#list) - List a batch of Lists
+* [create](docs/sdks/list/README.md#create) - Create a List
+* [retrieve](docs/sdks/list/README.md#retrieve) - Retrieve a List
 
 ### [marketingautomation.message](docs/sdks/message/README.md)
 
-* [getMessages](docs/sdks/message/README.md#getmessages) - List a batch of Messages
-* [getMessage](docs/sdks/message/README.md#getmessage) - Retrieve a Message
+* [list](docs/sdks/message/README.md#list) - List a batch of Messages
+* [retrieve](docs/sdks/message/README.md#retrieve) - Retrieve a Message
 
 ### [marketingautomation.template](docs/sdks/template/README.md)
 
-* [getTemplates](docs/sdks/template/README.md#gettemplates) - List a batch of Templates
-* [addTemplate](docs/sdks/template/README.md#addtemplate) - Create a Template
-* [getTemplate](docs/sdks/template/README.md#gettemplate) - Retrieve a Template
+* [list](docs/sdks/template/README.md#list) - List a batch of Templates
+* [create](docs/sdks/template/README.md#create) - Create a Template
+* [retrieve](docs/sdks/template/README.md#retrieve) - Retrieve a Template
 
 ### [marketingautomation.user](docs/sdks/user/README.md)
 
-* [getMarketingAutomationUsers](docs/sdks/user/README.md#getmarketingautomationusers) - List a batch of Users
-* [getMarketingAutomationUser](docs/sdks/user/README.md#getmarketingautomationuser) - Retrieve a User
+* [list](docs/sdks/user/README.md#list) - List a batch of Users
+* [retrieve](docs/sdks/user/README.md#retrieve) - Retrieve a User
 
 
 ### [ats.activity](docs/sdks/activity/README.md)
@@ -368,8 +367,8 @@ run();
 
 ### [ats.department](docs/sdks/department/README.md)
 
-* [getDepartments](docs/sdks/department/README.md#getdepartments) - List a batch of Departments
-* [getDepartment](docs/sdks/department/README.md#getdepartment) - Retrieve a Department
+* [list](docs/sdks/department/README.md#list) - List a batch of Departments
+* [retrieve](docs/sdks/department/README.md#retrieve) - Retrieve a Department
 
 ### [ats.interview](docs/sdks/interview/README.md)
 
@@ -399,8 +398,8 @@ run();
 
 ### [ats.rejectreason](docs/sdks/rejectreason/README.md)
 
-* [getRejectReasons](docs/sdks/rejectreason/README.md#getrejectreasons) - List a batch of RejectReasons
-* [getRejectReason](docs/sdks/rejectreason/README.md#getrejectreason) - Retrieve a RejectReason
+* [list](docs/sdks/rejectreason/README.md#list) - List a batch of RejectReasons
+* [retrieve](docs/sdks/rejectreason/README.md#retrieve) - Retrieve a RejectReason
 
 ### [ats.scorecard](docs/sdks/scorecard/README.md)
 
@@ -556,8 +555,8 @@ run();
 
 ### [filestorage.users](docs/sdks/panorafilestorageusers/README.md)
 
-* [getUsers](docs/sdks/panorafilestorageusers/README.md#getusers) - List a batch of Users
-* [getUser](docs/sdks/panorafilestorageusers/README.md#getuser) - Retrieve a User
+* [list](docs/sdks/panorafilestorageusers/README.md#list) - List a batch of Users
+* [retrieve](docs/sdks/panorafilestorageusers/README.md#retrieve) - Retrieve a User
 <!-- End Available Resources and Operations [operations] -->
 
 <!-- Start Error Handling [errors] -->
@@ -583,7 +582,7 @@ const panora = new Panora({
 async function run() {
     let result;
     try {
-        result = await panora.appControllerHello();
+        result = await panora.home();
     } catch (err) {
         switch (true) {
             case err instanceof SDKValidationError: {
@@ -629,7 +628,7 @@ const panora = new Panora({
 });
 
 async function run() {
-    const result = await panora.appControllerHello();
+    const result = await panora.home();
 
     // Handle the result
     console.log(result);
@@ -653,7 +652,7 @@ const panora = new Panora({
 });
 
 async function run() {
-    const result = await panora.appControllerHello();
+    const result = await panora.home();
 
     // Handle the result
     console.log(result);
@@ -733,7 +732,7 @@ const panora = new Panora({
 });
 
 async function run() {
-    const result = await panora.appControllerHello();
+    const result = await panora.home();
 
     // Handle the result
     console.log(result);
@@ -743,6 +742,71 @@ run();
 
 ```
 <!-- End Authentication [security] -->
+
+<!-- Start Retries [retries] -->
+## Retries
+
+Some of the endpoints in this SDK support retries.  If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API.  However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
+
+To change the default retry strategy for a single API call, simply provide a retryConfig object to the call:
+```typescript
+import { Panora } from "@panora/sdk";
+
+const panora = new Panora({
+    bearer: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+    const result = await panora.home({
+        retries: {
+            strategy: "backoff",
+            backoff: {
+                initialInterval: 1,
+                maxInterval: 50,
+                exponent: 1.1,
+                maxElapsedTime: 100,
+            },
+            retryConnectionErrors: false,
+        },
+    });
+
+    // Handle the result
+    console.log(result);
+}
+
+run();
+
+```
+
+If you'd like to override the default retry strategy for all operations that support retries, you can provide a retryConfig at SDK initialization:
+```typescript
+import { Panora } from "@panora/sdk";
+
+const panora = new Panora({
+    retryConfig: {
+        strategy: "backoff",
+        backoff: {
+            initialInterval: 1,
+            maxInterval: 50,
+            exponent: 1.1,
+            maxElapsedTime: 100,
+        },
+        retryConnectionErrors: false,
+    },
+    bearer: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+    const result = await panora.home();
+
+    // Handle the result
+    console.log(result);
+}
+
+run();
+
+```
+<!-- End Retries [retries] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

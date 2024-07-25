@@ -24,72 +24,112 @@ export type CreateHrisEmployeeResponse = {
 };
 
 /** @internal */
+export const CreateHrisEmployeeRequest$inboundSchema: z.ZodType<
+    CreateHrisEmployeeRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        remote_data: z.boolean().optional(),
+        UnifiedHrisEmployeeInput: components.UnifiedHrisEmployeeInput$inboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+            UnifiedHrisEmployeeInput: "unifiedHrisEmployeeInput",
+        });
+    });
+
+/** @internal */
+export type CreateHrisEmployeeRequest$Outbound = {
+    "x-connection-token": string;
+    remote_data?: boolean | undefined;
+    UnifiedHrisEmployeeInput: components.UnifiedHrisEmployeeInput$Outbound;
+};
+
+/** @internal */
+export const CreateHrisEmployeeRequest$outboundSchema: z.ZodType<
+    CreateHrisEmployeeRequest$Outbound,
+    z.ZodTypeDef,
+    CreateHrisEmployeeRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        remoteData: z.boolean().optional(),
+        unifiedHrisEmployeeInput: components.UnifiedHrisEmployeeInput$outboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+            unifiedHrisEmployeeInput: "UnifiedHrisEmployeeInput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateHrisEmployeeRequest$ {
-    export const inboundSchema: z.ZodType<CreateHrisEmployeeRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            "x-connection-token": z.string(),
-            remote_data: z.boolean().optional(),
-            UnifiedHrisEmployeeInput: components.UnifiedHrisEmployeeInput$.inboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-                UnifiedHrisEmployeeInput: "unifiedHrisEmployeeInput",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        remote_data?: boolean | undefined;
-        UnifiedHrisEmployeeInput: components.UnifiedHrisEmployeeInput$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateHrisEmployeeRequest> = z
-        .object({
-            xConnectionToken: z.string(),
-            remoteData: z.boolean().optional(),
-            unifiedHrisEmployeeInput: components.UnifiedHrisEmployeeInput$.outboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-                unifiedHrisEmployeeInput: "UnifiedHrisEmployeeInput",
-            });
-        });
+    /** @deprecated use `CreateHrisEmployeeRequest$inboundSchema` instead. */
+    export const inboundSchema = CreateHrisEmployeeRequest$inboundSchema;
+    /** @deprecated use `CreateHrisEmployeeRequest$outboundSchema` instead. */
+    export const outboundSchema = CreateHrisEmployeeRequest$outboundSchema;
+    /** @deprecated use `CreateHrisEmployeeRequest$Outbound` instead. */
+    export type Outbound = CreateHrisEmployeeRequest$Outbound;
 }
 
 /** @internal */
+export const CreateHrisEmployeeResponse$inboundSchema: z.ZodType<
+    CreateHrisEmployeeResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        UnifiedHrisEmployeeOutput: components.UnifiedHrisEmployeeOutput$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            UnifiedHrisEmployeeOutput: "unifiedHrisEmployeeOutput",
+        });
+    });
+
+/** @internal */
+export type CreateHrisEmployeeResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    UnifiedHrisEmployeeOutput?: components.UnifiedHrisEmployeeOutput$Outbound | undefined;
+};
+
+/** @internal */
+export const CreateHrisEmployeeResponse$outboundSchema: z.ZodType<
+    CreateHrisEmployeeResponse$Outbound,
+    z.ZodTypeDef,
+    CreateHrisEmployeeResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        unifiedHrisEmployeeOutput: components.UnifiedHrisEmployeeOutput$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            unifiedHrisEmployeeOutput: "UnifiedHrisEmployeeOutput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateHrisEmployeeResponse$ {
-    export const inboundSchema: z.ZodType<CreateHrisEmployeeResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            UnifiedHrisEmployeeOutput:
-                components.UnifiedHrisEmployeeOutput$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-                UnifiedHrisEmployeeOutput: "unifiedHrisEmployeeOutput",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        UnifiedHrisEmployeeOutput?: components.UnifiedHrisEmployeeOutput$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateHrisEmployeeResponse> = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            unifiedHrisEmployeeOutput:
-                components.UnifiedHrisEmployeeOutput$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-                unifiedHrisEmployeeOutput: "UnifiedHrisEmployeeOutput",
-            });
-        });
+    /** @deprecated use `CreateHrisEmployeeResponse$inboundSchema` instead. */
+    export const inboundSchema = CreateHrisEmployeeResponse$inboundSchema;
+    /** @deprecated use `CreateHrisEmployeeResponse$outboundSchema` instead. */
+    export const outboundSchema = CreateHrisEmployeeResponse$outboundSchema;
+    /** @deprecated use `CreateHrisEmployeeResponse$Outbound` instead. */
+    export type Outbound = CreateHrisEmployeeResponse$Outbound;
 }

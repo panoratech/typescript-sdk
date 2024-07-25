@@ -27,70 +27,110 @@ export type RetrieveHrisPaygroupResponse = {
 };
 
 /** @internal */
+export const RetrieveHrisPaygroupRequest$inboundSchema: z.ZodType<
+    RetrieveHrisPaygroupRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        id: z.string(),
+        remote_data: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+        });
+    });
+
+/** @internal */
+export type RetrieveHrisPaygroupRequest$Outbound = {
+    "x-connection-token": string;
+    id: string;
+    remote_data?: boolean | undefined;
+};
+
+/** @internal */
+export const RetrieveHrisPaygroupRequest$outboundSchema: z.ZodType<
+    RetrieveHrisPaygroupRequest$Outbound,
+    z.ZodTypeDef,
+    RetrieveHrisPaygroupRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        id: z.string(),
+        remoteData: z.boolean().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveHrisPaygroupRequest$ {
-    export const inboundSchema: z.ZodType<RetrieveHrisPaygroupRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            "x-connection-token": z.string(),
-            id: z.string(),
-            remote_data: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        id: string;
-        remote_data?: boolean | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RetrieveHrisPaygroupRequest> = z
-        .object({
-            xConnectionToken: z.string(),
-            id: z.string(),
-            remoteData: z.boolean().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-            });
-        });
+    /** @deprecated use `RetrieveHrisPaygroupRequest$inboundSchema` instead. */
+    export const inboundSchema = RetrieveHrisPaygroupRequest$inboundSchema;
+    /** @deprecated use `RetrieveHrisPaygroupRequest$outboundSchema` instead. */
+    export const outboundSchema = RetrieveHrisPaygroupRequest$outboundSchema;
+    /** @deprecated use `RetrieveHrisPaygroupRequest$Outbound` instead. */
+    export type Outbound = RetrieveHrisPaygroupRequest$Outbound;
 }
 
 /** @internal */
+export const RetrieveHrisPaygroupResponse$inboundSchema: z.ZodType<
+    RetrieveHrisPaygroupResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        UnifiedHrisPaygroupOutput: components.UnifiedHrisPaygroupOutput$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            UnifiedHrisPaygroupOutput: "unifiedHrisPaygroupOutput",
+        });
+    });
+
+/** @internal */
+export type RetrieveHrisPaygroupResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    UnifiedHrisPaygroupOutput?: components.UnifiedHrisPaygroupOutput$Outbound | undefined;
+};
+
+/** @internal */
+export const RetrieveHrisPaygroupResponse$outboundSchema: z.ZodType<
+    RetrieveHrisPaygroupResponse$Outbound,
+    z.ZodTypeDef,
+    RetrieveHrisPaygroupResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        unifiedHrisPaygroupOutput: components.UnifiedHrisPaygroupOutput$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            unifiedHrisPaygroupOutput: "UnifiedHrisPaygroupOutput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RetrieveHrisPaygroupResponse$ {
-    export const inboundSchema: z.ZodType<RetrieveHrisPaygroupResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            UnifiedHrisPaygroupOutput:
-                components.UnifiedHrisPaygroupOutput$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-                UnifiedHrisPaygroupOutput: "unifiedHrisPaygroupOutput",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        UnifiedHrisPaygroupOutput?: components.UnifiedHrisPaygroupOutput$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RetrieveHrisPaygroupResponse> = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            unifiedHrisPaygroupOutput:
-                components.UnifiedHrisPaygroupOutput$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-                unifiedHrisPaygroupOutput: "UnifiedHrisPaygroupOutput",
-            });
-        });
+    /** @deprecated use `RetrieveHrisPaygroupResponse$inboundSchema` instead. */
+    export const inboundSchema = RetrieveHrisPaygroupResponse$inboundSchema;
+    /** @deprecated use `RetrieveHrisPaygroupResponse$outboundSchema` instead. */
+    export const outboundSchema = RetrieveHrisPaygroupResponse$outboundSchema;
+    /** @deprecated use `RetrieveHrisPaygroupResponse$Outbound` instead. */
+    export type Outbound = RetrieveHrisPaygroupResponse$Outbound;
 }

@@ -24,72 +24,112 @@ export type CreateAtsAttachmentResponse = {
 };
 
 /** @internal */
+export const CreateAtsAttachmentRequest$inboundSchema: z.ZodType<
+    CreateAtsAttachmentRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        "x-connection-token": z.string(),
+        remote_data: z.boolean().optional(),
+        UnifiedAtsAttachmentInput: components.UnifiedAtsAttachmentInput$inboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-connection-token": "xConnectionToken",
+            remote_data: "remoteData",
+            UnifiedAtsAttachmentInput: "unifiedAtsAttachmentInput",
+        });
+    });
+
+/** @internal */
+export type CreateAtsAttachmentRequest$Outbound = {
+    "x-connection-token": string;
+    remote_data?: boolean | undefined;
+    UnifiedAtsAttachmentInput: components.UnifiedAtsAttachmentInput$Outbound;
+};
+
+/** @internal */
+export const CreateAtsAttachmentRequest$outboundSchema: z.ZodType<
+    CreateAtsAttachmentRequest$Outbound,
+    z.ZodTypeDef,
+    CreateAtsAttachmentRequest
+> = z
+    .object({
+        xConnectionToken: z.string(),
+        remoteData: z.boolean().optional(),
+        unifiedAtsAttachmentInput: components.UnifiedAtsAttachmentInput$outboundSchema,
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xConnectionToken: "x-connection-token",
+            remoteData: "remote_data",
+            unifiedAtsAttachmentInput: "UnifiedAtsAttachmentInput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateAtsAttachmentRequest$ {
-    export const inboundSchema: z.ZodType<CreateAtsAttachmentRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            "x-connection-token": z.string(),
-            remote_data: z.boolean().optional(),
-            UnifiedAtsAttachmentInput: components.UnifiedAtsAttachmentInput$.inboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-connection-token": "xConnectionToken",
-                remote_data: "remoteData",
-                UnifiedAtsAttachmentInput: "unifiedAtsAttachmentInput",
-            });
-        });
-
-    export type Outbound = {
-        "x-connection-token": string;
-        remote_data?: boolean | undefined;
-        UnifiedAtsAttachmentInput: components.UnifiedAtsAttachmentInput$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateAtsAttachmentRequest> = z
-        .object({
-            xConnectionToken: z.string(),
-            remoteData: z.boolean().optional(),
-            unifiedAtsAttachmentInput: components.UnifiedAtsAttachmentInput$.outboundSchema,
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xConnectionToken: "x-connection-token",
-                remoteData: "remote_data",
-                unifiedAtsAttachmentInput: "UnifiedAtsAttachmentInput",
-            });
-        });
+    /** @deprecated use `CreateAtsAttachmentRequest$inboundSchema` instead. */
+    export const inboundSchema = CreateAtsAttachmentRequest$inboundSchema;
+    /** @deprecated use `CreateAtsAttachmentRequest$outboundSchema` instead. */
+    export const outboundSchema = CreateAtsAttachmentRequest$outboundSchema;
+    /** @deprecated use `CreateAtsAttachmentRequest$Outbound` instead. */
+    export type Outbound = CreateAtsAttachmentRequest$Outbound;
 }
 
 /** @internal */
+export const CreateAtsAttachmentResponse$inboundSchema: z.ZodType<
+    CreateAtsAttachmentResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HttpMeta: components.HTTPMetadata$inboundSchema,
+        UnifiedAtsAttachmentOutput: components.UnifiedAtsAttachmentOutput$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HttpMeta: "httpMeta",
+            UnifiedAtsAttachmentOutput: "unifiedAtsAttachmentOutput",
+        });
+    });
+
+/** @internal */
+export type CreateAtsAttachmentResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    UnifiedAtsAttachmentOutput?: components.UnifiedAtsAttachmentOutput$Outbound | undefined;
+};
+
+/** @internal */
+export const CreateAtsAttachmentResponse$outboundSchema: z.ZodType<
+    CreateAtsAttachmentResponse$Outbound,
+    z.ZodTypeDef,
+    CreateAtsAttachmentResponse
+> = z
+    .object({
+        httpMeta: components.HTTPMetadata$outboundSchema,
+        unifiedAtsAttachmentOutput: components.UnifiedAtsAttachmentOutput$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            httpMeta: "HttpMeta",
+            unifiedAtsAttachmentOutput: "UnifiedAtsAttachmentOutput",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateAtsAttachmentResponse$ {
-    export const inboundSchema: z.ZodType<CreateAtsAttachmentResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            HttpMeta: components.HTTPMetadata$.inboundSchema,
-            UnifiedAtsAttachmentOutput:
-                components.UnifiedAtsAttachmentOutput$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HttpMeta: "httpMeta",
-                UnifiedAtsAttachmentOutput: "unifiedAtsAttachmentOutput",
-            });
-        });
-
-    export type Outbound = {
-        HttpMeta: components.HTTPMetadata$.Outbound;
-        UnifiedAtsAttachmentOutput?: components.UnifiedAtsAttachmentOutput$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateAtsAttachmentResponse> = z
-        .object({
-            httpMeta: components.HTTPMetadata$.outboundSchema,
-            unifiedAtsAttachmentOutput:
-                components.UnifiedAtsAttachmentOutput$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                httpMeta: "HttpMeta",
-                unifiedAtsAttachmentOutput: "UnifiedAtsAttachmentOutput",
-            });
-        });
+    /** @deprecated use `CreateAtsAttachmentResponse$inboundSchema` instead. */
+    export const inboundSchema = CreateAtsAttachmentResponse$inboundSchema;
+    /** @deprecated use `CreateAtsAttachmentResponse$outboundSchema` instead. */
+    export const outboundSchema = CreateAtsAttachmentResponse$outboundSchema;
+    /** @deprecated use `CreateAtsAttachmentResponse$Outbound` instead. */
+    export type Outbound = CreateAtsAttachmentResponse$Outbound;
 }

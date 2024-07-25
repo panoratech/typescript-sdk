@@ -36,89 +36,123 @@ export type UnifiedAtsAttachmentInput = {
 };
 
 /** @internal */
+export const UnifiedAtsAttachmentInputFieldMappings$inboundSchema: z.ZodType<
+    UnifiedAtsAttachmentInputFieldMappings,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedAtsAttachmentInputFieldMappings$Outbound = {};
+
+/** @internal */
+export const UnifiedAtsAttachmentInputFieldMappings$outboundSchema: z.ZodType<
+    UnifiedAtsAttachmentInputFieldMappings$Outbound,
+    z.ZodTypeDef,
+    UnifiedAtsAttachmentInputFieldMappings
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedAtsAttachmentInputFieldMappings$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedAtsAttachmentInputFieldMappings,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedAtsAttachmentInputFieldMappings
-    > = z.object({});
+    /** @deprecated use `UnifiedAtsAttachmentInputFieldMappings$inboundSchema` instead. */
+    export const inboundSchema = UnifiedAtsAttachmentInputFieldMappings$inboundSchema;
+    /** @deprecated use `UnifiedAtsAttachmentInputFieldMappings$outboundSchema` instead. */
+    export const outboundSchema = UnifiedAtsAttachmentInputFieldMappings$outboundSchema;
+    /** @deprecated use `UnifiedAtsAttachmentInputFieldMappings$Outbound` instead. */
+    export type Outbound = UnifiedAtsAttachmentInputFieldMappings$Outbound;
 }
 
 /** @internal */
+export const UnifiedAtsAttachmentInput$inboundSchema: z.ZodType<
+    UnifiedAtsAttachmentInput,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        file_url: z.string().optional(),
+        file_name: z.string().optional(),
+        attachment_type: z.string().optional(),
+        remote_created_at: z
+            .string()
+            .datetime({ offset: true })
+            .transform((v) => new Date(v))
+            .optional(),
+        remote_modified_at: z
+            .string()
+            .datetime({ offset: true })
+            .transform((v) => new Date(v))
+            .optional(),
+        candidate_id: z.string().optional(),
+        field_mappings: z.lazy(() => UnifiedAtsAttachmentInputFieldMappings$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            file_url: "fileUrl",
+            file_name: "fileName",
+            attachment_type: "attachmentType",
+            remote_created_at: "remoteCreatedAt",
+            remote_modified_at: "remoteModifiedAt",
+            candidate_id: "candidateId",
+            field_mappings: "fieldMappings",
+        });
+    });
+
+/** @internal */
+export type UnifiedAtsAttachmentInput$Outbound = {
+    file_url?: string | undefined;
+    file_name?: string | undefined;
+    attachment_type?: string | undefined;
+    remote_created_at?: string | undefined;
+    remote_modified_at?: string | undefined;
+    candidate_id?: string | undefined;
+    field_mappings: UnifiedAtsAttachmentInputFieldMappings$Outbound;
+};
+
+/** @internal */
+export const UnifiedAtsAttachmentInput$outboundSchema: z.ZodType<
+    UnifiedAtsAttachmentInput$Outbound,
+    z.ZodTypeDef,
+    UnifiedAtsAttachmentInput
+> = z
+    .object({
+        fileUrl: z.string().optional(),
+        fileName: z.string().optional(),
+        attachmentType: z.string().optional(),
+        remoteCreatedAt: z
+            .date()
+            .transform((v) => v.toISOString())
+            .optional(),
+        remoteModifiedAt: z
+            .date()
+            .transform((v) => v.toISOString())
+            .optional(),
+        candidateId: z.string().optional(),
+        fieldMappings: z.lazy(() => UnifiedAtsAttachmentInputFieldMappings$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            fileUrl: "file_url",
+            fileName: "file_name",
+            attachmentType: "attachment_type",
+            remoteCreatedAt: "remote_created_at",
+            remoteModifiedAt: "remote_modified_at",
+            candidateId: "candidate_id",
+            fieldMappings: "field_mappings",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedAtsAttachmentInput$ {
-    export const inboundSchema: z.ZodType<UnifiedAtsAttachmentInput, z.ZodTypeDef, unknown> = z
-        .object({
-            file_url: z.string().optional(),
-            file_name: z.string().optional(),
-            attachment_type: z.string().optional(),
-            remote_created_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .optional(),
-            remote_modified_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .optional(),
-            candidate_id: z.string().optional(),
-            field_mappings: z.lazy(() => UnifiedAtsAttachmentInputFieldMappings$.inboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                file_url: "fileUrl",
-                file_name: "fileName",
-                attachment_type: "attachmentType",
-                remote_created_at: "remoteCreatedAt",
-                remote_modified_at: "remoteModifiedAt",
-                candidate_id: "candidateId",
-                field_mappings: "fieldMappings",
-            });
-        });
-
-    export type Outbound = {
-        file_url?: string | undefined;
-        file_name?: string | undefined;
-        attachment_type?: string | undefined;
-        remote_created_at?: string | undefined;
-        remote_modified_at?: string | undefined;
-        candidate_id?: string | undefined;
-        field_mappings: UnifiedAtsAttachmentInputFieldMappings$.Outbound;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnifiedAtsAttachmentInput> = z
-        .object({
-            fileUrl: z.string().optional(),
-            fileName: z.string().optional(),
-            attachmentType: z.string().optional(),
-            remoteCreatedAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .optional(),
-            remoteModifiedAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .optional(),
-            candidateId: z.string().optional(),
-            fieldMappings: z.lazy(() => UnifiedAtsAttachmentInputFieldMappings$.outboundSchema),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                fileUrl: "file_url",
-                fileName: "file_name",
-                attachmentType: "attachment_type",
-                remoteCreatedAt: "remote_created_at",
-                remoteModifiedAt: "remote_modified_at",
-                candidateId: "candidate_id",
-                fieldMappings: "field_mappings",
-            });
-        });
+    /** @deprecated use `UnifiedAtsAttachmentInput$inboundSchema` instead. */
+    export const inboundSchema = UnifiedAtsAttachmentInput$inboundSchema;
+    /** @deprecated use `UnifiedAtsAttachmentInput$outboundSchema` instead. */
+    export const outboundSchema = UnifiedAtsAttachmentInput$outboundSchema;
+    /** @deprecated use `UnifiedAtsAttachmentInput$Outbound` instead. */
+    export type Outbound = UnifiedAtsAttachmentInput$Outbound;
 }

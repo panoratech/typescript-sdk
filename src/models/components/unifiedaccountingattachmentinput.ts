@@ -7,15 +7,31 @@ import * as z from "zod";
 export type UnifiedAccountingAttachmentInput = {};
 
 /** @internal */
+export const UnifiedAccountingAttachmentInput$inboundSchema: z.ZodType<
+    UnifiedAccountingAttachmentInput,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedAccountingAttachmentInput$Outbound = {};
+
+/** @internal */
+export const UnifiedAccountingAttachmentInput$outboundSchema: z.ZodType<
+    UnifiedAccountingAttachmentInput$Outbound,
+    z.ZodTypeDef,
+    UnifiedAccountingAttachmentInput
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedAccountingAttachmentInput$ {
-    export const inboundSchema: z.ZodType<UnifiedAccountingAttachmentInput, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedAccountingAttachmentInput
-    > = z.object({});
+    /** @deprecated use `UnifiedAccountingAttachmentInput$inboundSchema` instead. */
+    export const inboundSchema = UnifiedAccountingAttachmentInput$inboundSchema;
+    /** @deprecated use `UnifiedAccountingAttachmentInput$outboundSchema` instead. */
+    export const outboundSchema = UnifiedAccountingAttachmentInput$outboundSchema;
+    /** @deprecated use `UnifiedAccountingAttachmentInput$Outbound` instead. */
+    export type Outbound = UnifiedAccountingAttachmentInput$Outbound;
 }
