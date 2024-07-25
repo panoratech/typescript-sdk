@@ -7,10 +7,10 @@ Unified Panora API: The Panora API description
 
 ### Available Operations
 
-* [home](#home)
+* [hello](#hello)
 * [health](#health)
 
-## home
+## hello
 
 ### Example Usage
 
@@ -22,7 +22,7 @@ const panora = new Panora({
 });
 
 async function run() {
-  const result = await panora.home();
+  const result = await panora.hello();
 
   // Handle the result
   console.log(result)
@@ -42,7 +42,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.HomeResponse](../../models/operations/homeresponse.md)\>**
+**Promise\<[operations.HelloResponse](../../models/operations/helloresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: caaaa8c3-6dd7-43a5-841e-c3193e68cc73
 management:
-  docChecksum: d6e2038538b5382109387fa73ed3af43
+  docChecksum: f62bb786bbf60bdf0e4e2382e731e37a
   docVersion: "1.0"
-  speakeasyVersion: 1.345.4
-  generationVersion: 2.378.3
-  releaseVersion: 0.1.0
-  configChecksum: 971f392be517b43cd1543e3907b05fc4
+  speakeasyVersion: 1.346.0
+  generationVersion: 2.379.3
+  releaseVersion: 0.1.1
+  configChecksum: 326b694f0f3bef4479f74bd8426b3c0b
   repoURL: https://github.com/panoratech/typescript-sdk.git
   installationURL: https://github.com/panoratech/typescript-sdk
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.5
-    core: 3.11.9
+    core: 3.11.10
     defaultEnabledRetries: 0.1.0
     globalSecurity: 2.82.9
     globalSecurityCallbacks: 0.1.0
@@ -146,7 +146,7 @@ generatedFiles:
   - src/types/operations.ts
   - src/types/rfcdate.ts
   - tsconfig.json
-  - src/models/operations/home.ts
+  - src/models/operations/hello.ts
   - src/models/operations/health.ts
   - src/models/operations/listwebhooks.ts
   - src/models/operations/createwebhook.ts
@@ -489,7 +489,7 @@ generatedFiles:
   - src/models/errors/index.ts
   - src/models/operations/index.ts
   - src/models/components/index.ts
-  - docs/models/operations/homeresponse.md
+  - docs/models/operations/helloresponse.md
   - docs/models/operations/healthresponse.md
   - docs/models/operations/listwebhooksresponse.md
   - docs/models/operations/createwebhookresponse.md
