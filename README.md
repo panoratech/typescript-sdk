@@ -66,7 +66,7 @@ const panora = new Panora({
 });
 
 async function run() {
-    const result = await panora.home();
+    const result = await panora.hello();
 
     // Handle the result
     console.log(result);
@@ -82,7 +82,7 @@ run();
 
 ### [Panora SDK](docs/sdks/panora/README.md)
 
-* [home](docs/sdks/panora/README.md#home)
+* [hello](docs/sdks/panora/README.md#hello)
 * [health](docs/sdks/panora/README.md#health)
 
 ### [webhook](docs/sdks/webhook/README.md)
@@ -582,7 +582,7 @@ const panora = new Panora({
 async function run() {
     let result;
     try {
-        result = await panora.home();
+        result = await panora.hello();
     } catch (err) {
         switch (true) {
             case err instanceof SDKValidationError: {
@@ -618,17 +618,18 @@ You can override the default server globally by passing a server index to the `s
 | - | ------ | --------- |
 | 0 | `https://api.panora.dev` | None |
 | 1 | `https://api-sandbox.panora.dev` | None |
+| 2 | `https://api-dev.panora.dev` | None |
 
 ```typescript
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-    serverIdx: 1,
+    serverIdx: 2,
     bearer: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-    const result = await panora.home();
+    const result = await panora.hello();
 
     // Handle the result
     console.log(result);
@@ -652,7 +653,7 @@ const panora = new Panora({
 });
 
 async function run() {
-    const result = await panora.home();
+    const result = await panora.hello();
 
     // Handle the result
     console.log(result);
@@ -732,7 +733,7 @@ const panora = new Panora({
 });
 
 async function run() {
-    const result = await panora.home();
+    const result = await panora.hello();
 
     // Handle the result
     console.log(result);
@@ -757,7 +758,7 @@ const panora = new Panora({
 });
 
 async function run() {
-    const result = await panora.home({
+    const result = await panora.hello({
         retries: {
             strategy: "backoff",
             backoff: {
@@ -797,7 +798,7 @@ const panora = new Panora({
 });
 
 async function run() {
-    const result = await panora.home();
+    const result = await panora.hello();
 
     // Handle the result
     console.log(result);
