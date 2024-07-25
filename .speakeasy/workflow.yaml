@@ -9,3 +9,6 @@ targets:
     my-first-target:
         target: typescript
         source: panora-open-api-swagger
+        publish:
+            npm:
+                token: $npm_token
