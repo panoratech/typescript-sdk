@@ -2,8 +2,8 @@ speakeasyVersion: 1.346.0
 sources:
     panora-open-api-swagger:
         sourceNamespace: panora-open-api-swagger
-        sourceRevisionDigest: sha256:521ee8c42d2d724ffa21221c912f7b385926a4975bb08f4a96c9c73199caff3a
-        sourceBlobDigest: sha256:a757844634445e1d39b83158078bd1ed4173c489b6fc08fb1693bb0faa276554
+        sourceRevisionDigest: sha256:0c4eb1792e41fc2331bdb7de1824775f8272a8ddc549aba834c29ac1f74e1839
+        sourceBlobDigest: sha256:ff0ad9fbd008265347452a893273782879a59d53e5b21a52a7e2b4853ab8ef62
         tags:
             - latest
             - main
@@ -11,10 +11,10 @@ targets:
     my-first-target:
         source: panora-open-api-swagger
         sourceNamespace: panora-open-api-swagger
-        sourceRevisionDigest: sha256:521ee8c42d2d724ffa21221c912f7b385926a4975bb08f4a96c9c73199caff3a
-        sourceBlobDigest: sha256:a757844634445e1d39b83158078bd1ed4173c489b6fc08fb1693bb0faa276554
+        sourceRevisionDigest: sha256:0c4eb1792e41fc2331bdb7de1824775f8272a8ddc549aba834c29ac1f74e1839
+        sourceBlobDigest: sha256:ff0ad9fbd008265347452a893273782879a59d53e5b21a52a7e2b4853ab8ef62
         codeSamplesNamespace: code-samples-typescript-my-first-target
-        codeSamplesRevisionDigest: sha256:11e32549a6e98195660bb077f08ea803b4f639ff5dea4715f3a3af932d007350
+        codeSamplesRevisionDigest: sha256:672c70e57c03b3a533350fd290e58b2a56b36f31d86c49e7d98544a915b205cf
         outLocation: /github/workspace/repo
 workflow:
     workflowVersion: 1.0.0

@@ -3,7 +3,7 @@
 
 ## Overview
 
-Unified Panora API: The Panora API description
+Panora API: A unified API to ship integrations
 
 ### Available Operations
 

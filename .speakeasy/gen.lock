@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: caaaa8c3-6dd7-43a5-841e-c3193e68cc73
 management:
-  docChecksum: f62bb786bbf60bdf0e4e2382e731e37a
+  docChecksum: 6be2c46f8d8b777b874fa64d3b20e024
   docVersion: "1.0"
   speakeasyVersion: 1.346.0
   generationVersion: 2.379.3
-  releaseVersion: 0.1.1
-  configChecksum: 326b694f0f3bef4479f74bd8426b3c0b
+  releaseVersion: 0.1.2
+  configChecksum: df6f84c33fed44cb4b4f9b6ab2032cb2
   repoURL: https://github.com/panoratech/typescript-sdk.git
   installationURL: https://github.com/panoratech/typescript-sdk
   published: true
