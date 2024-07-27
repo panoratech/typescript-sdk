@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of IncomeStatements
+* [list](#list) - List  IncomeStatements
 * [retrieve](#retrieve) - Retrieve a IncomeStatement
 
 ## list
 
-List a batch of IncomeStatements
+List  IncomeStatements
 
 ### Example Usage
 

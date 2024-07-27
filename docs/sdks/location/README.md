@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Locations
+* [list](#list) - List  Locations
 * [retrieve](#retrieve) - Retrieve a Location
 
 ## list
 
-List a batch of Locations
+List  Locations
 
 ### Example Usage
 

@@ -3,13 +3,13 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of PurchaseOrders
+* [list](#list) - List  PurchaseOrders
 * [create](#create) - Create a PurchaseOrder
 * [retrieve](#retrieve) - Retrieve a PurchaseOrder
 
 ## list
 
-List a batch of PurchaseOrders
+List  PurchaseOrders
 
 ### Example Usage
 

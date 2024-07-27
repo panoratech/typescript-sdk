@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Departments
+* [list](#list) - List  Departments
 * [retrieve](#retrieve) - Retrieve a Department
 
 ## list
 
-List a batch of Departments
+List  Departments
 
 ### Example Usage
 

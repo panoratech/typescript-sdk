@@ -3,11 +3,11 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of PayrollRuns
+* [list](#list) - List  PayrollRuns
 
 ## list
 
-List a batch of PayrollRuns
+List  PayrollRuns
 
 ### Example Usage
 

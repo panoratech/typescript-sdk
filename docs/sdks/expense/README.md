@@ -3,13 +3,13 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Expenses
+* [list](#list) - List  Expenses
 * [create](#create) - Create a Expense
 * [retrieve](#retrieve) - Retrieve a Expense
 
 ## list
 
-List a batch of Expenses
+List  Expenses
 
 ### Example Usage
 

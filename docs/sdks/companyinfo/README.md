@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of CompanyInfos
+* [list](#list) - List  CompanyInfos
 * [retrieve](#retrieve) - Retrieve a CompanyInfo
 
 ## list
 
-List a batch of CompanyInfos
+List  CompanyInfos
 
 ### Example Usage
 

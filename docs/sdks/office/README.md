@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Offices
+* [list](#list) - List  Offices
 * [retrieve](#retrieve) - Retrieve a Office
 
 ## list
 
-List a batch of Offices
+List  Offices
 
 ### Example Usage
 

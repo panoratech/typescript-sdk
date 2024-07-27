@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Dependents
+* [list](#list) - List  Dependents
 * [retrieve](#retrieve) - Retrieve a Dependent
 
 ## list
 
-List a batch of Dependents
+List  Dependents
 
 ### Example Usage
 

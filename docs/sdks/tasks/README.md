@@ -3,13 +3,13 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Tasks
+* [list](#list) - List  Tasks
 * [create](#create) - Create a Task
 * [retrieve](#retrieve) - Retrieve a Task
 
 ## list
 
-List a batch of Tasks
+List  Tasks
 
 ### Example Usage
 

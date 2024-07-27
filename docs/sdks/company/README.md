@@ -3,11 +3,11 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Companys
+* [list](#list) - List  Companys
 
 ## list
 
-List a batch of Companys
+List  Companys
 
 ### Example Usage
 

@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of RejectReasons
+* [list](#list) - List  RejectReasons
 * [retrieve](#retrieve) - Retrieve a RejectReason
 
 ## list
 
-List a batch of RejectReasons
+List  RejectReasons
 
 ### Example Usage
 

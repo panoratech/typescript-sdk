@@ -3,13 +3,13 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Contacts
+* [list](#list) - List  Contacts
 * [create](#create) - Create a Contact
 * [retrieve](#retrieve) - Retrieve a Contact
 
 ## list
 
-List a batch of Contacts
+List  Contacts
 
 ### Example Usage
 

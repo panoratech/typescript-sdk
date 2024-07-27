@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Stages
+* [list](#list) - List  Stages
 * [retrieve](#retrieve) - Retrieve a Stage
 
 ## list
 
-List a batch of Stages
+List  Stages
 
 ### Example Usage
 

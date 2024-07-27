@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of EmployeePayrollRuns
+* [list](#list) - List  EmployeePayrollRuns
 * [retrieve](#retrieve) - Retrieve a EmployeePayrollRun
 
 ## list
 
-List a batch of EmployeePayrollRuns
+List  EmployeePayrollRuns
 
 ### Example Usage
 

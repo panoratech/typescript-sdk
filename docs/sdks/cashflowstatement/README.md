@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of CashflowStatements
+* [list](#list) - List  CashflowStatements
 * [retrieve](#retrieve) - Retrieve a CashflowStatement
 
 ## list
 
-List a batch of CashflowStatements
+List  CashflowStatements
 
 ### Example Usage
 

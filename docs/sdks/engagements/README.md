@@ -3,13 +3,13 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Engagements
+* [list](#list) - List  Engagements
 * [create](#create) - Create a Engagement
 * [retrieve](#retrieve) - Retrieve a Engagement
 
 ## list
 
-List a batch of Engagements
+List  Engagements
 
 ### Example Usage
 

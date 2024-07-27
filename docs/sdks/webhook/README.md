@@ -7,7 +7,7 @@
 * [create](#create) - Add webhook metadata
 * [delete](#delete) - Delete Webhook
 * [updateStatus](#updatestatus) - Update webhook status
-* [verifyEvent](#verifyevent) - Verify payload sgnature of the webhook
+* [verifyEvent](#verifyevent) - Verify payload signature of the webhook
 
 ## list
 
@@ -188,7 +188,7 @@ run();
 
 ## verifyEvent
 
-Verify payload sgnature of the webhook
+Verify payload signature of the webhook
 
 ### Example Usage
 

@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Users
+* [list](#list) - List  Users
 * [retrieve](#retrieve) - Retrieve a User
 
 ## list
 
-List a batch of Users
+List  Users
 
 ### Example Usage
 

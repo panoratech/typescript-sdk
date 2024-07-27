@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Tags
+* [list](#list) - List  Tags
 * [retrieve](#retrieve) - Retrieve a Tag
 
 ## list
 
-List a batch of Tags
+List  Tags
 
 ### Example Usage
 

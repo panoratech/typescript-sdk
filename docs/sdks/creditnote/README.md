@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of CreditNotes
+* [list](#list) - List  CreditNotes
 * [retrieve](#retrieve) - Retrieve a CreditNote
 
 ## list
 
-List a batch of CreditNotes
+List  CreditNotes
 
 ### Example Usage
 

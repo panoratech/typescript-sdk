@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Accounts
+* [list](#list) - List  Accounts
 * [retrieve](#retrieve) - Retrieve an Account
 
 ## list
 
-List a batch of Accounts
+List  Accounts
 
 ### Example Usage
 

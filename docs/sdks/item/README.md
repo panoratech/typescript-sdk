@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Items
+* [list](#list) - List  Items
 * [retrieve](#retrieve) - Retrieve a Item
 
 ## list
 
-List a batch of Items
+List  Items
 
 ### Example Usage
 

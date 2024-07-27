@@ -3,13 +3,13 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Files
+* [list](#list) - List  Files
 * [create](#create) - Create a File
 * [retrieve](#retrieve) - Retrieve a File
 
 ## list
 
-List a batch of Files
+List  Files
 
 ### Example Usage
 

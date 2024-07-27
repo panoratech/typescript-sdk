@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of PayGroups
+* [list](#list) - List  PayGroups
 * [retrieve](#retrieve) - Retrieve a PayGroup
 
 ## list
 
-List a batch of PayGroups
+List  PayGroups
 
 ### Example Usage
 

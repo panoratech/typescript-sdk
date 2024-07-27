@@ -3,13 +3,13 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Invoices
+* [list](#list) - List  Invoices
 * [create](#create) - Create a Invoice
 * [retrieve](#retrieve) - Retrieve a Invoice
 
 ## list
 
-List a batch of Invoices
+List  Invoices
 
 ### Example Usage
 

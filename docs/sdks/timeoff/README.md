@@ -3,13 +3,13 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Timeoffs
+* [list](#list) - List  Timeoffs
 * [create](#create) - Create a Timeoff
 * [retrieve](#retrieve) - Retrieve a Timeoff
 
 ## list
 
-List a batch of Timeoffs
+List  Timeoffs
 
 ### Example Usage
 

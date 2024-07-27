@@ -3,13 +3,13 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Payments
+* [list](#list) - List  Payments
 * [create](#create) - Create a Payment
 * [retrieve](#retrieve) - Retrieve a Payment
 
 ## list
 
-List a batch of Payments
+List  Payments
 
 ### Example Usage
 

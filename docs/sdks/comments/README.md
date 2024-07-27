@@ -3,13 +3,13 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Comments
+* [list](#list) - List  Comments
 * [create](#create) - Create a Comment
 * [retrieve](#retrieve) - Retrieve a Comment
 
 ## list
 
-List a batch of Comments
+List  Comments
 
 ### Example Usage
 

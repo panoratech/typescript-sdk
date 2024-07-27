@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Jobs
+* [list](#list) - List  Jobs
 * [retrieve](#retrieve) - Retrieve a Job
 
 ## list
 
-List a batch of Jobs
+List  Jobs
 
 ### Example Usage
 

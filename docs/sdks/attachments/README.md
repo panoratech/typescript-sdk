@@ -3,13 +3,13 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Attachments
+* [list](#list) - List  Attachments
 * [create](#create) - Create a Attachment
 * [retrieve](#retrieve) - Retrieve a Attachment
 
 ## list
 
-List a batch of Attachments
+List  Attachments
 
 ### Example Usage
 

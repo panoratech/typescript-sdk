@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of VendorCredits
+* [list](#list) - List  VendorCredits
 * [retrieve](#retrieve) - Retrieve a VendorCredit
 
 ## list
 
-List a batch of VendorCredits
+List  VendorCredits
 
 ### Example Usage
 

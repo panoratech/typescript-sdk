@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of BalanceSheets
+* [list](#list) - List  BalanceSheets
 * [retrieve](#retrieve) - Retrieve a BalanceSheet
 
 ## list
 
-List a batch of BalanceSheets
+List  BalanceSheets
 
 ### Example Usage
 

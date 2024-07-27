@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Teams
+* [list](#list) - List  Teams
 * [retrieve](#retrieve) - Retrieve a Team
 
 ## list
 
-List a batch of Teams
+List  Teams
 
 ### Example Usage
 

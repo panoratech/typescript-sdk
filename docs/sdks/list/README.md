@@ -3,13 +3,13 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Lists
+* [list](#list) - List  Lists
 * [create](#create) - Create a List
 * [retrieve](#retrieve) - Retrieve a List
 
 ## list
 
-List a batch of Lists
+List  Lists
 
 ### Example Usage
 

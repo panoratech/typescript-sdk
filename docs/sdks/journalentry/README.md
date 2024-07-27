@@ -3,13 +3,13 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of JournalEntrys
+* [list](#list) - List  JournalEntrys
 * [create](#create) - Create a JournalEntry
 * [retrieve](#retrieve) - Retrieve a JournalEntry
 
 ## list
 
-List a batch of JournalEntrys
+List  JournalEntrys
 
 ### Example Usage
 

@@ -3,13 +3,13 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Automations
+* [list](#list) - List  Automations
 * [create](#create) - Create a Automation
 * [retrieve](#retrieve) - Retrieve a Automation
 
 ## list
 
-List a batch of Automations
+List  Automations
 
 ### Example Usage
 
