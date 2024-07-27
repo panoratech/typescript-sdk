@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of JobInterviewStages
+* [list](#list) - List  JobInterviewStages
 * [retrieve](#retrieve) - Retrieve a JobInterviewStage
 
 ## list
 
-List a batch of JobInterviewStages
+List  JobInterviewStages
 
 ### Example Usage
 

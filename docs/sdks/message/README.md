@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Messages
+* [list](#list) - List  Messages
 * [retrieve](#retrieve) - Retrieve a Message
 
 ## list
 
-List a batch of Messages
+List  Messages
 
 ### Example Usage
 

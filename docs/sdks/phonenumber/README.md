@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of PhoneNumbers
+* [list](#list) - List  PhoneNumbers
 * [retrieve](#retrieve) - Retrieve a PhoneNumber
 
 ## list
 
-List a batch of PhoneNumbers
+List  PhoneNumbers
 
 ### Example Usage
 

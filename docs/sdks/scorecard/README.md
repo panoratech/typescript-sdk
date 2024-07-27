@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of ScoreCards
+* [list](#list) - List  ScoreCards
 * [retrieve](#retrieve) - Retrieve a ScoreCard
 
 ## list
 
-List a batch of ScoreCards
+List  ScoreCards
 
 ### Example Usage
 

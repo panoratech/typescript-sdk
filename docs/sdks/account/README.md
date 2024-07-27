@@ -3,13 +3,13 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Accounts
+* [list](#list) - List  Accounts
 * [create](#create) - Create a Account
 * [retrieve](#retrieve) - Retrieve a Account
 
 ## list
 
-List a batch of Accounts
+List  Accounts
 
 ### Example Usage
 

@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Drives
+* [list](#list) - List  Drives
 * [retrieve](#retrieve) - Retrieve a Drive
 
 ## list
 
-List a batch of Drives
+List  Drives
 
 ### Example Usage
 

@@ -3,13 +3,13 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Candidates
+* [list](#list) - List  Candidates
 * [create](#create) - Create a Candidate
 * [retrieve](#retrieve) - Retrieve a Candidate
 
 ## list
 
-List a batch of Candidates
+List  Candidates
 
 ### Example Usage
 

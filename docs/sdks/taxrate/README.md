@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of TaxRates
+* [list](#list) - List  TaxRates
 * [retrieve](#retrieve) - Retrieve a TaxRate
 
 ## list
 
-List a batch of TaxRates
+List  TaxRates
 
 ### Example Usage
 

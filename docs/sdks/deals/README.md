@@ -3,13 +3,13 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Deals
+* [list](#list) - List  Deals
 * [create](#create) - Create a Deal
 * [retrieve](#retrieve) - Retrieve a Deal
 
 ## list
 
-List a batch of Deals
+List  Deals
 
 ### Example Usage
 

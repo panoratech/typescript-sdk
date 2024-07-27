@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Emails
+* [list](#list) - List  Emails
 * [retrieve](#retrieve) - Retrieve a Email
 
 ## list
 
-List a batch of Emails
+List  Emails
 
 ### Example Usage
 

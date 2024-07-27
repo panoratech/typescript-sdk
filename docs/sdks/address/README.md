@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Addresss
+* [list](#list) - List  Addresss
 * [retrieve](#retrieve) - Retrieve a Address
 
 ## list
 
-List a batch of Addresss
+List  Addresss
 
 ### Example Usage
 

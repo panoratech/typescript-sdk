@@ -3,13 +3,13 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Campaigns
+* [list](#list) - List  Campaigns
 * [create](#create) - Create a Campaign
 * [retrieve](#retrieve) - Retrieve a Campaign
 
 ## list
 
-List a batch of Campaigns
+List  Campaigns
 
 ### Example Usage
 

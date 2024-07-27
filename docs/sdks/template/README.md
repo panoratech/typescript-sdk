@@ -3,13 +3,13 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Templates
+* [list](#list) - List  Templates
 * [create](#create) - Create a Template
 * [retrieve](#retrieve) - Retrieve a Template
 
 ## list
 
-List a batch of Templates
+List  Templates
 
 ### Example Usage
 

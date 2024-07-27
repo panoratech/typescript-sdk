@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Bankinfos
+* [list](#list) - List  Bankinfos
 * [retrieve](#retrieve) - Retrieve a Bankinfo
 
 ## list
 
-List a batch of Bankinfos
+List  Bankinfos
 
 ### Example Usage
 

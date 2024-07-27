@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Offers
+* [list](#list) - List  Offers
 * [retrieve](#retrieve) - Retrieve a Offer
 
 ## list
 
-List a batch of Offers
+List  Offers
 
 ### Example Usage
 

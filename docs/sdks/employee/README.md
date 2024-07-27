@@ -3,13 +3,13 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Employees
+* [list](#list) - List  Employees
 * [create](#create) - Create an Employee
 * [retrieve](#retrieve) - Retrieve an Employee
 
 ## list
 
-List a batch of Employees
+List  Employees
 
 ### Example Usage
 

@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of TrackingCategorys
+* [list](#list) - List  TrackingCategorys
 * [retrieve](#retrieve) - Retrieve a TrackingCategory
 
 ## list
 
-List a batch of TrackingCategorys
+List  TrackingCategorys
 
 ### Example Usage
 

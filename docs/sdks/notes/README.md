@@ -3,13 +3,13 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Notes
+* [list](#list) - List  Notes
 * [create](#create) - Create a Note
 * [retrieve](#retrieve) - Retrieve a Note
 
 ## list
 
-List a batch of Notes
+List  Notes
 
 ### Example Usage
 

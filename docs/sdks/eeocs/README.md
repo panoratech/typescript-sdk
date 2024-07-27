@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Eeocss
+* [list](#list) - List  Eeocss
 * [retrieve](#retrieve) - Retrieve a Eeocs
 
 ## list
 
-List a batch of Eeocss
+List  Eeocss
 
 ### Example Usage
 

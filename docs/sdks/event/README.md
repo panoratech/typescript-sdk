@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Events
+* [list](#list) - List  Events
 * [retrieve](#retrieve) - Retrieve a Event
 
 ## list
 
-List a batch of Events
+List  Events
 
 ### Example Usage
 

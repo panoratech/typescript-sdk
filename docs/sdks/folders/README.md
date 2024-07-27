@@ -3,13 +3,13 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Folders
+* [list](#list) - List  Folders
 * [create](#create) - Create a Folder
 * [retrieve](#retrieve) - Retrieve a Folder
 
 ## list
 
-List a batch of Folders
+List  Folders
 
 ### Example Usage
 

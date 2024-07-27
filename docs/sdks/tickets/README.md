@@ -3,13 +3,13 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Tickets
+* [list](#list) - List  Tickets
 * [create](#create) - Create a Ticket
 * [retrieve](#retrieve) - Retrieve a Ticket
 
 ## list
 
-List a batch of Tickets
+List  Tickets
 
 ### Example Usage
 

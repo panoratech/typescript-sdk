@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Benefits
+* [list](#list) - List  Benefits
 * [retrieve](#retrieve) - Retrieve a Benefit
 
 ## list
 
-List a batch of Benefits
+List  Benefits
 
 ### Example Usage
 

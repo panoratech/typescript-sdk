@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of TimeoffBalances
+* [list](#list) - List  TimeoffBalances
 * [retrieve](#retrieve) - Retrieve a TimeoffBalance
 
 ## list
 
-List a batch of TimeoffBalances
+List  TimeoffBalances
 
 ### Example Usage
 

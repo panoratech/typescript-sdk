@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Transactions
+* [list](#list) - List  Transactions
 * [retrieve](#retrieve) - Retrieve a Transaction
 
 ## list
 
-List a batch of Transactions
+List  Transactions
 
 ### Example Usage
 

@@ -3,13 +3,13 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Applications
+* [list](#list) - List  Applications
 * [create](#create) - Create an Application
 * [retrieve](#retrieve) - Retrieve an Application
 
 ## list
 
-List a batch of Applications
+List  Applications
 
 ### Example Usage
 

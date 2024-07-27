@@ -3,13 +3,13 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Activities
+* [list](#list) - List  Activities
 * [create](#create) - Create a Activity
 * [retrieve](#retrieve) - Retrieve a Activity
 
 ## list
 
-List a batch of Activities
+List  Activities
 
 ### Example Usage
 

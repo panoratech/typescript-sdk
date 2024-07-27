@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Groups
+* [list](#list) - List  Groups
 * [retrieve](#retrieve) - Retrieve a Group
 
 ## list
 
-List a batch of Groups
+List  Groups
 
 ### Example Usage
 

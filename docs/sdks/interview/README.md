@@ -3,13 +3,13 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Interviews
+* [list](#list) - List  Interviews
 * [create](#create) - Create a Interview
 * [retrieve](#retrieve) - Retrieve a Interview
 
 ## list
 
-List a batch of Interviews
+List  Interviews
 
 ### Example Usage
 
