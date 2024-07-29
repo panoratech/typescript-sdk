@@ -62,7 +62,7 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-    bearer: "<YOUR_BEARER_TOKEN_HERE>",
+    bearer: process.env.BEARER,
 });
 
 async function run() {
@@ -576,7 +576,7 @@ import { Panora } from "@panora/sdk";
 import { SDKValidationError } from "@panora/sdk/models/errors";
 
 const panora = new Panora({
-    bearer: "<YOUR_BEARER_TOKEN_HERE>",
+    bearer: process.env.BEARER,
 });
 
 async function run() {
@@ -625,7 +625,7 @@ import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
     serverIdx: 2,
-    bearer: "<YOUR_BEARER_TOKEN_HERE>",
+    bearer: process.env.BEARER,
 });
 
 async function run() {
@@ -649,7 +649,7 @@ import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
     serverURL: "https://api.panora.dev",
-    bearer: "<YOUR_BEARER_TOKEN_HERE>",
+    bearer: process.env.BEARER,
 });
 
 async function run() {
@@ -729,7 +729,7 @@ To authenticate with the API the `bearer` parameter must be set when initializin
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-    bearer: "<YOUR_BEARER_TOKEN_HERE>",
+    bearer: process.env.BEARER,
 });
 
 async function run() {
@@ -754,7 +754,7 @@ To change the default retry strategy for a single API call, simply provide a ret
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-    bearer: "<YOUR_BEARER_TOKEN_HERE>",
+    bearer: process.env.BEARER,
 });
 
 async function run() {
@@ -794,7 +794,7 @@ const panora = new Panora({
         },
         retryConnectionErrors: false,
     },
-    bearer: "<YOUR_BEARER_TOKEN_HERE>",
+    bearer: process.env.BEARER,
 });
 
 async function run() {
