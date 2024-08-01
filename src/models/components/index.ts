@@ -14,7 +14,6 @@ export * from "./mapfieldtoproviderdto.js";
 export * from "./passthroughrequestdto.js";
 export * from "./passthroughresponse.js";
 export * from "./phone.js";
-export * from "./security.js";
 export * from "./signatureverificationdto.js";
 export * from "./unifiedaccountingaccountinput.js";
 export * from "./unifiedaccountingaccountoutput.js";

@@ -67,25 +67,11 @@ export class Sync extends ClientSDK {
             Accept: "*/*",
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
-        const context = {
-            operationID: "status",
-            oAuth2Scopes: [],
-            securitySource: this.options$.bearer,
-        };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
+        const context = { operationID: "status", oAuth2Scopes: [], securitySource: null };
 
         const request$ = this.createRequest$(
             context,
             {
-                security: securitySettings$,
                 method: "GET",
                 path: path$,
                 headers: headers$,
@@ -127,25 +113,11 @@ export class Sync extends ClientSDK {
             Accept: "*/*",
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
-        const context = {
-            operationID: "resync",
-            oAuth2Scopes: [],
-            securitySource: this.options$.bearer,
-        };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
+        const context = { operationID: "resync", oAuth2Scopes: [], securitySource: null };
 
         const request$ = this.createRequest$(
             context,
             {
-                security: securitySettings$,
                 method: "POST",
                 path: path$,
                 headers: headers$,
@@ -167,7 +139,7 @@ export class Sync extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.ResyncResponse>()
-            .void(200, operations.ResyncResponse$inboundSchema)
+            .void([200, 201], operations.ResyncResponse$inboundSchema)
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 

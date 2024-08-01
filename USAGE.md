@@ -2,9 +2,7 @@
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora({
-    bearer: "<YOUR_BEARER_TOKEN_HERE>",
-});
+const panora = new Panora();
 
 async function run() {
     const result = await panora.hello();

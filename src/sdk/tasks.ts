@@ -74,25 +74,11 @@ export class Tasks extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
-        const context = {
-            operationID: "listCrmTask",
-            oAuth2Scopes: [],
-            securitySource: this.options$.bearer,
-        };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
+        const context = { operationID: "listCrmTask", oAuth2Scopes: [], securitySource: null };
 
         const request$ = this.createRequest$(
             context,
             {
-                security: securitySettings$,
                 method: "GET",
                 path: path$,
                 headers: headers$,
@@ -123,10 +109,10 @@ export class Tasks extends ClientSDK {
     }
 
     /**
-     * Create a Task
+     * Create Tasks
      *
      * @remarks
-     * Create a task in any supported Crm software
+     * Create Tasks in any supported Crm software
      */
     async create(
         request: operations.CreateCrmTaskRequest,
@@ -157,25 +143,11 @@ export class Tasks extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
-        const context = {
-            operationID: "createCrmTask",
-            oAuth2Scopes: [],
-            securitySource: this.options$.bearer,
-        };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
+        const context = { operationID: "createCrmTask", oAuth2Scopes: [], securitySource: null };
 
         const request$ = this.createRequest$(
             context,
             {
-                security: securitySettings$,
                 method: "POST",
                 path: path$,
                 headers: headers$,
@@ -208,10 +180,10 @@ export class Tasks extends ClientSDK {
     }
 
     /**
-     * Retrieve a Task
+     * Retrieve Tasks
      *
      * @remarks
-     * Retrieve a task from any connected Crm software
+     * Retrieve Tasks from any connected Crm software
      */
     async retrieve(
         request: operations.RetrieveCrmTaskRequest,
@@ -244,25 +216,11 @@ export class Tasks extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
-        const context = {
-            operationID: "retrieveCrmTask",
-            oAuth2Scopes: [],
-            securitySource: this.options$.bearer,
-        };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
+        const context = { operationID: "retrieveCrmTask", oAuth2Scopes: [], securitySource: null };
 
         const request$ = this.createRequest$(
             context,
             {
-                security: securitySettings$,
                 method: "GET",
                 path: path$,
                 headers: headers$,

@@ -4,8 +4,8 @@
 ### Available Operations
 
 * [list](#list) - List  Companies
-* [create](#create) - Create a Company
-* [retrieve](#retrieve) - Retrieve a Company
+* [create](#create) - Create Companies
+* [retrieve](#retrieve) - Retrieve Companies
 
 ## list
 
@@ -16,9 +16,7 @@ List  Companies
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
-});
+const panora = new Panora();
 
 async function run() {
   const result = await panora.crm.companies.list({
@@ -53,16 +51,14 @@ run();
 
 ## create
 
-Create a company in any supported Crm software
+Create Companies in any supported CRM software
 
 ### Example Usage
 
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
-});
+const panora = new Panora();
 
 async function run() {
   const result = await panora.crm.companies.create({
@@ -101,16 +97,14 @@ run();
 
 ## retrieve
 
-Retrieve a company from any connected Crm software
+Retrieve Companies from any connected Crm software
 
 ### Example Usage
 
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
-});
+const panora = new Panora();
 
 async function run() {
   const result = await panora.crm.companies.retrieve({

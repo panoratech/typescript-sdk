@@ -74,25 +74,15 @@ export class Engagements extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
         const context = {
             operationID: "listCrmEngagements",
             oAuth2Scopes: [],
-            securitySource: this.options$.bearer,
+            securitySource: null,
         };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const request$ = this.createRequest$(
             context,
             {
-                security: securitySettings$,
                 method: "GET",
                 path: path$,
                 headers: headers$,
@@ -123,10 +113,10 @@ export class Engagements extends ClientSDK {
     }
 
     /**
-     * Create a Engagement
+     * Create Engagements
      *
      * @remarks
-     * Create a engagement in any supported Crm software
+     * Create Engagements in any supported Crm software
      */
     async create(
         request: operations.CreateCrmEngagementRequest,
@@ -157,25 +147,15 @@ export class Engagements extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
         const context = {
             operationID: "createCrmEngagement",
             oAuth2Scopes: [],
-            securitySource: this.options$.bearer,
+            securitySource: null,
         };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const request$ = this.createRequest$(
             context,
             {
-                security: securitySettings$,
                 method: "POST",
                 path: path$,
                 headers: headers$,
@@ -208,10 +188,10 @@ export class Engagements extends ClientSDK {
     }
 
     /**
-     * Retrieve a Engagement
+     * Retrieve Engagements
      *
      * @remarks
-     * Retrieve a engagement from any connected Crm software
+     * Retrieve Engagements from any connected Crm software
      */
     async retrieve(
         request: operations.RetrieveCrmEngagementRequest,
@@ -244,25 +224,15 @@ export class Engagements extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
         const context = {
             operationID: "retrieveCrmEngagement",
             oAuth2Scopes: [],
-            securitySource: this.options$.bearer,
+            securitySource: null,
         };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const request$ = this.createRequest$(
             context,
             {
-                security: securitySettings$,
                 method: "GET",
                 path: path$,
                 headers: headers$,

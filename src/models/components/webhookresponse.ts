@@ -13,7 +13,7 @@ export type WebhookResponse = {
     /**
      * The description of the webhook.
      */
-    endpointDescription: string;
+    endpointDescription: string | null;
     /**
      * The endpoint url of the webhook.
      */
@@ -41,14 +41,14 @@ export type WebhookResponse = {
     /**
      * The last update date of the webhook.
      */
-    lastUpdate: Date;
+    lastUpdate: Date | null;
 };
 
 /** @internal */
 export const WebhookResponse$inboundSchema: z.ZodType<WebhookResponse, z.ZodTypeDef, unknown> = z
     .object({
         id_webhook_endpoint: z.string(),
-        endpoint_description: z.string(),
+        endpoint_description: z.nullable(z.string()),
         url: z.string(),
         secret: z.string(),
         active: z.boolean(),
@@ -58,10 +58,12 @@ export const WebhookResponse$inboundSchema: z.ZodType<WebhookResponse, z.ZodType
             .transform((v) => new Date(v)),
         scope: z.array(z.string()),
         id_project: z.string(),
-        last_update: z
-            .string()
-            .datetime({ offset: true })
-            .transform((v) => new Date(v)),
+        last_update: z.nullable(
+            z
+                .string()
+                .datetime({ offset: true })
+                .transform((v) => new Date(v))
+        ),
     })
     .transform((v) => {
         return remap$(v, {
@@ -76,14 +78,14 @@ export const WebhookResponse$inboundSchema: z.ZodType<WebhookResponse, z.ZodType
 /** @internal */
 export type WebhookResponse$Outbound = {
     id_webhook_endpoint: string;
-    endpoint_description: string;
+    endpoint_description: string | null;
     url: string;
     secret: string;
     active: boolean;
     created_at: string;
     scope: Array<string>;
     id_project: string;
-    last_update: string;
+    last_update: string | null;
 };
 
 /** @internal */
@@ -94,14 +96,14 @@ export const WebhookResponse$outboundSchema: z.ZodType<
 > = z
     .object({
         idWebhookEndpoint: z.string(),
-        endpointDescription: z.string(),
+        endpointDescription: z.nullable(z.string()),
         url: z.string(),
         secret: z.string(),
         active: z.boolean(),
         createdAt: z.date().transform((v) => v.toISOString()),
         scope: z.array(z.string()),
         idProject: z.string(),
-        lastUpdate: z.date().transform((v) => v.toISOString()),
+        lastUpdate: z.nullable(z.date().transform((v) => v.toISOString())),
     })
     .transform((v) => {
         return remap$(v, {

@@ -73,25 +73,11 @@ export class Stages extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
-        const context = {
-            operationID: "listCrmStages",
-            oAuth2Scopes: [],
-            securitySource: this.options$.bearer,
-        };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
+        const context = { operationID: "listCrmStages", oAuth2Scopes: [], securitySource: null };
 
         const request$ = this.createRequest$(
             context,
             {
-                security: securitySettings$,
                 method: "GET",
                 path: path$,
                 headers: headers$,
@@ -122,10 +108,10 @@ export class Stages extends ClientSDK {
     }
 
     /**
-     * Retrieve a Stage
+     * Retrieve Stages
      *
      * @remarks
-     * Retrieve a stage from any connected Crm software
+     * Retrieve Stages from any connected Crm software
      */
     async retrieve(
         request: operations.RetrieveCrmStageRequest,
@@ -158,25 +144,11 @@ export class Stages extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
-        const context = {
-            operationID: "retrieveCrmStage",
-            oAuth2Scopes: [],
-            securitySource: this.options$.bearer,
-        };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
+        const context = { operationID: "retrieveCrmStage", oAuth2Scopes: [], securitySource: null };
 
         const request$ = this.createRequest$(
             context,
             {
-                security: securitySettings$,
                 method: "GET",
                 path: path$,
                 headers: headers$,

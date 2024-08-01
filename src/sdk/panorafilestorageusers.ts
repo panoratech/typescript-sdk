@@ -73,25 +73,15 @@ export class PanoraFilestorageUsers extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
         const context = {
             operationID: "listFilestorageUsers",
             oAuth2Scopes: [],
-            securitySource: this.options$.bearer,
+            securitySource: null,
         };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const request$ = this.createRequest$(
             context,
             {
-                security: securitySettings$,
                 method: "GET",
                 path: path$,
                 headers: headers$,
@@ -122,10 +112,10 @@ export class PanoraFilestorageUsers extends ClientSDK {
     }
 
     /**
-     * Retrieve a User
+     * Retrieve Users
      *
      * @remarks
-     * Retrieve a permission from any connected Filestorage software
+     * Retrieve Users from any connected Filestorage software
      */
     async retrieve(
         request: operations.RetrieveFilestorageUserRequest,
@@ -158,25 +148,15 @@ export class PanoraFilestorageUsers extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
         const context = {
             operationID: "retrieveFilestorageUser",
             oAuth2Scopes: [],
-            securitySource: this.options$.bearer,
+            securitySource: null,
         };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const request$ = this.createRequest$(
             context,
             {
-                security: securitySettings$,
                 method: "GET",
                 path: path$,
                 headers: headers$,

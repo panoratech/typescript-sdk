@@ -73,25 +73,15 @@ export class Accounts extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
         const context = {
             operationID: "listTicketingAccount",
             oAuth2Scopes: [],
-            securitySource: this.options$.bearer,
+            securitySource: null,
         };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const request$ = this.createRequest$(
             context,
             {
-                security: securitySettings$,
                 method: "GET",
                 path: path$,
                 headers: headers$,
@@ -122,10 +112,10 @@ export class Accounts extends ClientSDK {
     }
 
     /**
-     * Retrieve an Account
+     * Retrieve Accounts
      *
      * @remarks
-     * Retrieve an account from any connected Ticketing software
+     * Retrieve Accounts from any connected Ticketing software
      */
     async retrieve(
         request: operations.RetrieveTicketingAccountRequest,
@@ -158,25 +148,15 @@ export class Accounts extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
         const context = {
             operationID: "retrieveTicketingAccount",
             oAuth2Scopes: [],
-            securitySource: this.options$.bearer,
+            securitySource: null,
         };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const request$ = this.createRequest$(
             context,
             {
-                security: securitySettings$,
                 method: "GET",
                 path: path$,
                 headers: headers$,

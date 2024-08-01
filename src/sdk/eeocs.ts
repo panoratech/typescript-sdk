@@ -73,25 +73,11 @@ export class Eeocs extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
-        const context = {
-            operationID: "listAtsEeocs",
-            oAuth2Scopes: [],
-            securitySource: this.options$.bearer,
-        };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
+        const context = { operationID: "listAtsEeocs", oAuth2Scopes: [], securitySource: null };
 
         const request$ = this.createRequest$(
             context,
             {
-                security: securitySettings$,
                 method: "GET",
                 path: path$,
                 headers: headers$,
@@ -122,7 +108,7 @@ export class Eeocs extends ClientSDK {
     }
 
     /**
-     * Retrieve a Eeocs
+     * Retrieve Eeocs
      *
      * @remarks
      * Retrieve a eeocs from any connected Ats software
@@ -158,25 +144,11 @@ export class Eeocs extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
-        const context = {
-            operationID: "retrieveAtsEeocs",
-            oAuth2Scopes: [],
-            securitySource: this.options$.bearer,
-        };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
+        const context = { operationID: "retrieveAtsEeocs", oAuth2Scopes: [], securitySource: null };
 
         const request$ = this.createRequest$(
             context,
             {
-                security: securitySettings$,
                 method: "GET",
                 path: path$,
                 headers: headers$,

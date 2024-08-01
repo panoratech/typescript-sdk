@@ -74,25 +74,11 @@ export class Notes extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
-        const context = {
-            operationID: "listCrmNote",
-            oAuth2Scopes: [],
-            securitySource: this.options$.bearer,
-        };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
+        const context = { operationID: "listCrmNote", oAuth2Scopes: [], securitySource: null };
 
         const request$ = this.createRequest$(
             context,
             {
-                security: securitySettings$,
                 method: "GET",
                 path: path$,
                 headers: headers$,
@@ -123,10 +109,10 @@ export class Notes extends ClientSDK {
     }
 
     /**
-     * Create a Note
+     * Create Notes
      *
      * @remarks
-     * Create a note in any supported Crm software
+     * Create Notes in any supported Crm software
      */
     async create(
         request: operations.CreateCrmNoteRequest,
@@ -157,25 +143,11 @@ export class Notes extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
-        const context = {
-            operationID: "createCrmNote",
-            oAuth2Scopes: [],
-            securitySource: this.options$.bearer,
-        };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
+        const context = { operationID: "createCrmNote", oAuth2Scopes: [], securitySource: null };
 
         const request$ = this.createRequest$(
             context,
             {
-                security: securitySettings$,
                 method: "POST",
                 path: path$,
                 headers: headers$,
@@ -208,10 +180,10 @@ export class Notes extends ClientSDK {
     }
 
     /**
-     * Retrieve a Note
+     * Retrieve Notes
      *
      * @remarks
-     * Retrieve a note from any connected Crm software
+     * Retrieve Notes from any connected Crm software
      */
     async retrieve(
         request: operations.RetrieveCrmNoteRequest,
@@ -244,25 +216,11 @@ export class Notes extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
-        const context = {
-            operationID: "retrieveCrmNote",
-            oAuth2Scopes: [],
-            securitySource: this.options$.bearer,
-        };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
+        const context = { operationID: "retrieveCrmNote", oAuth2Scopes: [], securitySource: null };
 
         const request$ = this.createRequest$(
             context,
             {
-                security: securitySettings$,
                 method: "GET",
                 path: path$,
                 headers: headers$,

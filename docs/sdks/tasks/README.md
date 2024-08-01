@@ -4,8 +4,8 @@
 ### Available Operations
 
 * [list](#list) - List  Tasks
-* [create](#create) - Create a Task
-* [retrieve](#retrieve) - Retrieve a Task
+* [create](#create) - Create Tasks
+* [retrieve](#retrieve) - Retrieve Tasks
 
 ## list
 
@@ -16,9 +16,7 @@ List  Tasks
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
-});
+const panora = new Panora();
 
 async function run() {
   const result = await panora.crm.tasks.list({
@@ -53,16 +51,14 @@ run();
 
 ## create
 
-Create a task in any supported Crm software
+Create Tasks in any supported Crm software
 
 ### Example Usage
 
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
-});
+const panora = new Panora();
 
 async function run() {
   const result = await panora.crm.tasks.create({
@@ -103,16 +99,14 @@ run();
 
 ## retrieve
 
-Retrieve a task from any connected Crm software
+Retrieve Tasks from any connected Crm software
 
 ### Example Usage
 
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
-});
+const panora = new Panora();
 
 async function run() {
   const result = await panora.crm.tasks.retrieve({

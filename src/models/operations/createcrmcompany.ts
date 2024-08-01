@@ -12,7 +12,7 @@ export type CreateCrmCompanyRequest = {
      */
     xConnectionToken: string;
     /**
-     * Set to true to include data from the original Crm software.
+     * Set to true to include data from the original CRM software.
      */
     remoteData?: boolean | undefined;
     unifiedCrmCompanyInput: components.UnifiedCrmCompanyInput;

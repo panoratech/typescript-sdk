@@ -1,10 +1,10 @@
 # Groups
-(*filestorage.groups*)
+(*hris.groups*)
 
 ### Available Operations
 
 * [list](#list) - List  Groups
-* [retrieve](#retrieve) - Retrieve a Group
+* [retrieve](#retrieve) - Retrieve Groups
 
 ## list
 
@@ -15,12 +15,10 @@ List  Groups
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
-});
+const panora = new Panora();
 
 async function run() {
-  const result = await panora.filestorage.groups.list({
+  const result = await panora.hris.groups.list({
     xConnectionToken: "<value>",
   });
 
@@ -35,7 +33,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.ListFilestorageGroupRequest](../../models/operations/listfilestoragegrouprequest.md)                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.ListHrisGroupRequest](../../models/operations/listhrisgrouprequest.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -43,7 +41,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListFilestorageGroupResponse](../../models/operations/listfilestoragegroupresponse.md)\>**
+**Promise\<[operations.ListHrisGroupResponse](../../models/operations/listhrisgroupresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -52,19 +50,17 @@ run();
 
 ## retrieve
 
-Retrieve a permission from any connected Filestorage software
+Retrieve Groups from any connected Hris software
 
 ### Example Usage
 
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
-});
+const panora = new Panora();
 
 async function run() {
-  const result = await panora.filestorage.groups.retrieve({
+  const result = await panora.hris.groups.retrieve({
     xConnectionToken: "<value>",
     id: "<id>",
   });
@@ -80,7 +76,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.RetrieveFilestorageGroupRequest](../../models/operations/retrievefilestoragegrouprequest.md)                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.RetrieveHrisGroupRequest](../../models/operations/retrievehrisgrouprequest.md)                                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -88,7 +84,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveFilestorageGroupResponse](../../models/operations/retrievefilestoragegroupresponse.md)\>**
+**Promise\<[operations.RetrieveHrisGroupResponse](../../models/operations/retrievehrisgroupresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

@@ -74,25 +74,11 @@ export class PanoraContacts extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
-        const context = {
-            operationID: "listCrmContacts",
-            oAuth2Scopes: [],
-            securitySource: this.options$.bearer,
-        };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
+        const context = { operationID: "listCrmContacts", oAuth2Scopes: [], securitySource: null };
 
         const request$ = this.createRequest$(
             context,
             {
-                security: securitySettings$,
                 method: "GET",
                 path: path$,
                 headers: headers$,
@@ -123,10 +109,10 @@ export class PanoraContacts extends ClientSDK {
     }
 
     /**
-     * Create CRM Contact
+     * Create Contacts
      *
      * @remarks
-     * Create a contact in any supported CRM
+     * Create Contacts in any supported CRM
      */
     async create(
         request: operations.CreateCrmContactRequest,
@@ -157,25 +143,11 @@ export class PanoraContacts extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
-        const context = {
-            operationID: "createCrmContact",
-            oAuth2Scopes: [],
-            securitySource: this.options$.bearer,
-        };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
+        const context = { operationID: "createCrmContact", oAuth2Scopes: [], securitySource: null };
 
         const request$ = this.createRequest$(
             context,
             {
-                security: securitySettings$,
                 method: "POST",
                 path: path$,
                 headers: headers$,
@@ -208,10 +180,10 @@ export class PanoraContacts extends ClientSDK {
     }
 
     /**
-     * Retrieve a CRM Contact
+     * Retrieve Contacts
      *
      * @remarks
-     * Retrieve a contact from any connected CRM
+     * Retrieve Contacts from any connected CRM
      */
     async retrieve(
         request: operations.RetrieveCrmContactRequest,
@@ -244,25 +216,15 @@ export class PanoraContacts extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
         const context = {
             operationID: "retrieveCrmContact",
             oAuth2Scopes: [],
-            securitySource: this.options$.bearer,
+            securitySource: null,
         };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const request$ = this.createRequest$(
             context,
             {
-                security: securitySettings$,
                 method: "GET",
                 path: path$,
                 headers: headers$,

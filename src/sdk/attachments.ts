@@ -45,19 +45,19 @@ export class Attachments extends ClientSDK {
      * List  Attachments
      */
     async list(
-        request: operations.ListTicketingAttachmentsRequest,
+        request: operations.ListAtsAttachmentRequest,
         options?: RequestOptions
-    ): Promise<operations.ListTicketingAttachmentsResponse> {
+    ): Promise<operations.ListAtsAttachmentResponse> {
         const input$ = request;
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.ListTicketingAttachmentsRequest$outboundSchema.parse(value$),
+            (value$) => operations.ListAtsAttachmentRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
 
-        const path$ = this.templateURLComponent("/ticketing/attachments")();
+        const path$ = this.templateURLComponent("/ats/attachments")();
 
         const query$ = encodeFormQuery$({
             cursor: payload$.cursor,
@@ -74,25 +74,15 @@ export class Attachments extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
         const context = {
-            operationID: "listTicketingAttachments",
+            operationID: "listAtsAttachment",
             oAuth2Scopes: [],
-            securitySource: this.options$.bearer,
+            securitySource: null,
         };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const request$ = this.createRequest$(
             context,
             {
-                security: securitySettings$,
                 method: "GET",
                 path: path$,
                 headers: headers$,
@@ -114,8 +104,8 @@ export class Attachments extends ClientSDK {
             HttpMeta: { Response: response, Request: request$ },
         };
 
-        const [result$] = await this.matcher<operations.ListTicketingAttachmentsResponse>()
-            .json(200, operations.ListTicketingAttachmentsResponse$inboundSchema, { key: "object" })
+        const [result$] = await this.matcher<operations.ListAtsAttachmentResponse>()
+            .json(200, operations.ListAtsAttachmentResponse$inboundSchema, { key: "object" })
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 
@@ -123,27 +113,25 @@ export class Attachments extends ClientSDK {
     }
 
     /**
-     * Create a Attachment
+     * Create Attachments
      *
      * @remarks
-     * Create a attachment in any supported Ticketing software
+     * Create Attachments in any supported ATS software
      */
     async create(
-        request: operations.CreateTicketingAttachmentRequest,
+        request: operations.CreateAtsAttachmentRequest,
         options?: RequestOptions
-    ): Promise<operations.CreateTicketingAttachmentResponse> {
+    ): Promise<operations.CreateAtsAttachmentResponse> {
         const input$ = request;
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.CreateTicketingAttachmentRequest$outboundSchema.parse(value$),
+            (value$) => operations.CreateAtsAttachmentRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = encodeJSON$("body", payload$.UnifiedTicketingAttachmentInput, {
-            explode: true,
-        });
+        const body$ = encodeJSON$("body", payload$.UnifiedAtsAttachmentInput, { explode: true });
 
-        const path$ = this.templateURLComponent("/ticketing/attachments")();
+        const path$ = this.templateURLComponent("/ats/attachments")();
 
         const query$ = encodeFormQuery$({
             remote_data: payload$.remote_data,
@@ -159,25 +147,15 @@ export class Attachments extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
         const context = {
-            operationID: "createTicketingAttachment",
+            operationID: "createAtsAttachment",
             oAuth2Scopes: [],
-            securitySource: this.options$.bearer,
+            securitySource: null,
         };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const request$ = this.createRequest$(
             context,
             {
-                security: securitySettings$,
                 method: "POST",
                 path: path$,
                 headers: headers$,
@@ -199,9 +177,9 @@ export class Attachments extends ClientSDK {
             HttpMeta: { Response: response, Request: request$ },
         };
 
-        const [result$] = await this.matcher<operations.CreateTicketingAttachmentResponse>()
-            .json(201, operations.CreateTicketingAttachmentResponse$inboundSchema, {
-                key: "UnifiedTicketingAttachmentOutput",
+        const [result$] = await this.matcher<operations.CreateAtsAttachmentResponse>()
+            .json(201, operations.CreateAtsAttachmentResponse$inboundSchema, {
+                key: "UnifiedAtsAttachmentOutput",
             })
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
@@ -210,20 +188,20 @@ export class Attachments extends ClientSDK {
     }
 
     /**
-     * Retrieve a Attachment
+     * Retrieve Attachments
      *
      * @remarks
-     * Retrieve a attachment from any connected Ticketing software
+     * Retrieve Attachments from any connected Ats software
      */
     async retrieve(
-        request: operations.RetrieveTicketingAttachmentRequest,
+        request: operations.RetrieveAtsAttachmentRequest,
         options?: RequestOptions
-    ): Promise<operations.RetrieveTicketingAttachmentResponse> {
+    ): Promise<operations.RetrieveAtsAttachmentResponse> {
         const input$ = request;
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.RetrieveTicketingAttachmentRequest$outboundSchema.parse(value$),
+            (value$) => operations.RetrieveAtsAttachmentRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -231,7 +209,7 @@ export class Attachments extends ClientSDK {
         const pathParams$ = {
             id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-        const path$ = this.templateURLComponent("/ticketing/attachments/{id}")(pathParams$);
+        const path$ = this.templateURLComponent("/ats/attachments/{id}")(pathParams$);
 
         const query$ = encodeFormQuery$({
             remote_data: payload$.remote_data,
@@ -246,25 +224,15 @@ export class Attachments extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
         const context = {
-            operationID: "retrieveTicketingAttachment",
+            operationID: "retrieveAtsAttachment",
             oAuth2Scopes: [],
-            securitySource: this.options$.bearer,
+            securitySource: null,
         };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const request$ = this.createRequest$(
             context,
             {
-                security: securitySettings$,
                 method: "GET",
                 path: path$,
                 headers: headers$,
@@ -286,9 +254,9 @@ export class Attachments extends ClientSDK {
             HttpMeta: { Response: response, Request: request$ },
         };
 
-        const [result$] = await this.matcher<operations.RetrieveTicketingAttachmentResponse>()
-            .json(200, operations.RetrieveTicketingAttachmentResponse$inboundSchema, {
-                key: "UnifiedTicketingAttachmentOutput",
+        const [result$] = await this.matcher<operations.RetrieveAtsAttachmentResponse>()
+            .json(200, operations.RetrieveAtsAttachmentResponse$inboundSchema, {
+                key: "UnifiedAtsAttachmentOutput",
             })
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });

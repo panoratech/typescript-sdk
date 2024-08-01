@@ -69,25 +69,11 @@ export class Passthrough extends ClientSDK {
             Accept: "application/json",
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
-        const context = {
-            operationID: "request",
-            oAuth2Scopes: [],
-            securitySource: this.options$.bearer,
-        };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
+        const context = { operationID: "request", oAuth2Scopes: [], securitySource: null };
 
         const request$ = this.createRequest$(
             context,
             {
-                security: securitySettings$,
                 method: "POST",
                 path: path$,
                 headers: headers$,
@@ -110,7 +96,9 @@ export class Passthrough extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.RequestResponse>()
-            .json(200, operations.RequestResponse$inboundSchema, { key: "PassThroughResponse" })
+            .json([200, 201], operations.RequestResponse$inboundSchema, {
+                key: "PassThroughResponse",
+            })
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 
