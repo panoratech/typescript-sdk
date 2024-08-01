@@ -11,6 +11,7 @@ import {
 import { HTTPClient } from "../lib/http.js";
 import * as schemas$ from "../lib/schemas.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
+import { extractSecurity } from "../lib/security.js";
 import * as operations from "../models/operations/index.js";
 
 export class Drives extends ClientSDK {
@@ -73,14 +74,8 @@ export class Drives extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
+        const bearer$ = await extractSecurity(this.options$.bearer);
+        const security$ = bearer$ == null ? {} : { bearer: bearer$ };
         const context = {
             operationID: "listFilestorageDrives",
             oAuth2Scopes: [],
@@ -122,10 +117,10 @@ export class Drives extends ClientSDK {
     }
 
     /**
-     * Retrieve a Drive
+     * Retrieve Drives
      *
      * @remarks
-     * Retrieve a drive from any connected Filestorage software
+     * Retrieve Drives from any connected Filestorage software
      */
     async retrieve(
         request: operations.RetrieveFilestorageDriveRequest,
@@ -158,14 +153,8 @@ export class Drives extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
+        const bearer$ = await extractSecurity(this.options$.bearer);
+        const security$ = bearer$ == null ? {} : { bearer: bearer$ };
         const context = {
             operationID: "retrieveFilestorageDrive",
             oAuth2Scopes: [],

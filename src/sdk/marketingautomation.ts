@@ -6,16 +6,16 @@ import { SDKHooks } from "../hooks/hooks.js";
 import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
 import { HTTPClient } from "../lib/http.js";
 import { ClientSDK } from "../lib/sdks.js";
-import { Action } from "./action.js";
-import { Automation } from "./automation.js";
-import { Campaign } from "./campaign.js";
-import { Contact } from "./contact.js";
-import { Email } from "./email.js";
-import { Event } from "./event.js";
-import { List } from "./list.js";
-import { Message } from "./message.js";
-import { Template } from "./template.js";
-import { User } from "./user.js";
+import { Actions } from "./actions.js";
+import { Automations } from "./automations.js";
+import { Campaigns } from "./campaigns.js";
+import { Emails } from "./emails.js";
+import { Events } from "./events.js";
+import { Lists } from "./lists.js";
+import { Messages } from "./messages.js";
+import { PanoraMarketingautomationContacts } from "./panoramarketingautomationcontacts.js";
+import { PanoraMarketingautomationUsers } from "./panoramarketingautomationusers.js";
+import { Templates } from "./templates.js";
 
 export class Marketingautomation extends ClientSDK {
     private readonly options$: SDKOptions & { hooks?: SDKHooks };
@@ -44,53 +44,53 @@ export class Marketingautomation extends ClientSDK {
         void this.options$;
     }
 
-    private _action?: Action;
-    get action(): Action {
-        return (this._action ??= new Action(this.options$));
+    private _actions?: Actions;
+    get actions(): Actions {
+        return (this._actions ??= new Actions(this.options$));
     }
 
-    private _automation?: Automation;
-    get automation(): Automation {
-        return (this._automation ??= new Automation(this.options$));
+    private _automations?: Automations;
+    get automations(): Automations {
+        return (this._automations ??= new Automations(this.options$));
     }
 
-    private _campaign?: Campaign;
-    get campaign(): Campaign {
-        return (this._campaign ??= new Campaign(this.options$));
+    private _campaigns?: Campaigns;
+    get campaigns(): Campaigns {
+        return (this._campaigns ??= new Campaigns(this.options$));
     }
 
-    private _contact?: Contact;
-    get contact(): Contact {
-        return (this._contact ??= new Contact(this.options$));
+    private _contacts?: PanoraMarketingautomationContacts;
+    get contacts(): PanoraMarketingautomationContacts {
+        return (this._contacts ??= new PanoraMarketingautomationContacts(this.options$));
     }
 
-    private _email?: Email;
-    get email(): Email {
-        return (this._email ??= new Email(this.options$));
+    private _emails?: Emails;
+    get emails(): Emails {
+        return (this._emails ??= new Emails(this.options$));
     }
 
-    private _event?: Event;
-    get event(): Event {
-        return (this._event ??= new Event(this.options$));
+    private _events?: Events;
+    get events(): Events {
+        return (this._events ??= new Events(this.options$));
     }
 
-    private _list?: List;
-    get list(): List {
-        return (this._list ??= new List(this.options$));
+    private _lists?: Lists;
+    get lists(): Lists {
+        return (this._lists ??= new Lists(this.options$));
     }
 
-    private _message?: Message;
-    get message(): Message {
-        return (this._message ??= new Message(this.options$));
+    private _messages?: Messages;
+    get messages(): Messages {
+        return (this._messages ??= new Messages(this.options$));
     }
 
-    private _template?: Template;
-    get template(): Template {
-        return (this._template ??= new Template(this.options$));
+    private _templates?: Templates;
+    get templates(): Templates {
+        return (this._templates ??= new Templates(this.options$));
     }
 
-    private _user?: User;
-    get user(): User {
-        return (this._user ??= new User(this.options$));
+    private _users?: PanoraMarketingautomationUsers;
+    get users(): PanoraMarketingautomationUsers {
+        return (this._users ??= new PanoraMarketingautomationUsers(this.options$));
     }
 }

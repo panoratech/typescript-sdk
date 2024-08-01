@@ -19,7 +19,7 @@ List webhooks
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+  bearer: process.env.BEARER,
 });
 
 async function run() {
@@ -60,7 +60,7 @@ Add webhook metadata
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+  bearer: process.env.BEARER,
 });
 
 async function run() {
@@ -108,7 +108,7 @@ Delete Webhook
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+  bearer: process.env.BEARER,
 });
 
 async function run() {
@@ -152,7 +152,7 @@ Update webhook status
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+  bearer: process.env.BEARER,
 });
 
 async function run() {
@@ -196,7 +196,7 @@ Verify payload signature of the webhook
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+  bearer: process.env.BEARER,
 });
 
 async function run() {

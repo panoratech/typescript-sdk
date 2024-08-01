@@ -8,7 +8,6 @@ import * as z from "zod";
 export type CreateLinkedUserDto = {
     linkedUserOriginId: string;
     alias: string;
-    idProject: string;
 };
 
 /** @internal */
@@ -20,12 +19,10 @@ export const CreateLinkedUserDto$inboundSchema: z.ZodType<
     .object({
         linked_user_origin_id: z.string(),
         alias: z.string(),
-        id_project: z.string(),
     })
     .transform((v) => {
         return remap$(v, {
             linked_user_origin_id: "linkedUserOriginId",
-            id_project: "idProject",
         });
     });
 
@@ -33,7 +30,6 @@ export const CreateLinkedUserDto$inboundSchema: z.ZodType<
 export type CreateLinkedUserDto$Outbound = {
     linked_user_origin_id: string;
     alias: string;
-    id_project: string;
 };
 
 /** @internal */
@@ -45,12 +41,10 @@ export const CreateLinkedUserDto$outboundSchema: z.ZodType<
     .object({
         linkedUserOriginId: z.string(),
         alias: z.string(),
-        idProject: z.string(),
     })
     .transform((v) => {
         return remap$(v, {
             linkedUserOriginId: "linked_user_origin_id",
-            idProject: "id_project",
         });
     });
 

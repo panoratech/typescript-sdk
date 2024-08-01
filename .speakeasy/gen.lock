@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: caaaa8c3-6dd7-43a5-841e-c3193e68cc73
 management:
-  docChecksum: 5552e2ec0c328401426fc7d843929823
+  docChecksum: 9a90e56f39162805896ae234e3c0001b
   docVersion: "1.0"
-  speakeasyVersion: 1.346.3
-  generationVersion: 2.379.6
-  releaseVersion: 0.1.3
-  configChecksum: ff80f9fcc5002fc0e0f12fdbb50f826c
+  speakeasyVersion: 1.349.2
+  generationVersion: 2.382.2
+  releaseVersion: 0.2.0
+  configChecksum: 2821e75ba7e9bf939804c6cac848d076
   repoURL: https://github.com/panoratech/typescript-sdk.git
   installationURL: https://github.com/panoratech/typescript-sdk
   published: true
@@ -14,8 +14,9 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.5
-    core: 3.11.10
+    core: 3.11.11
     defaultEnabledRetries: 0.1.0
+    envVarSecurityUsage: 0.1.0
     globalSecurity: 2.82.9
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
@@ -35,7 +36,7 @@ generatedFiles:
   - src/sdk/comments.ts
   - src/sdk/tags.ts
   - src/sdk/teams.ts
-  - src/sdk/attachments.ts
+  - src/sdk/panoraticketingattachments.ts
   - src/sdk/ticketing.ts
   - src/sdk/sync.ts
   - src/sdk/companies.ts
@@ -50,73 +51,73 @@ generatedFiles:
   - src/sdk/linkedusers.ts
   - src/sdk/fieldmappings.ts
   - src/sdk/passthrough.ts
-  - src/sdk/bankinfo.ts
-  - src/sdk/benefit.ts
-  - src/sdk/company.ts
-  - src/sdk/dependent.ts
-  - src/sdk/employeepayrollrun.ts
-  - src/sdk/employee.ts
-  - src/sdk/employerbenefit.ts
-  - src/sdk/employment.ts
-  - src/sdk/group.ts
-  - src/sdk/location.ts
-  - src/sdk/paygroup.ts
-  - src/sdk/payrollrun.ts
-  - src/sdk/timeoff.ts
-  - src/sdk/timeoffbalance.ts
+  - src/sdk/bankinfos.ts
+  - src/sdk/benefits.ts
+  - src/sdk/panoracompanies.ts
+  - src/sdk/dependents.ts
+  - src/sdk/employeepayrollruns.ts
+  - src/sdk/employees.ts
+  - src/sdk/employerbenefits.ts
+  - src/sdk/employments.ts
+  - src/sdk/groups.ts
+  - src/sdk/locations.ts
+  - src/sdk/paygroups.ts
+  - src/sdk/payrollruns.ts
+  - src/sdk/timeoffs.ts
+  - src/sdk/timeoffbalances.ts
   - src/sdk/hris.ts
-  - src/sdk/action.ts
-  - src/sdk/automation.ts
-  - src/sdk/campaign.ts
-  - src/sdk/contact.ts
-  - src/sdk/email.ts
-  - src/sdk/event.ts
-  - src/sdk/list.ts
-  - src/sdk/message.ts
-  - src/sdk/template.ts
-  - src/sdk/user.ts
+  - src/sdk/actions.ts
+  - src/sdk/automations.ts
+  - src/sdk/campaigns.ts
+  - src/sdk/panoramarketingautomationcontacts.ts
+  - src/sdk/emails.ts
+  - src/sdk/events.ts
+  - src/sdk/lists.ts
+  - src/sdk/messages.ts
+  - src/sdk/templates.ts
+  - src/sdk/panoramarketingautomationusers.ts
   - src/sdk/marketingautomation.ts
-  - src/sdk/activity.ts
-  - src/sdk/application.ts
-  - src/sdk/attachment.ts
-  - src/sdk/candidate.ts
-  - src/sdk/department.ts
-  - src/sdk/interview.ts
-  - src/sdk/jobinterviewstage.ts
-  - src/sdk/job.ts
-  - src/sdk/offer.ts
-  - src/sdk/office.ts
-  - src/sdk/rejectreason.ts
-  - src/sdk/scorecard.ts
-  - src/sdk/tag.ts
-  - src/sdk/panorauser.ts
+  - src/sdk/activities.ts
+  - src/sdk/applications.ts
+  - src/sdk/attachments.ts
+  - src/sdk/candidates.ts
+  - src/sdk/departments.ts
+  - src/sdk/interviews.ts
+  - src/sdk/jobinterviewstages.ts
+  - src/sdk/jobs.ts
+  - src/sdk/offers.ts
+  - src/sdk/offices.ts
+  - src/sdk/rejectreasons.ts
+  - src/sdk/scorecards.ts
+  - src/sdk/panoratags.ts
+  - src/sdk/panoraatsusers.ts
   - src/sdk/eeocs.ts
   - src/sdk/ats.ts
-  - src/sdk/account.ts
-  - src/sdk/address.ts
-  - src/sdk/panoraattachment.ts
-  - src/sdk/balancesheet.ts
-  - src/sdk/cashflowstatement.ts
-  - src/sdk/companyinfo.ts
-  - src/sdk/panoracontact.ts
-  - src/sdk/creditnote.ts
-  - src/sdk/expense.ts
-  - src/sdk/incomestatement.ts
-  - src/sdk/invoice.ts
-  - src/sdk/item.ts
-  - src/sdk/journalentry.ts
-  - src/sdk/payment.ts
-  - src/sdk/phonenumber.ts
-  - src/sdk/purchaseorder.ts
-  - src/sdk/taxrate.ts
-  - src/sdk/trackingcategory.ts
-  - src/sdk/transaction.ts
-  - src/sdk/vendorcredit.ts
+  - src/sdk/panoraaccounts.ts
+  - src/sdk/addresses.ts
+  - src/sdk/panoraattachments.ts
+  - src/sdk/balancesheets.ts
+  - src/sdk/cashflowstatements.ts
+  - src/sdk/companyinfos.ts
+  - src/sdk/panoraaccountingcontacts.ts
+  - src/sdk/creditnotes.ts
+  - src/sdk/expenses.ts
+  - src/sdk/incomestatements.ts
+  - src/sdk/invoices.ts
+  - src/sdk/items.ts
+  - src/sdk/journalentries.ts
+  - src/sdk/payments.ts
+  - src/sdk/phonenumbers.ts
+  - src/sdk/purchaseorders.ts
+  - src/sdk/taxrates.ts
+  - src/sdk/trackingcategories.ts
+  - src/sdk/transactions.ts
+  - src/sdk/vendorcredits.ts
   - src/sdk/accounting.ts
   - src/sdk/drives.ts
   - src/sdk/files.ts
   - src/sdk/folders.ts
-  - src/sdk/groups.ts
+  - src/sdk/panoragroups.ts
   - src/sdk/panorafilestorageusers.ts
   - src/sdk/filestorage.ts
   - src/sdk/sdk.ts
@@ -128,6 +129,7 @@ generatedFiles:
   - src/index.ts
   - src/lib/base64.ts
   - src/lib/config.ts
+  - src/lib/dlv.ts
   - src/lib/encodings.ts
   - src/lib/http.ts
   - src/lib/is-plain-object.ts
@@ -1286,7 +1288,7 @@ generatedFiles:
   - docs/sdks/comments/README.md
   - docs/sdks/tags/README.md
   - docs/sdks/teams/README.md
-  - docs/sdks/attachments/README.md
+  - docs/sdks/panoraticketingattachments/README.md
   - docs/sdks/sync/README.md
   - docs/sdks/crm/README.md
   - docs/sdks/companies/README.md
@@ -1301,73 +1303,73 @@ generatedFiles:
   - docs/sdks/fieldmappings/README.md
   - docs/sdks/passthrough/README.md
   - docs/sdks/hris/README.md
-  - docs/sdks/bankinfo/README.md
-  - docs/sdks/benefit/README.md
-  - docs/sdks/company/README.md
-  - docs/sdks/dependent/README.md
-  - docs/sdks/employeepayrollrun/README.md
-  - docs/sdks/employee/README.md
-  - docs/sdks/employerbenefit/README.md
-  - docs/sdks/employment/README.md
-  - docs/sdks/group/README.md
-  - docs/sdks/location/README.md
-  - docs/sdks/paygroup/README.md
-  - docs/sdks/payrollrun/README.md
-  - docs/sdks/timeoff/README.md
-  - docs/sdks/timeoffbalance/README.md
+  - docs/sdks/bankinfos/README.md
+  - docs/sdks/benefits/README.md
+  - docs/sdks/panoracompanies/README.md
+  - docs/sdks/dependents/README.md
+  - docs/sdks/employeepayrollruns/README.md
+  - docs/sdks/employees/README.md
+  - docs/sdks/employerbenefits/README.md
+  - docs/sdks/employments/README.md
+  - docs/sdks/groups/README.md
+  - docs/sdks/locations/README.md
+  - docs/sdks/paygroups/README.md
+  - docs/sdks/payrollruns/README.md
+  - docs/sdks/timeoffs/README.md
+  - docs/sdks/timeoffbalances/README.md
   - docs/sdks/marketingautomation/README.md
-  - docs/sdks/action/README.md
-  - docs/sdks/automation/README.md
-  - docs/sdks/campaign/README.md
-  - docs/sdks/contact/README.md
-  - docs/sdks/email/README.md
-  - docs/sdks/event/README.md
-  - docs/sdks/list/README.md
-  - docs/sdks/message/README.md
-  - docs/sdks/template/README.md
-  - docs/sdks/user/README.md
+  - docs/sdks/actions/README.md
+  - docs/sdks/automations/README.md
+  - docs/sdks/campaigns/README.md
+  - docs/sdks/panoramarketingautomationcontacts/README.md
+  - docs/sdks/emails/README.md
+  - docs/sdks/events/README.md
+  - docs/sdks/lists/README.md
+  - docs/sdks/messages/README.md
+  - docs/sdks/templates/README.md
+  - docs/sdks/panoramarketingautomationusers/README.md
   - docs/sdks/ats/README.md
-  - docs/sdks/activity/README.md
-  - docs/sdks/application/README.md
-  - docs/sdks/attachment/README.md
-  - docs/sdks/candidate/README.md
-  - docs/sdks/department/README.md
-  - docs/sdks/interview/README.md
-  - docs/sdks/jobinterviewstage/README.md
-  - docs/sdks/job/README.md
-  - docs/sdks/offer/README.md
-  - docs/sdks/office/README.md
-  - docs/sdks/rejectreason/README.md
-  - docs/sdks/scorecard/README.md
-  - docs/sdks/tag/README.md
-  - docs/sdks/panorauser/README.md
+  - docs/sdks/activities/README.md
+  - docs/sdks/applications/README.md
+  - docs/sdks/attachments/README.md
+  - docs/sdks/candidates/README.md
+  - docs/sdks/departments/README.md
+  - docs/sdks/interviews/README.md
+  - docs/sdks/jobinterviewstages/README.md
+  - docs/sdks/jobs/README.md
+  - docs/sdks/offers/README.md
+  - docs/sdks/offices/README.md
+  - docs/sdks/rejectreasons/README.md
+  - docs/sdks/scorecards/README.md
+  - docs/sdks/panoratags/README.md
+  - docs/sdks/panoraatsusers/README.md
   - docs/sdks/eeocs/README.md
   - docs/sdks/accounting/README.md
-  - docs/sdks/account/README.md
-  - docs/sdks/address/README.md
-  - docs/sdks/panoraattachment/README.md
-  - docs/sdks/balancesheet/README.md
-  - docs/sdks/cashflowstatement/README.md
-  - docs/sdks/companyinfo/README.md
-  - docs/sdks/panoracontact/README.md
-  - docs/sdks/creditnote/README.md
-  - docs/sdks/expense/README.md
-  - docs/sdks/incomestatement/README.md
-  - docs/sdks/invoice/README.md
-  - docs/sdks/item/README.md
-  - docs/sdks/journalentry/README.md
-  - docs/sdks/payment/README.md
-  - docs/sdks/phonenumber/README.md
-  - docs/sdks/purchaseorder/README.md
-  - docs/sdks/taxrate/README.md
-  - docs/sdks/trackingcategory/README.md
-  - docs/sdks/transaction/README.md
-  - docs/sdks/vendorcredit/README.md
+  - docs/sdks/panoraaccounts/README.md
+  - docs/sdks/addresses/README.md
+  - docs/sdks/panoraattachments/README.md
+  - docs/sdks/balancesheets/README.md
+  - docs/sdks/cashflowstatements/README.md
+  - docs/sdks/companyinfos/README.md
+  - docs/sdks/panoraaccountingcontacts/README.md
+  - docs/sdks/creditnotes/README.md
+  - docs/sdks/expenses/README.md
+  - docs/sdks/incomestatements/README.md
+  - docs/sdks/invoices/README.md
+  - docs/sdks/items/README.md
+  - docs/sdks/journalentries/README.md
+  - docs/sdks/payments/README.md
+  - docs/sdks/phonenumbers/README.md
+  - docs/sdks/purchaseorders/README.md
+  - docs/sdks/taxrates/README.md
+  - docs/sdks/trackingcategories/README.md
+  - docs/sdks/transactions/README.md
+  - docs/sdks/vendorcredits/README.md
   - docs/sdks/filestorage/README.md
   - docs/sdks/drives/README.md
   - docs/sdks/files/README.md
   - docs/sdks/folders/README.md
-  - docs/sdks/groups/README.md
+  - docs/sdks/panoragroups/README.md
   - docs/sdks/panorafilestorageusers/README.md
   - USAGE.md
   - .gitattributes

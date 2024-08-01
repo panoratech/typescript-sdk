@@ -4,8 +4,8 @@
 ### Available Operations
 
 * [list](#list) - List  Tasks
-* [create](#create) - Create a Task
-* [retrieve](#retrieve) - Retrieve a Task
+* [create](#create) - Create Tasks
+* [retrieve](#retrieve) - Retrieve Tasks
 
 ## list
 
@@ -17,7 +17,7 @@ List  Tasks
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+  bearer: process.env.BEARER,
 });
 
 async function run() {
@@ -53,7 +53,7 @@ run();
 
 ## create
 
-Create a task in any supported Crm software
+Create Tasks in any supported Crm software
 
 ### Example Usage
 
@@ -61,7 +61,7 @@ Create a task in any supported Crm software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+  bearer: process.env.BEARER,
 });
 
 async function run() {
@@ -103,7 +103,7 @@ run();
 
 ## retrieve
 
-Retrieve a task from any connected Crm software
+Retrieve Tasks from any connected Crm software
 
 ### Example Usage
 
@@ -111,7 +111,7 @@ Retrieve a task from any connected Crm software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+  bearer: process.env.BEARER,
 });
 
 async function run() {

@@ -19,14 +19,13 @@ Add Linked User
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+  bearer: process.env.BEARER,
 });
 
 async function run() {
   const result = await panora.linkedUsers.create({
     linkedUserOriginId: "<value>",
     alias: "<value>",
-    idProject: "<value>",
   });
 
   // Handle the result
@@ -65,7 +64,7 @@ Retrieve Linked Users
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+  bearer: process.env.BEARER,
 });
 
 async function run() {
@@ -106,7 +105,7 @@ Add Batch Linked Users
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+  bearer: process.env.BEARER,
 });
 
 async function run() {
@@ -115,7 +114,6 @@ async function run() {
       "<value>",
     ],
     alias: "<value>",
-    idProject: "<value>",
   });
 
   // Handle the result
@@ -154,7 +152,7 @@ Retrieve a Linked User
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+  bearer: process.env.BEARER,
 });
 
 async function run() {
@@ -198,7 +196,7 @@ Retrieve a Linked User From A Remote Id
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+  bearer: process.env.BEARER,
 });
 
 async function run() {

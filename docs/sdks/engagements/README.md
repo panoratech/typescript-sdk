@@ -4,8 +4,8 @@
 ### Available Operations
 
 * [list](#list) - List  Engagements
-* [create](#create) - Create a Engagement
-* [retrieve](#retrieve) - Retrieve a Engagement
+* [create](#create) - Create Engagements
+* [retrieve](#retrieve) - Retrieve Engagements
 
 ## list
 
@@ -17,7 +17,7 @@ List  Engagements
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+  bearer: process.env.BEARER,
 });
 
 async function run() {
@@ -53,7 +53,7 @@ run();
 
 ## create
 
-Create a engagement in any supported Crm software
+Create Engagements in any supported Crm software
 
 ### Example Usage
 
@@ -61,7 +61,7 @@ Create a engagement in any supported Crm software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+  bearer: process.env.BEARER,
 });
 
 async function run() {
@@ -101,7 +101,7 @@ run();
 
 ## retrieve
 
-Retrieve a engagement from any connected Crm software
+Retrieve Engagements from any connected Crm software
 
 ### Example Usage
 
@@ -109,7 +109,7 @@ Retrieve a engagement from any connected Crm software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+  bearer: process.env.BEARER,
 });
 
 async function run() {

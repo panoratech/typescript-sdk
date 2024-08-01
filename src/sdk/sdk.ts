@@ -6,6 +6,7 @@ import { SDKHooks } from "../hooks/hooks.js";
 import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
 import { HTTPClient } from "../lib/http.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
+import { extractSecurity } from "../lib/security.js";
 import * as operations from "../models/operations/index.js";
 import { Accounting } from "./accounting.js";
 import { Ats } from "./ats.js";
@@ -116,14 +117,8 @@ export class Panora extends ClientSDK {
             Accept: "*/*",
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
+        const bearer$ = await extractSecurity(this.options$.bearer);
+        const security$ = bearer$ == null ? {} : { bearer: bearer$ };
         const context = {
             operationID: "hello",
             oAuth2Scopes: [],
@@ -172,14 +167,8 @@ export class Panora extends ClientSDK {
             Accept: "*/*",
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
+        const bearer$ = await extractSecurity(this.options$.bearer);
+        const security$ = bearer$ == null ? {} : { bearer: bearer$ };
         const context = {
             operationID: "health",
             oAuth2Scopes: [],

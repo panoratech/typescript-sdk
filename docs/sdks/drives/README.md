@@ -4,7 +4,7 @@
 ### Available Operations
 
 * [list](#list) - List  Drives
-* [retrieve](#retrieve) - Retrieve a Drive
+* [retrieve](#retrieve) - Retrieve Drives
 
 ## list
 
@@ -16,7 +16,7 @@ List  Drives
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+  bearer: process.env.BEARER,
 });
 
 async function run() {
@@ -52,7 +52,7 @@ run();
 
 ## retrieve
 
-Retrieve a drive from any connected Filestorage software
+Retrieve Drives from any connected Filestorage software
 
 ### Example Usage
 
@@ -60,7 +60,7 @@ Retrieve a drive from any connected Filestorage software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+  bearer: process.env.BEARER,
 });
 
 async function run() {
