@@ -6,21 +6,21 @@ import { SDKHooks } from "../hooks/hooks.js";
 import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
 import { HTTPClient } from "../lib/http.js";
 import { ClientSDK } from "../lib/sdks.js";
-import { Activity } from "./activity.js";
-import { Application } from "./application.js";
-import { Attachment } from "./attachment.js";
-import { Candidate } from "./candidate.js";
-import { Department } from "./department.js";
+import { Activities } from "./activities.js";
+import { Applications } from "./applications.js";
+import { Attachments } from "./attachments.js";
+import { Candidates } from "./candidates.js";
+import { Departments } from "./departments.js";
 import { Eeocs } from "./eeocs.js";
-import { Interview } from "./interview.js";
-import { Job } from "./job.js";
-import { Jobinterviewstage } from "./jobinterviewstage.js";
-import { Offer } from "./offer.js";
-import { Office } from "./office.js";
-import { PanoraUser } from "./panorauser.js";
-import { Rejectreason } from "./rejectreason.js";
-import { Scorecard } from "./scorecard.js";
-import { Tag } from "./tag.js";
+import { Interviews } from "./interviews.js";
+import { Jobinterviewstages } from "./jobinterviewstages.js";
+import { Jobs } from "./jobs.js";
+import { Offers } from "./offers.js";
+import { Offices } from "./offices.js";
+import { PanoraAtsUsers } from "./panoraatsusers.js";
+import { PanoraTags } from "./panoratags.js";
+import { Rejectreasons } from "./rejectreasons.js";
+import { Scorecards } from "./scorecards.js";
 
 export class Ats extends ClientSDK {
     private readonly options$: SDKOptions & { hooks?: SDKHooks };
@@ -49,74 +49,74 @@ export class Ats extends ClientSDK {
         void this.options$;
     }
 
-    private _activity?: Activity;
-    get activity(): Activity {
-        return (this._activity ??= new Activity(this.options$));
+    private _activities?: Activities;
+    get activities(): Activities {
+        return (this._activities ??= new Activities(this.options$));
     }
 
-    private _application?: Application;
-    get application(): Application {
-        return (this._application ??= new Application(this.options$));
+    private _applications?: Applications;
+    get applications(): Applications {
+        return (this._applications ??= new Applications(this.options$));
     }
 
-    private _attachment?: Attachment;
-    get attachment(): Attachment {
-        return (this._attachment ??= new Attachment(this.options$));
+    private _attachments?: Attachments;
+    get attachments(): Attachments {
+        return (this._attachments ??= new Attachments(this.options$));
     }
 
-    private _candidate?: Candidate;
-    get candidate(): Candidate {
-        return (this._candidate ??= new Candidate(this.options$));
+    private _candidates?: Candidates;
+    get candidates(): Candidates {
+        return (this._candidates ??= new Candidates(this.options$));
     }
 
-    private _department?: Department;
-    get department(): Department {
-        return (this._department ??= new Department(this.options$));
+    private _departments?: Departments;
+    get departments(): Departments {
+        return (this._departments ??= new Departments(this.options$));
     }
 
-    private _interview?: Interview;
-    get interview(): Interview {
-        return (this._interview ??= new Interview(this.options$));
+    private _interviews?: Interviews;
+    get interviews(): Interviews {
+        return (this._interviews ??= new Interviews(this.options$));
     }
 
-    private _jobinterviewstage?: Jobinterviewstage;
-    get jobinterviewstage(): Jobinterviewstage {
-        return (this._jobinterviewstage ??= new Jobinterviewstage(this.options$));
+    private _jobinterviewstages?: Jobinterviewstages;
+    get jobinterviewstages(): Jobinterviewstages {
+        return (this._jobinterviewstages ??= new Jobinterviewstages(this.options$));
     }
 
-    private _job?: Job;
-    get job(): Job {
-        return (this._job ??= new Job(this.options$));
+    private _jobs?: Jobs;
+    get jobs(): Jobs {
+        return (this._jobs ??= new Jobs(this.options$));
     }
 
-    private _offer?: Offer;
-    get offer(): Offer {
-        return (this._offer ??= new Offer(this.options$));
+    private _offers?: Offers;
+    get offers(): Offers {
+        return (this._offers ??= new Offers(this.options$));
     }
 
-    private _office?: Office;
-    get office(): Office {
-        return (this._office ??= new Office(this.options$));
+    private _offices?: Offices;
+    get offices(): Offices {
+        return (this._offices ??= new Offices(this.options$));
     }
 
-    private _rejectreason?: Rejectreason;
-    get rejectreason(): Rejectreason {
-        return (this._rejectreason ??= new Rejectreason(this.options$));
+    private _rejectreasons?: Rejectreasons;
+    get rejectreasons(): Rejectreasons {
+        return (this._rejectreasons ??= new Rejectreasons(this.options$));
     }
 
-    private _scorecard?: Scorecard;
-    get scorecard(): Scorecard {
-        return (this._scorecard ??= new Scorecard(this.options$));
+    private _scorecards?: Scorecards;
+    get scorecards(): Scorecards {
+        return (this._scorecards ??= new Scorecards(this.options$));
     }
 
-    private _tag?: Tag;
-    get tag(): Tag {
-        return (this._tag ??= new Tag(this.options$));
+    private _tags?: PanoraTags;
+    get tags(): PanoraTags {
+        return (this._tags ??= new PanoraTags(this.options$));
     }
 
-    private _user?: PanoraUser;
-    get user(): PanoraUser {
-        return (this._user ??= new PanoraUser(this.options$));
+    private _users?: PanoraAtsUsers;
+    get users(): PanoraAtsUsers {
+        return (this._users ??= new PanoraAtsUsers(this.options$));
     }
 
     private _eeocs?: Eeocs;

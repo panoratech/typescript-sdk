@@ -12,6 +12,7 @@ import {
 import { HTTPClient } from "../lib/http.js";
 import * as schemas$ from "../lib/schemas.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
+import { extractSecurity } from "../lib/security.js";
 import * as operations from "../models/operations/index.js";
 
 export class Deals extends ClientSDK {
@@ -74,14 +75,8 @@ export class Deals extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
+        const bearer$ = await extractSecurity(this.options$.bearer);
+        const security$ = bearer$ == null ? {} : { bearer: bearer$ };
         const context = {
             operationID: "listCrmDeals",
             oAuth2Scopes: [],
@@ -123,10 +118,10 @@ export class Deals extends ClientSDK {
     }
 
     /**
-     * Create a Deal
+     * Create Deals
      *
      * @remarks
-     * Create a deal in any supported Crm software
+     * Create Deals in any supported Crm software
      */
     async create(
         request: operations.CreateCrmDealRequest,
@@ -157,14 +152,8 @@ export class Deals extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
+        const bearer$ = await extractSecurity(this.options$.bearer);
+        const security$ = bearer$ == null ? {} : { bearer: bearer$ };
         const context = {
             operationID: "createCrmDeal",
             oAuth2Scopes: [],
@@ -208,10 +197,10 @@ export class Deals extends ClientSDK {
     }
 
     /**
-     * Retrieve a Deal
+     * Retrieve Deals
      *
      * @remarks
-     * Retrieve a deal from any connected Crm software
+     * Retrieve Deals from any connected Crm software
      */
     async retrieve(
         request: operations.RetrieveCrmDealRequest,
@@ -244,14 +233,8 @@ export class Deals extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
+        const bearer$ = await extractSecurity(this.options$.bearer);
+        const security$ = bearer$ == null ? {} : { bearer: bearer$ };
         const context = {
             operationID: "retrieveCrmDeal",
             oAuth2Scopes: [],

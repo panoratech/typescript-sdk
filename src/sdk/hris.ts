@@ -6,20 +6,20 @@ import { SDKHooks } from "../hooks/hooks.js";
 import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
 import { HTTPClient } from "../lib/http.js";
 import { ClientSDK } from "../lib/sdks.js";
-import { Bankinfo } from "./bankinfo.js";
-import { Benefit } from "./benefit.js";
-import { Company } from "./company.js";
-import { Dependent } from "./dependent.js";
-import { Employee } from "./employee.js";
-import { Employeepayrollrun } from "./employeepayrollrun.js";
-import { Employerbenefit } from "./employerbenefit.js";
-import { Employment } from "./employment.js";
-import { Group } from "./group.js";
-import { Location } from "./location.js";
-import { Paygroup } from "./paygroup.js";
-import { Payrollrun } from "./payrollrun.js";
-import { Timeoff } from "./timeoff.js";
-import { Timeoffbalance } from "./timeoffbalance.js";
+import { Bankinfos } from "./bankinfos.js";
+import { Benefits } from "./benefits.js";
+import { Dependents } from "./dependents.js";
+import { Employeepayrollruns } from "./employeepayrollruns.js";
+import { Employees } from "./employees.js";
+import { Employerbenefits } from "./employerbenefits.js";
+import { Employments } from "./employments.js";
+import { Groups } from "./groups.js";
+import { Locations } from "./locations.js";
+import { PanoraCompanies } from "./panoracompanies.js";
+import { Paygroups } from "./paygroups.js";
+import { Payrollruns } from "./payrollruns.js";
+import { Timeoffbalances } from "./timeoffbalances.js";
+import { Timeoffs } from "./timeoffs.js";
 
 export class Hris extends ClientSDK {
     private readonly options$: SDKOptions & { hooks?: SDKHooks };
@@ -48,73 +48,73 @@ export class Hris extends ClientSDK {
         void this.options$;
     }
 
-    private _bankinfo?: Bankinfo;
-    get bankinfo(): Bankinfo {
-        return (this._bankinfo ??= new Bankinfo(this.options$));
+    private _bankinfos?: Bankinfos;
+    get bankinfos(): Bankinfos {
+        return (this._bankinfos ??= new Bankinfos(this.options$));
     }
 
-    private _benefit?: Benefit;
-    get benefit(): Benefit {
-        return (this._benefit ??= new Benefit(this.options$));
+    private _benefits?: Benefits;
+    get benefits(): Benefits {
+        return (this._benefits ??= new Benefits(this.options$));
     }
 
-    private _company?: Company;
-    get company(): Company {
-        return (this._company ??= new Company(this.options$));
+    private _companies?: PanoraCompanies;
+    get companies(): PanoraCompanies {
+        return (this._companies ??= new PanoraCompanies(this.options$));
     }
 
-    private _dependent?: Dependent;
-    get dependent(): Dependent {
-        return (this._dependent ??= new Dependent(this.options$));
+    private _dependents?: Dependents;
+    get dependents(): Dependents {
+        return (this._dependents ??= new Dependents(this.options$));
     }
 
-    private _employeepayrollrun?: Employeepayrollrun;
-    get employeepayrollrun(): Employeepayrollrun {
-        return (this._employeepayrollrun ??= new Employeepayrollrun(this.options$));
+    private _employeepayrollruns?: Employeepayrollruns;
+    get employeepayrollruns(): Employeepayrollruns {
+        return (this._employeepayrollruns ??= new Employeepayrollruns(this.options$));
     }
 
-    private _employee?: Employee;
-    get employee(): Employee {
-        return (this._employee ??= new Employee(this.options$));
+    private _employees?: Employees;
+    get employees(): Employees {
+        return (this._employees ??= new Employees(this.options$));
     }
 
-    private _employerbenefit?: Employerbenefit;
-    get employerbenefit(): Employerbenefit {
-        return (this._employerbenefit ??= new Employerbenefit(this.options$));
+    private _employerbenefits?: Employerbenefits;
+    get employerbenefits(): Employerbenefits {
+        return (this._employerbenefits ??= new Employerbenefits(this.options$));
     }
 
-    private _employment?: Employment;
-    get employment(): Employment {
-        return (this._employment ??= new Employment(this.options$));
+    private _employments?: Employments;
+    get employments(): Employments {
+        return (this._employments ??= new Employments(this.options$));
     }
 
-    private _group?: Group;
-    get group(): Group {
-        return (this._group ??= new Group(this.options$));
+    private _groups?: Groups;
+    get groups(): Groups {
+        return (this._groups ??= new Groups(this.options$));
     }
 
-    private _location?: Location;
-    get location(): Location {
-        return (this._location ??= new Location(this.options$));
+    private _locations?: Locations;
+    get locations(): Locations {
+        return (this._locations ??= new Locations(this.options$));
     }
 
-    private _paygroup?: Paygroup;
-    get paygroup(): Paygroup {
-        return (this._paygroup ??= new Paygroup(this.options$));
+    private _paygroups?: Paygroups;
+    get paygroups(): Paygroups {
+        return (this._paygroups ??= new Paygroups(this.options$));
     }
 
-    private _payrollrun?: Payrollrun;
-    get payrollrun(): Payrollrun {
-        return (this._payrollrun ??= new Payrollrun(this.options$));
+    private _payrollruns?: Payrollruns;
+    get payrollruns(): Payrollruns {
+        return (this._payrollruns ??= new Payrollruns(this.options$));
     }
 
-    private _timeoff?: Timeoff;
-    get timeoff(): Timeoff {
-        return (this._timeoff ??= new Timeoff(this.options$));
+    private _timeoffs?: Timeoffs;
+    get timeoffs(): Timeoffs {
+        return (this._timeoffs ??= new Timeoffs(this.options$));
     }
 
-    private _timeoffbalance?: Timeoffbalance;
-    get timeoffbalance(): Timeoffbalance {
-        return (this._timeoffbalance ??= new Timeoffbalance(this.options$));
+    private _timeoffbalances?: Timeoffbalances;
+    get timeoffbalances(): Timeoffbalances {
+        return (this._timeoffbalances ??= new Timeoffbalances(this.options$));
     }
 }

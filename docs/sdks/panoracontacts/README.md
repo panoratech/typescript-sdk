@@ -4,8 +4,8 @@
 ### Available Operations
 
 * [list](#list) - List CRM Contacts
-* [create](#create) - Create CRM Contact
-* [retrieve](#retrieve) - Retrieve a CRM Contact
+* [create](#create) - Create Contacts
+* [retrieve](#retrieve) - Retrieve Contacts
 
 ## list
 
@@ -17,7 +17,7 @@ List CRM Contacts
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+  bearer: process.env.BEARER,
 });
 
 async function run() {
@@ -53,7 +53,7 @@ run();
 
 ## create
 
-Create a contact in any supported CRM
+Create Contacts in any supported CRM
 
 ### Example Usage
 
@@ -61,7 +61,7 @@ Create a contact in any supported CRM
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+  bearer: process.env.BEARER,
 });
 
 async function run() {
@@ -102,7 +102,7 @@ run();
 
 ## retrieve
 
-Retrieve a contact from any connected CRM
+Retrieve Contacts from any connected CRM
 
 ### Example Usage
 
@@ -110,7 +110,7 @@ Retrieve a contact from any connected CRM
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+  bearer: process.env.BEARER,
 });
 
 async function run() {

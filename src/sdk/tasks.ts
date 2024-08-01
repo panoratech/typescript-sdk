@@ -12,6 +12,7 @@ import {
 import { HTTPClient } from "../lib/http.js";
 import * as schemas$ from "../lib/schemas.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
+import { extractSecurity } from "../lib/security.js";
 import * as operations from "../models/operations/index.js";
 
 export class Tasks extends ClientSDK {
@@ -74,14 +75,8 @@ export class Tasks extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
+        const bearer$ = await extractSecurity(this.options$.bearer);
+        const security$ = bearer$ == null ? {} : { bearer: bearer$ };
         const context = {
             operationID: "listCrmTask",
             oAuth2Scopes: [],
@@ -123,10 +118,10 @@ export class Tasks extends ClientSDK {
     }
 
     /**
-     * Create a Task
+     * Create Tasks
      *
      * @remarks
-     * Create a task in any supported Crm software
+     * Create Tasks in any supported Crm software
      */
     async create(
         request: operations.CreateCrmTaskRequest,
@@ -157,14 +152,8 @@ export class Tasks extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
+        const bearer$ = await extractSecurity(this.options$.bearer);
+        const security$ = bearer$ == null ? {} : { bearer: bearer$ };
         const context = {
             operationID: "createCrmTask",
             oAuth2Scopes: [],
@@ -208,10 +197,10 @@ export class Tasks extends ClientSDK {
     }
 
     /**
-     * Retrieve a Task
+     * Retrieve Tasks
      *
      * @remarks
-     * Retrieve a task from any connected Crm software
+     * Retrieve Tasks from any connected Crm software
      */
     async retrieve(
         request: operations.RetrieveCrmTaskRequest,
@@ -244,14 +233,8 @@ export class Tasks extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
+        const bearer$ = await extractSecurity(this.options$.bearer);
+        const security$ = bearer$ == null ? {} : { bearer: bearer$ };
         const context = {
             operationID: "retrieveCrmTask",
             oAuth2Scopes: [],

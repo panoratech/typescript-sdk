@@ -12,6 +12,7 @@ import {
 import { HTTPClient } from "../lib/http.js";
 import * as schemas$ from "../lib/schemas.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
+import { extractSecurity } from "../lib/security.js";
 import * as operations from "../models/operations/index.js";
 
 export class Comments extends ClientSDK {
@@ -74,14 +75,8 @@ export class Comments extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
+        const bearer$ = await extractSecurity(this.options$.bearer);
+        const security$ = bearer$ == null ? {} : { bearer: bearer$ };
         const context = {
             operationID: "listTicketingComments",
             oAuth2Scopes: [],
@@ -123,10 +118,10 @@ export class Comments extends ClientSDK {
     }
 
     /**
-     * Create a Comment
+     * Create Comments
      *
      * @remarks
-     * Create a comment in any supported Ticketing software
+     * Create Comments in any supported Ticketing software
      */
     async create(
         request: operations.CreateTicketingCommentRequest,
@@ -157,14 +152,8 @@ export class Comments extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
+        const bearer$ = await extractSecurity(this.options$.bearer);
+        const security$ = bearer$ == null ? {} : { bearer: bearer$ };
         const context = {
             operationID: "createTicketingComment",
             oAuth2Scopes: [],
@@ -208,10 +197,10 @@ export class Comments extends ClientSDK {
     }
 
     /**
-     * Retrieve a Comment
+     * Retrieve Comments
      *
      * @remarks
-     * Retrieve a comment from any connected Ticketing software
+     * Retrieve Comments from any connected Ticketing software
      */
     async retrieve(
         request: operations.RetrieveTicketingCommentRequest,
@@ -244,14 +233,8 @@ export class Comments extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
+        const bearer$ = await extractSecurity(this.options$.bearer);
+        const security$ = bearer$ == null ? {} : { bearer: bearer$ };
         const context = {
             operationID: "retrieveTicketingComment",
             oAuth2Scopes: [],

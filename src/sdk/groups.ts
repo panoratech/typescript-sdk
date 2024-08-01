@@ -11,6 +11,7 @@ import {
 import { HTTPClient } from "../lib/http.js";
 import * as schemas$ from "../lib/schemas.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
+import { extractSecurity } from "../lib/security.js";
 import * as operations from "../models/operations/index.js";
 
 export class Groups extends ClientSDK {
@@ -44,19 +45,19 @@ export class Groups extends ClientSDK {
      * List  Groups
      */
     async list(
-        request: operations.ListFilestorageGroupRequest,
+        request: operations.ListHrisGroupRequest,
         options?: RequestOptions
-    ): Promise<operations.ListFilestorageGroupResponse> {
+    ): Promise<operations.ListHrisGroupResponse> {
         const input$ = request;
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.ListFilestorageGroupRequest$outboundSchema.parse(value$),
+            (value$) => operations.ListHrisGroupRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
 
-        const path$ = this.templateURLComponent("/filestorage/groups")();
+        const path$ = this.templateURLComponent("/hris/groups")();
 
         const query$ = encodeFormQuery$({
             cursor: payload$.cursor,
@@ -73,16 +74,10 @@ export class Groups extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
+        const bearer$ = await extractSecurity(this.options$.bearer);
+        const security$ = bearer$ == null ? {} : { bearer: bearer$ };
         const context = {
-            operationID: "listFilestorageGroup",
+            operationID: "listHrisGroup",
             oAuth2Scopes: [],
             securitySource: this.options$.bearer,
         };
@@ -113,8 +108,8 @@ export class Groups extends ClientSDK {
             HttpMeta: { Response: response, Request: request$ },
         };
 
-        const [result$] = await this.matcher<operations.ListFilestorageGroupResponse>()
-            .json(200, operations.ListFilestorageGroupResponse$inboundSchema, { key: "object" })
+        const [result$] = await this.matcher<operations.ListHrisGroupResponse>()
+            .json(200, operations.ListHrisGroupResponse$inboundSchema, { key: "object" })
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 
@@ -122,20 +117,20 @@ export class Groups extends ClientSDK {
     }
 
     /**
-     * Retrieve a Group
+     * Retrieve Groups
      *
      * @remarks
-     * Retrieve a permission from any connected Filestorage software
+     * Retrieve Groups from any connected Hris software
      */
     async retrieve(
-        request: operations.RetrieveFilestorageGroupRequest,
+        request: operations.RetrieveHrisGroupRequest,
         options?: RequestOptions
-    ): Promise<operations.RetrieveFilestorageGroupResponse> {
+    ): Promise<operations.RetrieveHrisGroupResponse> {
         const input$ = request;
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.RetrieveFilestorageGroupRequest$outboundSchema.parse(value$),
+            (value$) => operations.RetrieveHrisGroupRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -143,7 +138,7 @@ export class Groups extends ClientSDK {
         const pathParams$ = {
             id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-        const path$ = this.templateURLComponent("/filestorage/groups/{id}")(pathParams$);
+        const path$ = this.templateURLComponent("/hris/groups/{id}")(pathParams$);
 
         const query$ = encodeFormQuery$({
             remote_data: payload$.remote_data,
@@ -158,16 +153,10 @@ export class Groups extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
+        const bearer$ = await extractSecurity(this.options$.bearer);
+        const security$ = bearer$ == null ? {} : { bearer: bearer$ };
         const context = {
-            operationID: "retrieveFilestorageGroup",
+            operationID: "retrieveHrisGroup",
             oAuth2Scopes: [],
             securitySource: this.options$.bearer,
         };
@@ -198,9 +187,9 @@ export class Groups extends ClientSDK {
             HttpMeta: { Response: response, Request: request$ },
         };
 
-        const [result$] = await this.matcher<operations.RetrieveFilestorageGroupResponse>()
-            .json(200, operations.RetrieveFilestorageGroupResponse$inboundSchema, {
-                key: "UnifiedFilestorageGroupOutput",
+        const [result$] = await this.matcher<operations.RetrieveHrisGroupResponse>()
+            .json(200, operations.RetrieveHrisGroupResponse$inboundSchema, {
+                key: "UnifiedHrisGroupOutput",
             })
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });

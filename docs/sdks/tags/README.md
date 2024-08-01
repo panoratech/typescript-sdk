@@ -4,7 +4,7 @@
 ### Available Operations
 
 * [list](#list) - List  Tags
-* [retrieve](#retrieve) - Retrieve a Tag
+* [retrieve](#retrieve) - Retrieve Tags
 
 ## list
 
@@ -16,7 +16,7 @@ List  Tags
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+  bearer: process.env.BEARER,
 });
 
 async function run() {
@@ -52,7 +52,7 @@ run();
 
 ## retrieve
 
-Retrieve a tag from any connected Ticketing software
+Retrieve Tags from any connected Ticketing software
 
 ### Example Usage
 
@@ -60,7 +60,7 @@ Retrieve a tag from any connected Ticketing software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+  bearer: process.env.BEARER,
 });
 
 async function run() {

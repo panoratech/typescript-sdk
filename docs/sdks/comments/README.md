@@ -4,8 +4,8 @@
 ### Available Operations
 
 * [list](#list) - List  Comments
-* [create](#create) - Create a Comment
-* [retrieve](#retrieve) - Retrieve a Comment
+* [create](#create) - Create Comments
+* [retrieve](#retrieve) - Retrieve Comments
 
 ## list
 
@@ -17,7 +17,7 @@ List  Comments
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+  bearer: process.env.BEARER,
 });
 
 async function run() {
@@ -53,7 +53,7 @@ run();
 
 ## create
 
-Create a comment in any supported Ticketing software
+Create Comments in any supported Ticketing software
 
 ### Example Usage
 
@@ -61,7 +61,7 @@ Create a comment in any supported Ticketing software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+  bearer: process.env.BEARER,
 });
 
 async function run() {
@@ -100,7 +100,7 @@ run();
 
 ## retrieve
 
-Retrieve a comment from any connected Ticketing software
+Retrieve Comments from any connected Ticketing software
 
 ### Example Usage
 
@@ -108,7 +108,7 @@ Retrieve a comment from any connected Ticketing software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+  bearer: process.env.BEARER,
 });
 
 async function run() {

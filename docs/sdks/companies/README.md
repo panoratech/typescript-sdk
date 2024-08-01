@@ -4,8 +4,8 @@
 ### Available Operations
 
 * [list](#list) - List  Companies
-* [create](#create) - Create a Company
-* [retrieve](#retrieve) - Retrieve a Company
+* [create](#create) - Create Companies
+* [retrieve](#retrieve) - Retrieve Companies
 
 ## list
 
@@ -17,7 +17,7 @@ List  Companies
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+  bearer: process.env.BEARER,
 });
 
 async function run() {
@@ -53,7 +53,7 @@ run();
 
 ## create
 
-Create a company in any supported Crm software
+Create Companies in any supported CRM software
 
 ### Example Usage
 
@@ -61,7 +61,7 @@ Create a company in any supported Crm software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+  bearer: process.env.BEARER,
 });
 
 async function run() {
@@ -101,7 +101,7 @@ run();
 
 ## retrieve
 
-Retrieve a company from any connected Crm software
+Retrieve Companies from any connected Crm software
 
 ### Example Usage
 
@@ -109,7 +109,7 @@ Retrieve a company from any connected Crm software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+  bearer: process.env.BEARER,
 });
 
 async function run() {

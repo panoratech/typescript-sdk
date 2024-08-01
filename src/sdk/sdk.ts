@@ -6,6 +6,7 @@ import { SDKHooks } from "../hooks/hooks.js";
 import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
 import { HTTPClient } from "../lib/http.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
+import { extractSecurity } from "../lib/security.js";
 import * as operations from "../models/operations/index.js";
 import { Accounting } from "./accounting.js";
 import { Ats } from "./ats.js";
@@ -18,7 +19,7 @@ import { Marketingautomation } from "./marketingautomation.js";
 import { Passthrough } from "./passthrough.js";
 import { Sync } from "./sync.js";
 import { Ticketing } from "./ticketing.js";
-import { Webhook } from "./webhook.js";
+import { Webhooks } from "./webhooks.js";
 
 export class Panora extends ClientSDK {
     private readonly options$: SDKOptions & { hooks?: SDKHooks };
@@ -47,9 +48,9 @@ export class Panora extends ClientSDK {
         void this.options$;
     }
 
-    private _webhook?: Webhook;
-    get webhook(): Webhook {
-        return (this._webhook ??= new Webhook(this.options$));
+    private _webhooks?: Webhooks;
+    get webhooks(): Webhooks {
+        return (this._webhooks ??= new Webhooks(this.options$));
     }
 
     private _ticketing?: Ticketing;
@@ -116,14 +117,8 @@ export class Panora extends ClientSDK {
             Accept: "*/*",
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
+        const bearer$ = await extractSecurity(this.options$.bearer);
+        const security$ = bearer$ == null ? {} : { bearer: bearer$ };
         const context = {
             operationID: "hello",
             oAuth2Scopes: [],
@@ -172,14 +167,8 @@ export class Panora extends ClientSDK {
             Accept: "*/*",
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
+        const bearer$ = await extractSecurity(this.options$.bearer);
+        const security$ = bearer$ == null ? {} : { bearer: bearer$ };
         const context = {
             operationID: "health",
             oAuth2Scopes: [],

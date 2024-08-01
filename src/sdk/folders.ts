@@ -12,6 +12,7 @@ import {
 import { HTTPClient } from "../lib/http.js";
 import * as schemas$ from "../lib/schemas.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
+import { extractSecurity } from "../lib/security.js";
 import * as operations from "../models/operations/index.js";
 
 export class Folders extends ClientSDK {
@@ -74,14 +75,8 @@ export class Folders extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
+        const bearer$ = await extractSecurity(this.options$.bearer);
+        const security$ = bearer$ == null ? {} : { bearer: bearer$ };
         const context = {
             operationID: "listFilestorageFolder",
             oAuth2Scopes: [],
@@ -123,10 +118,10 @@ export class Folders extends ClientSDK {
     }
 
     /**
-     * Create a Folder
+     * Create Folders
      *
      * @remarks
-     * Create a folder in any supported Filestorage software
+     * Create Folders in any supported Filestorage software
      */
     async create(
         request: operations.CreateFilestorageFolderRequest,
@@ -159,14 +154,8 @@ export class Folders extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
+        const bearer$ = await extractSecurity(this.options$.bearer);
+        const security$ = bearer$ == null ? {} : { bearer: bearer$ };
         const context = {
             operationID: "createFilestorageFolder",
             oAuth2Scopes: [],
@@ -210,10 +199,10 @@ export class Folders extends ClientSDK {
     }
 
     /**
-     * Retrieve a Folder
+     * Retrieve Folders
      *
      * @remarks
-     * Retrieve a folder from any connected Filestorage software
+     * Retrieve Folders from any connected Filestorage software
      */
     async retrieve(
         request: operations.RetrieveFilestorageFolderRequest,
@@ -246,14 +235,8 @@ export class Folders extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
+        const bearer$ = await extractSecurity(this.options$.bearer);
+        const security$ = bearer$ == null ? {} : { bearer: bearer$ };
         const context = {
             operationID: "retrieveFilestorageFolder",
             oAuth2Scopes: [],

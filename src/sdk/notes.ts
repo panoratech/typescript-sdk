@@ -12,6 +12,7 @@ import {
 import { HTTPClient } from "../lib/http.js";
 import * as schemas$ from "../lib/schemas.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
+import { extractSecurity } from "../lib/security.js";
 import * as operations from "../models/operations/index.js";
 
 export class Notes extends ClientSDK {
@@ -74,14 +75,8 @@ export class Notes extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
+        const bearer$ = await extractSecurity(this.options$.bearer);
+        const security$ = bearer$ == null ? {} : { bearer: bearer$ };
         const context = {
             operationID: "listCrmNote",
             oAuth2Scopes: [],
@@ -123,10 +118,10 @@ export class Notes extends ClientSDK {
     }
 
     /**
-     * Create a Note
+     * Create Notes
      *
      * @remarks
-     * Create a note in any supported Crm software
+     * Create Notes in any supported Crm software
      */
     async create(
         request: operations.CreateCrmNoteRequest,
@@ -157,14 +152,8 @@ export class Notes extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
+        const bearer$ = await extractSecurity(this.options$.bearer);
+        const security$ = bearer$ == null ? {} : { bearer: bearer$ };
         const context = {
             operationID: "createCrmNote",
             oAuth2Scopes: [],
@@ -208,10 +197,10 @@ export class Notes extends ClientSDK {
     }
 
     /**
-     * Retrieve a Note
+     * Retrieve Notes
      *
      * @remarks
-     * Retrieve a note from any connected Crm software
+     * Retrieve Notes from any connected Crm software
      */
     async retrieve(
         request: operations.RetrieveCrmNoteRequest,
@@ -244,14 +233,8 @@ export class Notes extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
+        const bearer$ = await extractSecurity(this.options$.bearer);
+        const security$ = bearer$ == null ? {} : { bearer: bearer$ };
         const context = {
             operationID: "retrieveCrmNote",
             oAuth2Scopes: [],

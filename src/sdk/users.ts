@@ -11,6 +11,7 @@ import {
 import { HTTPClient } from "../lib/http.js";
 import * as schemas$ from "../lib/schemas.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
+import { extractSecurity } from "../lib/security.js";
 import * as operations from "../models/operations/index.js";
 
 export class Users extends ClientSDK {
@@ -73,14 +74,8 @@ export class Users extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
+        const bearer$ = await extractSecurity(this.options$.bearer);
+        const security$ = bearer$ == null ? {} : { bearer: bearer$ };
         const context = {
             operationID: "listTicketingUsers",
             oAuth2Scopes: [],
@@ -122,10 +117,10 @@ export class Users extends ClientSDK {
     }
 
     /**
-     * Retrieve a User
+     * Retrieve Users
      *
      * @remarks
-     * Retrieve a user from any connected Ticketing software
+     * Retrieve Users from any connected Ticketing software
      */
     async retrieve(
         request: operations.RetrieveTicketingUserRequest,
@@ -158,14 +153,8 @@ export class Users extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
+        const bearer$ = await extractSecurity(this.options$.bearer);
+        const security$ = bearer$ == null ? {} : { bearer: bearer$ };
         const context = {
             operationID: "retrieveTicketingUser",
             oAuth2Scopes: [],

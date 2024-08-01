@@ -4,7 +4,7 @@
 ### Available Operations
 
 * [list](#list) - List  Users
-* [retrieve](#retrieve) - Retrieve a User
+* [retrieve](#retrieve) - Retrieve Users
 
 ## list
 
@@ -16,7 +16,7 @@ List  Users
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+  bearer: process.env.BEARER,
 });
 
 async function run() {
@@ -52,7 +52,7 @@ run();
 
 ## retrieve
 
-Retrieve a user from any connected Ticketing software
+Retrieve Users from any connected Ticketing software
 
 ### Example Usage
 
@@ -60,7 +60,7 @@ Retrieve a user from any connected Ticketing software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+  bearer: process.env.BEARER,
 });
 
 async function run() {

@@ -4,15 +4,16 @@
 
 import { SDKHooks } from "../hooks/hooks.js";
 import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
-import {
-    encodeFormQuery as encodeFormQuery$,
-    encodeJSON as encodeJSON$,
-} from "../lib/encodings.js";
+import { encodeJSON as encodeJSON$ } from "../lib/encodings.js";
 import { HTTPClient } from "../lib/http.js";
 import * as schemas$ from "../lib/schemas.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
+import { extractSecurity } from "../lib/security.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
+import { Batch } from "./batch.js";
+import { Fromremoteid } from "./fromremoteid.js";
+import { Single } from "./single.js";
 
 export class LinkedUsers extends ClientSDK {
     private readonly options$: SDKOptions & { hooks?: SDKHooks };
@@ -41,8 +42,23 @@ export class LinkedUsers extends ClientSDK {
         void this.options$;
     }
 
+    private _batch?: Batch;
+    get batch(): Batch {
+        return (this._batch ??= new Batch(this.options$));
+    }
+
+    private _single?: Single;
+    get single(): Single {
+        return (this._single ??= new Single(this.options$));
+    }
+
+    private _fromremoteid?: Fromremoteid;
+    get fromremoteid(): Fromremoteid {
+        return (this._fromremoteid ??= new Fromremoteid(this.options$));
+    }
+
     /**
-     * Add Linked User
+     * Create Linked Users
      */
     async create(
         request: components.CreateLinkedUserDto,
@@ -57,7 +73,7 @@ export class LinkedUsers extends ClientSDK {
         );
         const body$ = encodeJSON$("body", payload$, { explode: true });
 
-        const path$ = this.templateURLComponent("/linked-users")();
+        const path$ = this.templateURLComponent("/linked_users")();
 
         const query$ = "";
 
@@ -66,14 +82,8 @@ export class LinkedUsers extends ClientSDK {
             Accept: "*/*",
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
+        const bearer$ = await extractSecurity(this.options$.bearer);
+        const security$ = bearer$ == null ? {} : { bearer: bearer$ };
         const context = {
             operationID: "createLinkedUser",
             oAuth2Scopes: [],
@@ -115,10 +125,10 @@ export class LinkedUsers extends ClientSDK {
     }
 
     /**
-     * Retrieve Linked Users
+     * List Linked Users
      */
     async list(options?: RequestOptions): Promise<operations.ListLinkedUsersResponse> {
-        const path$ = this.templateURLComponent("/linked-users")();
+        const path$ = this.templateURLComponent("/linked_users")();
 
         const query$ = "";
 
@@ -126,14 +136,8 @@ export class LinkedUsers extends ClientSDK {
             Accept: "*/*",
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
+        const bearer$ = await extractSecurity(this.options$.bearer);
+        const security$ = bearer$ == null ? {} : { bearer: bearer$ };
         const context = {
             operationID: "listLinkedUsers",
             oAuth2Scopes: [],
@@ -167,227 +171,6 @@ export class LinkedUsers extends ClientSDK {
 
         const [result$] = await this.matcher<operations.ListLinkedUsersResponse>()
             .void(200, operations.ListLinkedUsersResponse$inboundSchema)
-            .fail(["4XX", "5XX"])
-            .match(response, request$, { extraFields: responseFields$ });
-
-        return result$;
-    }
-
-    /**
-     * Add Batch Linked Users
-     */
-    async importBatch(
-        request: components.CreateBatchLinkedUserDto,
-        options?: RequestOptions
-    ): Promise<operations.ImportBatchResponse> {
-        const input$ = request;
-
-        const payload$ = schemas$.parse(
-            input$,
-            (value$) => components.CreateBatchLinkedUserDto$outboundSchema.parse(value$),
-            "Input validation failed"
-        );
-        const body$ = encodeJSON$("body", payload$, { explode: true });
-
-        const path$ = this.templateURLComponent("/linked-users/batch")();
-
-        const query$ = "";
-
-        const headers$ = new Headers({
-            "Content-Type": "application/json",
-            Accept: "*/*",
-        });
-
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
-        const context = {
-            operationID: "importBatch",
-            oAuth2Scopes: [],
-            securitySource: this.options$.bearer,
-        };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
-
-        const request$ = this.createRequest$(
-            context,
-            {
-                security: securitySettings$,
-                method: "POST",
-                path: path$,
-                headers: headers$,
-                query: query$,
-                body: body$,
-                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
-            },
-            options
-        );
-
-        const response = await this.do$(request$, {
-            context,
-            errorCodes: ["4XX", "5XX"],
-            retryConfig: options?.retries || this.options$.retryConfig,
-            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
-        });
-
-        const responseFields$ = {
-            HttpMeta: { Response: response, Request: request$ },
-        };
-
-        const [result$] = await this.matcher<operations.ImportBatchResponse>()
-            .void(201, operations.ImportBatchResponse$inboundSchema)
-            .fail(["4XX", "5XX"])
-            .match(response, request$, { extraFields: responseFields$ });
-
-        return result$;
-    }
-
-    /**
-     * Retrieve a Linked User
-     */
-    async retrieve(
-        request: operations.RetrieveLinkedUserRequest,
-        options?: RequestOptions
-    ): Promise<operations.RetrieveLinkedUserResponse> {
-        const input$ = request;
-
-        const payload$ = schemas$.parse(
-            input$,
-            (value$) => operations.RetrieveLinkedUserRequest$outboundSchema.parse(value$),
-            "Input validation failed"
-        );
-        const body$ = null;
-
-        const path$ = this.templateURLComponent("/linked-users/single")();
-
-        const query$ = encodeFormQuery$({
-            id: payload$.id,
-        });
-
-        const headers$ = new Headers({
-            Accept: "*/*",
-        });
-
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
-        const context = {
-            operationID: "retrieveLinkedUser",
-            oAuth2Scopes: [],
-            securitySource: this.options$.bearer,
-        };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
-
-        const request$ = this.createRequest$(
-            context,
-            {
-                security: securitySettings$,
-                method: "GET",
-                path: path$,
-                headers: headers$,
-                query: query$,
-                body: body$,
-                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
-            },
-            options
-        );
-
-        const response = await this.do$(request$, {
-            context,
-            errorCodes: ["4XX", "5XX"],
-            retryConfig: options?.retries || this.options$.retryConfig,
-            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
-        });
-
-        const responseFields$ = {
-            HttpMeta: { Response: response, Request: request$ },
-        };
-
-        const [result$] = await this.matcher<operations.RetrieveLinkedUserResponse>()
-            .void(200, operations.RetrieveLinkedUserResponse$inboundSchema)
-            .fail(["4XX", "5XX"])
-            .match(response, request$, { extraFields: responseFields$ });
-
-        return result$;
-    }
-
-    /**
-     * Retrieve a Linked User From A Remote Id
-     */
-    async remoteId(
-        request: operations.RemoteIdRequest,
-        options?: RequestOptions
-    ): Promise<operations.RemoteIdResponse> {
-        const input$ = request;
-
-        const payload$ = schemas$.parse(
-            input$,
-            (value$) => operations.RemoteIdRequest$outboundSchema.parse(value$),
-            "Input validation failed"
-        );
-        const body$ = null;
-
-        const path$ = this.templateURLComponent("/linked-users/fromRemoteId")();
-
-        const query$ = encodeFormQuery$({
-            remoteId: payload$.remoteId,
-        });
-
-        const headers$ = new Headers({
-            Accept: "*/*",
-        });
-
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
-        const context = {
-            operationID: "remoteId",
-            oAuth2Scopes: [],
-            securitySource: this.options$.bearer,
-        };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
-
-        const request$ = this.createRequest$(
-            context,
-            {
-                security: securitySettings$,
-                method: "GET",
-                path: path$,
-                headers: headers$,
-                query: query$,
-                body: body$,
-                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
-            },
-            options
-        );
-
-        const response = await this.do$(request$, {
-            context,
-            errorCodes: ["4XX", "5XX"],
-            retryConfig: options?.retries || this.options$.retryConfig,
-            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
-        });
-
-        const responseFields$ = {
-            HttpMeta: { Response: response, Request: request$ },
-        };
-
-        const [result$] = await this.matcher<operations.RemoteIdResponse>()
-            .void(200, operations.RemoteIdResponse$inboundSchema)
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 

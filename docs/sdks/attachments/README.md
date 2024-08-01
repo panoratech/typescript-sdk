@@ -1,11 +1,11 @@
 # Attachments
-(*ticketing.attachments*)
+(*ats.attachments*)
 
 ### Available Operations
 
 * [list](#list) - List  Attachments
-* [create](#create) - Create a Attachment
-* [retrieve](#retrieve) - Retrieve a Attachment
+* [create](#create) - Create Attachments
+* [retrieve](#retrieve) - Retrieve Attachments
 
 ## list
 
@@ -17,11 +17,11 @@ List  Attachments
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+  bearer: process.env.BEARER,
 });
 
 async function run() {
-  const result = await panora.ticketing.attachments.list({
+  const result = await panora.ats.attachments.list({
     xConnectionToken: "<value>",
   });
 
@@ -36,7 +36,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.ListTicketingAttachmentsRequest](../../models/operations/listticketingattachmentsrequest.md)                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.ListAtsAttachmentRequest](../../models/operations/listatsattachmentrequest.md)                                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -44,7 +44,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListTicketingAttachmentsResponse](../../models/operations/listticketingattachmentsresponse.md)\>**
+**Promise\<[operations.ListAtsAttachmentResponse](../../models/operations/listatsattachmentresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -53,7 +53,7 @@ run();
 
 ## create
 
-Create a attachment in any supported Ticketing software
+Create Attachments in any supported ATS software
 
 ### Example Usage
 
@@ -61,16 +61,13 @@ Create a attachment in any supported Ticketing software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+  bearer: process.env.BEARER,
 });
 
 async function run() {
-  const result = await panora.ticketing.attachments.create({
+  const result = await panora.ats.attachments.create({
     xConnectionToken: "<value>",
-    unifiedTicketingAttachmentInput: {
-      fileName: "your_file_here",
-      fileUrl: "<value>",
-      uploader: "<value>",
+    unifiedAtsAttachmentInput: {
       fieldMappings: {},
     },
   });
@@ -86,7 +83,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.CreateTicketingAttachmentRequest](../../models/operations/createticketingattachmentrequest.md)                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.CreateAtsAttachmentRequest](../../models/operations/createatsattachmentrequest.md)                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -94,7 +91,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.CreateTicketingAttachmentResponse](../../models/operations/createticketingattachmentresponse.md)\>**
+**Promise\<[operations.CreateAtsAttachmentResponse](../../models/operations/createatsattachmentresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -103,7 +100,7 @@ run();
 
 ## retrieve
 
-Retrieve a attachment from any connected Ticketing software
+Retrieve Attachments from any connected Ats software
 
 ### Example Usage
 
@@ -111,11 +108,11 @@ Retrieve a attachment from any connected Ticketing software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+  bearer: process.env.BEARER,
 });
 
 async function run() {
-  const result = await panora.ticketing.attachments.retrieve({
+  const result = await panora.ats.attachments.retrieve({
     xConnectionToken: "<value>",
     id: "<id>",
   });
@@ -131,7 +128,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.RetrieveTicketingAttachmentRequest](../../models/operations/retrieveticketingattachmentrequest.md)                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.RetrieveAtsAttachmentRequest](../../models/operations/retrieveatsattachmentrequest.md)                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -139,7 +136,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveTicketingAttachmentResponse](../../models/operations/retrieveticketingattachmentresponse.md)\>**
+**Promise\<[operations.RetrieveAtsAttachmentResponse](../../models/operations/retrieveatsattachmentresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

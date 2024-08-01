@@ -4,8 +4,8 @@
 ### Available Operations
 
 * [list](#list) - List  Files
-* [create](#create) - Create a File
-* [retrieve](#retrieve) - Retrieve a File
+* [create](#create) - Create Files
+* [retrieve](#retrieve) - Retrieve Files
 
 ## list
 
@@ -17,7 +17,7 @@ List  Files
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+  bearer: process.env.BEARER,
 });
 
 async function run() {
@@ -53,7 +53,7 @@ run();
 
 ## create
 
-Create a file in any supported Filestorage software
+Create Files in any supported Filestorage software
 
 ### Example Usage
 
@@ -61,7 +61,7 @@ Create a file in any supported Filestorage software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+  bearer: process.env.BEARER,
 });
 
 async function run() {
@@ -108,7 +108,7 @@ run();
 
 ## retrieve
 
-Retrieve a file from any connected Filestorage software
+Retrieve Files from any connected Filestorage software
 
 ### Example Usage
 
@@ -116,7 +116,7 @@ Retrieve a file from any connected Filestorage software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+  bearer: process.env.BEARER,
 });
 
 async function run() {
