@@ -3,7 +3,7 @@
  */
 
 import { ResponseMatcher, HTTPClient, matchStatusCode } from "./http.js";
-import { SecurityState, resolveSecurity, resolveGlobalSecurity } from "./security.js";
+import { SecurityState, resolveSecurity } from "./security.js";
 import { retry, RetryConfig } from "./retries.js";
 import { pathToFunc } from "./url.js";
 import { encodeForm } from "./encodings.js";
@@ -206,5 +206,4 @@ export class ClientSDK {
     protected templateURLComponent = pathToFunc;
 
     protected resolveSecurity = resolveSecurity;
-    protected resolveGlobalSecurity = resolveGlobalSecurity;
 }

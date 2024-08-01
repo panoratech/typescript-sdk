@@ -4,8 +4,8 @@
 ### Available Operations
 
 * [list](#list) - List  Folders
-* [create](#create) - Create a Folder
-* [retrieve](#retrieve) - Retrieve a Folder
+* [create](#create) - Create Folders
+* [retrieve](#retrieve) - Retrieve Folders
 
 ## list
 
@@ -16,9 +16,7 @@ List  Folders
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
-});
+const panora = new Panora();
 
 async function run() {
   const result = await panora.filestorage.folders.list({
@@ -53,16 +51,14 @@ run();
 
 ## create
 
-Create a folder in any supported Filestorage software
+Create Folders in any supported Filestorage software
 
 ### Example Usage
 
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
-});
+const panora = new Panora();
 
 async function run() {
   const result = await panora.filestorage.folders.create({
@@ -109,16 +105,14 @@ run();
 
 ## retrieve
 
-Retrieve a folder from any connected Filestorage software
+Retrieve Folders from any connected Filestorage software
 
 ### Example Usage
 
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
-});
+const panora = new Panora();
 
 async function run() {
   const result = await panora.filestorage.folders.retrieve({

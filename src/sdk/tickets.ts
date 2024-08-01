@@ -74,25 +74,15 @@ export class Tickets extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
         const context = {
             operationID: "listTicketingTicket",
             oAuth2Scopes: [],
-            securitySource: this.options$.bearer,
+            securitySource: null,
         };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const request$ = this.createRequest$(
             context,
             {
-                security: securitySettings$,
                 method: "GET",
                 path: path$,
                 headers: headers$,
@@ -123,10 +113,10 @@ export class Tickets extends ClientSDK {
     }
 
     /**
-     * Create a Ticket
+     * Create Tickets
      *
      * @remarks
-     * Create a ticket in any supported Ticketing software
+     * Create Tickets in any supported Ticketing software
      */
     async create(
         request: operations.CreateTicketingTicketRequest,
@@ -157,25 +147,15 @@ export class Tickets extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
         const context = {
             operationID: "createTicketingTicket",
             oAuth2Scopes: [],
-            securitySource: this.options$.bearer,
+            securitySource: null,
         };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const request$ = this.createRequest$(
             context,
             {
-                security: securitySettings$,
                 method: "POST",
                 path: path$,
                 headers: headers$,
@@ -208,10 +188,10 @@ export class Tickets extends ClientSDK {
     }
 
     /**
-     * Retrieve a Ticket
+     * Retrieve Tickets
      *
      * @remarks
-     * Retrieve a ticket from any connected Ticketing software
+     * Retrieve Tickets from any connected Ticketing software
      */
     async retrieve(
         request: operations.RetrieveTicketingTicketRequest,
@@ -244,25 +224,15 @@ export class Tickets extends ClientSDK {
             ),
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
         const context = {
             operationID: "retrieveTicketingTicket",
             oAuth2Scopes: [],
-            securitySource: this.options$.bearer,
+            securitySource: null,
         };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const request$ = this.createRequest$(
             context,
             {
-                security: securitySettings$,
                 method: "GET",
                 path: path$,
                 headers: headers$,

@@ -7,10 +7,10 @@ import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
 import { HTTPClient } from "../lib/http.js";
 import { ClientSDK } from "../lib/sdks.js";
 import { Accounts } from "./accounts.js";
-import { Attachments } from "./attachments.js";
 import { Collections } from "./collections.js";
 import { Comments } from "./comments.js";
 import { Contacts } from "./contacts.js";
+import { PanoraTicketingAttachments } from "./panoraticketingattachments.js";
 import { Tags } from "./tags.js";
 import { Teams } from "./teams.js";
 import { Tickets } from "./tickets.js";
@@ -83,8 +83,8 @@ export class Ticketing extends ClientSDK {
         return (this._teams ??= new Teams(this.options$));
     }
 
-    private _attachments?: Attachments;
-    get attachments(): Attachments {
-        return (this._attachments ??= new Attachments(this.options$));
+    private _attachments?: PanoraTicketingAttachments;
+    get attachments(): PanoraTicketingAttachments {
+        return (this._attachments ??= new PanoraTicketingAttachments(this.options$));
     }
 }

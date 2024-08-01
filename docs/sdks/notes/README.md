@@ -4,8 +4,8 @@
 ### Available Operations
 
 * [list](#list) - List  Notes
-* [create](#create) - Create a Note
-* [retrieve](#retrieve) - Retrieve a Note
+* [create](#create) - Create Notes
+* [retrieve](#retrieve) - Retrieve Notes
 
 ## list
 
@@ -16,9 +16,7 @@ List  Notes
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
-});
+const panora = new Panora();
 
 async function run() {
   const result = await panora.crm.notes.list({
@@ -53,16 +51,14 @@ run();
 
 ## create
 
-Create a note in any supported Crm software
+Create Notes in any supported Crm software
 
 ### Example Usage
 
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
-});
+const panora = new Panora();
 
 async function run() {
   const result = await panora.crm.notes.create({
@@ -101,16 +97,14 @@ run();
 
 ## retrieve
 
-Retrieve a note from any connected Crm software
+Retrieve Notes from any connected Crm software
 
 ### Example Usage
 
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
-});
+const panora = new Panora();
 
 async function run() {
   const result = await panora.crm.notes.retrieve({

@@ -9,8 +9,8 @@ import { ClientSDK } from "../lib/sdks.js";
 import { Drives } from "./drives.js";
 import { Files } from "./files.js";
 import { Folders } from "./folders.js";
-import { Groups } from "./groups.js";
 import { PanoraFilestorageUsers } from "./panorafilestorageusers.js";
+import { PanoraGroups } from "./panoragroups.js";
 
 export class Filestorage extends ClientSDK {
     private readonly options$: SDKOptions & { hooks?: SDKHooks };
@@ -54,9 +54,9 @@ export class Filestorage extends ClientSDK {
         return (this._folders ??= new Folders(this.options$));
     }
 
-    private _groups?: Groups;
-    get groups(): Groups {
-        return (this._groups ??= new Groups(this.options$));
+    private _groups?: PanoraGroups;
+    get groups(): PanoraGroups {
+        return (this._groups ??= new PanoraGroups(this.options$));
     }
 
     private _users?: PanoraFilestorageUsers;

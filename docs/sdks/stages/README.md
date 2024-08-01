@@ -4,7 +4,7 @@
 ### Available Operations
 
 * [list](#list) - List  Stages
-* [retrieve](#retrieve) - Retrieve a Stage
+* [retrieve](#retrieve) - Retrieve Stages
 
 ## list
 
@@ -15,9 +15,7 @@ List  Stages
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
-});
+const panora = new Panora();
 
 async function run() {
   const result = await panora.crm.stages.list({
@@ -52,16 +50,14 @@ run();
 
 ## retrieve
 
-Retrieve a stage from any connected Crm software
+Retrieve Stages from any connected Crm software
 
 ### Example Usage
 
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
-});
+const panora = new Panora();
 
 async function run() {
   const result = await panora.crm.stages.retrieve({

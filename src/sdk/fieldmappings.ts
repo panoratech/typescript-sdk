@@ -10,6 +10,8 @@ import * as schemas$ from "../lib/schemas.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
+import { Define } from "./define.js";
+import { Map } from "./map.js";
 
 export class FieldMappings extends ClientSDK {
     private readonly options$: SDKOptions & { hooks?: SDKHooks };
@@ -38,86 +40,23 @@ export class FieldMappings extends ClientSDK {
         void this.options$;
     }
 
-    /**
-     * Define target Field
-     */
-    async define(
-        request: components.DefineTargetFieldDto,
-        options?: RequestOptions
-    ): Promise<operations.DefineResponse> {
-        const input$ = request;
+    private _define?: Define;
+    get define(): Define {
+        return (this._define ??= new Define(this.options$));
+    }
 
-        const payload$ = schemas$.parse(
-            input$,
-            (value$) => components.DefineTargetFieldDto$outboundSchema.parse(value$),
-            "Input validation failed"
-        );
-        const body$ = encodeJSON$("body", payload$, { explode: true });
-
-        const path$ = this.templateURLComponent("/field-mappings/define")();
-
-        const query$ = "";
-
-        const headers$ = new Headers({
-            "Content-Type": "application/json",
-            Accept: "*/*",
-        });
-
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
-        const context = {
-            operationID: "define",
-            oAuth2Scopes: [],
-            securitySource: this.options$.bearer,
-        };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
-
-        const request$ = this.createRequest$(
-            context,
-            {
-                security: securitySettings$,
-                method: "POST",
-                path: path$,
-                headers: headers$,
-                query: query$,
-                body: body$,
-                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
-            },
-            options
-        );
-
-        const response = await this.do$(request$, {
-            context,
-            errorCodes: ["4XX", "5XX"],
-            retryConfig: options?.retries || this.options$.retryConfig,
-            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
-        });
-
-        const responseFields$ = {
-            HttpMeta: { Response: response, Request: request$ },
-        };
-
-        const [result$] = await this.matcher<operations.DefineResponse>()
-            .void(201, operations.DefineResponse$inboundSchema)
-            .fail(["4XX", "5XX"])
-            .match(response, request$, { extraFields: responseFields$ });
-
-        return result$;
+    private _map?: Map;
+    get map(): Map {
+        return (this._map ??= new Map(this.options$));
     }
 
     /**
      * Create Custom Field
      */
-    async create(
+    async defineCustomField(
         request: components.CustomFieldCreateDto,
         options?: RequestOptions
-    ): Promise<operations.CreateResponse> {
+    ): Promise<operations.DefineCustomFieldResponse> {
         const input$ = request;
 
         const payload$ = schemas$.parse(
@@ -127,7 +66,7 @@ export class FieldMappings extends ClientSDK {
         );
         const body$ = encodeJSON$("body", payload$, { explode: true });
 
-        const path$ = this.templateURLComponent("/field-mappings")();
+        const path$ = this.templateURLComponent("/field_mappings")();
 
         const query$ = "";
 
@@ -136,25 +75,15 @@ export class FieldMappings extends ClientSDK {
             Accept: "*/*",
         });
 
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
         const context = {
-            operationID: "create",
+            operationID: "defineCustomField",
             oAuth2Scopes: [],
-            securitySource: this.options$.bearer,
+            securitySource: null,
         };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const request$ = this.createRequest$(
             context,
             {
-                security: securitySettings$,
                 method: "POST",
                 path: path$,
                 headers: headers$,
@@ -176,81 +105,8 @@ export class FieldMappings extends ClientSDK {
             HttpMeta: { Response: response, Request: request$ },
         };
 
-        const [result$] = await this.matcher<operations.CreateResponse>()
-            .void(201, operations.CreateResponse$inboundSchema)
-            .fail(["4XX", "5XX"])
-            .match(response, request$, { extraFields: responseFields$ });
-
-        return result$;
-    }
-
-    /**
-     * Map Custom Field
-     */
-    async map(
-        request: components.MapFieldToProviderDto,
-        options?: RequestOptions
-    ): Promise<operations.MapResponse> {
-        const input$ = request;
-
-        const payload$ = schemas$.parse(
-            input$,
-            (value$) => components.MapFieldToProviderDto$outboundSchema.parse(value$),
-            "Input validation failed"
-        );
-        const body$ = encodeJSON$("body", payload$, { explode: true });
-
-        const path$ = this.templateURLComponent("/field-mappings/map")();
-
-        const query$ = "";
-
-        const headers$ = new Headers({
-            "Content-Type": "application/json",
-            Accept: "*/*",
-        });
-
-        let security$;
-        if (typeof this.options$.bearer === "function") {
-            security$ = { bearer: await this.options$.bearer() };
-        } else if (this.options$.bearer) {
-            security$ = { bearer: this.options$.bearer };
-        } else {
-            security$ = {};
-        }
-        const context = {
-            operationID: "map",
-            oAuth2Scopes: [],
-            securitySource: this.options$.bearer,
-        };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
-
-        const request$ = this.createRequest$(
-            context,
-            {
-                security: securitySettings$,
-                method: "POST",
-                path: path$,
-                headers: headers$,
-                query: query$,
-                body: body$,
-                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
-            },
-            options
-        );
-
-        const response = await this.do$(request$, {
-            context,
-            errorCodes: ["4XX", "5XX"],
-            retryConfig: options?.retries || this.options$.retryConfig,
-            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
-        });
-
-        const responseFields$ = {
-            HttpMeta: { Response: response, Request: request$ },
-        };
-
-        const [result$] = await this.matcher<operations.MapResponse>()
-            .void(201, operations.MapResponse$inboundSchema)
+        const [result$] = await this.matcher<operations.DefineCustomFieldResponse>()
+            .void(201, operations.DefineCustomFieldResponse$inboundSchema)
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 

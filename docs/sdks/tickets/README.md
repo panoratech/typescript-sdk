@@ -4,8 +4,8 @@
 ### Available Operations
 
 * [list](#list) - List  Tickets
-* [create](#create) - Create a Ticket
-* [retrieve](#retrieve) - Retrieve a Ticket
+* [create](#create) - Create Tickets
+* [retrieve](#retrieve) - Retrieve Tickets
 
 ## list
 
@@ -16,9 +16,7 @@ List  Tickets
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
-});
+const panora = new Panora();
 
 async function run() {
   const result = await panora.ticketing.tickets.list({
@@ -53,16 +51,14 @@ run();
 
 ## create
 
-Create a ticket in any supported Ticketing software
+Create Tickets in any supported Ticketing software
 
 ### Example Usage
 
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
-});
+const panora = new Panora();
 
 async function run() {
   const result = await panora.ticketing.tickets.create({
@@ -102,16 +98,14 @@ run();
 
 ## retrieve
 
-Retrieve a ticket from any connected Ticketing software
+Retrieve Tickets from any connected Ticketing software
 
 ### Example Usage
 
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
-});
+const panora = new Panora();
 
 async function run() {
   const result = await panora.ticketing.tickets.retrieve({

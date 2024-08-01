@@ -8,7 +8,6 @@ import * as z from "zod";
 export type CreateBatchLinkedUserDto = {
     linkedUserOriginIds: Array<string>;
     alias: string;
-    idProject: string;
 };
 
 /** @internal */
@@ -20,12 +19,10 @@ export const CreateBatchLinkedUserDto$inboundSchema: z.ZodType<
     .object({
         linked_user_origin_ids: z.array(z.string()),
         alias: z.string(),
-        id_project: z.string(),
     })
     .transform((v) => {
         return remap$(v, {
             linked_user_origin_ids: "linkedUserOriginIds",
-            id_project: "idProject",
         });
     });
 
@@ -33,7 +30,6 @@ export const CreateBatchLinkedUserDto$inboundSchema: z.ZodType<
 export type CreateBatchLinkedUserDto$Outbound = {
     linked_user_origin_ids: Array<string>;
     alias: string;
-    id_project: string;
 };
 
 /** @internal */
@@ -45,12 +41,10 @@ export const CreateBatchLinkedUserDto$outboundSchema: z.ZodType<
     .object({
         linkedUserOriginIds: z.array(z.string()),
         alias: z.string(),
-        idProject: z.string(),
     })
     .transform((v) => {
         return remap$(v, {
             linkedUserOriginIds: "linked_user_origin_ids",
-            idProject: "id_project",
         });
     });
 

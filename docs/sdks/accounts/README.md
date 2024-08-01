@@ -4,7 +4,7 @@
 ### Available Operations
 
 * [list](#list) - List  Accounts
-* [retrieve](#retrieve) - Retrieve an Account
+* [retrieve](#retrieve) - Retrieve Accounts
 
 ## list
 
@@ -15,9 +15,7 @@ List  Accounts
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
-});
+const panora = new Panora();
 
 async function run() {
   const result = await panora.ticketing.accounts.list({
@@ -52,16 +50,14 @@ run();
 
 ## retrieve
 
-Retrieve an account from any connected Ticketing software
+Retrieve Accounts from any connected Ticketing software
 
 ### Example Usage
 
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
-});
+const panora = new Panora();
 
 async function run() {
   const result = await panora.ticketing.accounts.retrieve({
