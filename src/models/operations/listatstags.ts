@@ -26,8 +26,8 @@ export type ListAtsTagsRequest = {
 };
 
 export type ListAtsTagsResponseBody = {
-    prevCursor: string;
-    nextCursor: string;
+    prevCursor: string | null;
+    nextCursor: string | null;
     data: Array<components.UnifiedAtsTagOutput>;
 };
 
@@ -102,8 +102,8 @@ export const ListAtsTagsResponseBody$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        prev_cursor: z.string(),
-        next_cursor: z.string(),
+        prev_cursor: z.nullable(z.string()),
+        next_cursor: z.nullable(z.string()),
         data: z.array(components.UnifiedAtsTagOutput$inboundSchema),
     })
     .transform((v) => {
@@ -115,8 +115,8 @@ export const ListAtsTagsResponseBody$inboundSchema: z.ZodType<
 
 /** @internal */
 export type ListAtsTagsResponseBody$Outbound = {
-    prev_cursor: string;
-    next_cursor: string;
+    prev_cursor: string | null;
+    next_cursor: string | null;
     data: Array<components.UnifiedAtsTagOutput$Outbound>;
 };
 
@@ -127,8 +127,8 @@ export const ListAtsTagsResponseBody$outboundSchema: z.ZodType<
     ListAtsTagsResponseBody
 > = z
     .object({
-        prevCursor: z.string(),
-        nextCursor: z.string(),
+        prevCursor: z.nullable(z.string()),
+        nextCursor: z.nullable(z.string()),
         data: z.array(components.UnifiedAtsTagOutput$outboundSchema),
     })
     .transform((v) => {

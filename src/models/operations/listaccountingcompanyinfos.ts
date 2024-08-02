@@ -26,8 +26,8 @@ export type ListAccountingCompanyInfosRequest = {
 };
 
 export type ListAccountingCompanyInfosResponseBody = {
-    prevCursor: string;
-    nextCursor: string;
+    prevCursor: string | null;
+    nextCursor: string | null;
     data: Array<components.UnifiedAccountingCompanyinfoOutput>;
 };
 
@@ -102,8 +102,8 @@ export const ListAccountingCompanyInfosResponseBody$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        prev_cursor: z.string(),
-        next_cursor: z.string(),
+        prev_cursor: z.nullable(z.string()),
+        next_cursor: z.nullable(z.string()),
         data: z.array(components.UnifiedAccountingCompanyinfoOutput$inboundSchema),
     })
     .transform((v) => {
@@ -115,8 +115,8 @@ export const ListAccountingCompanyInfosResponseBody$inboundSchema: z.ZodType<
 
 /** @internal */
 export type ListAccountingCompanyInfosResponseBody$Outbound = {
-    prev_cursor: string;
-    next_cursor: string;
+    prev_cursor: string | null;
+    next_cursor: string | null;
     data: Array<components.UnifiedAccountingCompanyinfoOutput$Outbound>;
 };
 
@@ -127,8 +127,8 @@ export const ListAccountingCompanyInfosResponseBody$outboundSchema: z.ZodType<
     ListAccountingCompanyInfosResponseBody
 > = z
     .object({
-        prevCursor: z.string(),
-        nextCursor: z.string(),
+        prevCursor: z.nullable(z.string()),
+        nextCursor: z.nullable(z.string()),
         data: z.array(components.UnifiedAccountingCompanyinfoOutput$outboundSchema),
     })
     .transform((v) => {

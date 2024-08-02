@@ -3,13 +3,13 @@
 
 ### Available Operations
 
-* [list](#list) - List  Companies
+* [list](#list) - List Companies
 * [create](#create) - Create Companies
 * [retrieve](#retrieve) - Retrieve Companies
 
 ## list
 
-List  Companies
+List Companies
 
 ### Example Usage
 

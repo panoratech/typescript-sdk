@@ -43,7 +43,7 @@ export class Companies extends ClientSDK {
     }
 
     /**
-     * List  Companies
+     * List Companies
      */
     async list(
         request: operations.ListCrmCompanyRequest,

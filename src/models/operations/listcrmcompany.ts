@@ -26,8 +26,8 @@ export type ListCrmCompanyRequest = {
 };
 
 export type ListCrmCompanyResponseBody = {
-    prevCursor: string;
-    nextCursor: string;
+    prevCursor: string | null;
+    nextCursor: string | null;
     data: Array<components.UnifiedCrmCompanyOutput>;
 };
 
@@ -102,8 +102,8 @@ export const ListCrmCompanyResponseBody$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        prev_cursor: z.string(),
-        next_cursor: z.string(),
+        prev_cursor: z.nullable(z.string()),
+        next_cursor: z.nullable(z.string()),
         data: z.array(components.UnifiedCrmCompanyOutput$inboundSchema),
     })
     .transform((v) => {
@@ -115,8 +115,8 @@ export const ListCrmCompanyResponseBody$inboundSchema: z.ZodType<
 
 /** @internal */
 export type ListCrmCompanyResponseBody$Outbound = {
-    prev_cursor: string;
-    next_cursor: string;
+    prev_cursor: string | null;
+    next_cursor: string | null;
     data: Array<components.UnifiedCrmCompanyOutput$Outbound>;
 };
 
@@ -127,8 +127,8 @@ export const ListCrmCompanyResponseBody$outboundSchema: z.ZodType<
     ListCrmCompanyResponseBody
 > = z
     .object({
-        prevCursor: z.string(),
-        nextCursor: z.string(),
+        prevCursor: z.nullable(z.string()),
+        nextCursor: z.nullable(z.string()),
         data: z.array(components.UnifiedCrmCompanyOutput$outboundSchema),
     })
     .transform((v) => {

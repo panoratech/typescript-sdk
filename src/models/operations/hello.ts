@@ -6,53 +6,19 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as components from "../components/index.js";
 import * as z from "zod";
 
-export type HelloResponseBody = {
-    message?: string | undefined;
-};
-
 export type HelloResponse = {
     httpMeta: components.HTTPMetadata;
-    object?: HelloResponseBody | undefined;
+    /**
+     * Returns a greeting message
+     */
+    res?: string | undefined;
 };
-
-/** @internal */
-export const HelloResponseBody$inboundSchema: z.ZodType<HelloResponseBody, z.ZodTypeDef, unknown> =
-    z.object({
-        message: z.string().optional(),
-    });
-
-/** @internal */
-export type HelloResponseBody$Outbound = {
-    message?: string | undefined;
-};
-
-/** @internal */
-export const HelloResponseBody$outboundSchema: z.ZodType<
-    HelloResponseBody$Outbound,
-    z.ZodTypeDef,
-    HelloResponseBody
-> = z.object({
-    message: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HelloResponseBody$ {
-    /** @deprecated use `HelloResponseBody$inboundSchema` instead. */
-    export const inboundSchema = HelloResponseBody$inboundSchema;
-    /** @deprecated use `HelloResponseBody$outboundSchema` instead. */
-    export const outboundSchema = HelloResponseBody$outboundSchema;
-    /** @deprecated use `HelloResponseBody$Outbound` instead. */
-    export type Outbound = HelloResponseBody$Outbound;
-}
 
 /** @internal */
 export const HelloResponse$inboundSchema: z.ZodType<HelloResponse, z.ZodTypeDef, unknown> = z
     .object({
         HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => HelloResponseBody$inboundSchema).optional(),
+        res: z.string().optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -63,7 +29,7 @@ export const HelloResponse$inboundSchema: z.ZodType<HelloResponse, z.ZodTypeDef,
 /** @internal */
 export type HelloResponse$Outbound = {
     HttpMeta: components.HTTPMetadata$Outbound;
-    object?: HelloResponseBody$Outbound | undefined;
+    res?: string | undefined;
 };
 
 /** @internal */
@@ -74,7 +40,7 @@ export const HelloResponse$outboundSchema: z.ZodType<
 > = z
     .object({
         httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => HelloResponseBody$outboundSchema).optional(),
+        res: z.string().optional(),
     })
     .transform((v) => {
         return remap$(v, {

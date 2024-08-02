@@ -22,8 +22,8 @@ export type RetrieveTicketingContactRequest = {
 };
 
 export type RetrieveTicketingContactResponseBody = {
-    prevCursor: string;
-    nextCursor: string;
+    prevCursor: string | null;
+    nextCursor: string | null;
     data: Array<components.UnifiedTicketingContactOutput>;
 };
 
@@ -95,8 +95,8 @@ export const RetrieveTicketingContactResponseBody$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        prev_cursor: z.string(),
-        next_cursor: z.string(),
+        prev_cursor: z.nullable(z.string()),
+        next_cursor: z.nullable(z.string()),
         data: z.array(components.UnifiedTicketingContactOutput$inboundSchema),
     })
     .transform((v) => {
@@ -108,8 +108,8 @@ export const RetrieveTicketingContactResponseBody$inboundSchema: z.ZodType<
 
 /** @internal */
 export type RetrieveTicketingContactResponseBody$Outbound = {
-    prev_cursor: string;
-    next_cursor: string;
+    prev_cursor: string | null;
+    next_cursor: string | null;
     data: Array<components.UnifiedTicketingContactOutput$Outbound>;
 };
 
@@ -120,8 +120,8 @@ export const RetrieveTicketingContactResponseBody$outboundSchema: z.ZodType<
     RetrieveTicketingContactResponseBody
 > = z
     .object({
-        prevCursor: z.string(),
-        nextCursor: z.string(),
+        prevCursor: z.nullable(z.string()),
+        nextCursor: z.nullable(z.string()),
         data: z.array(components.UnifiedTicketingContactOutput$outboundSchema),
     })
     .transform((v) => {

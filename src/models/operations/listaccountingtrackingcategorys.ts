@@ -26,8 +26,8 @@ export type ListAccountingTrackingCategorysRequest = {
 };
 
 export type ListAccountingTrackingCategorysResponseBody = {
-    prevCursor: string;
-    nextCursor: string;
+    prevCursor: string | null;
+    nextCursor: string | null;
     data: Array<components.UnifiedAccountingTrackingcategoryOutput>;
 };
 
@@ -102,8 +102,8 @@ export const ListAccountingTrackingCategorysResponseBody$inboundSchema: z.ZodTyp
     unknown
 > = z
     .object({
-        prev_cursor: z.string(),
-        next_cursor: z.string(),
+        prev_cursor: z.nullable(z.string()),
+        next_cursor: z.nullable(z.string()),
         data: z.array(components.UnifiedAccountingTrackingcategoryOutput$inboundSchema),
     })
     .transform((v) => {
@@ -115,8 +115,8 @@ export const ListAccountingTrackingCategorysResponseBody$inboundSchema: z.ZodTyp
 
 /** @internal */
 export type ListAccountingTrackingCategorysResponseBody$Outbound = {
-    prev_cursor: string;
-    next_cursor: string;
+    prev_cursor: string | null;
+    next_cursor: string | null;
     data: Array<components.UnifiedAccountingTrackingcategoryOutput$Outbound>;
 };
 
@@ -127,8 +127,8 @@ export const ListAccountingTrackingCategorysResponseBody$outboundSchema: z.ZodTy
     ListAccountingTrackingCategorysResponseBody
 > = z
     .object({
-        prevCursor: z.string(),
-        nextCursor: z.string(),
+        prevCursor: z.nullable(z.string()),
+        nextCursor: z.nullable(z.string()),
         data: z.array(components.UnifiedAccountingTrackingcategoryOutput$outboundSchema),
     })
     .transform((v) => {

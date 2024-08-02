@@ -26,8 +26,8 @@ export type ListTicketingCollectionsRequest = {
 };
 
 export type ListTicketingCollectionsResponseBody = {
-    prevCursor: string;
-    nextCursor: string;
+    prevCursor: string | null;
+    nextCursor: string | null;
     data: Array<components.UnifiedTicketingCollectionOutput>;
 };
 
@@ -102,8 +102,8 @@ export const ListTicketingCollectionsResponseBody$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        prev_cursor: z.string(),
-        next_cursor: z.string(),
+        prev_cursor: z.nullable(z.string()),
+        next_cursor: z.nullable(z.string()),
         data: z.array(components.UnifiedTicketingCollectionOutput$inboundSchema),
     })
     .transform((v) => {
@@ -115,8 +115,8 @@ export const ListTicketingCollectionsResponseBody$inboundSchema: z.ZodType<
 
 /** @internal */
 export type ListTicketingCollectionsResponseBody$Outbound = {
-    prev_cursor: string;
-    next_cursor: string;
+    prev_cursor: string | null;
+    next_cursor: string | null;
     data: Array<components.UnifiedTicketingCollectionOutput$Outbound>;
 };
 
@@ -127,8 +127,8 @@ export const ListTicketingCollectionsResponseBody$outboundSchema: z.ZodType<
     ListTicketingCollectionsResponseBody
 > = z
     .object({
-        prevCursor: z.string(),
-        nextCursor: z.string(),
+        prevCursor: z.nullable(z.string()),
+        nextCursor: z.nullable(z.string()),
         data: z.array(components.UnifiedTicketingCollectionOutput$outboundSchema),
     })
     .transform((v) => {
