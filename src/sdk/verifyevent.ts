@@ -90,7 +90,8 @@ export class Verifyevent extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.VerifyEventResponse>()
-            .json(201, operations.VerifyEventResponse$inboundSchema, { key: "EventPayload" })
+            .json(200, operations.VerifyEventResponse$inboundSchema, { key: "object" })
+            .void(201, operations.VerifyEventResponse$inboundSchema)
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 

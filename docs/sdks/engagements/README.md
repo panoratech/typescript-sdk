@@ -65,7 +65,6 @@ async function run() {
     xConnectionToken: "<value>",
     unifiedCrmEngagementInput: {
       type: "<value>",
-      fieldMappings: {},
     },
   });
 

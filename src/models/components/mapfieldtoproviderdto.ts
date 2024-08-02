@@ -6,10 +6,22 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
 export type MapFieldToProviderDto = {
-    attributeId: string;
-    sourceCustomFieldId: string;
-    sourceProvider: string;
-    linkedUserId: string;
+    /**
+     * Attribute Id
+     */
+    attributeId: string | null;
+    /**
+     * Attribute Id
+     */
+    sourceCustomFieldId: string | null;
+    /**
+     * Attribute Id
+     */
+    sourceProvider: string | null;
+    /**
+     * Attribute Id
+     */
+    linkedUserId: string | null;
 };
 
 /** @internal */
@@ -19,10 +31,10 @@ export const MapFieldToProviderDto$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        attributeId: z.string(),
-        source_custom_field_id: z.string(),
-        source_provider: z.string(),
-        linked_user_id: z.string(),
+        attributeId: z.nullable(z.string()),
+        source_custom_field_id: z.nullable(z.string()),
+        source_provider: z.nullable(z.string()),
+        linked_user_id: z.nullable(z.string()),
     })
     .transform((v) => {
         return remap$(v, {
@@ -34,10 +46,10 @@ export const MapFieldToProviderDto$inboundSchema: z.ZodType<
 
 /** @internal */
 export type MapFieldToProviderDto$Outbound = {
-    attributeId: string;
-    source_custom_field_id: string;
-    source_provider: string;
-    linked_user_id: string;
+    attributeId: string | null;
+    source_custom_field_id: string | null;
+    source_provider: string | null;
+    linked_user_id: string | null;
 };
 
 /** @internal */
@@ -47,10 +59,10 @@ export const MapFieldToProviderDto$outboundSchema: z.ZodType<
     MapFieldToProviderDto
 > = z
     .object({
-        attributeId: z.string(),
-        sourceCustomFieldId: z.string(),
-        sourceProvider: z.string(),
-        linkedUserId: z.string(),
+        attributeId: z.nullable(z.string()),
+        sourceCustomFieldId: z.nullable(z.string()),
+        sourceProvider: z.nullable(z.string()),
+        linkedUserId: z.nullable(z.string()),
     })
     .transform((v) => {
         return remap$(v, {

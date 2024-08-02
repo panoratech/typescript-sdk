@@ -6,8 +6,8 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
 export type CreateLinkedUserDto = {
-    linkedUserOriginId: string;
-    alias: string;
+    linkedUserOriginId: string | null;
+    alias: string | null;
 };
 
 /** @internal */
@@ -17,8 +17,8 @@ export const CreateLinkedUserDto$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        linked_user_origin_id: z.string(),
-        alias: z.string(),
+        linked_user_origin_id: z.nullable(z.string()),
+        alias: z.nullable(z.string()),
     })
     .transform((v) => {
         return remap$(v, {
@@ -28,8 +28,8 @@ export const CreateLinkedUserDto$inboundSchema: z.ZodType<
 
 /** @internal */
 export type CreateLinkedUserDto$Outbound = {
-    linked_user_origin_id: string;
-    alias: string;
+    linked_user_origin_id: string | null;
+    alias: string | null;
 };
 
 /** @internal */
@@ -39,8 +39,8 @@ export const CreateLinkedUserDto$outboundSchema: z.ZodType<
     CreateLinkedUserDto
 > = z
     .object({
-        linkedUserOriginId: z.string(),
-        alias: z.string(),
+        linkedUserOriginId: z.nullable(z.string()),
+        alias: z.nullable(z.string()),
     })
     .transform((v) => {
         return remap$(v, {

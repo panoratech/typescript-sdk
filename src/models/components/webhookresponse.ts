@@ -9,7 +9,7 @@ export type WebhookResponse = {
     /**
      * The unique UUID of the webhook.
      */
-    idWebhookEndpoint: string;
+    idWebhookEndpoint: string | null;
     /**
      * The description of the webhook.
      */
@@ -17,27 +17,27 @@ export type WebhookResponse = {
     /**
      * The endpoint url of the webhook.
      */
-    url: string;
+    url: string | null;
     /**
      * The secret of the webhook.
      */
-    secret: string;
+    secret: string | null;
     /**
      * The status of the webhook.
      */
-    active: boolean;
+    active: boolean | null;
     /**
      * The created date  of the webhook.
      */
-    createdAt: Date;
+    createdAt: Date | null;
     /**
      * The events that the webhook listen to.
      */
-    scope: Array<string>;
+    scope: Array<string> | null;
     /**
      * The project id tied to the webhook.
      */
-    idProject: string;
+    idProject: string | null;
     /**
      * The last update date of the webhook.
      */
@@ -47,17 +47,19 @@ export type WebhookResponse = {
 /** @internal */
 export const WebhookResponse$inboundSchema: z.ZodType<WebhookResponse, z.ZodTypeDef, unknown> = z
     .object({
-        id_webhook_endpoint: z.string(),
+        id_webhook_endpoint: z.nullable(z.string()),
         endpoint_description: z.nullable(z.string()),
-        url: z.string(),
-        secret: z.string(),
-        active: z.boolean(),
-        created_at: z
-            .string()
-            .datetime({ offset: true })
-            .transform((v) => new Date(v)),
-        scope: z.array(z.string()),
-        id_project: z.string(),
+        url: z.nullable(z.string()),
+        secret: z.nullable(z.string()),
+        active: z.nullable(z.boolean()),
+        created_at: z.nullable(
+            z
+                .string()
+                .datetime({ offset: true })
+                .transform((v) => new Date(v))
+        ),
+        scope: z.nullable(z.array(z.string())),
+        id_project: z.nullable(z.string()),
         last_update: z.nullable(
             z
                 .string()
@@ -77,14 +79,14 @@ export const WebhookResponse$inboundSchema: z.ZodType<WebhookResponse, z.ZodType
 
 /** @internal */
 export type WebhookResponse$Outbound = {
-    id_webhook_endpoint: string;
+    id_webhook_endpoint: string | null;
     endpoint_description: string | null;
-    url: string;
-    secret: string;
-    active: boolean;
-    created_at: string;
-    scope: Array<string>;
-    id_project: string;
+    url: string | null;
+    secret: string | null;
+    active: boolean | null;
+    created_at: string | null;
+    scope: Array<string> | null;
+    id_project: string | null;
     last_update: string | null;
 };
 
@@ -95,14 +97,14 @@ export const WebhookResponse$outboundSchema: z.ZodType<
     WebhookResponse
 > = z
     .object({
-        idWebhookEndpoint: z.string(),
+        idWebhookEndpoint: z.nullable(z.string()),
         endpointDescription: z.nullable(z.string()),
-        url: z.string(),
-        secret: z.string(),
-        active: z.boolean(),
-        createdAt: z.date().transform((v) => v.toISOString()),
-        scope: z.array(z.string()),
-        idProject: z.string(),
+        url: z.nullable(z.string()),
+        secret: z.nullable(z.string()),
+        active: z.nullable(z.boolean()),
+        createdAt: z.nullable(z.date().transform((v) => v.toISOString())),
+        scope: z.nullable(z.array(z.string())),
+        idProject: z.nullable(z.string()),
         lastUpdate: z.nullable(z.date().transform((v) => v.toISOString())),
     })
     .transform((v) => {

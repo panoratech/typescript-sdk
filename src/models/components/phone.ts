@@ -9,23 +9,23 @@ export type Phone = {
     /**
      * The phone number starting with a plus (+) followed by the country code (e.g +336676778890 for France)
      */
-    phoneNumber: string;
+    phoneNumber: string | null;
     /**
      * The phone type. Authorized values are either MOBILE or WORK
      */
-    phoneType: string;
+    phoneType: string | null;
     /**
      * The owner type of a phone number
      */
-    ownerType?: string | undefined;
+    ownerType?: string | null | undefined;
 };
 
 /** @internal */
 export const Phone$inboundSchema: z.ZodType<Phone, z.ZodTypeDef, unknown> = z
     .object({
-        phone_number: z.string(),
-        phone_type: z.string(),
-        owner_type: z.string().optional(),
+        phone_number: z.nullable(z.string()),
+        phone_type: z.nullable(z.string()),
+        owner_type: z.nullable(z.string()).optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -37,17 +37,17 @@ export const Phone$inboundSchema: z.ZodType<Phone, z.ZodTypeDef, unknown> = z
 
 /** @internal */
 export type Phone$Outbound = {
-    phone_number: string;
-    phone_type: string;
-    owner_type?: string | undefined;
+    phone_number: string | null;
+    phone_type: string | null;
+    owner_type?: string | null | undefined;
 };
 
 /** @internal */
 export const Phone$outboundSchema: z.ZodType<Phone$Outbound, z.ZodTypeDef, Phone> = z
     .object({
-        phoneNumber: z.string(),
-        phoneType: z.string(),
-        ownerType: z.string().optional(),
+        phoneNumber: z.nullable(z.string()),
+        phoneType: z.nullable(z.string()),
+        ownerType: z.nullable(z.string()).optional(),
     })
     .transform((v) => {
         return remap$(v, {

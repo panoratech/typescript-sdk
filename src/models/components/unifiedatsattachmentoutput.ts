@@ -5,172 +5,56 @@
 import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
-export type UnifiedAtsAttachmentOutputFieldMappings = {};
-
-export type UnifiedAtsAttachmentOutputRemoteData = {};
-
-export type UnifiedAtsAttachmentOutputCreatedAt = {};
-
-export type UnifiedAtsAttachmentOutputModifiedAt = {};
-
 export type UnifiedAtsAttachmentOutput = {
     /**
      * The URL of the file
      */
-    fileUrl?: string | undefined;
+    fileUrl?: string | null | undefined;
     /**
      * The name of the file
      */
-    fileName?: string | undefined;
+    fileName?: string | null | undefined;
     /**
      * The type of the file
      */
-    attachmentType?: string | undefined;
+    attachmentType?: string | null | undefined;
     /**
      * The remote creation date of the attachment
      */
-    remoteCreatedAt?: Date | undefined;
+    remoteCreatedAt?: Date | null | undefined;
     /**
      * The remote modification date of the attachment
      */
-    remoteModifiedAt?: Date | undefined;
+    remoteModifiedAt?: Date | null | undefined;
     /**
      * The UUID of the candidate
      */
-    candidateId?: string | undefined;
-    fieldMappings: UnifiedAtsAttachmentOutputFieldMappings;
+    candidateId?: string | null | undefined;
+    /**
+     * The custom field mappings of the object between the remote 3rd party & Panora
+     */
+    fieldMappings?: { [k: string]: any } | null | undefined;
     /**
      * The UUID of the attachment
      */
-    id?: string | undefined;
+    id?: string | null | undefined;
     /**
      * The remote ID of the attachment
      */
-    remoteId?: string | undefined;
-    remoteData: UnifiedAtsAttachmentOutputRemoteData;
-    createdAt: UnifiedAtsAttachmentOutputCreatedAt;
-    modifiedAt: UnifiedAtsAttachmentOutputModifiedAt;
+    remoteId?: string | null | undefined;
+    /**
+     * The remote data of the attachment in the context of the 3rd Party
+     */
+    remoteData?: { [k: string]: any } | null | undefined;
+    /**
+     * The created date of the object
+     */
+    createdAt?: Date | null | undefined;
+    /**
+     * The modified date of the object
+     */
+    modifiedAt?: Date | null | undefined;
 };
-
-/** @internal */
-export const UnifiedAtsAttachmentOutputFieldMappings$inboundSchema: z.ZodType<
-    UnifiedAtsAttachmentOutputFieldMappings,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedAtsAttachmentOutputFieldMappings$Outbound = {};
-
-/** @internal */
-export const UnifiedAtsAttachmentOutputFieldMappings$outboundSchema: z.ZodType<
-    UnifiedAtsAttachmentOutputFieldMappings$Outbound,
-    z.ZodTypeDef,
-    UnifiedAtsAttachmentOutputFieldMappings
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedAtsAttachmentOutputFieldMappings$ {
-    /** @deprecated use `UnifiedAtsAttachmentOutputFieldMappings$inboundSchema` instead. */
-    export const inboundSchema = UnifiedAtsAttachmentOutputFieldMappings$inboundSchema;
-    /** @deprecated use `UnifiedAtsAttachmentOutputFieldMappings$outboundSchema` instead. */
-    export const outboundSchema = UnifiedAtsAttachmentOutputFieldMappings$outboundSchema;
-    /** @deprecated use `UnifiedAtsAttachmentOutputFieldMappings$Outbound` instead. */
-    export type Outbound = UnifiedAtsAttachmentOutputFieldMappings$Outbound;
-}
-
-/** @internal */
-export const UnifiedAtsAttachmentOutputRemoteData$inboundSchema: z.ZodType<
-    UnifiedAtsAttachmentOutputRemoteData,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedAtsAttachmentOutputRemoteData$Outbound = {};
-
-/** @internal */
-export const UnifiedAtsAttachmentOutputRemoteData$outboundSchema: z.ZodType<
-    UnifiedAtsAttachmentOutputRemoteData$Outbound,
-    z.ZodTypeDef,
-    UnifiedAtsAttachmentOutputRemoteData
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedAtsAttachmentOutputRemoteData$ {
-    /** @deprecated use `UnifiedAtsAttachmentOutputRemoteData$inboundSchema` instead. */
-    export const inboundSchema = UnifiedAtsAttachmentOutputRemoteData$inboundSchema;
-    /** @deprecated use `UnifiedAtsAttachmentOutputRemoteData$outboundSchema` instead. */
-    export const outboundSchema = UnifiedAtsAttachmentOutputRemoteData$outboundSchema;
-    /** @deprecated use `UnifiedAtsAttachmentOutputRemoteData$Outbound` instead. */
-    export type Outbound = UnifiedAtsAttachmentOutputRemoteData$Outbound;
-}
-
-/** @internal */
-export const UnifiedAtsAttachmentOutputCreatedAt$inboundSchema: z.ZodType<
-    UnifiedAtsAttachmentOutputCreatedAt,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedAtsAttachmentOutputCreatedAt$Outbound = {};
-
-/** @internal */
-export const UnifiedAtsAttachmentOutputCreatedAt$outboundSchema: z.ZodType<
-    UnifiedAtsAttachmentOutputCreatedAt$Outbound,
-    z.ZodTypeDef,
-    UnifiedAtsAttachmentOutputCreatedAt
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedAtsAttachmentOutputCreatedAt$ {
-    /** @deprecated use `UnifiedAtsAttachmentOutputCreatedAt$inboundSchema` instead. */
-    export const inboundSchema = UnifiedAtsAttachmentOutputCreatedAt$inboundSchema;
-    /** @deprecated use `UnifiedAtsAttachmentOutputCreatedAt$outboundSchema` instead. */
-    export const outboundSchema = UnifiedAtsAttachmentOutputCreatedAt$outboundSchema;
-    /** @deprecated use `UnifiedAtsAttachmentOutputCreatedAt$Outbound` instead. */
-    export type Outbound = UnifiedAtsAttachmentOutputCreatedAt$Outbound;
-}
-
-/** @internal */
-export const UnifiedAtsAttachmentOutputModifiedAt$inboundSchema: z.ZodType<
-    UnifiedAtsAttachmentOutputModifiedAt,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedAtsAttachmentOutputModifiedAt$Outbound = {};
-
-/** @internal */
-export const UnifiedAtsAttachmentOutputModifiedAt$outboundSchema: z.ZodType<
-    UnifiedAtsAttachmentOutputModifiedAt$Outbound,
-    z.ZodTypeDef,
-    UnifiedAtsAttachmentOutputModifiedAt
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedAtsAttachmentOutputModifiedAt$ {
-    /** @deprecated use `UnifiedAtsAttachmentOutputModifiedAt$inboundSchema` instead. */
-    export const inboundSchema = UnifiedAtsAttachmentOutputModifiedAt$inboundSchema;
-    /** @deprecated use `UnifiedAtsAttachmentOutputModifiedAt$outboundSchema` instead. */
-    export const outboundSchema = UnifiedAtsAttachmentOutputModifiedAt$outboundSchema;
-    /** @deprecated use `UnifiedAtsAttachmentOutputModifiedAt$Outbound` instead. */
-    export type Outbound = UnifiedAtsAttachmentOutputModifiedAt$Outbound;
-}
 
 /** @internal */
 export const UnifiedAtsAttachmentOutput$inboundSchema: z.ZodType<
@@ -179,26 +63,46 @@ export const UnifiedAtsAttachmentOutput$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        file_url: z.string().optional(),
-        file_name: z.string().optional(),
-        attachment_type: z.string().optional(),
+        file_url: z.nullable(z.string()).optional(),
+        file_name: z.nullable(z.string()).optional(),
+        attachment_type: z.nullable(z.string()).optional(),
         remote_created_at: z
-            .string()
-            .datetime({ offset: true })
-            .transform((v) => new Date(v))
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
             .optional(),
         remote_modified_at: z
-            .string()
-            .datetime({ offset: true })
-            .transform((v) => new Date(v))
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
             .optional(),
-        candidate_id: z.string().optional(),
-        field_mappings: z.lazy(() => UnifiedAtsAttachmentOutputFieldMappings$inboundSchema),
-        id: z.string().optional(),
-        remote_id: z.string().optional(),
-        remote_data: z.lazy(() => UnifiedAtsAttachmentOutputRemoteData$inboundSchema),
-        created_at: z.lazy(() => UnifiedAtsAttachmentOutputCreatedAt$inboundSchema),
-        modified_at: z.lazy(() => UnifiedAtsAttachmentOutputModifiedAt$inboundSchema),
+        candidate_id: z.nullable(z.string()).optional(),
+        field_mappings: z.nullable(z.record(z.any())).optional(),
+        id: z.nullable(z.string()).optional(),
+        remote_id: z.nullable(z.string()).optional(),
+        remote_data: z.nullable(z.record(z.any())).optional(),
+        created_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        modified_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -218,18 +122,18 @@ export const UnifiedAtsAttachmentOutput$inboundSchema: z.ZodType<
 
 /** @internal */
 export type UnifiedAtsAttachmentOutput$Outbound = {
-    file_url?: string | undefined;
-    file_name?: string | undefined;
-    attachment_type?: string | undefined;
-    remote_created_at?: string | undefined;
-    remote_modified_at?: string | undefined;
-    candidate_id?: string | undefined;
-    field_mappings: UnifiedAtsAttachmentOutputFieldMappings$Outbound;
-    id?: string | undefined;
-    remote_id?: string | undefined;
-    remote_data: UnifiedAtsAttachmentOutputRemoteData$Outbound;
-    created_at: UnifiedAtsAttachmentOutputCreatedAt$Outbound;
-    modified_at: UnifiedAtsAttachmentOutputModifiedAt$Outbound;
+    file_url?: string | null | undefined;
+    file_name?: string | null | undefined;
+    attachment_type?: string | null | undefined;
+    remote_created_at?: string | null | undefined;
+    remote_modified_at?: string | null | undefined;
+    candidate_id?: string | null | undefined;
+    field_mappings?: { [k: string]: any } | null | undefined;
+    id?: string | null | undefined;
+    remote_id?: string | null | undefined;
+    remote_data?: { [k: string]: any } | null | undefined;
+    created_at?: string | null | undefined;
+    modified_at?: string | null | undefined;
 };
 
 /** @internal */
@@ -239,24 +143,18 @@ export const UnifiedAtsAttachmentOutput$outboundSchema: z.ZodType<
     UnifiedAtsAttachmentOutput
 > = z
     .object({
-        fileUrl: z.string().optional(),
-        fileName: z.string().optional(),
-        attachmentType: z.string().optional(),
-        remoteCreatedAt: z
-            .date()
-            .transform((v) => v.toISOString())
-            .optional(),
-        remoteModifiedAt: z
-            .date()
-            .transform((v) => v.toISOString())
-            .optional(),
-        candidateId: z.string().optional(),
-        fieldMappings: z.lazy(() => UnifiedAtsAttachmentOutputFieldMappings$outboundSchema),
-        id: z.string().optional(),
-        remoteId: z.string().optional(),
-        remoteData: z.lazy(() => UnifiedAtsAttachmentOutputRemoteData$outboundSchema),
-        createdAt: z.lazy(() => UnifiedAtsAttachmentOutputCreatedAt$outboundSchema),
-        modifiedAt: z.lazy(() => UnifiedAtsAttachmentOutputModifiedAt$outboundSchema),
+        fileUrl: z.nullable(z.string()).optional(),
+        fileName: z.nullable(z.string()).optional(),
+        attachmentType: z.nullable(z.string()).optional(),
+        remoteCreatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        remoteModifiedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        candidateId: z.nullable(z.string()).optional(),
+        fieldMappings: z.nullable(z.record(z.any())).optional(),
+        id: z.nullable(z.string()).optional(),
+        remoteId: z.nullable(z.string()).optional(),
+        remoteData: z.nullable(z.record(z.any())).optional(),
+        createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        modifiedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
     })
     .transform((v) => {
         return remap$(v, {

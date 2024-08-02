@@ -66,7 +66,6 @@ async function run() {
     unifiedCrmContactInput: {
       firstName: "Jed",
       lastName: "Kuhn",
-      fieldMappings: {},
     },
   });
 

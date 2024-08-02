@@ -6,10 +6,10 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
 export type DefineTargetFieldDto = {
-    objectTypeOwner: string;
-    name: string;
-    description: string;
-    dataType: string;
+    objectTypeOwner: string | null;
+    name: string | null;
+    description: string | null;
+    dataType: string | null;
 };
 
 /** @internal */
@@ -19,10 +19,10 @@ export const DefineTargetFieldDto$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        object_type_owner: z.string(),
-        name: z.string(),
-        description: z.string(),
-        data_type: z.string(),
+        object_type_owner: z.nullable(z.string()),
+        name: z.nullable(z.string()),
+        description: z.nullable(z.string()),
+        data_type: z.nullable(z.string()),
     })
     .transform((v) => {
         return remap$(v, {
@@ -33,10 +33,10 @@ export const DefineTargetFieldDto$inboundSchema: z.ZodType<
 
 /** @internal */
 export type DefineTargetFieldDto$Outbound = {
-    object_type_owner: string;
-    name: string;
-    description: string;
-    data_type: string;
+    object_type_owner: string | null;
+    name: string | null;
+    description: string | null;
+    data_type: string | null;
 };
 
 /** @internal */
@@ -46,10 +46,10 @@ export const DefineTargetFieldDto$outboundSchema: z.ZodType<
     DefineTargetFieldDto
 > = z
     .object({
-        objectTypeOwner: z.string(),
-        name: z.string(),
-        description: z.string(),
-        dataType: z.string(),
+        objectTypeOwner: z.nullable(z.string()),
+        name: z.nullable(z.string()),
+        description: z.nullable(z.string()),
+        dataType: z.nullable(z.string()),
     })
     .transform((v) => {
         return remap$(v, {

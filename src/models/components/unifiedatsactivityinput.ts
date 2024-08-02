@@ -5,65 +5,36 @@
 import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
-export type UnifiedAtsActivityInputFieldMappings = {};
-
 export type UnifiedAtsActivityInput = {
     /**
      * The type of activity
      */
-    activityType?: string | undefined;
+    activityType?: string | null | undefined;
     /**
      * The subject of the activity
      */
-    subject?: string | undefined;
+    subject?: string | null | undefined;
     /**
      * The body of the activity
      */
-    body?: string | undefined;
+    body?: string | null | undefined;
     /**
      * The visibility of the activity
      */
-    visibility?: string | undefined;
+    visibility?: string | null | undefined;
     /**
      * The UUID of the candidate
      */
-    candidateId?: string | undefined;
+    candidateId?: string | null | undefined;
     /**
      * The remote creation date of the activity
      */
-    remoteCreatedAt?: Date | undefined;
-    fieldMappings: UnifiedAtsActivityInputFieldMappings;
+    remoteCreatedAt?: Date | null | undefined;
+    /**
+     * The custom field mappings of the object between the remote 3rd party & Panora
+     */
+    fieldMappings?: { [k: string]: any } | null | undefined;
 };
-
-/** @internal */
-export const UnifiedAtsActivityInputFieldMappings$inboundSchema: z.ZodType<
-    UnifiedAtsActivityInputFieldMappings,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedAtsActivityInputFieldMappings$Outbound = {};
-
-/** @internal */
-export const UnifiedAtsActivityInputFieldMappings$outboundSchema: z.ZodType<
-    UnifiedAtsActivityInputFieldMappings$Outbound,
-    z.ZodTypeDef,
-    UnifiedAtsActivityInputFieldMappings
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedAtsActivityInputFieldMappings$ {
-    /** @deprecated use `UnifiedAtsActivityInputFieldMappings$inboundSchema` instead. */
-    export const inboundSchema = UnifiedAtsActivityInputFieldMappings$inboundSchema;
-    /** @deprecated use `UnifiedAtsActivityInputFieldMappings$outboundSchema` instead. */
-    export const outboundSchema = UnifiedAtsActivityInputFieldMappings$outboundSchema;
-    /** @deprecated use `UnifiedAtsActivityInputFieldMappings$Outbound` instead. */
-    export type Outbound = UnifiedAtsActivityInputFieldMappings$Outbound;
-}
 
 /** @internal */
 export const UnifiedAtsActivityInput$inboundSchema: z.ZodType<
@@ -72,17 +43,20 @@ export const UnifiedAtsActivityInput$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        activity_type: z.string().optional(),
-        subject: z.string().optional(),
-        body: z.string().optional(),
-        visibility: z.string().optional(),
-        candidate_id: z.string().optional(),
+        activity_type: z.nullable(z.string()).optional(),
+        subject: z.nullable(z.string()).optional(),
+        body: z.nullable(z.string()).optional(),
+        visibility: z.nullable(z.string()).optional(),
+        candidate_id: z.nullable(z.string()).optional(),
         remote_created_at: z
-            .string()
-            .datetime({ offset: true })
-            .transform((v) => new Date(v))
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
             .optional(),
-        field_mappings: z.lazy(() => UnifiedAtsActivityInputFieldMappings$inboundSchema),
+        field_mappings: z.nullable(z.record(z.any())).optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -95,13 +69,13 @@ export const UnifiedAtsActivityInput$inboundSchema: z.ZodType<
 
 /** @internal */
 export type UnifiedAtsActivityInput$Outbound = {
-    activity_type?: string | undefined;
-    subject?: string | undefined;
-    body?: string | undefined;
-    visibility?: string | undefined;
-    candidate_id?: string | undefined;
-    remote_created_at?: string | undefined;
-    field_mappings: UnifiedAtsActivityInputFieldMappings$Outbound;
+    activity_type?: string | null | undefined;
+    subject?: string | null | undefined;
+    body?: string | null | undefined;
+    visibility?: string | null | undefined;
+    candidate_id?: string | null | undefined;
+    remote_created_at?: string | null | undefined;
+    field_mappings?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
@@ -111,16 +85,13 @@ export const UnifiedAtsActivityInput$outboundSchema: z.ZodType<
     UnifiedAtsActivityInput
 > = z
     .object({
-        activityType: z.string().optional(),
-        subject: z.string().optional(),
-        body: z.string().optional(),
-        visibility: z.string().optional(),
-        candidateId: z.string().optional(),
-        remoteCreatedAt: z
-            .date()
-            .transform((v) => v.toISOString())
-            .optional(),
-        fieldMappings: z.lazy(() => UnifiedAtsActivityInputFieldMappings$outboundSchema),
+        activityType: z.nullable(z.string()).optional(),
+        subject: z.nullable(z.string()).optional(),
+        body: z.nullable(z.string()).optional(),
+        visibility: z.nullable(z.string()).optional(),
+        candidateId: z.nullable(z.string()).optional(),
+        remoteCreatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        fieldMappings: z.nullable(z.record(z.any())).optional(),
     })
     .transform((v) => {
         return remap$(v, {

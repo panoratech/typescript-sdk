@@ -63,9 +63,7 @@ const panora = new Panora();
 async function run() {
   const result = await panora.ats.candidates.create({
     xConnectionToken: "<value>",
-    unifiedAtsCandidateInput: {
-      fieldMappings: {},
-    },
+    unifiedAtsCandidateInput: {},
   });
 
   // Handle the result

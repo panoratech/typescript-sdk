@@ -60,7 +60,7 @@ export class Batch extends ClientSDK {
 
         const headers$ = new Headers({
             "Content-Type": "application/json",
-            Accept: "*/*",
+            Accept: "application/json",
         });
 
         const context = { operationID: "importBatch", oAuth2Scopes: [], securitySource: null };
@@ -90,7 +90,7 @@ export class Batch extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.ImportBatchResponse>()
-            .void(201, operations.ImportBatchResponse$inboundSchema)
+            .json(201, operations.ImportBatchResponse$inboundSchema, { key: "LinkedUserResponses" })
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 

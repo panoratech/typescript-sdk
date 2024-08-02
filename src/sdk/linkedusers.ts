@@ -78,7 +78,7 @@ export class LinkedUsers extends ClientSDK {
 
         const headers$ = new Headers({
             "Content-Type": "application/json",
-            Accept: "*/*",
+            Accept: "application/json",
         });
 
         const context = { operationID: "createLinkedUser", oAuth2Scopes: [], securitySource: null };
@@ -108,7 +108,9 @@ export class LinkedUsers extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.CreateLinkedUserResponse>()
-            .void(201, operations.CreateLinkedUserResponse$inboundSchema)
+            .json(201, operations.CreateLinkedUserResponse$inboundSchema, {
+                key: "LinkedUserResponse",
+            })
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 
@@ -124,7 +126,7 @@ export class LinkedUsers extends ClientSDK {
         const query$ = "";
 
         const headers$ = new Headers({
-            Accept: "*/*",
+            Accept: "application/json",
         });
 
         const context = { operationID: "listLinkedUsers", oAuth2Scopes: [], securitySource: null };
@@ -153,7 +155,9 @@ export class LinkedUsers extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.ListLinkedUsersResponse>()
-            .void(200, operations.ListLinkedUsersResponse$inboundSchema)
+            .json(200, operations.ListLinkedUsersResponse$inboundSchema, {
+                key: "LinkedUserResponses",
+            })
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 

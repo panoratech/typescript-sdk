@@ -8,25 +8,26 @@ import * as z from "zod";
 
 export type HealthResponse = {
     httpMeta: components.HTTPMetadata;
-    number?: number | undefined;
+    number?: components.NumberT | undefined;
 };
 
 /** @internal */
 export const HealthResponse$inboundSchema: z.ZodType<HealthResponse, z.ZodTypeDef, unknown> = z
     .object({
         HttpMeta: components.HTTPMetadata$inboundSchema,
-        number: z.number().optional(),
+        Number: components.NumberT$inboundSchema.optional(),
     })
     .transform((v) => {
         return remap$(v, {
             HttpMeta: "httpMeta",
+            Number: "number",
         });
     });
 
 /** @internal */
 export type HealthResponse$Outbound = {
     HttpMeta: components.HTTPMetadata$Outbound;
-    number?: number | undefined;
+    Number?: components.NumberT$Outbound | undefined;
 };
 
 /** @internal */
@@ -37,11 +38,12 @@ export const HealthResponse$outboundSchema: z.ZodType<
 > = z
     .object({
         httpMeta: components.HTTPMetadata$outboundSchema,
-        number: z.number().optional(),
+        number: components.NumberT$outboundSchema.optional(),
     })
     .transform((v) => {
         return remap$(v, {
             httpMeta: "HttpMeta",
+            number: "Number",
         });
     });
 

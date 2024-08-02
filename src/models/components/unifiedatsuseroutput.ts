@@ -5,176 +5,60 @@
 import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
-export type UnifiedAtsUserOutputFieldMappings = {};
-
-export type UnifiedAtsUserOutputRemoteData = {};
-
-export type UnifiedAtsUserOutputCreatedAt = {};
-
-export type UnifiedAtsUserOutputModifiedAt = {};
-
 export type UnifiedAtsUserOutput = {
     /**
      * The first name of the user
      */
-    firstName?: string | undefined;
+    firstName?: string | null | undefined;
     /**
      * The last name of the user
      */
-    lastName?: string | undefined;
+    lastName?: string | null | undefined;
     /**
      * The email of the user
      */
-    email?: string | undefined;
+    email?: string | null | undefined;
     /**
      * Whether the user is disabled
      */
-    disabled?: boolean | undefined;
+    disabled?: boolean | null | undefined;
     /**
      * The access role of the user
      */
-    accessRole?: string | undefined;
+    accessRole?: string | null | undefined;
     /**
      * The remote creation date of the user
      */
-    remoteCreatedAt?: Date | undefined;
+    remoteCreatedAt?: Date | null | undefined;
     /**
      * The remote modification date of the user
      */
-    remoteModifiedAt?: Date | undefined;
-    fieldMappings: UnifiedAtsUserOutputFieldMappings;
+    remoteModifiedAt?: Date | null | undefined;
+    /**
+     * The custom field mappings of the object between the remote 3rd party & Panora
+     */
+    fieldMappings?: { [k: string]: any } | null | undefined;
     /**
      * The UUID of the user
      */
-    id?: string | undefined;
+    id?: string | null | undefined;
     /**
      * The remote ID of the user in the context of the 3rd Party
      */
-    remoteId?: string | undefined;
-    remoteData: UnifiedAtsUserOutputRemoteData;
-    createdAt: UnifiedAtsUserOutputCreatedAt;
-    modifiedAt: UnifiedAtsUserOutputModifiedAt;
+    remoteId?: string | null | undefined;
+    /**
+     * The remote data of the user in the context of the 3rd Party
+     */
+    remoteData?: { [k: string]: any } | null | undefined;
+    /**
+     * The created date of the object
+     */
+    createdAt?: Date | null | undefined;
+    /**
+     * The modified date of the object
+     */
+    modifiedAt?: Date | null | undefined;
 };
-
-/** @internal */
-export const UnifiedAtsUserOutputFieldMappings$inboundSchema: z.ZodType<
-    UnifiedAtsUserOutputFieldMappings,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedAtsUserOutputFieldMappings$Outbound = {};
-
-/** @internal */
-export const UnifiedAtsUserOutputFieldMappings$outboundSchema: z.ZodType<
-    UnifiedAtsUserOutputFieldMappings$Outbound,
-    z.ZodTypeDef,
-    UnifiedAtsUserOutputFieldMappings
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedAtsUserOutputFieldMappings$ {
-    /** @deprecated use `UnifiedAtsUserOutputFieldMappings$inboundSchema` instead. */
-    export const inboundSchema = UnifiedAtsUserOutputFieldMappings$inboundSchema;
-    /** @deprecated use `UnifiedAtsUserOutputFieldMappings$outboundSchema` instead. */
-    export const outboundSchema = UnifiedAtsUserOutputFieldMappings$outboundSchema;
-    /** @deprecated use `UnifiedAtsUserOutputFieldMappings$Outbound` instead. */
-    export type Outbound = UnifiedAtsUserOutputFieldMappings$Outbound;
-}
-
-/** @internal */
-export const UnifiedAtsUserOutputRemoteData$inboundSchema: z.ZodType<
-    UnifiedAtsUserOutputRemoteData,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedAtsUserOutputRemoteData$Outbound = {};
-
-/** @internal */
-export const UnifiedAtsUserOutputRemoteData$outboundSchema: z.ZodType<
-    UnifiedAtsUserOutputRemoteData$Outbound,
-    z.ZodTypeDef,
-    UnifiedAtsUserOutputRemoteData
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedAtsUserOutputRemoteData$ {
-    /** @deprecated use `UnifiedAtsUserOutputRemoteData$inboundSchema` instead. */
-    export const inboundSchema = UnifiedAtsUserOutputRemoteData$inboundSchema;
-    /** @deprecated use `UnifiedAtsUserOutputRemoteData$outboundSchema` instead. */
-    export const outboundSchema = UnifiedAtsUserOutputRemoteData$outboundSchema;
-    /** @deprecated use `UnifiedAtsUserOutputRemoteData$Outbound` instead. */
-    export type Outbound = UnifiedAtsUserOutputRemoteData$Outbound;
-}
-
-/** @internal */
-export const UnifiedAtsUserOutputCreatedAt$inboundSchema: z.ZodType<
-    UnifiedAtsUserOutputCreatedAt,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedAtsUserOutputCreatedAt$Outbound = {};
-
-/** @internal */
-export const UnifiedAtsUserOutputCreatedAt$outboundSchema: z.ZodType<
-    UnifiedAtsUserOutputCreatedAt$Outbound,
-    z.ZodTypeDef,
-    UnifiedAtsUserOutputCreatedAt
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedAtsUserOutputCreatedAt$ {
-    /** @deprecated use `UnifiedAtsUserOutputCreatedAt$inboundSchema` instead. */
-    export const inboundSchema = UnifiedAtsUserOutputCreatedAt$inboundSchema;
-    /** @deprecated use `UnifiedAtsUserOutputCreatedAt$outboundSchema` instead. */
-    export const outboundSchema = UnifiedAtsUserOutputCreatedAt$outboundSchema;
-    /** @deprecated use `UnifiedAtsUserOutputCreatedAt$Outbound` instead. */
-    export type Outbound = UnifiedAtsUserOutputCreatedAt$Outbound;
-}
-
-/** @internal */
-export const UnifiedAtsUserOutputModifiedAt$inboundSchema: z.ZodType<
-    UnifiedAtsUserOutputModifiedAt,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedAtsUserOutputModifiedAt$Outbound = {};
-
-/** @internal */
-export const UnifiedAtsUserOutputModifiedAt$outboundSchema: z.ZodType<
-    UnifiedAtsUserOutputModifiedAt$Outbound,
-    z.ZodTypeDef,
-    UnifiedAtsUserOutputModifiedAt
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedAtsUserOutputModifiedAt$ {
-    /** @deprecated use `UnifiedAtsUserOutputModifiedAt$inboundSchema` instead. */
-    export const inboundSchema = UnifiedAtsUserOutputModifiedAt$inboundSchema;
-    /** @deprecated use `UnifiedAtsUserOutputModifiedAt$outboundSchema` instead. */
-    export const outboundSchema = UnifiedAtsUserOutputModifiedAt$outboundSchema;
-    /** @deprecated use `UnifiedAtsUserOutputModifiedAt$Outbound` instead. */
-    export type Outbound = UnifiedAtsUserOutputModifiedAt$Outbound;
-}
 
 /** @internal */
 export const UnifiedAtsUserOutput$inboundSchema: z.ZodType<
@@ -183,27 +67,47 @@ export const UnifiedAtsUserOutput$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        first_name: z.string().optional(),
-        last_name: z.string().optional(),
-        email: z.string().optional(),
-        disabled: z.boolean().optional(),
-        access_role: z.string().optional(),
+        first_name: z.nullable(z.string()).optional(),
+        last_name: z.nullable(z.string()).optional(),
+        email: z.nullable(z.string()).optional(),
+        disabled: z.nullable(z.boolean()).optional(),
+        access_role: z.nullable(z.string()).optional(),
         remote_created_at: z
-            .string()
-            .datetime({ offset: true })
-            .transform((v) => new Date(v))
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
             .optional(),
         remote_modified_at: z
-            .string()
-            .datetime({ offset: true })
-            .transform((v) => new Date(v))
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
             .optional(),
-        field_mappings: z.lazy(() => UnifiedAtsUserOutputFieldMappings$inboundSchema),
-        id: z.string().optional(),
-        remote_id: z.string().optional(),
-        remote_data: z.lazy(() => UnifiedAtsUserOutputRemoteData$inboundSchema),
-        created_at: z.lazy(() => UnifiedAtsUserOutputCreatedAt$inboundSchema),
-        modified_at: z.lazy(() => UnifiedAtsUserOutputModifiedAt$inboundSchema),
+        field_mappings: z.nullable(z.record(z.any())).optional(),
+        id: z.nullable(z.string()).optional(),
+        remote_id: z.nullable(z.string()).optional(),
+        remote_data: z.nullable(z.record(z.any())).optional(),
+        created_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        modified_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -222,19 +126,19 @@ export const UnifiedAtsUserOutput$inboundSchema: z.ZodType<
 
 /** @internal */
 export type UnifiedAtsUserOutput$Outbound = {
-    first_name?: string | undefined;
-    last_name?: string | undefined;
-    email?: string | undefined;
-    disabled?: boolean | undefined;
-    access_role?: string | undefined;
-    remote_created_at?: string | undefined;
-    remote_modified_at?: string | undefined;
-    field_mappings: UnifiedAtsUserOutputFieldMappings$Outbound;
-    id?: string | undefined;
-    remote_id?: string | undefined;
-    remote_data: UnifiedAtsUserOutputRemoteData$Outbound;
-    created_at: UnifiedAtsUserOutputCreatedAt$Outbound;
-    modified_at: UnifiedAtsUserOutputModifiedAt$Outbound;
+    first_name?: string | null | undefined;
+    last_name?: string | null | undefined;
+    email?: string | null | undefined;
+    disabled?: boolean | null | undefined;
+    access_role?: string | null | undefined;
+    remote_created_at?: string | null | undefined;
+    remote_modified_at?: string | null | undefined;
+    field_mappings?: { [k: string]: any } | null | undefined;
+    id?: string | null | undefined;
+    remote_id?: string | null | undefined;
+    remote_data?: { [k: string]: any } | null | undefined;
+    created_at?: string | null | undefined;
+    modified_at?: string | null | undefined;
 };
 
 /** @internal */
@@ -244,25 +148,19 @@ export const UnifiedAtsUserOutput$outboundSchema: z.ZodType<
     UnifiedAtsUserOutput
 > = z
     .object({
-        firstName: z.string().optional(),
-        lastName: z.string().optional(),
-        email: z.string().optional(),
-        disabled: z.boolean().optional(),
-        accessRole: z.string().optional(),
-        remoteCreatedAt: z
-            .date()
-            .transform((v) => v.toISOString())
-            .optional(),
-        remoteModifiedAt: z
-            .date()
-            .transform((v) => v.toISOString())
-            .optional(),
-        fieldMappings: z.lazy(() => UnifiedAtsUserOutputFieldMappings$outboundSchema),
-        id: z.string().optional(),
-        remoteId: z.string().optional(),
-        remoteData: z.lazy(() => UnifiedAtsUserOutputRemoteData$outboundSchema),
-        createdAt: z.lazy(() => UnifiedAtsUserOutputCreatedAt$outboundSchema),
-        modifiedAt: z.lazy(() => UnifiedAtsUserOutputModifiedAt$outboundSchema),
+        firstName: z.nullable(z.string()).optional(),
+        lastName: z.nullable(z.string()).optional(),
+        email: z.nullable(z.string()).optional(),
+        disabled: z.nullable(z.boolean()).optional(),
+        accessRole: z.nullable(z.string()).optional(),
+        remoteCreatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        remoteModifiedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        fieldMappings: z.nullable(z.record(z.any())).optional(),
+        id: z.nullable(z.string()).optional(),
+        remoteId: z.nullable(z.string()).optional(),
+        remoteData: z.nullable(z.record(z.any())).optional(),
+        createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        modifiedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
     })
     .transform((v) => {
         return remap$(v, {

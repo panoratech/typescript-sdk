@@ -63,9 +63,7 @@ const panora = new Panora();
 async function run() {
   const result = await panora.ats.attachments.create({
     xConnectionToken: "<value>",
-    unifiedAtsAttachmentInput: {
-      fieldMappings: {},
-    },
+    unifiedAtsAttachmentInput: {},
   });
 
   // Handle the result

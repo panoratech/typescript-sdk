@@ -13,69 +13,40 @@ import { Email, Email$inboundSchema, Email$Outbound, Email$outboundSchema } from
 import { Phone, Phone$inboundSchema, Phone$Outbound, Phone$outboundSchema } from "./phone.js";
 import * as z from "zod";
 
-export type UnifiedCrmCompanyInputFieldMappings = {};
-
 export type UnifiedCrmCompanyInput = {
     /**
      * The name of the company
      */
-    name: string;
+    name: string | null;
     /**
      * The industry of the company. Authorized values can be found in the Industry enum.
      */
-    industry?: string | undefined;
+    industry?: string | null | undefined;
     /**
      * The number of employees of the company
      */
-    numberOfEmployees?: number | undefined;
+    numberOfEmployees?: number | null | undefined;
     /**
      * The UUID of the user who owns the company
      */
-    userId?: string | undefined;
+    userId?: string | null | undefined;
     /**
      * The email addresses of the company
      */
-    emailAddresses?: Array<Email> | undefined;
+    emailAddresses?: Array<Email> | null | undefined;
     /**
      * The addresses of the company
      */
-    addresses?: Array<Address> | undefined;
+    addresses?: Array<Address> | null | undefined;
     /**
      * The phone numbers of the company
      */
-    phoneNumbers?: Array<Phone> | undefined;
-    fieldMappings: UnifiedCrmCompanyInputFieldMappings;
+    phoneNumbers?: Array<Phone> | null | undefined;
+    /**
+     * The custom field mappings of the company between the remote 3rd party & Panora
+     */
+    fieldMappings?: { [k: string]: any } | null | undefined;
 };
-
-/** @internal */
-export const UnifiedCrmCompanyInputFieldMappings$inboundSchema: z.ZodType<
-    UnifiedCrmCompanyInputFieldMappings,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedCrmCompanyInputFieldMappings$Outbound = {};
-
-/** @internal */
-export const UnifiedCrmCompanyInputFieldMappings$outboundSchema: z.ZodType<
-    UnifiedCrmCompanyInputFieldMappings$Outbound,
-    z.ZodTypeDef,
-    UnifiedCrmCompanyInputFieldMappings
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedCrmCompanyInputFieldMappings$ {
-    /** @deprecated use `UnifiedCrmCompanyInputFieldMappings$inboundSchema` instead. */
-    export const inboundSchema = UnifiedCrmCompanyInputFieldMappings$inboundSchema;
-    /** @deprecated use `UnifiedCrmCompanyInputFieldMappings$outboundSchema` instead. */
-    export const outboundSchema = UnifiedCrmCompanyInputFieldMappings$outboundSchema;
-    /** @deprecated use `UnifiedCrmCompanyInputFieldMappings$Outbound` instead. */
-    export type Outbound = UnifiedCrmCompanyInputFieldMappings$Outbound;
-}
 
 /** @internal */
 export const UnifiedCrmCompanyInput$inboundSchema: z.ZodType<
@@ -84,14 +55,14 @@ export const UnifiedCrmCompanyInput$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        name: z.string(),
-        industry: z.string().optional(),
-        number_of_employees: z.number().optional(),
-        user_id: z.string().optional(),
-        email_addresses: z.array(Email$inboundSchema).optional(),
-        addresses: z.array(Address$inboundSchema).optional(),
-        phone_numbers: z.array(Phone$inboundSchema).optional(),
-        field_mappings: z.lazy(() => UnifiedCrmCompanyInputFieldMappings$inboundSchema),
+        name: z.nullable(z.string()),
+        industry: z.nullable(z.string()).optional(),
+        number_of_employees: z.nullable(z.number()).optional(),
+        user_id: z.nullable(z.string()).optional(),
+        email_addresses: z.nullable(z.array(Email$inboundSchema)).optional(),
+        addresses: z.nullable(z.array(Address$inboundSchema)).optional(),
+        phone_numbers: z.nullable(z.array(Phone$inboundSchema)).optional(),
+        field_mappings: z.nullable(z.record(z.any())).optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -105,14 +76,14 @@ export const UnifiedCrmCompanyInput$inboundSchema: z.ZodType<
 
 /** @internal */
 export type UnifiedCrmCompanyInput$Outbound = {
-    name: string;
-    industry?: string | undefined;
-    number_of_employees?: number | undefined;
-    user_id?: string | undefined;
-    email_addresses?: Array<Email$Outbound> | undefined;
-    addresses?: Array<Address$Outbound> | undefined;
-    phone_numbers?: Array<Phone$Outbound> | undefined;
-    field_mappings: UnifiedCrmCompanyInputFieldMappings$Outbound;
+    name: string | null;
+    industry?: string | null | undefined;
+    number_of_employees?: number | null | undefined;
+    user_id?: string | null | undefined;
+    email_addresses?: Array<Email$Outbound> | null | undefined;
+    addresses?: Array<Address$Outbound> | null | undefined;
+    phone_numbers?: Array<Phone$Outbound> | null | undefined;
+    field_mappings?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
@@ -122,14 +93,14 @@ export const UnifiedCrmCompanyInput$outboundSchema: z.ZodType<
     UnifiedCrmCompanyInput
 > = z
     .object({
-        name: z.string(),
-        industry: z.string().optional(),
-        numberOfEmployees: z.number().optional(),
-        userId: z.string().optional(),
-        emailAddresses: z.array(Email$outboundSchema).optional(),
-        addresses: z.array(Address$outboundSchema).optional(),
-        phoneNumbers: z.array(Phone$outboundSchema).optional(),
-        fieldMappings: z.lazy(() => UnifiedCrmCompanyInputFieldMappings$outboundSchema),
+        name: z.nullable(z.string()),
+        industry: z.nullable(z.string()).optional(),
+        numberOfEmployees: z.nullable(z.number()).optional(),
+        userId: z.nullable(z.string()).optional(),
+        emailAddresses: z.nullable(z.array(Email$outboundSchema)).optional(),
+        addresses: z.nullable(z.array(Address$outboundSchema)).optional(),
+        phoneNumbers: z.nullable(z.array(Phone$outboundSchema)).optional(),
+        fieldMappings: z.nullable(z.record(z.any())).optional(),
     })
     .transform((v) => {
         return remap$(v, {

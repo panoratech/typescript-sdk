@@ -8,22 +8,26 @@ import * as z from "zod";
 
 export type MapResponse = {
     httpMeta: components.HTTPMetadata;
+    customFieldResponse?: components.CustomFieldResponse | undefined;
 };
 
 /** @internal */
 export const MapResponse$inboundSchema: z.ZodType<MapResponse, z.ZodTypeDef, unknown> = z
     .object({
         HttpMeta: components.HTTPMetadata$inboundSchema,
+        CustomFieldResponse: components.CustomFieldResponse$inboundSchema.optional(),
     })
     .transform((v) => {
         return remap$(v, {
             HttpMeta: "httpMeta",
+            CustomFieldResponse: "customFieldResponse",
         });
     });
 
 /** @internal */
 export type MapResponse$Outbound = {
     HttpMeta: components.HTTPMetadata$Outbound;
+    CustomFieldResponse?: components.CustomFieldResponse$Outbound | undefined;
 };
 
 /** @internal */
@@ -34,10 +38,12 @@ export const MapResponse$outboundSchema: z.ZodType<
 > = z
     .object({
         httpMeta: components.HTTPMetadata$outboundSchema,
+        customFieldResponse: components.CustomFieldResponse$outboundSchema.optional(),
     })
     .transform((v) => {
         return remap$(v, {
             httpMeta: "HttpMeta",
+            customFieldResponse: "CustomFieldResponse",
         });
     });
 

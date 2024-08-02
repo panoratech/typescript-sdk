@@ -7,9 +7,9 @@ import * as z from "zod";
 export type PassThroughResponseData = {};
 
 export type PassThroughResponse = {
-    url: string;
-    status: number;
-    data: PassThroughResponseData;
+    url: string | null;
+    status: number | null;
+    data: PassThroughResponseData | null;
 };
 
 /** @internal */
@@ -48,16 +48,16 @@ export const PassThroughResponse$inboundSchema: z.ZodType<
     z.ZodTypeDef,
     unknown
 > = z.object({
-    url: z.string(),
-    status: z.number(),
-    data: z.lazy(() => PassThroughResponseData$inboundSchema),
+    url: z.nullable(z.string()),
+    status: z.nullable(z.number()),
+    data: z.nullable(z.lazy(() => PassThroughResponseData$inboundSchema)),
 });
 
 /** @internal */
 export type PassThroughResponse$Outbound = {
-    url: string;
-    status: number;
-    data: PassThroughResponseData$Outbound;
+    url: string | null;
+    status: number | null;
+    data: PassThroughResponseData$Outbound | null;
 };
 
 /** @internal */
@@ -66,9 +66,9 @@ export const PassThroughResponse$outboundSchema: z.ZodType<
     z.ZodTypeDef,
     PassThroughResponse
 > = z.object({
-    url: z.string(),
-    status: z.number(),
-    data: z.lazy(() => PassThroughResponseData$outboundSchema),
+    url: z.nullable(z.string()),
+    status: z.nullable(z.number()),
+    data: z.nullable(z.lazy(() => PassThroughResponseData$outboundSchema)),
 });
 
 /**

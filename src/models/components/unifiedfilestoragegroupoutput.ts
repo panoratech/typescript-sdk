@@ -5,19 +5,11 @@
 import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
-export type UnifiedFilestorageGroupOutputFieldMappings = {};
-
-export type UnifiedFilestorageGroupOutputRemoteData = {};
-
-export type UnifiedFilestorageGroupOutputCreatedAt = {};
-
-export type UnifiedFilestorageGroupOutputModifiedAt = {};
-
 export type UnifiedFilestorageGroupOutput = {
     /**
      * The name of the group
      */
-    name: string;
+    name: string | null;
     /**
      * Uuids of users of the group
      */
@@ -25,140 +17,32 @@ export type UnifiedFilestorageGroupOutput = {
     /**
      * Indicates whether or not this object has been deleted in the third party platform.
      */
-    remoteWasDeleted: boolean;
-    fieldMappings: UnifiedFilestorageGroupOutputFieldMappings;
+    remoteWasDeleted: boolean | null;
+    /**
+     * The custom field mappings of the object between the remote 3rd party & Panora
+     */
+    fieldMappings?: { [k: string]: any } | null | undefined;
     /**
      * The UUID of the group
      */
-    id?: string | undefined;
+    id?: string | null | undefined;
     /**
      * The id of the group in the context of the 3rd Party
      */
-    remoteId?: string | undefined;
-    remoteData: UnifiedFilestorageGroupOutputRemoteData;
-    createdAt: UnifiedFilestorageGroupOutputCreatedAt;
-    modifiedAt: UnifiedFilestorageGroupOutputModifiedAt;
+    remoteId?: string | null | undefined;
+    /**
+     * The remote data of the group in the context of the 3rd Party
+     */
+    remoteData?: { [k: string]: any } | null | undefined;
+    /**
+     * The created date of the object
+     */
+    createdAt?: Date | null | undefined;
+    /**
+     * The modified date of the object
+     */
+    modifiedAt?: Date | null | undefined;
 };
-
-/** @internal */
-export const UnifiedFilestorageGroupOutputFieldMappings$inboundSchema: z.ZodType<
-    UnifiedFilestorageGroupOutputFieldMappings,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedFilestorageGroupOutputFieldMappings$Outbound = {};
-
-/** @internal */
-export const UnifiedFilestorageGroupOutputFieldMappings$outboundSchema: z.ZodType<
-    UnifiedFilestorageGroupOutputFieldMappings$Outbound,
-    z.ZodTypeDef,
-    UnifiedFilestorageGroupOutputFieldMappings
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedFilestorageGroupOutputFieldMappings$ {
-    /** @deprecated use `UnifiedFilestorageGroupOutputFieldMappings$inboundSchema` instead. */
-    export const inboundSchema = UnifiedFilestorageGroupOutputFieldMappings$inboundSchema;
-    /** @deprecated use `UnifiedFilestorageGroupOutputFieldMappings$outboundSchema` instead. */
-    export const outboundSchema = UnifiedFilestorageGroupOutputFieldMappings$outboundSchema;
-    /** @deprecated use `UnifiedFilestorageGroupOutputFieldMappings$Outbound` instead. */
-    export type Outbound = UnifiedFilestorageGroupOutputFieldMappings$Outbound;
-}
-
-/** @internal */
-export const UnifiedFilestorageGroupOutputRemoteData$inboundSchema: z.ZodType<
-    UnifiedFilestorageGroupOutputRemoteData,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedFilestorageGroupOutputRemoteData$Outbound = {};
-
-/** @internal */
-export const UnifiedFilestorageGroupOutputRemoteData$outboundSchema: z.ZodType<
-    UnifiedFilestorageGroupOutputRemoteData$Outbound,
-    z.ZodTypeDef,
-    UnifiedFilestorageGroupOutputRemoteData
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedFilestorageGroupOutputRemoteData$ {
-    /** @deprecated use `UnifiedFilestorageGroupOutputRemoteData$inboundSchema` instead. */
-    export const inboundSchema = UnifiedFilestorageGroupOutputRemoteData$inboundSchema;
-    /** @deprecated use `UnifiedFilestorageGroupOutputRemoteData$outboundSchema` instead. */
-    export const outboundSchema = UnifiedFilestorageGroupOutputRemoteData$outboundSchema;
-    /** @deprecated use `UnifiedFilestorageGroupOutputRemoteData$Outbound` instead. */
-    export type Outbound = UnifiedFilestorageGroupOutputRemoteData$Outbound;
-}
-
-/** @internal */
-export const UnifiedFilestorageGroupOutputCreatedAt$inboundSchema: z.ZodType<
-    UnifiedFilestorageGroupOutputCreatedAt,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedFilestorageGroupOutputCreatedAt$Outbound = {};
-
-/** @internal */
-export const UnifiedFilestorageGroupOutputCreatedAt$outboundSchema: z.ZodType<
-    UnifiedFilestorageGroupOutputCreatedAt$Outbound,
-    z.ZodTypeDef,
-    UnifiedFilestorageGroupOutputCreatedAt
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedFilestorageGroupOutputCreatedAt$ {
-    /** @deprecated use `UnifiedFilestorageGroupOutputCreatedAt$inboundSchema` instead. */
-    export const inboundSchema = UnifiedFilestorageGroupOutputCreatedAt$inboundSchema;
-    /** @deprecated use `UnifiedFilestorageGroupOutputCreatedAt$outboundSchema` instead. */
-    export const outboundSchema = UnifiedFilestorageGroupOutputCreatedAt$outboundSchema;
-    /** @deprecated use `UnifiedFilestorageGroupOutputCreatedAt$Outbound` instead. */
-    export type Outbound = UnifiedFilestorageGroupOutputCreatedAt$Outbound;
-}
-
-/** @internal */
-export const UnifiedFilestorageGroupOutputModifiedAt$inboundSchema: z.ZodType<
-    UnifiedFilestorageGroupOutputModifiedAt,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedFilestorageGroupOutputModifiedAt$Outbound = {};
-
-/** @internal */
-export const UnifiedFilestorageGroupOutputModifiedAt$outboundSchema: z.ZodType<
-    UnifiedFilestorageGroupOutputModifiedAt$Outbound,
-    z.ZodTypeDef,
-    UnifiedFilestorageGroupOutputModifiedAt
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedFilestorageGroupOutputModifiedAt$ {
-    /** @deprecated use `UnifiedFilestorageGroupOutputModifiedAt$inboundSchema` instead. */
-    export const inboundSchema = UnifiedFilestorageGroupOutputModifiedAt$inboundSchema;
-    /** @deprecated use `UnifiedFilestorageGroupOutputModifiedAt$outboundSchema` instead. */
-    export const outboundSchema = UnifiedFilestorageGroupOutputModifiedAt$outboundSchema;
-    /** @deprecated use `UnifiedFilestorageGroupOutputModifiedAt$Outbound` instead. */
-    export type Outbound = UnifiedFilestorageGroupOutputModifiedAt$Outbound;
-}
 
 /** @internal */
 export const UnifiedFilestorageGroupOutput$inboundSchema: z.ZodType<
@@ -167,15 +51,29 @@ export const UnifiedFilestorageGroupOutput$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        name: z.string(),
+        name: z.nullable(z.string()),
         users: z.array(z.string()),
-        remote_was_deleted: z.boolean(),
-        field_mappings: z.lazy(() => UnifiedFilestorageGroupOutputFieldMappings$inboundSchema),
-        id: z.string().optional(),
-        remote_id: z.string().optional(),
-        remote_data: z.lazy(() => UnifiedFilestorageGroupOutputRemoteData$inboundSchema),
-        created_at: z.lazy(() => UnifiedFilestorageGroupOutputCreatedAt$inboundSchema),
-        modified_at: z.lazy(() => UnifiedFilestorageGroupOutputModifiedAt$inboundSchema),
+        remote_was_deleted: z.nullable(z.boolean()),
+        field_mappings: z.nullable(z.record(z.any())).optional(),
+        id: z.nullable(z.string()).optional(),
+        remote_id: z.nullable(z.string()).optional(),
+        remote_data: z.nullable(z.record(z.any())).optional(),
+        created_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        modified_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -190,15 +88,15 @@ export const UnifiedFilestorageGroupOutput$inboundSchema: z.ZodType<
 
 /** @internal */
 export type UnifiedFilestorageGroupOutput$Outbound = {
-    name: string;
+    name: string | null;
     users: Array<string>;
-    remote_was_deleted: boolean;
-    field_mappings: UnifiedFilestorageGroupOutputFieldMappings$Outbound;
-    id?: string | undefined;
-    remote_id?: string | undefined;
-    remote_data: UnifiedFilestorageGroupOutputRemoteData$Outbound;
-    created_at: UnifiedFilestorageGroupOutputCreatedAt$Outbound;
-    modified_at: UnifiedFilestorageGroupOutputModifiedAt$Outbound;
+    remote_was_deleted: boolean | null;
+    field_mappings?: { [k: string]: any } | null | undefined;
+    id?: string | null | undefined;
+    remote_id?: string | null | undefined;
+    remote_data?: { [k: string]: any } | null | undefined;
+    created_at?: string | null | undefined;
+    modified_at?: string | null | undefined;
 };
 
 /** @internal */
@@ -208,15 +106,15 @@ export const UnifiedFilestorageGroupOutput$outboundSchema: z.ZodType<
     UnifiedFilestorageGroupOutput
 > = z
     .object({
-        name: z.string(),
+        name: z.nullable(z.string()),
         users: z.array(z.string()),
-        remoteWasDeleted: z.boolean(),
-        fieldMappings: z.lazy(() => UnifiedFilestorageGroupOutputFieldMappings$outboundSchema),
-        id: z.string().optional(),
-        remoteId: z.string().optional(),
-        remoteData: z.lazy(() => UnifiedFilestorageGroupOutputRemoteData$outboundSchema),
-        createdAt: z.lazy(() => UnifiedFilestorageGroupOutputCreatedAt$outboundSchema),
-        modifiedAt: z.lazy(() => UnifiedFilestorageGroupOutputModifiedAt$outboundSchema),
+        remoteWasDeleted: z.nullable(z.boolean()),
+        fieldMappings: z.nullable(z.record(z.any())).optional(),
+        id: z.nullable(z.string()).optional(),
+        remoteId: z.nullable(z.string()).optional(),
+        remoteData: z.nullable(z.record(z.any())).optional(),
+        createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        modifiedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
     })
     .transform((v) => {
         return remap$(v, {

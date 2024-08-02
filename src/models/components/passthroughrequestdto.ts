@@ -12,15 +12,13 @@ export enum Method {
     Put = "PUT",
 }
 
-export type Data = {};
-
-export type Headers = {};
+export type Data = { [k: string]: any } | Array<{ [k: string]: any }>;
 
 export type PassThroughRequestDto = {
     method: Method;
-    path: string;
-    data?: Data | undefined;
-    headers?: Headers | undefined;
+    path: string | null;
+    data?: { [k: string]: any } | Array<{ [k: string]: any }> | null | undefined;
+    headers?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
@@ -41,13 +39,19 @@ export namespace Method$ {
 }
 
 /** @internal */
-export const Data$inboundSchema: z.ZodType<Data, z.ZodTypeDef, unknown> = z.object({});
+export const Data$inboundSchema: z.ZodType<Data, z.ZodTypeDef, unknown> = z.union([
+    z.record(z.any()),
+    z.array(z.record(z.any())),
+]);
 
 /** @internal */
-export type Data$Outbound = {};
+export type Data$Outbound = { [k: string]: any } | Array<{ [k: string]: any }>;
 
 /** @internal */
-export const Data$outboundSchema: z.ZodType<Data$Outbound, z.ZodTypeDef, Data> = z.object({});
+export const Data$outboundSchema: z.ZodType<Data$Outbound, z.ZodTypeDef, Data> = z.union([
+    z.record(z.any()),
+    z.array(z.record(z.any())),
+]);
 
 /**
  * @internal
@@ -63,47 +67,23 @@ export namespace Data$ {
 }
 
 /** @internal */
-export const Headers$inboundSchema: z.ZodType<Headers, z.ZodTypeDef, unknown> = z.object({});
-
-/** @internal */
-export type Headers$Outbound = {};
-
-/** @internal */
-export const Headers$outboundSchema: z.ZodType<Headers$Outbound, z.ZodTypeDef, Headers> = z.object(
-    {}
-);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Headers$ {
-    /** @deprecated use `Headers$inboundSchema` instead. */
-    export const inboundSchema = Headers$inboundSchema;
-    /** @deprecated use `Headers$outboundSchema` instead. */
-    export const outboundSchema = Headers$outboundSchema;
-    /** @deprecated use `Headers$Outbound` instead. */
-    export type Outbound = Headers$Outbound;
-}
-
-/** @internal */
 export const PassThroughRequestDto$inboundSchema: z.ZodType<
     PassThroughRequestDto,
     z.ZodTypeDef,
     unknown
 > = z.object({
     method: Method$inboundSchema,
-    path: z.string(),
-    data: z.lazy(() => Data$inboundSchema).optional(),
-    headers: z.lazy(() => Headers$inboundSchema).optional(),
+    path: z.nullable(z.string()),
+    data: z.nullable(z.union([z.record(z.any()), z.array(z.record(z.any()))])).optional(),
+    headers: z.nullable(z.record(z.any())).optional(),
 });
 
 /** @internal */
 export type PassThroughRequestDto$Outbound = {
     method: string;
-    path: string;
-    data?: Data$Outbound | undefined;
-    headers?: Headers$Outbound | undefined;
+    path: string | null;
+    data?: { [k: string]: any } | Array<{ [k: string]: any }> | null | undefined;
+    headers?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
@@ -113,9 +93,9 @@ export const PassThroughRequestDto$outboundSchema: z.ZodType<
     PassThroughRequestDto
 > = z.object({
     method: Method$outboundSchema,
-    path: z.string(),
-    data: z.lazy(() => Data$outboundSchema).optional(),
-    headers: z.lazy(() => Headers$outboundSchema).optional(),
+    path: z.nullable(z.string()),
+    data: z.nullable(z.union([z.record(z.any()), z.array(z.record(z.any()))])).optional(),
+    headers: z.nullable(z.record(z.any())).optional(),
 });
 
 /**

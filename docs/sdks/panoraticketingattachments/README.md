@@ -67,7 +67,6 @@ async function run() {
       fileName: "your_file_here",
       fileUrl: "<value>",
       uploader: "<value>",
-      fieldMappings: {},
     },
   });
 

@@ -60,7 +60,7 @@ export class Map extends ClientSDK {
 
         const headers$ = new Headers({
             "Content-Type": "application/json",
-            Accept: "*/*",
+            Accept: "application/json",
         });
 
         const context = { operationID: "map", oAuth2Scopes: [], securitySource: null };
@@ -90,7 +90,7 @@ export class Map extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.MapResponse>()
-            .void(201, operations.MapResponse$inboundSchema)
+            .json(201, operations.MapResponse$inboundSchema, { key: "CustomFieldResponse" })
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 

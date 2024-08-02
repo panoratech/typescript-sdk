@@ -5,152 +5,36 @@
 import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
-export type UnifiedTicketingTagOutputFieldMappings = {};
-
-export type UnifiedTicketingTagOutputRemoteData = {};
-
-export type UnifiedTicketingTagOutputCreatedAt = {};
-
-export type UnifiedTicketingTagOutputModifiedAt = {};
-
 export type UnifiedTicketingTagOutput = {
     /**
      * The name of the tag
      */
-    name: string;
-    fieldMappings: UnifiedTicketingTagOutputFieldMappings;
+    name: string | null;
+    /**
+     * The custom field mappings of the tag between the remote 3rd party & Panora
+     */
+    fieldMappings?: { [k: string]: any } | null | undefined;
     /**
      * The UUID of the tag
      */
-    id?: string | undefined;
+    id?: string | null | undefined;
     /**
      * The id of the tag in the context of the 3rd Party
      */
-    remoteId?: string | undefined;
-    remoteData: UnifiedTicketingTagOutputRemoteData;
-    createdAt: UnifiedTicketingTagOutputCreatedAt;
-    modifiedAt: UnifiedTicketingTagOutputModifiedAt;
+    remoteId?: string | null | undefined;
+    /**
+     * The remote data of the tag in the context of the 3rd Party
+     */
+    remoteData?: { [k: string]: any } | null | undefined;
+    /**
+     * The created date of the object
+     */
+    createdAt?: Date | null | undefined;
+    /**
+     * The modified date of the object
+     */
+    modifiedAt?: Date | null | undefined;
 };
-
-/** @internal */
-export const UnifiedTicketingTagOutputFieldMappings$inboundSchema: z.ZodType<
-    UnifiedTicketingTagOutputFieldMappings,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedTicketingTagOutputFieldMappings$Outbound = {};
-
-/** @internal */
-export const UnifiedTicketingTagOutputFieldMappings$outboundSchema: z.ZodType<
-    UnifiedTicketingTagOutputFieldMappings$Outbound,
-    z.ZodTypeDef,
-    UnifiedTicketingTagOutputFieldMappings
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedTicketingTagOutputFieldMappings$ {
-    /** @deprecated use `UnifiedTicketingTagOutputFieldMappings$inboundSchema` instead. */
-    export const inboundSchema = UnifiedTicketingTagOutputFieldMappings$inboundSchema;
-    /** @deprecated use `UnifiedTicketingTagOutputFieldMappings$outboundSchema` instead. */
-    export const outboundSchema = UnifiedTicketingTagOutputFieldMappings$outboundSchema;
-    /** @deprecated use `UnifiedTicketingTagOutputFieldMappings$Outbound` instead. */
-    export type Outbound = UnifiedTicketingTagOutputFieldMappings$Outbound;
-}
-
-/** @internal */
-export const UnifiedTicketingTagOutputRemoteData$inboundSchema: z.ZodType<
-    UnifiedTicketingTagOutputRemoteData,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedTicketingTagOutputRemoteData$Outbound = {};
-
-/** @internal */
-export const UnifiedTicketingTagOutputRemoteData$outboundSchema: z.ZodType<
-    UnifiedTicketingTagOutputRemoteData$Outbound,
-    z.ZodTypeDef,
-    UnifiedTicketingTagOutputRemoteData
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedTicketingTagOutputRemoteData$ {
-    /** @deprecated use `UnifiedTicketingTagOutputRemoteData$inboundSchema` instead. */
-    export const inboundSchema = UnifiedTicketingTagOutputRemoteData$inboundSchema;
-    /** @deprecated use `UnifiedTicketingTagOutputRemoteData$outboundSchema` instead. */
-    export const outboundSchema = UnifiedTicketingTagOutputRemoteData$outboundSchema;
-    /** @deprecated use `UnifiedTicketingTagOutputRemoteData$Outbound` instead. */
-    export type Outbound = UnifiedTicketingTagOutputRemoteData$Outbound;
-}
-
-/** @internal */
-export const UnifiedTicketingTagOutputCreatedAt$inboundSchema: z.ZodType<
-    UnifiedTicketingTagOutputCreatedAt,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedTicketingTagOutputCreatedAt$Outbound = {};
-
-/** @internal */
-export const UnifiedTicketingTagOutputCreatedAt$outboundSchema: z.ZodType<
-    UnifiedTicketingTagOutputCreatedAt$Outbound,
-    z.ZodTypeDef,
-    UnifiedTicketingTagOutputCreatedAt
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedTicketingTagOutputCreatedAt$ {
-    /** @deprecated use `UnifiedTicketingTagOutputCreatedAt$inboundSchema` instead. */
-    export const inboundSchema = UnifiedTicketingTagOutputCreatedAt$inboundSchema;
-    /** @deprecated use `UnifiedTicketingTagOutputCreatedAt$outboundSchema` instead. */
-    export const outboundSchema = UnifiedTicketingTagOutputCreatedAt$outboundSchema;
-    /** @deprecated use `UnifiedTicketingTagOutputCreatedAt$Outbound` instead. */
-    export type Outbound = UnifiedTicketingTagOutputCreatedAt$Outbound;
-}
-
-/** @internal */
-export const UnifiedTicketingTagOutputModifiedAt$inboundSchema: z.ZodType<
-    UnifiedTicketingTagOutputModifiedAt,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedTicketingTagOutputModifiedAt$Outbound = {};
-
-/** @internal */
-export const UnifiedTicketingTagOutputModifiedAt$outboundSchema: z.ZodType<
-    UnifiedTicketingTagOutputModifiedAt$Outbound,
-    z.ZodTypeDef,
-    UnifiedTicketingTagOutputModifiedAt
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedTicketingTagOutputModifiedAt$ {
-    /** @deprecated use `UnifiedTicketingTagOutputModifiedAt$inboundSchema` instead. */
-    export const inboundSchema = UnifiedTicketingTagOutputModifiedAt$inboundSchema;
-    /** @deprecated use `UnifiedTicketingTagOutputModifiedAt$outboundSchema` instead. */
-    export const outboundSchema = UnifiedTicketingTagOutputModifiedAt$outboundSchema;
-    /** @deprecated use `UnifiedTicketingTagOutputModifiedAt$Outbound` instead. */
-    export type Outbound = UnifiedTicketingTagOutputModifiedAt$Outbound;
-}
 
 /** @internal */
 export const UnifiedTicketingTagOutput$inboundSchema: z.ZodType<
@@ -159,13 +43,27 @@ export const UnifiedTicketingTagOutput$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        name: z.string(),
-        field_mappings: z.lazy(() => UnifiedTicketingTagOutputFieldMappings$inboundSchema),
-        id: z.string().optional(),
-        remote_id: z.string().optional(),
-        remote_data: z.lazy(() => UnifiedTicketingTagOutputRemoteData$inboundSchema),
-        created_at: z.lazy(() => UnifiedTicketingTagOutputCreatedAt$inboundSchema),
-        modified_at: z.lazy(() => UnifiedTicketingTagOutputModifiedAt$inboundSchema),
+        name: z.nullable(z.string()),
+        field_mappings: z.nullable(z.record(z.any())).optional(),
+        id: z.nullable(z.string()).optional(),
+        remote_id: z.nullable(z.string()).optional(),
+        remote_data: z.nullable(z.record(z.any())).optional(),
+        created_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        modified_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -179,13 +77,13 @@ export const UnifiedTicketingTagOutput$inboundSchema: z.ZodType<
 
 /** @internal */
 export type UnifiedTicketingTagOutput$Outbound = {
-    name: string;
-    field_mappings: UnifiedTicketingTagOutputFieldMappings$Outbound;
-    id?: string | undefined;
-    remote_id?: string | undefined;
-    remote_data: UnifiedTicketingTagOutputRemoteData$Outbound;
-    created_at: UnifiedTicketingTagOutputCreatedAt$Outbound;
-    modified_at: UnifiedTicketingTagOutputModifiedAt$Outbound;
+    name: string | null;
+    field_mappings?: { [k: string]: any } | null | undefined;
+    id?: string | null | undefined;
+    remote_id?: string | null | undefined;
+    remote_data?: { [k: string]: any } | null | undefined;
+    created_at?: string | null | undefined;
+    modified_at?: string | null | undefined;
 };
 
 /** @internal */
@@ -195,13 +93,13 @@ export const UnifiedTicketingTagOutput$outboundSchema: z.ZodType<
     UnifiedTicketingTagOutput
 > = z
     .object({
-        name: z.string(),
-        fieldMappings: z.lazy(() => UnifiedTicketingTagOutputFieldMappings$outboundSchema),
-        id: z.string().optional(),
-        remoteId: z.string().optional(),
-        remoteData: z.lazy(() => UnifiedTicketingTagOutputRemoteData$outboundSchema),
-        createdAt: z.lazy(() => UnifiedTicketingTagOutputCreatedAt$outboundSchema),
-        modifiedAt: z.lazy(() => UnifiedTicketingTagOutputModifiedAt$outboundSchema),
+        name: z.nullable(z.string()),
+        fieldMappings: z.nullable(z.record(z.any())).optional(),
+        id: z.nullable(z.string()).optional(),
+        remoteId: z.nullable(z.string()).optional(),
+        remoteData: z.nullable(z.record(z.any())).optional(),
+        createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        modifiedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
     })
     .transform((v) => {
         return remap$(v, {

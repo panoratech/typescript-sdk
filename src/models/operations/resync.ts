@@ -8,22 +8,26 @@ import * as z from "zod";
 
 export type ResyncResponse = {
     httpMeta: components.HTTPMetadata;
+    resyncStatusDto?: components.ResyncStatusDto | undefined;
 };
 
 /** @internal */
 export const ResyncResponse$inboundSchema: z.ZodType<ResyncResponse, z.ZodTypeDef, unknown> = z
     .object({
         HttpMeta: components.HTTPMetadata$inboundSchema,
+        ResyncStatusDto: components.ResyncStatusDto$inboundSchema.optional(),
     })
     .transform((v) => {
         return remap$(v, {
             HttpMeta: "httpMeta",
+            ResyncStatusDto: "resyncStatusDto",
         });
     });
 
 /** @internal */
 export type ResyncResponse$Outbound = {
     HttpMeta: components.HTTPMetadata$Outbound;
+    ResyncStatusDto?: components.ResyncStatusDto$Outbound | undefined;
 };
 
 /** @internal */
@@ -34,10 +38,12 @@ export const ResyncResponse$outboundSchema: z.ZodType<
 > = z
     .object({
         httpMeta: components.HTTPMetadata$outboundSchema,
+        resyncStatusDto: components.ResyncStatusDto$outboundSchema.optional(),
     })
     .transform((v) => {
         return remap$(v, {
             httpMeta: "HttpMeta",
+            resyncStatusDto: "ResyncStatusDto",
         });
     });
 

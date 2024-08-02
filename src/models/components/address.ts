@@ -9,48 +9,48 @@ export type Address = {
     /**
      * The street
      */
-    street1: string;
+    street1: string | null;
     /**
      * More information about the street
      */
-    street2: string;
+    street2: string | null;
     /**
      * The city
      */
-    city: string;
+    city: string | null;
     /**
      * The state
      */
-    state: string;
+    state: string | null;
     /**
      * The postal code
      */
-    postalCode: string;
+    postalCode: string | null;
     /**
      * The country
      */
-    country: string;
+    country: string | null;
     /**
      * The address type. Authorized values are either PERSONAL or WORK.
      */
-    addressType: string;
+    addressType: string | null;
     /**
      * The owner type of the address
      */
-    ownerType: string;
+    ownerType: string | null;
 };
 
 /** @internal */
 export const Address$inboundSchema: z.ZodType<Address, z.ZodTypeDef, unknown> = z
     .object({
-        street_1: z.string(),
-        street_2: z.string(),
-        city: z.string(),
-        state: z.string(),
-        postal_code: z.string(),
-        country: z.string(),
-        address_type: z.string(),
-        owner_type: z.string(),
+        street_1: z.nullable(z.string()),
+        street_2: z.nullable(z.string()),
+        city: z.nullable(z.string()),
+        state: z.nullable(z.string()),
+        postal_code: z.nullable(z.string()),
+        country: z.nullable(z.string()),
+        address_type: z.nullable(z.string()),
+        owner_type: z.nullable(z.string()),
     })
     .transform((v) => {
         return remap$(v, {
@@ -64,27 +64,27 @@ export const Address$inboundSchema: z.ZodType<Address, z.ZodTypeDef, unknown> = 
 
 /** @internal */
 export type Address$Outbound = {
-    street_1: string;
-    street_2: string;
-    city: string;
-    state: string;
-    postal_code: string;
-    country: string;
-    address_type: string;
-    owner_type: string;
+    street_1: string | null;
+    street_2: string | null;
+    city: string | null;
+    state: string | null;
+    postal_code: string | null;
+    country: string | null;
+    address_type: string | null;
+    owner_type: string | null;
 };
 
 /** @internal */
 export const Address$outboundSchema: z.ZodType<Address$Outbound, z.ZodTypeDef, Address> = z
     .object({
-        street1: z.string(),
-        street2: z.string(),
-        city: z.string(),
-        state: z.string(),
-        postalCode: z.string(),
-        country: z.string(),
-        addressType: z.string(),
-        ownerType: z.string(),
+        street1: z.nullable(z.string()),
+        street2: z.nullable(z.string()),
+        city: z.nullable(z.string()),
+        state: z.nullable(z.string()),
+        postalCode: z.nullable(z.string()),
+        country: z.nullable(z.string()),
+        addressType: z.nullable(z.string()),
+        ownerType: z.nullable(z.string()),
     })
     .transform((v) => {
         return remap$(v, {

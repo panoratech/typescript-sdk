@@ -60,7 +60,7 @@ export class Single extends ClientSDK {
         });
 
         const headers$ = new Headers({
-            Accept: "*/*",
+            Accept: "application/json",
         });
 
         const context = {
@@ -94,7 +94,9 @@ export class Single extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.RetrieveLinkedUserResponse>()
-            .void(200, operations.RetrieveLinkedUserResponse$inboundSchema)
+            .json(200, operations.RetrieveLinkedUserResponse$inboundSchema, {
+                key: "LinkedUserResponse",
+            })
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 

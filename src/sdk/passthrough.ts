@@ -96,9 +96,7 @@ export class Passthrough extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.RequestResponse>()
-            .json([200, 201], operations.RequestResponse$inboundSchema, {
-                key: "PassThroughResponse",
-            })
+            .json(201, operations.RequestResponse$inboundSchema, { key: "PassThroughResponse" })
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 

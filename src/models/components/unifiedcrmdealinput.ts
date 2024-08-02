@@ -5,65 +5,36 @@
 import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
-export type UnifiedCrmDealInputFieldMappings = {};
-
 export type UnifiedCrmDealInput = {
     /**
      * The name of the deal
      */
-    name: string;
+    name: string | null;
     /**
      * The description of the deal
      */
-    description: string;
+    description: string | null;
     /**
      * The amount of the deal
      */
-    amount: number;
+    amount: number | null;
     /**
      * The UUID of the user who is on the deal
      */
-    userId?: string | undefined;
+    userId?: string | null | undefined;
     /**
      * The UUID of the stage of the deal
      */
-    stageId?: string | undefined;
+    stageId?: string | null | undefined;
     /**
      * The UUID of the company tied to the deal
      */
-    companyId?: string | undefined;
-    fieldMappings: UnifiedCrmDealInputFieldMappings;
+    companyId?: string | null | undefined;
+    /**
+     * The custom field mappings of the company between the remote 3rd party & Panora
+     */
+    fieldMappings?: { [k: string]: any } | null | undefined;
 };
-
-/** @internal */
-export const UnifiedCrmDealInputFieldMappings$inboundSchema: z.ZodType<
-    UnifiedCrmDealInputFieldMappings,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedCrmDealInputFieldMappings$Outbound = {};
-
-/** @internal */
-export const UnifiedCrmDealInputFieldMappings$outboundSchema: z.ZodType<
-    UnifiedCrmDealInputFieldMappings$Outbound,
-    z.ZodTypeDef,
-    UnifiedCrmDealInputFieldMappings
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedCrmDealInputFieldMappings$ {
-    /** @deprecated use `UnifiedCrmDealInputFieldMappings$inboundSchema` instead. */
-    export const inboundSchema = UnifiedCrmDealInputFieldMappings$inboundSchema;
-    /** @deprecated use `UnifiedCrmDealInputFieldMappings$outboundSchema` instead. */
-    export const outboundSchema = UnifiedCrmDealInputFieldMappings$outboundSchema;
-    /** @deprecated use `UnifiedCrmDealInputFieldMappings$Outbound` instead. */
-    export type Outbound = UnifiedCrmDealInputFieldMappings$Outbound;
-}
 
 /** @internal */
 export const UnifiedCrmDealInput$inboundSchema: z.ZodType<
@@ -72,13 +43,13 @@ export const UnifiedCrmDealInput$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        name: z.string(),
-        description: z.string(),
-        amount: z.number(),
-        user_id: z.string().optional(),
-        stage_id: z.string().optional(),
-        company_id: z.string().optional(),
-        field_mappings: z.lazy(() => UnifiedCrmDealInputFieldMappings$inboundSchema),
+        name: z.nullable(z.string()),
+        description: z.nullable(z.string()),
+        amount: z.nullable(z.number()),
+        user_id: z.nullable(z.string()).optional(),
+        stage_id: z.nullable(z.string()).optional(),
+        company_id: z.nullable(z.string()).optional(),
+        field_mappings: z.nullable(z.record(z.any())).optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -91,13 +62,13 @@ export const UnifiedCrmDealInput$inboundSchema: z.ZodType<
 
 /** @internal */
 export type UnifiedCrmDealInput$Outbound = {
-    name: string;
-    description: string;
-    amount: number;
-    user_id?: string | undefined;
-    stage_id?: string | undefined;
-    company_id?: string | undefined;
-    field_mappings: UnifiedCrmDealInputFieldMappings$Outbound;
+    name: string | null;
+    description: string | null;
+    amount: number | null;
+    user_id?: string | null | undefined;
+    stage_id?: string | null | undefined;
+    company_id?: string | null | undefined;
+    field_mappings?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
@@ -107,13 +78,13 @@ export const UnifiedCrmDealInput$outboundSchema: z.ZodType<
     UnifiedCrmDealInput
 > = z
     .object({
-        name: z.string(),
-        description: z.string(),
-        amount: z.number(),
-        userId: z.string().optional(),
-        stageId: z.string().optional(),
-        companyId: z.string().optional(),
-        fieldMappings: z.lazy(() => UnifiedCrmDealInputFieldMappings$outboundSchema),
+        name: z.nullable(z.string()),
+        description: z.nullable(z.string()),
+        amount: z.nullable(z.number()),
+        userId: z.nullable(z.string()).optional(),
+        stageId: z.nullable(z.string()).optional(),
+        companyId: z.nullable(z.string()).optional(),
+        fieldMappings: z.nullable(z.record(z.any())).optional(),
     })
     .transform((v) => {
         return remap$(v, {

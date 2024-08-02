@@ -67,7 +67,6 @@ async function run() {
       subject: "<value>",
       content: "<value>",
       status: "<value>",
-      fieldMappings: {},
     },
   });
 

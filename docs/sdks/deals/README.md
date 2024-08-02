@@ -67,7 +67,6 @@ async function run() {
       name: "<value>",
       description: "Multi-tiered human-resource model",
       amount: 8592.13,
-      fieldMappings: {},
     },
   });
 
