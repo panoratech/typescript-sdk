@@ -8,6 +8,7 @@ import * as z from "zod";
 
 export type DefinitionsResponse = {
     httpMeta: components.HTTPMetadata;
+    customFieldResponse?: components.CustomFieldResponse | undefined;
 };
 
 /** @internal */
@@ -18,16 +19,19 @@ export const DefinitionsResponse$inboundSchema: z.ZodType<
 > = z
     .object({
         HttpMeta: components.HTTPMetadata$inboundSchema,
+        CustomFieldResponse: components.CustomFieldResponse$inboundSchema.optional(),
     })
     .transform((v) => {
         return remap$(v, {
             HttpMeta: "httpMeta",
+            CustomFieldResponse: "customFieldResponse",
         });
     });
 
 /** @internal */
 export type DefinitionsResponse$Outbound = {
     HttpMeta: components.HTTPMetadata$Outbound;
+    CustomFieldResponse?: components.CustomFieldResponse$Outbound | undefined;
 };
 
 /** @internal */
@@ -38,10 +42,12 @@ export const DefinitionsResponse$outboundSchema: z.ZodType<
 > = z
     .object({
         httpMeta: components.HTTPMetadata$outboundSchema,
+        customFieldResponse: components.CustomFieldResponse$outboundSchema.optional(),
     })
     .transform((v) => {
         return remap$(v, {
             httpMeta: "HttpMeta",
+            customFieldResponse: "CustomFieldResponse",
         });
     });
 

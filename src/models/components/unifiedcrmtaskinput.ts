@@ -5,73 +5,44 @@
 import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
-export type UnifiedCrmTaskInputFieldMappings = {};
-
 export type UnifiedCrmTaskInput = {
     /**
      * The subject of the task
      */
-    subject: string;
+    subject: string | null;
     /**
      * The content of the task
      */
-    content: string;
+    content: string | null;
     /**
      * The status of the task. Authorized values are PENDING, COMPLETED.
      */
-    status: string;
+    status: string | null;
     /**
      * The due date of the task
      */
-    dueDate?: Date | undefined;
+    dueDate?: Date | null | undefined;
     /**
      * The finished date of the task
      */
-    finishedDate?: Date | undefined;
+    finishedDate?: Date | null | undefined;
     /**
      * The UUID of the user tied to the task
      */
-    userId?: string | undefined;
+    userId?: string | null | undefined;
     /**
-     * The UUID fo the company tied to the task
+     * The UUID of the company tied to the task
      */
-    companyId?: string | undefined;
+    companyId?: string | null | undefined;
     /**
      * The UUID of the deal tied to the task
      */
-    dealId?: string | undefined;
-    fieldMappings: UnifiedCrmTaskInputFieldMappings;
+    dealId?: string | null | undefined;
+    /**
+     * The custom field mappings of the task between the remote 3rd party & Panora
+     */
+    fieldMappings?: { [k: string]: any } | null | undefined;
 };
-
-/** @internal */
-export const UnifiedCrmTaskInputFieldMappings$inboundSchema: z.ZodType<
-    UnifiedCrmTaskInputFieldMappings,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedCrmTaskInputFieldMappings$Outbound = {};
-
-/** @internal */
-export const UnifiedCrmTaskInputFieldMappings$outboundSchema: z.ZodType<
-    UnifiedCrmTaskInputFieldMappings$Outbound,
-    z.ZodTypeDef,
-    UnifiedCrmTaskInputFieldMappings
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedCrmTaskInputFieldMappings$ {
-    /** @deprecated use `UnifiedCrmTaskInputFieldMappings$inboundSchema` instead. */
-    export const inboundSchema = UnifiedCrmTaskInputFieldMappings$inboundSchema;
-    /** @deprecated use `UnifiedCrmTaskInputFieldMappings$outboundSchema` instead. */
-    export const outboundSchema = UnifiedCrmTaskInputFieldMappings$outboundSchema;
-    /** @deprecated use `UnifiedCrmTaskInputFieldMappings$Outbound` instead. */
-    export type Outbound = UnifiedCrmTaskInputFieldMappings$Outbound;
-}
 
 /** @internal */
 export const UnifiedCrmTaskInput$inboundSchema: z.ZodType<
@@ -80,23 +51,29 @@ export const UnifiedCrmTaskInput$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        subject: z.string(),
-        content: z.string(),
-        status: z.string(),
+        subject: z.nullable(z.string()),
+        content: z.nullable(z.string()),
+        status: z.nullable(z.string()),
         due_date: z
-            .string()
-            .datetime({ offset: true })
-            .transform((v) => new Date(v))
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
             .optional(),
         finished_date: z
-            .string()
-            .datetime({ offset: true })
-            .transform((v) => new Date(v))
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
             .optional(),
-        user_id: z.string().optional(),
-        company_id: z.string().optional(),
-        deal_id: z.string().optional(),
-        field_mappings: z.lazy(() => UnifiedCrmTaskInputFieldMappings$inboundSchema),
+        user_id: z.nullable(z.string()).optional(),
+        company_id: z.nullable(z.string()).optional(),
+        deal_id: z.nullable(z.string()).optional(),
+        field_mappings: z.nullable(z.record(z.any())).optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -111,15 +88,15 @@ export const UnifiedCrmTaskInput$inboundSchema: z.ZodType<
 
 /** @internal */
 export type UnifiedCrmTaskInput$Outbound = {
-    subject: string;
-    content: string;
-    status: string;
-    due_date?: string | undefined;
-    finished_date?: string | undefined;
-    user_id?: string | undefined;
-    company_id?: string | undefined;
-    deal_id?: string | undefined;
-    field_mappings: UnifiedCrmTaskInputFieldMappings$Outbound;
+    subject: string | null;
+    content: string | null;
+    status: string | null;
+    due_date?: string | null | undefined;
+    finished_date?: string | null | undefined;
+    user_id?: string | null | undefined;
+    company_id?: string | null | undefined;
+    deal_id?: string | null | undefined;
+    field_mappings?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
@@ -129,21 +106,15 @@ export const UnifiedCrmTaskInput$outboundSchema: z.ZodType<
     UnifiedCrmTaskInput
 > = z
     .object({
-        subject: z.string(),
-        content: z.string(),
-        status: z.string(),
-        dueDate: z
-            .date()
-            .transform((v) => v.toISOString())
-            .optional(),
-        finishedDate: z
-            .date()
-            .transform((v) => v.toISOString())
-            .optional(),
-        userId: z.string().optional(),
-        companyId: z.string().optional(),
-        dealId: z.string().optional(),
-        fieldMappings: z.lazy(() => UnifiedCrmTaskInputFieldMappings$outboundSchema),
+        subject: z.nullable(z.string()),
+        content: z.nullable(z.string()),
+        status: z.nullable(z.string()),
+        dueDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        finishedDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        userId: z.nullable(z.string()).optional(),
+        companyId: z.nullable(z.string()).optional(),
+        dealId: z.nullable(z.string()).optional(),
+        fieldMappings: z.nullable(z.record(z.any())).optional(),
     })
     .transform((v) => {
         return remap$(v, {

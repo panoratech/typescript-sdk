@@ -142,7 +142,7 @@ export class Panora extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.HelloResponse>()
-            .json(200, operations.HelloResponse$inboundSchema, { key: "string" })
+            .json(200, operations.HelloResponse$inboundSchema, { key: "String" })
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 
@@ -184,7 +184,7 @@ export class Panora extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.HealthResponse>()
-            .json(200, operations.HealthResponse$inboundSchema, { key: "number" })
+            .json(200, operations.HealthResponse$inboundSchema, { key: "Number" })
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 

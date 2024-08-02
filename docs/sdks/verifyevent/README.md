@@ -18,7 +18,9 @@ const panora = new Panora();
 
 async function run() {
   const result = await panora.webhooks.verifyevent.verifyEvent({
-    payload: {},
+    payload: {
+      "key": "<value>",
+    },
     signature: "<value>",
     secret: "<value>",
   });

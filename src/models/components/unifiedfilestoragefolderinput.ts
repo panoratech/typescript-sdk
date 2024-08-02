@@ -5,21 +5,19 @@
 import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
-export type UnifiedFilestorageFolderInputFieldMappings = {};
-
 export type UnifiedFilestorageFolderInput = {
     /**
      * The name of the folder
      */
-    name: string;
+    name: string | null;
     /**
      * The size of the folder
      */
-    size: string;
+    size: string | null;
     /**
      * The url of the folder
      */
-    folderUrl: string;
+    folderUrl: string | null;
     /**
      * The description of the folder
      */
@@ -27,51 +25,24 @@ export type UnifiedFilestorageFolderInput = {
     /**
      * The UUID of the drive tied to the folder
      */
-    driveId: string;
+    driveId: string | null;
     /**
      * The UUID of the parent folder
      */
-    parentFolderId: string;
+    parentFolderId: string | null;
     /**
      * The UUID of the shared link tied to the folder
      */
-    sharedLink: string;
+    sharedLink: string | null;
     /**
      * The UUID of the permission tied to the folder
      */
-    permission: string;
-    fieldMappings: UnifiedFilestorageFolderInputFieldMappings;
+    permission: string | null;
+    /**
+     * The custom field mappings of the object between the remote 3rd party & Panora
+     */
+    fieldMappings?: { [k: string]: any } | null | undefined;
 };
-
-/** @internal */
-export const UnifiedFilestorageFolderInputFieldMappings$inboundSchema: z.ZodType<
-    UnifiedFilestorageFolderInputFieldMappings,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedFilestorageFolderInputFieldMappings$Outbound = {};
-
-/** @internal */
-export const UnifiedFilestorageFolderInputFieldMappings$outboundSchema: z.ZodType<
-    UnifiedFilestorageFolderInputFieldMappings$Outbound,
-    z.ZodTypeDef,
-    UnifiedFilestorageFolderInputFieldMappings
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedFilestorageFolderInputFieldMappings$ {
-    /** @deprecated use `UnifiedFilestorageFolderInputFieldMappings$inboundSchema` instead. */
-    export const inboundSchema = UnifiedFilestorageFolderInputFieldMappings$inboundSchema;
-    /** @deprecated use `UnifiedFilestorageFolderInputFieldMappings$outboundSchema` instead. */
-    export const outboundSchema = UnifiedFilestorageFolderInputFieldMappings$outboundSchema;
-    /** @deprecated use `UnifiedFilestorageFolderInputFieldMappings$Outbound` instead. */
-    export type Outbound = UnifiedFilestorageFolderInputFieldMappings$Outbound;
-}
 
 /** @internal */
 export const UnifiedFilestorageFolderInput$inboundSchema: z.ZodType<
@@ -80,15 +51,15 @@ export const UnifiedFilestorageFolderInput$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        name: z.string(),
-        size: z.string(),
-        folder_url: z.string(),
+        name: z.nullable(z.string()),
+        size: z.nullable(z.string()),
+        folder_url: z.nullable(z.string()),
         description: z.string(),
-        drive_id: z.string(),
-        parent_folder_id: z.string(),
-        shared_link: z.string(),
-        permission: z.string(),
-        field_mappings: z.lazy(() => UnifiedFilestorageFolderInputFieldMappings$inboundSchema),
+        drive_id: z.nullable(z.string()),
+        parent_folder_id: z.nullable(z.string()),
+        shared_link: z.nullable(z.string()),
+        permission: z.nullable(z.string()),
+        field_mappings: z.nullable(z.record(z.any())).optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -102,15 +73,15 @@ export const UnifiedFilestorageFolderInput$inboundSchema: z.ZodType<
 
 /** @internal */
 export type UnifiedFilestorageFolderInput$Outbound = {
-    name: string;
-    size: string;
-    folder_url: string;
+    name: string | null;
+    size: string | null;
+    folder_url: string | null;
     description: string;
-    drive_id: string;
-    parent_folder_id: string;
-    shared_link: string;
-    permission: string;
-    field_mappings: UnifiedFilestorageFolderInputFieldMappings$Outbound;
+    drive_id: string | null;
+    parent_folder_id: string | null;
+    shared_link: string | null;
+    permission: string | null;
+    field_mappings?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
@@ -120,15 +91,15 @@ export const UnifiedFilestorageFolderInput$outboundSchema: z.ZodType<
     UnifiedFilestorageFolderInput
 > = z
     .object({
-        name: z.string(),
-        size: z.string(),
-        folderUrl: z.string(),
+        name: z.nullable(z.string()),
+        size: z.nullable(z.string()),
+        folderUrl: z.nullable(z.string()),
         description: z.string(),
-        driveId: z.string(),
-        parentFolderId: z.string(),
-        sharedLink: z.string(),
-        permission: z.string(),
-        fieldMappings: z.lazy(() => UnifiedFilestorageFolderInputFieldMappings$outboundSchema),
+        driveId: z.nullable(z.string()),
+        parentFolderId: z.nullable(z.string()),
+        sharedLink: z.nullable(z.string()),
+        permission: z.nullable(z.string()),
+        fieldMappings: z.nullable(z.record(z.any())).optional(),
     })
     .transform((v) => {
         return remap$(v, {

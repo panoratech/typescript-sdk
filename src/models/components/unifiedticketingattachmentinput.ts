@@ -5,61 +5,32 @@
 import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
-export type UnifiedTicketingAttachmentInputFieldMappings = {};
-
 export type UnifiedTicketingAttachmentInput = {
     /**
      * The file name of the attachment
      */
-    fileName: string;
+    fileName: string | null;
     /**
      * The file url of the attachment
      */
-    fileUrl: string;
+    fileUrl: string | null;
     /**
      * The uploader's UUID of the attachment
      */
-    uploader: string;
+    uploader: string | null;
     /**
      * The UUID of the ticket the attachment is tied to
      */
-    ticketId?: string | undefined;
+    ticketId?: string | null | undefined;
     /**
      * The UUID of the comment the attachment is tied to
      */
-    commentId?: string | undefined;
-    fieldMappings: UnifiedTicketingAttachmentInputFieldMappings;
+    commentId?: string | null | undefined;
+    /**
+     * The custom field mappings of the attachment between the remote 3rd party & Panora
+     */
+    fieldMappings?: { [k: string]: any } | null | undefined;
 };
-
-/** @internal */
-export const UnifiedTicketingAttachmentInputFieldMappings$inboundSchema: z.ZodType<
-    UnifiedTicketingAttachmentInputFieldMappings,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedTicketingAttachmentInputFieldMappings$Outbound = {};
-
-/** @internal */
-export const UnifiedTicketingAttachmentInputFieldMappings$outboundSchema: z.ZodType<
-    UnifiedTicketingAttachmentInputFieldMappings$Outbound,
-    z.ZodTypeDef,
-    UnifiedTicketingAttachmentInputFieldMappings
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedTicketingAttachmentInputFieldMappings$ {
-    /** @deprecated use `UnifiedTicketingAttachmentInputFieldMappings$inboundSchema` instead. */
-    export const inboundSchema = UnifiedTicketingAttachmentInputFieldMappings$inboundSchema;
-    /** @deprecated use `UnifiedTicketingAttachmentInputFieldMappings$outboundSchema` instead. */
-    export const outboundSchema = UnifiedTicketingAttachmentInputFieldMappings$outboundSchema;
-    /** @deprecated use `UnifiedTicketingAttachmentInputFieldMappings$Outbound` instead. */
-    export type Outbound = UnifiedTicketingAttachmentInputFieldMappings$Outbound;
-}
 
 /** @internal */
 export const UnifiedTicketingAttachmentInput$inboundSchema: z.ZodType<
@@ -68,12 +39,12 @@ export const UnifiedTicketingAttachmentInput$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        file_name: z.string(),
-        file_url: z.string(),
-        uploader: z.string(),
-        ticket_id: z.string().optional(),
-        comment_id: z.string().optional(),
-        field_mappings: z.lazy(() => UnifiedTicketingAttachmentInputFieldMappings$inboundSchema),
+        file_name: z.nullable(z.string()),
+        file_url: z.nullable(z.string()),
+        uploader: z.nullable(z.string()),
+        ticket_id: z.nullable(z.string()).optional(),
+        comment_id: z.nullable(z.string()).optional(),
+        field_mappings: z.nullable(z.record(z.any())).optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -87,12 +58,12 @@ export const UnifiedTicketingAttachmentInput$inboundSchema: z.ZodType<
 
 /** @internal */
 export type UnifiedTicketingAttachmentInput$Outbound = {
-    file_name: string;
-    file_url: string;
-    uploader: string;
-    ticket_id?: string | undefined;
-    comment_id?: string | undefined;
-    field_mappings: UnifiedTicketingAttachmentInputFieldMappings$Outbound;
+    file_name: string | null;
+    file_url: string | null;
+    uploader: string | null;
+    ticket_id?: string | null | undefined;
+    comment_id?: string | null | undefined;
+    field_mappings?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
@@ -102,12 +73,12 @@ export const UnifiedTicketingAttachmentInput$outboundSchema: z.ZodType<
     UnifiedTicketingAttachmentInput
 > = z
     .object({
-        fileName: z.string(),
-        fileUrl: z.string(),
-        uploader: z.string(),
-        ticketId: z.string().optional(),
-        commentId: z.string().optional(),
-        fieldMappings: z.lazy(() => UnifiedTicketingAttachmentInputFieldMappings$outboundSchema),
+        fileName: z.nullable(z.string()),
+        fileUrl: z.nullable(z.string()),
+        uploader: z.nullable(z.string()),
+        ticketId: z.nullable(z.string()).optional(),
+        commentId: z.nullable(z.string()).optional(),
+        fieldMappings: z.nullable(z.record(z.any())).optional(),
     })
     .transform((v) => {
         return remap$(v, {

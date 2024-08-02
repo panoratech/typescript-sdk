@@ -13,65 +13,36 @@ import { Email, Email$inboundSchema, Email$Outbound, Email$outboundSchema } from
 import { Phone, Phone$inboundSchema, Phone$Outbound, Phone$outboundSchema } from "./phone.js";
 import * as z from "zod";
 
-export type UnifiedCrmContactInputFieldMappings = {};
-
 export type UnifiedCrmContactInput = {
     /**
      * The first name of the contact
      */
-    firstName: string;
+    firstName: string | null;
     /**
      * The last name of the contact
      */
-    lastName: string;
+    lastName: string | null;
     /**
      * The email addresses of the contact
      */
-    emailAddresses?: Array<Email> | undefined;
+    emailAddresses?: Array<Email> | null | undefined;
     /**
      * The phone numbers of the contact
      */
-    phoneNumbers?: Array<Phone> | undefined;
+    phoneNumbers?: Array<Phone> | null | undefined;
     /**
      * The addresses of the contact
      */
-    addresses?: Array<Address> | undefined;
+    addresses?: Array<Address> | null | undefined;
     /**
      * The UUID of the user who owns the contact
      */
-    userId?: string | undefined;
-    fieldMappings: UnifiedCrmContactInputFieldMappings;
+    userId?: string | null | undefined;
+    /**
+     * The custom field mappings of the contact between the remote 3rd party & Panora
+     */
+    fieldMappings?: { [k: string]: any } | null | undefined;
 };
-
-/** @internal */
-export const UnifiedCrmContactInputFieldMappings$inboundSchema: z.ZodType<
-    UnifiedCrmContactInputFieldMappings,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedCrmContactInputFieldMappings$Outbound = {};
-
-/** @internal */
-export const UnifiedCrmContactInputFieldMappings$outboundSchema: z.ZodType<
-    UnifiedCrmContactInputFieldMappings$Outbound,
-    z.ZodTypeDef,
-    UnifiedCrmContactInputFieldMappings
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedCrmContactInputFieldMappings$ {
-    /** @deprecated use `UnifiedCrmContactInputFieldMappings$inboundSchema` instead. */
-    export const inboundSchema = UnifiedCrmContactInputFieldMappings$inboundSchema;
-    /** @deprecated use `UnifiedCrmContactInputFieldMappings$outboundSchema` instead. */
-    export const outboundSchema = UnifiedCrmContactInputFieldMappings$outboundSchema;
-    /** @deprecated use `UnifiedCrmContactInputFieldMappings$Outbound` instead. */
-    export type Outbound = UnifiedCrmContactInputFieldMappings$Outbound;
-}
 
 /** @internal */
 export const UnifiedCrmContactInput$inboundSchema: z.ZodType<
@@ -80,13 +51,13 @@ export const UnifiedCrmContactInput$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        first_name: z.string(),
-        last_name: z.string(),
-        email_addresses: z.array(Email$inboundSchema).optional(),
-        phone_numbers: z.array(Phone$inboundSchema).optional(),
-        addresses: z.array(Address$inboundSchema).optional(),
-        user_id: z.string().optional(),
-        field_mappings: z.lazy(() => UnifiedCrmContactInputFieldMappings$inboundSchema),
+        first_name: z.nullable(z.string()),
+        last_name: z.nullable(z.string()),
+        email_addresses: z.nullable(z.array(Email$inboundSchema)).optional(),
+        phone_numbers: z.nullable(z.array(Phone$inboundSchema)).optional(),
+        addresses: z.nullable(z.array(Address$inboundSchema)).optional(),
+        user_id: z.nullable(z.string()).optional(),
+        field_mappings: z.nullable(z.record(z.any())).optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -101,13 +72,13 @@ export const UnifiedCrmContactInput$inboundSchema: z.ZodType<
 
 /** @internal */
 export type UnifiedCrmContactInput$Outbound = {
-    first_name: string;
-    last_name: string;
-    email_addresses?: Array<Email$Outbound> | undefined;
-    phone_numbers?: Array<Phone$Outbound> | undefined;
-    addresses?: Array<Address$Outbound> | undefined;
-    user_id?: string | undefined;
-    field_mappings: UnifiedCrmContactInputFieldMappings$Outbound;
+    first_name: string | null;
+    last_name: string | null;
+    email_addresses?: Array<Email$Outbound> | null | undefined;
+    phone_numbers?: Array<Phone$Outbound> | null | undefined;
+    addresses?: Array<Address$Outbound> | null | undefined;
+    user_id?: string | null | undefined;
+    field_mappings?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
@@ -117,13 +88,13 @@ export const UnifiedCrmContactInput$outboundSchema: z.ZodType<
     UnifiedCrmContactInput
 > = z
     .object({
-        firstName: z.string(),
-        lastName: z.string(),
-        emailAddresses: z.array(Email$outboundSchema).optional(),
-        phoneNumbers: z.array(Phone$outboundSchema).optional(),
-        addresses: z.array(Address$outboundSchema).optional(),
-        userId: z.string().optional(),
-        fieldMappings: z.lazy(() => UnifiedCrmContactInputFieldMappings$outboundSchema),
+        firstName: z.nullable(z.string()),
+        lastName: z.nullable(z.string()),
+        emailAddresses: z.nullable(z.array(Email$outboundSchema)).optional(),
+        phoneNumbers: z.nullable(z.array(Phone$outboundSchema)).optional(),
+        addresses: z.nullable(z.array(Address$outboundSchema)).optional(),
+        userId: z.nullable(z.string()).optional(),
+        fieldMappings: z.nullable(z.record(z.any())).optional(),
     })
     .transform((v) => {
         return remap$(v, {

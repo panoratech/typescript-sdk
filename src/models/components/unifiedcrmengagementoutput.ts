@@ -5,184 +5,68 @@
 import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
-export type UnifiedCrmEngagementOutputFieldMappings = {};
-
-export type UnifiedCrmEngagementOutputRemoteData = {};
-
-export type UnifiedCrmEngagementOutputCreatedAt = {};
-
-export type UnifiedCrmEngagementOutputModifiedAt = {};
-
 export type UnifiedCrmEngagementOutput = {
     /**
      * The content of the engagement
      */
-    content?: string | undefined;
+    content?: string | null | undefined;
     /**
      * The direction of the engagement. Authorized values are INBOUND or OUTBOUND
      */
-    direction?: string | undefined;
+    direction?: string | null | undefined;
     /**
      * The subject of the engagement
      */
-    subject?: string | undefined;
+    subject?: string | null | undefined;
     /**
      * The start time of the engagement
      */
-    startAt?: Date | undefined;
+    startAt?: Date | null | undefined;
     /**
      * The end time of the engagement
      */
-    endTime?: Date | undefined;
+    endTime?: Date | null | undefined;
     /**
      * The type of the engagement. Authorized values are EMAIL, CALL or MEETING
      */
-    type: string;
+    type: string | null;
     /**
      * The UUID of the user tied to the engagement
      */
-    userId?: string | undefined;
+    userId?: string | null | undefined;
     /**
      * The UUID of the company tied to the engagement
      */
-    companyId?: string | undefined;
+    companyId?: string | null | undefined;
     /**
      * The UUIDs of contacts tied to the engagement object
      */
-    contacts?: Array<string> | undefined;
-    fieldMappings: UnifiedCrmEngagementOutputFieldMappings;
+    contacts?: Array<string> | null | undefined;
+    /**
+     * The custom field mappings of the engagement between the remote 3rd party & Panora
+     */
+    fieldMappings?: { [k: string]: any } | null | undefined;
     /**
      * The UUID of the engagement
      */
-    id?: string | undefined;
+    id?: string | null | undefined;
     /**
      * The id of the engagement in the context of the Crm 3rd Party
      */
-    remoteId?: string | undefined;
-    remoteData: UnifiedCrmEngagementOutputRemoteData;
-    createdAt: UnifiedCrmEngagementOutputCreatedAt;
-    modifiedAt: UnifiedCrmEngagementOutputModifiedAt;
+    remoteId?: string | null | undefined;
+    /**
+     * The remote data of the engagement in the context of the Crm 3rd Party
+     */
+    remoteData?: { [k: string]: any } | null | undefined;
+    /**
+     * The created date of the object
+     */
+    createdAt?: Date | null | undefined;
+    /**
+     * The modified date of the object
+     */
+    modifiedAt?: Date | null | undefined;
 };
-
-/** @internal */
-export const UnifiedCrmEngagementOutputFieldMappings$inboundSchema: z.ZodType<
-    UnifiedCrmEngagementOutputFieldMappings,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedCrmEngagementOutputFieldMappings$Outbound = {};
-
-/** @internal */
-export const UnifiedCrmEngagementOutputFieldMappings$outboundSchema: z.ZodType<
-    UnifiedCrmEngagementOutputFieldMappings$Outbound,
-    z.ZodTypeDef,
-    UnifiedCrmEngagementOutputFieldMappings
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedCrmEngagementOutputFieldMappings$ {
-    /** @deprecated use `UnifiedCrmEngagementOutputFieldMappings$inboundSchema` instead. */
-    export const inboundSchema = UnifiedCrmEngagementOutputFieldMappings$inboundSchema;
-    /** @deprecated use `UnifiedCrmEngagementOutputFieldMappings$outboundSchema` instead. */
-    export const outboundSchema = UnifiedCrmEngagementOutputFieldMappings$outboundSchema;
-    /** @deprecated use `UnifiedCrmEngagementOutputFieldMappings$Outbound` instead. */
-    export type Outbound = UnifiedCrmEngagementOutputFieldMappings$Outbound;
-}
-
-/** @internal */
-export const UnifiedCrmEngagementOutputRemoteData$inboundSchema: z.ZodType<
-    UnifiedCrmEngagementOutputRemoteData,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedCrmEngagementOutputRemoteData$Outbound = {};
-
-/** @internal */
-export const UnifiedCrmEngagementOutputRemoteData$outboundSchema: z.ZodType<
-    UnifiedCrmEngagementOutputRemoteData$Outbound,
-    z.ZodTypeDef,
-    UnifiedCrmEngagementOutputRemoteData
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedCrmEngagementOutputRemoteData$ {
-    /** @deprecated use `UnifiedCrmEngagementOutputRemoteData$inboundSchema` instead. */
-    export const inboundSchema = UnifiedCrmEngagementOutputRemoteData$inboundSchema;
-    /** @deprecated use `UnifiedCrmEngagementOutputRemoteData$outboundSchema` instead. */
-    export const outboundSchema = UnifiedCrmEngagementOutputRemoteData$outboundSchema;
-    /** @deprecated use `UnifiedCrmEngagementOutputRemoteData$Outbound` instead. */
-    export type Outbound = UnifiedCrmEngagementOutputRemoteData$Outbound;
-}
-
-/** @internal */
-export const UnifiedCrmEngagementOutputCreatedAt$inboundSchema: z.ZodType<
-    UnifiedCrmEngagementOutputCreatedAt,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedCrmEngagementOutputCreatedAt$Outbound = {};
-
-/** @internal */
-export const UnifiedCrmEngagementOutputCreatedAt$outboundSchema: z.ZodType<
-    UnifiedCrmEngagementOutputCreatedAt$Outbound,
-    z.ZodTypeDef,
-    UnifiedCrmEngagementOutputCreatedAt
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedCrmEngagementOutputCreatedAt$ {
-    /** @deprecated use `UnifiedCrmEngagementOutputCreatedAt$inboundSchema` instead. */
-    export const inboundSchema = UnifiedCrmEngagementOutputCreatedAt$inboundSchema;
-    /** @deprecated use `UnifiedCrmEngagementOutputCreatedAt$outboundSchema` instead. */
-    export const outboundSchema = UnifiedCrmEngagementOutputCreatedAt$outboundSchema;
-    /** @deprecated use `UnifiedCrmEngagementOutputCreatedAt$Outbound` instead. */
-    export type Outbound = UnifiedCrmEngagementOutputCreatedAt$Outbound;
-}
-
-/** @internal */
-export const UnifiedCrmEngagementOutputModifiedAt$inboundSchema: z.ZodType<
-    UnifiedCrmEngagementOutputModifiedAt,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedCrmEngagementOutputModifiedAt$Outbound = {};
-
-/** @internal */
-export const UnifiedCrmEngagementOutputModifiedAt$outboundSchema: z.ZodType<
-    UnifiedCrmEngagementOutputModifiedAt$Outbound,
-    z.ZodTypeDef,
-    UnifiedCrmEngagementOutputModifiedAt
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedCrmEngagementOutputModifiedAt$ {
-    /** @deprecated use `UnifiedCrmEngagementOutputModifiedAt$inboundSchema` instead. */
-    export const inboundSchema = UnifiedCrmEngagementOutputModifiedAt$inboundSchema;
-    /** @deprecated use `UnifiedCrmEngagementOutputModifiedAt$outboundSchema` instead. */
-    export const outboundSchema = UnifiedCrmEngagementOutputModifiedAt$outboundSchema;
-    /** @deprecated use `UnifiedCrmEngagementOutputModifiedAt$Outbound` instead. */
-    export type Outbound = UnifiedCrmEngagementOutputModifiedAt$Outbound;
-}
 
 /** @internal */
 export const UnifiedCrmEngagementOutput$inboundSchema: z.ZodType<
@@ -191,29 +75,49 @@ export const UnifiedCrmEngagementOutput$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        content: z.string().optional(),
-        direction: z.string().optional(),
-        subject: z.string().optional(),
+        content: z.nullable(z.string()).optional(),
+        direction: z.nullable(z.string()).optional(),
+        subject: z.nullable(z.string()).optional(),
         start_at: z
-            .string()
-            .datetime({ offset: true })
-            .transform((v) => new Date(v))
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
             .optional(),
         end_time: z
-            .string()
-            .datetime({ offset: true })
-            .transform((v) => new Date(v))
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
             .optional(),
-        type: z.string(),
-        user_id: z.string().optional(),
-        company_id: z.string().optional(),
-        contacts: z.array(z.string()).optional(),
-        field_mappings: z.lazy(() => UnifiedCrmEngagementOutputFieldMappings$inboundSchema),
-        id: z.string().optional(),
-        remote_id: z.string().optional(),
-        remote_data: z.lazy(() => UnifiedCrmEngagementOutputRemoteData$inboundSchema),
-        created_at: z.lazy(() => UnifiedCrmEngagementOutputCreatedAt$inboundSchema),
-        modified_at: z.lazy(() => UnifiedCrmEngagementOutputModifiedAt$inboundSchema),
+        type: z.nullable(z.string()),
+        user_id: z.nullable(z.string()).optional(),
+        company_id: z.nullable(z.string()).optional(),
+        contacts: z.nullable(z.array(z.string())).optional(),
+        field_mappings: z.nullable(z.record(z.any())).optional(),
+        id: z.nullable(z.string()).optional(),
+        remote_id: z.nullable(z.string()).optional(),
+        remote_data: z.nullable(z.record(z.any())).optional(),
+        created_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        modified_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -231,21 +135,21 @@ export const UnifiedCrmEngagementOutput$inboundSchema: z.ZodType<
 
 /** @internal */
 export type UnifiedCrmEngagementOutput$Outbound = {
-    content?: string | undefined;
-    direction?: string | undefined;
-    subject?: string | undefined;
-    start_at?: string | undefined;
-    end_time?: string | undefined;
-    type: string;
-    user_id?: string | undefined;
-    company_id?: string | undefined;
-    contacts?: Array<string> | undefined;
-    field_mappings: UnifiedCrmEngagementOutputFieldMappings$Outbound;
-    id?: string | undefined;
-    remote_id?: string | undefined;
-    remote_data: UnifiedCrmEngagementOutputRemoteData$Outbound;
-    created_at: UnifiedCrmEngagementOutputCreatedAt$Outbound;
-    modified_at: UnifiedCrmEngagementOutputModifiedAt$Outbound;
+    content?: string | null | undefined;
+    direction?: string | null | undefined;
+    subject?: string | null | undefined;
+    start_at?: string | null | undefined;
+    end_time?: string | null | undefined;
+    type: string | null;
+    user_id?: string | null | undefined;
+    company_id?: string | null | undefined;
+    contacts?: Array<string> | null | undefined;
+    field_mappings?: { [k: string]: any } | null | undefined;
+    id?: string | null | undefined;
+    remote_id?: string | null | undefined;
+    remote_data?: { [k: string]: any } | null | undefined;
+    created_at?: string | null | undefined;
+    modified_at?: string | null | undefined;
 };
 
 /** @internal */
@@ -255,27 +159,21 @@ export const UnifiedCrmEngagementOutput$outboundSchema: z.ZodType<
     UnifiedCrmEngagementOutput
 > = z
     .object({
-        content: z.string().optional(),
-        direction: z.string().optional(),
-        subject: z.string().optional(),
-        startAt: z
-            .date()
-            .transform((v) => v.toISOString())
-            .optional(),
-        endTime: z
-            .date()
-            .transform((v) => v.toISOString())
-            .optional(),
-        type: z.string(),
-        userId: z.string().optional(),
-        companyId: z.string().optional(),
-        contacts: z.array(z.string()).optional(),
-        fieldMappings: z.lazy(() => UnifiedCrmEngagementOutputFieldMappings$outboundSchema),
-        id: z.string().optional(),
-        remoteId: z.string().optional(),
-        remoteData: z.lazy(() => UnifiedCrmEngagementOutputRemoteData$outboundSchema),
-        createdAt: z.lazy(() => UnifiedCrmEngagementOutputCreatedAt$outboundSchema),
-        modifiedAt: z.lazy(() => UnifiedCrmEngagementOutputModifiedAt$outboundSchema),
+        content: z.nullable(z.string()).optional(),
+        direction: z.nullable(z.string()).optional(),
+        subject: z.nullable(z.string()).optional(),
+        startAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        endTime: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        type: z.nullable(z.string()),
+        userId: z.nullable(z.string()).optional(),
+        companyId: z.nullable(z.string()).optional(),
+        contacts: z.nullable(z.array(z.string())).optional(),
+        fieldMappings: z.nullable(z.record(z.any())).optional(),
+        id: z.nullable(z.string()).optional(),
+        remoteId: z.nullable(z.string()).optional(),
+        remoteData: z.nullable(z.record(z.any())).optional(),
+        createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        modifiedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
     })
     .transform((v) => {
         return remap$(v, {

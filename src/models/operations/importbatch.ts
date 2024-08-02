@@ -8,6 +8,7 @@ import * as z from "zod";
 
 export type ImportBatchResponse = {
     httpMeta: components.HTTPMetadata;
+    linkedUserResponses?: Array<components.LinkedUserResponse> | undefined;
 };
 
 /** @internal */
@@ -18,16 +19,19 @@ export const ImportBatchResponse$inboundSchema: z.ZodType<
 > = z
     .object({
         HttpMeta: components.HTTPMetadata$inboundSchema,
+        LinkedUserResponses: z.array(components.LinkedUserResponse$inboundSchema).optional(),
     })
     .transform((v) => {
         return remap$(v, {
             HttpMeta: "httpMeta",
+            LinkedUserResponses: "linkedUserResponses",
         });
     });
 
 /** @internal */
 export type ImportBatchResponse$Outbound = {
     HttpMeta: components.HTTPMetadata$Outbound;
+    LinkedUserResponses?: Array<components.LinkedUserResponse$Outbound> | undefined;
 };
 
 /** @internal */
@@ -38,10 +42,12 @@ export const ImportBatchResponse$outboundSchema: z.ZodType<
 > = z
     .object({
         httpMeta: components.HTTPMetadata$outboundSchema,
+        linkedUserResponses: z.array(components.LinkedUserResponse$outboundSchema).optional(),
     })
     .transform((v) => {
         return remap$(v, {
             httpMeta: "HttpMeta",
+            linkedUserResponses: "LinkedUserResponses",
         });
     });
 

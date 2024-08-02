@@ -9,23 +9,23 @@ export type Email = {
     /**
      * The email address
      */
-    emailAddress: string;
+    emailAddress: string | null;
     /**
      * The email address type. Authorized values are either PERSONAL or WORK.
      */
-    emailAddressType: string;
+    emailAddressType: string | null;
     /**
      * The owner type of an email
      */
-    ownerType?: string | undefined;
+    ownerType?: string | null | undefined;
 };
 
 /** @internal */
 export const Email$inboundSchema: z.ZodType<Email, z.ZodTypeDef, unknown> = z
     .object({
-        email_address: z.string(),
-        email_address_type: z.string(),
-        owner_type: z.string().optional(),
+        email_address: z.nullable(z.string()),
+        email_address_type: z.nullable(z.string()),
+        owner_type: z.nullable(z.string()).optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -37,17 +37,17 @@ export const Email$inboundSchema: z.ZodType<Email, z.ZodTypeDef, unknown> = z
 
 /** @internal */
 export type Email$Outbound = {
-    email_address: string;
-    email_address_type: string;
-    owner_type?: string | undefined;
+    email_address: string | null;
+    email_address_type: string | null;
+    owner_type?: string | null | undefined;
 };
 
 /** @internal */
 export const Email$outboundSchema: z.ZodType<Email$Outbound, z.ZodTypeDef, Email> = z
     .object({
-        emailAddress: z.string(),
-        emailAddressType: z.string(),
-        ownerType: z.string().optional(),
+        emailAddress: z.nullable(z.string()),
+        emailAddressType: z.nullable(z.string()),
+        ownerType: z.nullable(z.string()).optional(),
     })
     .transform((v) => {
         return remap$(v, {

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: caaaa8c3-6dd7-43a5-841e-c3193e68cc73
 management:
-  docChecksum: 196f7d6b9c0dc41ae1dd4f17faa5663d
+  docChecksum: 2327b64fd91c4a57b10876dd6c0a4c6b
   docVersion: "1.0"
-  speakeasyVersion: 1.351.2
+  speakeasyVersion: 1.351.3
   generationVersion: 2.384.4
-  releaseVersion: 0.2.0
-  configChecksum: 2821e75ba7e9bf939804c6cac848d076
+  releaseVersion: 0.3.0
+  configChecksum: 2e831490eaeecbb0396e649e5d3c7781
   repoURL: https://github.com/panoratech/typescript-sdk.git
   installationURL: https://github.com/panoratech/typescript-sdk
   published: true
@@ -25,6 +25,7 @@ features:
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.1.0
+    unions: 2.85.6
 generatedFiles:
   - src/sdk/id.ts
   - src/sdk/verifyevent.ts
@@ -364,23 +365,25 @@ generatedFiles:
   - src/models/operations/retrievefilestoragegroup.ts
   - src/models/operations/listfilestorageusers.ts
   - src/models/operations/retrievefilestorageuser.ts
+  - src/models/components/string.ts
   - src/models/components/httpmetadata.ts
+  - src/models/components/number.ts
   - src/models/components/webhookresponse.ts
   - src/models/components/webhookdto.ts
-  - src/models/components/eventpayload.ts
   - src/models/components/signatureverificationdto.ts
   - src/models/components/unifiedticketingticketoutput.ts
-  - src/models/components/unifiedticketingcommentinput.ts
   - src/models/components/unifiedticketingticketinput.ts
   - src/models/components/unifiedticketinguseroutput.ts
   - src/models/components/unifiedticketingaccountoutput.ts
   - src/models/components/unifiedticketingcontactoutput.ts
   - src/models/components/unifiedticketingcollectionoutput.ts
   - src/models/components/unifiedticketingcommentoutput.ts
+  - src/models/components/unifiedticketingcommentinput.ts
   - src/models/components/unifiedticketingtagoutput.ts
   - src/models/components/unifiedticketingteamoutput.ts
   - src/models/components/unifiedticketingattachmentoutput.ts
   - src/models/components/unifiedticketingattachmentinput.ts
+  - src/models/components/resyncstatusdto.ts
   - src/models/components/unifiedcrmcompanyoutput.ts
   - src/models/components/phone.ts
   - src/models/components/address.ts
@@ -398,8 +401,10 @@ generatedFiles:
   - src/models/components/unifiedcrmtaskoutput.ts
   - src/models/components/unifiedcrmtaskinput.ts
   - src/models/components/unifiedcrmuseroutput.ts
+  - src/models/components/linkeduserresponse.ts
   - src/models/components/createlinkeduserdto.ts
   - src/models/components/createbatchlinkeduserdto.ts
+  - src/models/components/customfieldresponse.ts
   - src/models/components/customfieldcreatedto.ts
   - src/models/components/definetargetfielddto.ts
   - src/models/components/mapfieldtoproviderdto.ts
@@ -504,6 +509,7 @@ generatedFiles:
   - docs/models/operations/deleteresponse.md
   - docs/models/operations/updatestatusrequest.md
   - docs/models/operations/updatestatusresponse.md
+  - docs/models/operations/verifyeventresponsebody.md
   - docs/models/operations/verifyeventresponse.md
   - docs/models/operations/listticketingticketrequest.md
   - docs/models/operations/listticketingticketresponsebody.md
@@ -987,117 +993,54 @@ generatedFiles:
   - docs/models/operations/listfilestorageusersresponse.md
   - docs/models/operations/retrievefilestorageuserrequest.md
   - docs/models/operations/retrievefilestorageuserresponse.md
+  - docs/models/components/string.md
   - docs/models/components/httpmetadata.md
+  - docs/models/components/numbert.md
   - docs/models/components/webhookresponse.md
   - docs/models/components/webhookdto.md
-  - docs/models/components/eventpayload.md
-  - docs/models/components/payload.md
   - docs/models/components/signatureverificationdto.md
-  - docs/models/components/fieldmappings.md
-  - docs/models/components/remotedata.md
+  - docs/models/components/comment.md
+  - docs/models/components/unifiedticketingticketoutput.md
+  - docs/models/components/unifiedticketingticketinputcomment.md
+  - docs/models/components/unifiedticketingticketinput.md
+  - docs/models/components/unifiedticketinguseroutput.md
+  - docs/models/components/unifiedticketingaccountoutput.md
+  - docs/models/components/unifiedticketingcontactoutput.md
+  - docs/models/components/unifiedticketingcollectionoutput.md
+  - docs/models/components/unifiedticketingcommentoutput.md
+  - docs/models/components/unifiedticketingcommentinput.md
+  - docs/models/components/unifiedticketingtagoutput.md
+  - docs/models/components/unifiedticketingteamoutput.md
+  - docs/models/components/unifiedticketingattachmentoutput.md
+  - docs/models/components/unifiedticketingattachmentinput.md
+  - docs/models/components/resyncstatusdto.md
   - docs/models/components/createdat.md
   - docs/models/components/modifiedat.md
-  - docs/models/components/unifiedticketingticketoutput.md
-  - docs/models/components/unifiedticketingcommentinput.md
-  - docs/models/components/unifiedticketingticketinputfieldmappings.md
-  - docs/models/components/unifiedticketingticketinput.md
-  - docs/models/components/unifiedticketinguseroutputfieldmappings.md
-  - docs/models/components/unifiedticketinguseroutputremotedata.md
-  - docs/models/components/unifiedticketinguseroutputcreatedat.md
-  - docs/models/components/unifiedticketinguseroutputmodifiedat.md
-  - docs/models/components/unifiedticketinguseroutput.md
-  - docs/models/components/unifiedticketingaccountoutputfieldmappings.md
-  - docs/models/components/unifiedticketingaccountoutputremotedata.md
-  - docs/models/components/unifiedticketingaccountoutputcreatedat.md
-  - docs/models/components/unifiedticketingaccountoutputmodifiedat.md
-  - docs/models/components/unifiedticketingaccountoutput.md
-  - docs/models/components/unifiedticketingcontactoutputfieldmappings.md
-  - docs/models/components/unifiedticketingcontactoutputremotedata.md
-  - docs/models/components/unifiedticketingcontactoutputcreatedat.md
-  - docs/models/components/unifiedticketingcontactoutputmodifiedat.md
-  - docs/models/components/unifiedticketingcontactoutput.md
-  - docs/models/components/unifiedticketingcollectionoutputremotedata.md
-  - docs/models/components/unifiedticketingcollectionoutputcreatedat.md
-  - docs/models/components/unifiedticketingcollectionoutputmodifiedat.md
-  - docs/models/components/unifiedticketingcollectionoutput.md
-  - docs/models/components/unifiedticketingcommentoutputremotedata.md
-  - docs/models/components/unifiedticketingcommentoutputcreatedat.md
-  - docs/models/components/unifiedticketingcommentoutputmodifiedat.md
-  - docs/models/components/unifiedticketingcommentoutput.md
-  - docs/models/components/unifiedticketingtagoutputfieldmappings.md
-  - docs/models/components/unifiedticketingtagoutputremotedata.md
-  - docs/models/components/unifiedticketingtagoutputcreatedat.md
-  - docs/models/components/unifiedticketingtagoutputmodifiedat.md
-  - docs/models/components/unifiedticketingtagoutput.md
-  - docs/models/components/unifiedticketingteamoutputfieldmappings.md
-  - docs/models/components/unifiedticketingteamoutputremotedata.md
-  - docs/models/components/unifiedticketingteamoutputcreatedat.md
-  - docs/models/components/unifiedticketingteamoutputmodifiedat.md
-  - docs/models/components/unifiedticketingteamoutput.md
-  - docs/models/components/unifiedticketingattachmentoutputfieldmappings.md
-  - docs/models/components/unifiedticketingattachmentoutputremotedata.md
-  - docs/models/components/unifiedticketingattachmentoutputcreatedat.md
-  - docs/models/components/unifiedticketingattachmentoutputmodifiedat.md
-  - docs/models/components/unifiedticketingattachmentoutput.md
-  - docs/models/components/unifiedticketingattachmentinputfieldmappings.md
-  - docs/models/components/unifiedticketingattachmentinput.md
-  - docs/models/components/unifiedcrmcompanyoutputfieldmappings.md
-  - docs/models/components/unifiedcrmcompanyoutputremotedata.md
-  - docs/models/components/unifiedcrmcompanyoutputcreatedat.md
-  - docs/models/components/unifiedcrmcompanyoutputmodifiedat.md
   - docs/models/components/unifiedcrmcompanyoutput.md
   - docs/models/components/phone.md
   - docs/models/components/address.md
   - docs/models/components/email.md
-  - docs/models/components/unifiedcrmcompanyinputfieldmappings.md
   - docs/models/components/unifiedcrmcompanyinput.md
-  - docs/models/components/unifiedcrmcontactoutputfieldmappings.md
-  - docs/models/components/unifiedcrmcontactoutputremotedata.md
-  - docs/models/components/unifiedcrmcontactoutputcreatedat.md
-  - docs/models/components/unifiedcrmcontactoutputmodifiedat.md
   - docs/models/components/unifiedcrmcontactoutput.md
-  - docs/models/components/unifiedcrmcontactinputfieldmappings.md
   - docs/models/components/unifiedcrmcontactinput.md
-  - docs/models/components/unifiedcrmdealoutputfieldmappings.md
-  - docs/models/components/unifiedcrmdealoutputremotedata.md
-  - docs/models/components/unifiedcrmdealoutputcreatedat.md
-  - docs/models/components/unifiedcrmdealoutputmodifiedat.md
   - docs/models/components/unifiedcrmdealoutput.md
-  - docs/models/components/unifiedcrmdealinputfieldmappings.md
   - docs/models/components/unifiedcrmdealinput.md
-  - docs/models/components/unifiedcrmengagementoutputfieldmappings.md
-  - docs/models/components/unifiedcrmengagementoutputremotedata.md
-  - docs/models/components/unifiedcrmengagementoutputcreatedat.md
-  - docs/models/components/unifiedcrmengagementoutputmodifiedat.md
   - docs/models/components/unifiedcrmengagementoutput.md
-  - docs/models/components/unifiedcrmengagementinputfieldmappings.md
   - docs/models/components/unifiedcrmengagementinput.md
-  - docs/models/components/unifiedcrmnoteoutputfieldmappings.md
-  - docs/models/components/unifiedcrmnoteoutputremotedata.md
-  - docs/models/components/unifiedcrmnoteoutputcreatedat.md
-  - docs/models/components/unifiedcrmnoteoutputmodifiedat.md
   - docs/models/components/unifiedcrmnoteoutput.md
-  - docs/models/components/unifiedcrmnoteinputfieldmappings.md
   - docs/models/components/unifiedcrmnoteinput.md
-  - docs/models/components/unifiedcrmstageoutputfieldmappings.md
-  - docs/models/components/unifiedcrmstageoutputremotedata.md
   - docs/models/components/unifiedcrmstageoutputcreatedat.md
   - docs/models/components/unifiedcrmstageoutputmodifiedat.md
   - docs/models/components/unifiedcrmstageoutput.md
-  - docs/models/components/unifiedcrmtaskoutputfieldmappings.md
-  - docs/models/components/unifiedcrmtaskoutputremotedata.md
   - docs/models/components/unifiedcrmtaskoutputcreatedat.md
   - docs/models/components/unifiedcrmtaskoutputmodifiedat.md
   - docs/models/components/unifiedcrmtaskoutput.md
-  - docs/models/components/unifiedcrmtaskinputfieldmappings.md
   - docs/models/components/unifiedcrmtaskinput.md
-  - docs/models/components/unifiedcrmuseroutputfieldmappings.md
-  - docs/models/components/unifiedcrmuseroutputremotedata.md
-  - docs/models/components/unifiedcrmuseroutputcreatedat.md
-  - docs/models/components/unifiedcrmuseroutputmodifiedat.md
   - docs/models/components/unifiedcrmuseroutput.md
+  - docs/models/components/linkeduserresponse.md
   - docs/models/components/createlinkeduserdto.md
   - docs/models/components/createbatchlinkeduserdto.md
+  - docs/models/components/customfieldresponse.md
   - docs/models/components/customfieldcreatedto.md
   - docs/models/components/definetargetfielddto.md
   - docs/models/components/mapfieldtoproviderdto.md
@@ -1105,7 +1048,6 @@ generatedFiles:
   - docs/models/components/passthroughresponse.md
   - docs/models/components/method.md
   - docs/models/components/data.md
-  - docs/models/components/headers.md
   - docs/models/components/passthroughrequestdto.md
   - docs/models/components/unifiedhrisbankinfooutput.md
   - docs/models/components/unifiedhrisbenefitoutput.md
@@ -1139,89 +1081,28 @@ generatedFiles:
   - docs/models/components/unifiedmarketingautomationtemplateoutput.md
   - docs/models/components/unifiedmarketingautomationtemplateinput.md
   - docs/models/components/unifiedmarketingautomationuseroutput.md
-  - docs/models/components/unifiedatsactivityoutputfieldmappings.md
-  - docs/models/components/unifiedatsactivityoutputremotedata.md
-  - docs/models/components/unifiedatsactivityoutputcreatedat.md
-  - docs/models/components/unifiedatsactivityoutputmodifiedat.md
   - docs/models/components/unifiedatsactivityoutput.md
-  - docs/models/components/unifiedatsactivityinputfieldmappings.md
   - docs/models/components/unifiedatsactivityinput.md
-  - docs/models/components/unifiedatsapplicationoutputfieldmappings.md
-  - docs/models/components/unifiedatsapplicationoutputremotedata.md
-  - docs/models/components/unifiedatsapplicationoutputcreatedat.md
-  - docs/models/components/unifiedatsapplicationoutputmodifiedat.md
   - docs/models/components/unifiedatsapplicationoutput.md
-  - docs/models/components/unifiedatsapplicationinputfieldmappings.md
   - docs/models/components/unifiedatsapplicationinput.md
-  - docs/models/components/unifiedatsattachmentoutputfieldmappings.md
-  - docs/models/components/unifiedatsattachmentoutputremotedata.md
-  - docs/models/components/unifiedatsattachmentoutputcreatedat.md
-  - docs/models/components/unifiedatsattachmentoutputmodifiedat.md
   - docs/models/components/unifiedatsattachmentoutput.md
-  - docs/models/components/unifiedatsattachmentinputfieldmappings.md
   - docs/models/components/unifiedatsattachmentinput.md
-  - docs/models/components/unifiedatscandidateoutputfieldmappings.md
-  - docs/models/components/unifiedatscandidateoutputremotedata.md
-  - docs/models/components/unifiedatscandidateoutputcreatedat.md
-  - docs/models/components/unifiedatscandidateoutputmodifiedat.md
   - docs/models/components/unifiedatscandidateoutput.md
   - docs/models/components/url.md
-  - docs/models/components/unifiedatscandidateinputfieldmappings.md
   - docs/models/components/unifiedatscandidateinput.md
-  - docs/models/components/unifiedatsdepartmentoutputfieldmappings.md
-  - docs/models/components/unifiedatsdepartmentoutputremotedata.md
-  - docs/models/components/unifiedatsdepartmentoutputcreatedat.md
-  - docs/models/components/unifiedatsdepartmentoutputmodifiedat.md
   - docs/models/components/unifiedatsdepartmentoutput.md
-  - docs/models/components/unifiedatsinterviewoutputfieldmappings.md
-  - docs/models/components/unifiedatsinterviewoutputremotedata.md
-  - docs/models/components/unifiedatsinterviewoutputcreatedat.md
-  - docs/models/components/unifiedatsinterviewoutputmodifiedat.md
   - docs/models/components/unifiedatsinterviewoutput.md
-  - docs/models/components/unifiedatsinterviewinputfieldmappings.md
   - docs/models/components/unifiedatsinterviewinput.md
-  - docs/models/components/unifiedatsjobinterviewstageoutputfieldmappings.md
-  - docs/models/components/unifiedatsjobinterviewstageoutputremotedata.md
-  - docs/models/components/unifiedatsjobinterviewstageoutputcreatedat.md
-  - docs/models/components/unifiedatsjobinterviewstageoutputmodifiedat.md
   - docs/models/components/unifiedatsjobinterviewstageoutput.md
-  - docs/models/components/unifiedatsjoboutputfieldmappings.md
-  - docs/models/components/unifiedatsjoboutputremotedata.md
-  - docs/models/components/unifiedatsjoboutputcreatedat.md
-  - docs/models/components/unifiedatsjoboutputmodifiedat.md
   - docs/models/components/unifiedatsjoboutput.md
-  - docs/models/components/unifiedatsofferoutputfieldmappings.md
-  - docs/models/components/unifiedatsofferoutputremotedata.md
   - docs/models/components/unifiedatsofferoutputcreatedat.md
   - docs/models/components/unifiedatsofferoutputmodifiedat.md
   - docs/models/components/unifiedatsofferoutput.md
-  - docs/models/components/unifiedatsofficeoutputfieldmappings.md
-  - docs/models/components/unifiedatsofficeoutputremotedata.md
-  - docs/models/components/unifiedatsofficeoutputcreatedat.md
-  - docs/models/components/unifiedatsofficeoutputmodifiedat.md
   - docs/models/components/unifiedatsofficeoutput.md
-  - docs/models/components/unifiedatsrejectreasonoutputfieldmappings.md
-  - docs/models/components/unifiedatsrejectreasonoutputremotedata.md
-  - docs/models/components/unifiedatsrejectreasonoutputcreatedat.md
-  - docs/models/components/unifiedatsrejectreasonoutputmodifiedat.md
   - docs/models/components/unifiedatsrejectreasonoutput.md
-  - docs/models/components/unifiedatsscorecardoutputfieldmappings.md
-  - docs/models/components/unifiedatsscorecardoutputremotedata.md
-  - docs/models/components/unifiedatsscorecardoutputcreatedat.md
-  - docs/models/components/unifiedatsscorecardoutputmodifiedat.md
   - docs/models/components/unifiedatsscorecardoutput.md
-  - docs/models/components/unifiedatstagoutputfieldmappings.md
-  - docs/models/components/unifiedatstagoutputremotedata.md
   - docs/models/components/unifiedatstagoutput.md
-  - docs/models/components/unifiedatsuseroutputfieldmappings.md
-  - docs/models/components/unifiedatsuseroutputremotedata.md
-  - docs/models/components/unifiedatsuseroutputcreatedat.md
-  - docs/models/components/unifiedatsuseroutputmodifiedat.md
   - docs/models/components/unifiedatsuseroutput.md
-  - docs/models/components/unifiedatseeocsoutputfieldmappings.md
-  - docs/models/components/unifiedatseeocsoutputremotedata.md
-  - docs/models/components/unifiedatseeocsoutputcreatedat.md
-  - docs/models/components/unifiedatseeocsoutputmodifiedat.md
   - docs/models/components/unifiedatseeocsoutput.md
   - docs/models/components/unifiedaccountingaccountoutput.md
   - docs/models/components/unifiedaccountingaccountinput.md
@@ -1251,34 +1132,12 @@ generatedFiles:
   - docs/models/components/unifiedaccountingtrackingcategoryoutput.md
   - docs/models/components/unifiedaccountingtransactionoutput.md
   - docs/models/components/unifiedaccountingvendorcreditoutput.md
-  - docs/models/components/unifiedfilestoragedriveoutputfieldmappings.md
-  - docs/models/components/unifiedfilestoragedriveoutputremotedata.md
-  - docs/models/components/unifiedfilestoragedriveoutputcreatedat.md
-  - docs/models/components/unifiedfilestoragedriveoutputmodifiedat.md
   - docs/models/components/unifiedfilestoragedriveoutput.md
-  - docs/models/components/unifiedfilestoragefileoutputfieldmappings.md
-  - docs/models/components/unifiedfilestoragefileoutputremotedata.md
-  - docs/models/components/unifiedfilestoragefileoutputcreatedat.md
-  - docs/models/components/unifiedfilestoragefileoutputmodifiedat.md
   - docs/models/components/unifiedfilestoragefileoutput.md
-  - docs/models/components/unifiedfilestoragefileinputfieldmappings.md
   - docs/models/components/unifiedfilestoragefileinput.md
-  - docs/models/components/unifiedfilestoragefolderoutputfieldmappings.md
-  - docs/models/components/unifiedfilestoragefolderoutputremotedata.md
-  - docs/models/components/unifiedfilestoragefolderoutputcreatedat.md
-  - docs/models/components/unifiedfilestoragefolderoutputmodifiedat.md
   - docs/models/components/unifiedfilestoragefolderoutput.md
-  - docs/models/components/unifiedfilestoragefolderinputfieldmappings.md
   - docs/models/components/unifiedfilestoragefolderinput.md
-  - docs/models/components/unifiedfilestoragegroupoutputfieldmappings.md
-  - docs/models/components/unifiedfilestoragegroupoutputremotedata.md
-  - docs/models/components/unifiedfilestoragegroupoutputcreatedat.md
-  - docs/models/components/unifiedfilestoragegroupoutputmodifiedat.md
   - docs/models/components/unifiedfilestoragegroupoutput.md
-  - docs/models/components/unifieduseroutputfieldmappings.md
-  - docs/models/components/unifieduseroutputremotedata.md
-  - docs/models/components/unifieduseroutputcreatedat.md
-  - docs/models/components/unifieduseroutputmodifiedat.md
   - docs/models/components/unifieduseroutput.md
   - docs/lib/utils/retryconfig.md
   - docs/sdks/panora/README.md

@@ -5,172 +5,56 @@
 import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
-export type UnifiedCrmDealOutputFieldMappings = {};
-
-export type UnifiedCrmDealOutputRemoteData = {};
-
-export type UnifiedCrmDealOutputCreatedAt = {};
-
-export type UnifiedCrmDealOutputModifiedAt = {};
-
 export type UnifiedCrmDealOutput = {
     /**
      * The name of the deal
      */
-    name: string;
+    name: string | null;
     /**
      * The description of the deal
      */
-    description: string;
+    description: string | null;
     /**
      * The amount of the deal
      */
-    amount: number;
+    amount: number | null;
     /**
      * The UUID of the user who is on the deal
      */
-    userId?: string | undefined;
+    userId?: string | null | undefined;
     /**
      * The UUID of the stage of the deal
      */
-    stageId?: string | undefined;
+    stageId?: string | null | undefined;
     /**
      * The UUID of the company tied to the deal
      */
-    companyId?: string | undefined;
-    fieldMappings: UnifiedCrmDealOutputFieldMappings;
+    companyId?: string | null | undefined;
+    /**
+     * The custom field mappings of the company between the remote 3rd party & Panora
+     */
+    fieldMappings?: { [k: string]: any } | null | undefined;
     /**
      * The UUID of the deal
      */
-    id?: string | undefined;
+    id?: string | null | undefined;
     /**
      * The id of the deal in the context of the Crm 3rd Party
      */
-    remoteId?: string | undefined;
-    remoteData: UnifiedCrmDealOutputRemoteData;
-    createdAt: UnifiedCrmDealOutputCreatedAt;
-    modifiedAt: UnifiedCrmDealOutputModifiedAt;
+    remoteId?: string | null | undefined;
+    /**
+     * The remote data of the deal in the context of the Crm 3rd Party
+     */
+    remoteData?: { [k: string]: any } | null | undefined;
+    /**
+     * The created date of the object
+     */
+    createdAt?: Date | null | undefined;
+    /**
+     * The modified date of the object
+     */
+    modifiedAt?: Date | null | undefined;
 };
-
-/** @internal */
-export const UnifiedCrmDealOutputFieldMappings$inboundSchema: z.ZodType<
-    UnifiedCrmDealOutputFieldMappings,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedCrmDealOutputFieldMappings$Outbound = {};
-
-/** @internal */
-export const UnifiedCrmDealOutputFieldMappings$outboundSchema: z.ZodType<
-    UnifiedCrmDealOutputFieldMappings$Outbound,
-    z.ZodTypeDef,
-    UnifiedCrmDealOutputFieldMappings
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedCrmDealOutputFieldMappings$ {
-    /** @deprecated use `UnifiedCrmDealOutputFieldMappings$inboundSchema` instead. */
-    export const inboundSchema = UnifiedCrmDealOutputFieldMappings$inboundSchema;
-    /** @deprecated use `UnifiedCrmDealOutputFieldMappings$outboundSchema` instead. */
-    export const outboundSchema = UnifiedCrmDealOutputFieldMappings$outboundSchema;
-    /** @deprecated use `UnifiedCrmDealOutputFieldMappings$Outbound` instead. */
-    export type Outbound = UnifiedCrmDealOutputFieldMappings$Outbound;
-}
-
-/** @internal */
-export const UnifiedCrmDealOutputRemoteData$inboundSchema: z.ZodType<
-    UnifiedCrmDealOutputRemoteData,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedCrmDealOutputRemoteData$Outbound = {};
-
-/** @internal */
-export const UnifiedCrmDealOutputRemoteData$outboundSchema: z.ZodType<
-    UnifiedCrmDealOutputRemoteData$Outbound,
-    z.ZodTypeDef,
-    UnifiedCrmDealOutputRemoteData
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedCrmDealOutputRemoteData$ {
-    /** @deprecated use `UnifiedCrmDealOutputRemoteData$inboundSchema` instead. */
-    export const inboundSchema = UnifiedCrmDealOutputRemoteData$inboundSchema;
-    /** @deprecated use `UnifiedCrmDealOutputRemoteData$outboundSchema` instead. */
-    export const outboundSchema = UnifiedCrmDealOutputRemoteData$outboundSchema;
-    /** @deprecated use `UnifiedCrmDealOutputRemoteData$Outbound` instead. */
-    export type Outbound = UnifiedCrmDealOutputRemoteData$Outbound;
-}
-
-/** @internal */
-export const UnifiedCrmDealOutputCreatedAt$inboundSchema: z.ZodType<
-    UnifiedCrmDealOutputCreatedAt,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedCrmDealOutputCreatedAt$Outbound = {};
-
-/** @internal */
-export const UnifiedCrmDealOutputCreatedAt$outboundSchema: z.ZodType<
-    UnifiedCrmDealOutputCreatedAt$Outbound,
-    z.ZodTypeDef,
-    UnifiedCrmDealOutputCreatedAt
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedCrmDealOutputCreatedAt$ {
-    /** @deprecated use `UnifiedCrmDealOutputCreatedAt$inboundSchema` instead. */
-    export const inboundSchema = UnifiedCrmDealOutputCreatedAt$inboundSchema;
-    /** @deprecated use `UnifiedCrmDealOutputCreatedAt$outboundSchema` instead. */
-    export const outboundSchema = UnifiedCrmDealOutputCreatedAt$outboundSchema;
-    /** @deprecated use `UnifiedCrmDealOutputCreatedAt$Outbound` instead. */
-    export type Outbound = UnifiedCrmDealOutputCreatedAt$Outbound;
-}
-
-/** @internal */
-export const UnifiedCrmDealOutputModifiedAt$inboundSchema: z.ZodType<
-    UnifiedCrmDealOutputModifiedAt,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedCrmDealOutputModifiedAt$Outbound = {};
-
-/** @internal */
-export const UnifiedCrmDealOutputModifiedAt$outboundSchema: z.ZodType<
-    UnifiedCrmDealOutputModifiedAt$Outbound,
-    z.ZodTypeDef,
-    UnifiedCrmDealOutputModifiedAt
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedCrmDealOutputModifiedAt$ {
-    /** @deprecated use `UnifiedCrmDealOutputModifiedAt$inboundSchema` instead. */
-    export const inboundSchema = UnifiedCrmDealOutputModifiedAt$inboundSchema;
-    /** @deprecated use `UnifiedCrmDealOutputModifiedAt$outboundSchema` instead. */
-    export const outboundSchema = UnifiedCrmDealOutputModifiedAt$outboundSchema;
-    /** @deprecated use `UnifiedCrmDealOutputModifiedAt$Outbound` instead. */
-    export type Outbound = UnifiedCrmDealOutputModifiedAt$Outbound;
-}
 
 /** @internal */
 export const UnifiedCrmDealOutput$inboundSchema: z.ZodType<
@@ -179,18 +63,32 @@ export const UnifiedCrmDealOutput$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        name: z.string(),
-        description: z.string(),
-        amount: z.number(),
-        user_id: z.string().optional(),
-        stage_id: z.string().optional(),
-        company_id: z.string().optional(),
-        field_mappings: z.lazy(() => UnifiedCrmDealOutputFieldMappings$inboundSchema),
-        id: z.string().optional(),
-        remote_id: z.string().optional(),
-        remote_data: z.lazy(() => UnifiedCrmDealOutputRemoteData$inboundSchema),
-        created_at: z.lazy(() => UnifiedCrmDealOutputCreatedAt$inboundSchema),
-        modified_at: z.lazy(() => UnifiedCrmDealOutputModifiedAt$inboundSchema),
+        name: z.nullable(z.string()),
+        description: z.nullable(z.string()),
+        amount: z.nullable(z.number()),
+        user_id: z.nullable(z.string()).optional(),
+        stage_id: z.nullable(z.string()).optional(),
+        company_id: z.nullable(z.string()).optional(),
+        field_mappings: z.nullable(z.record(z.any())).optional(),
+        id: z.nullable(z.string()).optional(),
+        remote_id: z.nullable(z.string()).optional(),
+        remote_data: z.nullable(z.record(z.any())).optional(),
+        created_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        modified_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -207,18 +105,18 @@ export const UnifiedCrmDealOutput$inboundSchema: z.ZodType<
 
 /** @internal */
 export type UnifiedCrmDealOutput$Outbound = {
-    name: string;
-    description: string;
-    amount: number;
-    user_id?: string | undefined;
-    stage_id?: string | undefined;
-    company_id?: string | undefined;
-    field_mappings: UnifiedCrmDealOutputFieldMappings$Outbound;
-    id?: string | undefined;
-    remote_id?: string | undefined;
-    remote_data: UnifiedCrmDealOutputRemoteData$Outbound;
-    created_at: UnifiedCrmDealOutputCreatedAt$Outbound;
-    modified_at: UnifiedCrmDealOutputModifiedAt$Outbound;
+    name: string | null;
+    description: string | null;
+    amount: number | null;
+    user_id?: string | null | undefined;
+    stage_id?: string | null | undefined;
+    company_id?: string | null | undefined;
+    field_mappings?: { [k: string]: any } | null | undefined;
+    id?: string | null | undefined;
+    remote_id?: string | null | undefined;
+    remote_data?: { [k: string]: any } | null | undefined;
+    created_at?: string | null | undefined;
+    modified_at?: string | null | undefined;
 };
 
 /** @internal */
@@ -228,18 +126,18 @@ export const UnifiedCrmDealOutput$outboundSchema: z.ZodType<
     UnifiedCrmDealOutput
 > = z
     .object({
-        name: z.string(),
-        description: z.string(),
-        amount: z.number(),
-        userId: z.string().optional(),
-        stageId: z.string().optional(),
-        companyId: z.string().optional(),
-        fieldMappings: z.lazy(() => UnifiedCrmDealOutputFieldMappings$outboundSchema),
-        id: z.string().optional(),
-        remoteId: z.string().optional(),
-        remoteData: z.lazy(() => UnifiedCrmDealOutputRemoteData$outboundSchema),
-        createdAt: z.lazy(() => UnifiedCrmDealOutputCreatedAt$outboundSchema),
-        modifiedAt: z.lazy(() => UnifiedCrmDealOutputModifiedAt$outboundSchema),
+        name: z.nullable(z.string()),
+        description: z.nullable(z.string()),
+        amount: z.nullable(z.number()),
+        userId: z.nullable(z.string()).optional(),
+        stageId: z.nullable(z.string()).optional(),
+        companyId: z.nullable(z.string()).optional(),
+        fieldMappings: z.nullable(z.record(z.any())).optional(),
+        id: z.nullable(z.string()).optional(),
+        remoteId: z.nullable(z.string()).optional(),
+        remoteData: z.nullable(z.record(z.any())).optional(),
+        createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        modifiedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
     })
     .transform((v) => {
         return remap$(v, {

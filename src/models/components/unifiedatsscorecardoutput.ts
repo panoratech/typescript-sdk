@@ -5,36 +5,31 @@
 import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
-export type UnifiedAtsScorecardOutputFieldMappings = {};
-
-export type UnifiedAtsScorecardOutputRemoteData = {};
-
-export type UnifiedAtsScorecardOutputCreatedAt = {};
-
-export type UnifiedAtsScorecardOutputModifiedAt = {};
-
 export type UnifiedAtsScorecardOutput = {
     /**
      * The overall recommendation
      */
-    overallRecommendation?: string | undefined;
+    overallRecommendation?: string | null | undefined;
     /**
      * The UUID of the application
      */
-    applicationId?: string | undefined;
+    applicationId?: string | null | undefined;
     /**
      * The UUID of the interview
      */
-    interviewId?: string | undefined;
+    interviewId?: string | null | undefined;
     /**
      * The remote creation date of the scorecard
      */
-    remoteCreatedAt?: Date | undefined;
+    remoteCreatedAt?: string | null | undefined;
     /**
      * The submission date of the scorecard
      */
-    submittedAt?: Date | undefined;
-    fieldMappings: UnifiedAtsScorecardOutputFieldMappings;
+    submittedAt?: string | null | undefined;
+    /**
+     * The custom field mappings of the object between the remote 3rd party & Panora
+     */
+    fieldMappings?: { [k: string]: any } | null | undefined;
     /**
      * The UUID of the scorecard
      */
@@ -42,131 +37,20 @@ export type UnifiedAtsScorecardOutput = {
     /**
      * The remote ID of the scorecard in the context of the 3rd Party
      */
-    remoteId?: string | undefined;
-    remoteData: UnifiedAtsScorecardOutputRemoteData;
-    createdAt: UnifiedAtsScorecardOutputCreatedAt;
-    modifiedAt: UnifiedAtsScorecardOutputModifiedAt;
+    remoteId?: string | null | undefined;
+    /**
+     * The remote data of the scorecard in the context of the 3rd Party
+     */
+    remoteData?: { [k: string]: any } | null | undefined;
+    /**
+     * The created date of the object
+     */
+    createdAt?: Date | null | undefined;
+    /**
+     * The modified date of the object
+     */
+    modifiedAt?: Date | null | undefined;
 };
-
-/** @internal */
-export const UnifiedAtsScorecardOutputFieldMappings$inboundSchema: z.ZodType<
-    UnifiedAtsScorecardOutputFieldMappings,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedAtsScorecardOutputFieldMappings$Outbound = {};
-
-/** @internal */
-export const UnifiedAtsScorecardOutputFieldMappings$outboundSchema: z.ZodType<
-    UnifiedAtsScorecardOutputFieldMappings$Outbound,
-    z.ZodTypeDef,
-    UnifiedAtsScorecardOutputFieldMappings
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedAtsScorecardOutputFieldMappings$ {
-    /** @deprecated use `UnifiedAtsScorecardOutputFieldMappings$inboundSchema` instead. */
-    export const inboundSchema = UnifiedAtsScorecardOutputFieldMappings$inboundSchema;
-    /** @deprecated use `UnifiedAtsScorecardOutputFieldMappings$outboundSchema` instead. */
-    export const outboundSchema = UnifiedAtsScorecardOutputFieldMappings$outboundSchema;
-    /** @deprecated use `UnifiedAtsScorecardOutputFieldMappings$Outbound` instead. */
-    export type Outbound = UnifiedAtsScorecardOutputFieldMappings$Outbound;
-}
-
-/** @internal */
-export const UnifiedAtsScorecardOutputRemoteData$inboundSchema: z.ZodType<
-    UnifiedAtsScorecardOutputRemoteData,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedAtsScorecardOutputRemoteData$Outbound = {};
-
-/** @internal */
-export const UnifiedAtsScorecardOutputRemoteData$outboundSchema: z.ZodType<
-    UnifiedAtsScorecardOutputRemoteData$Outbound,
-    z.ZodTypeDef,
-    UnifiedAtsScorecardOutputRemoteData
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedAtsScorecardOutputRemoteData$ {
-    /** @deprecated use `UnifiedAtsScorecardOutputRemoteData$inboundSchema` instead. */
-    export const inboundSchema = UnifiedAtsScorecardOutputRemoteData$inboundSchema;
-    /** @deprecated use `UnifiedAtsScorecardOutputRemoteData$outboundSchema` instead. */
-    export const outboundSchema = UnifiedAtsScorecardOutputRemoteData$outboundSchema;
-    /** @deprecated use `UnifiedAtsScorecardOutputRemoteData$Outbound` instead. */
-    export type Outbound = UnifiedAtsScorecardOutputRemoteData$Outbound;
-}
-
-/** @internal */
-export const UnifiedAtsScorecardOutputCreatedAt$inboundSchema: z.ZodType<
-    UnifiedAtsScorecardOutputCreatedAt,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedAtsScorecardOutputCreatedAt$Outbound = {};
-
-/** @internal */
-export const UnifiedAtsScorecardOutputCreatedAt$outboundSchema: z.ZodType<
-    UnifiedAtsScorecardOutputCreatedAt$Outbound,
-    z.ZodTypeDef,
-    UnifiedAtsScorecardOutputCreatedAt
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedAtsScorecardOutputCreatedAt$ {
-    /** @deprecated use `UnifiedAtsScorecardOutputCreatedAt$inboundSchema` instead. */
-    export const inboundSchema = UnifiedAtsScorecardOutputCreatedAt$inboundSchema;
-    /** @deprecated use `UnifiedAtsScorecardOutputCreatedAt$outboundSchema` instead. */
-    export const outboundSchema = UnifiedAtsScorecardOutputCreatedAt$outboundSchema;
-    /** @deprecated use `UnifiedAtsScorecardOutputCreatedAt$Outbound` instead. */
-    export type Outbound = UnifiedAtsScorecardOutputCreatedAt$Outbound;
-}
-
-/** @internal */
-export const UnifiedAtsScorecardOutputModifiedAt$inboundSchema: z.ZodType<
-    UnifiedAtsScorecardOutputModifiedAt,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedAtsScorecardOutputModifiedAt$Outbound = {};
-
-/** @internal */
-export const UnifiedAtsScorecardOutputModifiedAt$outboundSchema: z.ZodType<
-    UnifiedAtsScorecardOutputModifiedAt$Outbound,
-    z.ZodTypeDef,
-    UnifiedAtsScorecardOutputModifiedAt
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedAtsScorecardOutputModifiedAt$ {
-    /** @deprecated use `UnifiedAtsScorecardOutputModifiedAt$inboundSchema` instead. */
-    export const inboundSchema = UnifiedAtsScorecardOutputModifiedAt$inboundSchema;
-    /** @deprecated use `UnifiedAtsScorecardOutputModifiedAt$outboundSchema` instead. */
-    export const outboundSchema = UnifiedAtsScorecardOutputModifiedAt$outboundSchema;
-    /** @deprecated use `UnifiedAtsScorecardOutputModifiedAt$Outbound` instead. */
-    export type Outbound = UnifiedAtsScorecardOutputModifiedAt$Outbound;
-}
 
 /** @internal */
 export const UnifiedAtsScorecardOutput$inboundSchema: z.ZodType<
@@ -175,25 +59,31 @@ export const UnifiedAtsScorecardOutput$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        overall_recommendation: z.string().optional(),
-        application_id: z.string().optional(),
-        interview_id: z.string().optional(),
-        remote_created_at: z
-            .string()
-            .datetime({ offset: true })
-            .transform((v) => new Date(v))
-            .optional(),
-        submitted_at: z
-            .string()
-            .datetime({ offset: true })
-            .transform((v) => new Date(v))
-            .optional(),
-        field_mappings: z.lazy(() => UnifiedAtsScorecardOutputFieldMappings$inboundSchema),
+        overall_recommendation: z.nullable(z.string()).optional(),
+        application_id: z.nullable(z.string()).optional(),
+        interview_id: z.nullable(z.string()).optional(),
+        remote_created_at: z.nullable(z.string()).optional(),
+        submitted_at: z.nullable(z.string()).optional(),
+        field_mappings: z.nullable(z.record(z.any())).optional(),
         id: z.string().optional(),
-        remote_id: z.string().optional(),
-        remote_data: z.lazy(() => UnifiedAtsScorecardOutputRemoteData$inboundSchema),
-        created_at: z.lazy(() => UnifiedAtsScorecardOutputCreatedAt$inboundSchema),
-        modified_at: z.lazy(() => UnifiedAtsScorecardOutputModifiedAt$inboundSchema),
+        remote_id: z.nullable(z.string()).optional(),
+        remote_data: z.nullable(z.record(z.any())).optional(),
+        created_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        modified_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -212,17 +102,17 @@ export const UnifiedAtsScorecardOutput$inboundSchema: z.ZodType<
 
 /** @internal */
 export type UnifiedAtsScorecardOutput$Outbound = {
-    overall_recommendation?: string | undefined;
-    application_id?: string | undefined;
-    interview_id?: string | undefined;
-    remote_created_at?: string | undefined;
-    submitted_at?: string | undefined;
-    field_mappings: UnifiedAtsScorecardOutputFieldMappings$Outbound;
+    overall_recommendation?: string | null | undefined;
+    application_id?: string | null | undefined;
+    interview_id?: string | null | undefined;
+    remote_created_at?: string | null | undefined;
+    submitted_at?: string | null | undefined;
+    field_mappings?: { [k: string]: any } | null | undefined;
     id?: string | undefined;
-    remote_id?: string | undefined;
-    remote_data: UnifiedAtsScorecardOutputRemoteData$Outbound;
-    created_at: UnifiedAtsScorecardOutputCreatedAt$Outbound;
-    modified_at: UnifiedAtsScorecardOutputModifiedAt$Outbound;
+    remote_id?: string | null | undefined;
+    remote_data?: { [k: string]: any } | null | undefined;
+    created_at?: string | null | undefined;
+    modified_at?: string | null | undefined;
 };
 
 /** @internal */
@@ -232,23 +122,17 @@ export const UnifiedAtsScorecardOutput$outboundSchema: z.ZodType<
     UnifiedAtsScorecardOutput
 > = z
     .object({
-        overallRecommendation: z.string().optional(),
-        applicationId: z.string().optional(),
-        interviewId: z.string().optional(),
-        remoteCreatedAt: z
-            .date()
-            .transform((v) => v.toISOString())
-            .optional(),
-        submittedAt: z
-            .date()
-            .transform((v) => v.toISOString())
-            .optional(),
-        fieldMappings: z.lazy(() => UnifiedAtsScorecardOutputFieldMappings$outboundSchema),
+        overallRecommendation: z.nullable(z.string()).optional(),
+        applicationId: z.nullable(z.string()).optional(),
+        interviewId: z.nullable(z.string()).optional(),
+        remoteCreatedAt: z.nullable(z.string()).optional(),
+        submittedAt: z.nullable(z.string()).optional(),
+        fieldMappings: z.nullable(z.record(z.any())).optional(),
         id: z.string().optional(),
-        remoteId: z.string().optional(),
-        remoteData: z.lazy(() => UnifiedAtsScorecardOutputRemoteData$outboundSchema),
-        createdAt: z.lazy(() => UnifiedAtsScorecardOutputCreatedAt$outboundSchema),
-        modifiedAt: z.lazy(() => UnifiedAtsScorecardOutputModifiedAt$outboundSchema),
+        remoteId: z.nullable(z.string()).optional(),
+        remoteData: z.nullable(z.record(z.any())).optional(),
+        createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        modifiedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
     })
     .transform((v) => {
         return remap$(v, {

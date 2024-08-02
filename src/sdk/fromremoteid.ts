@@ -60,7 +60,7 @@ export class Fromremoteid extends ClientSDK {
         });
 
         const headers$ = new Headers({
-            Accept: "*/*",
+            Accept: "application/json",
         });
 
         const context = { operationID: "remoteId", oAuth2Scopes: [], securitySource: null };
@@ -90,7 +90,7 @@ export class Fromremoteid extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.RemoteIdResponse>()
-            .void(200, operations.RemoteIdResponse$inboundSchema)
+            .json(200, operations.RemoteIdResponse$inboundSchema, { key: "LinkedUserResponse" })
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 

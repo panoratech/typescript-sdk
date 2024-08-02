@@ -60,7 +60,7 @@ export class Define extends ClientSDK {
 
         const headers$ = new Headers({
             "Content-Type": "application/json",
-            Accept: "*/*",
+            Accept: "application/json",
         });
 
         const context = { operationID: "definitions", oAuth2Scopes: [], securitySource: null };
@@ -90,7 +90,7 @@ export class Define extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.DefinitionsResponse>()
-            .void(201, operations.DefinitionsResponse$inboundSchema)
+            .json(201, operations.DefinitionsResponse$inboundSchema, { key: "CustomFieldResponse" })
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 

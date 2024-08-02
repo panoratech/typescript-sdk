@@ -5,77 +5,48 @@
 import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
-export type UnifiedAtsApplicationInputFieldMappings = {};
-
 export type UnifiedAtsApplicationInput = {
     /**
      * The application date
      */
-    appliedAt?: Date | undefined;
+    appliedAt?: Date | null | undefined;
     /**
      * The rejection date
      */
-    rejectedAt?: Date | undefined;
+    rejectedAt?: Date | null | undefined;
     /**
      * The offers UUIDs for the application
      */
-    offers?: Array<string> | undefined;
+    offers?: Array<string> | null | undefined;
     /**
      * The source of the application
      */
-    source?: string | undefined;
+    source?: string | null | undefined;
     /**
      * The UUID of the person credited for the application
      */
-    creditedTo?: string | undefined;
+    creditedTo?: string | null | undefined;
     /**
      * The UUID of the current stage of the application
      */
-    currentStage?: string | undefined;
+    currentStage?: string | null | undefined;
     /**
      * The rejection reason for the application
      */
-    rejectReason?: string | undefined;
+    rejectReason?: string | null | undefined;
     /**
      * The UUID of the candidate
      */
-    candidateId?: string | undefined;
+    candidateId?: string | null | undefined;
     /**
      * The UUID of the job
      */
     jobId?: string | undefined;
-    fieldMappings: UnifiedAtsApplicationInputFieldMappings;
+    /**
+     * The custom field mappings of the object between the remote 3rd party & Panora
+     */
+    fieldMappings?: { [k: string]: any } | null | undefined;
 };
-
-/** @internal */
-export const UnifiedAtsApplicationInputFieldMappings$inboundSchema: z.ZodType<
-    UnifiedAtsApplicationInputFieldMappings,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedAtsApplicationInputFieldMappings$Outbound = {};
-
-/** @internal */
-export const UnifiedAtsApplicationInputFieldMappings$outboundSchema: z.ZodType<
-    UnifiedAtsApplicationInputFieldMappings$Outbound,
-    z.ZodTypeDef,
-    UnifiedAtsApplicationInputFieldMappings
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedAtsApplicationInputFieldMappings$ {
-    /** @deprecated use `UnifiedAtsApplicationInputFieldMappings$inboundSchema` instead. */
-    export const inboundSchema = UnifiedAtsApplicationInputFieldMappings$inboundSchema;
-    /** @deprecated use `UnifiedAtsApplicationInputFieldMappings$outboundSchema` instead. */
-    export const outboundSchema = UnifiedAtsApplicationInputFieldMappings$outboundSchema;
-    /** @deprecated use `UnifiedAtsApplicationInputFieldMappings$Outbound` instead. */
-    export type Outbound = UnifiedAtsApplicationInputFieldMappings$Outbound;
-}
 
 /** @internal */
 export const UnifiedAtsApplicationInput$inboundSchema: z.ZodType<
@@ -85,23 +56,29 @@ export const UnifiedAtsApplicationInput$inboundSchema: z.ZodType<
 > = z
     .object({
         applied_at: z
-            .string()
-            .datetime({ offset: true })
-            .transform((v) => new Date(v))
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
             .optional(),
         rejected_at: z
-            .string()
-            .datetime({ offset: true })
-            .transform((v) => new Date(v))
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
             .optional(),
-        offers: z.array(z.string()).optional(),
-        source: z.string().optional(),
-        credited_to: z.string().optional(),
-        current_stage: z.string().optional(),
-        reject_reason: z.string().optional(),
-        candidate_id: z.string().optional(),
+        offers: z.nullable(z.array(z.string())).optional(),
+        source: z.nullable(z.string()).optional(),
+        credited_to: z.nullable(z.string()).optional(),
+        current_stage: z.nullable(z.string()).optional(),
+        reject_reason: z.nullable(z.string()).optional(),
+        candidate_id: z.nullable(z.string()).optional(),
         job_id: z.string().optional(),
-        field_mappings: z.lazy(() => UnifiedAtsApplicationInputFieldMappings$inboundSchema),
+        field_mappings: z.nullable(z.record(z.any())).optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -118,16 +95,16 @@ export const UnifiedAtsApplicationInput$inboundSchema: z.ZodType<
 
 /** @internal */
 export type UnifiedAtsApplicationInput$Outbound = {
-    applied_at?: string | undefined;
-    rejected_at?: string | undefined;
-    offers?: Array<string> | undefined;
-    source?: string | undefined;
-    credited_to?: string | undefined;
-    current_stage?: string | undefined;
-    reject_reason?: string | undefined;
-    candidate_id?: string | undefined;
+    applied_at?: string | null | undefined;
+    rejected_at?: string | null | undefined;
+    offers?: Array<string> | null | undefined;
+    source?: string | null | undefined;
+    credited_to?: string | null | undefined;
+    current_stage?: string | null | undefined;
+    reject_reason?: string | null | undefined;
+    candidate_id?: string | null | undefined;
     job_id?: string | undefined;
-    field_mappings: UnifiedAtsApplicationInputFieldMappings$Outbound;
+    field_mappings?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
@@ -137,22 +114,16 @@ export const UnifiedAtsApplicationInput$outboundSchema: z.ZodType<
     UnifiedAtsApplicationInput
 > = z
     .object({
-        appliedAt: z
-            .date()
-            .transform((v) => v.toISOString())
-            .optional(),
-        rejectedAt: z
-            .date()
-            .transform((v) => v.toISOString())
-            .optional(),
-        offers: z.array(z.string()).optional(),
-        source: z.string().optional(),
-        creditedTo: z.string().optional(),
-        currentStage: z.string().optional(),
-        rejectReason: z.string().optional(),
-        candidateId: z.string().optional(),
+        appliedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        rejectedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        offers: z.nullable(z.array(z.string())).optional(),
+        source: z.nullable(z.string()).optional(),
+        creditedTo: z.nullable(z.string()).optional(),
+        currentStage: z.nullable(z.string()).optional(),
+        rejectReason: z.nullable(z.string()).optional(),
+        candidateId: z.nullable(z.string()).optional(),
         jobId: z.string().optional(),
-        fieldMappings: z.lazy(() => UnifiedAtsApplicationInputFieldMappings$outboundSchema),
+        fieldMappings: z.nullable(z.record(z.any())).optional(),
     })
     .transform((v) => {
         return remap$(v, {

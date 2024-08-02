@@ -5,168 +5,52 @@
 import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
-export type UnifiedCrmNoteOutputFieldMappings = {};
-
-export type UnifiedCrmNoteOutputRemoteData = {};
-
-export type UnifiedCrmNoteOutputCreatedAt = {};
-
-export type UnifiedCrmNoteOutputModifiedAt = {};
-
 export type UnifiedCrmNoteOutput = {
     /**
      * The content of the note
      */
-    content: string;
+    content: string | null;
     /**
      * The UUID of the user tied the note
      */
-    userId?: string | undefined;
+    userId?: string | null | undefined;
     /**
      * The UUID of the company tied to the note
      */
-    companyId?: string | undefined;
+    companyId?: string | null | undefined;
     /**
      * The UUID fo the contact tied to the note
      */
-    contactId?: string | undefined;
+    contactId?: string | null | undefined;
     /**
      * The UUID of the deal tied to the note
      */
-    dealId?: string | undefined;
-    fieldMappings: UnifiedCrmNoteOutputFieldMappings;
+    dealId?: string | null | undefined;
+    /**
+     * The custom field mappings of the note between the remote 3rd party & Panora
+     */
+    fieldMappings?: { [k: string]: any } | null | undefined;
     /**
      * The UUID of the note
      */
-    id?: string | undefined;
+    id?: string | null | undefined;
     /**
      * The id of the note in the context of the Crm 3rd Party
      */
-    remoteId?: string | undefined;
-    remoteData: UnifiedCrmNoteOutputRemoteData;
-    createdAt: UnifiedCrmNoteOutputCreatedAt;
-    modifiedAt: UnifiedCrmNoteOutputModifiedAt;
+    remoteId?: string | null | undefined;
+    /**
+     * The remote data of the note in the context of the Crm 3rd Party
+     */
+    remoteData?: { [k: string]: any } | null | undefined;
+    /**
+     * The created date of the object
+     */
+    createdAt?: Date | null | undefined;
+    /**
+     * The modified date of the object
+     */
+    modifiedAt?: Date | null | undefined;
 };
-
-/** @internal */
-export const UnifiedCrmNoteOutputFieldMappings$inboundSchema: z.ZodType<
-    UnifiedCrmNoteOutputFieldMappings,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedCrmNoteOutputFieldMappings$Outbound = {};
-
-/** @internal */
-export const UnifiedCrmNoteOutputFieldMappings$outboundSchema: z.ZodType<
-    UnifiedCrmNoteOutputFieldMappings$Outbound,
-    z.ZodTypeDef,
-    UnifiedCrmNoteOutputFieldMappings
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedCrmNoteOutputFieldMappings$ {
-    /** @deprecated use `UnifiedCrmNoteOutputFieldMappings$inboundSchema` instead. */
-    export const inboundSchema = UnifiedCrmNoteOutputFieldMappings$inboundSchema;
-    /** @deprecated use `UnifiedCrmNoteOutputFieldMappings$outboundSchema` instead. */
-    export const outboundSchema = UnifiedCrmNoteOutputFieldMappings$outboundSchema;
-    /** @deprecated use `UnifiedCrmNoteOutputFieldMappings$Outbound` instead. */
-    export type Outbound = UnifiedCrmNoteOutputFieldMappings$Outbound;
-}
-
-/** @internal */
-export const UnifiedCrmNoteOutputRemoteData$inboundSchema: z.ZodType<
-    UnifiedCrmNoteOutputRemoteData,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedCrmNoteOutputRemoteData$Outbound = {};
-
-/** @internal */
-export const UnifiedCrmNoteOutputRemoteData$outboundSchema: z.ZodType<
-    UnifiedCrmNoteOutputRemoteData$Outbound,
-    z.ZodTypeDef,
-    UnifiedCrmNoteOutputRemoteData
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedCrmNoteOutputRemoteData$ {
-    /** @deprecated use `UnifiedCrmNoteOutputRemoteData$inboundSchema` instead. */
-    export const inboundSchema = UnifiedCrmNoteOutputRemoteData$inboundSchema;
-    /** @deprecated use `UnifiedCrmNoteOutputRemoteData$outboundSchema` instead. */
-    export const outboundSchema = UnifiedCrmNoteOutputRemoteData$outboundSchema;
-    /** @deprecated use `UnifiedCrmNoteOutputRemoteData$Outbound` instead. */
-    export type Outbound = UnifiedCrmNoteOutputRemoteData$Outbound;
-}
-
-/** @internal */
-export const UnifiedCrmNoteOutputCreatedAt$inboundSchema: z.ZodType<
-    UnifiedCrmNoteOutputCreatedAt,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedCrmNoteOutputCreatedAt$Outbound = {};
-
-/** @internal */
-export const UnifiedCrmNoteOutputCreatedAt$outboundSchema: z.ZodType<
-    UnifiedCrmNoteOutputCreatedAt$Outbound,
-    z.ZodTypeDef,
-    UnifiedCrmNoteOutputCreatedAt
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedCrmNoteOutputCreatedAt$ {
-    /** @deprecated use `UnifiedCrmNoteOutputCreatedAt$inboundSchema` instead. */
-    export const inboundSchema = UnifiedCrmNoteOutputCreatedAt$inboundSchema;
-    /** @deprecated use `UnifiedCrmNoteOutputCreatedAt$outboundSchema` instead. */
-    export const outboundSchema = UnifiedCrmNoteOutputCreatedAt$outboundSchema;
-    /** @deprecated use `UnifiedCrmNoteOutputCreatedAt$Outbound` instead. */
-    export type Outbound = UnifiedCrmNoteOutputCreatedAt$Outbound;
-}
-
-/** @internal */
-export const UnifiedCrmNoteOutputModifiedAt$inboundSchema: z.ZodType<
-    UnifiedCrmNoteOutputModifiedAt,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedCrmNoteOutputModifiedAt$Outbound = {};
-
-/** @internal */
-export const UnifiedCrmNoteOutputModifiedAt$outboundSchema: z.ZodType<
-    UnifiedCrmNoteOutputModifiedAt$Outbound,
-    z.ZodTypeDef,
-    UnifiedCrmNoteOutputModifiedAt
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedCrmNoteOutputModifiedAt$ {
-    /** @deprecated use `UnifiedCrmNoteOutputModifiedAt$inboundSchema` instead. */
-    export const inboundSchema = UnifiedCrmNoteOutputModifiedAt$inboundSchema;
-    /** @deprecated use `UnifiedCrmNoteOutputModifiedAt$outboundSchema` instead. */
-    export const outboundSchema = UnifiedCrmNoteOutputModifiedAt$outboundSchema;
-    /** @deprecated use `UnifiedCrmNoteOutputModifiedAt$Outbound` instead. */
-    export type Outbound = UnifiedCrmNoteOutputModifiedAt$Outbound;
-}
 
 /** @internal */
 export const UnifiedCrmNoteOutput$inboundSchema: z.ZodType<
@@ -175,17 +59,31 @@ export const UnifiedCrmNoteOutput$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        content: z.string(),
-        user_id: z.string().optional(),
-        company_id: z.string().optional(),
-        contact_id: z.string().optional(),
-        deal_id: z.string().optional(),
-        field_mappings: z.lazy(() => UnifiedCrmNoteOutputFieldMappings$inboundSchema),
-        id: z.string().optional(),
-        remote_id: z.string().optional(),
-        remote_data: z.lazy(() => UnifiedCrmNoteOutputRemoteData$inboundSchema),
-        created_at: z.lazy(() => UnifiedCrmNoteOutputCreatedAt$inboundSchema),
-        modified_at: z.lazy(() => UnifiedCrmNoteOutputModifiedAt$inboundSchema),
+        content: z.nullable(z.string()),
+        user_id: z.nullable(z.string()).optional(),
+        company_id: z.nullable(z.string()).optional(),
+        contact_id: z.nullable(z.string()).optional(),
+        deal_id: z.nullable(z.string()).optional(),
+        field_mappings: z.nullable(z.record(z.any())).optional(),
+        id: z.nullable(z.string()).optional(),
+        remote_id: z.nullable(z.string()).optional(),
+        remote_data: z.nullable(z.record(z.any())).optional(),
+        created_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        modified_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -203,17 +101,17 @@ export const UnifiedCrmNoteOutput$inboundSchema: z.ZodType<
 
 /** @internal */
 export type UnifiedCrmNoteOutput$Outbound = {
-    content: string;
-    user_id?: string | undefined;
-    company_id?: string | undefined;
-    contact_id?: string | undefined;
-    deal_id?: string | undefined;
-    field_mappings: UnifiedCrmNoteOutputFieldMappings$Outbound;
-    id?: string | undefined;
-    remote_id?: string | undefined;
-    remote_data: UnifiedCrmNoteOutputRemoteData$Outbound;
-    created_at: UnifiedCrmNoteOutputCreatedAt$Outbound;
-    modified_at: UnifiedCrmNoteOutputModifiedAt$Outbound;
+    content: string | null;
+    user_id?: string | null | undefined;
+    company_id?: string | null | undefined;
+    contact_id?: string | null | undefined;
+    deal_id?: string | null | undefined;
+    field_mappings?: { [k: string]: any } | null | undefined;
+    id?: string | null | undefined;
+    remote_id?: string | null | undefined;
+    remote_data?: { [k: string]: any } | null | undefined;
+    created_at?: string | null | undefined;
+    modified_at?: string | null | undefined;
 };
 
 /** @internal */
@@ -223,17 +121,17 @@ export const UnifiedCrmNoteOutput$outboundSchema: z.ZodType<
     UnifiedCrmNoteOutput
 > = z
     .object({
-        content: z.string(),
-        userId: z.string().optional(),
-        companyId: z.string().optional(),
-        contactId: z.string().optional(),
-        dealId: z.string().optional(),
-        fieldMappings: z.lazy(() => UnifiedCrmNoteOutputFieldMappings$outboundSchema),
-        id: z.string().optional(),
-        remoteId: z.string().optional(),
-        remoteData: z.lazy(() => UnifiedCrmNoteOutputRemoteData$outboundSchema),
-        createdAt: z.lazy(() => UnifiedCrmNoteOutputCreatedAt$outboundSchema),
-        modifiedAt: z.lazy(() => UnifiedCrmNoteOutputModifiedAt$outboundSchema),
+        content: z.nullable(z.string()),
+        userId: z.nullable(z.string()).optional(),
+        companyId: z.nullable(z.string()).optional(),
+        contactId: z.nullable(z.string()).optional(),
+        dealId: z.nullable(z.string()).optional(),
+        fieldMappings: z.nullable(z.record(z.any())).optional(),
+        id: z.nullable(z.string()).optional(),
+        remoteId: z.nullable(z.string()).optional(),
+        remoteData: z.nullable(z.record(z.any())).optional(),
+        createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        modifiedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
     })
     .transform((v) => {
         return remap$(v, {

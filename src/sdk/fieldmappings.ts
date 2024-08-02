@@ -72,7 +72,7 @@ export class FieldMappings extends ClientSDK {
 
         const headers$ = new Headers({
             "Content-Type": "application/json",
-            Accept: "*/*",
+            Accept: "application/json",
         });
 
         const context = {
@@ -106,7 +106,9 @@ export class FieldMappings extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.DefineCustomFieldResponse>()
-            .void(201, operations.DefineCustomFieldResponse$inboundSchema)
+            .json(201, operations.DefineCustomFieldResponse$inboundSchema, {
+                key: "CustomFieldResponse",
+            })
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 

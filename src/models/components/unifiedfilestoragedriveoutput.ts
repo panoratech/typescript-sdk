@@ -5,160 +5,44 @@
 import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
-export type UnifiedFilestorageDriveOutputFieldMappings = {};
-
-export type UnifiedFilestorageDriveOutputRemoteData = {};
-
-export type UnifiedFilestorageDriveOutputCreatedAt = {};
-
-export type UnifiedFilestorageDriveOutputModifiedAt = {};
-
 export type UnifiedFilestorageDriveOutput = {
     /**
      * The name of the drive
      */
-    name: string;
+    name: string | null;
     /**
      * When the third party s drive was created.
      */
-    remoteCreatedAt: string;
+    remoteCreatedAt: string | null;
     /**
      * The url of the drive
      */
-    driveUrl: string;
-    fieldMappings: UnifiedFilestorageDriveOutputFieldMappings;
+    driveUrl: string | null;
+    /**
+     * The custom field mappings of the object between the remote 3rd party & Panora
+     */
+    fieldMappings?: { [k: string]: any } | null | undefined;
     /**
      * The UUID of the drive
      */
-    id?: string | undefined;
+    id?: string | null | undefined;
     /**
      * The id of the drive in the context of the 3rd Party
      */
-    remoteId?: string | undefined;
-    remoteData: UnifiedFilestorageDriveOutputRemoteData;
-    createdAt: UnifiedFilestorageDriveOutputCreatedAt;
-    modifiedAt: UnifiedFilestorageDriveOutputModifiedAt;
+    remoteId?: string | null | undefined;
+    /**
+     * The remote data of the drive in the context of the 3rd Party
+     */
+    remoteData?: { [k: string]: any } | null | undefined;
+    /**
+     * The created date of the object
+     */
+    createdAt?: Date | null | undefined;
+    /**
+     * The modified date of the object
+     */
+    modifiedAt?: Date | null | undefined;
 };
-
-/** @internal */
-export const UnifiedFilestorageDriveOutputFieldMappings$inboundSchema: z.ZodType<
-    UnifiedFilestorageDriveOutputFieldMappings,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedFilestorageDriveOutputFieldMappings$Outbound = {};
-
-/** @internal */
-export const UnifiedFilestorageDriveOutputFieldMappings$outboundSchema: z.ZodType<
-    UnifiedFilestorageDriveOutputFieldMappings$Outbound,
-    z.ZodTypeDef,
-    UnifiedFilestorageDriveOutputFieldMappings
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedFilestorageDriveOutputFieldMappings$ {
-    /** @deprecated use `UnifiedFilestorageDriveOutputFieldMappings$inboundSchema` instead. */
-    export const inboundSchema = UnifiedFilestorageDriveOutputFieldMappings$inboundSchema;
-    /** @deprecated use `UnifiedFilestorageDriveOutputFieldMappings$outboundSchema` instead. */
-    export const outboundSchema = UnifiedFilestorageDriveOutputFieldMappings$outboundSchema;
-    /** @deprecated use `UnifiedFilestorageDriveOutputFieldMappings$Outbound` instead. */
-    export type Outbound = UnifiedFilestorageDriveOutputFieldMappings$Outbound;
-}
-
-/** @internal */
-export const UnifiedFilestorageDriveOutputRemoteData$inboundSchema: z.ZodType<
-    UnifiedFilestorageDriveOutputRemoteData,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedFilestorageDriveOutputRemoteData$Outbound = {};
-
-/** @internal */
-export const UnifiedFilestorageDriveOutputRemoteData$outboundSchema: z.ZodType<
-    UnifiedFilestorageDriveOutputRemoteData$Outbound,
-    z.ZodTypeDef,
-    UnifiedFilestorageDriveOutputRemoteData
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedFilestorageDriveOutputRemoteData$ {
-    /** @deprecated use `UnifiedFilestorageDriveOutputRemoteData$inboundSchema` instead. */
-    export const inboundSchema = UnifiedFilestorageDriveOutputRemoteData$inboundSchema;
-    /** @deprecated use `UnifiedFilestorageDriveOutputRemoteData$outboundSchema` instead. */
-    export const outboundSchema = UnifiedFilestorageDriveOutputRemoteData$outboundSchema;
-    /** @deprecated use `UnifiedFilestorageDriveOutputRemoteData$Outbound` instead. */
-    export type Outbound = UnifiedFilestorageDriveOutputRemoteData$Outbound;
-}
-
-/** @internal */
-export const UnifiedFilestorageDriveOutputCreatedAt$inboundSchema: z.ZodType<
-    UnifiedFilestorageDriveOutputCreatedAt,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedFilestorageDriveOutputCreatedAt$Outbound = {};
-
-/** @internal */
-export const UnifiedFilestorageDriveOutputCreatedAt$outboundSchema: z.ZodType<
-    UnifiedFilestorageDriveOutputCreatedAt$Outbound,
-    z.ZodTypeDef,
-    UnifiedFilestorageDriveOutputCreatedAt
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedFilestorageDriveOutputCreatedAt$ {
-    /** @deprecated use `UnifiedFilestorageDriveOutputCreatedAt$inboundSchema` instead. */
-    export const inboundSchema = UnifiedFilestorageDriveOutputCreatedAt$inboundSchema;
-    /** @deprecated use `UnifiedFilestorageDriveOutputCreatedAt$outboundSchema` instead. */
-    export const outboundSchema = UnifiedFilestorageDriveOutputCreatedAt$outboundSchema;
-    /** @deprecated use `UnifiedFilestorageDriveOutputCreatedAt$Outbound` instead. */
-    export type Outbound = UnifiedFilestorageDriveOutputCreatedAt$Outbound;
-}
-
-/** @internal */
-export const UnifiedFilestorageDriveOutputModifiedAt$inboundSchema: z.ZodType<
-    UnifiedFilestorageDriveOutputModifiedAt,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedFilestorageDriveOutputModifiedAt$Outbound = {};
-
-/** @internal */
-export const UnifiedFilestorageDriveOutputModifiedAt$outboundSchema: z.ZodType<
-    UnifiedFilestorageDriveOutputModifiedAt$Outbound,
-    z.ZodTypeDef,
-    UnifiedFilestorageDriveOutputModifiedAt
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedFilestorageDriveOutputModifiedAt$ {
-    /** @deprecated use `UnifiedFilestorageDriveOutputModifiedAt$inboundSchema` instead. */
-    export const inboundSchema = UnifiedFilestorageDriveOutputModifiedAt$inboundSchema;
-    /** @deprecated use `UnifiedFilestorageDriveOutputModifiedAt$outboundSchema` instead. */
-    export const outboundSchema = UnifiedFilestorageDriveOutputModifiedAt$outboundSchema;
-    /** @deprecated use `UnifiedFilestorageDriveOutputModifiedAt$Outbound` instead. */
-    export type Outbound = UnifiedFilestorageDriveOutputModifiedAt$Outbound;
-}
 
 /** @internal */
 export const UnifiedFilestorageDriveOutput$inboundSchema: z.ZodType<
@@ -167,15 +51,29 @@ export const UnifiedFilestorageDriveOutput$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        name: z.string(),
-        remote_created_at: z.string(),
-        drive_url: z.string(),
-        field_mappings: z.lazy(() => UnifiedFilestorageDriveOutputFieldMappings$inboundSchema),
-        id: z.string().optional(),
-        remote_id: z.string().optional(),
-        remote_data: z.lazy(() => UnifiedFilestorageDriveOutputRemoteData$inboundSchema),
-        created_at: z.lazy(() => UnifiedFilestorageDriveOutputCreatedAt$inboundSchema),
-        modified_at: z.lazy(() => UnifiedFilestorageDriveOutputModifiedAt$inboundSchema),
+        name: z.nullable(z.string()),
+        remote_created_at: z.nullable(z.string()),
+        drive_url: z.nullable(z.string()),
+        field_mappings: z.nullable(z.record(z.any())).optional(),
+        id: z.nullable(z.string()).optional(),
+        remote_id: z.nullable(z.string()).optional(),
+        remote_data: z.nullable(z.record(z.any())).optional(),
+        created_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        modified_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -191,15 +89,15 @@ export const UnifiedFilestorageDriveOutput$inboundSchema: z.ZodType<
 
 /** @internal */
 export type UnifiedFilestorageDriveOutput$Outbound = {
-    name: string;
-    remote_created_at: string;
-    drive_url: string;
-    field_mappings: UnifiedFilestorageDriveOutputFieldMappings$Outbound;
-    id?: string | undefined;
-    remote_id?: string | undefined;
-    remote_data: UnifiedFilestorageDriveOutputRemoteData$Outbound;
-    created_at: UnifiedFilestorageDriveOutputCreatedAt$Outbound;
-    modified_at: UnifiedFilestorageDriveOutputModifiedAt$Outbound;
+    name: string | null;
+    remote_created_at: string | null;
+    drive_url: string | null;
+    field_mappings?: { [k: string]: any } | null | undefined;
+    id?: string | null | undefined;
+    remote_id?: string | null | undefined;
+    remote_data?: { [k: string]: any } | null | undefined;
+    created_at?: string | null | undefined;
+    modified_at?: string | null | undefined;
 };
 
 /** @internal */
@@ -209,15 +107,15 @@ export const UnifiedFilestorageDriveOutput$outboundSchema: z.ZodType<
     UnifiedFilestorageDriveOutput
 > = z
     .object({
-        name: z.string(),
-        remoteCreatedAt: z.string(),
-        driveUrl: z.string(),
-        fieldMappings: z.lazy(() => UnifiedFilestorageDriveOutputFieldMappings$outboundSchema),
-        id: z.string().optional(),
-        remoteId: z.string().optional(),
-        remoteData: z.lazy(() => UnifiedFilestorageDriveOutputRemoteData$outboundSchema),
-        createdAt: z.lazy(() => UnifiedFilestorageDriveOutputCreatedAt$outboundSchema),
-        modifiedAt: z.lazy(() => UnifiedFilestorageDriveOutputModifiedAt$outboundSchema),
+        name: z.nullable(z.string()),
+        remoteCreatedAt: z.nullable(z.string()),
+        driveUrl: z.nullable(z.string()),
+        fieldMappings: z.nullable(z.record(z.any())).optional(),
+        id: z.nullable(z.string()).optional(),
+        remoteId: z.nullable(z.string()).optional(),
+        remoteData: z.nullable(z.record(z.any())).optional(),
+        createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        modifiedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
     })
     .transform((v) => {
         return remap$(v, {

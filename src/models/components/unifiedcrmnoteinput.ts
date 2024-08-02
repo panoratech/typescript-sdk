@@ -5,61 +5,32 @@
 import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
-export type UnifiedCrmNoteInputFieldMappings = {};
-
 export type UnifiedCrmNoteInput = {
     /**
      * The content of the note
      */
-    content: string;
+    content: string | null;
     /**
      * The UUID of the user tied the note
      */
-    userId?: string | undefined;
+    userId?: string | null | undefined;
     /**
      * The UUID of the company tied to the note
      */
-    companyId?: string | undefined;
+    companyId?: string | null | undefined;
     /**
      * The UUID fo the contact tied to the note
      */
-    contactId?: string | undefined;
+    contactId?: string | null | undefined;
     /**
      * The UUID of the deal tied to the note
      */
-    dealId?: string | undefined;
-    fieldMappings: UnifiedCrmNoteInputFieldMappings;
+    dealId?: string | null | undefined;
+    /**
+     * The custom field mappings of the note between the remote 3rd party & Panora
+     */
+    fieldMappings?: { [k: string]: any } | null | undefined;
 };
-
-/** @internal */
-export const UnifiedCrmNoteInputFieldMappings$inboundSchema: z.ZodType<
-    UnifiedCrmNoteInputFieldMappings,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedCrmNoteInputFieldMappings$Outbound = {};
-
-/** @internal */
-export const UnifiedCrmNoteInputFieldMappings$outboundSchema: z.ZodType<
-    UnifiedCrmNoteInputFieldMappings$Outbound,
-    z.ZodTypeDef,
-    UnifiedCrmNoteInputFieldMappings
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedCrmNoteInputFieldMappings$ {
-    /** @deprecated use `UnifiedCrmNoteInputFieldMappings$inboundSchema` instead. */
-    export const inboundSchema = UnifiedCrmNoteInputFieldMappings$inboundSchema;
-    /** @deprecated use `UnifiedCrmNoteInputFieldMappings$outboundSchema` instead. */
-    export const outboundSchema = UnifiedCrmNoteInputFieldMappings$outboundSchema;
-    /** @deprecated use `UnifiedCrmNoteInputFieldMappings$Outbound` instead. */
-    export type Outbound = UnifiedCrmNoteInputFieldMappings$Outbound;
-}
 
 /** @internal */
 export const UnifiedCrmNoteInput$inboundSchema: z.ZodType<
@@ -68,12 +39,12 @@ export const UnifiedCrmNoteInput$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        content: z.string(),
-        user_id: z.string().optional(),
-        company_id: z.string().optional(),
-        contact_id: z.string().optional(),
-        deal_id: z.string().optional(),
-        field_mappings: z.lazy(() => UnifiedCrmNoteInputFieldMappings$inboundSchema),
+        content: z.nullable(z.string()),
+        user_id: z.nullable(z.string()).optional(),
+        company_id: z.nullable(z.string()).optional(),
+        contact_id: z.nullable(z.string()).optional(),
+        deal_id: z.nullable(z.string()).optional(),
+        field_mappings: z.nullable(z.record(z.any())).optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -87,12 +58,12 @@ export const UnifiedCrmNoteInput$inboundSchema: z.ZodType<
 
 /** @internal */
 export type UnifiedCrmNoteInput$Outbound = {
-    content: string;
-    user_id?: string | undefined;
-    company_id?: string | undefined;
-    contact_id?: string | undefined;
-    deal_id?: string | undefined;
-    field_mappings: UnifiedCrmNoteInputFieldMappings$Outbound;
+    content: string | null;
+    user_id?: string | null | undefined;
+    company_id?: string | null | undefined;
+    contact_id?: string | null | undefined;
+    deal_id?: string | null | undefined;
+    field_mappings?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
@@ -102,12 +73,12 @@ export const UnifiedCrmNoteInput$outboundSchema: z.ZodType<
     UnifiedCrmNoteInput
 > = z
     .object({
-        content: z.string(),
-        userId: z.string().optional(),
-        companyId: z.string().optional(),
-        contactId: z.string().optional(),
-        dealId: z.string().optional(),
-        fieldMappings: z.lazy(() => UnifiedCrmNoteInputFieldMappings$outboundSchema),
+        content: z.nullable(z.string()),
+        userId: z.nullable(z.string()).optional(),
+        companyId: z.nullable(z.string()).optional(),
+        contactId: z.nullable(z.string()).optional(),
+        dealId: z.nullable(z.string()).optional(),
+        fieldMappings: z.nullable(z.record(z.any())).optional(),
     })
     .transform((v) => {
         return remap$(v, {

@@ -66,7 +66,6 @@ async function run() {
     unifiedTicketingTicketInput: {
       name: "<value>",
       description: "Multi-tiered human-resource model",
-      fieldMappings: {},
     },
   });
 

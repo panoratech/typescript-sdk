@@ -6,10 +6,53 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as components from "../components/index.js";
 import * as z from "zod";
 
+export type VerifyEventResponseBody = {
+    /**
+     * Dynamic event payload
+     */
+    data?: { [k: string]: any } | undefined;
+};
+
 export type VerifyEventResponse = {
     httpMeta: components.HTTPMetadata;
-    eventPayload?: components.EventPayload | undefined;
+    object?: VerifyEventResponseBody | undefined;
 };
+
+/** @internal */
+export const VerifyEventResponseBody$inboundSchema: z.ZodType<
+    VerifyEventResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    data: z.record(z.any()).optional(),
+});
+
+/** @internal */
+export type VerifyEventResponseBody$Outbound = {
+    data?: { [k: string]: any } | undefined;
+};
+
+/** @internal */
+export const VerifyEventResponseBody$outboundSchema: z.ZodType<
+    VerifyEventResponseBody$Outbound,
+    z.ZodTypeDef,
+    VerifyEventResponseBody
+> = z.object({
+    data: z.record(z.any()).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace VerifyEventResponseBody$ {
+    /** @deprecated use `VerifyEventResponseBody$inboundSchema` instead. */
+    export const inboundSchema = VerifyEventResponseBody$inboundSchema;
+    /** @deprecated use `VerifyEventResponseBody$outboundSchema` instead. */
+    export const outboundSchema = VerifyEventResponseBody$outboundSchema;
+    /** @deprecated use `VerifyEventResponseBody$Outbound` instead. */
+    export type Outbound = VerifyEventResponseBody$Outbound;
+}
 
 /** @internal */
 export const VerifyEventResponse$inboundSchema: z.ZodType<
@@ -19,19 +62,18 @@ export const VerifyEventResponse$inboundSchema: z.ZodType<
 > = z
     .object({
         HttpMeta: components.HTTPMetadata$inboundSchema,
-        EventPayload: components.EventPayload$inboundSchema.optional(),
+        object: z.lazy(() => VerifyEventResponseBody$inboundSchema).optional(),
     })
     .transform((v) => {
         return remap$(v, {
             HttpMeta: "httpMeta",
-            EventPayload: "eventPayload",
         });
     });
 
 /** @internal */
 export type VerifyEventResponse$Outbound = {
     HttpMeta: components.HTTPMetadata$Outbound;
-    EventPayload?: components.EventPayload$Outbound | undefined;
+    object?: VerifyEventResponseBody$Outbound | undefined;
 };
 
 /** @internal */
@@ -42,12 +84,11 @@ export const VerifyEventResponse$outboundSchema: z.ZodType<
 > = z
     .object({
         httpMeta: components.HTTPMetadata$outboundSchema,
-        eventPayload: components.EventPayload$outboundSchema.optional(),
+        object: z.lazy(() => VerifyEventResponseBody$outboundSchema).optional(),
     })
     .transform((v) => {
         return remap$(v, {
             httpMeta: "HttpMeta",
-            eventPayload: "EventPayload",
         });
     });
 

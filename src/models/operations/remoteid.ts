@@ -12,6 +12,7 @@ export type RemoteIdRequest = {
 
 export type RemoteIdResponse = {
     httpMeta: components.HTTPMetadata;
+    linkedUserResponse?: components.LinkedUserResponse | undefined;
 };
 
 /** @internal */
@@ -51,16 +52,19 @@ export namespace RemoteIdRequest$ {
 export const RemoteIdResponse$inboundSchema: z.ZodType<RemoteIdResponse, z.ZodTypeDef, unknown> = z
     .object({
         HttpMeta: components.HTTPMetadata$inboundSchema,
+        LinkedUserResponse: components.LinkedUserResponse$inboundSchema.optional(),
     })
     .transform((v) => {
         return remap$(v, {
             HttpMeta: "httpMeta",
+            LinkedUserResponse: "linkedUserResponse",
         });
     });
 
 /** @internal */
 export type RemoteIdResponse$Outbound = {
     HttpMeta: components.HTTPMetadata$Outbound;
+    LinkedUserResponse?: components.LinkedUserResponse$Outbound | undefined;
 };
 
 /** @internal */
@@ -71,10 +75,12 @@ export const RemoteIdResponse$outboundSchema: z.ZodType<
 > = z
     .object({
         httpMeta: components.HTTPMetadata$outboundSchema,
+        linkedUserResponse: components.LinkedUserResponse$outboundSchema.optional(),
     })
     .transform((v) => {
         return remap$(v, {
             httpMeta: "HttpMeta",
+            linkedUserResponse: "LinkedUserResponse",
         });
     });
 

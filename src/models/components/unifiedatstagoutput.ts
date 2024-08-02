@@ -5,98 +5,40 @@
 import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
-export type UnifiedAtsTagOutputFieldMappings = {};
-
-export type UnifiedAtsTagOutputRemoteData = {};
-
 export type UnifiedAtsTagOutput = {
     /**
      * The name of the tag
      */
-    name?: string | undefined;
+    name?: string | null | undefined;
     /**
      * The UUID of the candidate
      */
-    idAtsCandidate?: string | undefined;
-    fieldMappings: UnifiedAtsTagOutputFieldMappings;
+    idAtsCandidate?: string | null | undefined;
+    /**
+     * The custom field mappings of the object between the remote 3rd party & Panora
+     */
+    fieldMappings?: { [k: string]: any } | null | undefined;
     /**
      * The UUID of the tag
      */
-    id?: string | undefined;
+    id?: string | null | undefined;
     /**
      * The remote ID of the tag in the context of the 3rd Party
      */
-    remoteId?: string | undefined;
-    remoteData: UnifiedAtsTagOutputRemoteData;
+    remoteId?: string | null | undefined;
+    /**
+     * The remote data of the tag in the context of the 3rd Party
+     */
+    remoteData?: { [k: string]: any } | null | undefined;
     /**
      * The creation date of the tag
      */
-    createdAt?: Date | undefined;
+    createdAt?: Date | null | undefined;
     /**
      * The modification date of the tag
      */
-    modifiedAt?: Date | undefined;
+    modifiedAt?: Date | null | undefined;
 };
-
-/** @internal */
-export const UnifiedAtsTagOutputFieldMappings$inboundSchema: z.ZodType<
-    UnifiedAtsTagOutputFieldMappings,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedAtsTagOutputFieldMappings$Outbound = {};
-
-/** @internal */
-export const UnifiedAtsTagOutputFieldMappings$outboundSchema: z.ZodType<
-    UnifiedAtsTagOutputFieldMappings$Outbound,
-    z.ZodTypeDef,
-    UnifiedAtsTagOutputFieldMappings
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedAtsTagOutputFieldMappings$ {
-    /** @deprecated use `UnifiedAtsTagOutputFieldMappings$inboundSchema` instead. */
-    export const inboundSchema = UnifiedAtsTagOutputFieldMappings$inboundSchema;
-    /** @deprecated use `UnifiedAtsTagOutputFieldMappings$outboundSchema` instead. */
-    export const outboundSchema = UnifiedAtsTagOutputFieldMappings$outboundSchema;
-    /** @deprecated use `UnifiedAtsTagOutputFieldMappings$Outbound` instead. */
-    export type Outbound = UnifiedAtsTagOutputFieldMappings$Outbound;
-}
-
-/** @internal */
-export const UnifiedAtsTagOutputRemoteData$inboundSchema: z.ZodType<
-    UnifiedAtsTagOutputRemoteData,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedAtsTagOutputRemoteData$Outbound = {};
-
-/** @internal */
-export const UnifiedAtsTagOutputRemoteData$outboundSchema: z.ZodType<
-    UnifiedAtsTagOutputRemoteData$Outbound,
-    z.ZodTypeDef,
-    UnifiedAtsTagOutputRemoteData
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedAtsTagOutputRemoteData$ {
-    /** @deprecated use `UnifiedAtsTagOutputRemoteData$inboundSchema` instead. */
-    export const inboundSchema = UnifiedAtsTagOutputRemoteData$inboundSchema;
-    /** @deprecated use `UnifiedAtsTagOutputRemoteData$outboundSchema` instead. */
-    export const outboundSchema = UnifiedAtsTagOutputRemoteData$outboundSchema;
-    /** @deprecated use `UnifiedAtsTagOutputRemoteData$Outbound` instead. */
-    export type Outbound = UnifiedAtsTagOutputRemoteData$Outbound;
-}
 
 /** @internal */
 export const UnifiedAtsTagOutput$inboundSchema: z.ZodType<
@@ -105,21 +47,27 @@ export const UnifiedAtsTagOutput$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        name: z.string().optional(),
-        id_ats_candidate: z.string().optional(),
-        field_mappings: z.lazy(() => UnifiedAtsTagOutputFieldMappings$inboundSchema),
-        id: z.string().optional(),
-        remote_id: z.string().optional(),
-        remote_data: z.lazy(() => UnifiedAtsTagOutputRemoteData$inboundSchema),
+        name: z.nullable(z.string()).optional(),
+        id_ats_candidate: z.nullable(z.string()).optional(),
+        field_mappings: z.nullable(z.record(z.any())).optional(),
+        id: z.nullable(z.string()).optional(),
+        remote_id: z.nullable(z.string()).optional(),
+        remote_data: z.nullable(z.record(z.any())).optional(),
         created_at: z
-            .string()
-            .datetime({ offset: true })
-            .transform((v) => new Date(v))
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
             .optional(),
         modified_at: z
-            .string()
-            .datetime({ offset: true })
-            .transform((v) => new Date(v))
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
             .optional(),
     })
     .transform((v) => {
@@ -135,14 +83,14 @@ export const UnifiedAtsTagOutput$inboundSchema: z.ZodType<
 
 /** @internal */
 export type UnifiedAtsTagOutput$Outbound = {
-    name?: string | undefined;
-    id_ats_candidate?: string | undefined;
-    field_mappings: UnifiedAtsTagOutputFieldMappings$Outbound;
-    id?: string | undefined;
-    remote_id?: string | undefined;
-    remote_data: UnifiedAtsTagOutputRemoteData$Outbound;
-    created_at?: string | undefined;
-    modified_at?: string | undefined;
+    name?: string | null | undefined;
+    id_ats_candidate?: string | null | undefined;
+    field_mappings?: { [k: string]: any } | null | undefined;
+    id?: string | null | undefined;
+    remote_id?: string | null | undefined;
+    remote_data?: { [k: string]: any } | null | undefined;
+    created_at?: string | null | undefined;
+    modified_at?: string | null | undefined;
 };
 
 /** @internal */
@@ -152,20 +100,14 @@ export const UnifiedAtsTagOutput$outboundSchema: z.ZodType<
     UnifiedAtsTagOutput
 > = z
     .object({
-        name: z.string().optional(),
-        idAtsCandidate: z.string().optional(),
-        fieldMappings: z.lazy(() => UnifiedAtsTagOutputFieldMappings$outboundSchema),
-        id: z.string().optional(),
-        remoteId: z.string().optional(),
-        remoteData: z.lazy(() => UnifiedAtsTagOutputRemoteData$outboundSchema),
-        createdAt: z
-            .date()
-            .transform((v) => v.toISOString())
-            .optional(),
-        modifiedAt: z
-            .date()
-            .transform((v) => v.toISOString())
-            .optional(),
+        name: z.nullable(z.string()).optional(),
+        idAtsCandidate: z.nullable(z.string()).optional(),
+        fieldMappings: z.nullable(z.record(z.any())).optional(),
+        id: z.nullable(z.string()).optional(),
+        remoteId: z.nullable(z.string()).optional(),
+        remoteData: z.nullable(z.record(z.any())).optional(),
+        createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        modifiedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
     })
     .transform((v) => {
         return remap$(v, {

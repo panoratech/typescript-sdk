@@ -4,49 +4,20 @@
 
 import * as z from "zod";
 
-/**
- * The payload event of the webhook.
- */
-export type Payload = {};
-
 export type SignatureVerificationDto = {
     /**
      * The payload event of the webhook.
      */
-    payload: Payload;
+    payload: { [k: string]: any } | null;
     /**
      * The signature of the webhook.
      */
-    signature: string;
+    signature: string | null;
     /**
      * The secret of the webhook.
      */
-    secret: string;
+    secret: string | null;
 };
-
-/** @internal */
-export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> = z.object({});
-
-/** @internal */
-export type Payload$Outbound = {};
-
-/** @internal */
-export const Payload$outboundSchema: z.ZodType<Payload$Outbound, z.ZodTypeDef, Payload> = z.object(
-    {}
-);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Payload$ {
-    /** @deprecated use `Payload$inboundSchema` instead. */
-    export const inboundSchema = Payload$inboundSchema;
-    /** @deprecated use `Payload$outboundSchema` instead. */
-    export const outboundSchema = Payload$outboundSchema;
-    /** @deprecated use `Payload$Outbound` instead. */
-    export type Outbound = Payload$Outbound;
-}
 
 /** @internal */
 export const SignatureVerificationDto$inboundSchema: z.ZodType<
@@ -54,16 +25,16 @@ export const SignatureVerificationDto$inboundSchema: z.ZodType<
     z.ZodTypeDef,
     unknown
 > = z.object({
-    payload: z.lazy(() => Payload$inboundSchema),
-    signature: z.string(),
-    secret: z.string(),
+    payload: z.nullable(z.record(z.any())),
+    signature: z.nullable(z.string()),
+    secret: z.nullable(z.string()),
 });
 
 /** @internal */
 export type SignatureVerificationDto$Outbound = {
-    payload: Payload$Outbound;
-    signature: string;
-    secret: string;
+    payload: { [k: string]: any } | null;
+    signature: string | null;
+    secret: string | null;
 };
 
 /** @internal */
@@ -72,9 +43,9 @@ export const SignatureVerificationDto$outboundSchema: z.ZodType<
     z.ZodTypeDef,
     SignatureVerificationDto
 > = z.object({
-    payload: z.lazy(() => Payload$outboundSchema),
-    signature: z.string(),
-    secret: z.string(),
+    payload: z.nullable(z.record(z.any())),
+    signature: z.nullable(z.string()),
+    secret: z.nullable(z.string()),
 });
 
 /**

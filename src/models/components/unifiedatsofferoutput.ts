@@ -5,116 +5,70 @@
 import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
-export type UnifiedAtsOfferOutputFieldMappings = {};
-
-export type UnifiedAtsOfferOutputRemoteData = {};
-
+/**
+ * The created date of the object
+ */
 export type UnifiedAtsOfferOutputCreatedAt = {};
 
+/**
+ * The modified date of the object
+ */
 export type UnifiedAtsOfferOutputModifiedAt = {};
 
 export type UnifiedAtsOfferOutput = {
     /**
      * The UUID of the creator
      */
-    createdBy?: string | undefined;
+    createdBy?: string | null | undefined;
     /**
      * The remote creation date of the offer
      */
-    remoteCreatedAt?: Date | undefined;
+    remoteCreatedAt?: Date | null | undefined;
     /**
      * The closing date of the offer
      */
-    closedAt?: Date | undefined;
+    closedAt?: Date | null | undefined;
     /**
      * The sending date of the offer
      */
-    sentAt?: Date | undefined;
+    sentAt?: Date | null | undefined;
     /**
      * The start date of the offer
      */
-    startDate?: Date | undefined;
+    startDate?: Date | null | undefined;
     /**
      * The status of the offer
      */
-    status?: string | undefined;
+    status?: string | null | undefined;
     /**
      * The UUID of the application
      */
-    applicationId?: string | undefined;
-    fieldMappings: UnifiedAtsOfferOutputFieldMappings;
+    applicationId?: string | null | undefined;
+    /**
+     * The custom field mappings of the object between the remote 3rd party & Panora
+     */
+    fieldMappings?: { [k: string]: any } | null | undefined;
     /**
      * The UUID of the offer
      */
-    id?: string | undefined;
+    id?: string | null | undefined;
     /**
      * The remote ID of the offer in the context of the 3rd Party
      */
-    remoteId?: string | undefined;
-    remoteData: UnifiedAtsOfferOutputRemoteData;
-    createdAt: UnifiedAtsOfferOutputCreatedAt;
-    modifiedAt: UnifiedAtsOfferOutputModifiedAt;
+    remoteId?: string | null | undefined;
+    /**
+     * The remote data of the offer in the context of the 3rd Party
+     */
+    remoteData?: { [k: string]: any } | null | undefined;
+    /**
+     * The created date of the object
+     */
+    createdAt?: UnifiedAtsOfferOutputCreatedAt | null | undefined;
+    /**
+     * The modified date of the object
+     */
+    modifiedAt?: UnifiedAtsOfferOutputModifiedAt | null | undefined;
 };
-
-/** @internal */
-export const UnifiedAtsOfferOutputFieldMappings$inboundSchema: z.ZodType<
-    UnifiedAtsOfferOutputFieldMappings,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedAtsOfferOutputFieldMappings$Outbound = {};
-
-/** @internal */
-export const UnifiedAtsOfferOutputFieldMappings$outboundSchema: z.ZodType<
-    UnifiedAtsOfferOutputFieldMappings$Outbound,
-    z.ZodTypeDef,
-    UnifiedAtsOfferOutputFieldMappings
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedAtsOfferOutputFieldMappings$ {
-    /** @deprecated use `UnifiedAtsOfferOutputFieldMappings$inboundSchema` instead. */
-    export const inboundSchema = UnifiedAtsOfferOutputFieldMappings$inboundSchema;
-    /** @deprecated use `UnifiedAtsOfferOutputFieldMappings$outboundSchema` instead. */
-    export const outboundSchema = UnifiedAtsOfferOutputFieldMappings$outboundSchema;
-    /** @deprecated use `UnifiedAtsOfferOutputFieldMappings$Outbound` instead. */
-    export type Outbound = UnifiedAtsOfferOutputFieldMappings$Outbound;
-}
-
-/** @internal */
-export const UnifiedAtsOfferOutputRemoteData$inboundSchema: z.ZodType<
-    UnifiedAtsOfferOutputRemoteData,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedAtsOfferOutputRemoteData$Outbound = {};
-
-/** @internal */
-export const UnifiedAtsOfferOutputRemoteData$outboundSchema: z.ZodType<
-    UnifiedAtsOfferOutputRemoteData$Outbound,
-    z.ZodTypeDef,
-    UnifiedAtsOfferOutputRemoteData
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedAtsOfferOutputRemoteData$ {
-    /** @deprecated use `UnifiedAtsOfferOutputRemoteData$inboundSchema` instead. */
-    export const inboundSchema = UnifiedAtsOfferOutputRemoteData$inboundSchema;
-    /** @deprecated use `UnifiedAtsOfferOutputRemoteData$outboundSchema` instead. */
-    export const outboundSchema = UnifiedAtsOfferOutputRemoteData$outboundSchema;
-    /** @deprecated use `UnifiedAtsOfferOutputRemoteData$Outbound` instead. */
-    export type Outbound = UnifiedAtsOfferOutputRemoteData$Outbound;
-}
 
 /** @internal */
 export const UnifiedAtsOfferOutputCreatedAt$inboundSchema: z.ZodType<
@@ -183,35 +137,51 @@ export const UnifiedAtsOfferOutput$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        created_by: z.string().optional(),
+        created_by: z.nullable(z.string()).optional(),
         remote_created_at: z
-            .string()
-            .datetime({ offset: true })
-            .transform((v) => new Date(v))
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
             .optional(),
         closed_at: z
-            .string()
-            .datetime({ offset: true })
-            .transform((v) => new Date(v))
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
             .optional(),
         sent_at: z
-            .string()
-            .datetime({ offset: true })
-            .transform((v) => new Date(v))
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
             .optional(),
         start_date: z
-            .string()
-            .datetime({ offset: true })
-            .transform((v) => new Date(v))
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
             .optional(),
-        status: z.string().optional(),
-        application_id: z.string().optional(),
-        field_mappings: z.lazy(() => UnifiedAtsOfferOutputFieldMappings$inboundSchema),
-        id: z.string().optional(),
-        remote_id: z.string().optional(),
-        remote_data: z.lazy(() => UnifiedAtsOfferOutputRemoteData$inboundSchema),
-        created_at: z.lazy(() => UnifiedAtsOfferOutputCreatedAt$inboundSchema),
-        modified_at: z.lazy(() => UnifiedAtsOfferOutputModifiedAt$inboundSchema),
+        status: z.nullable(z.string()).optional(),
+        application_id: z.nullable(z.string()).optional(),
+        field_mappings: z.nullable(z.record(z.any())).optional(),
+        id: z.nullable(z.string()).optional(),
+        remote_id: z.nullable(z.string()).optional(),
+        remote_data: z.nullable(z.record(z.any())).optional(),
+        created_at: z
+            .nullable(z.lazy(() => UnifiedAtsOfferOutputCreatedAt$inboundSchema))
+            .optional(),
+        modified_at: z
+            .nullable(z.lazy(() => UnifiedAtsOfferOutputModifiedAt$inboundSchema))
+            .optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -231,19 +201,19 @@ export const UnifiedAtsOfferOutput$inboundSchema: z.ZodType<
 
 /** @internal */
 export type UnifiedAtsOfferOutput$Outbound = {
-    created_by?: string | undefined;
-    remote_created_at?: string | undefined;
-    closed_at?: string | undefined;
-    sent_at?: string | undefined;
-    start_date?: string | undefined;
-    status?: string | undefined;
-    application_id?: string | undefined;
-    field_mappings: UnifiedAtsOfferOutputFieldMappings$Outbound;
-    id?: string | undefined;
-    remote_id?: string | undefined;
-    remote_data: UnifiedAtsOfferOutputRemoteData$Outbound;
-    created_at: UnifiedAtsOfferOutputCreatedAt$Outbound;
-    modified_at: UnifiedAtsOfferOutputModifiedAt$Outbound;
+    created_by?: string | null | undefined;
+    remote_created_at?: string | null | undefined;
+    closed_at?: string | null | undefined;
+    sent_at?: string | null | undefined;
+    start_date?: string | null | undefined;
+    status?: string | null | undefined;
+    application_id?: string | null | undefined;
+    field_mappings?: { [k: string]: any } | null | undefined;
+    id?: string | null | undefined;
+    remote_id?: string | null | undefined;
+    remote_data?: { [k: string]: any } | null | undefined;
+    created_at?: UnifiedAtsOfferOutputCreatedAt$Outbound | null | undefined;
+    modified_at?: UnifiedAtsOfferOutputModifiedAt$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -253,31 +223,23 @@ export const UnifiedAtsOfferOutput$outboundSchema: z.ZodType<
     UnifiedAtsOfferOutput
 > = z
     .object({
-        createdBy: z.string().optional(),
-        remoteCreatedAt: z
-            .date()
-            .transform((v) => v.toISOString())
+        createdBy: z.nullable(z.string()).optional(),
+        remoteCreatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        closedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        sentAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        startDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        status: z.nullable(z.string()).optional(),
+        applicationId: z.nullable(z.string()).optional(),
+        fieldMappings: z.nullable(z.record(z.any())).optional(),
+        id: z.nullable(z.string()).optional(),
+        remoteId: z.nullable(z.string()).optional(),
+        remoteData: z.nullable(z.record(z.any())).optional(),
+        createdAt: z
+            .nullable(z.lazy(() => UnifiedAtsOfferOutputCreatedAt$outboundSchema))
             .optional(),
-        closedAt: z
-            .date()
-            .transform((v) => v.toISOString())
+        modifiedAt: z
+            .nullable(z.lazy(() => UnifiedAtsOfferOutputModifiedAt$outboundSchema))
             .optional(),
-        sentAt: z
-            .date()
-            .transform((v) => v.toISOString())
-            .optional(),
-        startDate: z
-            .date()
-            .transform((v) => v.toISOString())
-            .optional(),
-        status: z.string().optional(),
-        applicationId: z.string().optional(),
-        fieldMappings: z.lazy(() => UnifiedAtsOfferOutputFieldMappings$outboundSchema),
-        id: z.string().optional(),
-        remoteId: z.string().optional(),
-        remoteData: z.lazy(() => UnifiedAtsOfferOutputRemoteData$outboundSchema),
-        createdAt: z.lazy(() => UnifiedAtsOfferOutputCreatedAt$outboundSchema),
-        modifiedAt: z.lazy(() => UnifiedAtsOfferOutputModifiedAt$outboundSchema),
     })
     .transform((v) => {
         return remap$(v, {

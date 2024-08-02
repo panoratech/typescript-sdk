@@ -6,13 +6,13 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
 export type CustomFieldCreateDto = {
-    objectTypeOwner: string;
-    name: string;
-    description: string;
-    dataType: string;
-    sourceCustomFieldId: string;
-    sourceProvider: string;
-    linkedUserId: string;
+    objectTypeOwner: string | null;
+    name: string | null;
+    description: string | null;
+    dataType: string | null;
+    sourceCustomFieldId: string | null;
+    sourceProvider: string | null;
+    linkedUserId: string | null;
 };
 
 /** @internal */
@@ -22,13 +22,13 @@ export const CustomFieldCreateDto$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        object_type_owner: z.string(),
-        name: z.string(),
-        description: z.string(),
-        data_type: z.string(),
-        source_custom_field_id: z.string(),
-        source_provider: z.string(),
-        linked_user_id: z.string(),
+        object_type_owner: z.nullable(z.string()),
+        name: z.nullable(z.string()),
+        description: z.nullable(z.string()),
+        data_type: z.nullable(z.string()),
+        source_custom_field_id: z.nullable(z.string()),
+        source_provider: z.nullable(z.string()),
+        linked_user_id: z.nullable(z.string()),
     })
     .transform((v) => {
         return remap$(v, {
@@ -42,13 +42,13 @@ export const CustomFieldCreateDto$inboundSchema: z.ZodType<
 
 /** @internal */
 export type CustomFieldCreateDto$Outbound = {
-    object_type_owner: string;
-    name: string;
-    description: string;
-    data_type: string;
-    source_custom_field_id: string;
-    source_provider: string;
-    linked_user_id: string;
+    object_type_owner: string | null;
+    name: string | null;
+    description: string | null;
+    data_type: string | null;
+    source_custom_field_id: string | null;
+    source_provider: string | null;
+    linked_user_id: string | null;
 };
 
 /** @internal */
@@ -58,13 +58,13 @@ export const CustomFieldCreateDto$outboundSchema: z.ZodType<
     CustomFieldCreateDto
 > = z
     .object({
-        objectTypeOwner: z.string(),
-        name: z.string(),
-        description: z.string(),
-        dataType: z.string(),
-        sourceCustomFieldId: z.string(),
-        sourceProvider: z.string(),
-        linkedUserId: z.string(),
+        objectTypeOwner: z.nullable(z.string()),
+        name: z.nullable(z.string()),
+        description: z.nullable(z.string()),
+        dataType: z.nullable(z.string()),
+        sourceCustomFieldId: z.nullable(z.string()),
+        sourceProvider: z.nullable(z.string()),
+        linkedUserId: z.nullable(z.string()),
     })
     .transform((v) => {
         return remap$(v, {

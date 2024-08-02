@@ -3,108 +3,190 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
-import {
-    UnifiedTicketingCommentInput,
-    UnifiedTicketingCommentInput$inboundSchema,
-    UnifiedTicketingCommentInput$Outbound,
-    UnifiedTicketingCommentInput$outboundSchema,
-} from "./unifiedticketingcommentinput.js";
 import * as z from "zod";
 
-export type UnifiedTicketingTicketInputFieldMappings = {};
+/**
+ * The comment of the ticket
+ */
+export type UnifiedTicketingTicketInputComment = {
+    /**
+     * The body of the comment
+     */
+    body: string | null;
+    /**
+     * The html body of the comment
+     */
+    htmlBody?: string | null | undefined;
+    /**
+     * The public status of the comment
+     */
+    isPrivate?: boolean | null | undefined;
+    /**
+     * The creator type of the comment. Authorized values are either USER or CONTACT
+     */
+    creatorType?: string | null | undefined;
+    /**
+     * The UUID of the ticket the comment is tied to
+     */
+    ticketId?: string | null | undefined;
+    /**
+     * The UUID of the contact which the comment belongs to (if no user_id specified)
+     */
+    contactId?: string | null | undefined;
+    /**
+     * The UUID of the user which the comment belongs to (if no contact_id specified)
+     */
+    userId?: string | null | undefined;
+    /**
+     * The attachements UUIDs tied to the comment
+     */
+    attachments?: Array<string> | null | undefined;
+};
 
 export type UnifiedTicketingTicketInput = {
     /**
      * The name of the ticket
      */
-    name: string;
+    name: string | null;
     /**
      * The status of the ticket. Authorized values are OPEN or CLOSED.
      */
-    status?: string | undefined;
+    status?: string | null | undefined;
     /**
      * The description of the ticket
      */
-    description: string;
+    description: string | null;
     /**
      * The date the ticket is due
      */
-    dueDate?: Date | undefined;
+    dueDate?: Date | null | undefined;
     /**
      * The type of the ticket. Authorized values are PROBLEM, QUESTION, or TASK
      */
-    type?: string | undefined;
+    type?: string | null | undefined;
     /**
      * The UUID of the parent ticket
      */
-    parentTicket?: string | undefined;
+    parentTicket?: string | null | undefined;
     /**
      * The collection UUIDs the ticket belongs to
      */
-    collections?: string | undefined;
+    collections?: string | null | undefined;
     /**
      * The tags names of the ticket
      */
-    tags?: Array<string> | undefined;
+    tags?: Array<string> | null | undefined;
     /**
      * The date the ticket has been completed
      */
-    completedAt?: Date | undefined;
+    completedAt?: Date | null | undefined;
     /**
      * The priority of the ticket. Authorized values are HIGH, MEDIUM or LOW.
      */
-    priority?: string | undefined;
+    priority?: string | null | undefined;
     /**
      * The users UUIDs the ticket is assigned to
      */
-    assignedTo?: Array<string> | undefined;
+    assignedTo?: Array<string> | null | undefined;
     /**
      * The comment of the ticket
      */
-    comment?: UnifiedTicketingCommentInput | undefined;
+    comment?: UnifiedTicketingTicketInputComment | null | undefined;
     /**
      * The UUID of the account which the ticket belongs to
      */
-    accountId?: string | undefined;
+    accountId?: string | null | undefined;
     /**
      * The UUID of the contact which the ticket belongs to
      */
-    contactId?: string | undefined;
+    contactId?: string | null | undefined;
     /**
-     * The attachements UUIDs tied to the ticket
+     * The attachments UUIDs tied to the ticket
      */
-    attachments?: Array<string> | undefined;
-    fieldMappings: UnifiedTicketingTicketInputFieldMappings;
+    attachments?: Array<string> | null | undefined;
+    /**
+     * The custom field mappings of the ticket between the remote 3rd party & Panora
+     */
+    fieldMappings?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
-export const UnifiedTicketingTicketInputFieldMappings$inboundSchema: z.ZodType<
-    UnifiedTicketingTicketInputFieldMappings,
+export const UnifiedTicketingTicketInputComment$inboundSchema: z.ZodType<
+    UnifiedTicketingTicketInputComment,
     z.ZodTypeDef,
     unknown
-> = z.object({});
+> = z
+    .object({
+        body: z.nullable(z.string()),
+        html_body: z.nullable(z.string()).optional(),
+        is_private: z.nullable(z.boolean()).optional(),
+        creator_type: z.nullable(z.string()).optional(),
+        ticket_id: z.nullable(z.string()).optional(),
+        contact_id: z.nullable(z.string()).optional(),
+        user_id: z.nullable(z.string()).optional(),
+        attachments: z.nullable(z.array(z.string())).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            html_body: "htmlBody",
+            is_private: "isPrivate",
+            creator_type: "creatorType",
+            ticket_id: "ticketId",
+            contact_id: "contactId",
+            user_id: "userId",
+        });
+    });
 
 /** @internal */
-export type UnifiedTicketingTicketInputFieldMappings$Outbound = {};
+export type UnifiedTicketingTicketInputComment$Outbound = {
+    body: string | null;
+    html_body?: string | null | undefined;
+    is_private?: boolean | null | undefined;
+    creator_type?: string | null | undefined;
+    ticket_id?: string | null | undefined;
+    contact_id?: string | null | undefined;
+    user_id?: string | null | undefined;
+    attachments?: Array<string> | null | undefined;
+};
 
 /** @internal */
-export const UnifiedTicketingTicketInputFieldMappings$outboundSchema: z.ZodType<
-    UnifiedTicketingTicketInputFieldMappings$Outbound,
+export const UnifiedTicketingTicketInputComment$outboundSchema: z.ZodType<
+    UnifiedTicketingTicketInputComment$Outbound,
     z.ZodTypeDef,
-    UnifiedTicketingTicketInputFieldMappings
-> = z.object({});
+    UnifiedTicketingTicketInputComment
+> = z
+    .object({
+        body: z.nullable(z.string()),
+        htmlBody: z.nullable(z.string()).optional(),
+        isPrivate: z.nullable(z.boolean()).optional(),
+        creatorType: z.nullable(z.string()).optional(),
+        ticketId: z.nullable(z.string()).optional(),
+        contactId: z.nullable(z.string()).optional(),
+        userId: z.nullable(z.string()).optional(),
+        attachments: z.nullable(z.array(z.string())).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            htmlBody: "html_body",
+            isPrivate: "is_private",
+            creatorType: "creator_type",
+            ticketId: "ticket_id",
+            contactId: "contact_id",
+            userId: "user_id",
+        });
+    });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UnifiedTicketingTicketInputFieldMappings$ {
-    /** @deprecated use `UnifiedTicketingTicketInputFieldMappings$inboundSchema` instead. */
-    export const inboundSchema = UnifiedTicketingTicketInputFieldMappings$inboundSchema;
-    /** @deprecated use `UnifiedTicketingTicketInputFieldMappings$outboundSchema` instead. */
-    export const outboundSchema = UnifiedTicketingTicketInputFieldMappings$outboundSchema;
-    /** @deprecated use `UnifiedTicketingTicketInputFieldMappings$Outbound` instead. */
-    export type Outbound = UnifiedTicketingTicketInputFieldMappings$Outbound;
+export namespace UnifiedTicketingTicketInputComment$ {
+    /** @deprecated use `UnifiedTicketingTicketInputComment$inboundSchema` instead. */
+    export const inboundSchema = UnifiedTicketingTicketInputComment$inboundSchema;
+    /** @deprecated use `UnifiedTicketingTicketInputComment$outboundSchema` instead. */
+    export const outboundSchema = UnifiedTicketingTicketInputComment$outboundSchema;
+    /** @deprecated use `UnifiedTicketingTicketInputComment$Outbound` instead. */
+    export type Outbound = UnifiedTicketingTicketInputComment$Outbound;
 }
 
 /** @internal */
@@ -114,30 +196,38 @@ export const UnifiedTicketingTicketInput$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        name: z.string(),
-        status: z.string().optional(),
-        description: z.string(),
+        name: z.nullable(z.string()),
+        status: z.nullable(z.string()).optional(),
+        description: z.nullable(z.string()),
         due_date: z
-            .string()
-            .datetime({ offset: true })
-            .transform((v) => new Date(v))
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
             .optional(),
-        type: z.string().optional(),
-        parent_ticket: z.string().optional(),
-        collections: z.string().optional(),
-        tags: z.array(z.string()).optional(),
+        type: z.nullable(z.string()).optional(),
+        parent_ticket: z.nullable(z.string()).optional(),
+        collections: z.nullable(z.string()).optional(),
+        tags: z.nullable(z.array(z.string())).optional(),
         completed_at: z
-            .string()
-            .datetime({ offset: true })
-            .transform((v) => new Date(v))
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
             .optional(),
-        priority: z.string().optional(),
-        assigned_to: z.array(z.string()).optional(),
-        comment: UnifiedTicketingCommentInput$inboundSchema.optional(),
-        account_id: z.string().optional(),
-        contact_id: z.string().optional(),
-        attachments: z.array(z.string()).optional(),
-        field_mappings: z.lazy(() => UnifiedTicketingTicketInputFieldMappings$inboundSchema),
+        priority: z.nullable(z.string()).optional(),
+        assigned_to: z.nullable(z.array(z.string())).optional(),
+        comment: z
+            .nullable(z.lazy(() => UnifiedTicketingTicketInputComment$inboundSchema))
+            .optional(),
+        account_id: z.nullable(z.string()).optional(),
+        contact_id: z.nullable(z.string()).optional(),
+        attachments: z.nullable(z.array(z.string())).optional(),
+        field_mappings: z.nullable(z.record(z.any())).optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -153,22 +243,22 @@ export const UnifiedTicketingTicketInput$inboundSchema: z.ZodType<
 
 /** @internal */
 export type UnifiedTicketingTicketInput$Outbound = {
-    name: string;
-    status?: string | undefined;
-    description: string;
-    due_date?: string | undefined;
-    type?: string | undefined;
-    parent_ticket?: string | undefined;
-    collections?: string | undefined;
-    tags?: Array<string> | undefined;
-    completed_at?: string | undefined;
-    priority?: string | undefined;
-    assigned_to?: Array<string> | undefined;
-    comment?: UnifiedTicketingCommentInput$Outbound | undefined;
-    account_id?: string | undefined;
-    contact_id?: string | undefined;
-    attachments?: Array<string> | undefined;
-    field_mappings: UnifiedTicketingTicketInputFieldMappings$Outbound;
+    name: string | null;
+    status?: string | null | undefined;
+    description: string | null;
+    due_date?: string | null | undefined;
+    type?: string | null | undefined;
+    parent_ticket?: string | null | undefined;
+    collections?: string | null | undefined;
+    tags?: Array<string> | null | undefined;
+    completed_at?: string | null | undefined;
+    priority?: string | null | undefined;
+    assigned_to?: Array<string> | null | undefined;
+    comment?: UnifiedTicketingTicketInputComment$Outbound | null | undefined;
+    account_id?: string | null | undefined;
+    contact_id?: string | null | undefined;
+    attachments?: Array<string> | null | undefined;
+    field_mappings?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
@@ -178,28 +268,24 @@ export const UnifiedTicketingTicketInput$outboundSchema: z.ZodType<
     UnifiedTicketingTicketInput
 > = z
     .object({
-        name: z.string(),
-        status: z.string().optional(),
-        description: z.string(),
-        dueDate: z
-            .date()
-            .transform((v) => v.toISOString())
+        name: z.nullable(z.string()),
+        status: z.nullable(z.string()).optional(),
+        description: z.nullable(z.string()),
+        dueDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        type: z.nullable(z.string()).optional(),
+        parentTicket: z.nullable(z.string()).optional(),
+        collections: z.nullable(z.string()).optional(),
+        tags: z.nullable(z.array(z.string())).optional(),
+        completedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        priority: z.nullable(z.string()).optional(),
+        assignedTo: z.nullable(z.array(z.string())).optional(),
+        comment: z
+            .nullable(z.lazy(() => UnifiedTicketingTicketInputComment$outboundSchema))
             .optional(),
-        type: z.string().optional(),
-        parentTicket: z.string().optional(),
-        collections: z.string().optional(),
-        tags: z.array(z.string()).optional(),
-        completedAt: z
-            .date()
-            .transform((v) => v.toISOString())
-            .optional(),
-        priority: z.string().optional(),
-        assignedTo: z.array(z.string()).optional(),
-        comment: UnifiedTicketingCommentInput$outboundSchema.optional(),
-        accountId: z.string().optional(),
-        contactId: z.string().optional(),
-        attachments: z.array(z.string()).optional(),
-        fieldMappings: z.lazy(() => UnifiedTicketingTicketInputFieldMappings$outboundSchema),
+        accountId: z.nullable(z.string()).optional(),
+        contactId: z.nullable(z.string()).optional(),
+        attachments: z.nullable(z.array(z.string())).optional(),
+        fieldMappings: z.nullable(z.record(z.any())).optional(),
     })
     .transform((v) => {
         return remap$(v, {

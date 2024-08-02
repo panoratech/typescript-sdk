@@ -73,7 +73,6 @@ async function run() {
       parentFolderId: "<value>",
       sharedLink: "<value>",
       permission: "<value>",
-      fieldMappings: {},
     },
   });
 

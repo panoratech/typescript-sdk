@@ -63,9 +63,7 @@ const panora = new Panora();
 async function run() {
   const result = await panora.ats.interviews.create({
     xConnectionToken: "<value>",
-    unifiedAtsInterviewInput: {
-      fieldMappings: {},
-    },
+    unifiedAtsInterviewInput: {},
   });
 
   // Handle the result

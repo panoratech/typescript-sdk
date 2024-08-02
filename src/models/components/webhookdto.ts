@@ -8,37 +8,37 @@ export type WebhookDto = {
     /**
      * The endpoint url of the webhook.
      */
-    url: string;
+    url: string | null;
     /**
      * The description of the webhook.
      */
-    description?: string | undefined;
+    description?: string | null | undefined;
     /**
      * The events that the webhook listen to.
      */
-    scope: Array<string>;
+    scope: Array<string> | null;
 };
 
 /** @internal */
 export const WebhookDto$inboundSchema: z.ZodType<WebhookDto, z.ZodTypeDef, unknown> = z.object({
-    url: z.string(),
-    description: z.string().optional(),
-    scope: z.array(z.string()),
+    url: z.nullable(z.string()),
+    description: z.nullable(z.string()).optional(),
+    scope: z.nullable(z.array(z.string())),
 });
 
 /** @internal */
 export type WebhookDto$Outbound = {
-    url: string;
-    description?: string | undefined;
-    scope: Array<string>;
+    url: string | null;
+    description?: string | null | undefined;
+    scope: Array<string> | null;
 };
 
 /** @internal */
 export const WebhookDto$outboundSchema: z.ZodType<WebhookDto$Outbound, z.ZodTypeDef, WebhookDto> =
     z.object({
-        url: z.string(),
-        description: z.string().optional(),
-        scope: z.array(z.string()),
+        url: z.nullable(z.string()),
+        description: z.nullable(z.string()).optional(),
+        scope: z.nullable(z.array(z.string())),
     });
 
 /**

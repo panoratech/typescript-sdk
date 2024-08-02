@@ -13,175 +13,115 @@ import { Email, Email$inboundSchema, Email$Outbound, Email$outboundSchema } from
 import { Phone, Phone$inboundSchema, Phone$Outbound, Phone$outboundSchema } from "./phone.js";
 import * as z from "zod";
 
-export type UnifiedCrmCompanyOutputFieldMappings = {};
+/**
+ * The created date of the object
+ */
+export type CreatedAt = {};
 
-export type UnifiedCrmCompanyOutputRemoteData = {};
-
-export type UnifiedCrmCompanyOutputCreatedAt = {};
-
-export type UnifiedCrmCompanyOutputModifiedAt = {};
+/**
+ * The modified date of the object
+ */
+export type ModifiedAt = {};
 
 export type UnifiedCrmCompanyOutput = {
     /**
      * The name of the company
      */
-    name: string;
+    name: string | null;
     /**
      * The industry of the company. Authorized values can be found in the Industry enum.
      */
-    industry?: string | undefined;
+    industry?: string | null | undefined;
     /**
      * The number of employees of the company
      */
-    numberOfEmployees?: number | undefined;
+    numberOfEmployees?: number | null | undefined;
     /**
      * The UUID of the user who owns the company
      */
-    userId?: string | undefined;
+    userId?: string | null | undefined;
     /**
      * The email addresses of the company
      */
-    emailAddresses?: Array<Email> | undefined;
+    emailAddresses?: Array<Email> | null | undefined;
     /**
      * The addresses of the company
      */
-    addresses?: Array<Address> | undefined;
+    addresses?: Array<Address> | null | undefined;
     /**
      * The phone numbers of the company
      */
-    phoneNumbers?: Array<Phone> | undefined;
-    fieldMappings: UnifiedCrmCompanyOutputFieldMappings;
+    phoneNumbers?: Array<Phone> | null | undefined;
+    /**
+     * The custom field mappings of the company between the remote 3rd party & Panora
+     */
+    fieldMappings?: { [k: string]: any } | null | undefined;
     /**
      * The UUID of the company
      */
-    id?: string | undefined;
+    id?: string | null | undefined;
     /**
      * The id of the company in the context of the Crm 3rd Party
      */
-    remoteId?: string | undefined;
-    remoteData: UnifiedCrmCompanyOutputRemoteData;
-    createdAt: UnifiedCrmCompanyOutputCreatedAt;
-    modifiedAt: UnifiedCrmCompanyOutputModifiedAt;
+    remoteId?: string | null | undefined;
+    /**
+     * The remote data of the company in the context of the Crm 3rd Party
+     */
+    remoteData?: { [k: string]: any } | null | undefined;
+    /**
+     * The created date of the object
+     */
+    createdAt?: CreatedAt | null | undefined;
+    /**
+     * The modified date of the object
+     */
+    modifiedAt?: ModifiedAt | null | undefined;
 };
 
 /** @internal */
-export const UnifiedCrmCompanyOutputFieldMappings$inboundSchema: z.ZodType<
-    UnifiedCrmCompanyOutputFieldMappings,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
+export const CreatedAt$inboundSchema: z.ZodType<CreatedAt, z.ZodTypeDef, unknown> = z.object({});
 
 /** @internal */
-export type UnifiedCrmCompanyOutputFieldMappings$Outbound = {};
+export type CreatedAt$Outbound = {};
 
 /** @internal */
-export const UnifiedCrmCompanyOutputFieldMappings$outboundSchema: z.ZodType<
-    UnifiedCrmCompanyOutputFieldMappings$Outbound,
-    z.ZodTypeDef,
-    UnifiedCrmCompanyOutputFieldMappings
-> = z.object({});
+export const CreatedAt$outboundSchema: z.ZodType<CreatedAt$Outbound, z.ZodTypeDef, CreatedAt> =
+    z.object({});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UnifiedCrmCompanyOutputFieldMappings$ {
-    /** @deprecated use `UnifiedCrmCompanyOutputFieldMappings$inboundSchema` instead. */
-    export const inboundSchema = UnifiedCrmCompanyOutputFieldMappings$inboundSchema;
-    /** @deprecated use `UnifiedCrmCompanyOutputFieldMappings$outboundSchema` instead. */
-    export const outboundSchema = UnifiedCrmCompanyOutputFieldMappings$outboundSchema;
-    /** @deprecated use `UnifiedCrmCompanyOutputFieldMappings$Outbound` instead. */
-    export type Outbound = UnifiedCrmCompanyOutputFieldMappings$Outbound;
+export namespace CreatedAt$ {
+    /** @deprecated use `CreatedAt$inboundSchema` instead. */
+    export const inboundSchema = CreatedAt$inboundSchema;
+    /** @deprecated use `CreatedAt$outboundSchema` instead. */
+    export const outboundSchema = CreatedAt$outboundSchema;
+    /** @deprecated use `CreatedAt$Outbound` instead. */
+    export type Outbound = CreatedAt$Outbound;
 }
 
 /** @internal */
-export const UnifiedCrmCompanyOutputRemoteData$inboundSchema: z.ZodType<
-    UnifiedCrmCompanyOutputRemoteData,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
+export const ModifiedAt$inboundSchema: z.ZodType<ModifiedAt, z.ZodTypeDef, unknown> = z.object({});
 
 /** @internal */
-export type UnifiedCrmCompanyOutputRemoteData$Outbound = {};
+export type ModifiedAt$Outbound = {};
 
 /** @internal */
-export const UnifiedCrmCompanyOutputRemoteData$outboundSchema: z.ZodType<
-    UnifiedCrmCompanyOutputRemoteData$Outbound,
-    z.ZodTypeDef,
-    UnifiedCrmCompanyOutputRemoteData
-> = z.object({});
+export const ModifiedAt$outboundSchema: z.ZodType<ModifiedAt$Outbound, z.ZodTypeDef, ModifiedAt> =
+    z.object({});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UnifiedCrmCompanyOutputRemoteData$ {
-    /** @deprecated use `UnifiedCrmCompanyOutputRemoteData$inboundSchema` instead. */
-    export const inboundSchema = UnifiedCrmCompanyOutputRemoteData$inboundSchema;
-    /** @deprecated use `UnifiedCrmCompanyOutputRemoteData$outboundSchema` instead. */
-    export const outboundSchema = UnifiedCrmCompanyOutputRemoteData$outboundSchema;
-    /** @deprecated use `UnifiedCrmCompanyOutputRemoteData$Outbound` instead. */
-    export type Outbound = UnifiedCrmCompanyOutputRemoteData$Outbound;
-}
-
-/** @internal */
-export const UnifiedCrmCompanyOutputCreatedAt$inboundSchema: z.ZodType<
-    UnifiedCrmCompanyOutputCreatedAt,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedCrmCompanyOutputCreatedAt$Outbound = {};
-
-/** @internal */
-export const UnifiedCrmCompanyOutputCreatedAt$outboundSchema: z.ZodType<
-    UnifiedCrmCompanyOutputCreatedAt$Outbound,
-    z.ZodTypeDef,
-    UnifiedCrmCompanyOutputCreatedAt
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedCrmCompanyOutputCreatedAt$ {
-    /** @deprecated use `UnifiedCrmCompanyOutputCreatedAt$inboundSchema` instead. */
-    export const inboundSchema = UnifiedCrmCompanyOutputCreatedAt$inboundSchema;
-    /** @deprecated use `UnifiedCrmCompanyOutputCreatedAt$outboundSchema` instead. */
-    export const outboundSchema = UnifiedCrmCompanyOutputCreatedAt$outboundSchema;
-    /** @deprecated use `UnifiedCrmCompanyOutputCreatedAt$Outbound` instead. */
-    export type Outbound = UnifiedCrmCompanyOutputCreatedAt$Outbound;
-}
-
-/** @internal */
-export const UnifiedCrmCompanyOutputModifiedAt$inboundSchema: z.ZodType<
-    UnifiedCrmCompanyOutputModifiedAt,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedCrmCompanyOutputModifiedAt$Outbound = {};
-
-/** @internal */
-export const UnifiedCrmCompanyOutputModifiedAt$outboundSchema: z.ZodType<
-    UnifiedCrmCompanyOutputModifiedAt$Outbound,
-    z.ZodTypeDef,
-    UnifiedCrmCompanyOutputModifiedAt
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedCrmCompanyOutputModifiedAt$ {
-    /** @deprecated use `UnifiedCrmCompanyOutputModifiedAt$inboundSchema` instead. */
-    export const inboundSchema = UnifiedCrmCompanyOutputModifiedAt$inboundSchema;
-    /** @deprecated use `UnifiedCrmCompanyOutputModifiedAt$outboundSchema` instead. */
-    export const outboundSchema = UnifiedCrmCompanyOutputModifiedAt$outboundSchema;
-    /** @deprecated use `UnifiedCrmCompanyOutputModifiedAt$Outbound` instead. */
-    export type Outbound = UnifiedCrmCompanyOutputModifiedAt$Outbound;
+export namespace ModifiedAt$ {
+    /** @deprecated use `ModifiedAt$inboundSchema` instead. */
+    export const inboundSchema = ModifiedAt$inboundSchema;
+    /** @deprecated use `ModifiedAt$outboundSchema` instead. */
+    export const outboundSchema = ModifiedAt$outboundSchema;
+    /** @deprecated use `ModifiedAt$Outbound` instead. */
+    export type Outbound = ModifiedAt$Outbound;
 }
 
 /** @internal */
@@ -191,19 +131,19 @@ export const UnifiedCrmCompanyOutput$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        name: z.string(),
-        industry: z.string().optional(),
-        number_of_employees: z.number().optional(),
-        user_id: z.string().optional(),
-        email_addresses: z.array(Email$inboundSchema).optional(),
-        addresses: z.array(Address$inboundSchema).optional(),
-        phone_numbers: z.array(Phone$inboundSchema).optional(),
-        field_mappings: z.lazy(() => UnifiedCrmCompanyOutputFieldMappings$inboundSchema),
-        id: z.string().optional(),
-        remote_id: z.string().optional(),
-        remote_data: z.lazy(() => UnifiedCrmCompanyOutputRemoteData$inboundSchema),
-        created_at: z.lazy(() => UnifiedCrmCompanyOutputCreatedAt$inboundSchema),
-        modified_at: z.lazy(() => UnifiedCrmCompanyOutputModifiedAt$inboundSchema),
+        name: z.nullable(z.string()),
+        industry: z.nullable(z.string()).optional(),
+        number_of_employees: z.nullable(z.number()).optional(),
+        user_id: z.nullable(z.string()).optional(),
+        email_addresses: z.nullable(z.array(Email$inboundSchema)).optional(),
+        addresses: z.nullable(z.array(Address$inboundSchema)).optional(),
+        phone_numbers: z.nullable(z.array(Phone$inboundSchema)).optional(),
+        field_mappings: z.nullable(z.record(z.any())).optional(),
+        id: z.nullable(z.string()).optional(),
+        remote_id: z.nullable(z.string()).optional(),
+        remote_data: z.nullable(z.record(z.any())).optional(),
+        created_at: z.nullable(z.lazy(() => CreatedAt$inboundSchema)).optional(),
+        modified_at: z.nullable(z.lazy(() => ModifiedAt$inboundSchema)).optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -221,19 +161,19 @@ export const UnifiedCrmCompanyOutput$inboundSchema: z.ZodType<
 
 /** @internal */
 export type UnifiedCrmCompanyOutput$Outbound = {
-    name: string;
-    industry?: string | undefined;
-    number_of_employees?: number | undefined;
-    user_id?: string | undefined;
-    email_addresses?: Array<Email$Outbound> | undefined;
-    addresses?: Array<Address$Outbound> | undefined;
-    phone_numbers?: Array<Phone$Outbound> | undefined;
-    field_mappings: UnifiedCrmCompanyOutputFieldMappings$Outbound;
-    id?: string | undefined;
-    remote_id?: string | undefined;
-    remote_data: UnifiedCrmCompanyOutputRemoteData$Outbound;
-    created_at: UnifiedCrmCompanyOutputCreatedAt$Outbound;
-    modified_at: UnifiedCrmCompanyOutputModifiedAt$Outbound;
+    name: string | null;
+    industry?: string | null | undefined;
+    number_of_employees?: number | null | undefined;
+    user_id?: string | null | undefined;
+    email_addresses?: Array<Email$Outbound> | null | undefined;
+    addresses?: Array<Address$Outbound> | null | undefined;
+    phone_numbers?: Array<Phone$Outbound> | null | undefined;
+    field_mappings?: { [k: string]: any } | null | undefined;
+    id?: string | null | undefined;
+    remote_id?: string | null | undefined;
+    remote_data?: { [k: string]: any } | null | undefined;
+    created_at?: CreatedAt$Outbound | null | undefined;
+    modified_at?: ModifiedAt$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -243,19 +183,19 @@ export const UnifiedCrmCompanyOutput$outboundSchema: z.ZodType<
     UnifiedCrmCompanyOutput
 > = z
     .object({
-        name: z.string(),
-        industry: z.string().optional(),
-        numberOfEmployees: z.number().optional(),
-        userId: z.string().optional(),
-        emailAddresses: z.array(Email$outboundSchema).optional(),
-        addresses: z.array(Address$outboundSchema).optional(),
-        phoneNumbers: z.array(Phone$outboundSchema).optional(),
-        fieldMappings: z.lazy(() => UnifiedCrmCompanyOutputFieldMappings$outboundSchema),
-        id: z.string().optional(),
-        remoteId: z.string().optional(),
-        remoteData: z.lazy(() => UnifiedCrmCompanyOutputRemoteData$outboundSchema),
-        createdAt: z.lazy(() => UnifiedCrmCompanyOutputCreatedAt$outboundSchema),
-        modifiedAt: z.lazy(() => UnifiedCrmCompanyOutputModifiedAt$outboundSchema),
+        name: z.nullable(z.string()),
+        industry: z.nullable(z.string()).optional(),
+        numberOfEmployees: z.nullable(z.number()).optional(),
+        userId: z.nullable(z.string()).optional(),
+        emailAddresses: z.nullable(z.array(Email$outboundSchema)).optional(),
+        addresses: z.nullable(z.array(Address$outboundSchema)).optional(),
+        phoneNumbers: z.nullable(z.array(Phone$outboundSchema)).optional(),
+        fieldMappings: z.nullable(z.record(z.any())).optional(),
+        id: z.nullable(z.string()).optional(),
+        remoteId: z.nullable(z.string()).optional(),
+        remoteData: z.nullable(z.record(z.any())).optional(),
+        createdAt: z.nullable(z.lazy(() => CreatedAt$outboundSchema)).optional(),
+        modifiedAt: z.nullable(z.lazy(() => ModifiedAt$outboundSchema)).optional(),
     })
     .transform((v) => {
         return remap$(v, {

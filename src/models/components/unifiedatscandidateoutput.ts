@@ -8,212 +8,96 @@ import { Phone, Phone$inboundSchema, Phone$Outbound, Phone$outboundSchema } from
 import { Url, Url$inboundSchema, Url$Outbound, Url$outboundSchema } from "./url.js";
 import * as z from "zod";
 
-export type UnifiedAtsCandidateOutputFieldMappings = {};
-
-export type UnifiedAtsCandidateOutputRemoteData = {};
-
-export type UnifiedAtsCandidateOutputCreatedAt = {};
-
-export type UnifiedAtsCandidateOutputModifiedAt = {};
-
 export type UnifiedAtsCandidateOutput = {
     /**
      * The first name of the candidate
      */
-    firstName?: string | undefined;
+    firstName?: string | null | undefined;
     /**
      * The last name of the candidate
      */
-    lastName?: string | undefined;
+    lastName?: string | null | undefined;
     /**
      * The company of the candidate
      */
-    company?: string | undefined;
+    company?: string | null | undefined;
     /**
      * The title of the candidate
      */
-    title?: string | undefined;
+    title?: string | null | undefined;
     /**
      * The locations of the candidate
      */
-    locations?: string | undefined;
+    locations?: string | null | undefined;
     /**
      * Whether the candidate is private
      */
-    isPrivate?: boolean | undefined;
+    isPrivate?: boolean | null | undefined;
     /**
      * Whether the candidate is reachable by email
      */
-    emailReachable?: boolean | undefined;
+    emailReachable?: boolean | null | undefined;
     /**
      * The remote creation date of the candidate
      */
-    remoteCreatedAt?: Date | undefined;
+    remoteCreatedAt?: Date | null | undefined;
     /**
      * The remote modification date of the candidate
      */
-    remoteModifiedAt?: Date | undefined;
+    remoteModifiedAt?: Date | null | undefined;
     /**
      * The last interaction date with the candidate
      */
-    lastInteractionAt?: Date | undefined;
+    lastInteractionAt?: Date | null | undefined;
     /**
      * The attachments UUIDs of the candidate
      */
-    attachments?: Array<string> | undefined;
+    attachments?: Array<string> | null | undefined;
     /**
      * The applications UUIDs of the candidate
      */
-    applications?: Array<string> | undefined;
+    applications?: Array<string> | null | undefined;
     /**
      * The tags of the candidate
      */
-    tags?: Array<string> | undefined;
+    tags?: Array<string> | null | undefined;
     /**
      * The urls of the candidate, possible values for Url type are WEBSITE, BLOG, LINKEDIN, GITHUB, or OTHER
      */
-    urls?: Array<Url> | undefined;
+    urls?: Array<Url> | null | undefined;
     /**
      * The phone numbers of the candidate
      */
-    phoneNumbers?: Array<Phone> | undefined;
+    phoneNumbers?: Array<Phone> | null | undefined;
     /**
      * The email addresses of the candidate
      */
-    emailAddresses?: Array<Email> | undefined;
-    fieldMappings: UnifiedAtsCandidateOutputFieldMappings;
+    emailAddresses?: Array<Email> | null | undefined;
+    /**
+     * The custom field mappings of the object between the remote 3rd party & Panora
+     */
+    fieldMappings?: { [k: string]: any } | null | undefined;
     /**
      * The UUID of the candidate
      */
-    id?: string | undefined;
+    id?: string | null | undefined;
     /**
      * The id of the candidate in the context of the 3rd Party
      */
-    remoteId?: string | undefined;
-    remoteData: UnifiedAtsCandidateOutputRemoteData;
-    createdAt: UnifiedAtsCandidateOutputCreatedAt;
-    modifiedAt: UnifiedAtsCandidateOutputModifiedAt;
+    remoteId?: string | null | undefined;
+    /**
+     * The remote data of the candidate in the context of the 3rd Party
+     */
+    remoteData?: { [k: string]: any } | null | undefined;
+    /**
+     * The created date of the object
+     */
+    createdAt?: Date | null | undefined;
+    /**
+     * The modified date of the object
+     */
+    modifiedAt?: Date | null | undefined;
 };
-
-/** @internal */
-export const UnifiedAtsCandidateOutputFieldMappings$inboundSchema: z.ZodType<
-    UnifiedAtsCandidateOutputFieldMappings,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedAtsCandidateOutputFieldMappings$Outbound = {};
-
-/** @internal */
-export const UnifiedAtsCandidateOutputFieldMappings$outboundSchema: z.ZodType<
-    UnifiedAtsCandidateOutputFieldMappings$Outbound,
-    z.ZodTypeDef,
-    UnifiedAtsCandidateOutputFieldMappings
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedAtsCandidateOutputFieldMappings$ {
-    /** @deprecated use `UnifiedAtsCandidateOutputFieldMappings$inboundSchema` instead. */
-    export const inboundSchema = UnifiedAtsCandidateOutputFieldMappings$inboundSchema;
-    /** @deprecated use `UnifiedAtsCandidateOutputFieldMappings$outboundSchema` instead. */
-    export const outboundSchema = UnifiedAtsCandidateOutputFieldMappings$outboundSchema;
-    /** @deprecated use `UnifiedAtsCandidateOutputFieldMappings$Outbound` instead. */
-    export type Outbound = UnifiedAtsCandidateOutputFieldMappings$Outbound;
-}
-
-/** @internal */
-export const UnifiedAtsCandidateOutputRemoteData$inboundSchema: z.ZodType<
-    UnifiedAtsCandidateOutputRemoteData,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedAtsCandidateOutputRemoteData$Outbound = {};
-
-/** @internal */
-export const UnifiedAtsCandidateOutputRemoteData$outboundSchema: z.ZodType<
-    UnifiedAtsCandidateOutputRemoteData$Outbound,
-    z.ZodTypeDef,
-    UnifiedAtsCandidateOutputRemoteData
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedAtsCandidateOutputRemoteData$ {
-    /** @deprecated use `UnifiedAtsCandidateOutputRemoteData$inboundSchema` instead. */
-    export const inboundSchema = UnifiedAtsCandidateOutputRemoteData$inboundSchema;
-    /** @deprecated use `UnifiedAtsCandidateOutputRemoteData$outboundSchema` instead. */
-    export const outboundSchema = UnifiedAtsCandidateOutputRemoteData$outboundSchema;
-    /** @deprecated use `UnifiedAtsCandidateOutputRemoteData$Outbound` instead. */
-    export type Outbound = UnifiedAtsCandidateOutputRemoteData$Outbound;
-}
-
-/** @internal */
-export const UnifiedAtsCandidateOutputCreatedAt$inboundSchema: z.ZodType<
-    UnifiedAtsCandidateOutputCreatedAt,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedAtsCandidateOutputCreatedAt$Outbound = {};
-
-/** @internal */
-export const UnifiedAtsCandidateOutputCreatedAt$outboundSchema: z.ZodType<
-    UnifiedAtsCandidateOutputCreatedAt$Outbound,
-    z.ZodTypeDef,
-    UnifiedAtsCandidateOutputCreatedAt
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedAtsCandidateOutputCreatedAt$ {
-    /** @deprecated use `UnifiedAtsCandidateOutputCreatedAt$inboundSchema` instead. */
-    export const inboundSchema = UnifiedAtsCandidateOutputCreatedAt$inboundSchema;
-    /** @deprecated use `UnifiedAtsCandidateOutputCreatedAt$outboundSchema` instead. */
-    export const outboundSchema = UnifiedAtsCandidateOutputCreatedAt$outboundSchema;
-    /** @deprecated use `UnifiedAtsCandidateOutputCreatedAt$Outbound` instead. */
-    export type Outbound = UnifiedAtsCandidateOutputCreatedAt$Outbound;
-}
-
-/** @internal */
-export const UnifiedAtsCandidateOutputModifiedAt$inboundSchema: z.ZodType<
-    UnifiedAtsCandidateOutputModifiedAt,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedAtsCandidateOutputModifiedAt$Outbound = {};
-
-/** @internal */
-export const UnifiedAtsCandidateOutputModifiedAt$outboundSchema: z.ZodType<
-    UnifiedAtsCandidateOutputModifiedAt$Outbound,
-    z.ZodTypeDef,
-    UnifiedAtsCandidateOutputModifiedAt
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedAtsCandidateOutputModifiedAt$ {
-    /** @deprecated use `UnifiedAtsCandidateOutputModifiedAt$inboundSchema` instead. */
-    export const inboundSchema = UnifiedAtsCandidateOutputModifiedAt$inboundSchema;
-    /** @deprecated use `UnifiedAtsCandidateOutputModifiedAt$outboundSchema` instead. */
-    export const outboundSchema = UnifiedAtsCandidateOutputModifiedAt$outboundSchema;
-    /** @deprecated use `UnifiedAtsCandidateOutputModifiedAt$Outbound` instead. */
-    export type Outbound = UnifiedAtsCandidateOutputModifiedAt$Outbound;
-}
 
 /** @internal */
 export const UnifiedAtsCandidateOutput$inboundSchema: z.ZodType<
@@ -222,40 +106,63 @@ export const UnifiedAtsCandidateOutput$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        first_name: z.string().optional(),
-        last_name: z.string().optional(),
-        company: z.string().optional(),
-        title: z.string().optional(),
-        locations: z.string().optional(),
-        is_private: z.boolean().optional(),
-        email_reachable: z.boolean().optional(),
+        first_name: z.nullable(z.string()).optional(),
+        last_name: z.nullable(z.string()).optional(),
+        company: z.nullable(z.string()).optional(),
+        title: z.nullable(z.string()).optional(),
+        locations: z.nullable(z.string()).optional(),
+        is_private: z.nullable(z.boolean()).optional(),
+        email_reachable: z.nullable(z.boolean()).optional(),
         remote_created_at: z
-            .string()
-            .datetime({ offset: true })
-            .transform((v) => new Date(v))
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
             .optional(),
         remote_modified_at: z
-            .string()
-            .datetime({ offset: true })
-            .transform((v) => new Date(v))
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
             .optional(),
         last_interaction_at: z
-            .string()
-            .datetime({ offset: true })
-            .transform((v) => new Date(v))
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
             .optional(),
-        attachments: z.array(z.string()).optional(),
-        applications: z.array(z.string()).optional(),
-        tags: z.array(z.string()).optional(),
-        urls: z.array(Url$inboundSchema).optional(),
-        phone_numbers: z.array(Phone$inboundSchema).optional(),
-        email_addresses: z.array(Email$inboundSchema).optional(),
-        field_mappings: z.lazy(() => UnifiedAtsCandidateOutputFieldMappings$inboundSchema),
-        id: z.string().optional(),
-        remote_id: z.string().optional(),
-        remote_data: z.lazy(() => UnifiedAtsCandidateOutputRemoteData$inboundSchema),
-        created_at: z.lazy(() => UnifiedAtsCandidateOutputCreatedAt$inboundSchema),
-        modified_at: z.lazy(() => UnifiedAtsCandidateOutputModifiedAt$inboundSchema),
+        attachments: z.nullable(z.array(z.string())).optional(),
+        applications: z.nullable(z.array(z.string())).optional(),
+        tags: z.nullable(z.array(z.string())).optional(),
+        urls: z.nullable(z.array(Url$inboundSchema)).optional(),
+        phone_numbers: z.nullable(z.array(Phone$inboundSchema)).optional(),
+        email_addresses: z.nullable(z.array(Email$inboundSchema)).optional(),
+        field_mappings: z.nullable(z.record(z.any())).optional(),
+        id: z.nullable(z.string()).optional(),
+        remote_id: z.nullable(z.string()).optional(),
+        remote_data: z.nullable(z.record(z.any())).optional(),
+        created_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        modified_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -278,28 +185,28 @@ export const UnifiedAtsCandidateOutput$inboundSchema: z.ZodType<
 
 /** @internal */
 export type UnifiedAtsCandidateOutput$Outbound = {
-    first_name?: string | undefined;
-    last_name?: string | undefined;
-    company?: string | undefined;
-    title?: string | undefined;
-    locations?: string | undefined;
-    is_private?: boolean | undefined;
-    email_reachable?: boolean | undefined;
-    remote_created_at?: string | undefined;
-    remote_modified_at?: string | undefined;
-    last_interaction_at?: string | undefined;
-    attachments?: Array<string> | undefined;
-    applications?: Array<string> | undefined;
-    tags?: Array<string> | undefined;
-    urls?: Array<Url$Outbound> | undefined;
-    phone_numbers?: Array<Phone$Outbound> | undefined;
-    email_addresses?: Array<Email$Outbound> | undefined;
-    field_mappings: UnifiedAtsCandidateOutputFieldMappings$Outbound;
-    id?: string | undefined;
-    remote_id?: string | undefined;
-    remote_data: UnifiedAtsCandidateOutputRemoteData$Outbound;
-    created_at: UnifiedAtsCandidateOutputCreatedAt$Outbound;
-    modified_at: UnifiedAtsCandidateOutputModifiedAt$Outbound;
+    first_name?: string | null | undefined;
+    last_name?: string | null | undefined;
+    company?: string | null | undefined;
+    title?: string | null | undefined;
+    locations?: string | null | undefined;
+    is_private?: boolean | null | undefined;
+    email_reachable?: boolean | null | undefined;
+    remote_created_at?: string | null | undefined;
+    remote_modified_at?: string | null | undefined;
+    last_interaction_at?: string | null | undefined;
+    attachments?: Array<string> | null | undefined;
+    applications?: Array<string> | null | undefined;
+    tags?: Array<string> | null | undefined;
+    urls?: Array<Url$Outbound> | null | undefined;
+    phone_numbers?: Array<Phone$Outbound> | null | undefined;
+    email_addresses?: Array<Email$Outbound> | null | undefined;
+    field_mappings?: { [k: string]: any } | null | undefined;
+    id?: string | null | undefined;
+    remote_id?: string | null | undefined;
+    remote_data?: { [k: string]: any } | null | undefined;
+    created_at?: string | null | undefined;
+    modified_at?: string | null | undefined;
 };
 
 /** @internal */
@@ -309,37 +216,28 @@ export const UnifiedAtsCandidateOutput$outboundSchema: z.ZodType<
     UnifiedAtsCandidateOutput
 > = z
     .object({
-        firstName: z.string().optional(),
-        lastName: z.string().optional(),
-        company: z.string().optional(),
-        title: z.string().optional(),
-        locations: z.string().optional(),
-        isPrivate: z.boolean().optional(),
-        emailReachable: z.boolean().optional(),
-        remoteCreatedAt: z
-            .date()
-            .transform((v) => v.toISOString())
-            .optional(),
-        remoteModifiedAt: z
-            .date()
-            .transform((v) => v.toISOString())
-            .optional(),
-        lastInteractionAt: z
-            .date()
-            .transform((v) => v.toISOString())
-            .optional(),
-        attachments: z.array(z.string()).optional(),
-        applications: z.array(z.string()).optional(),
-        tags: z.array(z.string()).optional(),
-        urls: z.array(Url$outboundSchema).optional(),
-        phoneNumbers: z.array(Phone$outboundSchema).optional(),
-        emailAddresses: z.array(Email$outboundSchema).optional(),
-        fieldMappings: z.lazy(() => UnifiedAtsCandidateOutputFieldMappings$outboundSchema),
-        id: z.string().optional(),
-        remoteId: z.string().optional(),
-        remoteData: z.lazy(() => UnifiedAtsCandidateOutputRemoteData$outboundSchema),
-        createdAt: z.lazy(() => UnifiedAtsCandidateOutputCreatedAt$outboundSchema),
-        modifiedAt: z.lazy(() => UnifiedAtsCandidateOutputModifiedAt$outboundSchema),
+        firstName: z.nullable(z.string()).optional(),
+        lastName: z.nullable(z.string()).optional(),
+        company: z.nullable(z.string()).optional(),
+        title: z.nullable(z.string()).optional(),
+        locations: z.nullable(z.string()).optional(),
+        isPrivate: z.nullable(z.boolean()).optional(),
+        emailReachable: z.nullable(z.boolean()).optional(),
+        remoteCreatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        remoteModifiedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        lastInteractionAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        attachments: z.nullable(z.array(z.string())).optional(),
+        applications: z.nullable(z.array(z.string())).optional(),
+        tags: z.nullable(z.array(z.string())).optional(),
+        urls: z.nullable(z.array(Url$outboundSchema)).optional(),
+        phoneNumbers: z.nullable(z.array(Phone$outboundSchema)).optional(),
+        emailAddresses: z.nullable(z.array(Email$outboundSchema)).optional(),
+        fieldMappings: z.nullable(z.record(z.any())).optional(),
+        id: z.nullable(z.string()).optional(),
+        remoteId: z.nullable(z.string()).optional(),
+        remoteData: z.nullable(z.record(z.any())).optional(),
+        createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        modifiedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
     })
     .transform((v) => {
         return remap$(v, {

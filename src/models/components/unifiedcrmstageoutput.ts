@@ -5,92 +5,46 @@
 import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
-export type UnifiedCrmStageOutputFieldMappings = {};
-
-export type UnifiedCrmStageOutputRemoteData = {};
-
+/**
+ * The created date of the object
+ */
 export type UnifiedCrmStageOutputCreatedAt = {};
 
+/**
+ * The modified date of the object
+ */
 export type UnifiedCrmStageOutputModifiedAt = {};
 
 export type UnifiedCrmStageOutput = {
     /**
      * The name of the stage
      */
-    stageName: string;
-    fieldMappings: UnifiedCrmStageOutputFieldMappings;
+    stageName: string | null;
+    /**
+     * The custom field mappings of the stage between the remote 3rd party & Panora
+     */
+    fieldMappings?: { [k: string]: any } | null | undefined;
     /**
      * The UUID of the stage
      */
-    id?: string | undefined;
+    id?: string | null | undefined;
     /**
      * The id of the stage in the context of the Crm 3rd Party
      */
-    remoteId?: string | undefined;
-    remoteData: UnifiedCrmStageOutputRemoteData;
-    createdAt: UnifiedCrmStageOutputCreatedAt;
-    modifiedAt: UnifiedCrmStageOutputModifiedAt;
+    remoteId?: string | null | undefined;
+    /**
+     * The remote data of the stage in the context of the Crm 3rd Party
+     */
+    remoteData?: { [k: string]: any } | null | undefined;
+    /**
+     * The created date of the object
+     */
+    createdAt?: UnifiedCrmStageOutputCreatedAt | null | undefined;
+    /**
+     * The modified date of the object
+     */
+    modifiedAt?: UnifiedCrmStageOutputModifiedAt | null | undefined;
 };
-
-/** @internal */
-export const UnifiedCrmStageOutputFieldMappings$inboundSchema: z.ZodType<
-    UnifiedCrmStageOutputFieldMappings,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedCrmStageOutputFieldMappings$Outbound = {};
-
-/** @internal */
-export const UnifiedCrmStageOutputFieldMappings$outboundSchema: z.ZodType<
-    UnifiedCrmStageOutputFieldMappings$Outbound,
-    z.ZodTypeDef,
-    UnifiedCrmStageOutputFieldMappings
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedCrmStageOutputFieldMappings$ {
-    /** @deprecated use `UnifiedCrmStageOutputFieldMappings$inboundSchema` instead. */
-    export const inboundSchema = UnifiedCrmStageOutputFieldMappings$inboundSchema;
-    /** @deprecated use `UnifiedCrmStageOutputFieldMappings$outboundSchema` instead. */
-    export const outboundSchema = UnifiedCrmStageOutputFieldMappings$outboundSchema;
-    /** @deprecated use `UnifiedCrmStageOutputFieldMappings$Outbound` instead. */
-    export type Outbound = UnifiedCrmStageOutputFieldMappings$Outbound;
-}
-
-/** @internal */
-export const UnifiedCrmStageOutputRemoteData$inboundSchema: z.ZodType<
-    UnifiedCrmStageOutputRemoteData,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedCrmStageOutputRemoteData$Outbound = {};
-
-/** @internal */
-export const UnifiedCrmStageOutputRemoteData$outboundSchema: z.ZodType<
-    UnifiedCrmStageOutputRemoteData$Outbound,
-    z.ZodTypeDef,
-    UnifiedCrmStageOutputRemoteData
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedCrmStageOutputRemoteData$ {
-    /** @deprecated use `UnifiedCrmStageOutputRemoteData$inboundSchema` instead. */
-    export const inboundSchema = UnifiedCrmStageOutputRemoteData$inboundSchema;
-    /** @deprecated use `UnifiedCrmStageOutputRemoteData$outboundSchema` instead. */
-    export const outboundSchema = UnifiedCrmStageOutputRemoteData$outboundSchema;
-    /** @deprecated use `UnifiedCrmStageOutputRemoteData$Outbound` instead. */
-    export type Outbound = UnifiedCrmStageOutputRemoteData$Outbound;
-}
 
 /** @internal */
 export const UnifiedCrmStageOutputCreatedAt$inboundSchema: z.ZodType<
@@ -159,13 +113,17 @@ export const UnifiedCrmStageOutput$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        stage_name: z.string(),
-        field_mappings: z.lazy(() => UnifiedCrmStageOutputFieldMappings$inboundSchema),
-        id: z.string().optional(),
-        remote_id: z.string().optional(),
-        remote_data: z.lazy(() => UnifiedCrmStageOutputRemoteData$inboundSchema),
-        created_at: z.lazy(() => UnifiedCrmStageOutputCreatedAt$inboundSchema),
-        modified_at: z.lazy(() => UnifiedCrmStageOutputModifiedAt$inboundSchema),
+        stage_name: z.nullable(z.string()),
+        field_mappings: z.nullable(z.record(z.any())).optional(),
+        id: z.nullable(z.string()).optional(),
+        remote_id: z.nullable(z.string()).optional(),
+        remote_data: z.nullable(z.record(z.any())).optional(),
+        created_at: z
+            .nullable(z.lazy(() => UnifiedCrmStageOutputCreatedAt$inboundSchema))
+            .optional(),
+        modified_at: z
+            .nullable(z.lazy(() => UnifiedCrmStageOutputModifiedAt$inboundSchema))
+            .optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -180,13 +138,13 @@ export const UnifiedCrmStageOutput$inboundSchema: z.ZodType<
 
 /** @internal */
 export type UnifiedCrmStageOutput$Outbound = {
-    stage_name: string;
-    field_mappings: UnifiedCrmStageOutputFieldMappings$Outbound;
-    id?: string | undefined;
-    remote_id?: string | undefined;
-    remote_data: UnifiedCrmStageOutputRemoteData$Outbound;
-    created_at: UnifiedCrmStageOutputCreatedAt$Outbound;
-    modified_at: UnifiedCrmStageOutputModifiedAt$Outbound;
+    stage_name: string | null;
+    field_mappings?: { [k: string]: any } | null | undefined;
+    id?: string | null | undefined;
+    remote_id?: string | null | undefined;
+    remote_data?: { [k: string]: any } | null | undefined;
+    created_at?: UnifiedCrmStageOutputCreatedAt$Outbound | null | undefined;
+    modified_at?: UnifiedCrmStageOutputModifiedAt$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -196,13 +154,17 @@ export const UnifiedCrmStageOutput$outboundSchema: z.ZodType<
     UnifiedCrmStageOutput
 > = z
     .object({
-        stageName: z.string(),
-        fieldMappings: z.lazy(() => UnifiedCrmStageOutputFieldMappings$outboundSchema),
-        id: z.string().optional(),
-        remoteId: z.string().optional(),
-        remoteData: z.lazy(() => UnifiedCrmStageOutputRemoteData$outboundSchema),
-        createdAt: z.lazy(() => UnifiedCrmStageOutputCreatedAt$outboundSchema),
-        modifiedAt: z.lazy(() => UnifiedCrmStageOutputModifiedAt$outboundSchema),
+        stageName: z.nullable(z.string()),
+        fieldMappings: z.nullable(z.record(z.any())).optional(),
+        id: z.nullable(z.string()).optional(),
+        remoteId: z.nullable(z.string()).optional(),
+        remoteData: z.nullable(z.record(z.any())).optional(),
+        createdAt: z
+            .nullable(z.lazy(() => UnifiedCrmStageOutputCreatedAt$outboundSchema))
+            .optional(),
+        modifiedAt: z
+            .nullable(z.lazy(() => UnifiedCrmStageOutputModifiedAt$outboundSchema))
+            .optional(),
     })
     .transform((v) => {
         return remap$(v, {

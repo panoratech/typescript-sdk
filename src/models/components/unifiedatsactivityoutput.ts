@@ -5,172 +5,56 @@
 import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
-export type UnifiedAtsActivityOutputFieldMappings = {};
-
-export type UnifiedAtsActivityOutputRemoteData = {};
-
-export type UnifiedAtsActivityOutputCreatedAt = {};
-
-export type UnifiedAtsActivityOutputModifiedAt = {};
-
 export type UnifiedAtsActivityOutput = {
     /**
      * The type of activity
      */
-    activityType?: string | undefined;
+    activityType?: string | null | undefined;
     /**
      * The subject of the activity
      */
-    subject?: string | undefined;
+    subject?: string | null | undefined;
     /**
      * The body of the activity
      */
-    body?: string | undefined;
+    body?: string | null | undefined;
     /**
      * The visibility of the activity
      */
-    visibility?: string | undefined;
+    visibility?: string | null | undefined;
     /**
      * The UUID of the candidate
      */
-    candidateId?: string | undefined;
+    candidateId?: string | null | undefined;
     /**
      * The remote creation date of the activity
      */
-    remoteCreatedAt?: Date | undefined;
-    fieldMappings: UnifiedAtsActivityOutputFieldMappings;
+    remoteCreatedAt?: Date | null | undefined;
+    /**
+     * The custom field mappings of the object between the remote 3rd party & Panora
+     */
+    fieldMappings?: { [k: string]: any } | null | undefined;
     /**
      * The UUID of the activity
      */
-    id?: string | undefined;
+    id?: string | null | undefined;
     /**
      * The remote ID of the activity in the context of the 3rd Party
      */
-    remoteId?: string | undefined;
-    remoteData: UnifiedAtsActivityOutputRemoteData;
-    createdAt: UnifiedAtsActivityOutputCreatedAt;
-    modifiedAt: UnifiedAtsActivityOutputModifiedAt;
+    remoteId?: string | null | undefined;
+    /**
+     * The remote data of the activity in the context of the 3rd Party
+     */
+    remoteData?: { [k: string]: any } | null | undefined;
+    /**
+     * The created date of the object
+     */
+    createdAt?: Date | null | undefined;
+    /**
+     * The modified date of the object
+     */
+    modifiedAt?: Date | null | undefined;
 };
-
-/** @internal */
-export const UnifiedAtsActivityOutputFieldMappings$inboundSchema: z.ZodType<
-    UnifiedAtsActivityOutputFieldMappings,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedAtsActivityOutputFieldMappings$Outbound = {};
-
-/** @internal */
-export const UnifiedAtsActivityOutputFieldMappings$outboundSchema: z.ZodType<
-    UnifiedAtsActivityOutputFieldMappings$Outbound,
-    z.ZodTypeDef,
-    UnifiedAtsActivityOutputFieldMappings
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedAtsActivityOutputFieldMappings$ {
-    /** @deprecated use `UnifiedAtsActivityOutputFieldMappings$inboundSchema` instead. */
-    export const inboundSchema = UnifiedAtsActivityOutputFieldMappings$inboundSchema;
-    /** @deprecated use `UnifiedAtsActivityOutputFieldMappings$outboundSchema` instead. */
-    export const outboundSchema = UnifiedAtsActivityOutputFieldMappings$outboundSchema;
-    /** @deprecated use `UnifiedAtsActivityOutputFieldMappings$Outbound` instead. */
-    export type Outbound = UnifiedAtsActivityOutputFieldMappings$Outbound;
-}
-
-/** @internal */
-export const UnifiedAtsActivityOutputRemoteData$inboundSchema: z.ZodType<
-    UnifiedAtsActivityOutputRemoteData,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedAtsActivityOutputRemoteData$Outbound = {};
-
-/** @internal */
-export const UnifiedAtsActivityOutputRemoteData$outboundSchema: z.ZodType<
-    UnifiedAtsActivityOutputRemoteData$Outbound,
-    z.ZodTypeDef,
-    UnifiedAtsActivityOutputRemoteData
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedAtsActivityOutputRemoteData$ {
-    /** @deprecated use `UnifiedAtsActivityOutputRemoteData$inboundSchema` instead. */
-    export const inboundSchema = UnifiedAtsActivityOutputRemoteData$inboundSchema;
-    /** @deprecated use `UnifiedAtsActivityOutputRemoteData$outboundSchema` instead. */
-    export const outboundSchema = UnifiedAtsActivityOutputRemoteData$outboundSchema;
-    /** @deprecated use `UnifiedAtsActivityOutputRemoteData$Outbound` instead. */
-    export type Outbound = UnifiedAtsActivityOutputRemoteData$Outbound;
-}
-
-/** @internal */
-export const UnifiedAtsActivityOutputCreatedAt$inboundSchema: z.ZodType<
-    UnifiedAtsActivityOutputCreatedAt,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedAtsActivityOutputCreatedAt$Outbound = {};
-
-/** @internal */
-export const UnifiedAtsActivityOutputCreatedAt$outboundSchema: z.ZodType<
-    UnifiedAtsActivityOutputCreatedAt$Outbound,
-    z.ZodTypeDef,
-    UnifiedAtsActivityOutputCreatedAt
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedAtsActivityOutputCreatedAt$ {
-    /** @deprecated use `UnifiedAtsActivityOutputCreatedAt$inboundSchema` instead. */
-    export const inboundSchema = UnifiedAtsActivityOutputCreatedAt$inboundSchema;
-    /** @deprecated use `UnifiedAtsActivityOutputCreatedAt$outboundSchema` instead. */
-    export const outboundSchema = UnifiedAtsActivityOutputCreatedAt$outboundSchema;
-    /** @deprecated use `UnifiedAtsActivityOutputCreatedAt$Outbound` instead. */
-    export type Outbound = UnifiedAtsActivityOutputCreatedAt$Outbound;
-}
-
-/** @internal */
-export const UnifiedAtsActivityOutputModifiedAt$inboundSchema: z.ZodType<
-    UnifiedAtsActivityOutputModifiedAt,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedAtsActivityOutputModifiedAt$Outbound = {};
-
-/** @internal */
-export const UnifiedAtsActivityOutputModifiedAt$outboundSchema: z.ZodType<
-    UnifiedAtsActivityOutputModifiedAt$Outbound,
-    z.ZodTypeDef,
-    UnifiedAtsActivityOutputModifiedAt
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedAtsActivityOutputModifiedAt$ {
-    /** @deprecated use `UnifiedAtsActivityOutputModifiedAt$inboundSchema` instead. */
-    export const inboundSchema = UnifiedAtsActivityOutputModifiedAt$inboundSchema;
-    /** @deprecated use `UnifiedAtsActivityOutputModifiedAt$outboundSchema` instead. */
-    export const outboundSchema = UnifiedAtsActivityOutputModifiedAt$outboundSchema;
-    /** @deprecated use `UnifiedAtsActivityOutputModifiedAt$Outbound` instead. */
-    export type Outbound = UnifiedAtsActivityOutputModifiedAt$Outbound;
-}
 
 /** @internal */
 export const UnifiedAtsActivityOutput$inboundSchema: z.ZodType<
@@ -179,22 +63,39 @@ export const UnifiedAtsActivityOutput$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        activity_type: z.string().optional(),
-        subject: z.string().optional(),
-        body: z.string().optional(),
-        visibility: z.string().optional(),
-        candidate_id: z.string().optional(),
+        activity_type: z.nullable(z.string()).optional(),
+        subject: z.nullable(z.string()).optional(),
+        body: z.nullable(z.string()).optional(),
+        visibility: z.nullable(z.string()).optional(),
+        candidate_id: z.nullable(z.string()).optional(),
         remote_created_at: z
-            .string()
-            .datetime({ offset: true })
-            .transform((v) => new Date(v))
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
             .optional(),
-        field_mappings: z.lazy(() => UnifiedAtsActivityOutputFieldMappings$inboundSchema),
-        id: z.string().optional(),
-        remote_id: z.string().optional(),
-        remote_data: z.lazy(() => UnifiedAtsActivityOutputRemoteData$inboundSchema),
-        created_at: z.lazy(() => UnifiedAtsActivityOutputCreatedAt$inboundSchema),
-        modified_at: z.lazy(() => UnifiedAtsActivityOutputModifiedAt$inboundSchema),
+        field_mappings: z.nullable(z.record(z.any())).optional(),
+        id: z.nullable(z.string()).optional(),
+        remote_id: z.nullable(z.string()).optional(),
+        remote_data: z.nullable(z.record(z.any())).optional(),
+        created_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        modified_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -211,18 +112,18 @@ export const UnifiedAtsActivityOutput$inboundSchema: z.ZodType<
 
 /** @internal */
 export type UnifiedAtsActivityOutput$Outbound = {
-    activity_type?: string | undefined;
-    subject?: string | undefined;
-    body?: string | undefined;
-    visibility?: string | undefined;
-    candidate_id?: string | undefined;
-    remote_created_at?: string | undefined;
-    field_mappings: UnifiedAtsActivityOutputFieldMappings$Outbound;
-    id?: string | undefined;
-    remote_id?: string | undefined;
-    remote_data: UnifiedAtsActivityOutputRemoteData$Outbound;
-    created_at: UnifiedAtsActivityOutputCreatedAt$Outbound;
-    modified_at: UnifiedAtsActivityOutputModifiedAt$Outbound;
+    activity_type?: string | null | undefined;
+    subject?: string | null | undefined;
+    body?: string | null | undefined;
+    visibility?: string | null | undefined;
+    candidate_id?: string | null | undefined;
+    remote_created_at?: string | null | undefined;
+    field_mappings?: { [k: string]: any } | null | undefined;
+    id?: string | null | undefined;
+    remote_id?: string | null | undefined;
+    remote_data?: { [k: string]: any } | null | undefined;
+    created_at?: string | null | undefined;
+    modified_at?: string | null | undefined;
 };
 
 /** @internal */
@@ -232,21 +133,18 @@ export const UnifiedAtsActivityOutput$outboundSchema: z.ZodType<
     UnifiedAtsActivityOutput
 > = z
     .object({
-        activityType: z.string().optional(),
-        subject: z.string().optional(),
-        body: z.string().optional(),
-        visibility: z.string().optional(),
-        candidateId: z.string().optional(),
-        remoteCreatedAt: z
-            .date()
-            .transform((v) => v.toISOString())
-            .optional(),
-        fieldMappings: z.lazy(() => UnifiedAtsActivityOutputFieldMappings$outboundSchema),
-        id: z.string().optional(),
-        remoteId: z.string().optional(),
-        remoteData: z.lazy(() => UnifiedAtsActivityOutputRemoteData$outboundSchema),
-        createdAt: z.lazy(() => UnifiedAtsActivityOutputCreatedAt$outboundSchema),
-        modifiedAt: z.lazy(() => UnifiedAtsActivityOutputModifiedAt$outboundSchema),
+        activityType: z.nullable(z.string()).optional(),
+        subject: z.nullable(z.string()).optional(),
+        body: z.nullable(z.string()).optional(),
+        visibility: z.nullable(z.string()).optional(),
+        candidateId: z.nullable(z.string()).optional(),
+        remoteCreatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        fieldMappings: z.nullable(z.record(z.any())).optional(),
+        id: z.nullable(z.string()).optional(),
+        remoteId: z.nullable(z.string()).optional(),
+        remoteData: z.nullable(z.record(z.any())).optional(),
+        createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        modifiedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
     })
     .transform((v) => {
         return remap$(v, {

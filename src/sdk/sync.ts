@@ -110,7 +110,7 @@ export class Sync extends ClientSDK {
         const query$ = "";
 
         const headers$ = new Headers({
-            Accept: "*/*",
+            Accept: "application/json",
         });
 
         const context = { operationID: "resync", oAuth2Scopes: [], securitySource: null };
@@ -139,7 +139,7 @@ export class Sync extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.ResyncResponse>()
-            .void([200, 201], operations.ResyncResponse$inboundSchema)
+            .json(201, operations.ResyncResponse$inboundSchema, { key: "ResyncStatusDto" })
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 
