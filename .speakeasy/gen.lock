@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: caaaa8c3-6dd7-43a5-841e-c3193e68cc73
 management:
-  docChecksum: 6960959175161ea1f250bb468e5fbf98
+  docChecksum: 2d1bae22df56eb1788dca7e6d9f4c6ae
   docVersion: "1.0"
   speakeasyVersion: 1.352.0
   generationVersion: 2.384.4
-  releaseVersion: 0.4.0
-  configChecksum: 378a5fba374c6d6be00ac827ede50b04
+  releaseVersion: 0.4.1
+  configChecksum: fcacb3829b5331cc66e628d10359fca9
   repoURL: https://github.com/panoratech/typescript-sdk.git
   installationURL: https://github.com/panoratech/typescript-sdk
   published: true
@@ -500,9 +500,7 @@ generatedFiles:
   - src/models/errors/index.ts
   - src/models/operations/index.ts
   - src/models/components/index.ts
-  - docs/models/operations/helloresponsebody.md
   - docs/models/operations/helloresponse.md
-  - docs/models/operations/healthresponsebody.md
   - docs/models/operations/healthresponse.md
   - docs/models/operations/listwebhooksresponse.md
   - docs/models/operations/createwebhookpublicresponse.md

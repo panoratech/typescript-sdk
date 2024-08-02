@@ -26,8 +26,8 @@ export type ListAccountingCashflowStatementRequest = {
 };
 
 export type ListAccountingCashflowStatementResponseBody = {
-    prevCursor: string;
-    nextCursor: string;
+    prevCursor: string | null;
+    nextCursor: string | null;
     data: Array<components.UnifiedAccountingCashflowstatementOutput>;
 };
 
@@ -102,8 +102,8 @@ export const ListAccountingCashflowStatementResponseBody$inboundSchema: z.ZodTyp
     unknown
 > = z
     .object({
-        prev_cursor: z.string(),
-        next_cursor: z.string(),
+        prev_cursor: z.nullable(z.string()),
+        next_cursor: z.nullable(z.string()),
         data: z.array(components.UnifiedAccountingCashflowstatementOutput$inboundSchema),
     })
     .transform((v) => {
@@ -115,8 +115,8 @@ export const ListAccountingCashflowStatementResponseBody$inboundSchema: z.ZodTyp
 
 /** @internal */
 export type ListAccountingCashflowStatementResponseBody$Outbound = {
-    prev_cursor: string;
-    next_cursor: string;
+    prev_cursor: string | null;
+    next_cursor: string | null;
     data: Array<components.UnifiedAccountingCashflowstatementOutput$Outbound>;
 };
 
@@ -127,8 +127,8 @@ export const ListAccountingCashflowStatementResponseBody$outboundSchema: z.ZodTy
     ListAccountingCashflowStatementResponseBody
 > = z
     .object({
-        prevCursor: z.string(),
-        nextCursor: z.string(),
+        prevCursor: z.nullable(z.string()),
+        nextCursor: z.nullable(z.string()),
         data: z.array(components.UnifiedAccountingCashflowstatementOutput$outboundSchema),
     })
     .transform((v) => {

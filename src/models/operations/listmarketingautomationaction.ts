@@ -26,8 +26,8 @@ export type ListMarketingautomationActionRequest = {
 };
 
 export type ListMarketingautomationActionResponseBody = {
-    prevCursor: string;
-    nextCursor: string;
+    prevCursor: string | null;
+    nextCursor: string | null;
     data: Array<components.UnifiedMarketingautomationActionOutput>;
 };
 
@@ -102,8 +102,8 @@ export const ListMarketingautomationActionResponseBody$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        prev_cursor: z.string(),
-        next_cursor: z.string(),
+        prev_cursor: z.nullable(z.string()),
+        next_cursor: z.nullable(z.string()),
         data: z.array(components.UnifiedMarketingautomationActionOutput$inboundSchema),
     })
     .transform((v) => {
@@ -115,8 +115,8 @@ export const ListMarketingautomationActionResponseBody$inboundSchema: z.ZodType<
 
 /** @internal */
 export type ListMarketingautomationActionResponseBody$Outbound = {
-    prev_cursor: string;
-    next_cursor: string;
+    prev_cursor: string | null;
+    next_cursor: string | null;
     data: Array<components.UnifiedMarketingautomationActionOutput$Outbound>;
 };
 
@@ -127,8 +127,8 @@ export const ListMarketingautomationActionResponseBody$outboundSchema: z.ZodType
     ListMarketingautomationActionResponseBody
 > = z
     .object({
-        prevCursor: z.string(),
-        nextCursor: z.string(),
+        prevCursor: z.nullable(z.string()),
+        nextCursor: z.nullable(z.string()),
         data: z.array(components.UnifiedMarketingautomationActionOutput$outboundSchema),
     })
     .transform((v) => {

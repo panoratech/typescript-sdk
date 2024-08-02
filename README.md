@@ -150,7 +150,7 @@ run();
 
 ### [crm.companies](docs/sdks/companies/README.md)
 
-* [list](docs/sdks/companies/README.md#list) - List  Companies
+* [list](docs/sdks/companies/README.md#list) - List Companies
 * [create](docs/sdks/companies/README.md#create) - Create Companies
 * [retrieve](docs/sdks/companies/README.md#retrieve) - Retrieve Companies
 

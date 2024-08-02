@@ -114,7 +114,7 @@ export class Panora extends ClientSDK {
         const query$ = "";
 
         const headers$ = new Headers({
-            Accept: "application/json",
+            Accept: "text/plain",
         });
 
         const bearer$ = await extractSecurity(this.options$.bearer);
@@ -151,7 +151,7 @@ export class Panora extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.HelloResponse>()
-            .json(200, operations.HelloResponse$inboundSchema, { key: "object" })
+            .text(200, operations.HelloResponse$inboundSchema, { key: "res" })
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 
@@ -201,7 +201,7 @@ export class Panora extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.HealthResponse>()
-            .json(200, operations.HealthResponse$inboundSchema, { key: "object" })
+            .json(200, operations.HealthResponse$inboundSchema, { key: "number" })
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 

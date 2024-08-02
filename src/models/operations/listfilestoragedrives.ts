@@ -26,8 +26,8 @@ export type ListFilestorageDrivesRequest = {
 };
 
 export type ListFilestorageDrivesResponseBody = {
-    prevCursor: string;
-    nextCursor: string;
+    prevCursor: string | null;
+    nextCursor: string | null;
     data: Array<components.UnifiedFilestorageDriveOutput>;
 };
 
@@ -102,8 +102,8 @@ export const ListFilestorageDrivesResponseBody$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        prev_cursor: z.string(),
-        next_cursor: z.string(),
+        prev_cursor: z.nullable(z.string()),
+        next_cursor: z.nullable(z.string()),
         data: z.array(components.UnifiedFilestorageDriveOutput$inboundSchema),
     })
     .transform((v) => {
@@ -115,8 +115,8 @@ export const ListFilestorageDrivesResponseBody$inboundSchema: z.ZodType<
 
 /** @internal */
 export type ListFilestorageDrivesResponseBody$Outbound = {
-    prev_cursor: string;
-    next_cursor: string;
+    prev_cursor: string | null;
+    next_cursor: string | null;
     data: Array<components.UnifiedFilestorageDriveOutput$Outbound>;
 };
 
@@ -127,8 +127,8 @@ export const ListFilestorageDrivesResponseBody$outboundSchema: z.ZodType<
     ListFilestorageDrivesResponseBody
 > = z
     .object({
-        prevCursor: z.string(),
-        nextCursor: z.string(),
+        prevCursor: z.nullable(z.string()),
+        nextCursor: z.nullable(z.string()),
         data: z.array(components.UnifiedFilestorageDriveOutput$outboundSchema),
     })
     .transform((v) => {

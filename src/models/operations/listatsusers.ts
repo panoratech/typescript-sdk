@@ -26,8 +26,8 @@ export type ListAtsUsersRequest = {
 };
 
 export type ListAtsUsersResponseBody = {
-    prevCursor: string;
-    nextCursor: string;
+    prevCursor: string | null;
+    nextCursor: string | null;
     data: Array<components.UnifiedAtsUserOutput>;
 };
 
@@ -102,8 +102,8 @@ export const ListAtsUsersResponseBody$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        prev_cursor: z.string(),
-        next_cursor: z.string(),
+        prev_cursor: z.nullable(z.string()),
+        next_cursor: z.nullable(z.string()),
         data: z.array(components.UnifiedAtsUserOutput$inboundSchema),
     })
     .transform((v) => {
@@ -115,8 +115,8 @@ export const ListAtsUsersResponseBody$inboundSchema: z.ZodType<
 
 /** @internal */
 export type ListAtsUsersResponseBody$Outbound = {
-    prev_cursor: string;
-    next_cursor: string;
+    prev_cursor: string | null;
+    next_cursor: string | null;
     data: Array<components.UnifiedAtsUserOutput$Outbound>;
 };
 
@@ -127,8 +127,8 @@ export const ListAtsUsersResponseBody$outboundSchema: z.ZodType<
     ListAtsUsersResponseBody
 > = z
     .object({
-        prevCursor: z.string(),
-        nextCursor: z.string(),
+        prevCursor: z.nullable(z.string()),
+        nextCursor: z.nullable(z.string()),
         data: z.array(components.UnifiedAtsUserOutput$outboundSchema),
     })
     .transform((v) => {

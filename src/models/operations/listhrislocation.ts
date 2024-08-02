@@ -26,8 +26,8 @@ export type ListHrisLocationRequest = {
 };
 
 export type ListHrisLocationResponseBody = {
-    prevCursor: string;
-    nextCursor: string;
+    prevCursor: string | null;
+    nextCursor: string | null;
     data: Array<components.UnifiedHrisLocationOutput>;
 };
 
@@ -102,8 +102,8 @@ export const ListHrisLocationResponseBody$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        prev_cursor: z.string(),
-        next_cursor: z.string(),
+        prev_cursor: z.nullable(z.string()),
+        next_cursor: z.nullable(z.string()),
         data: z.array(components.UnifiedHrisLocationOutput$inboundSchema),
     })
     .transform((v) => {
@@ -115,8 +115,8 @@ export const ListHrisLocationResponseBody$inboundSchema: z.ZodType<
 
 /** @internal */
 export type ListHrisLocationResponseBody$Outbound = {
-    prev_cursor: string;
-    next_cursor: string;
+    prev_cursor: string | null;
+    next_cursor: string | null;
     data: Array<components.UnifiedHrisLocationOutput$Outbound>;
 };
 
@@ -127,8 +127,8 @@ export const ListHrisLocationResponseBody$outboundSchema: z.ZodType<
     ListHrisLocationResponseBody
 > = z
     .object({
-        prevCursor: z.string(),
-        nextCursor: z.string(),
+        prevCursor: z.nullable(z.string()),
+        nextCursor: z.nullable(z.string()),
         data: z.array(components.UnifiedHrisLocationOutput$outboundSchema),
     })
     .transform((v) => {

@@ -26,8 +26,8 @@ export type ListAccountingTransactionRequest = {
 };
 
 export type ListAccountingTransactionResponseBody = {
-    prevCursor: string;
-    nextCursor: string;
+    prevCursor: string | null;
+    nextCursor: string | null;
     data: Array<components.UnifiedAccountingTransactionOutput>;
 };
 
@@ -102,8 +102,8 @@ export const ListAccountingTransactionResponseBody$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        prev_cursor: z.string(),
-        next_cursor: z.string(),
+        prev_cursor: z.nullable(z.string()),
+        next_cursor: z.nullable(z.string()),
         data: z.array(components.UnifiedAccountingTransactionOutput$inboundSchema),
     })
     .transform((v) => {
@@ -115,8 +115,8 @@ export const ListAccountingTransactionResponseBody$inboundSchema: z.ZodType<
 
 /** @internal */
 export type ListAccountingTransactionResponseBody$Outbound = {
-    prev_cursor: string;
-    next_cursor: string;
+    prev_cursor: string | null;
+    next_cursor: string | null;
     data: Array<components.UnifiedAccountingTransactionOutput$Outbound>;
 };
 
@@ -127,8 +127,8 @@ export const ListAccountingTransactionResponseBody$outboundSchema: z.ZodType<
     ListAccountingTransactionResponseBody
 > = z
     .object({
-        prevCursor: z.string(),
-        nextCursor: z.string(),
+        prevCursor: z.nullable(z.string()),
+        nextCursor: z.nullable(z.string()),
         data: z.array(components.UnifiedAccountingTransactionOutput$outboundSchema),
     })
     .transform((v) => {
