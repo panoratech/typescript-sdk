@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: caaaa8c3-6dd7-43a5-841e-c3193e68cc73
 management:
-  docChecksum: 2327b64fd91c4a57b10876dd6c0a4c6b
+  docChecksum: 5a196cc6da2cb604a7fd4259723f2e1e
   docVersion: "1.0"
   speakeasyVersion: 1.351.3
   generationVersion: 2.384.4
-  releaseVersion: 0.3.0
-  configChecksum: 2e831490eaeecbb0396e649e5d3c7781
+  releaseVersion: 0.3.1
+  configChecksum: 56847b6efc1a33bc05a0897c4c56a20c
   repoURL: https://github.com/panoratech/typescript-sdk.git
   installationURL: https://github.com/panoratech/typescript-sdk
   published: true
@@ -27,8 +27,6 @@ features:
     sdkHooks: 0.1.0
     unions: 2.85.6
 generatedFiles:
-  - src/sdk/id.ts
-  - src/sdk/verifyevent.ts
   - src/sdk/webhooks.ts
   - src/sdk/tickets.ts
   - src/sdk/users.ts
@@ -365,9 +363,7 @@ generatedFiles:
   - src/models/operations/retrievefilestoragegroup.ts
   - src/models/operations/listfilestorageusers.ts
   - src/models/operations/retrievefilestorageuser.ts
-  - src/models/components/string.ts
   - src/models/components/httpmetadata.ts
-  - src/models/components/number.ts
   - src/models/components/webhookresponse.ts
   - src/models/components/webhookdto.ts
   - src/models/components/signatureverificationdto.ts
@@ -993,9 +989,7 @@ generatedFiles:
   - docs/models/operations/listfilestorageusersresponse.md
   - docs/models/operations/retrievefilestorageuserrequest.md
   - docs/models/operations/retrievefilestorageuserresponse.md
-  - docs/models/components/string.md
   - docs/models/components/httpmetadata.md
-  - docs/models/components/numbert.md
   - docs/models/components/webhookresponse.md
   - docs/models/components/webhookdto.md
   - docs/models/components/signatureverificationdto.md
@@ -1142,8 +1136,6 @@ generatedFiles:
   - docs/lib/utils/retryconfig.md
   - docs/sdks/panora/README.md
   - docs/sdks/webhooks/README.md
-  - docs/sdks/id/README.md
-  - docs/sdks/verifyevent/README.md
   - docs/sdks/ticketing/README.md
   - docs/sdks/tickets/README.md
   - docs/sdks/users/README.md

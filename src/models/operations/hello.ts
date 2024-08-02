@@ -8,26 +8,25 @@ import * as z from "zod";
 
 export type HelloResponse = {
     httpMeta: components.HTTPMetadata;
-    string?: components.String | undefined;
+    string?: string | undefined;
 };
 
 /** @internal */
 export const HelloResponse$inboundSchema: z.ZodType<HelloResponse, z.ZodTypeDef, unknown> = z
     .object({
         HttpMeta: components.HTTPMetadata$inboundSchema,
-        String: components.String$inboundSchema.optional(),
+        string: z.string().optional(),
     })
     .transform((v) => {
         return remap$(v, {
             HttpMeta: "httpMeta",
-            String: "string",
         });
     });
 
 /** @internal */
 export type HelloResponse$Outbound = {
     HttpMeta: components.HTTPMetadata$Outbound;
-    String?: components.String$Outbound | undefined;
+    string?: string | undefined;
 };
 
 /** @internal */
@@ -38,12 +37,11 @@ export const HelloResponse$outboundSchema: z.ZodType<
 > = z
     .object({
         httpMeta: components.HTTPMetadata$outboundSchema,
-        string: components.String$outboundSchema.optional(),
+        string: z.string().optional(),
     })
     .transform((v) => {
         return remap$(v, {
             httpMeta: "HttpMeta",
-            string: "String",
         });
     });
 

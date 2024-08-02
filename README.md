@@ -87,15 +87,9 @@ run();
 
 * [list](docs/sdks/webhooks/README.md#list) - List webhooks
 * [create](docs/sdks/webhooks/README.md#create) - Add webhook metadata
-
-### [webhooks.id](docs/sdks/id/README.md)
-
-* [delete](docs/sdks/id/README.md#delete) - Delete Webhook
-* [updateStatus](docs/sdks/id/README.md#updatestatus) - Update webhook status
-
-### [webhooks.verifyevent](docs/sdks/verifyevent/README.md)
-
-* [verifyEvent](docs/sdks/verifyevent/README.md#verifyevent) - Verify payload signature of the webhook
+* [delete](docs/sdks/webhooks/README.md#delete) - Delete Webhook
+* [updateStatus](docs/sdks/webhooks/README.md#updatestatus) - Update webhook status
+* [verifyEvent](docs/sdks/webhooks/README.md#verifyevent) - Verify payload signature of the webhook
 
 
 ### [ticketing.tickets](docs/sdks/tickets/README.md)

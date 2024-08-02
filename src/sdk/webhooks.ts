@@ -4,14 +4,12 @@
 
 import { SDKHooks } from "../hooks/hooks.js";
 import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
-import { encodeJSON as encodeJSON$ } from "../lib/encodings.js";
+import { encodeJSON as encodeJSON$, encodeSimple as encodeSimple$ } from "../lib/encodings.js";
 import { HTTPClient } from "../lib/http.js";
 import * as schemas$ from "../lib/schemas.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
-import { Id } from "./id.js";
-import { Verifyevent } from "./verifyevent.js";
 
 export class Webhooks extends ClientSDK {
     private readonly options$: SDKOptions & { hooks?: SDKHooks };
@@ -38,16 +36,6 @@ export class Webhooks extends ClientSDK {
 
         this.options$ = { ...options, hooks };
         void this.options$;
-    }
-
-    private _id?: Id;
-    get id(): Id {
-        return (this._id ??= new Id(this.options$));
-    }
-
-    private _verifyevent?: Verifyevent;
-    get verifyevent(): Verifyevent {
-        return (this._verifyevent ??= new Verifyevent(this.options$));
     }
 
     /**
@@ -154,6 +142,190 @@ export class Webhooks extends ClientSDK {
             .json(201, operations.CreateWebhookPublicResponse$inboundSchema, {
                 key: "WebhookResponse",
             })
+            .fail(["4XX", "5XX"])
+            .match(response, request$, { extraFields: responseFields$ });
+
+        return result$;
+    }
+
+    /**
+     * Delete Webhook
+     */
+    async delete(
+        request: operations.DeleteRequest,
+        options?: RequestOptions
+    ): Promise<operations.DeleteResponse> {
+        const input$ = request;
+
+        const payload$ = schemas$.parse(
+            input$,
+            (value$) => operations.DeleteRequest$outboundSchema.parse(value$),
+            "Input validation failed"
+        );
+        const body$ = null;
+
+        const pathParams$ = {
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
+        };
+        const path$ = this.templateURLComponent("/webhooks/{id}")(pathParams$);
+
+        const query$ = "";
+
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
+
+        const context = { operationID: "delete", oAuth2Scopes: [], securitySource: null };
+
+        const request$ = this.createRequest$(
+            context,
+            {
+                method: "DELETE",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
+            },
+            options
+        );
+
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
+
+        const responseFields$ = {
+            HttpMeta: { Response: response, Request: request$ },
+        };
+
+        const [result$] = await this.matcher<operations.DeleteResponse>()
+            .void(200, operations.DeleteResponse$inboundSchema)
+            .json(201, operations.DeleteResponse$inboundSchema, { key: "WebhookResponse" })
+            .fail(["4XX", "5XX"])
+            .match(response, request$, { extraFields: responseFields$ });
+
+        return result$;
+    }
+
+    /**
+     * Update webhook status
+     */
+    async updateStatus(
+        request: operations.UpdateStatusRequest,
+        options?: RequestOptions
+    ): Promise<operations.UpdateStatusResponse> {
+        const input$ = request;
+
+        const payload$ = schemas$.parse(
+            input$,
+            (value$) => operations.UpdateStatusRequest$outboundSchema.parse(value$),
+            "Input validation failed"
+        );
+        const body$ = null;
+
+        const pathParams$ = {
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
+        };
+        const path$ = this.templateURLComponent("/webhooks/{id}")(pathParams$);
+
+        const query$ = "";
+
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
+
+        const context = { operationID: "updateStatus", oAuth2Scopes: [], securitySource: null };
+
+        const request$ = this.createRequest$(
+            context,
+            {
+                method: "PUT",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
+            },
+            options
+        );
+
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
+
+        const responseFields$ = {
+            HttpMeta: { Response: response, Request: request$ },
+        };
+
+        const [result$] = await this.matcher<operations.UpdateStatusResponse>()
+            .void(200, operations.UpdateStatusResponse$inboundSchema)
+            .json(201, operations.UpdateStatusResponse$inboundSchema, { key: "WebhookResponse" })
+            .fail(["4XX", "5XX"])
+            .match(response, request$, { extraFields: responseFields$ });
+
+        return result$;
+    }
+
+    /**
+     * Verify payload signature of the webhook
+     */
+    async verifyEvent(
+        request: components.SignatureVerificationDto,
+        options?: RequestOptions
+    ): Promise<operations.VerifyEventResponse> {
+        const input$ = request;
+
+        const payload$ = schemas$.parse(
+            input$,
+            (value$) => components.SignatureVerificationDto$outboundSchema.parse(value$),
+            "Input validation failed"
+        );
+        const body$ = encodeJSON$("body", payload$, { explode: true });
+
+        const path$ = this.templateURLComponent("/webhooks/verifyEvent")();
+
+        const query$ = "";
+
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        });
+
+        const context = { operationID: "verifyEvent", oAuth2Scopes: [], securitySource: null };
+
+        const request$ = this.createRequest$(
+            context,
+            {
+                method: "POST",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
+            },
+            options
+        );
+
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
+
+        const responseFields$ = {
+            HttpMeta: { Response: response, Request: request$ },
+        };
+
+        const [result$] = await this.matcher<operations.VerifyEventResponse>()
+            .json(200, operations.VerifyEventResponse$inboundSchema, { key: "object" })
+            .void(201, operations.VerifyEventResponse$inboundSchema)
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 
