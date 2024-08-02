@@ -12,6 +12,7 @@ import {
 import { HTTPClient } from "../lib/http.js";
 import * as schemas$ from "../lib/schemas.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
+import { extractSecurity } from "../lib/security.js";
 import * as operations from "../models/operations/index.js";
 
 export class PanoraAttachments extends ClientSDK {
@@ -74,15 +75,19 @@ export class PanoraAttachments extends ClientSDK {
             ),
         });
 
+        const bearer$ = await extractSecurity(this.options$.bearer);
+        const security$ = bearer$ == null ? {} : { bearer: bearer$ };
         const context = {
             operationID: "listAccountingAttachments",
             oAuth2Scopes: [],
-            securitySource: null,
+            securitySource: this.options$.bearer,
         };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const request$ = this.createRequest$(
             context,
             {
+                security: securitySettings$,
                 method: "GET",
                 path: path$,
                 headers: headers$,
@@ -151,15 +156,19 @@ export class PanoraAttachments extends ClientSDK {
             ),
         });
 
+        const bearer$ = await extractSecurity(this.options$.bearer);
+        const security$ = bearer$ == null ? {} : { bearer: bearer$ };
         const context = {
             operationID: "createAccountingAttachment",
             oAuth2Scopes: [],
-            securitySource: null,
+            securitySource: this.options$.bearer,
         };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const request$ = this.createRequest$(
             context,
             {
+                security: securitySettings$,
                 method: "POST",
                 path: path$,
                 headers: headers$,
@@ -228,15 +237,19 @@ export class PanoraAttachments extends ClientSDK {
             ),
         });
 
+        const bearer$ = await extractSecurity(this.options$.bearer);
+        const security$ = bearer$ == null ? {} : { bearer: bearer$ };
         const context = {
             operationID: "retrieveAccountingAttachment",
             oAuth2Scopes: [],
-            securitySource: null,
+            securitySource: this.options$.bearer,
         };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const request$ = this.createRequest$(
             context,
             {
+                security: securitySettings$,
                 method: "GET",
                 path: path$,
                 headers: headers$,

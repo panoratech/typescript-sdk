@@ -16,7 +16,9 @@ List  Tickets
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.ticketing.tickets.list({
@@ -58,7 +60,9 @@ Create Tickets in any supported Ticketing software
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.ticketing.tickets.create({
@@ -104,7 +108,9 @@ Retrieve Tickets from any connected Ticketing software
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.ticketing.tickets.retrieve({

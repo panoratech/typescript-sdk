@@ -16,7 +16,9 @@ List CRM Contacts
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.crm.contacts.list({
@@ -58,7 +60,9 @@ Create Contacts in any supported CRM
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.crm.contacts.create({
@@ -104,7 +108,9 @@ Retrieve Contacts from any connected CRM
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.crm.contacts.retrieve({

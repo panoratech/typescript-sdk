@@ -16,7 +16,9 @@ List  Expenses
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.accounting.expenses.list({
@@ -58,7 +60,9 @@ Create Expenses in any supported Accounting software
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.accounting.expenses.create({
@@ -101,7 +105,9 @@ Retrieve Expenses from any connected Accounting software
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.accounting.expenses.retrieve({

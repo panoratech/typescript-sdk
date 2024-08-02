@@ -15,7 +15,9 @@ List  CreditNotes
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.accounting.creditnotes.list({
@@ -57,7 +59,9 @@ Retrieve Credit Notes from any connected Accounting software
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.accounting.creditnotes.retrieve({

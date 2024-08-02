@@ -6,16 +6,56 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as components from "../components/index.js";
 import * as z from "zod";
 
+export type HealthResponseBody = {
+    code?: number | undefined;
+};
+
 export type HealthResponse = {
     httpMeta: components.HTTPMetadata;
-    number?: number | undefined;
+    object?: HealthResponseBody | undefined;
 };
+
+/** @internal */
+export const HealthResponseBody$inboundSchema: z.ZodType<
+    HealthResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    code: z.number().optional(),
+});
+
+/** @internal */
+export type HealthResponseBody$Outbound = {
+    code?: number | undefined;
+};
+
+/** @internal */
+export const HealthResponseBody$outboundSchema: z.ZodType<
+    HealthResponseBody$Outbound,
+    z.ZodTypeDef,
+    HealthResponseBody
+> = z.object({
+    code: z.number().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace HealthResponseBody$ {
+    /** @deprecated use `HealthResponseBody$inboundSchema` instead. */
+    export const inboundSchema = HealthResponseBody$inboundSchema;
+    /** @deprecated use `HealthResponseBody$outboundSchema` instead. */
+    export const outboundSchema = HealthResponseBody$outboundSchema;
+    /** @deprecated use `HealthResponseBody$Outbound` instead. */
+    export type Outbound = HealthResponseBody$Outbound;
+}
 
 /** @internal */
 export const HealthResponse$inboundSchema: z.ZodType<HealthResponse, z.ZodTypeDef, unknown> = z
     .object({
         HttpMeta: components.HTTPMetadata$inboundSchema,
-        number: z.number().optional(),
+        object: z.lazy(() => HealthResponseBody$inboundSchema).optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -26,7 +66,7 @@ export const HealthResponse$inboundSchema: z.ZodType<HealthResponse, z.ZodTypeDe
 /** @internal */
 export type HealthResponse$Outbound = {
     HttpMeta: components.HTTPMetadata$Outbound;
-    number?: number | undefined;
+    object?: HealthResponseBody$Outbound | undefined;
 };
 
 /** @internal */
@@ -37,7 +77,7 @@ export const HealthResponse$outboundSchema: z.ZodType<
 > = z
     .object({
         httpMeta: components.HTTPMetadata$outboundSchema,
-        number: z.number().optional(),
+        object: z.lazy(() => HealthResponseBody$outboundSchema).optional(),
     })
     .transform((v) => {
         return remap$(v, {

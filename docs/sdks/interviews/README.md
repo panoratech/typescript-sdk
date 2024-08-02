@@ -16,7 +16,9 @@ List  Interviews
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.ats.interviews.list({
@@ -58,7 +60,9 @@ Create Interviews in any supported Ats software
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.ats.interviews.create({
@@ -101,7 +105,9 @@ Retrieve Interviews from any connected Ats software
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.ats.interviews.retrieve({

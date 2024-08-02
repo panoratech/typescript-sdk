@@ -16,7 +16,9 @@ List  Accounts
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.accounting.accounts.list({
@@ -58,7 +60,9 @@ Create accounts in any supported Accounting software
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.accounting.accounts.create({
@@ -101,7 +105,9 @@ Retrieve Accounts from any connected Accounting software
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.accounting.accounts.retrieve({

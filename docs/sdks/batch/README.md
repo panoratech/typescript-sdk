@@ -14,7 +14,9 @@ Add Batch Linked Users
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.linkedUsers.batch.importBatch({

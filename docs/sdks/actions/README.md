@@ -16,7 +16,9 @@ List  Actions
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.marketingautomation.actions.list({
@@ -58,7 +60,9 @@ Create a action in any supported Marketingautomation software
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.marketingautomation.actions.create({
@@ -101,7 +105,9 @@ Retrieve Actions from any connected Marketingautomation software
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.marketingautomation.actions.retrieve({

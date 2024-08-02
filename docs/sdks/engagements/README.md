@@ -16,7 +16,9 @@ List  Engagements
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.crm.engagements.list({
@@ -58,7 +60,9 @@ Create Engagements in any supported Crm software
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.crm.engagements.create({
@@ -103,7 +107,9 @@ Retrieve Engagements from any connected Crm software
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.crm.engagements.retrieve({

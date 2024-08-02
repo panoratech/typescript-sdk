@@ -8,6 +8,7 @@ import { encodeJSON as encodeJSON$ } from "../lib/encodings.js";
 import { HTTPClient } from "../lib/http.js";
 import * as schemas$ from "../lib/schemas.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
+import { extractSecurity } from "../lib/security.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 import { Define } from "./define.js";
@@ -75,15 +76,19 @@ export class FieldMappings extends ClientSDK {
             Accept: "application/json",
         });
 
+        const bearer$ = await extractSecurity(this.options$.bearer);
+        const security$ = bearer$ == null ? {} : { bearer: bearer$ };
         const context = {
             operationID: "defineCustomField",
             oAuth2Scopes: [],
-            securitySource: null,
+            securitySource: this.options$.bearer,
         };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const request$ = this.createRequest$(
             context,
             {
+                security: securitySettings$,
                 method: "POST",
                 path: path$,
                 headers: headers$,

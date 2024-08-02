@@ -11,6 +11,7 @@ import {
 import { HTTPClient } from "../lib/http.js";
 import * as schemas$ from "../lib/schemas.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
+import { extractSecurity } from "../lib/security.js";
 import * as operations from "../models/operations/index.js";
 
 export class Offers extends ClientSDK {
@@ -73,11 +74,19 @@ export class Offers extends ClientSDK {
             ),
         });
 
-        const context = { operationID: "listAtsOffer", oAuth2Scopes: [], securitySource: null };
+        const bearer$ = await extractSecurity(this.options$.bearer);
+        const security$ = bearer$ == null ? {} : { bearer: bearer$ };
+        const context = {
+            operationID: "listAtsOffer",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearer,
+        };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const request$ = this.createRequest$(
             context,
             {
+                security: securitySettings$,
                 method: "GET",
                 path: path$,
                 headers: headers$,
@@ -144,11 +153,19 @@ export class Offers extends ClientSDK {
             ),
         });
 
-        const context = { operationID: "retrieveAtsOffer", oAuth2Scopes: [], securitySource: null };
+        const bearer$ = await extractSecurity(this.options$.bearer);
+        const security$ = bearer$ == null ? {} : { bearer: bearer$ };
+        const context = {
+            operationID: "retrieveAtsOffer",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearer,
+        };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const request$ = this.createRequest$(
             context,
             {
+                security: securitySettings$,
                 method: "GET",
                 path: path$,
                 headers: headers$,

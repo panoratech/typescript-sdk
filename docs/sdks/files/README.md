@@ -16,7 +16,9 @@ List  Files
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.filestorage.files.list({
@@ -58,7 +60,9 @@ Create Files in any supported Filestorage software
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.filestorage.files.create({
@@ -110,7 +114,9 @@ Retrieve Files from any connected Filestorage software
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.filestorage.files.retrieve({

@@ -6,6 +6,7 @@ import { SDKHooks } from "../hooks/hooks.js";
 import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
 import { HTTPClient } from "../lib/http.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
+import { extractSecurity } from "../lib/security.js";
 import * as operations from "../models/operations/index.js";
 import { Accounting } from "./accounting.js";
 import { Ats } from "./ats.js";
@@ -116,11 +117,19 @@ export class Panora extends ClientSDK {
             Accept: "application/json",
         });
 
-        const context = { operationID: "hello", oAuth2Scopes: [], securitySource: null };
+        const bearer$ = await extractSecurity(this.options$.bearer);
+        const security$ = bearer$ == null ? {} : { bearer: bearer$ };
+        const context = {
+            operationID: "hello",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearer,
+        };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const request$ = this.createRequest$(
             context,
             {
+                security: securitySettings$,
                 method: "GET",
                 path: path$,
                 headers: headers$,
@@ -142,7 +151,7 @@ export class Panora extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.HelloResponse>()
-            .json(200, operations.HelloResponse$inboundSchema, { key: "string" })
+            .json(200, operations.HelloResponse$inboundSchema, { key: "object" })
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 
@@ -158,11 +167,19 @@ export class Panora extends ClientSDK {
             Accept: "application/json",
         });
 
-        const context = { operationID: "health", oAuth2Scopes: [], securitySource: null };
+        const bearer$ = await extractSecurity(this.options$.bearer);
+        const security$ = bearer$ == null ? {} : { bearer: bearer$ };
+        const context = {
+            operationID: "health",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearer,
+        };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const request$ = this.createRequest$(
             context,
             {
+                security: securitySettings$,
                 method: "GET",
                 path: path$,
                 headers: headers$,
@@ -184,7 +201,7 @@ export class Panora extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.HealthResponse>()
-            .json(200, operations.HealthResponse$inboundSchema, { key: "number" })
+            .json(200, operations.HealthResponse$inboundSchema, { key: "object" })
             .fail(["4XX", "5XX"])
             .match(response, request$, { extraFields: responseFields$ });
 

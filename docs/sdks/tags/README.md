@@ -15,7 +15,9 @@ List  Tags
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.ticketing.tags.list({
@@ -57,7 +59,9 @@ Retrieve Tags from any connected Ticketing software
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.ticketing.tags.retrieve({

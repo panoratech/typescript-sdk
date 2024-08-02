@@ -15,7 +15,9 @@ List  RejectReasons
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.ats.rejectreasons.list({
@@ -57,7 +59,9 @@ Retrieve Reject Reasons from any connected Ats software
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.ats.rejectreasons.retrieve({

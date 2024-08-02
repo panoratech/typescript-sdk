@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: caaaa8c3-6dd7-43a5-841e-c3193e68cc73
 management:
-  docChecksum: 5a196cc6da2cb604a7fd4259723f2e1e
+  docChecksum: 6960959175161ea1f250bb468e5fbf98
   docVersion: "1.0"
-  speakeasyVersion: 1.351.3
+  speakeasyVersion: 1.352.0
   generationVersion: 2.384.4
-  releaseVersion: 0.3.1
-  configChecksum: 56847b6efc1a33bc05a0897c4c56a20c
+  releaseVersion: 0.4.0
+  configChecksum: 378a5fba374c6d6be00ac827ede50b04
   repoURL: https://github.com/panoratech/typescript-sdk.git
   installationURL: https://github.com/panoratech/typescript-sdk
   published: true
@@ -17,7 +17,9 @@ features:
     core: 3.11.12
     defaultEnabledRetries: 0.1.0
     envVarSecurityUsage: 0.1.0
+    globalSecurity: 2.82.9
     globalSecurityCallbacks: 0.1.0
+    globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.4
     groups: 2.81.2
     nameOverrides: 2.81.2
@@ -494,10 +496,13 @@ generatedFiles:
   - src/models/components/unifiedfilestoragefolderinput.ts
   - src/models/components/unifiedfilestoragegroupoutput.ts
   - src/models/components/unifieduseroutput.ts
+  - src/models/components/security.ts
   - src/models/errors/index.ts
   - src/models/operations/index.ts
   - src/models/components/index.ts
+  - docs/models/operations/helloresponsebody.md
   - docs/models/operations/helloresponse.md
+  - docs/models/operations/healthresponsebody.md
   - docs/models/operations/healthresponse.md
   - docs/models/operations/listwebhooksresponse.md
   - docs/models/operations/createwebhookpublicresponse.md
@@ -1133,6 +1138,7 @@ generatedFiles:
   - docs/models/components/unifiedfilestoragefolderinput.md
   - docs/models/components/unifiedfilestoragegroupoutput.md
   - docs/models/components/unifieduseroutput.md
+  - docs/models/components/security.md
   - docs/lib/utils/retryconfig.md
   - docs/sdks/panora/README.md
   - docs/sdks/webhooks/README.md

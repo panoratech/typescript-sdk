@@ -25,6 +25,8 @@ export const ServerList = [
 ] as const;
 
 export type SDKOptions = {
+    bearer?: string | (() => Promise<string>);
+
     httpClient?: HTTPClient;
     /**
      * Allows overriding the default server used by the SDK
@@ -61,7 +63,7 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
 export const SDK_METADATA = {
     language: "typescript",
     openapiDocVersion: "1.0",
-    sdkVersion: "0.3.1",
+    sdkVersion: "0.4.0",
     genVersion: "2.384.4",
-    userAgent: "speakeasy-sdk/typescript 0.3.1 2.384.4 1.0 @panora/sdk",
+    userAgent: "speakeasy-sdk/typescript 0.4.0 2.384.4 1.0 @panora/sdk",
 } as const;
