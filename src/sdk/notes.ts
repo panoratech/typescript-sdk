@@ -12,6 +12,7 @@ import {
 import { HTTPClient } from "../lib/http.js";
 import * as schemas$ from "../lib/schemas.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
+import { extractSecurity } from "../lib/security.js";
 import * as operations from "../models/operations/index.js";
 
 export class Notes extends ClientSDK {
@@ -74,11 +75,19 @@ export class Notes extends ClientSDK {
             ),
         });
 
-        const context = { operationID: "listCrmNote", oAuth2Scopes: [], securitySource: null };
+        const bearer$ = await extractSecurity(this.options$.bearer);
+        const security$ = bearer$ == null ? {} : { bearer: bearer$ };
+        const context = {
+            operationID: "listCrmNote",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearer,
+        };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const request$ = this.createRequest$(
             context,
             {
+                security: securitySettings$,
                 method: "GET",
                 path: path$,
                 headers: headers$,
@@ -143,11 +152,19 @@ export class Notes extends ClientSDK {
             ),
         });
 
-        const context = { operationID: "createCrmNote", oAuth2Scopes: [], securitySource: null };
+        const bearer$ = await extractSecurity(this.options$.bearer);
+        const security$ = bearer$ == null ? {} : { bearer: bearer$ };
+        const context = {
+            operationID: "createCrmNote",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearer,
+        };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const request$ = this.createRequest$(
             context,
             {
+                security: securitySettings$,
                 method: "POST",
                 path: path$,
                 headers: headers$,
@@ -216,11 +233,19 @@ export class Notes extends ClientSDK {
             ),
         });
 
-        const context = { operationID: "retrieveCrmNote", oAuth2Scopes: [], securitySource: null };
+        const bearer$ = await extractSecurity(this.options$.bearer);
+        const security$ = bearer$ == null ? {} : { bearer: bearer$ };
+        const context = {
+            operationID: "retrieveCrmNote",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearer,
+        };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const request$ = this.createRequest$(
             context,
             {
+                security: securitySettings$,
                 method: "GET",
                 path: path$,
                 headers: headers$,

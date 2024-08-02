@@ -15,7 +15,9 @@ List  JobInterviewStages
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.ats.jobinterviewstages.list({
@@ -57,7 +59,9 @@ Retrieve Job Interview Stages from any connected Ats software
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.ats.jobinterviewstages.retrieve({

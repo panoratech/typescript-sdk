@@ -8,6 +8,7 @@ import { encodeJSON as encodeJSON$, encodeSimple as encodeSimple$ } from "../lib
 import { HTTPClient } from "../lib/http.js";
 import * as schemas$ from "../lib/schemas.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
+import { extractSecurity } from "../lib/security.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 
@@ -50,11 +51,19 @@ export class Webhooks extends ClientSDK {
             Accept: "application/json",
         });
 
-        const context = { operationID: "listWebhooks", oAuth2Scopes: [], securitySource: null };
+        const bearer$ = await extractSecurity(this.options$.bearer);
+        const security$ = bearer$ == null ? {} : { bearer: bearer$ };
+        const context = {
+            operationID: "listWebhooks",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearer,
+        };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const request$ = this.createRequest$(
             context,
             {
+                security: securitySettings$,
                 method: "GET",
                 path: path$,
                 headers: headers$,
@@ -108,15 +117,19 @@ export class Webhooks extends ClientSDK {
             Accept: "application/json",
         });
 
+        const bearer$ = await extractSecurity(this.options$.bearer);
+        const security$ = bearer$ == null ? {} : { bearer: bearer$ };
         const context = {
             operationID: "createWebhookPublic",
             oAuth2Scopes: [],
-            securitySource: null,
+            securitySource: this.options$.bearer,
         };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const request$ = this.createRequest$(
             context,
             {
+                security: securitySettings$,
                 method: "POST",
                 path: path$,
                 headers: headers$,
@@ -175,11 +188,19 @@ export class Webhooks extends ClientSDK {
             Accept: "application/json",
         });
 
-        const context = { operationID: "delete", oAuth2Scopes: [], securitySource: null };
+        const bearer$ = await extractSecurity(this.options$.bearer);
+        const security$ = bearer$ == null ? {} : { bearer: bearer$ };
+        const context = {
+            operationID: "delete",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearer,
+        };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const request$ = this.createRequest$(
             context,
             {
+                security: securitySettings$,
                 method: "DELETE",
                 path: path$,
                 headers: headers$,
@@ -237,11 +258,19 @@ export class Webhooks extends ClientSDK {
             Accept: "application/json",
         });
 
-        const context = { operationID: "updateStatus", oAuth2Scopes: [], securitySource: null };
+        const bearer$ = await extractSecurity(this.options$.bearer);
+        const security$ = bearer$ == null ? {} : { bearer: bearer$ };
+        const context = {
+            operationID: "updateStatus",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearer,
+        };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const request$ = this.createRequest$(
             context,
             {
+                security: securitySettings$,
                 method: "PUT",
                 path: path$,
                 headers: headers$,
@@ -297,11 +326,19 @@ export class Webhooks extends ClientSDK {
             Accept: "application/json",
         });
 
-        const context = { operationID: "verifyEvent", oAuth2Scopes: [], securitySource: null };
+        const bearer$ = await extractSecurity(this.options$.bearer);
+        const security$ = bearer$ == null ? {} : { bearer: bearer$ };
+        const context = {
+            operationID: "verifyEvent",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearer,
+        };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const request$ = this.createRequest$(
             context,
             {
+                security: securitySettings$,
                 method: "POST",
                 path: path$,
                 headers: headers$,

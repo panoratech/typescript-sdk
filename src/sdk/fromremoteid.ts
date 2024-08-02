@@ -8,6 +8,7 @@ import { encodeFormQuery as encodeFormQuery$ } from "../lib/encodings.js";
 import { HTTPClient } from "../lib/http.js";
 import * as schemas$ from "../lib/schemas.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
+import { extractSecurity } from "../lib/security.js";
 import * as operations from "../models/operations/index.js";
 
 export class Fromremoteid extends ClientSDK {
@@ -63,11 +64,19 @@ export class Fromremoteid extends ClientSDK {
             Accept: "application/json",
         });
 
-        const context = { operationID: "remoteId", oAuth2Scopes: [], securitySource: null };
+        const bearer$ = await extractSecurity(this.options$.bearer);
+        const security$ = bearer$ == null ? {} : { bearer: bearer$ };
+        const context = {
+            operationID: "remoteId",
+            oAuth2Scopes: [],
+            securitySource: this.options$.bearer,
+        };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
 
         const request$ = this.createRequest$(
             context,
             {
+                security: securitySettings$,
                 method: "GET",
                 path: path$,
                 headers: headers$,

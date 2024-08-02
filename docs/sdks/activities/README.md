@@ -16,7 +16,9 @@ List  Activities
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.ats.activities.list({
@@ -58,7 +60,9 @@ Create Activities in any supported Ats software
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.ats.activities.create({
@@ -101,7 +105,9 @@ Retrieve Activities from any connected Ats software
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.ats.activities.retrieve({

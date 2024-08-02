@@ -15,7 +15,9 @@ Retrieve sync status of a certain vertical
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.sync.status({
@@ -57,7 +59,9 @@ Resync common objects across a vertical
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.sync.resync();

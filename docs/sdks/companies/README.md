@@ -16,7 +16,9 @@ List  Companies
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.crm.companies.list({
@@ -58,7 +60,9 @@ Create Companies in any supported CRM software
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.crm.companies.create({
@@ -103,7 +107,9 @@ Retrieve Companies from any connected Crm software
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.crm.companies.retrieve({

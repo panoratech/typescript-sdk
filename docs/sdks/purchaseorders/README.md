@@ -16,7 +16,9 @@ List  PurchaseOrders
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.accounting.purchaseorders.list({
@@ -58,7 +60,9 @@ Create Purchase Orders in any supported Accounting software
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.accounting.purchaseorders.create({
@@ -101,7 +105,9 @@ Retrieve Purchase Orders from any connected Accounting software
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.accounting.purchaseorders.retrieve({

@@ -61,7 +61,9 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+    bearer: process.env.BEARER,
+});
 
 async function run() {
     const result = await panora.hello();
@@ -588,7 +590,9 @@ Validation errors can also occur when either method arguments or data returned f
 import { Panora } from "@panora/sdk";
 import { SDKValidationError } from "@panora/sdk/models/errors";
 
-const panora = new Panora();
+const panora = new Panora({
+    bearer: process.env.BEARER,
+});
 
 async function run() {
     let result;
@@ -636,6 +640,7 @@ import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
     serverIdx: 2,
+    bearer: process.env.BEARER,
 });
 
 async function run() {
@@ -659,6 +664,7 @@ import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
     serverURL: "https://api.panora.dev",
+    bearer: process.env.BEARER,
 });
 
 async function run() {
@@ -731,7 +737,9 @@ To change the default retry strategy for a single API call, simply provide a ret
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+    bearer: process.env.BEARER,
+});
 
 async function run() {
     const result = await panora.hello({
@@ -770,6 +778,7 @@ const panora = new Panora({
         },
         retryConnectionErrors: false,
     },
+    bearer: process.env.BEARER,
 });
 
 async function run() {
@@ -783,6 +792,37 @@ run();
 
 ```
 <!-- End Retries [retries] -->
+
+<!-- Start Authentication [security] -->
+## Authentication
+
+### Per-Client Security Schemes
+
+This SDK supports the following security scheme globally:
+
+| Name        | Type        | Scheme      |
+| ----------- | ----------- | ----------- |
+| `bearer`    | http        | HTTP Bearer |
+
+To authenticate with the API the `bearer` parameter must be set when initializing the SDK client instance. For example:
+```typescript
+import { Panora } from "@panora/sdk";
+
+const panora = new Panora({
+    bearer: process.env.BEARER,
+});
+
+async function run() {
+    const result = await panora.hello();
+
+    // Handle the result
+    console.log(result);
+}
+
+run();
+
+```
+<!-- End Authentication [security] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

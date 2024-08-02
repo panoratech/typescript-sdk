@@ -15,7 +15,9 @@ Make a passthrough request
 import { Panora } from "@panora/sdk";
 import { Method } from "@panora/sdk/models/components";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.passthrough.request({

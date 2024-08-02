@@ -16,7 +16,9 @@ List  Templates
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.marketingautomation.templates.list({
@@ -58,7 +60,9 @@ Create a template in any supported Marketingautomation software
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.marketingautomation.templates.create({
@@ -101,7 +105,9 @@ Retrieve Templates from any connected Marketingautomation software
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.marketingautomation.templates.retrieve({

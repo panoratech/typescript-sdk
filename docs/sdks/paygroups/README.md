@@ -15,7 +15,9 @@ List  PayGroups
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.hris.paygroups.list({
@@ -57,7 +59,9 @@ Retrieve Pay Groups from any connected Hris software
 ```typescript
 import { Panora } from "@panora/sdk";
 
-const panora = new Panora();
+const panora = new Panora({
+  bearer: process.env.BEARER,
+});
 
 async function run() {
   const result = await panora.hris.paygroups.retrieve({
