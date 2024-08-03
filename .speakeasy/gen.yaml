@@ -36,6 +36,6 @@ typescript:
   moduleFormat: commonjs
   outputModelSuffix: output
   packageName: '@panora/sdk'
-  responseFormat: envelope-http
+  responseFormat: flat
   templateVersion: v2
   useIndexModules: true
