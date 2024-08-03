@@ -3,7 +3,6 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
-import * as components from "../components/index.js";
 import * as z from "zod";
 
 export type RetrieveAccountingPhonenumberRequest = {
@@ -19,11 +18,6 @@ export type RetrieveAccountingPhonenumberRequest = {
      * Set to true to include data from the original Accounting software.
      */
     remoteData?: boolean | undefined;
-};
-
-export type RetrieveAccountingPhonenumberResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedAccountingPhonenumberOutput?: components.UnifiedAccountingPhonenumberOutput | undefined;
 };
 
 /** @internal */
@@ -80,61 +74,4 @@ export namespace RetrieveAccountingPhonenumberRequest$ {
     export const outboundSchema = RetrieveAccountingPhonenumberRequest$outboundSchema;
     /** @deprecated use `RetrieveAccountingPhonenumberRequest$Outbound` instead. */
     export type Outbound = RetrieveAccountingPhonenumberRequest$Outbound;
-}
-
-/** @internal */
-export const RetrieveAccountingPhonenumberResponse$inboundSchema: z.ZodType<
-    RetrieveAccountingPhonenumberResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedAccountingPhonenumberOutput:
-            components.UnifiedAccountingPhonenumberOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedAccountingPhonenumberOutput: "unifiedAccountingPhonenumberOutput",
-        });
-    });
-
-/** @internal */
-export type RetrieveAccountingPhonenumberResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedAccountingPhonenumberOutput?:
-        | components.UnifiedAccountingPhonenumberOutput$Outbound
-        | undefined;
-};
-
-/** @internal */
-export const RetrieveAccountingPhonenumberResponse$outboundSchema: z.ZodType<
-    RetrieveAccountingPhonenumberResponse$Outbound,
-    z.ZodTypeDef,
-    RetrieveAccountingPhonenumberResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedAccountingPhonenumberOutput:
-            components.UnifiedAccountingPhonenumberOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedAccountingPhonenumberOutput: "UnifiedAccountingPhonenumberOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveAccountingPhonenumberResponse$ {
-    /** @deprecated use `RetrieveAccountingPhonenumberResponse$inboundSchema` instead. */
-    export const inboundSchema = RetrieveAccountingPhonenumberResponse$inboundSchema;
-    /** @deprecated use `RetrieveAccountingPhonenumberResponse$outboundSchema` instead. */
-    export const outboundSchema = RetrieveAccountingPhonenumberResponse$outboundSchema;
-    /** @deprecated use `RetrieveAccountingPhonenumberResponse$Outbound` instead. */
-    export type Outbound = RetrieveAccountingPhonenumberResponse$Outbound;
 }

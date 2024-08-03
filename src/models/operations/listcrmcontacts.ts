@@ -31,11 +31,6 @@ export type ListCrmContactsResponseBody = {
     data: Array<components.UnifiedCrmContactOutput>;
 };
 
-export type ListCrmContactsResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListCrmContactsResponseBody | undefined;
-};
-
 /** @internal */
 export const ListCrmContactsRequest$inboundSchema: z.ZodType<
     ListCrmContactsRequest,
@@ -149,55 +144,4 @@ export namespace ListCrmContactsResponseBody$ {
     export const outboundSchema = ListCrmContactsResponseBody$outboundSchema;
     /** @deprecated use `ListCrmContactsResponseBody$Outbound` instead. */
     export type Outbound = ListCrmContactsResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListCrmContactsResponse$inboundSchema: z.ZodType<
-    ListCrmContactsResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListCrmContactsResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListCrmContactsResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListCrmContactsResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListCrmContactsResponse$outboundSchema: z.ZodType<
-    ListCrmContactsResponse$Outbound,
-    z.ZodTypeDef,
-    ListCrmContactsResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListCrmContactsResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListCrmContactsResponse$ {
-    /** @deprecated use `ListCrmContactsResponse$inboundSchema` instead. */
-    export const inboundSchema = ListCrmContactsResponse$inboundSchema;
-    /** @deprecated use `ListCrmContactsResponse$outboundSchema` instead. */
-    export const outboundSchema = ListCrmContactsResponse$outboundSchema;
-    /** @deprecated use `ListCrmContactsResponse$Outbound` instead. */
-    export type Outbound = ListCrmContactsResponse$Outbound;
 }

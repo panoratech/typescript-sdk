@@ -31,11 +31,6 @@ export type ListTicketingUsersResponseBody = {
     data: Array<components.UnifiedTicketingUserOutput>;
 };
 
-export type ListTicketingUsersResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListTicketingUsersResponseBody | undefined;
-};
-
 /** @internal */
 export const ListTicketingUsersRequest$inboundSchema: z.ZodType<
     ListTicketingUsersRequest,
@@ -149,55 +144,4 @@ export namespace ListTicketingUsersResponseBody$ {
     export const outboundSchema = ListTicketingUsersResponseBody$outboundSchema;
     /** @deprecated use `ListTicketingUsersResponseBody$Outbound` instead. */
     export type Outbound = ListTicketingUsersResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListTicketingUsersResponse$inboundSchema: z.ZodType<
-    ListTicketingUsersResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListTicketingUsersResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListTicketingUsersResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListTicketingUsersResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListTicketingUsersResponse$outboundSchema: z.ZodType<
-    ListTicketingUsersResponse$Outbound,
-    z.ZodTypeDef,
-    ListTicketingUsersResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListTicketingUsersResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListTicketingUsersResponse$ {
-    /** @deprecated use `ListTicketingUsersResponse$inboundSchema` instead. */
-    export const inboundSchema = ListTicketingUsersResponse$inboundSchema;
-    /** @deprecated use `ListTicketingUsersResponse$outboundSchema` instead. */
-    export const outboundSchema = ListTicketingUsersResponse$outboundSchema;
-    /** @deprecated use `ListTicketingUsersResponse$Outbound` instead. */
-    export type Outbound = ListTicketingUsersResponse$Outbound;
 }

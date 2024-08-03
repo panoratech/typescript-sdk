@@ -31,11 +31,6 @@ export type ListHrisPaygroupResponseBody = {
     data: Array<components.UnifiedHrisPaygroupOutput>;
 };
 
-export type ListHrisPaygroupResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListHrisPaygroupResponseBody | undefined;
-};
-
 /** @internal */
 export const ListHrisPaygroupRequest$inboundSchema: z.ZodType<
     ListHrisPaygroupRequest,
@@ -149,55 +144,4 @@ export namespace ListHrisPaygroupResponseBody$ {
     export const outboundSchema = ListHrisPaygroupResponseBody$outboundSchema;
     /** @deprecated use `ListHrisPaygroupResponseBody$Outbound` instead. */
     export type Outbound = ListHrisPaygroupResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListHrisPaygroupResponse$inboundSchema: z.ZodType<
-    ListHrisPaygroupResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListHrisPaygroupResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListHrisPaygroupResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListHrisPaygroupResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListHrisPaygroupResponse$outboundSchema: z.ZodType<
-    ListHrisPaygroupResponse$Outbound,
-    z.ZodTypeDef,
-    ListHrisPaygroupResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListHrisPaygroupResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListHrisPaygroupResponse$ {
-    /** @deprecated use `ListHrisPaygroupResponse$inboundSchema` instead. */
-    export const inboundSchema = ListHrisPaygroupResponse$inboundSchema;
-    /** @deprecated use `ListHrisPaygroupResponse$outboundSchema` instead. */
-    export const outboundSchema = ListHrisPaygroupResponse$outboundSchema;
-    /** @deprecated use `ListHrisPaygroupResponse$Outbound` instead. */
-    export type Outbound = ListHrisPaygroupResponse$Outbound;
 }

@@ -31,11 +31,6 @@ export type ListTicketingContactsResponseBody = {
     data: Array<components.UnifiedTicketingContactOutput>;
 };
 
-export type ListTicketingContactsResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListTicketingContactsResponseBody | undefined;
-};
-
 /** @internal */
 export const ListTicketingContactsRequest$inboundSchema: z.ZodType<
     ListTicketingContactsRequest,
@@ -149,55 +144,4 @@ export namespace ListTicketingContactsResponseBody$ {
     export const outboundSchema = ListTicketingContactsResponseBody$outboundSchema;
     /** @deprecated use `ListTicketingContactsResponseBody$Outbound` instead. */
     export type Outbound = ListTicketingContactsResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListTicketingContactsResponse$inboundSchema: z.ZodType<
-    ListTicketingContactsResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListTicketingContactsResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListTicketingContactsResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListTicketingContactsResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListTicketingContactsResponse$outboundSchema: z.ZodType<
-    ListTicketingContactsResponse$Outbound,
-    z.ZodTypeDef,
-    ListTicketingContactsResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListTicketingContactsResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListTicketingContactsResponse$ {
-    /** @deprecated use `ListTicketingContactsResponse$inboundSchema` instead. */
-    export const inboundSchema = ListTicketingContactsResponse$inboundSchema;
-    /** @deprecated use `ListTicketingContactsResponse$outboundSchema` instead. */
-    export const outboundSchema = ListTicketingContactsResponse$outboundSchema;
-    /** @deprecated use `ListTicketingContactsResponse$Outbound` instead. */
-    export type Outbound = ListTicketingContactsResponse$Outbound;
 }

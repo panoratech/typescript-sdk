@@ -3,7 +3,6 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
-import * as components from "../components/index.js";
 import * as z from "zod";
 
 export type RetrieveMarketingautomationCampaignRequest = {
@@ -19,11 +18,6 @@ export type RetrieveMarketingautomationCampaignRequest = {
      * Set to true to include data from the original Marketingautomation software.
      */
     remoteData?: boolean | undefined;
-};
-
-export type RetrieveMarketingautomationCampaignResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedCampaignOutput?: components.UnifiedCampaignOutput | undefined;
 };
 
 /** @internal */
@@ -80,57 +74,4 @@ export namespace RetrieveMarketingautomationCampaignRequest$ {
     export const outboundSchema = RetrieveMarketingautomationCampaignRequest$outboundSchema;
     /** @deprecated use `RetrieveMarketingautomationCampaignRequest$Outbound` instead. */
     export type Outbound = RetrieveMarketingautomationCampaignRequest$Outbound;
-}
-
-/** @internal */
-export const RetrieveMarketingautomationCampaignResponse$inboundSchema: z.ZodType<
-    RetrieveMarketingautomationCampaignResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedCampaignOutput: components.UnifiedCampaignOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedCampaignOutput: "unifiedCampaignOutput",
-        });
-    });
-
-/** @internal */
-export type RetrieveMarketingautomationCampaignResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedCampaignOutput?: components.UnifiedCampaignOutput$Outbound | undefined;
-};
-
-/** @internal */
-export const RetrieveMarketingautomationCampaignResponse$outboundSchema: z.ZodType<
-    RetrieveMarketingautomationCampaignResponse$Outbound,
-    z.ZodTypeDef,
-    RetrieveMarketingautomationCampaignResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedCampaignOutput: components.UnifiedCampaignOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedCampaignOutput: "UnifiedCampaignOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveMarketingautomationCampaignResponse$ {
-    /** @deprecated use `RetrieveMarketingautomationCampaignResponse$inboundSchema` instead. */
-    export const inboundSchema = RetrieveMarketingautomationCampaignResponse$inboundSchema;
-    /** @deprecated use `RetrieveMarketingautomationCampaignResponse$outboundSchema` instead. */
-    export const outboundSchema = RetrieveMarketingautomationCampaignResponse$outboundSchema;
-    /** @deprecated use `RetrieveMarketingautomationCampaignResponse$Outbound` instead. */
-    export type Outbound = RetrieveMarketingautomationCampaignResponse$Outbound;
 }

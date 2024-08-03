@@ -18,11 +18,6 @@ export type CreateAtsActivityRequest = {
     unifiedAtsActivityInput: components.UnifiedAtsActivityInput;
 };
 
-export type CreateAtsActivityResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedAtsActivityOutput?: components.UnifiedAtsActivityOutput | undefined;
-};
-
 /** @internal */
 export const CreateAtsActivityRequest$inboundSchema: z.ZodType<
     CreateAtsActivityRequest,
@@ -79,57 +74,4 @@ export namespace CreateAtsActivityRequest$ {
     export const outboundSchema = CreateAtsActivityRequest$outboundSchema;
     /** @deprecated use `CreateAtsActivityRequest$Outbound` instead. */
     export type Outbound = CreateAtsActivityRequest$Outbound;
-}
-
-/** @internal */
-export const CreateAtsActivityResponse$inboundSchema: z.ZodType<
-    CreateAtsActivityResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedAtsActivityOutput: components.UnifiedAtsActivityOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedAtsActivityOutput: "unifiedAtsActivityOutput",
-        });
-    });
-
-/** @internal */
-export type CreateAtsActivityResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedAtsActivityOutput?: components.UnifiedAtsActivityOutput$Outbound | undefined;
-};
-
-/** @internal */
-export const CreateAtsActivityResponse$outboundSchema: z.ZodType<
-    CreateAtsActivityResponse$Outbound,
-    z.ZodTypeDef,
-    CreateAtsActivityResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedAtsActivityOutput: components.UnifiedAtsActivityOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedAtsActivityOutput: "UnifiedAtsActivityOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateAtsActivityResponse$ {
-    /** @deprecated use `CreateAtsActivityResponse$inboundSchema` instead. */
-    export const inboundSchema = CreateAtsActivityResponse$inboundSchema;
-    /** @deprecated use `CreateAtsActivityResponse$outboundSchema` instead. */
-    export const outboundSchema = CreateAtsActivityResponse$outboundSchema;
-    /** @deprecated use `CreateAtsActivityResponse$Outbound` instead. */
-    export type Outbound = CreateAtsActivityResponse$Outbound;
 }

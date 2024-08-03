@@ -16,7 +16,7 @@ List  Users
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -43,7 +43,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListCrmUsersResponse](../../models/operations/listcrmusersresponse.md)\>**
+**Promise\<[operations.ListCrmUsersResponseBody](../../models/operations/listcrmusersresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -60,7 +60,7 @@ Retrieve Users from any connected Crm software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -88,7 +88,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveCrmUserResponse](../../models/operations/retrievecrmuserresponse.md)\>**
+**Promise\<[components.UnifiedCrmUserOutput](../../models/components/unifiedcrmuseroutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

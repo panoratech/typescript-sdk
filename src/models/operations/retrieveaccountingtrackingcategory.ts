@@ -3,7 +3,6 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
-import * as components from "../components/index.js";
 import * as z from "zod";
 
 export type RetrieveAccountingTrackingCategoryRequest = {
@@ -19,13 +18,6 @@ export type RetrieveAccountingTrackingCategoryRequest = {
      * Set to true to include data from the original Accounting software.
      */
     remoteData?: boolean | undefined;
-};
-
-export type RetrieveAccountingTrackingCategoryResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedAccountingTrackingcategoryOutput?:
-        | components.UnifiedAccountingTrackingcategoryOutput
-        | undefined;
 };
 
 /** @internal */
@@ -82,61 +74,4 @@ export namespace RetrieveAccountingTrackingCategoryRequest$ {
     export const outboundSchema = RetrieveAccountingTrackingCategoryRequest$outboundSchema;
     /** @deprecated use `RetrieveAccountingTrackingCategoryRequest$Outbound` instead. */
     export type Outbound = RetrieveAccountingTrackingCategoryRequest$Outbound;
-}
-
-/** @internal */
-export const RetrieveAccountingTrackingCategoryResponse$inboundSchema: z.ZodType<
-    RetrieveAccountingTrackingCategoryResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedAccountingTrackingcategoryOutput:
-            components.UnifiedAccountingTrackingcategoryOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedAccountingTrackingcategoryOutput: "unifiedAccountingTrackingcategoryOutput",
-        });
-    });
-
-/** @internal */
-export type RetrieveAccountingTrackingCategoryResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedAccountingTrackingcategoryOutput?:
-        | components.UnifiedAccountingTrackingcategoryOutput$Outbound
-        | undefined;
-};
-
-/** @internal */
-export const RetrieveAccountingTrackingCategoryResponse$outboundSchema: z.ZodType<
-    RetrieveAccountingTrackingCategoryResponse$Outbound,
-    z.ZodTypeDef,
-    RetrieveAccountingTrackingCategoryResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedAccountingTrackingcategoryOutput:
-            components.UnifiedAccountingTrackingcategoryOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedAccountingTrackingcategoryOutput: "UnifiedAccountingTrackingcategoryOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveAccountingTrackingCategoryResponse$ {
-    /** @deprecated use `RetrieveAccountingTrackingCategoryResponse$inboundSchema` instead. */
-    export const inboundSchema = RetrieveAccountingTrackingCategoryResponse$inboundSchema;
-    /** @deprecated use `RetrieveAccountingTrackingCategoryResponse$outboundSchema` instead. */
-    export const outboundSchema = RetrieveAccountingTrackingCategoryResponse$outboundSchema;
-    /** @deprecated use `RetrieveAccountingTrackingCategoryResponse$Outbound` instead. */
-    export type Outbound = RetrieveAccountingTrackingCategoryResponse$Outbound;
 }

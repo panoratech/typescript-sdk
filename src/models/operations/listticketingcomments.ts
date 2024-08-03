@@ -31,11 +31,6 @@ export type ListTicketingCommentsResponseBody = {
     data: Array<components.UnifiedTicketingCommentOutput>;
 };
 
-export type ListTicketingCommentsResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListTicketingCommentsResponseBody | undefined;
-};
-
 /** @internal */
 export const ListTicketingCommentsRequest$inboundSchema: z.ZodType<
     ListTicketingCommentsRequest,
@@ -149,55 +144,4 @@ export namespace ListTicketingCommentsResponseBody$ {
     export const outboundSchema = ListTicketingCommentsResponseBody$outboundSchema;
     /** @deprecated use `ListTicketingCommentsResponseBody$Outbound` instead. */
     export type Outbound = ListTicketingCommentsResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListTicketingCommentsResponse$inboundSchema: z.ZodType<
-    ListTicketingCommentsResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListTicketingCommentsResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListTicketingCommentsResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListTicketingCommentsResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListTicketingCommentsResponse$outboundSchema: z.ZodType<
-    ListTicketingCommentsResponse$Outbound,
-    z.ZodTypeDef,
-    ListTicketingCommentsResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListTicketingCommentsResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListTicketingCommentsResponse$ {
-    /** @deprecated use `ListTicketingCommentsResponse$inboundSchema` instead. */
-    export const inboundSchema = ListTicketingCommentsResponse$inboundSchema;
-    /** @deprecated use `ListTicketingCommentsResponse$outboundSchema` instead. */
-    export const outboundSchema = ListTicketingCommentsResponse$outboundSchema;
-    /** @deprecated use `ListTicketingCommentsResponse$Outbound` instead. */
-    export type Outbound = ListTicketingCommentsResponse$Outbound;
 }

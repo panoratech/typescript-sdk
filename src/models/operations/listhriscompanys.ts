@@ -31,11 +31,6 @@ export type ListHrisCompanysResponseBody = {
     data: Array<components.UnifiedHrisCompanyOutput>;
 };
 
-export type ListHrisCompanysResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListHrisCompanysResponseBody | undefined;
-};
-
 /** @internal */
 export const ListHrisCompanysRequest$inboundSchema: z.ZodType<
     ListHrisCompanysRequest,
@@ -149,55 +144,4 @@ export namespace ListHrisCompanysResponseBody$ {
     export const outboundSchema = ListHrisCompanysResponseBody$outboundSchema;
     /** @deprecated use `ListHrisCompanysResponseBody$Outbound` instead. */
     export type Outbound = ListHrisCompanysResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListHrisCompanysResponse$inboundSchema: z.ZodType<
-    ListHrisCompanysResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListHrisCompanysResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListHrisCompanysResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListHrisCompanysResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListHrisCompanysResponse$outboundSchema: z.ZodType<
-    ListHrisCompanysResponse$Outbound,
-    z.ZodTypeDef,
-    ListHrisCompanysResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListHrisCompanysResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListHrisCompanysResponse$ {
-    /** @deprecated use `ListHrisCompanysResponse$inboundSchema` instead. */
-    export const inboundSchema = ListHrisCompanysResponse$inboundSchema;
-    /** @deprecated use `ListHrisCompanysResponse$outboundSchema` instead. */
-    export const outboundSchema = ListHrisCompanysResponse$outboundSchema;
-    /** @deprecated use `ListHrisCompanysResponse$Outbound` instead. */
-    export type Outbound = ListHrisCompanysResponse$Outbound;
 }

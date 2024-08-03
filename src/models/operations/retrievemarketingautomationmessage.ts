@@ -3,7 +3,6 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
-import * as components from "../components/index.js";
 import * as z from "zod";
 
 export type RetrieveMarketingautomationMessageRequest = {
@@ -19,13 +18,6 @@ export type RetrieveMarketingautomationMessageRequest = {
      * Set to true to include data from the original Marketingautomation software.
      */
     remoteData?: boolean | undefined;
-};
-
-export type RetrieveMarketingautomationMessageResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedMarketingautomationMessageOutput?:
-        | components.UnifiedMarketingautomationMessageOutput
-        | undefined;
 };
 
 /** @internal */
@@ -82,61 +74,4 @@ export namespace RetrieveMarketingautomationMessageRequest$ {
     export const outboundSchema = RetrieveMarketingautomationMessageRequest$outboundSchema;
     /** @deprecated use `RetrieveMarketingautomationMessageRequest$Outbound` instead. */
     export type Outbound = RetrieveMarketingautomationMessageRequest$Outbound;
-}
-
-/** @internal */
-export const RetrieveMarketingautomationMessageResponse$inboundSchema: z.ZodType<
-    RetrieveMarketingautomationMessageResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedMarketingautomationMessageOutput:
-            components.UnifiedMarketingautomationMessageOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedMarketingautomationMessageOutput: "unifiedMarketingautomationMessageOutput",
-        });
-    });
-
-/** @internal */
-export type RetrieveMarketingautomationMessageResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedMarketingautomationMessageOutput?:
-        | components.UnifiedMarketingautomationMessageOutput$Outbound
-        | undefined;
-};
-
-/** @internal */
-export const RetrieveMarketingautomationMessageResponse$outboundSchema: z.ZodType<
-    RetrieveMarketingautomationMessageResponse$Outbound,
-    z.ZodTypeDef,
-    RetrieveMarketingautomationMessageResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedMarketingautomationMessageOutput:
-            components.UnifiedMarketingautomationMessageOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedMarketingautomationMessageOutput: "UnifiedMarketingautomationMessageOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveMarketingautomationMessageResponse$ {
-    /** @deprecated use `RetrieveMarketingautomationMessageResponse$inboundSchema` instead. */
-    export const inboundSchema = RetrieveMarketingautomationMessageResponse$inboundSchema;
-    /** @deprecated use `RetrieveMarketingautomationMessageResponse$outboundSchema` instead. */
-    export const outboundSchema = RetrieveMarketingautomationMessageResponse$outboundSchema;
-    /** @deprecated use `RetrieveMarketingautomationMessageResponse$Outbound` instead. */
-    export type Outbound = RetrieveMarketingautomationMessageResponse$Outbound;
 }

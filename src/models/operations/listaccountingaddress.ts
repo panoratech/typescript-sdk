@@ -31,11 +31,6 @@ export type ListAccountingAddressResponseBody = {
     data: Array<components.UnifiedAccountingAddressOutput>;
 };
 
-export type ListAccountingAddressResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListAccountingAddressResponseBody | undefined;
-};
-
 /** @internal */
 export const ListAccountingAddressRequest$inboundSchema: z.ZodType<
     ListAccountingAddressRequest,
@@ -149,55 +144,4 @@ export namespace ListAccountingAddressResponseBody$ {
     export const outboundSchema = ListAccountingAddressResponseBody$outboundSchema;
     /** @deprecated use `ListAccountingAddressResponseBody$Outbound` instead. */
     export type Outbound = ListAccountingAddressResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListAccountingAddressResponse$inboundSchema: z.ZodType<
-    ListAccountingAddressResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListAccountingAddressResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListAccountingAddressResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListAccountingAddressResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListAccountingAddressResponse$outboundSchema: z.ZodType<
-    ListAccountingAddressResponse$Outbound,
-    z.ZodTypeDef,
-    ListAccountingAddressResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListAccountingAddressResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAccountingAddressResponse$ {
-    /** @deprecated use `ListAccountingAddressResponse$inboundSchema` instead. */
-    export const inboundSchema = ListAccountingAddressResponse$inboundSchema;
-    /** @deprecated use `ListAccountingAddressResponse$outboundSchema` instead. */
-    export const outboundSchema = ListAccountingAddressResponse$outboundSchema;
-    /** @deprecated use `ListAccountingAddressResponse$Outbound` instead. */
-    export type Outbound = ListAccountingAddressResponse$Outbound;
 }

@@ -18,11 +18,6 @@ export type CreateCrmEngagementRequest = {
     unifiedCrmEngagementInput: components.UnifiedCrmEngagementInput;
 };
 
-export type CreateCrmEngagementResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedCrmEngagementOutput?: components.UnifiedCrmEngagementOutput | undefined;
-};
-
 /** @internal */
 export const CreateCrmEngagementRequest$inboundSchema: z.ZodType<
     CreateCrmEngagementRequest,
@@ -79,57 +74,4 @@ export namespace CreateCrmEngagementRequest$ {
     export const outboundSchema = CreateCrmEngagementRequest$outboundSchema;
     /** @deprecated use `CreateCrmEngagementRequest$Outbound` instead. */
     export type Outbound = CreateCrmEngagementRequest$Outbound;
-}
-
-/** @internal */
-export const CreateCrmEngagementResponse$inboundSchema: z.ZodType<
-    CreateCrmEngagementResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedCrmEngagementOutput: components.UnifiedCrmEngagementOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedCrmEngagementOutput: "unifiedCrmEngagementOutput",
-        });
-    });
-
-/** @internal */
-export type CreateCrmEngagementResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedCrmEngagementOutput?: components.UnifiedCrmEngagementOutput$Outbound | undefined;
-};
-
-/** @internal */
-export const CreateCrmEngagementResponse$outboundSchema: z.ZodType<
-    CreateCrmEngagementResponse$Outbound,
-    z.ZodTypeDef,
-    CreateCrmEngagementResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedCrmEngagementOutput: components.UnifiedCrmEngagementOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedCrmEngagementOutput: "UnifiedCrmEngagementOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateCrmEngagementResponse$ {
-    /** @deprecated use `CreateCrmEngagementResponse$inboundSchema` instead. */
-    export const inboundSchema = CreateCrmEngagementResponse$inboundSchema;
-    /** @deprecated use `CreateCrmEngagementResponse$outboundSchema` instead. */
-    export const outboundSchema = CreateCrmEngagementResponse$outboundSchema;
-    /** @deprecated use `CreateCrmEngagementResponse$Outbound` instead. */
-    export type Outbound = CreateCrmEngagementResponse$Outbound;
 }

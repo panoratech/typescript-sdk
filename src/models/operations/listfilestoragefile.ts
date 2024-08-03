@@ -31,11 +31,6 @@ export type ListFilestorageFileResponseBody = {
     data: Array<components.UnifiedFilestorageFileOutput>;
 };
 
-export type ListFilestorageFileResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListFilestorageFileResponseBody | undefined;
-};
-
 /** @internal */
 export const ListFilestorageFileRequest$inboundSchema: z.ZodType<
     ListFilestorageFileRequest,
@@ -149,55 +144,4 @@ export namespace ListFilestorageFileResponseBody$ {
     export const outboundSchema = ListFilestorageFileResponseBody$outboundSchema;
     /** @deprecated use `ListFilestorageFileResponseBody$Outbound` instead. */
     export type Outbound = ListFilestorageFileResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListFilestorageFileResponse$inboundSchema: z.ZodType<
-    ListFilestorageFileResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListFilestorageFileResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListFilestorageFileResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListFilestorageFileResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListFilestorageFileResponse$outboundSchema: z.ZodType<
-    ListFilestorageFileResponse$Outbound,
-    z.ZodTypeDef,
-    ListFilestorageFileResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListFilestorageFileResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListFilestorageFileResponse$ {
-    /** @deprecated use `ListFilestorageFileResponse$inboundSchema` instead. */
-    export const inboundSchema = ListFilestorageFileResponse$inboundSchema;
-    /** @deprecated use `ListFilestorageFileResponse$outboundSchema` instead. */
-    export const outboundSchema = ListFilestorageFileResponse$outboundSchema;
-    /** @deprecated use `ListFilestorageFileResponse$Outbound` instead. */
-    export type Outbound = ListFilestorageFileResponse$Outbound;
 }

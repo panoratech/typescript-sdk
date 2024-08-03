@@ -16,7 +16,7 @@ List  Tags
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -43,7 +43,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListTicketingTagsResponse](../../models/operations/listticketingtagsresponse.md)\>**
+**Promise\<[operations.ListTicketingTagsResponseBody](../../models/operations/listticketingtagsresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -60,7 +60,7 @@ Retrieve Tags from any connected Ticketing software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -88,7 +88,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveTicketingTagResponse](../../models/operations/retrieveticketingtagresponse.md)\>**
+**Promise\<[components.UnifiedTicketingTagOutput](../../models/components/unifiedticketingtagoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

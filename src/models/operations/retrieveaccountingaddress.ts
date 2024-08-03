@@ -3,7 +3,6 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
-import * as components from "../components/index.js";
 import * as z from "zod";
 
 export type RetrieveAccountingAddressRequest = {
@@ -19,11 +18,6 @@ export type RetrieveAccountingAddressRequest = {
      * Set to true to include data from the original Accounting software.
      */
     remoteData?: boolean | undefined;
-};
-
-export type RetrieveAccountingAddressResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedAccountingAddressOutput?: components.UnifiedAccountingAddressOutput | undefined;
 };
 
 /** @internal */
@@ -80,59 +74,4 @@ export namespace RetrieveAccountingAddressRequest$ {
     export const outboundSchema = RetrieveAccountingAddressRequest$outboundSchema;
     /** @deprecated use `RetrieveAccountingAddressRequest$Outbound` instead. */
     export type Outbound = RetrieveAccountingAddressRequest$Outbound;
-}
-
-/** @internal */
-export const RetrieveAccountingAddressResponse$inboundSchema: z.ZodType<
-    RetrieveAccountingAddressResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedAccountingAddressOutput:
-            components.UnifiedAccountingAddressOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedAccountingAddressOutput: "unifiedAccountingAddressOutput",
-        });
-    });
-
-/** @internal */
-export type RetrieveAccountingAddressResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedAccountingAddressOutput?: components.UnifiedAccountingAddressOutput$Outbound | undefined;
-};
-
-/** @internal */
-export const RetrieveAccountingAddressResponse$outboundSchema: z.ZodType<
-    RetrieveAccountingAddressResponse$Outbound,
-    z.ZodTypeDef,
-    RetrieveAccountingAddressResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedAccountingAddressOutput:
-            components.UnifiedAccountingAddressOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedAccountingAddressOutput: "UnifiedAccountingAddressOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveAccountingAddressResponse$ {
-    /** @deprecated use `RetrieveAccountingAddressResponse$inboundSchema` instead. */
-    export const inboundSchema = RetrieveAccountingAddressResponse$inboundSchema;
-    /** @deprecated use `RetrieveAccountingAddressResponse$outboundSchema` instead. */
-    export const outboundSchema = RetrieveAccountingAddressResponse$outboundSchema;
-    /** @deprecated use `RetrieveAccountingAddressResponse$Outbound` instead. */
-    export type Outbound = RetrieveAccountingAddressResponse$Outbound;
 }

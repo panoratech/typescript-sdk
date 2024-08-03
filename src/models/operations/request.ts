@@ -13,11 +13,6 @@ export type RequestRequest = {
     passThroughRequestDto: components.PassThroughRequestDto;
 };
 
-export type RequestResponse = {
-    httpMeta: components.HTTPMetadata;
-    passThroughResponse?: components.PassThroughResponse | undefined;
-};
-
 /** @internal */
 export const RequestRequest$inboundSchema: z.ZodType<RequestRequest, z.ZodTypeDef, unknown> = z
     .object({
@@ -69,53 +64,4 @@ export namespace RequestRequest$ {
     export const outboundSchema = RequestRequest$outboundSchema;
     /** @deprecated use `RequestRequest$Outbound` instead. */
     export type Outbound = RequestRequest$Outbound;
-}
-
-/** @internal */
-export const RequestResponse$inboundSchema: z.ZodType<RequestResponse, z.ZodTypeDef, unknown> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        PassThroughResponse: components.PassThroughResponse$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            PassThroughResponse: "passThroughResponse",
-        });
-    });
-
-/** @internal */
-export type RequestResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    PassThroughResponse?: components.PassThroughResponse$Outbound | undefined;
-};
-
-/** @internal */
-export const RequestResponse$outboundSchema: z.ZodType<
-    RequestResponse$Outbound,
-    z.ZodTypeDef,
-    RequestResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        passThroughResponse: components.PassThroughResponse$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            passThroughResponse: "PassThroughResponse",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RequestResponse$ {
-    /** @deprecated use `RequestResponse$inboundSchema` instead. */
-    export const inboundSchema = RequestResponse$inboundSchema;
-    /** @deprecated use `RequestResponse$outboundSchema` instead. */
-    export const outboundSchema = RequestResponse$outboundSchema;
-    /** @deprecated use `RequestResponse$Outbound` instead. */
-    export type Outbound = RequestResponse$Outbound;
 }

@@ -3,7 +3,6 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
-import * as components from "../components/index.js";
 import * as z from "zod";
 
 export type RetrieveHrisEmployeePayrollRunRequest = {
@@ -19,13 +18,6 @@ export type RetrieveHrisEmployeePayrollRunRequest = {
      * Set to true to include data from the original Hris software.
      */
     remoteData?: boolean | undefined;
-};
-
-export type RetrieveHrisEmployeePayrollRunResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedHrisEmployeepayrollrunOutput?:
-        | components.UnifiedHrisEmployeepayrollrunOutput
-        | undefined;
 };
 
 /** @internal */
@@ -82,61 +74,4 @@ export namespace RetrieveHrisEmployeePayrollRunRequest$ {
     export const outboundSchema = RetrieveHrisEmployeePayrollRunRequest$outboundSchema;
     /** @deprecated use `RetrieveHrisEmployeePayrollRunRequest$Outbound` instead. */
     export type Outbound = RetrieveHrisEmployeePayrollRunRequest$Outbound;
-}
-
-/** @internal */
-export const RetrieveHrisEmployeePayrollRunResponse$inboundSchema: z.ZodType<
-    RetrieveHrisEmployeePayrollRunResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedHrisEmployeepayrollrunOutput:
-            components.UnifiedHrisEmployeepayrollrunOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedHrisEmployeepayrollrunOutput: "unifiedHrisEmployeepayrollrunOutput",
-        });
-    });
-
-/** @internal */
-export type RetrieveHrisEmployeePayrollRunResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedHrisEmployeepayrollrunOutput?:
-        | components.UnifiedHrisEmployeepayrollrunOutput$Outbound
-        | undefined;
-};
-
-/** @internal */
-export const RetrieveHrisEmployeePayrollRunResponse$outboundSchema: z.ZodType<
-    RetrieveHrisEmployeePayrollRunResponse$Outbound,
-    z.ZodTypeDef,
-    RetrieveHrisEmployeePayrollRunResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedHrisEmployeepayrollrunOutput:
-            components.UnifiedHrisEmployeepayrollrunOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedHrisEmployeepayrollrunOutput: "UnifiedHrisEmployeepayrollrunOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveHrisEmployeePayrollRunResponse$ {
-    /** @deprecated use `RetrieveHrisEmployeePayrollRunResponse$inboundSchema` instead. */
-    export const inboundSchema = RetrieveHrisEmployeePayrollRunResponse$inboundSchema;
-    /** @deprecated use `RetrieveHrisEmployeePayrollRunResponse$outboundSchema` instead. */
-    export const outboundSchema = RetrieveHrisEmployeePayrollRunResponse$outboundSchema;
-    /** @deprecated use `RetrieveHrisEmployeePayrollRunResponse$Outbound` instead. */
-    export type Outbound = RetrieveHrisEmployeePayrollRunResponse$Outbound;
 }

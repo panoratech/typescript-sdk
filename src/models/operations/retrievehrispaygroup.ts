@@ -3,7 +3,6 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
-import * as components from "../components/index.js";
 import * as z from "zod";
 
 export type RetrieveHrisPaygroupRequest = {
@@ -19,11 +18,6 @@ export type RetrieveHrisPaygroupRequest = {
      * Set to true to include data from the original Hris software.
      */
     remoteData?: boolean | undefined;
-};
-
-export type RetrieveHrisPaygroupResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedHrisPaygroupOutput?: components.UnifiedHrisPaygroupOutput | undefined;
 };
 
 /** @internal */
@@ -80,57 +74,4 @@ export namespace RetrieveHrisPaygroupRequest$ {
     export const outboundSchema = RetrieveHrisPaygroupRequest$outboundSchema;
     /** @deprecated use `RetrieveHrisPaygroupRequest$Outbound` instead. */
     export type Outbound = RetrieveHrisPaygroupRequest$Outbound;
-}
-
-/** @internal */
-export const RetrieveHrisPaygroupResponse$inboundSchema: z.ZodType<
-    RetrieveHrisPaygroupResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedHrisPaygroupOutput: components.UnifiedHrisPaygroupOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedHrisPaygroupOutput: "unifiedHrisPaygroupOutput",
-        });
-    });
-
-/** @internal */
-export type RetrieveHrisPaygroupResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedHrisPaygroupOutput?: components.UnifiedHrisPaygroupOutput$Outbound | undefined;
-};
-
-/** @internal */
-export const RetrieveHrisPaygroupResponse$outboundSchema: z.ZodType<
-    RetrieveHrisPaygroupResponse$Outbound,
-    z.ZodTypeDef,
-    RetrieveHrisPaygroupResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedHrisPaygroupOutput: components.UnifiedHrisPaygroupOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedHrisPaygroupOutput: "UnifiedHrisPaygroupOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveHrisPaygroupResponse$ {
-    /** @deprecated use `RetrieveHrisPaygroupResponse$inboundSchema` instead. */
-    export const inboundSchema = RetrieveHrisPaygroupResponse$inboundSchema;
-    /** @deprecated use `RetrieveHrisPaygroupResponse$outboundSchema` instead. */
-    export const outboundSchema = RetrieveHrisPaygroupResponse$outboundSchema;
-    /** @deprecated use `RetrieveHrisPaygroupResponse$Outbound` instead. */
-    export type Outbound = RetrieveHrisPaygroupResponse$Outbound;
 }

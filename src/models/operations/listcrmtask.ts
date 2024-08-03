@@ -31,11 +31,6 @@ export type ListCrmTaskResponseBody = {
     data: Array<components.UnifiedCrmTaskOutput>;
 };
 
-export type ListCrmTaskResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListCrmTaskResponseBody | undefined;
-};
-
 /** @internal */
 export const ListCrmTaskRequest$inboundSchema: z.ZodType<
     ListCrmTaskRequest,
@@ -149,55 +144,4 @@ export namespace ListCrmTaskResponseBody$ {
     export const outboundSchema = ListCrmTaskResponseBody$outboundSchema;
     /** @deprecated use `ListCrmTaskResponseBody$Outbound` instead. */
     export type Outbound = ListCrmTaskResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListCrmTaskResponse$inboundSchema: z.ZodType<
-    ListCrmTaskResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListCrmTaskResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListCrmTaskResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListCrmTaskResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListCrmTaskResponse$outboundSchema: z.ZodType<
-    ListCrmTaskResponse$Outbound,
-    z.ZodTypeDef,
-    ListCrmTaskResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListCrmTaskResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListCrmTaskResponse$ {
-    /** @deprecated use `ListCrmTaskResponse$inboundSchema` instead. */
-    export const inboundSchema = ListCrmTaskResponse$inboundSchema;
-    /** @deprecated use `ListCrmTaskResponse$outboundSchema` instead. */
-    export const outboundSchema = ListCrmTaskResponse$outboundSchema;
-    /** @deprecated use `ListCrmTaskResponse$Outbound` instead. */
-    export type Outbound = ListCrmTaskResponse$Outbound;
 }

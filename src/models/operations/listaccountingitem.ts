@@ -31,11 +31,6 @@ export type ListAccountingItemResponseBody = {
     data: Array<components.UnifiedAccountingItemOutput>;
 };
 
-export type ListAccountingItemResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListAccountingItemResponseBody | undefined;
-};
-
 /** @internal */
 export const ListAccountingItemRequest$inboundSchema: z.ZodType<
     ListAccountingItemRequest,
@@ -149,55 +144,4 @@ export namespace ListAccountingItemResponseBody$ {
     export const outboundSchema = ListAccountingItemResponseBody$outboundSchema;
     /** @deprecated use `ListAccountingItemResponseBody$Outbound` instead. */
     export type Outbound = ListAccountingItemResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListAccountingItemResponse$inboundSchema: z.ZodType<
-    ListAccountingItemResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListAccountingItemResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListAccountingItemResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListAccountingItemResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListAccountingItemResponse$outboundSchema: z.ZodType<
-    ListAccountingItemResponse$Outbound,
-    z.ZodTypeDef,
-    ListAccountingItemResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListAccountingItemResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAccountingItemResponse$ {
-    /** @deprecated use `ListAccountingItemResponse$inboundSchema` instead. */
-    export const inboundSchema = ListAccountingItemResponse$inboundSchema;
-    /** @deprecated use `ListAccountingItemResponse$outboundSchema` instead. */
-    export const outboundSchema = ListAccountingItemResponse$outboundSchema;
-    /** @deprecated use `ListAccountingItemResponse$Outbound` instead. */
-    export type Outbound = ListAccountingItemResponse$Outbound;
 }

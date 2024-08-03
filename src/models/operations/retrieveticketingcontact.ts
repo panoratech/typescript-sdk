@@ -27,11 +27,6 @@ export type RetrieveTicketingContactResponseBody = {
     data: Array<components.UnifiedTicketingContactOutput>;
 };
 
-export type RetrieveTicketingContactResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: RetrieveTicketingContactResponseBody | undefined;
-};
-
 /** @internal */
 export const RetrieveTicketingContactRequest$inboundSchema: z.ZodType<
     RetrieveTicketingContactRequest,
@@ -142,55 +137,4 @@ export namespace RetrieveTicketingContactResponseBody$ {
     export const outboundSchema = RetrieveTicketingContactResponseBody$outboundSchema;
     /** @deprecated use `RetrieveTicketingContactResponseBody$Outbound` instead. */
     export type Outbound = RetrieveTicketingContactResponseBody$Outbound;
-}
-
-/** @internal */
-export const RetrieveTicketingContactResponse$inboundSchema: z.ZodType<
-    RetrieveTicketingContactResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => RetrieveTicketingContactResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type RetrieveTicketingContactResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: RetrieveTicketingContactResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const RetrieveTicketingContactResponse$outboundSchema: z.ZodType<
-    RetrieveTicketingContactResponse$Outbound,
-    z.ZodTypeDef,
-    RetrieveTicketingContactResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => RetrieveTicketingContactResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveTicketingContactResponse$ {
-    /** @deprecated use `RetrieveTicketingContactResponse$inboundSchema` instead. */
-    export const inboundSchema = RetrieveTicketingContactResponse$inboundSchema;
-    /** @deprecated use `RetrieveTicketingContactResponse$outboundSchema` instead. */
-    export const outboundSchema = RetrieveTicketingContactResponse$outboundSchema;
-    /** @deprecated use `RetrieveTicketingContactResponse$Outbound` instead. */
-    export type Outbound = RetrieveTicketingContactResponse$Outbound;
 }

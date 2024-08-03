@@ -3,7 +3,6 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
-import * as components from "../components/index.js";
 import * as z from "zod";
 
 export type RetrieveHrisBenefitRequest = {
@@ -19,11 +18,6 @@ export type RetrieveHrisBenefitRequest = {
      * Set to true to include data from the original Hris software.
      */
     remoteData?: boolean | undefined;
-};
-
-export type RetrieveHrisBenefitResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedHrisBenefitOutput?: components.UnifiedHrisBenefitOutput | undefined;
 };
 
 /** @internal */
@@ -80,57 +74,4 @@ export namespace RetrieveHrisBenefitRequest$ {
     export const outboundSchema = RetrieveHrisBenefitRequest$outboundSchema;
     /** @deprecated use `RetrieveHrisBenefitRequest$Outbound` instead. */
     export type Outbound = RetrieveHrisBenefitRequest$Outbound;
-}
-
-/** @internal */
-export const RetrieveHrisBenefitResponse$inboundSchema: z.ZodType<
-    RetrieveHrisBenefitResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedHrisBenefitOutput: components.UnifiedHrisBenefitOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedHrisBenefitOutput: "unifiedHrisBenefitOutput",
-        });
-    });
-
-/** @internal */
-export type RetrieveHrisBenefitResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedHrisBenefitOutput?: components.UnifiedHrisBenefitOutput$Outbound | undefined;
-};
-
-/** @internal */
-export const RetrieveHrisBenefitResponse$outboundSchema: z.ZodType<
-    RetrieveHrisBenefitResponse$Outbound,
-    z.ZodTypeDef,
-    RetrieveHrisBenefitResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedHrisBenefitOutput: components.UnifiedHrisBenefitOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedHrisBenefitOutput: "UnifiedHrisBenefitOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveHrisBenefitResponse$ {
-    /** @deprecated use `RetrieveHrisBenefitResponse$inboundSchema` instead. */
-    export const inboundSchema = RetrieveHrisBenefitResponse$inboundSchema;
-    /** @deprecated use `RetrieveHrisBenefitResponse$outboundSchema` instead. */
-    export const outboundSchema = RetrieveHrisBenefitResponse$outboundSchema;
-    /** @deprecated use `RetrieveHrisBenefitResponse$Outbound` instead. */
-    export type Outbound = RetrieveHrisBenefitResponse$Outbound;
 }

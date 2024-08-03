@@ -3,7 +3,6 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
-import * as components from "../components/index.js";
 import * as z from "zod";
 
 export type RetrieveFilestorageUserRequest = {
@@ -19,11 +18,6 @@ export type RetrieveFilestorageUserRequest = {
      * Set to true to include data from the original File Storage software.
      */
     remoteData?: boolean | undefined;
-};
-
-export type RetrieveFilestorageUserResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedUserOutput?: components.UnifiedUserOutput | undefined;
 };
 
 /** @internal */
@@ -80,57 +74,4 @@ export namespace RetrieveFilestorageUserRequest$ {
     export const outboundSchema = RetrieveFilestorageUserRequest$outboundSchema;
     /** @deprecated use `RetrieveFilestorageUserRequest$Outbound` instead. */
     export type Outbound = RetrieveFilestorageUserRequest$Outbound;
-}
-
-/** @internal */
-export const RetrieveFilestorageUserResponse$inboundSchema: z.ZodType<
-    RetrieveFilestorageUserResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedUserOutput: components.UnifiedUserOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedUserOutput: "unifiedUserOutput",
-        });
-    });
-
-/** @internal */
-export type RetrieveFilestorageUserResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedUserOutput?: components.UnifiedUserOutput$Outbound | undefined;
-};
-
-/** @internal */
-export const RetrieveFilestorageUserResponse$outboundSchema: z.ZodType<
-    RetrieveFilestorageUserResponse$Outbound,
-    z.ZodTypeDef,
-    RetrieveFilestorageUserResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedUserOutput: components.UnifiedUserOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedUserOutput: "UnifiedUserOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveFilestorageUserResponse$ {
-    /** @deprecated use `RetrieveFilestorageUserResponse$inboundSchema` instead. */
-    export const inboundSchema = RetrieveFilestorageUserResponse$inboundSchema;
-    /** @deprecated use `RetrieveFilestorageUserResponse$outboundSchema` instead. */
-    export const outboundSchema = RetrieveFilestorageUserResponse$outboundSchema;
-    /** @deprecated use `RetrieveFilestorageUserResponse$Outbound` instead. */
-    export type Outbound = RetrieveFilestorageUserResponse$Outbound;
 }

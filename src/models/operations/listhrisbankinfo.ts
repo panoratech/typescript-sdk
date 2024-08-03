@@ -31,11 +31,6 @@ export type ListHrisBankinfoResponseBody = {
     data: Array<components.UnifiedHrisBankinfoOutput>;
 };
 
-export type ListHrisBankinfoResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListHrisBankinfoResponseBody | undefined;
-};
-
 /** @internal */
 export const ListHrisBankinfoRequest$inboundSchema: z.ZodType<
     ListHrisBankinfoRequest,
@@ -149,55 +144,4 @@ export namespace ListHrisBankinfoResponseBody$ {
     export const outboundSchema = ListHrisBankinfoResponseBody$outboundSchema;
     /** @deprecated use `ListHrisBankinfoResponseBody$Outbound` instead. */
     export type Outbound = ListHrisBankinfoResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListHrisBankinfoResponse$inboundSchema: z.ZodType<
-    ListHrisBankinfoResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListHrisBankinfoResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListHrisBankinfoResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListHrisBankinfoResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListHrisBankinfoResponse$outboundSchema: z.ZodType<
-    ListHrisBankinfoResponse$Outbound,
-    z.ZodTypeDef,
-    ListHrisBankinfoResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListHrisBankinfoResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListHrisBankinfoResponse$ {
-    /** @deprecated use `ListHrisBankinfoResponse$inboundSchema` instead. */
-    export const inboundSchema = ListHrisBankinfoResponse$inboundSchema;
-    /** @deprecated use `ListHrisBankinfoResponse$outboundSchema` instead. */
-    export const outboundSchema = ListHrisBankinfoResponse$outboundSchema;
-    /** @deprecated use `ListHrisBankinfoResponse$Outbound` instead. */
-    export type Outbound = ListHrisBankinfoResponse$Outbound;
 }

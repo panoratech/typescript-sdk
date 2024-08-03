@@ -3,7 +3,6 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
-import * as components from "../components/index.js";
 import * as z from "zod";
 
 export type RetrieveTicketingUserRequest = {
@@ -19,11 +18,6 @@ export type RetrieveTicketingUserRequest = {
      * Set to true to include data from the original Ticketing software.
      */
     remoteData?: boolean | undefined;
-};
-
-export type RetrieveTicketingUserResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedTicketingUserOutput?: components.UnifiedTicketingUserOutput | undefined;
 };
 
 /** @internal */
@@ -80,57 +74,4 @@ export namespace RetrieveTicketingUserRequest$ {
     export const outboundSchema = RetrieveTicketingUserRequest$outboundSchema;
     /** @deprecated use `RetrieveTicketingUserRequest$Outbound` instead. */
     export type Outbound = RetrieveTicketingUserRequest$Outbound;
-}
-
-/** @internal */
-export const RetrieveTicketingUserResponse$inboundSchema: z.ZodType<
-    RetrieveTicketingUserResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedTicketingUserOutput: components.UnifiedTicketingUserOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedTicketingUserOutput: "unifiedTicketingUserOutput",
-        });
-    });
-
-/** @internal */
-export type RetrieveTicketingUserResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedTicketingUserOutput?: components.UnifiedTicketingUserOutput$Outbound | undefined;
-};
-
-/** @internal */
-export const RetrieveTicketingUserResponse$outboundSchema: z.ZodType<
-    RetrieveTicketingUserResponse$Outbound,
-    z.ZodTypeDef,
-    RetrieveTicketingUserResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedTicketingUserOutput: components.UnifiedTicketingUserOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedTicketingUserOutput: "UnifiedTicketingUserOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveTicketingUserResponse$ {
-    /** @deprecated use `RetrieveTicketingUserResponse$inboundSchema` instead. */
-    export const inboundSchema = RetrieveTicketingUserResponse$inboundSchema;
-    /** @deprecated use `RetrieveTicketingUserResponse$outboundSchema` instead. */
-    export const outboundSchema = RetrieveTicketingUserResponse$outboundSchema;
-    /** @deprecated use `RetrieveTicketingUserResponse$Outbound` instead. */
-    export type Outbound = RetrieveTicketingUserResponse$Outbound;
 }

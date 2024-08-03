@@ -31,11 +31,6 @@ export type ListHrisLocationResponseBody = {
     data: Array<components.UnifiedHrisLocationOutput>;
 };
 
-export type ListHrisLocationResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListHrisLocationResponseBody | undefined;
-};
-
 /** @internal */
 export const ListHrisLocationRequest$inboundSchema: z.ZodType<
     ListHrisLocationRequest,
@@ -149,55 +144,4 @@ export namespace ListHrisLocationResponseBody$ {
     export const outboundSchema = ListHrisLocationResponseBody$outboundSchema;
     /** @deprecated use `ListHrisLocationResponseBody$Outbound` instead. */
     export type Outbound = ListHrisLocationResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListHrisLocationResponse$inboundSchema: z.ZodType<
-    ListHrisLocationResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListHrisLocationResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListHrisLocationResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListHrisLocationResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListHrisLocationResponse$outboundSchema: z.ZodType<
-    ListHrisLocationResponse$Outbound,
-    z.ZodTypeDef,
-    ListHrisLocationResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListHrisLocationResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListHrisLocationResponse$ {
-    /** @deprecated use `ListHrisLocationResponse$inboundSchema` instead. */
-    export const inboundSchema = ListHrisLocationResponse$inboundSchema;
-    /** @deprecated use `ListHrisLocationResponse$outboundSchema` instead. */
-    export const outboundSchema = ListHrisLocationResponse$outboundSchema;
-    /** @deprecated use `ListHrisLocationResponse$Outbound` instead. */
-    export type Outbound = ListHrisLocationResponse$Outbound;
 }

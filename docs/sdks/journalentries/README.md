@@ -17,7 +17,7 @@ List  JournalEntrys
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -44,7 +44,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListAccountingJournalEntryResponse](../../models/operations/listaccountingjournalentryresponse.md)\>**
+**Promise\<[operations.ListAccountingJournalEntryResponseBody](../../models/operations/listaccountingjournalentryresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -61,7 +61,7 @@ Create Journal Entries in any supported Accounting software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -89,7 +89,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.CreateAccountingJournalEntryResponse](../../models/operations/createaccountingjournalentryresponse.md)\>**
+**Promise\<[components.UnifiedAccountingJournalentryOutput](../../models/components/unifiedaccountingjournalentryoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -106,7 +106,7 @@ Retrieve Journal Entries from any connected Accounting software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -134,7 +134,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveAccountingJournalEntryResponse](../../models/operations/retrieveaccountingjournalentryresponse.md)\>**
+**Promise\<[components.UnifiedAccountingJournalentryOutput](../../models/components/unifiedaccountingjournalentryoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

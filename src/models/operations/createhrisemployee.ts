@@ -18,11 +18,6 @@ export type CreateHrisEmployeeRequest = {
     unifiedHrisEmployeeInput: components.UnifiedHrisEmployeeInput;
 };
 
-export type CreateHrisEmployeeResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedHrisEmployeeOutput?: components.UnifiedHrisEmployeeOutput | undefined;
-};
-
 /** @internal */
 export const CreateHrisEmployeeRequest$inboundSchema: z.ZodType<
     CreateHrisEmployeeRequest,
@@ -79,57 +74,4 @@ export namespace CreateHrisEmployeeRequest$ {
     export const outboundSchema = CreateHrisEmployeeRequest$outboundSchema;
     /** @deprecated use `CreateHrisEmployeeRequest$Outbound` instead. */
     export type Outbound = CreateHrisEmployeeRequest$Outbound;
-}
-
-/** @internal */
-export const CreateHrisEmployeeResponse$inboundSchema: z.ZodType<
-    CreateHrisEmployeeResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedHrisEmployeeOutput: components.UnifiedHrisEmployeeOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedHrisEmployeeOutput: "unifiedHrisEmployeeOutput",
-        });
-    });
-
-/** @internal */
-export type CreateHrisEmployeeResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedHrisEmployeeOutput?: components.UnifiedHrisEmployeeOutput$Outbound | undefined;
-};
-
-/** @internal */
-export const CreateHrisEmployeeResponse$outboundSchema: z.ZodType<
-    CreateHrisEmployeeResponse$Outbound,
-    z.ZodTypeDef,
-    CreateHrisEmployeeResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedHrisEmployeeOutput: components.UnifiedHrisEmployeeOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedHrisEmployeeOutput: "UnifiedHrisEmployeeOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateHrisEmployeeResponse$ {
-    /** @deprecated use `CreateHrisEmployeeResponse$inboundSchema` instead. */
-    export const inboundSchema = CreateHrisEmployeeResponse$inboundSchema;
-    /** @deprecated use `CreateHrisEmployeeResponse$outboundSchema` instead. */
-    export const outboundSchema = CreateHrisEmployeeResponse$outboundSchema;
-    /** @deprecated use `CreateHrisEmployeeResponse$Outbound` instead. */
-    export type Outbound = CreateHrisEmployeeResponse$Outbound;
 }

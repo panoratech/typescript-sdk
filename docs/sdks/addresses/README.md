@@ -16,7 +16,7 @@ List  Addresss
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -43,7 +43,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListAccountingAddressResponse](../../models/operations/listaccountingaddressresponse.md)\>**
+**Promise\<[operations.ListAccountingAddressResponseBody](../../models/operations/listaccountingaddressresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -60,7 +60,7 @@ Retrieve Addresses from any connected Accounting software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -88,7 +88,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveAccountingAddressResponse](../../models/operations/retrieveaccountingaddressresponse.md)\>**
+**Promise\<[components.UnifiedAccountingAddressOutput](../../models/components/unifiedaccountingaddressoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

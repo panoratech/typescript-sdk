@@ -3,7 +3,6 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
-import * as components from "../components/index.js";
 import * as z from "zod";
 
 export type RetrieveAtsOfferRequest = {
@@ -19,11 +18,6 @@ export type RetrieveAtsOfferRequest = {
      * Set to true to include data from the original Ats software.
      */
     remoteData?: boolean | undefined;
-};
-
-export type RetrieveAtsOfferResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedAtsOfferOutput?: components.UnifiedAtsOfferOutput | undefined;
 };
 
 /** @internal */
@@ -80,57 +74,4 @@ export namespace RetrieveAtsOfferRequest$ {
     export const outboundSchema = RetrieveAtsOfferRequest$outboundSchema;
     /** @deprecated use `RetrieveAtsOfferRequest$Outbound` instead. */
     export type Outbound = RetrieveAtsOfferRequest$Outbound;
-}
-
-/** @internal */
-export const RetrieveAtsOfferResponse$inboundSchema: z.ZodType<
-    RetrieveAtsOfferResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedAtsOfferOutput: components.UnifiedAtsOfferOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedAtsOfferOutput: "unifiedAtsOfferOutput",
-        });
-    });
-
-/** @internal */
-export type RetrieveAtsOfferResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedAtsOfferOutput?: components.UnifiedAtsOfferOutput$Outbound | undefined;
-};
-
-/** @internal */
-export const RetrieveAtsOfferResponse$outboundSchema: z.ZodType<
-    RetrieveAtsOfferResponse$Outbound,
-    z.ZodTypeDef,
-    RetrieveAtsOfferResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedAtsOfferOutput: components.UnifiedAtsOfferOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedAtsOfferOutput: "UnifiedAtsOfferOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveAtsOfferResponse$ {
-    /** @deprecated use `RetrieveAtsOfferResponse$inboundSchema` instead. */
-    export const inboundSchema = RetrieveAtsOfferResponse$inboundSchema;
-    /** @deprecated use `RetrieveAtsOfferResponse$outboundSchema` instead. */
-    export const outboundSchema = RetrieveAtsOfferResponse$outboundSchema;
-    /** @deprecated use `RetrieveAtsOfferResponse$Outbound` instead. */
-    export type Outbound = RetrieveAtsOfferResponse$Outbound;
 }

@@ -16,7 +16,7 @@ List  Events
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -43,7 +43,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListMarketingAutomationEventsResponse](../../models/operations/listmarketingautomationeventsresponse.md)\>**
+**Promise\<[operations.ListMarketingAutomationEventsResponseBody](../../models/operations/listmarketingautomationeventsresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -60,7 +60,7 @@ Retrieve Events from any connected Marketingautomation software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -88,7 +88,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveMarketingautomationEventResponse](../../models/operations/retrievemarketingautomationeventresponse.md)\>**
+**Promise\<[components.UnifiedMarketingautomationEventOutput](../../models/components/unifiedmarketingautomationeventoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

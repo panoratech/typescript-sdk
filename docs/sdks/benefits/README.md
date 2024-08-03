@@ -16,7 +16,7 @@ List  Benefits
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -43,7 +43,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListHrisBenefitResponse](../../models/operations/listhrisbenefitresponse.md)\>**
+**Promise\<[operations.ListHrisBenefitResponseBody](../../models/operations/listhrisbenefitresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -60,7 +60,7 @@ Retrieve Benefits from any connected Hris software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -88,7 +88,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveHrisBenefitResponse](../../models/operations/retrievehrisbenefitresponse.md)\>**
+**Promise\<[components.UnifiedHrisBenefitOutput](../../models/components/unifiedhrisbenefitoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

@@ -31,11 +31,6 @@ export type ListCrmNoteResponseBody = {
     data: Array<components.UnifiedCrmNoteOutput>;
 };
 
-export type ListCrmNoteResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListCrmNoteResponseBody | undefined;
-};
-
 /** @internal */
 export const ListCrmNoteRequest$inboundSchema: z.ZodType<
     ListCrmNoteRequest,
@@ -149,55 +144,4 @@ export namespace ListCrmNoteResponseBody$ {
     export const outboundSchema = ListCrmNoteResponseBody$outboundSchema;
     /** @deprecated use `ListCrmNoteResponseBody$Outbound` instead. */
     export type Outbound = ListCrmNoteResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListCrmNoteResponse$inboundSchema: z.ZodType<
-    ListCrmNoteResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListCrmNoteResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListCrmNoteResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListCrmNoteResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListCrmNoteResponse$outboundSchema: z.ZodType<
-    ListCrmNoteResponse$Outbound,
-    z.ZodTypeDef,
-    ListCrmNoteResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListCrmNoteResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListCrmNoteResponse$ {
-    /** @deprecated use `ListCrmNoteResponse$inboundSchema` instead. */
-    export const inboundSchema = ListCrmNoteResponse$inboundSchema;
-    /** @deprecated use `ListCrmNoteResponse$outboundSchema` instead. */
-    export const outboundSchema = ListCrmNoteResponse$outboundSchema;
-    /** @deprecated use `ListCrmNoteResponse$Outbound` instead. */
-    export type Outbound = ListCrmNoteResponse$Outbound;
 }

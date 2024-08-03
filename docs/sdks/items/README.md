@@ -16,7 +16,7 @@ List  Items
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -43,7 +43,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListAccountingItemResponse](../../models/operations/listaccountingitemresponse.md)\>**
+**Promise\<[operations.ListAccountingItemResponseBody](../../models/operations/listaccountingitemresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -60,7 +60,7 @@ Retrieve Items from any connected Accounting software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -88,7 +88,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveAccountingItemResponse](../../models/operations/retrieveaccountingitemresponse.md)\>**
+**Promise\<[components.UnifiedAccountingItemOutput](../../models/components/unifiedaccountingitemoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

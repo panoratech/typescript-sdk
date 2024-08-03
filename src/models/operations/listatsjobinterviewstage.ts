@@ -31,11 +31,6 @@ export type ListAtsJobInterviewStageResponseBody = {
     data: Array<components.UnifiedAtsJobinterviewstageOutput>;
 };
 
-export type ListAtsJobInterviewStageResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListAtsJobInterviewStageResponseBody | undefined;
-};
-
 /** @internal */
 export const ListAtsJobInterviewStageRequest$inboundSchema: z.ZodType<
     ListAtsJobInterviewStageRequest,
@@ -149,55 +144,4 @@ export namespace ListAtsJobInterviewStageResponseBody$ {
     export const outboundSchema = ListAtsJobInterviewStageResponseBody$outboundSchema;
     /** @deprecated use `ListAtsJobInterviewStageResponseBody$Outbound` instead. */
     export type Outbound = ListAtsJobInterviewStageResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListAtsJobInterviewStageResponse$inboundSchema: z.ZodType<
-    ListAtsJobInterviewStageResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListAtsJobInterviewStageResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListAtsJobInterviewStageResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListAtsJobInterviewStageResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListAtsJobInterviewStageResponse$outboundSchema: z.ZodType<
-    ListAtsJobInterviewStageResponse$Outbound,
-    z.ZodTypeDef,
-    ListAtsJobInterviewStageResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListAtsJobInterviewStageResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAtsJobInterviewStageResponse$ {
-    /** @deprecated use `ListAtsJobInterviewStageResponse$inboundSchema` instead. */
-    export const inboundSchema = ListAtsJobInterviewStageResponse$inboundSchema;
-    /** @deprecated use `ListAtsJobInterviewStageResponse$outboundSchema` instead. */
-    export const outboundSchema = ListAtsJobInterviewStageResponse$outboundSchema;
-    /** @deprecated use `ListAtsJobInterviewStageResponse$Outbound` instead. */
-    export type Outbound = ListAtsJobInterviewStageResponse$Outbound;
 }

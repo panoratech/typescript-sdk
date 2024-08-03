@@ -16,7 +16,7 @@ import { Panora } from "@panora/sdk";
 import { Method } from "@panora/sdk/models/components";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -49,7 +49,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RequestResponse](../../models/operations/requestresponse.md)\>**
+**Promise\<[components.PassThroughResponse](../../models/components/passthroughresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

@@ -18,11 +18,6 @@ export type CreateTicketingCommentRequest = {
     unifiedTicketingCommentInput: components.UnifiedTicketingCommentInput;
 };
 
-export type CreateTicketingCommentResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedTicketingCommentOutput?: components.UnifiedTicketingCommentOutput | undefined;
-};
-
 /** @internal */
 export const CreateTicketingCommentRequest$inboundSchema: z.ZodType<
     CreateTicketingCommentRequest,
@@ -79,59 +74,4 @@ export namespace CreateTicketingCommentRequest$ {
     export const outboundSchema = CreateTicketingCommentRequest$outboundSchema;
     /** @deprecated use `CreateTicketingCommentRequest$Outbound` instead. */
     export type Outbound = CreateTicketingCommentRequest$Outbound;
-}
-
-/** @internal */
-export const CreateTicketingCommentResponse$inboundSchema: z.ZodType<
-    CreateTicketingCommentResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedTicketingCommentOutput:
-            components.UnifiedTicketingCommentOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedTicketingCommentOutput: "unifiedTicketingCommentOutput",
-        });
-    });
-
-/** @internal */
-export type CreateTicketingCommentResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedTicketingCommentOutput?: components.UnifiedTicketingCommentOutput$Outbound | undefined;
-};
-
-/** @internal */
-export const CreateTicketingCommentResponse$outboundSchema: z.ZodType<
-    CreateTicketingCommentResponse$Outbound,
-    z.ZodTypeDef,
-    CreateTicketingCommentResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedTicketingCommentOutput:
-            components.UnifiedTicketingCommentOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedTicketingCommentOutput: "UnifiedTicketingCommentOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateTicketingCommentResponse$ {
-    /** @deprecated use `CreateTicketingCommentResponse$inboundSchema` instead. */
-    export const inboundSchema = CreateTicketingCommentResponse$inboundSchema;
-    /** @deprecated use `CreateTicketingCommentResponse$outboundSchema` instead. */
-    export const outboundSchema = CreateTicketingCommentResponse$outboundSchema;
-    /** @deprecated use `CreateTicketingCommentResponse$Outbound` instead. */
-    export type Outbound = CreateTicketingCommentResponse$Outbound;
 }

@@ -17,7 +17,7 @@ List  Comments
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -44,7 +44,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListTicketingCommentsResponse](../../models/operations/listticketingcommentsresponse.md)\>**
+**Promise\<[operations.ListTicketingCommentsResponseBody](../../models/operations/listticketingcommentsresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -61,7 +61,7 @@ Create Comments in any supported Ticketing software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -91,7 +91,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.CreateTicketingCommentResponse](../../models/operations/createticketingcommentresponse.md)\>**
+**Promise\<[components.UnifiedTicketingCommentOutput](../../models/components/unifiedticketingcommentoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -108,7 +108,7 @@ Retrieve Comments from any connected Ticketing software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -136,7 +136,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveTicketingCommentResponse](../../models/operations/retrieveticketingcommentresponse.md)\>**
+**Promise\<[operations.RetrieveTicketingCommentResponseBody](../../models/operations/retrieveticketingcommentresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

@@ -31,11 +31,6 @@ export type ListAtsDepartmentsResponseBody = {
     data: Array<components.UnifiedAtsDepartmentOutput>;
 };
 
-export type ListAtsDepartmentsResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListAtsDepartmentsResponseBody | undefined;
-};
-
 /** @internal */
 export const ListAtsDepartmentsRequest$inboundSchema: z.ZodType<
     ListAtsDepartmentsRequest,
@@ -149,55 +144,4 @@ export namespace ListAtsDepartmentsResponseBody$ {
     export const outboundSchema = ListAtsDepartmentsResponseBody$outboundSchema;
     /** @deprecated use `ListAtsDepartmentsResponseBody$Outbound` instead. */
     export type Outbound = ListAtsDepartmentsResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListAtsDepartmentsResponse$inboundSchema: z.ZodType<
-    ListAtsDepartmentsResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListAtsDepartmentsResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListAtsDepartmentsResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListAtsDepartmentsResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListAtsDepartmentsResponse$outboundSchema: z.ZodType<
-    ListAtsDepartmentsResponse$Outbound,
-    z.ZodTypeDef,
-    ListAtsDepartmentsResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListAtsDepartmentsResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAtsDepartmentsResponse$ {
-    /** @deprecated use `ListAtsDepartmentsResponse$inboundSchema` instead. */
-    export const inboundSchema = ListAtsDepartmentsResponse$inboundSchema;
-    /** @deprecated use `ListAtsDepartmentsResponse$outboundSchema` instead. */
-    export const outboundSchema = ListAtsDepartmentsResponse$outboundSchema;
-    /** @deprecated use `ListAtsDepartmentsResponse$Outbound` instead. */
-    export type Outbound = ListAtsDepartmentsResponse$Outbound;
 }

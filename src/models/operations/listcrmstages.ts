@@ -31,11 +31,6 @@ export type ListCrmStagesResponseBody = {
     data: Array<components.UnifiedCrmStageOutput>;
 };
 
-export type ListCrmStagesResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListCrmStagesResponseBody | undefined;
-};
-
 /** @internal */
 export const ListCrmStagesRequest$inboundSchema: z.ZodType<
     ListCrmStagesRequest,
@@ -149,55 +144,4 @@ export namespace ListCrmStagesResponseBody$ {
     export const outboundSchema = ListCrmStagesResponseBody$outboundSchema;
     /** @deprecated use `ListCrmStagesResponseBody$Outbound` instead. */
     export type Outbound = ListCrmStagesResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListCrmStagesResponse$inboundSchema: z.ZodType<
-    ListCrmStagesResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListCrmStagesResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListCrmStagesResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListCrmStagesResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListCrmStagesResponse$outboundSchema: z.ZodType<
-    ListCrmStagesResponse$Outbound,
-    z.ZodTypeDef,
-    ListCrmStagesResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListCrmStagesResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListCrmStagesResponse$ {
-    /** @deprecated use `ListCrmStagesResponse$inboundSchema` instead. */
-    export const inboundSchema = ListCrmStagesResponse$inboundSchema;
-    /** @deprecated use `ListCrmStagesResponse$outboundSchema` instead. */
-    export const outboundSchema = ListCrmStagesResponse$outboundSchema;
-    /** @deprecated use `ListCrmStagesResponse$Outbound` instead. */
-    export type Outbound = ListCrmStagesResponse$Outbound;
 }

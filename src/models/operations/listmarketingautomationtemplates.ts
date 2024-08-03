@@ -31,11 +31,6 @@ export type ListMarketingautomationTemplatesResponseBody = {
     data: Array<components.UnifiedMarketingautomationTemplateOutput>;
 };
 
-export type ListMarketingautomationTemplatesResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListMarketingautomationTemplatesResponseBody | undefined;
-};
-
 /** @internal */
 export const ListMarketingautomationTemplatesRequest$inboundSchema: z.ZodType<
     ListMarketingautomationTemplatesRequest,
@@ -149,57 +144,4 @@ export namespace ListMarketingautomationTemplatesResponseBody$ {
     export const outboundSchema = ListMarketingautomationTemplatesResponseBody$outboundSchema;
     /** @deprecated use `ListMarketingautomationTemplatesResponseBody$Outbound` instead. */
     export type Outbound = ListMarketingautomationTemplatesResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListMarketingautomationTemplatesResponse$inboundSchema: z.ZodType<
-    ListMarketingautomationTemplatesResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListMarketingautomationTemplatesResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListMarketingautomationTemplatesResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListMarketingautomationTemplatesResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListMarketingautomationTemplatesResponse$outboundSchema: z.ZodType<
-    ListMarketingautomationTemplatesResponse$Outbound,
-    z.ZodTypeDef,
-    ListMarketingautomationTemplatesResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z
-            .lazy(() => ListMarketingautomationTemplatesResponseBody$outboundSchema)
-            .optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListMarketingautomationTemplatesResponse$ {
-    /** @deprecated use `ListMarketingautomationTemplatesResponse$inboundSchema` instead. */
-    export const inboundSchema = ListMarketingautomationTemplatesResponse$inboundSchema;
-    /** @deprecated use `ListMarketingautomationTemplatesResponse$outboundSchema` instead. */
-    export const outboundSchema = ListMarketingautomationTemplatesResponse$outboundSchema;
-    /** @deprecated use `ListMarketingautomationTemplatesResponse$Outbound` instead. */
-    export type Outbound = ListMarketingautomationTemplatesResponse$Outbound;
 }

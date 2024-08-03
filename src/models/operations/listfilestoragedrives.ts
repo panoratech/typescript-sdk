@@ -31,11 +31,6 @@ export type ListFilestorageDrivesResponseBody = {
     data: Array<components.UnifiedFilestorageDriveOutput>;
 };
 
-export type ListFilestorageDrivesResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListFilestorageDrivesResponseBody | undefined;
-};
-
 /** @internal */
 export const ListFilestorageDrivesRequest$inboundSchema: z.ZodType<
     ListFilestorageDrivesRequest,
@@ -149,55 +144,4 @@ export namespace ListFilestorageDrivesResponseBody$ {
     export const outboundSchema = ListFilestorageDrivesResponseBody$outboundSchema;
     /** @deprecated use `ListFilestorageDrivesResponseBody$Outbound` instead. */
     export type Outbound = ListFilestorageDrivesResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListFilestorageDrivesResponse$inboundSchema: z.ZodType<
-    ListFilestorageDrivesResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListFilestorageDrivesResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListFilestorageDrivesResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListFilestorageDrivesResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListFilestorageDrivesResponse$outboundSchema: z.ZodType<
-    ListFilestorageDrivesResponse$Outbound,
-    z.ZodTypeDef,
-    ListFilestorageDrivesResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListFilestorageDrivesResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListFilestorageDrivesResponse$ {
-    /** @deprecated use `ListFilestorageDrivesResponse$inboundSchema` instead. */
-    export const inboundSchema = ListFilestorageDrivesResponse$inboundSchema;
-    /** @deprecated use `ListFilestorageDrivesResponse$outboundSchema` instead. */
-    export const outboundSchema = ListFilestorageDrivesResponse$outboundSchema;
-    /** @deprecated use `ListFilestorageDrivesResponse$Outbound` instead. */
-    export type Outbound = ListFilestorageDrivesResponse$Outbound;
 }

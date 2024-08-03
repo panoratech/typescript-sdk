@@ -18,11 +18,6 @@ export type CreateAccountingAccountRequest = {
     unifiedAccountingAccountInput: components.UnifiedAccountingAccountInput;
 };
 
-export type CreateAccountingAccountResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedAccountingAccountOutput?: components.UnifiedAccountingAccountOutput | undefined;
-};
-
 /** @internal */
 export const CreateAccountingAccountRequest$inboundSchema: z.ZodType<
     CreateAccountingAccountRequest,
@@ -79,59 +74,4 @@ export namespace CreateAccountingAccountRequest$ {
     export const outboundSchema = CreateAccountingAccountRequest$outboundSchema;
     /** @deprecated use `CreateAccountingAccountRequest$Outbound` instead. */
     export type Outbound = CreateAccountingAccountRequest$Outbound;
-}
-
-/** @internal */
-export const CreateAccountingAccountResponse$inboundSchema: z.ZodType<
-    CreateAccountingAccountResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedAccountingAccountOutput:
-            components.UnifiedAccountingAccountOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedAccountingAccountOutput: "unifiedAccountingAccountOutput",
-        });
-    });
-
-/** @internal */
-export type CreateAccountingAccountResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedAccountingAccountOutput?: components.UnifiedAccountingAccountOutput$Outbound | undefined;
-};
-
-/** @internal */
-export const CreateAccountingAccountResponse$outboundSchema: z.ZodType<
-    CreateAccountingAccountResponse$Outbound,
-    z.ZodTypeDef,
-    CreateAccountingAccountResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedAccountingAccountOutput:
-            components.UnifiedAccountingAccountOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedAccountingAccountOutput: "UnifiedAccountingAccountOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateAccountingAccountResponse$ {
-    /** @deprecated use `CreateAccountingAccountResponse$inboundSchema` instead. */
-    export const inboundSchema = CreateAccountingAccountResponse$inboundSchema;
-    /** @deprecated use `CreateAccountingAccountResponse$outboundSchema` instead. */
-    export const outboundSchema = CreateAccountingAccountResponse$outboundSchema;
-    /** @deprecated use `CreateAccountingAccountResponse$Outbound` instead. */
-    export type Outbound = CreateAccountingAccountResponse$Outbound;
 }

@@ -3,7 +3,6 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
-import * as components from "../components/index.js";
 import * as z from "zod";
 
 export type RetrieveHrisEmployeeRequest = {
@@ -19,11 +18,6 @@ export type RetrieveHrisEmployeeRequest = {
      * Set to true to include data from the original Hris software.
      */
     remoteData?: boolean | undefined;
-};
-
-export type RetrieveHrisEmployeeResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedHrisEmployeeOutput?: components.UnifiedHrisEmployeeOutput | undefined;
 };
 
 /** @internal */
@@ -80,57 +74,4 @@ export namespace RetrieveHrisEmployeeRequest$ {
     export const outboundSchema = RetrieveHrisEmployeeRequest$outboundSchema;
     /** @deprecated use `RetrieveHrisEmployeeRequest$Outbound` instead. */
     export type Outbound = RetrieveHrisEmployeeRequest$Outbound;
-}
-
-/** @internal */
-export const RetrieveHrisEmployeeResponse$inboundSchema: z.ZodType<
-    RetrieveHrisEmployeeResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedHrisEmployeeOutput: components.UnifiedHrisEmployeeOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedHrisEmployeeOutput: "unifiedHrisEmployeeOutput",
-        });
-    });
-
-/** @internal */
-export type RetrieveHrisEmployeeResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedHrisEmployeeOutput?: components.UnifiedHrisEmployeeOutput$Outbound | undefined;
-};
-
-/** @internal */
-export const RetrieveHrisEmployeeResponse$outboundSchema: z.ZodType<
-    RetrieveHrisEmployeeResponse$Outbound,
-    z.ZodTypeDef,
-    RetrieveHrisEmployeeResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedHrisEmployeeOutput: components.UnifiedHrisEmployeeOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedHrisEmployeeOutput: "UnifiedHrisEmployeeOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveHrisEmployeeResponse$ {
-    /** @deprecated use `RetrieveHrisEmployeeResponse$inboundSchema` instead. */
-    export const inboundSchema = RetrieveHrisEmployeeResponse$inboundSchema;
-    /** @deprecated use `RetrieveHrisEmployeeResponse$outboundSchema` instead. */
-    export const outboundSchema = RetrieveHrisEmployeeResponse$outboundSchema;
-    /** @deprecated use `RetrieveHrisEmployeeResponse$Outbound` instead. */
-    export type Outbound = RetrieveHrisEmployeeResponse$Outbound;
 }

@@ -16,7 +16,7 @@ List  Locations
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -43,7 +43,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListHrisLocationResponse](../../models/operations/listhrislocationresponse.md)\>**
+**Promise\<[operations.ListHrisLocationResponseBody](../../models/operations/listhrislocationresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -60,7 +60,7 @@ Retrieve Locations from any connected Hris software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -88,7 +88,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveHrisLocationResponse](../../models/operations/retrievehrislocationresponse.md)\>**
+**Promise\<[components.UnifiedHrisLocationOutput](../../models/components/unifiedhrislocationoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

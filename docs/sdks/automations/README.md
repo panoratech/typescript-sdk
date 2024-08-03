@@ -17,7 +17,7 @@ List  Automations
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -44,7 +44,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListMarketingautomationAutomationResponse](../../models/operations/listmarketingautomationautomationresponse.md)\>**
+**Promise\<[operations.ListMarketingautomationAutomationResponseBody](../../models/operations/listmarketingautomationautomationresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -61,7 +61,7 @@ Create a automation in any supported Marketingautomation software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -89,7 +89,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.CreateMarketingautomationAutomationResponse](../../models/operations/createmarketingautomationautomationresponse.md)\>**
+**Promise\<[components.UnifiedMarketingautomationAutomationOutput](../../models/components/unifiedmarketingautomationautomationoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -106,7 +106,7 @@ Retrieve Automations from any connected Marketingautomation software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -134,7 +134,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveMarketingautomationAutomationResponse](../../models/operations/retrievemarketingautomationautomationresponse.md)\>**
+**Promise\<[components.UnifiedMarketingautomationAutomationOutput](../../models/components/unifiedmarketingautomationautomationoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

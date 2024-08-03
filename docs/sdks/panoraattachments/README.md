@@ -17,7 +17,7 @@ List  Attachments
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -44,7 +44,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListAccountingAttachmentsResponse](../../models/operations/listaccountingattachmentsresponse.md)\>**
+**Promise\<[operations.ListAccountingAttachmentsResponseBody](../../models/operations/listaccountingattachmentsresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -61,7 +61,7 @@ Create attachments in any supported Accounting software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -89,7 +89,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.CreateAccountingAttachmentResponse](../../models/operations/createaccountingattachmentresponse.md)\>**
+**Promise\<[components.UnifiedAccountingAttachmentOutput](../../models/components/unifiedaccountingattachmentoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -106,7 +106,7 @@ Retrieve attachments from any connected Accounting software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -134,7 +134,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveAccountingAttachmentResponse](../../models/operations/retrieveaccountingattachmentresponse.md)\>**
+**Promise\<[components.UnifiedAccountingAttachmentOutput](../../models/components/unifiedaccountingattachmentoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

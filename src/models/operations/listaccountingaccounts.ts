@@ -31,11 +31,6 @@ export type ListAccountingAccountsResponseBody = {
     data: Array<components.UnifiedAccountingAccountOutput>;
 };
 
-export type ListAccountingAccountsResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListAccountingAccountsResponseBody | undefined;
-};
-
 /** @internal */
 export const ListAccountingAccountsRequest$inboundSchema: z.ZodType<
     ListAccountingAccountsRequest,
@@ -149,55 +144,4 @@ export namespace ListAccountingAccountsResponseBody$ {
     export const outboundSchema = ListAccountingAccountsResponseBody$outboundSchema;
     /** @deprecated use `ListAccountingAccountsResponseBody$Outbound` instead. */
     export type Outbound = ListAccountingAccountsResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListAccountingAccountsResponse$inboundSchema: z.ZodType<
-    ListAccountingAccountsResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListAccountingAccountsResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListAccountingAccountsResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListAccountingAccountsResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListAccountingAccountsResponse$outboundSchema: z.ZodType<
-    ListAccountingAccountsResponse$Outbound,
-    z.ZodTypeDef,
-    ListAccountingAccountsResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListAccountingAccountsResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAccountingAccountsResponse$ {
-    /** @deprecated use `ListAccountingAccountsResponse$inboundSchema` instead. */
-    export const inboundSchema = ListAccountingAccountsResponse$inboundSchema;
-    /** @deprecated use `ListAccountingAccountsResponse$outboundSchema` instead. */
-    export const outboundSchema = ListAccountingAccountsResponse$outboundSchema;
-    /** @deprecated use `ListAccountingAccountsResponse$Outbound` instead. */
-    export type Outbound = ListAccountingAccountsResponse$Outbound;
 }

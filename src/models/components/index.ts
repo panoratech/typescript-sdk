@@ -9,7 +9,6 @@ export * from "./customfieldcreatedto.js";
 export * from "./customfieldresponse.js";
 export * from "./definetargetfielddto.js";
 export * from "./email.js";
-export * from "./httpmetadata.js";
 export * from "./linkeduserresponse.js";
 export * from "./mapfieldtoproviderdto.js";
 export * from "./passthroughrequestdto.js";

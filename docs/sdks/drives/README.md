@@ -16,7 +16,7 @@ List  Drives
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -43,7 +43,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListFilestorageDrivesResponse](../../models/operations/listfilestoragedrivesresponse.md)\>**
+**Promise\<[operations.ListFilestorageDrivesResponseBody](../../models/operations/listfilestoragedrivesresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -60,7 +60,7 @@ Retrieve Drives from any connected Filestorage software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -88,7 +88,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveFilestorageDriveResponse](../../models/operations/retrievefilestoragedriveresponse.md)\>**
+**Promise\<[components.UnifiedFilestorageDriveOutput](../../models/components/unifiedfilestoragedriveoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

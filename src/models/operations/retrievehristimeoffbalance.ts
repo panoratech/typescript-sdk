@@ -3,7 +3,6 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
-import * as components from "../components/index.js";
 import * as z from "zod";
 
 export type RetrieveHrisTimeoffbalanceRequest = {
@@ -19,11 +18,6 @@ export type RetrieveHrisTimeoffbalanceRequest = {
      * Set to true to include data from the original Hris software.
      */
     remoteData?: boolean | undefined;
-};
-
-export type RetrieveHrisTimeoffbalanceResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedHrisTimeoffbalanceOutput?: components.UnifiedHrisTimeoffbalanceOutput | undefined;
 };
 
 /** @internal */
@@ -80,61 +74,4 @@ export namespace RetrieveHrisTimeoffbalanceRequest$ {
     export const outboundSchema = RetrieveHrisTimeoffbalanceRequest$outboundSchema;
     /** @deprecated use `RetrieveHrisTimeoffbalanceRequest$Outbound` instead. */
     export type Outbound = RetrieveHrisTimeoffbalanceRequest$Outbound;
-}
-
-/** @internal */
-export const RetrieveHrisTimeoffbalanceResponse$inboundSchema: z.ZodType<
-    RetrieveHrisTimeoffbalanceResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedHrisTimeoffbalanceOutput:
-            components.UnifiedHrisTimeoffbalanceOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedHrisTimeoffbalanceOutput: "unifiedHrisTimeoffbalanceOutput",
-        });
-    });
-
-/** @internal */
-export type RetrieveHrisTimeoffbalanceResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedHrisTimeoffbalanceOutput?:
-        | components.UnifiedHrisTimeoffbalanceOutput$Outbound
-        | undefined;
-};
-
-/** @internal */
-export const RetrieveHrisTimeoffbalanceResponse$outboundSchema: z.ZodType<
-    RetrieveHrisTimeoffbalanceResponse$Outbound,
-    z.ZodTypeDef,
-    RetrieveHrisTimeoffbalanceResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedHrisTimeoffbalanceOutput:
-            components.UnifiedHrisTimeoffbalanceOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedHrisTimeoffbalanceOutput: "UnifiedHrisTimeoffbalanceOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveHrisTimeoffbalanceResponse$ {
-    /** @deprecated use `RetrieveHrisTimeoffbalanceResponse$inboundSchema` instead. */
-    export const inboundSchema = RetrieveHrisTimeoffbalanceResponse$inboundSchema;
-    /** @deprecated use `RetrieveHrisTimeoffbalanceResponse$outboundSchema` instead. */
-    export const outboundSchema = RetrieveHrisTimeoffbalanceResponse$outboundSchema;
-    /** @deprecated use `RetrieveHrisTimeoffbalanceResponse$Outbound` instead. */
-    export type Outbound = RetrieveHrisTimeoffbalanceResponse$Outbound;
 }

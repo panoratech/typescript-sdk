@@ -18,13 +18,6 @@ export type CreateAccountingJournalEntryRequest = {
     unifiedAccountingJournalentryInput: components.UnifiedAccountingJournalentryInput;
 };
 
-export type CreateAccountingJournalEntryResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedAccountingJournalentryOutput?:
-        | components.UnifiedAccountingJournalentryOutput
-        | undefined;
-};
-
 /** @internal */
 export const CreateAccountingJournalEntryRequest$inboundSchema: z.ZodType<
     CreateAccountingJournalEntryRequest,
@@ -83,61 +76,4 @@ export namespace CreateAccountingJournalEntryRequest$ {
     export const outboundSchema = CreateAccountingJournalEntryRequest$outboundSchema;
     /** @deprecated use `CreateAccountingJournalEntryRequest$Outbound` instead. */
     export type Outbound = CreateAccountingJournalEntryRequest$Outbound;
-}
-
-/** @internal */
-export const CreateAccountingJournalEntryResponse$inboundSchema: z.ZodType<
-    CreateAccountingJournalEntryResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedAccountingJournalentryOutput:
-            components.UnifiedAccountingJournalentryOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedAccountingJournalentryOutput: "unifiedAccountingJournalentryOutput",
-        });
-    });
-
-/** @internal */
-export type CreateAccountingJournalEntryResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedAccountingJournalentryOutput?:
-        | components.UnifiedAccountingJournalentryOutput$Outbound
-        | undefined;
-};
-
-/** @internal */
-export const CreateAccountingJournalEntryResponse$outboundSchema: z.ZodType<
-    CreateAccountingJournalEntryResponse$Outbound,
-    z.ZodTypeDef,
-    CreateAccountingJournalEntryResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedAccountingJournalentryOutput:
-            components.UnifiedAccountingJournalentryOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedAccountingJournalentryOutput: "UnifiedAccountingJournalentryOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateAccountingJournalEntryResponse$ {
-    /** @deprecated use `CreateAccountingJournalEntryResponse$inboundSchema` instead. */
-    export const inboundSchema = CreateAccountingJournalEntryResponse$inboundSchema;
-    /** @deprecated use `CreateAccountingJournalEntryResponse$outboundSchema` instead. */
-    export const outboundSchema = CreateAccountingJournalEntryResponse$outboundSchema;
-    /** @deprecated use `CreateAccountingJournalEntryResponse$Outbound` instead. */
-    export type Outbound = CreateAccountingJournalEntryResponse$Outbound;
 }

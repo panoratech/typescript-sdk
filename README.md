@@ -62,7 +62,7 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-    bearer: process.env.BEARER,
+    apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -591,7 +591,7 @@ import { Panora } from "@panora/sdk";
 import { SDKValidationError } from "@panora/sdk/models/errors";
 
 const panora = new Panora({
-    bearer: process.env.BEARER,
+    apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -640,7 +640,7 @@ import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
     serverIdx: 2,
-    bearer: process.env.BEARER,
+    apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -664,7 +664,7 @@ import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
     serverURL: "https://api.panora.dev",
-    bearer: process.env.BEARER,
+    apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -738,7 +738,7 @@ To change the default retry strategy for a single API call, simply provide a ret
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-    bearer: process.env.BEARER,
+    apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -778,7 +778,7 @@ const panora = new Panora({
         },
         retryConnectionErrors: false,
     },
-    bearer: process.env.BEARER,
+    apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -800,16 +800,16 @@ run();
 
 This SDK supports the following security scheme globally:
 
-| Name        | Type        | Scheme      |
-| ----------- | ----------- | ----------- |
-| `bearer`    | http        | HTTP Bearer |
+| Name     | Type     | Scheme   |
+| -------- | -------- | -------- |
+| `apiKey` | apiKey   | API key  |
 
-To authenticate with the API the `bearer` parameter must be set when initializing the SDK client instance. For example:
+To authenticate with the API the `apiKey` parameter must be set when initializing the SDK client instance. For example:
 ```typescript
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-    bearer: process.env.BEARER,
+    apiKey: process.env.API_KEY,
 });
 
 async function run() {

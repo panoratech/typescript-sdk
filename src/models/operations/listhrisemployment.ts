@@ -31,11 +31,6 @@ export type ListHrisEmploymentResponseBody = {
     data: Array<components.UnifiedHrisEmploymentOutput>;
 };
 
-export type ListHrisEmploymentResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListHrisEmploymentResponseBody | undefined;
-};
-
 /** @internal */
 export const ListHrisEmploymentRequest$inboundSchema: z.ZodType<
     ListHrisEmploymentRequest,
@@ -149,55 +144,4 @@ export namespace ListHrisEmploymentResponseBody$ {
     export const outboundSchema = ListHrisEmploymentResponseBody$outboundSchema;
     /** @deprecated use `ListHrisEmploymentResponseBody$Outbound` instead. */
     export type Outbound = ListHrisEmploymentResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListHrisEmploymentResponse$inboundSchema: z.ZodType<
-    ListHrisEmploymentResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListHrisEmploymentResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListHrisEmploymentResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListHrisEmploymentResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListHrisEmploymentResponse$outboundSchema: z.ZodType<
-    ListHrisEmploymentResponse$Outbound,
-    z.ZodTypeDef,
-    ListHrisEmploymentResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListHrisEmploymentResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListHrisEmploymentResponse$ {
-    /** @deprecated use `ListHrisEmploymentResponse$inboundSchema` instead. */
-    export const inboundSchema = ListHrisEmploymentResponse$inboundSchema;
-    /** @deprecated use `ListHrisEmploymentResponse$outboundSchema` instead. */
-    export const outboundSchema = ListHrisEmploymentResponse$outboundSchema;
-    /** @deprecated use `ListHrisEmploymentResponse$Outbound` instead. */
-    export type Outbound = ListHrisEmploymentResponse$Outbound;
 }

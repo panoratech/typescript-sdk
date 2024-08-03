@@ -31,11 +31,6 @@ export type ListTicketingTagsResponseBody = {
     data: Array<components.UnifiedTicketingTagOutput>;
 };
 
-export type ListTicketingTagsResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListTicketingTagsResponseBody | undefined;
-};
-
 /** @internal */
 export const ListTicketingTagsRequest$inboundSchema: z.ZodType<
     ListTicketingTagsRequest,
@@ -149,55 +144,4 @@ export namespace ListTicketingTagsResponseBody$ {
     export const outboundSchema = ListTicketingTagsResponseBody$outboundSchema;
     /** @deprecated use `ListTicketingTagsResponseBody$Outbound` instead. */
     export type Outbound = ListTicketingTagsResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListTicketingTagsResponse$inboundSchema: z.ZodType<
-    ListTicketingTagsResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListTicketingTagsResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListTicketingTagsResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListTicketingTagsResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListTicketingTagsResponse$outboundSchema: z.ZodType<
-    ListTicketingTagsResponse$Outbound,
-    z.ZodTypeDef,
-    ListTicketingTagsResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListTicketingTagsResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListTicketingTagsResponse$ {
-    /** @deprecated use `ListTicketingTagsResponse$inboundSchema` instead. */
-    export const inboundSchema = ListTicketingTagsResponse$inboundSchema;
-    /** @deprecated use `ListTicketingTagsResponse$outboundSchema` instead. */
-    export const outboundSchema = ListTicketingTagsResponse$outboundSchema;
-    /** @deprecated use `ListTicketingTagsResponse$Outbound` instead. */
-    export type Outbound = ListTicketingTagsResponse$Outbound;
 }

@@ -3,7 +3,6 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
-import * as components from "../components/index.js";
 import * as z from "zod";
 
 export type RetrieveCrmStageRequest = {
@@ -19,11 +18,6 @@ export type RetrieveCrmStageRequest = {
      * Set to true to include data from the original Crm software.
      */
     remoteData?: boolean | undefined;
-};
-
-export type RetrieveCrmStageResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedCrmStageOutput?: components.UnifiedCrmStageOutput | undefined;
 };
 
 /** @internal */
@@ -80,57 +74,4 @@ export namespace RetrieveCrmStageRequest$ {
     export const outboundSchema = RetrieveCrmStageRequest$outboundSchema;
     /** @deprecated use `RetrieveCrmStageRequest$Outbound` instead. */
     export type Outbound = RetrieveCrmStageRequest$Outbound;
-}
-
-/** @internal */
-export const RetrieveCrmStageResponse$inboundSchema: z.ZodType<
-    RetrieveCrmStageResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedCrmStageOutput: components.UnifiedCrmStageOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedCrmStageOutput: "unifiedCrmStageOutput",
-        });
-    });
-
-/** @internal */
-export type RetrieveCrmStageResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedCrmStageOutput?: components.UnifiedCrmStageOutput$Outbound | undefined;
-};
-
-/** @internal */
-export const RetrieveCrmStageResponse$outboundSchema: z.ZodType<
-    RetrieveCrmStageResponse$Outbound,
-    z.ZodTypeDef,
-    RetrieveCrmStageResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedCrmStageOutput: components.UnifiedCrmStageOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedCrmStageOutput: "UnifiedCrmStageOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveCrmStageResponse$ {
-    /** @deprecated use `RetrieveCrmStageResponse$inboundSchema` instead. */
-    export const inboundSchema = RetrieveCrmStageResponse$inboundSchema;
-    /** @deprecated use `RetrieveCrmStageResponse$outboundSchema` instead. */
-    export const outboundSchema = RetrieveCrmStageResponse$outboundSchema;
-    /** @deprecated use `RetrieveCrmStageResponse$Outbound` instead. */
-    export type Outbound = RetrieveCrmStageResponse$Outbound;
 }

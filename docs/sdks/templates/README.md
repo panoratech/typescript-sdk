@@ -17,7 +17,7 @@ List  Templates
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -44,7 +44,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListMarketingautomationTemplatesResponse](../../models/operations/listmarketingautomationtemplatesresponse.md)\>**
+**Promise\<[operations.ListMarketingautomationTemplatesResponseBody](../../models/operations/listmarketingautomationtemplatesresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -61,7 +61,7 @@ Create a template in any supported Marketingautomation software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -89,7 +89,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.CreateMarketingautomationTemplateResponse](../../models/operations/createmarketingautomationtemplateresponse.md)\>**
+**Promise\<[components.UnifiedMarketingautomationTemplateOutput](../../models/components/unifiedmarketingautomationtemplateoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -106,7 +106,7 @@ Retrieve Templates from any connected Marketingautomation software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -134,7 +134,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveMarketingautomationTemplateResponse](../../models/operations/retrievemarketingautomationtemplateresponse.md)\>**
+**Promise\<[components.UnifiedMarketingautomationTemplateOutput](../../models/components/unifiedmarketingautomationtemplateoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

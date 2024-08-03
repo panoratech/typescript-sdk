@@ -16,7 +16,7 @@ List  Groups
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -43,7 +43,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListHrisGroupResponse](../../models/operations/listhrisgroupresponse.md)\>**
+**Promise\<[operations.ListHrisGroupResponseBody](../../models/operations/listhrisgroupresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -60,7 +60,7 @@ Retrieve Groups from any connected Hris software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -88,7 +88,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveHrisGroupResponse](../../models/operations/retrievehrisgroupresponse.md)\>**
+**Promise\<[components.UnifiedHrisGroupOutput](../../models/components/unifiedhrisgroupoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

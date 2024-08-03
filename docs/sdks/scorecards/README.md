@@ -16,7 +16,7 @@ List  ScoreCards
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -43,7 +43,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListAtsScorecardResponse](../../models/operations/listatsscorecardresponse.md)\>**
+**Promise\<[operations.ListAtsScorecardResponseBody](../../models/operations/listatsscorecardresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -60,7 +60,7 @@ Retrieve Score Cards from any connected Ats software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -88,7 +88,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveAtsScorecardResponse](../../models/operations/retrieveatsscorecardresponse.md)\>**
+**Promise\<[components.UnifiedAtsScorecardOutput](../../models/components/unifiedatsscorecardoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

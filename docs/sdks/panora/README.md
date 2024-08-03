@@ -18,7 +18,7 @@ Panora API: A unified API to ship integrations
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -42,7 +42,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.HelloResponse](../../models/operations/helloresponse.md)\>**
+**Promise\<[string](../../models/.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -57,7 +57,7 @@ run();
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -81,7 +81,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.HealthResponse](../../models/operations/healthresponse.md)\>**
+**Promise\<[number](../../models/.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

@@ -15,7 +15,7 @@ Retrieve Linked Users
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -42,7 +42,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveLinkedUserResponse](../../models/operations/retrievelinkeduserresponse.md)\>**
+**Promise\<[components.LinkedUserResponse](../../models/components/linkeduserresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

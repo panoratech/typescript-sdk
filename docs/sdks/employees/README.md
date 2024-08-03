@@ -17,7 +17,7 @@ List  Employees
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -44,7 +44,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListHrisEmployeeResponse](../../models/operations/listhrisemployeeresponse.md)\>**
+**Promise\<[operations.ListHrisEmployeeResponseBody](../../models/operations/listhrisemployeeresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -61,7 +61,7 @@ Create Employees in any supported Hris software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -89,7 +89,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.CreateHrisEmployeeResponse](../../models/operations/createhrisemployeeresponse.md)\>**
+**Promise\<[components.UnifiedHrisEmployeeOutput](../../models/components/unifiedhrisemployeeoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -106,7 +106,7 @@ Retrieven Employees from any connected Hris software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -134,7 +134,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveHrisEmployeeResponse](../../models/operations/retrievehrisemployeeresponse.md)\>**
+**Promise\<[components.UnifiedHrisEmployeeOutput](../../models/components/unifiedhrisemployeeoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

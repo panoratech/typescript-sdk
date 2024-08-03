@@ -174,9 +174,9 @@ export function resolveGlobalSecurity(
 ): SecurityState | null {
     return resolveSecurity([
         {
-            fieldName: "Authorization",
-            type: "http:bearer",
-            value: security?.bearer,
+            fieldName: "x-api-key",
+            type: "apiKey:header",
+            value: security?.apiKey,
         },
     ]);
 }

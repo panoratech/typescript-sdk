@@ -31,11 +31,6 @@ export type ListAtsTagsResponseBody = {
     data: Array<components.UnifiedAtsTagOutput>;
 };
 
-export type ListAtsTagsResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListAtsTagsResponseBody | undefined;
-};
-
 /** @internal */
 export const ListAtsTagsRequest$inboundSchema: z.ZodType<
     ListAtsTagsRequest,
@@ -149,55 +144,4 @@ export namespace ListAtsTagsResponseBody$ {
     export const outboundSchema = ListAtsTagsResponseBody$outboundSchema;
     /** @deprecated use `ListAtsTagsResponseBody$Outbound` instead. */
     export type Outbound = ListAtsTagsResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListAtsTagsResponse$inboundSchema: z.ZodType<
-    ListAtsTagsResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListAtsTagsResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListAtsTagsResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListAtsTagsResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListAtsTagsResponse$outboundSchema: z.ZodType<
-    ListAtsTagsResponse$Outbound,
-    z.ZodTypeDef,
-    ListAtsTagsResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListAtsTagsResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAtsTagsResponse$ {
-    /** @deprecated use `ListAtsTagsResponse$inboundSchema` instead. */
-    export const inboundSchema = ListAtsTagsResponse$inboundSchema;
-    /** @deprecated use `ListAtsTagsResponse$outboundSchema` instead. */
-    export const outboundSchema = ListAtsTagsResponse$outboundSchema;
-    /** @deprecated use `ListAtsTagsResponse$Outbound` instead. */
-    export type Outbound = ListAtsTagsResponse$Outbound;
 }

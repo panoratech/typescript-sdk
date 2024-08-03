@@ -31,11 +31,6 @@ export type ListAtsUsersResponseBody = {
     data: Array<components.UnifiedAtsUserOutput>;
 };
 
-export type ListAtsUsersResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListAtsUsersResponseBody | undefined;
-};
-
 /** @internal */
 export const ListAtsUsersRequest$inboundSchema: z.ZodType<
     ListAtsUsersRequest,
@@ -149,55 +144,4 @@ export namespace ListAtsUsersResponseBody$ {
     export const outboundSchema = ListAtsUsersResponseBody$outboundSchema;
     /** @deprecated use `ListAtsUsersResponseBody$Outbound` instead. */
     export type Outbound = ListAtsUsersResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListAtsUsersResponse$inboundSchema: z.ZodType<
-    ListAtsUsersResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListAtsUsersResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListAtsUsersResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListAtsUsersResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListAtsUsersResponse$outboundSchema: z.ZodType<
-    ListAtsUsersResponse$Outbound,
-    z.ZodTypeDef,
-    ListAtsUsersResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListAtsUsersResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAtsUsersResponse$ {
-    /** @deprecated use `ListAtsUsersResponse$inboundSchema` instead. */
-    export const inboundSchema = ListAtsUsersResponse$inboundSchema;
-    /** @deprecated use `ListAtsUsersResponse$outboundSchema` instead. */
-    export const outboundSchema = ListAtsUsersResponse$outboundSchema;
-    /** @deprecated use `ListAtsUsersResponse$Outbound` instead. */
-    export type Outbound = ListAtsUsersResponse$Outbound;
 }

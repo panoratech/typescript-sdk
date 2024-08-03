@@ -31,11 +31,6 @@ export type ListHrisTimeoffsResponseBody = {
     data: Array<components.UnifiedHrisTimeoffOutput>;
 };
 
-export type ListHrisTimeoffsResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListHrisTimeoffsResponseBody | undefined;
-};
-
 /** @internal */
 export const ListHrisTimeoffsRequest$inboundSchema: z.ZodType<
     ListHrisTimeoffsRequest,
@@ -149,55 +144,4 @@ export namespace ListHrisTimeoffsResponseBody$ {
     export const outboundSchema = ListHrisTimeoffsResponseBody$outboundSchema;
     /** @deprecated use `ListHrisTimeoffsResponseBody$Outbound` instead. */
     export type Outbound = ListHrisTimeoffsResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListHrisTimeoffsResponse$inboundSchema: z.ZodType<
-    ListHrisTimeoffsResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListHrisTimeoffsResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListHrisTimeoffsResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListHrisTimeoffsResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListHrisTimeoffsResponse$outboundSchema: z.ZodType<
-    ListHrisTimeoffsResponse$Outbound,
-    z.ZodTypeDef,
-    ListHrisTimeoffsResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListHrisTimeoffsResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListHrisTimeoffsResponse$ {
-    /** @deprecated use `ListHrisTimeoffsResponse$inboundSchema` instead. */
-    export const inboundSchema = ListHrisTimeoffsResponse$inboundSchema;
-    /** @deprecated use `ListHrisTimeoffsResponse$outboundSchema` instead. */
-    export const outboundSchema = ListHrisTimeoffsResponse$outboundSchema;
-    /** @deprecated use `ListHrisTimeoffsResponse$Outbound` instead. */
-    export type Outbound = ListHrisTimeoffsResponse$Outbound;
 }

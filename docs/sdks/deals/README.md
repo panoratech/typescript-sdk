@@ -17,7 +17,7 @@ List  Deals
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -44,7 +44,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListCrmDealsResponse](../../models/operations/listcrmdealsresponse.md)\>**
+**Promise\<[operations.ListCrmDealsResponseBody](../../models/operations/listcrmdealsresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -61,7 +61,7 @@ Create Deals in any supported Crm software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -93,7 +93,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.CreateCrmDealResponse](../../models/operations/createcrmdealresponse.md)\>**
+**Promise\<[components.UnifiedCrmDealOutput](../../models/components/unifiedcrmdealoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -110,7 +110,7 @@ Retrieve Deals from any connected Crm software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -138,7 +138,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveCrmDealResponse](../../models/operations/retrievecrmdealresponse.md)\>**
+**Promise\<[components.UnifiedCrmDealOutput](../../models/components/unifiedcrmdealoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

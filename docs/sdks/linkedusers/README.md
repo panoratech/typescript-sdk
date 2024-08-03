@@ -16,7 +16,7 @@ Create Linked Users
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -44,7 +44,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.CreateLinkedUserResponse](../../models/operations/createlinkeduserresponse.md)\>**
+**Promise\<[components.LinkedUserResponse](../../models/components/linkeduserresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -61,7 +61,7 @@ List Linked Users
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -85,7 +85,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListLinkedUsersResponse](../../models/operations/listlinkedusersresponse.md)\>**
+**Promise\<[components.LinkedUserResponse[]](../../models/.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

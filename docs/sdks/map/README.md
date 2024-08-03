@@ -15,7 +15,7 @@ Map Custom Field
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -45,7 +45,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.MapResponse](../../models/operations/mapresponse.md)\>**
+**Promise\<[components.CustomFieldResponse](../../models/components/customfieldresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

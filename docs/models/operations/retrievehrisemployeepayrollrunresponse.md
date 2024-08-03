@@ -1,9 +1,0 @@
-# RetrieveHrisEmployeePayrollRunResponse
-
-
-## Fields
-
-| Field                                                                                                            | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
-| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `httpMeta`                                                                                                       | [components.HTTPMetadata](../../models/components/httpmetadata.md)                                               | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
-| `unifiedHrisEmployeepayrollrunOutput`                                                                            | [components.UnifiedHrisEmployeepayrollrunOutput](../../models/components/unifiedhrisemployeepayrollrunoutput.md) | :heavy_minus_sign:                                                                                               | N/A                                                                                                              |

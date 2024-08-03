@@ -16,7 +16,7 @@ List  TrackingCategorys
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -43,7 +43,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListAccountingTrackingCategorysResponse](../../models/operations/listaccountingtrackingcategorysresponse.md)\>**
+**Promise\<[operations.ListAccountingTrackingCategorysResponseBody](../../models/operations/listaccountingtrackingcategorysresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -60,7 +60,7 @@ Retrieve Tracking Categories from any connected Accounting software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -88,7 +88,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveAccountingTrackingCategoryResponse](../../models/operations/retrieveaccountingtrackingcategoryresponse.md)\>**
+**Promise\<[components.UnifiedAccountingTrackingcategoryOutput](../../models/components/unifiedaccountingtrackingcategoryoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

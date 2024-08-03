@@ -3,7 +3,6 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
-import * as components from "../components/index.js";
 import * as z from "zod";
 
 export type RetrieveAccountingJournalEntryRequest = {
@@ -19,13 +18,6 @@ export type RetrieveAccountingJournalEntryRequest = {
      * Set to true to include data from the original Accounting software.
      */
     remoteData?: boolean | undefined;
-};
-
-export type RetrieveAccountingJournalEntryResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedAccountingJournalentryOutput?:
-        | components.UnifiedAccountingJournalentryOutput
-        | undefined;
 };
 
 /** @internal */
@@ -82,61 +74,4 @@ export namespace RetrieveAccountingJournalEntryRequest$ {
     export const outboundSchema = RetrieveAccountingJournalEntryRequest$outboundSchema;
     /** @deprecated use `RetrieveAccountingJournalEntryRequest$Outbound` instead. */
     export type Outbound = RetrieveAccountingJournalEntryRequest$Outbound;
-}
-
-/** @internal */
-export const RetrieveAccountingJournalEntryResponse$inboundSchema: z.ZodType<
-    RetrieveAccountingJournalEntryResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedAccountingJournalentryOutput:
-            components.UnifiedAccountingJournalentryOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedAccountingJournalentryOutput: "unifiedAccountingJournalentryOutput",
-        });
-    });
-
-/** @internal */
-export type RetrieveAccountingJournalEntryResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedAccountingJournalentryOutput?:
-        | components.UnifiedAccountingJournalentryOutput$Outbound
-        | undefined;
-};
-
-/** @internal */
-export const RetrieveAccountingJournalEntryResponse$outboundSchema: z.ZodType<
-    RetrieveAccountingJournalEntryResponse$Outbound,
-    z.ZodTypeDef,
-    RetrieveAccountingJournalEntryResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedAccountingJournalentryOutput:
-            components.UnifiedAccountingJournalentryOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedAccountingJournalentryOutput: "UnifiedAccountingJournalentryOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveAccountingJournalEntryResponse$ {
-    /** @deprecated use `RetrieveAccountingJournalEntryResponse$inboundSchema` instead. */
-    export const inboundSchema = RetrieveAccountingJournalEntryResponse$inboundSchema;
-    /** @deprecated use `RetrieveAccountingJournalEntryResponse$outboundSchema` instead. */
-    export const outboundSchema = RetrieveAccountingJournalEntryResponse$outboundSchema;
-    /** @deprecated use `RetrieveAccountingJournalEntryResponse$Outbound` instead. */
-    export type Outbound = RetrieveAccountingJournalEntryResponse$Outbound;
 }

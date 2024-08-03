@@ -31,11 +31,6 @@ export type ListAccountingCashflowStatementResponseBody = {
     data: Array<components.UnifiedAccountingCashflowstatementOutput>;
 };
 
-export type ListAccountingCashflowStatementResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListAccountingCashflowStatementResponseBody | undefined;
-};
-
 /** @internal */
 export const ListAccountingCashflowStatementRequest$inboundSchema: z.ZodType<
     ListAccountingCashflowStatementRequest,
@@ -149,55 +144,4 @@ export namespace ListAccountingCashflowStatementResponseBody$ {
     export const outboundSchema = ListAccountingCashflowStatementResponseBody$outboundSchema;
     /** @deprecated use `ListAccountingCashflowStatementResponseBody$Outbound` instead. */
     export type Outbound = ListAccountingCashflowStatementResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListAccountingCashflowStatementResponse$inboundSchema: z.ZodType<
-    ListAccountingCashflowStatementResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListAccountingCashflowStatementResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListAccountingCashflowStatementResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListAccountingCashflowStatementResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListAccountingCashflowStatementResponse$outboundSchema: z.ZodType<
-    ListAccountingCashflowStatementResponse$Outbound,
-    z.ZodTypeDef,
-    ListAccountingCashflowStatementResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListAccountingCashflowStatementResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAccountingCashflowStatementResponse$ {
-    /** @deprecated use `ListAccountingCashflowStatementResponse$inboundSchema` instead. */
-    export const inboundSchema = ListAccountingCashflowStatementResponse$inboundSchema;
-    /** @deprecated use `ListAccountingCashflowStatementResponse$outboundSchema` instead. */
-    export const outboundSchema = ListAccountingCashflowStatementResponse$outboundSchema;
-    /** @deprecated use `ListAccountingCashflowStatementResponse$Outbound` instead. */
-    export type Outbound = ListAccountingCashflowStatementResponse$Outbound;
 }

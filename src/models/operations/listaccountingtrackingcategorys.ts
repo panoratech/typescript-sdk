@@ -31,11 +31,6 @@ export type ListAccountingTrackingCategorysResponseBody = {
     data: Array<components.UnifiedAccountingTrackingcategoryOutput>;
 };
 
-export type ListAccountingTrackingCategorysResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListAccountingTrackingCategorysResponseBody | undefined;
-};
-
 /** @internal */
 export const ListAccountingTrackingCategorysRequest$inboundSchema: z.ZodType<
     ListAccountingTrackingCategorysRequest,
@@ -149,55 +144,4 @@ export namespace ListAccountingTrackingCategorysResponseBody$ {
     export const outboundSchema = ListAccountingTrackingCategorysResponseBody$outboundSchema;
     /** @deprecated use `ListAccountingTrackingCategorysResponseBody$Outbound` instead. */
     export type Outbound = ListAccountingTrackingCategorysResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListAccountingTrackingCategorysResponse$inboundSchema: z.ZodType<
-    ListAccountingTrackingCategorysResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListAccountingTrackingCategorysResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListAccountingTrackingCategorysResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListAccountingTrackingCategorysResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListAccountingTrackingCategorysResponse$outboundSchema: z.ZodType<
-    ListAccountingTrackingCategorysResponse$Outbound,
-    z.ZodTypeDef,
-    ListAccountingTrackingCategorysResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListAccountingTrackingCategorysResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAccountingTrackingCategorysResponse$ {
-    /** @deprecated use `ListAccountingTrackingCategorysResponse$inboundSchema` instead. */
-    export const inboundSchema = ListAccountingTrackingCategorysResponse$inboundSchema;
-    /** @deprecated use `ListAccountingTrackingCategorysResponse$outboundSchema` instead. */
-    export const outboundSchema = ListAccountingTrackingCategorysResponse$outboundSchema;
-    /** @deprecated use `ListAccountingTrackingCategorysResponse$Outbound` instead. */
-    export type Outbound = ListAccountingTrackingCategorysResponse$Outbound;
 }

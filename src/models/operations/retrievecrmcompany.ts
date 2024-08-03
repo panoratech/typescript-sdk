@@ -3,7 +3,6 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
-import * as components from "../components/index.js";
 import * as z from "zod";
 
 export type RetrieveCrmCompanyRequest = {
@@ -19,11 +18,6 @@ export type RetrieveCrmCompanyRequest = {
      * Set to true to include data from the original Crm software.
      */
     remoteData?: boolean | undefined;
-};
-
-export type RetrieveCrmCompanyResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedCrmCompanyOutput?: components.UnifiedCrmCompanyOutput | undefined;
 };
 
 /** @internal */
@@ -80,57 +74,4 @@ export namespace RetrieveCrmCompanyRequest$ {
     export const outboundSchema = RetrieveCrmCompanyRequest$outboundSchema;
     /** @deprecated use `RetrieveCrmCompanyRequest$Outbound` instead. */
     export type Outbound = RetrieveCrmCompanyRequest$Outbound;
-}
-
-/** @internal */
-export const RetrieveCrmCompanyResponse$inboundSchema: z.ZodType<
-    RetrieveCrmCompanyResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedCrmCompanyOutput: components.UnifiedCrmCompanyOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedCrmCompanyOutput: "unifiedCrmCompanyOutput",
-        });
-    });
-
-/** @internal */
-export type RetrieveCrmCompanyResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedCrmCompanyOutput?: components.UnifiedCrmCompanyOutput$Outbound | undefined;
-};
-
-/** @internal */
-export const RetrieveCrmCompanyResponse$outboundSchema: z.ZodType<
-    RetrieveCrmCompanyResponse$Outbound,
-    z.ZodTypeDef,
-    RetrieveCrmCompanyResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedCrmCompanyOutput: components.UnifiedCrmCompanyOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedCrmCompanyOutput: "UnifiedCrmCompanyOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveCrmCompanyResponse$ {
-    /** @deprecated use `RetrieveCrmCompanyResponse$inboundSchema` instead. */
-    export const inboundSchema = RetrieveCrmCompanyResponse$inboundSchema;
-    /** @deprecated use `RetrieveCrmCompanyResponse$outboundSchema` instead. */
-    export const outboundSchema = RetrieveCrmCompanyResponse$outboundSchema;
-    /** @deprecated use `RetrieveCrmCompanyResponse$Outbound` instead. */
-    export type Outbound = RetrieveCrmCompanyResponse$Outbound;
 }

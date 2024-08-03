@@ -31,11 +31,6 @@ export type ListAccountingPhonenumberResponseBody = {
     data: Array<components.UnifiedAccountingPhonenumberOutput>;
 };
 
-export type ListAccountingPhonenumberResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListAccountingPhonenumberResponseBody | undefined;
-};
-
 /** @internal */
 export const ListAccountingPhonenumberRequest$inboundSchema: z.ZodType<
     ListAccountingPhonenumberRequest,
@@ -149,55 +144,4 @@ export namespace ListAccountingPhonenumberResponseBody$ {
     export const outboundSchema = ListAccountingPhonenumberResponseBody$outboundSchema;
     /** @deprecated use `ListAccountingPhonenumberResponseBody$Outbound` instead. */
     export type Outbound = ListAccountingPhonenumberResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListAccountingPhonenumberResponse$inboundSchema: z.ZodType<
-    ListAccountingPhonenumberResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListAccountingPhonenumberResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListAccountingPhonenumberResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListAccountingPhonenumberResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListAccountingPhonenumberResponse$outboundSchema: z.ZodType<
-    ListAccountingPhonenumberResponse$Outbound,
-    z.ZodTypeDef,
-    ListAccountingPhonenumberResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListAccountingPhonenumberResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAccountingPhonenumberResponse$ {
-    /** @deprecated use `ListAccountingPhonenumberResponse$inboundSchema` instead. */
-    export const inboundSchema = ListAccountingPhonenumberResponse$inboundSchema;
-    /** @deprecated use `ListAccountingPhonenumberResponse$outboundSchema` instead. */
-    export const outboundSchema = ListAccountingPhonenumberResponse$outboundSchema;
-    /** @deprecated use `ListAccountingPhonenumberResponse$Outbound` instead. */
-    export type Outbound = ListAccountingPhonenumberResponse$Outbound;
 }

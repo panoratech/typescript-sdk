@@ -31,11 +31,6 @@ export type ListAccountingTaxRateResponseBody = {
     data: Array<components.UnifiedAccountingTaxrateOutput>;
 };
 
-export type ListAccountingTaxRateResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListAccountingTaxRateResponseBody | undefined;
-};
-
 /** @internal */
 export const ListAccountingTaxRateRequest$inboundSchema: z.ZodType<
     ListAccountingTaxRateRequest,
@@ -149,55 +144,4 @@ export namespace ListAccountingTaxRateResponseBody$ {
     export const outboundSchema = ListAccountingTaxRateResponseBody$outboundSchema;
     /** @deprecated use `ListAccountingTaxRateResponseBody$Outbound` instead. */
     export type Outbound = ListAccountingTaxRateResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListAccountingTaxRateResponse$inboundSchema: z.ZodType<
-    ListAccountingTaxRateResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListAccountingTaxRateResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListAccountingTaxRateResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListAccountingTaxRateResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListAccountingTaxRateResponse$outboundSchema: z.ZodType<
-    ListAccountingTaxRateResponse$Outbound,
-    z.ZodTypeDef,
-    ListAccountingTaxRateResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListAccountingTaxRateResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAccountingTaxRateResponse$ {
-    /** @deprecated use `ListAccountingTaxRateResponse$inboundSchema` instead. */
-    export const inboundSchema = ListAccountingTaxRateResponse$inboundSchema;
-    /** @deprecated use `ListAccountingTaxRateResponse$outboundSchema` instead. */
-    export const outboundSchema = ListAccountingTaxRateResponse$outboundSchema;
-    /** @deprecated use `ListAccountingTaxRateResponse$Outbound` instead. */
-    export type Outbound = ListAccountingTaxRateResponse$Outbound;
 }

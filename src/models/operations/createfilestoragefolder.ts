@@ -15,11 +15,6 @@ export type CreateFilestorageFolderRequest = {
     unifiedFilestorageFolderInput: components.UnifiedFilestorageFolderInput;
 };
 
-export type CreateFilestorageFolderResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedFilestorageFolderOutput?: components.UnifiedFilestorageFolderOutput | undefined;
-};
-
 /** @internal */
 export const CreateFilestorageFolderRequest$inboundSchema: z.ZodType<
     CreateFilestorageFolderRequest,
@@ -76,59 +71,4 @@ export namespace CreateFilestorageFolderRequest$ {
     export const outboundSchema = CreateFilestorageFolderRequest$outboundSchema;
     /** @deprecated use `CreateFilestorageFolderRequest$Outbound` instead. */
     export type Outbound = CreateFilestorageFolderRequest$Outbound;
-}
-
-/** @internal */
-export const CreateFilestorageFolderResponse$inboundSchema: z.ZodType<
-    CreateFilestorageFolderResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedFilestorageFolderOutput:
-            components.UnifiedFilestorageFolderOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedFilestorageFolderOutput: "unifiedFilestorageFolderOutput",
-        });
-    });
-
-/** @internal */
-export type CreateFilestorageFolderResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedFilestorageFolderOutput?: components.UnifiedFilestorageFolderOutput$Outbound | undefined;
-};
-
-/** @internal */
-export const CreateFilestorageFolderResponse$outboundSchema: z.ZodType<
-    CreateFilestorageFolderResponse$Outbound,
-    z.ZodTypeDef,
-    CreateFilestorageFolderResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedFilestorageFolderOutput:
-            components.UnifiedFilestorageFolderOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedFilestorageFolderOutput: "UnifiedFilestorageFolderOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateFilestorageFolderResponse$ {
-    /** @deprecated use `CreateFilestorageFolderResponse$inboundSchema` instead. */
-    export const inboundSchema = CreateFilestorageFolderResponse$inboundSchema;
-    /** @deprecated use `CreateFilestorageFolderResponse$outboundSchema` instead. */
-    export const outboundSchema = CreateFilestorageFolderResponse$outboundSchema;
-    /** @deprecated use `CreateFilestorageFolderResponse$Outbound` instead. */
-    export type Outbound = CreateFilestorageFolderResponse$Outbound;
 }

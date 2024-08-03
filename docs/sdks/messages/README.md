@@ -16,7 +16,7 @@ List  Messages
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -43,7 +43,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListMarketingautomationMessagesResponse](../../models/operations/listmarketingautomationmessagesresponse.md)\>**
+**Promise\<[operations.ListMarketingautomationMessagesResponseBody](../../models/operations/listmarketingautomationmessagesresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -60,7 +60,7 @@ Retrieve Messages from any connected Marketingautomation software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -88,7 +88,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveMarketingautomationMessageResponse](../../models/operations/retrievemarketingautomationmessageresponse.md)\>**
+**Promise\<[components.UnifiedMarketingautomationMessageOutput](../../models/components/unifiedmarketingautomationmessageoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

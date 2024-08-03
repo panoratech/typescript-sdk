@@ -3,7 +3,6 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
-import * as components from "../components/index.js";
 import * as z from "zod";
 
 export type RetrieveAccountingCompanyInfoRequest = {
@@ -19,11 +18,6 @@ export type RetrieveAccountingCompanyInfoRequest = {
      * Set to true to include data from the original Accounting software.
      */
     remoteData?: boolean | undefined;
-};
-
-export type RetrieveAccountingCompanyInfoResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedAccountingCompanyinfoOutput?: components.UnifiedAccountingCompanyinfoOutput | undefined;
 };
 
 /** @internal */
@@ -80,61 +74,4 @@ export namespace RetrieveAccountingCompanyInfoRequest$ {
     export const outboundSchema = RetrieveAccountingCompanyInfoRequest$outboundSchema;
     /** @deprecated use `RetrieveAccountingCompanyInfoRequest$Outbound` instead. */
     export type Outbound = RetrieveAccountingCompanyInfoRequest$Outbound;
-}
-
-/** @internal */
-export const RetrieveAccountingCompanyInfoResponse$inboundSchema: z.ZodType<
-    RetrieveAccountingCompanyInfoResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedAccountingCompanyinfoOutput:
-            components.UnifiedAccountingCompanyinfoOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedAccountingCompanyinfoOutput: "unifiedAccountingCompanyinfoOutput",
-        });
-    });
-
-/** @internal */
-export type RetrieveAccountingCompanyInfoResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedAccountingCompanyinfoOutput?:
-        | components.UnifiedAccountingCompanyinfoOutput$Outbound
-        | undefined;
-};
-
-/** @internal */
-export const RetrieveAccountingCompanyInfoResponse$outboundSchema: z.ZodType<
-    RetrieveAccountingCompanyInfoResponse$Outbound,
-    z.ZodTypeDef,
-    RetrieveAccountingCompanyInfoResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedAccountingCompanyinfoOutput:
-            components.UnifiedAccountingCompanyinfoOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedAccountingCompanyinfoOutput: "UnifiedAccountingCompanyinfoOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveAccountingCompanyInfoResponse$ {
-    /** @deprecated use `RetrieveAccountingCompanyInfoResponse$inboundSchema` instead. */
-    export const inboundSchema = RetrieveAccountingCompanyInfoResponse$inboundSchema;
-    /** @deprecated use `RetrieveAccountingCompanyInfoResponse$outboundSchema` instead. */
-    export const outboundSchema = RetrieveAccountingCompanyInfoResponse$outboundSchema;
-    /** @deprecated use `RetrieveAccountingCompanyInfoResponse$Outbound` instead. */
-    export type Outbound = RetrieveAccountingCompanyInfoResponse$Outbound;
 }

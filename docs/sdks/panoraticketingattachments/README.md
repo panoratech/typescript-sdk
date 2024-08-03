@@ -17,7 +17,7 @@ List  Attachments
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -44,7 +44,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListTicketingAttachmentsResponse](../../models/operations/listticketingattachmentsresponse.md)\>**
+**Promise\<[operations.ListTicketingAttachmentsResponseBody](../../models/operations/listticketingattachmentsresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -61,7 +61,7 @@ Create Attachments in any supported Ticketing software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -71,6 +71,9 @@ async function run() {
       fileName: "your_file_here",
       fileUrl: "<value>",
       uploader: "<value>",
+      fieldMappings: {
+        "key": "<value>",
+      },
     },
   });
 
@@ -93,7 +96,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.CreateTicketingAttachmentResponse](../../models/operations/createticketingattachmentresponse.md)\>**
+**Promise\<[components.UnifiedTicketingAttachmentOutput](../../models/components/unifiedticketingattachmentoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -110,7 +113,7 @@ Retrieve Attachments from any connected Ticketing software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -138,7 +141,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveTicketingAttachmentResponse](../../models/operations/retrieveticketingattachmentresponse.md)\>**
+**Promise\<[components.UnifiedTicketingAttachmentOutput](../../models/components/unifiedticketingattachmentoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

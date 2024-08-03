@@ -15,11 +15,6 @@ export type CreateFilestorageFileRequest = {
     unifiedFilestorageFileInput: components.UnifiedFilestorageFileInput;
 };
 
-export type CreateFilestorageFileResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedFilestorageFileOutput?: components.UnifiedFilestorageFileOutput | undefined;
-};
-
 /** @internal */
 export const CreateFilestorageFileRequest$inboundSchema: z.ZodType<
     CreateFilestorageFileRequest,
@@ -76,59 +71,4 @@ export namespace CreateFilestorageFileRequest$ {
     export const outboundSchema = CreateFilestorageFileRequest$outboundSchema;
     /** @deprecated use `CreateFilestorageFileRequest$Outbound` instead. */
     export type Outbound = CreateFilestorageFileRequest$Outbound;
-}
-
-/** @internal */
-export const CreateFilestorageFileResponse$inboundSchema: z.ZodType<
-    CreateFilestorageFileResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedFilestorageFileOutput:
-            components.UnifiedFilestorageFileOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedFilestorageFileOutput: "unifiedFilestorageFileOutput",
-        });
-    });
-
-/** @internal */
-export type CreateFilestorageFileResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedFilestorageFileOutput?: components.UnifiedFilestorageFileOutput$Outbound | undefined;
-};
-
-/** @internal */
-export const CreateFilestorageFileResponse$outboundSchema: z.ZodType<
-    CreateFilestorageFileResponse$Outbound,
-    z.ZodTypeDef,
-    CreateFilestorageFileResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedFilestorageFileOutput:
-            components.UnifiedFilestorageFileOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedFilestorageFileOutput: "UnifiedFilestorageFileOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateFilestorageFileResponse$ {
-    /** @deprecated use `CreateFilestorageFileResponse$inboundSchema` instead. */
-    export const inboundSchema = CreateFilestorageFileResponse$inboundSchema;
-    /** @deprecated use `CreateFilestorageFileResponse$outboundSchema` instead. */
-    export const outboundSchema = CreateFilestorageFileResponse$outboundSchema;
-    /** @deprecated use `CreateFilestorageFileResponse$Outbound` instead. */
-    export type Outbound = CreateFilestorageFileResponse$Outbound;
 }

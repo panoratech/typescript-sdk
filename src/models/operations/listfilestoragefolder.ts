@@ -31,11 +31,6 @@ export type ListFilestorageFolderResponseBody = {
     data: Array<components.UnifiedFilestorageFolderOutput>;
 };
 
-export type ListFilestorageFolderResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListFilestorageFolderResponseBody | undefined;
-};
-
 /** @internal */
 export const ListFilestorageFolderRequest$inboundSchema: z.ZodType<
     ListFilestorageFolderRequest,
@@ -149,55 +144,4 @@ export namespace ListFilestorageFolderResponseBody$ {
     export const outboundSchema = ListFilestorageFolderResponseBody$outboundSchema;
     /** @deprecated use `ListFilestorageFolderResponseBody$Outbound` instead. */
     export type Outbound = ListFilestorageFolderResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListFilestorageFolderResponse$inboundSchema: z.ZodType<
-    ListFilestorageFolderResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListFilestorageFolderResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListFilestorageFolderResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListFilestorageFolderResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListFilestorageFolderResponse$outboundSchema: z.ZodType<
-    ListFilestorageFolderResponse$Outbound,
-    z.ZodTypeDef,
-    ListFilestorageFolderResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListFilestorageFolderResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListFilestorageFolderResponse$ {
-    /** @deprecated use `ListFilestorageFolderResponse$inboundSchema` instead. */
-    export const inboundSchema = ListFilestorageFolderResponse$inboundSchema;
-    /** @deprecated use `ListFilestorageFolderResponse$outboundSchema` instead. */
-    export const outboundSchema = ListFilestorageFolderResponse$outboundSchema;
-    /** @deprecated use `ListFilestorageFolderResponse$Outbound` instead. */
-    export type Outbound = ListFilestorageFolderResponse$Outbound;
 }

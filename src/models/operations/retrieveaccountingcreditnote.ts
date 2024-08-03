@@ -3,7 +3,6 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
-import * as components from "../components/index.js";
 import * as z from "zod";
 
 export type RetrieveAccountingCreditNoteRequest = {
@@ -19,11 +18,6 @@ export type RetrieveAccountingCreditNoteRequest = {
      * Set to true to include data from the original Accounting software.
      */
     remoteData?: boolean | undefined;
-};
-
-export type RetrieveAccountingCreditNoteResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedAccountingCreditnoteOutput?: components.UnifiedAccountingCreditnoteOutput | undefined;
 };
 
 /** @internal */
@@ -80,61 +74,4 @@ export namespace RetrieveAccountingCreditNoteRequest$ {
     export const outboundSchema = RetrieveAccountingCreditNoteRequest$outboundSchema;
     /** @deprecated use `RetrieveAccountingCreditNoteRequest$Outbound` instead. */
     export type Outbound = RetrieveAccountingCreditNoteRequest$Outbound;
-}
-
-/** @internal */
-export const RetrieveAccountingCreditNoteResponse$inboundSchema: z.ZodType<
-    RetrieveAccountingCreditNoteResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedAccountingCreditnoteOutput:
-            components.UnifiedAccountingCreditnoteOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedAccountingCreditnoteOutput: "unifiedAccountingCreditnoteOutput",
-        });
-    });
-
-/** @internal */
-export type RetrieveAccountingCreditNoteResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedAccountingCreditnoteOutput?:
-        | components.UnifiedAccountingCreditnoteOutput$Outbound
-        | undefined;
-};
-
-/** @internal */
-export const RetrieveAccountingCreditNoteResponse$outboundSchema: z.ZodType<
-    RetrieveAccountingCreditNoteResponse$Outbound,
-    z.ZodTypeDef,
-    RetrieveAccountingCreditNoteResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedAccountingCreditnoteOutput:
-            components.UnifiedAccountingCreditnoteOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedAccountingCreditnoteOutput: "UnifiedAccountingCreditnoteOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveAccountingCreditNoteResponse$ {
-    /** @deprecated use `RetrieveAccountingCreditNoteResponse$inboundSchema` instead. */
-    export const inboundSchema = RetrieveAccountingCreditNoteResponse$inboundSchema;
-    /** @deprecated use `RetrieveAccountingCreditNoteResponse$outboundSchema` instead. */
-    export const outboundSchema = RetrieveAccountingCreditNoteResponse$outboundSchema;
-    /** @deprecated use `RetrieveAccountingCreditNoteResponse$Outbound` instead. */
-    export type Outbound = RetrieveAccountingCreditNoteResponse$Outbound;
 }

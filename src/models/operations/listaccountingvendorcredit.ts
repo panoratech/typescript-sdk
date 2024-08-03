@@ -31,11 +31,6 @@ export type ListAccountingVendorCreditResponseBody = {
     data: Array<components.UnifiedAccountingVendorcreditOutput>;
 };
 
-export type ListAccountingVendorCreditResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListAccountingVendorCreditResponseBody | undefined;
-};
-
 /** @internal */
 export const ListAccountingVendorCreditRequest$inboundSchema: z.ZodType<
     ListAccountingVendorCreditRequest,
@@ -149,55 +144,4 @@ export namespace ListAccountingVendorCreditResponseBody$ {
     export const outboundSchema = ListAccountingVendorCreditResponseBody$outboundSchema;
     /** @deprecated use `ListAccountingVendorCreditResponseBody$Outbound` instead. */
     export type Outbound = ListAccountingVendorCreditResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListAccountingVendorCreditResponse$inboundSchema: z.ZodType<
-    ListAccountingVendorCreditResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListAccountingVendorCreditResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListAccountingVendorCreditResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListAccountingVendorCreditResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListAccountingVendorCreditResponse$outboundSchema: z.ZodType<
-    ListAccountingVendorCreditResponse$Outbound,
-    z.ZodTypeDef,
-    ListAccountingVendorCreditResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListAccountingVendorCreditResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAccountingVendorCreditResponse$ {
-    /** @deprecated use `ListAccountingVendorCreditResponse$inboundSchema` instead. */
-    export const inboundSchema = ListAccountingVendorCreditResponse$inboundSchema;
-    /** @deprecated use `ListAccountingVendorCreditResponse$outboundSchema` instead. */
-    export const outboundSchema = ListAccountingVendorCreditResponse$outboundSchema;
-    /** @deprecated use `ListAccountingVendorCreditResponse$Outbound` instead. */
-    export type Outbound = ListAccountingVendorCreditResponse$Outbound;
 }

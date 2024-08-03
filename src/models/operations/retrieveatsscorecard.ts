@@ -3,7 +3,6 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
-import * as components from "../components/index.js";
 import * as z from "zod";
 
 export type RetrieveAtsScorecardRequest = {
@@ -19,11 +18,6 @@ export type RetrieveAtsScorecardRequest = {
      * Set to true to include data from the original Ats software.
      */
     remoteData?: boolean | undefined;
-};
-
-export type RetrieveAtsScorecardResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedAtsScorecardOutput?: components.UnifiedAtsScorecardOutput | undefined;
 };
 
 /** @internal */
@@ -80,57 +74,4 @@ export namespace RetrieveAtsScorecardRequest$ {
     export const outboundSchema = RetrieveAtsScorecardRequest$outboundSchema;
     /** @deprecated use `RetrieveAtsScorecardRequest$Outbound` instead. */
     export type Outbound = RetrieveAtsScorecardRequest$Outbound;
-}
-
-/** @internal */
-export const RetrieveAtsScorecardResponse$inboundSchema: z.ZodType<
-    RetrieveAtsScorecardResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedAtsScorecardOutput: components.UnifiedAtsScorecardOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedAtsScorecardOutput: "unifiedAtsScorecardOutput",
-        });
-    });
-
-/** @internal */
-export type RetrieveAtsScorecardResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedAtsScorecardOutput?: components.UnifiedAtsScorecardOutput$Outbound | undefined;
-};
-
-/** @internal */
-export const RetrieveAtsScorecardResponse$outboundSchema: z.ZodType<
-    RetrieveAtsScorecardResponse$Outbound,
-    z.ZodTypeDef,
-    RetrieveAtsScorecardResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedAtsScorecardOutput: components.UnifiedAtsScorecardOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedAtsScorecardOutput: "UnifiedAtsScorecardOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveAtsScorecardResponse$ {
-    /** @deprecated use `RetrieveAtsScorecardResponse$inboundSchema` instead. */
-    export const inboundSchema = RetrieveAtsScorecardResponse$inboundSchema;
-    /** @deprecated use `RetrieveAtsScorecardResponse$outboundSchema` instead. */
-    export const outboundSchema = RetrieveAtsScorecardResponse$outboundSchema;
-    /** @deprecated use `RetrieveAtsScorecardResponse$Outbound` instead. */
-    export type Outbound = RetrieveAtsScorecardResponse$Outbound;
 }

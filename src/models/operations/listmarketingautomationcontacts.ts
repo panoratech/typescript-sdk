@@ -31,11 +31,6 @@ export type ListMarketingAutomationContactsResponseBody = {
     data: Array<components.UnifiedMarketingautomationContactOutput>;
 };
 
-export type ListMarketingAutomationContactsResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListMarketingAutomationContactsResponseBody | undefined;
-};
-
 /** @internal */
 export const ListMarketingAutomationContactsRequest$inboundSchema: z.ZodType<
     ListMarketingAutomationContactsRequest,
@@ -149,55 +144,4 @@ export namespace ListMarketingAutomationContactsResponseBody$ {
     export const outboundSchema = ListMarketingAutomationContactsResponseBody$outboundSchema;
     /** @deprecated use `ListMarketingAutomationContactsResponseBody$Outbound` instead. */
     export type Outbound = ListMarketingAutomationContactsResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListMarketingAutomationContactsResponse$inboundSchema: z.ZodType<
-    ListMarketingAutomationContactsResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListMarketingAutomationContactsResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListMarketingAutomationContactsResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListMarketingAutomationContactsResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListMarketingAutomationContactsResponse$outboundSchema: z.ZodType<
-    ListMarketingAutomationContactsResponse$Outbound,
-    z.ZodTypeDef,
-    ListMarketingAutomationContactsResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListMarketingAutomationContactsResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListMarketingAutomationContactsResponse$ {
-    /** @deprecated use `ListMarketingAutomationContactsResponse$inboundSchema` instead. */
-    export const inboundSchema = ListMarketingAutomationContactsResponse$inboundSchema;
-    /** @deprecated use `ListMarketingAutomationContactsResponse$outboundSchema` instead. */
-    export const outboundSchema = ListMarketingAutomationContactsResponse$outboundSchema;
-    /** @deprecated use `ListMarketingAutomationContactsResponse$Outbound` instead. */
-    export type Outbound = ListMarketingAutomationContactsResponse$Outbound;
 }
