@@ -3,7 +3,6 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
-import * as components from "../components/index.js";
 import * as z from "zod";
 
 export type RetrieveAccountingVendorCreditRequest = {
@@ -19,13 +18,6 @@ export type RetrieveAccountingVendorCreditRequest = {
      * Set to true to include data from the original Accounting software.
      */
     remoteData?: boolean | undefined;
-};
-
-export type RetrieveAccountingVendorCreditResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedAccountingVendorcreditOutput?:
-        | components.UnifiedAccountingVendorcreditOutput
-        | undefined;
 };
 
 /** @internal */
@@ -82,61 +74,4 @@ export namespace RetrieveAccountingVendorCreditRequest$ {
     export const outboundSchema = RetrieveAccountingVendorCreditRequest$outboundSchema;
     /** @deprecated use `RetrieveAccountingVendorCreditRequest$Outbound` instead. */
     export type Outbound = RetrieveAccountingVendorCreditRequest$Outbound;
-}
-
-/** @internal */
-export const RetrieveAccountingVendorCreditResponse$inboundSchema: z.ZodType<
-    RetrieveAccountingVendorCreditResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedAccountingVendorcreditOutput:
-            components.UnifiedAccountingVendorcreditOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedAccountingVendorcreditOutput: "unifiedAccountingVendorcreditOutput",
-        });
-    });
-
-/** @internal */
-export type RetrieveAccountingVendorCreditResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedAccountingVendorcreditOutput?:
-        | components.UnifiedAccountingVendorcreditOutput$Outbound
-        | undefined;
-};
-
-/** @internal */
-export const RetrieveAccountingVendorCreditResponse$outboundSchema: z.ZodType<
-    RetrieveAccountingVendorCreditResponse$Outbound,
-    z.ZodTypeDef,
-    RetrieveAccountingVendorCreditResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedAccountingVendorcreditOutput:
-            components.UnifiedAccountingVendorcreditOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedAccountingVendorcreditOutput: "UnifiedAccountingVendorcreditOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveAccountingVendorCreditResponse$ {
-    /** @deprecated use `RetrieveAccountingVendorCreditResponse$inboundSchema` instead. */
-    export const inboundSchema = RetrieveAccountingVendorCreditResponse$inboundSchema;
-    /** @deprecated use `RetrieveAccountingVendorCreditResponse$outboundSchema` instead. */
-    export const outboundSchema = RetrieveAccountingVendorCreditResponse$outboundSchema;
-    /** @deprecated use `RetrieveAccountingVendorCreditResponse$Outbound` instead. */
-    export type Outbound = RetrieveAccountingVendorCreditResponse$Outbound;
 }

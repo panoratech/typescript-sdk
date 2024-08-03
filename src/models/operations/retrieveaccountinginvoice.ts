@@ -3,7 +3,6 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
-import * as components from "../components/index.js";
 import * as z from "zod";
 
 export type RetrieveAccountingInvoiceRequest = {
@@ -19,11 +18,6 @@ export type RetrieveAccountingInvoiceRequest = {
      * Set to true to include data from the original Accounting software.
      */
     remoteData?: boolean | undefined;
-};
-
-export type RetrieveAccountingInvoiceResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedAccountingInvoiceOutput?: components.UnifiedAccountingInvoiceOutput | undefined;
 };
 
 /** @internal */
@@ -80,59 +74,4 @@ export namespace RetrieveAccountingInvoiceRequest$ {
     export const outboundSchema = RetrieveAccountingInvoiceRequest$outboundSchema;
     /** @deprecated use `RetrieveAccountingInvoiceRequest$Outbound` instead. */
     export type Outbound = RetrieveAccountingInvoiceRequest$Outbound;
-}
-
-/** @internal */
-export const RetrieveAccountingInvoiceResponse$inboundSchema: z.ZodType<
-    RetrieveAccountingInvoiceResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedAccountingInvoiceOutput:
-            components.UnifiedAccountingInvoiceOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedAccountingInvoiceOutput: "unifiedAccountingInvoiceOutput",
-        });
-    });
-
-/** @internal */
-export type RetrieveAccountingInvoiceResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedAccountingInvoiceOutput?: components.UnifiedAccountingInvoiceOutput$Outbound | undefined;
-};
-
-/** @internal */
-export const RetrieveAccountingInvoiceResponse$outboundSchema: z.ZodType<
-    RetrieveAccountingInvoiceResponse$Outbound,
-    z.ZodTypeDef,
-    RetrieveAccountingInvoiceResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedAccountingInvoiceOutput:
-            components.UnifiedAccountingInvoiceOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedAccountingInvoiceOutput: "UnifiedAccountingInvoiceOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveAccountingInvoiceResponse$ {
-    /** @deprecated use `RetrieveAccountingInvoiceResponse$inboundSchema` instead. */
-    export const inboundSchema = RetrieveAccountingInvoiceResponse$inboundSchema;
-    /** @deprecated use `RetrieveAccountingInvoiceResponse$outboundSchema` instead. */
-    export const outboundSchema = RetrieveAccountingInvoiceResponse$outboundSchema;
-    /** @deprecated use `RetrieveAccountingInvoiceResponse$Outbound` instead. */
-    export type Outbound = RetrieveAccountingInvoiceResponse$Outbound;
 }

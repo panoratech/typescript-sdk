@@ -17,7 +17,7 @@ List  Applications
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -44,7 +44,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListAtsApplicationResponse](../../models/operations/listatsapplicationresponse.md)\>**
+**Promise\<[operations.ListAtsApplicationResponseBody](../../models/operations/listatsapplicationresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -61,7 +61,7 @@ Create Applications in any supported Ats software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -89,7 +89,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.CreateAtsApplicationResponse](../../models/operations/createatsapplicationresponse.md)\>**
+**Promise\<[components.UnifiedAtsApplicationOutput](../../models/components/unifiedatsapplicationoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -106,7 +106,7 @@ Retrieve Applications from any connected Ats software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -134,7 +134,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveAtsApplicationResponse](../../models/operations/retrieveatsapplicationresponse.md)\>**
+**Promise\<[components.UnifiedAtsApplicationOutput](../../models/components/unifiedatsapplicationoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

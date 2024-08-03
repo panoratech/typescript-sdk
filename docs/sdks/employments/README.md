@@ -16,7 +16,7 @@ List  Employments
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -43,7 +43,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListHrisEmploymentResponse](../../models/operations/listhrisemploymentresponse.md)\>**
+**Promise\<[operations.ListHrisEmploymentResponseBody](../../models/operations/listhrisemploymentresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -60,7 +60,7 @@ Retrieve Employments from any connected Hris software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -88,7 +88,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveHrisEmploymentResponse](../../models/operations/retrievehrisemploymentresponse.md)\>**
+**Promise\<[components.UnifiedHrisEmploymentOutput](../../models/components/unifiedhrisemploymentoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

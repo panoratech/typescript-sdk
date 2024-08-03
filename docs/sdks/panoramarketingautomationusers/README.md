@@ -16,7 +16,7 @@ List  Users
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -43,7 +43,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListMarketingAutomationUsersResponse](../../models/operations/listmarketingautomationusersresponse.md)\>**
+**Promise\<[operations.ListMarketingAutomationUsersResponseBody](../../models/operations/listmarketingautomationusersresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -60,7 +60,7 @@ Retrieve Users from any connected Marketingautomation software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -88,7 +88,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveMarketingAutomationUserResponse](../../models/operations/retrievemarketingautomationuserresponse.md)\>**
+**Promise\<[components.UnifiedMarketingautomationUserOutput](../../models/components/unifiedmarketingautomationuseroutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

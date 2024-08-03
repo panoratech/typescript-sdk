@@ -3,7 +3,6 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
-import * as components from "../components/index.js";
 import * as z from "zod";
 
 export type RetrieveTicketingAttachmentRequest = {
@@ -19,11 +18,6 @@ export type RetrieveTicketingAttachmentRequest = {
      * Set to true to include data from the original Ticketing software.
      */
     remoteData?: boolean | undefined;
-};
-
-export type RetrieveTicketingAttachmentResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedTicketingAttachmentOutput?: components.UnifiedTicketingAttachmentOutput | undefined;
 };
 
 /** @internal */
@@ -80,61 +74,4 @@ export namespace RetrieveTicketingAttachmentRequest$ {
     export const outboundSchema = RetrieveTicketingAttachmentRequest$outboundSchema;
     /** @deprecated use `RetrieveTicketingAttachmentRequest$Outbound` instead. */
     export type Outbound = RetrieveTicketingAttachmentRequest$Outbound;
-}
-
-/** @internal */
-export const RetrieveTicketingAttachmentResponse$inboundSchema: z.ZodType<
-    RetrieveTicketingAttachmentResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedTicketingAttachmentOutput:
-            components.UnifiedTicketingAttachmentOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedTicketingAttachmentOutput: "unifiedTicketingAttachmentOutput",
-        });
-    });
-
-/** @internal */
-export type RetrieveTicketingAttachmentResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedTicketingAttachmentOutput?:
-        | components.UnifiedTicketingAttachmentOutput$Outbound
-        | undefined;
-};
-
-/** @internal */
-export const RetrieveTicketingAttachmentResponse$outboundSchema: z.ZodType<
-    RetrieveTicketingAttachmentResponse$Outbound,
-    z.ZodTypeDef,
-    RetrieveTicketingAttachmentResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedTicketingAttachmentOutput:
-            components.UnifiedTicketingAttachmentOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedTicketingAttachmentOutput: "UnifiedTicketingAttachmentOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveTicketingAttachmentResponse$ {
-    /** @deprecated use `RetrieveTicketingAttachmentResponse$inboundSchema` instead. */
-    export const inboundSchema = RetrieveTicketingAttachmentResponse$inboundSchema;
-    /** @deprecated use `RetrieveTicketingAttachmentResponse$outboundSchema` instead. */
-    export const outboundSchema = RetrieveTicketingAttachmentResponse$outboundSchema;
-    /** @deprecated use `RetrieveTicketingAttachmentResponse$Outbound` instead. */
-    export type Outbound = RetrieveTicketingAttachmentResponse$Outbound;
 }

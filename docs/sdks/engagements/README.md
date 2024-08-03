@@ -17,7 +17,7 @@ List  Engagements
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -44,7 +44,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListCrmEngagementsResponse](../../models/operations/listcrmengagementsresponse.md)\>**
+**Promise\<[operations.ListCrmEngagementsResponseBody](../../models/operations/listcrmengagementsresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -61,7 +61,7 @@ Create Engagements in any supported Crm software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -91,7 +91,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.CreateCrmEngagementResponse](../../models/operations/createcrmengagementresponse.md)\>**
+**Promise\<[components.UnifiedCrmEngagementOutput](../../models/components/unifiedcrmengagementoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -108,7 +108,7 @@ Retrieve Engagements from any connected Crm software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -136,7 +136,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveCrmEngagementResponse](../../models/operations/retrievecrmengagementresponse.md)\>**
+**Promise\<[components.UnifiedCrmEngagementOutput](../../models/components/unifiedcrmengagementoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

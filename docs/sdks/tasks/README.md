@@ -17,7 +17,7 @@ List  Tasks
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -44,7 +44,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListCrmTaskResponse](../../models/operations/listcrmtaskresponse.md)\>**
+**Promise\<[operations.ListCrmTaskResponseBody](../../models/operations/listcrmtaskresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -61,7 +61,7 @@ Create Tasks in any supported Crm software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -93,7 +93,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.CreateCrmTaskResponse](../../models/operations/createcrmtaskresponse.md)\>**
+**Promise\<[components.UnifiedCrmTaskOutput](../../models/components/unifiedcrmtaskoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -110,7 +110,7 @@ Retrieve Tasks from any connected Crm software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -138,7 +138,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveCrmTaskResponse](../../models/operations/retrievecrmtaskresponse.md)\>**
+**Promise\<[components.UnifiedCrmTaskOutput](../../models/components/unifiedcrmtaskoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

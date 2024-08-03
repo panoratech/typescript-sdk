@@ -31,11 +31,6 @@ export type ListHrisGroupResponseBody = {
     data: Array<components.UnifiedHrisGroupOutput>;
 };
 
-export type ListHrisGroupResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListHrisGroupResponseBody | undefined;
-};
-
 /** @internal */
 export const ListHrisGroupRequest$inboundSchema: z.ZodType<
     ListHrisGroupRequest,
@@ -149,55 +144,4 @@ export namespace ListHrisGroupResponseBody$ {
     export const outboundSchema = ListHrisGroupResponseBody$outboundSchema;
     /** @deprecated use `ListHrisGroupResponseBody$Outbound` instead. */
     export type Outbound = ListHrisGroupResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListHrisGroupResponse$inboundSchema: z.ZodType<
-    ListHrisGroupResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListHrisGroupResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListHrisGroupResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListHrisGroupResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListHrisGroupResponse$outboundSchema: z.ZodType<
-    ListHrisGroupResponse$Outbound,
-    z.ZodTypeDef,
-    ListHrisGroupResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListHrisGroupResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListHrisGroupResponse$ {
-    /** @deprecated use `ListHrisGroupResponse$inboundSchema` instead. */
-    export const inboundSchema = ListHrisGroupResponse$inboundSchema;
-    /** @deprecated use `ListHrisGroupResponse$outboundSchema` instead. */
-    export const outboundSchema = ListHrisGroupResponse$outboundSchema;
-    /** @deprecated use `ListHrisGroupResponse$Outbound` instead. */
-    export type Outbound = ListHrisGroupResponse$Outbound;
 }

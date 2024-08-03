@@ -17,7 +17,7 @@ List  Attachments
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -44,7 +44,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListAtsAttachmentResponse](../../models/operations/listatsattachmentresponse.md)\>**
+**Promise\<[operations.ListAtsAttachmentResponseBody](../../models/operations/listatsattachmentresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -61,7 +61,7 @@ Create Attachments in any supported ATS software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -89,7 +89,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.CreateAtsAttachmentResponse](../../models/operations/createatsattachmentresponse.md)\>**
+**Promise\<[components.UnifiedAtsAttachmentOutput](../../models/components/unifiedatsattachmentoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -106,7 +106,7 @@ Retrieve Attachments from any connected Ats software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -134,7 +134,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveAtsAttachmentResponse](../../models/operations/retrieveatsattachmentresponse.md)\>**
+**Promise\<[components.UnifiedAtsAttachmentOutput](../../models/components/unifiedatsattachmentoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

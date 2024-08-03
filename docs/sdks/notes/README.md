@@ -17,7 +17,7 @@ List  Notes
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -44,7 +44,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListCrmNoteResponse](../../models/operations/listcrmnoteresponse.md)\>**
+**Promise\<[operations.ListCrmNoteResponseBody](../../models/operations/listcrmnoteresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -61,7 +61,7 @@ Create Notes in any supported Crm software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -91,7 +91,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.CreateCrmNoteResponse](../../models/operations/createcrmnoteresponse.md)\>**
+**Promise\<[components.UnifiedCrmNoteOutput](../../models/components/unifiedcrmnoteoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -108,7 +108,7 @@ Retrieve Notes from any connected Crm software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -136,7 +136,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveCrmNoteResponse](../../models/operations/retrievecrmnoteresponse.md)\>**
+**Promise\<[components.UnifiedCrmNoteOutput](../../models/components/unifiedcrmnoteoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

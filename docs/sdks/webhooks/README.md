@@ -19,7 +19,7 @@ List webhooks
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -43,7 +43,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListWebhooksResponse](../../models/operations/listwebhooksresponse.md)\>**
+**Promise\<[components.WebhookResponse[]](../../models/.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -60,7 +60,7 @@ Add webhook metadata
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -90,7 +90,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.CreateWebhookPublicResponse](../../models/operations/createwebhookpublicresponse.md)\>**
+**Promise\<[components.WebhookResponse](../../models/components/webhookresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -107,7 +107,7 @@ Delete Webhook
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -134,7 +134,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.DeleteResponse](../../models/operations/deleteresponse.md)\>**
+**Promise\<[components.WebhookResponse](../../models/components/webhookresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -151,7 +151,7 @@ Update webhook status
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -178,7 +178,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.UpdateStatusResponse](../../models/operations/updatestatusresponse.md)\>**
+**Promise\<[components.WebhookResponse](../../models/components/webhookresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -195,7 +195,7 @@ Verify payload signature of the webhook
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -226,7 +226,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.VerifyEventResponse](../../models/operations/verifyeventresponse.md)\>**
+**Promise\<[operations.VerifyEventResponseBody](../../models/operations/verifyeventresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

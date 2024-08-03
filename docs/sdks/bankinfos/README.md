@@ -16,7 +16,7 @@ List  Bankinfos
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -43,7 +43,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListHrisBankinfoResponse](../../models/operations/listhrisbankinforesponse.md)\>**
+**Promise\<[operations.ListHrisBankinfoResponseBody](../../models/operations/listhrisbankinforesponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -60,7 +60,7 @@ Retrieve Bank Infos from any connected Hris software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -88,7 +88,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveHrisBankinfoResponse](../../models/operations/retrievehrisbankinforesponse.md)\>**
+**Promise\<[components.UnifiedHrisBankinfoOutput](../../models/components/unifiedhrisbankinfooutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

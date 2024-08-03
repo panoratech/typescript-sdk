@@ -3,7 +3,6 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
-import * as components from "../components/index.js";
 import * as z from "zod";
 
 export type RetrieveHrisGroupRequest = {
@@ -19,11 +18,6 @@ export type RetrieveHrisGroupRequest = {
      * Set to true to include data from the original Hris software.
      */
     remoteData?: boolean | undefined;
-};
-
-export type RetrieveHrisGroupResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedHrisGroupOutput?: components.UnifiedHrisGroupOutput | undefined;
 };
 
 /** @internal */
@@ -80,57 +74,4 @@ export namespace RetrieveHrisGroupRequest$ {
     export const outboundSchema = RetrieveHrisGroupRequest$outboundSchema;
     /** @deprecated use `RetrieveHrisGroupRequest$Outbound` instead. */
     export type Outbound = RetrieveHrisGroupRequest$Outbound;
-}
-
-/** @internal */
-export const RetrieveHrisGroupResponse$inboundSchema: z.ZodType<
-    RetrieveHrisGroupResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedHrisGroupOutput: components.UnifiedHrisGroupOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedHrisGroupOutput: "unifiedHrisGroupOutput",
-        });
-    });
-
-/** @internal */
-export type RetrieveHrisGroupResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedHrisGroupOutput?: components.UnifiedHrisGroupOutput$Outbound | undefined;
-};
-
-/** @internal */
-export const RetrieveHrisGroupResponse$outboundSchema: z.ZodType<
-    RetrieveHrisGroupResponse$Outbound,
-    z.ZodTypeDef,
-    RetrieveHrisGroupResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedHrisGroupOutput: components.UnifiedHrisGroupOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedHrisGroupOutput: "UnifiedHrisGroupOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveHrisGroupResponse$ {
-    /** @deprecated use `RetrieveHrisGroupResponse$inboundSchema` instead. */
-    export const inboundSchema = RetrieveHrisGroupResponse$inboundSchema;
-    /** @deprecated use `RetrieveHrisGroupResponse$outboundSchema` instead. */
-    export const outboundSchema = RetrieveHrisGroupResponse$outboundSchema;
-    /** @deprecated use `RetrieveHrisGroupResponse$Outbound` instead. */
-    export type Outbound = RetrieveHrisGroupResponse$Outbound;
 }

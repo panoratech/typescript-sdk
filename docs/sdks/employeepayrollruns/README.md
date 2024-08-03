@@ -16,7 +16,7 @@ List  EmployeePayrollRuns
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -43,7 +43,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListHrisEmployeePayrollRunResponse](../../models/operations/listhrisemployeepayrollrunresponse.md)\>**
+**Promise\<[operations.ListHrisEmployeePayrollRunResponseBody](../../models/operations/listhrisemployeepayrollrunresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -60,7 +60,7 @@ Retrieve Employee Payroll Runs from any connected Hris software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -88,7 +88,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveHrisEmployeePayrollRunResponse](../../models/operations/retrievehrisemployeepayrollrunresponse.md)\>**
+**Promise\<[components.UnifiedHrisEmployeepayrollrunOutput](../../models/components/unifiedhrisemployeepayrollrunoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

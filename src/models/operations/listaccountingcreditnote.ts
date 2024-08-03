@@ -31,11 +31,6 @@ export type ListAccountingCreditNoteResponseBody = {
     data: Array<components.UnifiedAccountingCreditnoteOutput>;
 };
 
-export type ListAccountingCreditNoteResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListAccountingCreditNoteResponseBody | undefined;
-};
-
 /** @internal */
 export const ListAccountingCreditNoteRequest$inboundSchema: z.ZodType<
     ListAccountingCreditNoteRequest,
@@ -149,55 +144,4 @@ export namespace ListAccountingCreditNoteResponseBody$ {
     export const outboundSchema = ListAccountingCreditNoteResponseBody$outboundSchema;
     /** @deprecated use `ListAccountingCreditNoteResponseBody$Outbound` instead. */
     export type Outbound = ListAccountingCreditNoteResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListAccountingCreditNoteResponse$inboundSchema: z.ZodType<
-    ListAccountingCreditNoteResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListAccountingCreditNoteResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListAccountingCreditNoteResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListAccountingCreditNoteResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListAccountingCreditNoteResponse$outboundSchema: z.ZodType<
-    ListAccountingCreditNoteResponse$Outbound,
-    z.ZodTypeDef,
-    ListAccountingCreditNoteResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListAccountingCreditNoteResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAccountingCreditNoteResponse$ {
-    /** @deprecated use `ListAccountingCreditNoteResponse$inboundSchema` instead. */
-    export const inboundSchema = ListAccountingCreditNoteResponse$inboundSchema;
-    /** @deprecated use `ListAccountingCreditNoteResponse$outboundSchema` instead. */
-    export const outboundSchema = ListAccountingCreditNoteResponse$outboundSchema;
-    /** @deprecated use `ListAccountingCreditNoteResponse$Outbound` instead. */
-    export type Outbound = ListAccountingCreditNoteResponse$Outbound;
 }

@@ -16,16 +16,15 @@ Retrieve sync status of a certain vertical
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
-  const result = await panora.sync.status({
+  await panora.sync.status({
     vertical: "<value>",
   });
 
-  // Handle the result
-  console.log(result)
+  
 }
 
 run();
@@ -43,7 +42,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.StatusResponse](../../models/operations/statusresponse.md)\>**
+**Promise\<void\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -60,7 +59,7 @@ Resync common objects across a vertical
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -84,7 +83,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ResyncResponse](../../models/operations/resyncresponse.md)\>**
+**Promise\<[components.ResyncStatusDto](../../models/components/resyncstatusdto.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

@@ -31,11 +31,6 @@ export type ListAtsScorecardResponseBody = {
     data: Array<components.UnifiedAtsScorecardOutput>;
 };
 
-export type ListAtsScorecardResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListAtsScorecardResponseBody | undefined;
-};
-
 /** @internal */
 export const ListAtsScorecardRequest$inboundSchema: z.ZodType<
     ListAtsScorecardRequest,
@@ -149,55 +144,4 @@ export namespace ListAtsScorecardResponseBody$ {
     export const outboundSchema = ListAtsScorecardResponseBody$outboundSchema;
     /** @deprecated use `ListAtsScorecardResponseBody$Outbound` instead. */
     export type Outbound = ListAtsScorecardResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListAtsScorecardResponse$inboundSchema: z.ZodType<
-    ListAtsScorecardResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListAtsScorecardResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListAtsScorecardResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListAtsScorecardResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListAtsScorecardResponse$outboundSchema: z.ZodType<
-    ListAtsScorecardResponse$Outbound,
-    z.ZodTypeDef,
-    ListAtsScorecardResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListAtsScorecardResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAtsScorecardResponse$ {
-    /** @deprecated use `ListAtsScorecardResponse$inboundSchema` instead. */
-    export const inboundSchema = ListAtsScorecardResponse$inboundSchema;
-    /** @deprecated use `ListAtsScorecardResponse$outboundSchema` instead. */
-    export const outboundSchema = ListAtsScorecardResponse$outboundSchema;
-    /** @deprecated use `ListAtsScorecardResponse$Outbound` instead. */
-    export type Outbound = ListAtsScorecardResponse$Outbound;
 }

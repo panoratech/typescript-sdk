@@ -18,13 +18,6 @@ export type CreateMarketingautomationTemplateRequest = {
     unifiedMarketingautomationTemplateInput: components.UnifiedMarketingautomationTemplateInput;
 };
 
-export type CreateMarketingautomationTemplateResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedMarketingautomationTemplateOutput?:
-        | components.UnifiedMarketingautomationTemplateOutput
-        | undefined;
-};
-
 /** @internal */
 export const CreateMarketingautomationTemplateRequest$inboundSchema: z.ZodType<
     CreateMarketingautomationTemplateRequest,
@@ -83,61 +76,4 @@ export namespace CreateMarketingautomationTemplateRequest$ {
     export const outboundSchema = CreateMarketingautomationTemplateRequest$outboundSchema;
     /** @deprecated use `CreateMarketingautomationTemplateRequest$Outbound` instead. */
     export type Outbound = CreateMarketingautomationTemplateRequest$Outbound;
-}
-
-/** @internal */
-export const CreateMarketingautomationTemplateResponse$inboundSchema: z.ZodType<
-    CreateMarketingautomationTemplateResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedMarketingautomationTemplateOutput:
-            components.UnifiedMarketingautomationTemplateOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedMarketingautomationTemplateOutput: "unifiedMarketingautomationTemplateOutput",
-        });
-    });
-
-/** @internal */
-export type CreateMarketingautomationTemplateResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedMarketingautomationTemplateOutput?:
-        | components.UnifiedMarketingautomationTemplateOutput$Outbound
-        | undefined;
-};
-
-/** @internal */
-export const CreateMarketingautomationTemplateResponse$outboundSchema: z.ZodType<
-    CreateMarketingautomationTemplateResponse$Outbound,
-    z.ZodTypeDef,
-    CreateMarketingautomationTemplateResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedMarketingautomationTemplateOutput:
-            components.UnifiedMarketingautomationTemplateOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedMarketingautomationTemplateOutput: "UnifiedMarketingautomationTemplateOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateMarketingautomationTemplateResponse$ {
-    /** @deprecated use `CreateMarketingautomationTemplateResponse$inboundSchema` instead. */
-    export const inboundSchema = CreateMarketingautomationTemplateResponse$inboundSchema;
-    /** @deprecated use `CreateMarketingautomationTemplateResponse$outboundSchema` instead. */
-    export const outboundSchema = CreateMarketingautomationTemplateResponse$outboundSchema;
-    /** @deprecated use `CreateMarketingautomationTemplateResponse$Outbound` instead. */
-    export type Outbound = CreateMarketingautomationTemplateResponse$Outbound;
 }

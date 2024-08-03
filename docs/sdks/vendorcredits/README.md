@@ -16,7 +16,7 @@ List  VendorCredits
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -43,7 +43,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListAccountingVendorCreditResponse](../../models/operations/listaccountingvendorcreditresponse.md)\>**
+**Promise\<[operations.ListAccountingVendorCreditResponseBody](../../models/operations/listaccountingvendorcreditresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -60,7 +60,7 @@ Retrieve Vendor Credits from any connected Accounting software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -88,7 +88,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveAccountingVendorCreditResponse](../../models/operations/retrieveaccountingvendorcreditresponse.md)\>**
+**Promise\<[components.UnifiedAccountingVendorcreditOutput](../../models/components/unifiedaccountingvendorcreditoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

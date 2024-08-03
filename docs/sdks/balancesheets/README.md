@@ -16,7 +16,7 @@ List  BalanceSheets
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -43,7 +43,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListAccountingBalanceSheetsResponse](../../models/operations/listaccountingbalancesheetsresponse.md)\>**
+**Promise\<[operations.ListAccountingBalanceSheetsResponseBody](../../models/operations/listaccountingbalancesheetsresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -60,7 +60,7 @@ Retrieve BalanceSheets from any connected Accounting software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -88,7 +88,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveAccountingBalanceSheetResponse](../../models/operations/retrieveaccountingbalancesheetresponse.md)\>**
+**Promise\<[components.UnifiedAccountingBalancesheetOutput](../../models/components/unifiedaccountingbalancesheetoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

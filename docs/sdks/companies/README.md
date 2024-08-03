@@ -17,7 +17,7 @@ List Companies
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -44,7 +44,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListCrmCompanyResponse](../../models/operations/listcrmcompanyresponse.md)\>**
+**Promise\<[operations.ListCrmCompanyResponseBody](../../models/operations/listcrmcompanyresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -61,7 +61,7 @@ Create Companies in any supported CRM software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -91,7 +91,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.CreateCrmCompanyResponse](../../models/operations/createcrmcompanyresponse.md)\>**
+**Promise\<[components.UnifiedCrmCompanyOutput](../../models/components/unifiedcrmcompanyoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -108,7 +108,7 @@ Retrieve Companies from any connected Crm software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -136,7 +136,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveCrmCompanyResponse](../../models/operations/retrievecrmcompanyresponse.md)\>**
+**Promise\<[components.UnifiedCrmCompanyOutput](../../models/components/unifiedcrmcompanyoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

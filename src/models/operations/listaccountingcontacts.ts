@@ -31,11 +31,6 @@ export type ListAccountingContactsResponseBody = {
     data: Array<components.UnifiedAccountingContactOutput>;
 };
 
-export type ListAccountingContactsResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListAccountingContactsResponseBody | undefined;
-};
-
 /** @internal */
 export const ListAccountingContactsRequest$inboundSchema: z.ZodType<
     ListAccountingContactsRequest,
@@ -149,55 +144,4 @@ export namespace ListAccountingContactsResponseBody$ {
     export const outboundSchema = ListAccountingContactsResponseBody$outboundSchema;
     /** @deprecated use `ListAccountingContactsResponseBody$Outbound` instead. */
     export type Outbound = ListAccountingContactsResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListAccountingContactsResponse$inboundSchema: z.ZodType<
-    ListAccountingContactsResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListAccountingContactsResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListAccountingContactsResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListAccountingContactsResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListAccountingContactsResponse$outboundSchema: z.ZodType<
-    ListAccountingContactsResponse$Outbound,
-    z.ZodTypeDef,
-    ListAccountingContactsResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListAccountingContactsResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAccountingContactsResponse$ {
-    /** @deprecated use `ListAccountingContactsResponse$inboundSchema` instead. */
-    export const inboundSchema = ListAccountingContactsResponse$inboundSchema;
-    /** @deprecated use `ListAccountingContactsResponse$outboundSchema` instead. */
-    export const outboundSchema = ListAccountingContactsResponse$outboundSchema;
-    /** @deprecated use `ListAccountingContactsResponse$Outbound` instead. */
-    export type Outbound = ListAccountingContactsResponse$Outbound;
 }

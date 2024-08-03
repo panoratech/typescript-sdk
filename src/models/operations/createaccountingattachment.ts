@@ -18,11 +18,6 @@ export type CreateAccountingAttachmentRequest = {
     unifiedAccountingAttachmentInput: components.UnifiedAccountingAttachmentInput;
 };
 
-export type CreateAccountingAttachmentResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedAccountingAttachmentOutput?: components.UnifiedAccountingAttachmentOutput | undefined;
-};
-
 /** @internal */
 export const CreateAccountingAttachmentRequest$inboundSchema: z.ZodType<
     CreateAccountingAttachmentRequest,
@@ -80,61 +75,4 @@ export namespace CreateAccountingAttachmentRequest$ {
     export const outboundSchema = CreateAccountingAttachmentRequest$outboundSchema;
     /** @deprecated use `CreateAccountingAttachmentRequest$Outbound` instead. */
     export type Outbound = CreateAccountingAttachmentRequest$Outbound;
-}
-
-/** @internal */
-export const CreateAccountingAttachmentResponse$inboundSchema: z.ZodType<
-    CreateAccountingAttachmentResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedAccountingAttachmentOutput:
-            components.UnifiedAccountingAttachmentOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedAccountingAttachmentOutput: "unifiedAccountingAttachmentOutput",
-        });
-    });
-
-/** @internal */
-export type CreateAccountingAttachmentResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedAccountingAttachmentOutput?:
-        | components.UnifiedAccountingAttachmentOutput$Outbound
-        | undefined;
-};
-
-/** @internal */
-export const CreateAccountingAttachmentResponse$outboundSchema: z.ZodType<
-    CreateAccountingAttachmentResponse$Outbound,
-    z.ZodTypeDef,
-    CreateAccountingAttachmentResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedAccountingAttachmentOutput:
-            components.UnifiedAccountingAttachmentOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedAccountingAttachmentOutput: "UnifiedAccountingAttachmentOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateAccountingAttachmentResponse$ {
-    /** @deprecated use `CreateAccountingAttachmentResponse$inboundSchema` instead. */
-    export const inboundSchema = CreateAccountingAttachmentResponse$inboundSchema;
-    /** @deprecated use `CreateAccountingAttachmentResponse$outboundSchema` instead. */
-    export const outboundSchema = CreateAccountingAttachmentResponse$outboundSchema;
-    /** @deprecated use `CreateAccountingAttachmentResponse$Outbound` instead. */
-    export type Outbound = CreateAccountingAttachmentResponse$Outbound;
 }

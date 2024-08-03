@@ -16,7 +16,7 @@ List  Transactions
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -43,7 +43,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListAccountingTransactionResponse](../../models/operations/listaccountingtransactionresponse.md)\>**
+**Promise\<[operations.ListAccountingTransactionResponseBody](../../models/operations/listaccountingtransactionresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -60,7 +60,7 @@ Retrieve Transactions from any connected Accounting software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -88,7 +88,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveAccountingTransactionResponse](../../models/operations/retrieveaccountingtransactionresponse.md)\>**
+**Promise\<[components.UnifiedAccountingTransactionOutput](../../models/components/unifiedaccountingtransactionoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

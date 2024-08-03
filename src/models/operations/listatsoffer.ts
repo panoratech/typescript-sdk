@@ -31,11 +31,6 @@ export type ListAtsOfferResponseBody = {
     data: Array<components.UnifiedAtsOfferOutput>;
 };
 
-export type ListAtsOfferResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListAtsOfferResponseBody | undefined;
-};
-
 /** @internal */
 export const ListAtsOfferRequest$inboundSchema: z.ZodType<
     ListAtsOfferRequest,
@@ -149,55 +144,4 @@ export namespace ListAtsOfferResponseBody$ {
     export const outboundSchema = ListAtsOfferResponseBody$outboundSchema;
     /** @deprecated use `ListAtsOfferResponseBody$Outbound` instead. */
     export type Outbound = ListAtsOfferResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListAtsOfferResponse$inboundSchema: z.ZodType<
-    ListAtsOfferResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListAtsOfferResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListAtsOfferResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListAtsOfferResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListAtsOfferResponse$outboundSchema: z.ZodType<
-    ListAtsOfferResponse$Outbound,
-    z.ZodTypeDef,
-    ListAtsOfferResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListAtsOfferResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAtsOfferResponse$ {
-    /** @deprecated use `ListAtsOfferResponse$inboundSchema` instead. */
-    export const inboundSchema = ListAtsOfferResponse$inboundSchema;
-    /** @deprecated use `ListAtsOfferResponse$outboundSchema` instead. */
-    export const outboundSchema = ListAtsOfferResponse$outboundSchema;
-    /** @deprecated use `ListAtsOfferResponse$Outbound` instead. */
-    export type Outbound = ListAtsOfferResponse$Outbound;
 }

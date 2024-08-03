@@ -17,7 +17,7 @@ List  Accounts
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -44,7 +44,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListAccountingAccountsResponse](../../models/operations/listaccountingaccountsresponse.md)\>**
+**Promise\<[operations.ListAccountingAccountsResponseBody](../../models/operations/listaccountingaccountsresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -61,7 +61,7 @@ Create accounts in any supported Accounting software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -89,7 +89,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.CreateAccountingAccountResponse](../../models/operations/createaccountingaccountresponse.md)\>**
+**Promise\<[components.UnifiedAccountingAccountOutput](../../models/components/unifiedaccountingaccountoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -106,7 +106,7 @@ Retrieve Accounts from any connected Accounting software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -134,7 +134,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveAccountingAccountResponse](../../models/operations/retrieveaccountingaccountresponse.md)\>**
+**Promise\<[components.UnifiedAccountingAccountOutput](../../models/components/unifiedaccountingaccountoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

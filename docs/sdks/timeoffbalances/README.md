@@ -16,7 +16,7 @@ List  TimeoffBalances
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -43,7 +43,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListHrisTimeoffbalanceResponse](../../models/operations/listhristimeoffbalanceresponse.md)\>**
+**Promise\<[operations.ListHrisTimeoffbalanceResponseBody](../../models/operations/listhristimeoffbalanceresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -60,7 +60,7 @@ Retrieve Time off Balances from any connected Hris software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -88,7 +88,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveHrisTimeoffbalanceResponse](../../models/operations/retrievehristimeoffbalanceresponse.md)\>**
+**Promise\<[components.UnifiedHrisTimeoffbalanceOutput](../../models/components/unifiedhristimeoffbalanceoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

@@ -31,11 +31,6 @@ export type ListAccountingAttachmentsResponseBody = {
     data: Array<components.UnifiedAccountingAttachmentOutput>;
 };
 
-export type ListAccountingAttachmentsResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListAccountingAttachmentsResponseBody | undefined;
-};
-
 /** @internal */
 export const ListAccountingAttachmentsRequest$inboundSchema: z.ZodType<
     ListAccountingAttachmentsRequest,
@@ -149,55 +144,4 @@ export namespace ListAccountingAttachmentsResponseBody$ {
     export const outboundSchema = ListAccountingAttachmentsResponseBody$outboundSchema;
     /** @deprecated use `ListAccountingAttachmentsResponseBody$Outbound` instead. */
     export type Outbound = ListAccountingAttachmentsResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListAccountingAttachmentsResponse$inboundSchema: z.ZodType<
-    ListAccountingAttachmentsResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListAccountingAttachmentsResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListAccountingAttachmentsResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListAccountingAttachmentsResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListAccountingAttachmentsResponse$outboundSchema: z.ZodType<
-    ListAccountingAttachmentsResponse$Outbound,
-    z.ZodTypeDef,
-    ListAccountingAttachmentsResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListAccountingAttachmentsResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAccountingAttachmentsResponse$ {
-    /** @deprecated use `ListAccountingAttachmentsResponse$inboundSchema` instead. */
-    export const inboundSchema = ListAccountingAttachmentsResponse$inboundSchema;
-    /** @deprecated use `ListAccountingAttachmentsResponse$outboundSchema` instead. */
-    export const outboundSchema = ListAccountingAttachmentsResponse$outboundSchema;
-    /** @deprecated use `ListAccountingAttachmentsResponse$Outbound` instead. */
-    export type Outbound = ListAccountingAttachmentsResponse$Outbound;
 }

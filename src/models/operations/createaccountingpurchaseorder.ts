@@ -18,13 +18,6 @@ export type CreateAccountingPurchaseOrderRequest = {
     unifiedAccountingPurchaseorderInput: components.UnifiedAccountingPurchaseorderInput;
 };
 
-export type CreateAccountingPurchaseOrderResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedAccountingPurchaseorderOutput?:
-        | components.UnifiedAccountingPurchaseorderOutput
-        | undefined;
-};
-
 /** @internal */
 export const CreateAccountingPurchaseOrderRequest$inboundSchema: z.ZodType<
     CreateAccountingPurchaseOrderRequest,
@@ -83,61 +76,4 @@ export namespace CreateAccountingPurchaseOrderRequest$ {
     export const outboundSchema = CreateAccountingPurchaseOrderRequest$outboundSchema;
     /** @deprecated use `CreateAccountingPurchaseOrderRequest$Outbound` instead. */
     export type Outbound = CreateAccountingPurchaseOrderRequest$Outbound;
-}
-
-/** @internal */
-export const CreateAccountingPurchaseOrderResponse$inboundSchema: z.ZodType<
-    CreateAccountingPurchaseOrderResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedAccountingPurchaseorderOutput:
-            components.UnifiedAccountingPurchaseorderOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedAccountingPurchaseorderOutput: "unifiedAccountingPurchaseorderOutput",
-        });
-    });
-
-/** @internal */
-export type CreateAccountingPurchaseOrderResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedAccountingPurchaseorderOutput?:
-        | components.UnifiedAccountingPurchaseorderOutput$Outbound
-        | undefined;
-};
-
-/** @internal */
-export const CreateAccountingPurchaseOrderResponse$outboundSchema: z.ZodType<
-    CreateAccountingPurchaseOrderResponse$Outbound,
-    z.ZodTypeDef,
-    CreateAccountingPurchaseOrderResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedAccountingPurchaseorderOutput:
-            components.UnifiedAccountingPurchaseorderOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedAccountingPurchaseorderOutput: "UnifiedAccountingPurchaseorderOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateAccountingPurchaseOrderResponse$ {
-    /** @deprecated use `CreateAccountingPurchaseOrderResponse$inboundSchema` instead. */
-    export const inboundSchema = CreateAccountingPurchaseOrderResponse$inboundSchema;
-    /** @deprecated use `CreateAccountingPurchaseOrderResponse$outboundSchema` instead. */
-    export const outboundSchema = CreateAccountingPurchaseOrderResponse$outboundSchema;
-    /** @deprecated use `CreateAccountingPurchaseOrderResponse$Outbound` instead. */
-    export type Outbound = CreateAccountingPurchaseOrderResponse$Outbound;
 }

@@ -31,11 +31,6 @@ export type ListHrisTimeoffbalanceResponseBody = {
     data: Array<components.UnifiedHrisTimeoffbalanceOutput>;
 };
 
-export type ListHrisTimeoffbalanceResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListHrisTimeoffbalanceResponseBody | undefined;
-};
-
 /** @internal */
 export const ListHrisTimeoffbalanceRequest$inboundSchema: z.ZodType<
     ListHrisTimeoffbalanceRequest,
@@ -149,55 +144,4 @@ export namespace ListHrisTimeoffbalanceResponseBody$ {
     export const outboundSchema = ListHrisTimeoffbalanceResponseBody$outboundSchema;
     /** @deprecated use `ListHrisTimeoffbalanceResponseBody$Outbound` instead. */
     export type Outbound = ListHrisTimeoffbalanceResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListHrisTimeoffbalanceResponse$inboundSchema: z.ZodType<
-    ListHrisTimeoffbalanceResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListHrisTimeoffbalanceResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListHrisTimeoffbalanceResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListHrisTimeoffbalanceResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListHrisTimeoffbalanceResponse$outboundSchema: z.ZodType<
-    ListHrisTimeoffbalanceResponse$Outbound,
-    z.ZodTypeDef,
-    ListHrisTimeoffbalanceResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListHrisTimeoffbalanceResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListHrisTimeoffbalanceResponse$ {
-    /** @deprecated use `ListHrisTimeoffbalanceResponse$inboundSchema` instead. */
-    export const inboundSchema = ListHrisTimeoffbalanceResponse$inboundSchema;
-    /** @deprecated use `ListHrisTimeoffbalanceResponse$outboundSchema` instead. */
-    export const outboundSchema = ListHrisTimeoffbalanceResponse$outboundSchema;
-    /** @deprecated use `ListHrisTimeoffbalanceResponse$Outbound` instead. */
-    export type Outbound = ListHrisTimeoffbalanceResponse$Outbound;
 }

@@ -17,7 +17,7 @@ List  Candidates
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -44,7 +44,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListAtsCandidateResponse](../../models/operations/listatscandidateresponse.md)\>**
+**Promise\<[operations.ListAtsCandidateResponseBody](../../models/operations/listatscandidateresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -61,7 +61,7 @@ Create Candidates in any supported Ats software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -89,7 +89,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.CreateAtsCandidateResponse](../../models/operations/createatscandidateresponse.md)\>**
+**Promise\<[components.UnifiedAtsCandidateOutput](../../models/components/unifiedatscandidateoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -106,7 +106,7 @@ Retrieve Candidates from any connected Ats software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -134,7 +134,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveAtsCandidateResponse](../../models/operations/retrieveatscandidateresponse.md)\>**
+**Promise\<[components.UnifiedAtsCandidateOutput](../../models/components/unifiedatscandidateoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

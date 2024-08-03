@@ -31,11 +31,6 @@ export type ListAtsAttachmentResponseBody = {
     data: Array<components.UnifiedAtsAttachmentOutput>;
 };
 
-export type ListAtsAttachmentResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListAtsAttachmentResponseBody | undefined;
-};
-
 /** @internal */
 export const ListAtsAttachmentRequest$inboundSchema: z.ZodType<
     ListAtsAttachmentRequest,
@@ -149,55 +144,4 @@ export namespace ListAtsAttachmentResponseBody$ {
     export const outboundSchema = ListAtsAttachmentResponseBody$outboundSchema;
     /** @deprecated use `ListAtsAttachmentResponseBody$Outbound` instead. */
     export type Outbound = ListAtsAttachmentResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListAtsAttachmentResponse$inboundSchema: z.ZodType<
-    ListAtsAttachmentResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListAtsAttachmentResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListAtsAttachmentResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListAtsAttachmentResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListAtsAttachmentResponse$outboundSchema: z.ZodType<
-    ListAtsAttachmentResponse$Outbound,
-    z.ZodTypeDef,
-    ListAtsAttachmentResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListAtsAttachmentResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAtsAttachmentResponse$ {
-    /** @deprecated use `ListAtsAttachmentResponse$inboundSchema` instead. */
-    export const inboundSchema = ListAtsAttachmentResponse$inboundSchema;
-    /** @deprecated use `ListAtsAttachmentResponse$outboundSchema` instead. */
-    export const outboundSchema = ListAtsAttachmentResponse$outboundSchema;
-    /** @deprecated use `ListAtsAttachmentResponse$Outbound` instead. */
-    export type Outbound = ListAtsAttachmentResponse$Outbound;
 }

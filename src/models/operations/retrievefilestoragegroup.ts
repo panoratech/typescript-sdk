@@ -3,7 +3,6 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
-import * as components from "../components/index.js";
 import * as z from "zod";
 
 export type RetrieveFilestorageGroupRequest = {
@@ -19,11 +18,6 @@ export type RetrieveFilestorageGroupRequest = {
      * Set to true to include data from the original File Storage software.
      */
     remoteData?: boolean | undefined;
-};
-
-export type RetrieveFilestorageGroupResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedFilestorageGroupOutput?: components.UnifiedFilestorageGroupOutput | undefined;
 };
 
 /** @internal */
@@ -80,59 +74,4 @@ export namespace RetrieveFilestorageGroupRequest$ {
     export const outboundSchema = RetrieveFilestorageGroupRequest$outboundSchema;
     /** @deprecated use `RetrieveFilestorageGroupRequest$Outbound` instead. */
     export type Outbound = RetrieveFilestorageGroupRequest$Outbound;
-}
-
-/** @internal */
-export const RetrieveFilestorageGroupResponse$inboundSchema: z.ZodType<
-    RetrieveFilestorageGroupResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedFilestorageGroupOutput:
-            components.UnifiedFilestorageGroupOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedFilestorageGroupOutput: "unifiedFilestorageGroupOutput",
-        });
-    });
-
-/** @internal */
-export type RetrieveFilestorageGroupResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedFilestorageGroupOutput?: components.UnifiedFilestorageGroupOutput$Outbound | undefined;
-};
-
-/** @internal */
-export const RetrieveFilestorageGroupResponse$outboundSchema: z.ZodType<
-    RetrieveFilestorageGroupResponse$Outbound,
-    z.ZodTypeDef,
-    RetrieveFilestorageGroupResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedFilestorageGroupOutput:
-            components.UnifiedFilestorageGroupOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedFilestorageGroupOutput: "UnifiedFilestorageGroupOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveFilestorageGroupResponse$ {
-    /** @deprecated use `RetrieveFilestorageGroupResponse$inboundSchema` instead. */
-    export const inboundSchema = RetrieveFilestorageGroupResponse$inboundSchema;
-    /** @deprecated use `RetrieveFilestorageGroupResponse$outboundSchema` instead. */
-    export const outboundSchema = RetrieveFilestorageGroupResponse$outboundSchema;
-    /** @deprecated use `RetrieveFilestorageGroupResponse$Outbound` instead. */
-    export type Outbound = RetrieveFilestorageGroupResponse$Outbound;
 }

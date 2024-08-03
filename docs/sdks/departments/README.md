@@ -16,7 +16,7 @@ List  Departments
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -43,7 +43,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListAtsDepartmentsResponse](../../models/operations/listatsdepartmentsresponse.md)\>**
+**Promise\<[operations.ListAtsDepartmentsResponseBody](../../models/operations/listatsdepartmentsresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -60,7 +60,7 @@ Retrieve Departments from any connected Ats software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -88,7 +88,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveAtsDepartmentResponse](../../models/operations/retrieveatsdepartmentresponse.md)\>**
+**Promise\<[components.UnifiedAtsDepartmentOutput](../../models/components/unifiedatsdepartmentoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

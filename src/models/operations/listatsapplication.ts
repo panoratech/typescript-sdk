@@ -31,11 +31,6 @@ export type ListAtsApplicationResponseBody = {
     data: Array<components.UnifiedAtsApplicationOutput>;
 };
 
-export type ListAtsApplicationResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListAtsApplicationResponseBody | undefined;
-};
-
 /** @internal */
 export const ListAtsApplicationRequest$inboundSchema: z.ZodType<
     ListAtsApplicationRequest,
@@ -149,55 +144,4 @@ export namespace ListAtsApplicationResponseBody$ {
     export const outboundSchema = ListAtsApplicationResponseBody$outboundSchema;
     /** @deprecated use `ListAtsApplicationResponseBody$Outbound` instead. */
     export type Outbound = ListAtsApplicationResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListAtsApplicationResponse$inboundSchema: z.ZodType<
-    ListAtsApplicationResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListAtsApplicationResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListAtsApplicationResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListAtsApplicationResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListAtsApplicationResponse$outboundSchema: z.ZodType<
-    ListAtsApplicationResponse$Outbound,
-    z.ZodTypeDef,
-    ListAtsApplicationResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListAtsApplicationResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAtsApplicationResponse$ {
-    /** @deprecated use `ListAtsApplicationResponse$inboundSchema` instead. */
-    export const inboundSchema = ListAtsApplicationResponse$inboundSchema;
-    /** @deprecated use `ListAtsApplicationResponse$outboundSchema` instead. */
-    export const outboundSchema = ListAtsApplicationResponse$outboundSchema;
-    /** @deprecated use `ListAtsApplicationResponse$Outbound` instead. */
-    export type Outbound = ListAtsApplicationResponse$Outbound;
 }

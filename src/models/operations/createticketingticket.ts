@@ -18,11 +18,6 @@ export type CreateTicketingTicketRequest = {
     unifiedTicketingTicketInput: components.UnifiedTicketingTicketInput;
 };
 
-export type CreateTicketingTicketResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedTicketingTicketOutput?: components.UnifiedTicketingTicketOutput | undefined;
-};
-
 /** @internal */
 export const CreateTicketingTicketRequest$inboundSchema: z.ZodType<
     CreateTicketingTicketRequest,
@@ -79,59 +74,4 @@ export namespace CreateTicketingTicketRequest$ {
     export const outboundSchema = CreateTicketingTicketRequest$outboundSchema;
     /** @deprecated use `CreateTicketingTicketRequest$Outbound` instead. */
     export type Outbound = CreateTicketingTicketRequest$Outbound;
-}
-
-/** @internal */
-export const CreateTicketingTicketResponse$inboundSchema: z.ZodType<
-    CreateTicketingTicketResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedTicketingTicketOutput:
-            components.UnifiedTicketingTicketOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedTicketingTicketOutput: "unifiedTicketingTicketOutput",
-        });
-    });
-
-/** @internal */
-export type CreateTicketingTicketResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedTicketingTicketOutput?: components.UnifiedTicketingTicketOutput$Outbound | undefined;
-};
-
-/** @internal */
-export const CreateTicketingTicketResponse$outboundSchema: z.ZodType<
-    CreateTicketingTicketResponse$Outbound,
-    z.ZodTypeDef,
-    CreateTicketingTicketResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedTicketingTicketOutput:
-            components.UnifiedTicketingTicketOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedTicketingTicketOutput: "UnifiedTicketingTicketOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateTicketingTicketResponse$ {
-    /** @deprecated use `CreateTicketingTicketResponse$inboundSchema` instead. */
-    export const inboundSchema = CreateTicketingTicketResponse$inboundSchema;
-    /** @deprecated use `CreateTicketingTicketResponse$outboundSchema` instead. */
-    export const outboundSchema = CreateTicketingTicketResponse$outboundSchema;
-    /** @deprecated use `CreateTicketingTicketResponse$Outbound` instead. */
-    export type Outbound = CreateTicketingTicketResponse$Outbound;
 }

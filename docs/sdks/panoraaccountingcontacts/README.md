@@ -17,7 +17,7 @@ List  Contacts
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -44,7 +44,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListAccountingContactsResponse](../../models/operations/listaccountingcontactsresponse.md)\>**
+**Promise\<[operations.ListAccountingContactsResponseBody](../../models/operations/listaccountingcontactsresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -61,7 +61,7 @@ Create contacts in any supported Accounting software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -89,7 +89,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.CreateAccountingContactResponse](../../models/operations/createaccountingcontactresponse.md)\>**
+**Promise\<[components.UnifiedAccountingContactOutput](../../models/components/unifiedaccountingcontactoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -106,7 +106,7 @@ Retrieve Contacts from any connected Accounting software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -134,7 +134,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveAccountingContactResponse](../../models/operations/retrieveaccountingcontactresponse.md)\>**
+**Promise\<[components.UnifiedAccountingContactOutput](../../models/components/unifiedaccountingcontactoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

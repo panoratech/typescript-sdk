@@ -18,11 +18,6 @@ export type CreateHrisTimeoffRequest = {
     unifiedHrisTimeoffInput: components.UnifiedHrisTimeoffInput;
 };
 
-export type CreateHrisTimeoffResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedHrisTimeoffOutput?: components.UnifiedHrisTimeoffOutput | undefined;
-};
-
 /** @internal */
 export const CreateHrisTimeoffRequest$inboundSchema: z.ZodType<
     CreateHrisTimeoffRequest,
@@ -79,57 +74,4 @@ export namespace CreateHrisTimeoffRequest$ {
     export const outboundSchema = CreateHrisTimeoffRequest$outboundSchema;
     /** @deprecated use `CreateHrisTimeoffRequest$Outbound` instead. */
     export type Outbound = CreateHrisTimeoffRequest$Outbound;
-}
-
-/** @internal */
-export const CreateHrisTimeoffResponse$inboundSchema: z.ZodType<
-    CreateHrisTimeoffResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedHrisTimeoffOutput: components.UnifiedHrisTimeoffOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedHrisTimeoffOutput: "unifiedHrisTimeoffOutput",
-        });
-    });
-
-/** @internal */
-export type CreateHrisTimeoffResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedHrisTimeoffOutput?: components.UnifiedHrisTimeoffOutput$Outbound | undefined;
-};
-
-/** @internal */
-export const CreateHrisTimeoffResponse$outboundSchema: z.ZodType<
-    CreateHrisTimeoffResponse$Outbound,
-    z.ZodTypeDef,
-    CreateHrisTimeoffResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedHrisTimeoffOutput: components.UnifiedHrisTimeoffOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedHrisTimeoffOutput: "UnifiedHrisTimeoffOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateHrisTimeoffResponse$ {
-    /** @deprecated use `CreateHrisTimeoffResponse$inboundSchema` instead. */
-    export const inboundSchema = CreateHrisTimeoffResponse$inboundSchema;
-    /** @deprecated use `CreateHrisTimeoffResponse$outboundSchema` instead. */
-    export const outboundSchema = CreateHrisTimeoffResponse$outboundSchema;
-    /** @deprecated use `CreateHrisTimeoffResponse$Outbound` instead. */
-    export type Outbound = CreateHrisTimeoffResponse$Outbound;
 }

@@ -25,7 +25,7 @@ export const ServerList = [
 ] as const;
 
 export type SDKOptions = {
-    bearer?: string | (() => Promise<string>);
+    apiKey?: string | (() => Promise<string>);
 
     httpClient?: HTTPClient;
     /**
@@ -63,7 +63,7 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
 export const SDK_METADATA = {
     language: "typescript",
     openapiDocVersion: "1.0",
-    sdkVersion: "0.4.1",
-    genVersion: "2.384.4",
-    userAgent: "speakeasy-sdk/typescript 0.4.1 2.384.4 1.0 @panora/sdk",
+    sdkVersion: "0.4.2",
+    genVersion: "2.385.1",
+    userAgent: "speakeasy-sdk/typescript 0.4.2 2.385.1 1.0 @panora/sdk",
 } as const;

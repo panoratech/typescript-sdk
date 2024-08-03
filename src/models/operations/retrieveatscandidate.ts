@@ -3,7 +3,6 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
-import * as components from "../components/index.js";
 import * as z from "zod";
 
 export type RetrieveAtsCandidateRequest = {
@@ -19,11 +18,6 @@ export type RetrieveAtsCandidateRequest = {
      * Set to true to include data from the original Ats software.
      */
     remoteData?: boolean | undefined;
-};
-
-export type RetrieveAtsCandidateResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedAtsCandidateOutput?: components.UnifiedAtsCandidateOutput | undefined;
 };
 
 /** @internal */
@@ -80,57 +74,4 @@ export namespace RetrieveAtsCandidateRequest$ {
     export const outboundSchema = RetrieveAtsCandidateRequest$outboundSchema;
     /** @deprecated use `RetrieveAtsCandidateRequest$Outbound` instead. */
     export type Outbound = RetrieveAtsCandidateRequest$Outbound;
-}
-
-/** @internal */
-export const RetrieveAtsCandidateResponse$inboundSchema: z.ZodType<
-    RetrieveAtsCandidateResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedAtsCandidateOutput: components.UnifiedAtsCandidateOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedAtsCandidateOutput: "unifiedAtsCandidateOutput",
-        });
-    });
-
-/** @internal */
-export type RetrieveAtsCandidateResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedAtsCandidateOutput?: components.UnifiedAtsCandidateOutput$Outbound | undefined;
-};
-
-/** @internal */
-export const RetrieveAtsCandidateResponse$outboundSchema: z.ZodType<
-    RetrieveAtsCandidateResponse$Outbound,
-    z.ZodTypeDef,
-    RetrieveAtsCandidateResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedAtsCandidateOutput: components.UnifiedAtsCandidateOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedAtsCandidateOutput: "UnifiedAtsCandidateOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveAtsCandidateResponse$ {
-    /** @deprecated use `RetrieveAtsCandidateResponse$inboundSchema` instead. */
-    export const inboundSchema = RetrieveAtsCandidateResponse$inboundSchema;
-    /** @deprecated use `RetrieveAtsCandidateResponse$outboundSchema` instead. */
-    export const outboundSchema = RetrieveAtsCandidateResponse$outboundSchema;
-    /** @deprecated use `RetrieveAtsCandidateResponse$Outbound` instead. */
-    export type Outbound = RetrieveAtsCandidateResponse$Outbound;
 }

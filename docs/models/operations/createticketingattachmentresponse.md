@@ -1,9 +1,0 @@
-# CreateTicketingAttachmentResponse
-
-
-## Fields
-
-| Field                                                                                                      | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
-| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `httpMeta`                                                                                                 | [components.HTTPMetadata](../../models/components/httpmetadata.md)                                         | :heavy_check_mark:                                                                                         | N/A                                                                                                        |
-| `unifiedTicketingAttachmentOutput`                                                                         | [components.UnifiedTicketingAttachmentOutput](../../models/components/unifiedticketingattachmentoutput.md) | :heavy_minus_sign:                                                                                         | N/A                                                                                                        |

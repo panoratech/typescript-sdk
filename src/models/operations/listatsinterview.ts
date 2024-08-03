@@ -31,11 +31,6 @@ export type ListAtsInterviewResponseBody = {
     data: Array<components.UnifiedAtsInterviewOutput>;
 };
 
-export type ListAtsInterviewResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListAtsInterviewResponseBody | undefined;
-};
-
 /** @internal */
 export const ListAtsInterviewRequest$inboundSchema: z.ZodType<
     ListAtsInterviewRequest,
@@ -149,55 +144,4 @@ export namespace ListAtsInterviewResponseBody$ {
     export const outboundSchema = ListAtsInterviewResponseBody$outboundSchema;
     /** @deprecated use `ListAtsInterviewResponseBody$Outbound` instead. */
     export type Outbound = ListAtsInterviewResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListAtsInterviewResponse$inboundSchema: z.ZodType<
-    ListAtsInterviewResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListAtsInterviewResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListAtsInterviewResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListAtsInterviewResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListAtsInterviewResponse$outboundSchema: z.ZodType<
-    ListAtsInterviewResponse$Outbound,
-    z.ZodTypeDef,
-    ListAtsInterviewResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListAtsInterviewResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAtsInterviewResponse$ {
-    /** @deprecated use `ListAtsInterviewResponse$inboundSchema` instead. */
-    export const inboundSchema = ListAtsInterviewResponse$inboundSchema;
-    /** @deprecated use `ListAtsInterviewResponse$outboundSchema` instead. */
-    export const outboundSchema = ListAtsInterviewResponse$outboundSchema;
-    /** @deprecated use `ListAtsInterviewResponse$Outbound` instead. */
-    export type Outbound = ListAtsInterviewResponse$Outbound;
 }

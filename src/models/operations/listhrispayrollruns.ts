@@ -31,11 +31,6 @@ export type ListHrisPayrollRunsResponseBody = {
     data: Array<components.UnifiedHrisPayrollrunOutput>;
 };
 
-export type ListHrisPayrollRunsResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListHrisPayrollRunsResponseBody | undefined;
-};
-
 /** @internal */
 export const ListHrisPayrollRunsRequest$inboundSchema: z.ZodType<
     ListHrisPayrollRunsRequest,
@@ -149,55 +144,4 @@ export namespace ListHrisPayrollRunsResponseBody$ {
     export const outboundSchema = ListHrisPayrollRunsResponseBody$outboundSchema;
     /** @deprecated use `ListHrisPayrollRunsResponseBody$Outbound` instead. */
     export type Outbound = ListHrisPayrollRunsResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListHrisPayrollRunsResponse$inboundSchema: z.ZodType<
-    ListHrisPayrollRunsResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListHrisPayrollRunsResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListHrisPayrollRunsResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListHrisPayrollRunsResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListHrisPayrollRunsResponse$outboundSchema: z.ZodType<
-    ListHrisPayrollRunsResponse$Outbound,
-    z.ZodTypeDef,
-    ListHrisPayrollRunsResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListHrisPayrollRunsResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListHrisPayrollRunsResponse$ {
-    /** @deprecated use `ListHrisPayrollRunsResponse$inboundSchema` instead. */
-    export const inboundSchema = ListHrisPayrollRunsResponse$inboundSchema;
-    /** @deprecated use `ListHrisPayrollRunsResponse$outboundSchema` instead. */
-    export const outboundSchema = ListHrisPayrollRunsResponse$outboundSchema;
-    /** @deprecated use `ListHrisPayrollRunsResponse$Outbound` instead. */
-    export type Outbound = ListHrisPayrollRunsResponse$Outbound;
 }

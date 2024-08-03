@@ -16,7 +16,7 @@ List all Contacts
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -43,7 +43,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListTicketingContactsResponse](../../models/operations/listticketingcontactsresponse.md)\>**
+**Promise\<[operations.ListTicketingContactsResponseBody](../../models/operations/listticketingcontactsresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -60,7 +60,7 @@ Retrieve Contacts from any connected Ticketing software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -88,7 +88,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveTicketingContactResponse](../../models/operations/retrieveticketingcontactresponse.md)\>**
+**Promise\<[operations.RetrieveTicketingContactResponseBody](../../models/operations/retrieveticketingcontactresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

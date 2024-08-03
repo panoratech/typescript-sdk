@@ -18,11 +18,6 @@ export type CreateCrmCompanyRequest = {
     unifiedCrmCompanyInput: components.UnifiedCrmCompanyInput;
 };
 
-export type CreateCrmCompanyResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedCrmCompanyOutput?: components.UnifiedCrmCompanyOutput | undefined;
-};
-
 /** @internal */
 export const CreateCrmCompanyRequest$inboundSchema: z.ZodType<
     CreateCrmCompanyRequest,
@@ -79,57 +74,4 @@ export namespace CreateCrmCompanyRequest$ {
     export const outboundSchema = CreateCrmCompanyRequest$outboundSchema;
     /** @deprecated use `CreateCrmCompanyRequest$Outbound` instead. */
     export type Outbound = CreateCrmCompanyRequest$Outbound;
-}
-
-/** @internal */
-export const CreateCrmCompanyResponse$inboundSchema: z.ZodType<
-    CreateCrmCompanyResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedCrmCompanyOutput: components.UnifiedCrmCompanyOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedCrmCompanyOutput: "unifiedCrmCompanyOutput",
-        });
-    });
-
-/** @internal */
-export type CreateCrmCompanyResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedCrmCompanyOutput?: components.UnifiedCrmCompanyOutput$Outbound | undefined;
-};
-
-/** @internal */
-export const CreateCrmCompanyResponse$outboundSchema: z.ZodType<
-    CreateCrmCompanyResponse$Outbound,
-    z.ZodTypeDef,
-    CreateCrmCompanyResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedCrmCompanyOutput: components.UnifiedCrmCompanyOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedCrmCompanyOutput: "UnifiedCrmCompanyOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateCrmCompanyResponse$ {
-    /** @deprecated use `CreateCrmCompanyResponse$inboundSchema` instead. */
-    export const inboundSchema = CreateCrmCompanyResponse$inboundSchema;
-    /** @deprecated use `CreateCrmCompanyResponse$outboundSchema` instead. */
-    export const outboundSchema = CreateCrmCompanyResponse$outboundSchema;
-    /** @deprecated use `CreateCrmCompanyResponse$Outbound` instead. */
-    export type Outbound = CreateCrmCompanyResponse$Outbound;
 }

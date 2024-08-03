@@ -3,7 +3,6 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
-import * as components from "../components/index.js";
 import * as z from "zod";
 
 export type RetrieveCrmContactRequest = {
@@ -19,11 +18,6 @@ export type RetrieveCrmContactRequest = {
      * Set to true to include data from the original CRM software.
      */
     remoteData?: boolean | undefined;
-};
-
-export type RetrieveCrmContactResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedCrmContactOutput?: components.UnifiedCrmContactOutput | undefined;
 };
 
 /** @internal */
@@ -80,57 +74,4 @@ export namespace RetrieveCrmContactRequest$ {
     export const outboundSchema = RetrieveCrmContactRequest$outboundSchema;
     /** @deprecated use `RetrieveCrmContactRequest$Outbound` instead. */
     export type Outbound = RetrieveCrmContactRequest$Outbound;
-}
-
-/** @internal */
-export const RetrieveCrmContactResponse$inboundSchema: z.ZodType<
-    RetrieveCrmContactResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedCrmContactOutput: components.UnifiedCrmContactOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedCrmContactOutput: "unifiedCrmContactOutput",
-        });
-    });
-
-/** @internal */
-export type RetrieveCrmContactResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedCrmContactOutput?: components.UnifiedCrmContactOutput$Outbound | undefined;
-};
-
-/** @internal */
-export const RetrieveCrmContactResponse$outboundSchema: z.ZodType<
-    RetrieveCrmContactResponse$Outbound,
-    z.ZodTypeDef,
-    RetrieveCrmContactResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedCrmContactOutput: components.UnifiedCrmContactOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedCrmContactOutput: "UnifiedCrmContactOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveCrmContactResponse$ {
-    /** @deprecated use `RetrieveCrmContactResponse$inboundSchema` instead. */
-    export const inboundSchema = RetrieveCrmContactResponse$inboundSchema;
-    /** @deprecated use `RetrieveCrmContactResponse$outboundSchema` instead. */
-    export const outboundSchema = RetrieveCrmContactResponse$outboundSchema;
-    /** @deprecated use `RetrieveCrmContactResponse$Outbound` instead. */
-    export type Outbound = RetrieveCrmContactResponse$Outbound;
 }

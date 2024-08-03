@@ -3,7 +3,6 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
-import * as components from "../components/index.js";
 import * as z from "zod";
 
 export type RetrieveAtsInterviewRequest = {
@@ -19,11 +18,6 @@ export type RetrieveAtsInterviewRequest = {
      * Set to true to include data from the original Ats software.
      */
     remoteData?: boolean | undefined;
-};
-
-export type RetrieveAtsInterviewResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedAtsInterviewOutput?: components.UnifiedAtsInterviewOutput | undefined;
 };
 
 /** @internal */
@@ -80,57 +74,4 @@ export namespace RetrieveAtsInterviewRequest$ {
     export const outboundSchema = RetrieveAtsInterviewRequest$outboundSchema;
     /** @deprecated use `RetrieveAtsInterviewRequest$Outbound` instead. */
     export type Outbound = RetrieveAtsInterviewRequest$Outbound;
-}
-
-/** @internal */
-export const RetrieveAtsInterviewResponse$inboundSchema: z.ZodType<
-    RetrieveAtsInterviewResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedAtsInterviewOutput: components.UnifiedAtsInterviewOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedAtsInterviewOutput: "unifiedAtsInterviewOutput",
-        });
-    });
-
-/** @internal */
-export type RetrieveAtsInterviewResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedAtsInterviewOutput?: components.UnifiedAtsInterviewOutput$Outbound | undefined;
-};
-
-/** @internal */
-export const RetrieveAtsInterviewResponse$outboundSchema: z.ZodType<
-    RetrieveAtsInterviewResponse$Outbound,
-    z.ZodTypeDef,
-    RetrieveAtsInterviewResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedAtsInterviewOutput: components.UnifiedAtsInterviewOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedAtsInterviewOutput: "UnifiedAtsInterviewOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveAtsInterviewResponse$ {
-    /** @deprecated use `RetrieveAtsInterviewResponse$inboundSchema` instead. */
-    export const inboundSchema = RetrieveAtsInterviewResponse$inboundSchema;
-    /** @deprecated use `RetrieveAtsInterviewResponse$outboundSchema` instead. */
-    export const outboundSchema = RetrieveAtsInterviewResponse$outboundSchema;
-    /** @deprecated use `RetrieveAtsInterviewResponse$Outbound` instead. */
-    export type Outbound = RetrieveAtsInterviewResponse$Outbound;
 }

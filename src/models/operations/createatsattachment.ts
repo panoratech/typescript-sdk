@@ -18,11 +18,6 @@ export type CreateAtsAttachmentRequest = {
     unifiedAtsAttachmentInput: components.UnifiedAtsAttachmentInput;
 };
 
-export type CreateAtsAttachmentResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedAtsAttachmentOutput?: components.UnifiedAtsAttachmentOutput | undefined;
-};
-
 /** @internal */
 export const CreateAtsAttachmentRequest$inboundSchema: z.ZodType<
     CreateAtsAttachmentRequest,
@@ -79,57 +74,4 @@ export namespace CreateAtsAttachmentRequest$ {
     export const outboundSchema = CreateAtsAttachmentRequest$outboundSchema;
     /** @deprecated use `CreateAtsAttachmentRequest$Outbound` instead. */
     export type Outbound = CreateAtsAttachmentRequest$Outbound;
-}
-
-/** @internal */
-export const CreateAtsAttachmentResponse$inboundSchema: z.ZodType<
-    CreateAtsAttachmentResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedAtsAttachmentOutput: components.UnifiedAtsAttachmentOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedAtsAttachmentOutput: "unifiedAtsAttachmentOutput",
-        });
-    });
-
-/** @internal */
-export type CreateAtsAttachmentResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedAtsAttachmentOutput?: components.UnifiedAtsAttachmentOutput$Outbound | undefined;
-};
-
-/** @internal */
-export const CreateAtsAttachmentResponse$outboundSchema: z.ZodType<
-    CreateAtsAttachmentResponse$Outbound,
-    z.ZodTypeDef,
-    CreateAtsAttachmentResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedAtsAttachmentOutput: components.UnifiedAtsAttachmentOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedAtsAttachmentOutput: "UnifiedAtsAttachmentOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateAtsAttachmentResponse$ {
-    /** @deprecated use `CreateAtsAttachmentResponse$inboundSchema` instead. */
-    export const inboundSchema = CreateAtsAttachmentResponse$inboundSchema;
-    /** @deprecated use `CreateAtsAttachmentResponse$outboundSchema` instead. */
-    export const outboundSchema = CreateAtsAttachmentResponse$outboundSchema;
-    /** @deprecated use `CreateAtsAttachmentResponse$Outbound` instead. */
-    export type Outbound = CreateAtsAttachmentResponse$Outbound;
 }

@@ -31,11 +31,6 @@ export type ListAccountingIncomeStatementResponseBody = {
     data: Array<components.UnifiedAccountingIncomestatementOutput>;
 };
 
-export type ListAccountingIncomeStatementResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListAccountingIncomeStatementResponseBody | undefined;
-};
-
 /** @internal */
 export const ListAccountingIncomeStatementRequest$inboundSchema: z.ZodType<
     ListAccountingIncomeStatementRequest,
@@ -149,55 +144,4 @@ export namespace ListAccountingIncomeStatementResponseBody$ {
     export const outboundSchema = ListAccountingIncomeStatementResponseBody$outboundSchema;
     /** @deprecated use `ListAccountingIncomeStatementResponseBody$Outbound` instead. */
     export type Outbound = ListAccountingIncomeStatementResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListAccountingIncomeStatementResponse$inboundSchema: z.ZodType<
-    ListAccountingIncomeStatementResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListAccountingIncomeStatementResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListAccountingIncomeStatementResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListAccountingIncomeStatementResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListAccountingIncomeStatementResponse$outboundSchema: z.ZodType<
-    ListAccountingIncomeStatementResponse$Outbound,
-    z.ZodTypeDef,
-    ListAccountingIncomeStatementResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListAccountingIncomeStatementResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAccountingIncomeStatementResponse$ {
-    /** @deprecated use `ListAccountingIncomeStatementResponse$inboundSchema` instead. */
-    export const inboundSchema = ListAccountingIncomeStatementResponse$inboundSchema;
-    /** @deprecated use `ListAccountingIncomeStatementResponse$outboundSchema` instead. */
-    export const outboundSchema = ListAccountingIncomeStatementResponse$outboundSchema;
-    /** @deprecated use `ListAccountingIncomeStatementResponse$Outbound` instead. */
-    export type Outbound = ListAccountingIncomeStatementResponse$Outbound;
 }

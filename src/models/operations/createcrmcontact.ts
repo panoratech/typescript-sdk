@@ -18,11 +18,6 @@ export type CreateCrmContactRequest = {
     unifiedCrmContactInput: components.UnifiedCrmContactInput;
 };
 
-export type CreateCrmContactResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedCrmContactOutput?: components.UnifiedCrmContactOutput | undefined;
-};
-
 /** @internal */
 export const CreateCrmContactRequest$inboundSchema: z.ZodType<
     CreateCrmContactRequest,
@@ -79,57 +74,4 @@ export namespace CreateCrmContactRequest$ {
     export const outboundSchema = CreateCrmContactRequest$outboundSchema;
     /** @deprecated use `CreateCrmContactRequest$Outbound` instead. */
     export type Outbound = CreateCrmContactRequest$Outbound;
-}
-
-/** @internal */
-export const CreateCrmContactResponse$inboundSchema: z.ZodType<
-    CreateCrmContactResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedCrmContactOutput: components.UnifiedCrmContactOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedCrmContactOutput: "unifiedCrmContactOutput",
-        });
-    });
-
-/** @internal */
-export type CreateCrmContactResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedCrmContactOutput?: components.UnifiedCrmContactOutput$Outbound | undefined;
-};
-
-/** @internal */
-export const CreateCrmContactResponse$outboundSchema: z.ZodType<
-    CreateCrmContactResponse$Outbound,
-    z.ZodTypeDef,
-    CreateCrmContactResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedCrmContactOutput: components.UnifiedCrmContactOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedCrmContactOutput: "UnifiedCrmContactOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateCrmContactResponse$ {
-    /** @deprecated use `CreateCrmContactResponse$inboundSchema` instead. */
-    export const inboundSchema = CreateCrmContactResponse$inboundSchema;
-    /** @deprecated use `CreateCrmContactResponse$outboundSchema` instead. */
-    export const outboundSchema = CreateCrmContactResponse$outboundSchema;
-    /** @deprecated use `CreateCrmContactResponse$Outbound` instead. */
-    export type Outbound = CreateCrmContactResponse$Outbound;
 }

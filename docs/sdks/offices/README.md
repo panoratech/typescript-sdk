@@ -16,7 +16,7 @@ List Offices
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -43,7 +43,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListAtsOfficeResponse](../../models/operations/listatsofficeresponse.md)\>**
+**Promise\<[operations.ListAtsOfficeResponseBody](../../models/operations/listatsofficeresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -60,7 +60,7 @@ Retrieve Offices from any connected Ats software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -88,7 +88,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveAtsOfficeResponse](../../models/operations/retrieveatsofficeresponse.md)\>**
+**Promise\<[components.UnifiedAtsOfficeOutput](../../models/components/unifiedatsofficeoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

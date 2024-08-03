@@ -16,7 +16,7 @@ List  Eeocss
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -43,7 +43,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListAtsEeocsResponse](../../models/operations/listatseeocsresponse.md)\>**
+**Promise\<[operations.ListAtsEeocsResponseBody](../../models/operations/listatseeocsresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -60,7 +60,7 @@ Retrieve a eeocs from any connected Ats software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -88,7 +88,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveAtsEeocsResponse](../../models/operations/retrieveatseeocsresponse.md)\>**
+**Promise\<[components.UnifiedAtsEeocsOutput](../../models/components/unifiedatseeocsoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

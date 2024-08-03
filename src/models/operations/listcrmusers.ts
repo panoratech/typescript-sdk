@@ -31,11 +31,6 @@ export type ListCrmUsersResponseBody = {
     data: Array<components.UnifiedCrmUserOutput>;
 };
 
-export type ListCrmUsersResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListCrmUsersResponseBody | undefined;
-};
-
 /** @internal */
 export const ListCrmUsersRequest$inboundSchema: z.ZodType<
     ListCrmUsersRequest,
@@ -149,55 +144,4 @@ export namespace ListCrmUsersResponseBody$ {
     export const outboundSchema = ListCrmUsersResponseBody$outboundSchema;
     /** @deprecated use `ListCrmUsersResponseBody$Outbound` instead. */
     export type Outbound = ListCrmUsersResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListCrmUsersResponse$inboundSchema: z.ZodType<
-    ListCrmUsersResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListCrmUsersResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListCrmUsersResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListCrmUsersResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListCrmUsersResponse$outboundSchema: z.ZodType<
-    ListCrmUsersResponse$Outbound,
-    z.ZodTypeDef,
-    ListCrmUsersResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListCrmUsersResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListCrmUsersResponse$ {
-    /** @deprecated use `ListCrmUsersResponse$inboundSchema` instead. */
-    export const inboundSchema = ListCrmUsersResponse$inboundSchema;
-    /** @deprecated use `ListCrmUsersResponse$outboundSchema` instead. */
-    export const outboundSchema = ListCrmUsersResponse$outboundSchema;
-    /** @deprecated use `ListCrmUsersResponse$Outbound` instead. */
-    export type Outbound = ListCrmUsersResponse$Outbound;
 }

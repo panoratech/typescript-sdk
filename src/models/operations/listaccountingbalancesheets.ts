@@ -31,11 +31,6 @@ export type ListAccountingBalanceSheetsResponseBody = {
     data: Array<components.UnifiedAccountingBalancesheetOutput>;
 };
 
-export type ListAccountingBalanceSheetsResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListAccountingBalanceSheetsResponseBody | undefined;
-};
-
 /** @internal */
 export const ListAccountingBalanceSheetsRequest$inboundSchema: z.ZodType<
     ListAccountingBalanceSheetsRequest,
@@ -149,55 +144,4 @@ export namespace ListAccountingBalanceSheetsResponseBody$ {
     export const outboundSchema = ListAccountingBalanceSheetsResponseBody$outboundSchema;
     /** @deprecated use `ListAccountingBalanceSheetsResponseBody$Outbound` instead. */
     export type Outbound = ListAccountingBalanceSheetsResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListAccountingBalanceSheetsResponse$inboundSchema: z.ZodType<
-    ListAccountingBalanceSheetsResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListAccountingBalanceSheetsResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListAccountingBalanceSheetsResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListAccountingBalanceSheetsResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListAccountingBalanceSheetsResponse$outboundSchema: z.ZodType<
-    ListAccountingBalanceSheetsResponse$Outbound,
-    z.ZodTypeDef,
-    ListAccountingBalanceSheetsResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListAccountingBalanceSheetsResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAccountingBalanceSheetsResponse$ {
-    /** @deprecated use `ListAccountingBalanceSheetsResponse$inboundSchema` instead. */
-    export const inboundSchema = ListAccountingBalanceSheetsResponse$inboundSchema;
-    /** @deprecated use `ListAccountingBalanceSheetsResponse$outboundSchema` instead. */
-    export const outboundSchema = ListAccountingBalanceSheetsResponse$outboundSchema;
-    /** @deprecated use `ListAccountingBalanceSheetsResponse$Outbound` instead. */
-    export type Outbound = ListAccountingBalanceSheetsResponse$Outbound;
 }

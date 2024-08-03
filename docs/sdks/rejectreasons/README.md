@@ -16,7 +16,7 @@ List  RejectReasons
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -43,7 +43,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListAtsRejectReasonsResponse](../../models/operations/listatsrejectreasonsresponse.md)\>**
+**Promise\<[operations.ListAtsRejectReasonsResponseBody](../../models/operations/listatsrejectreasonsresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -60,7 +60,7 @@ Retrieve Reject Reasons from any connected Ats software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -88,7 +88,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveAtsRejectReasonResponse](../../models/operations/retrieveatsrejectreasonresponse.md)\>**
+**Promise\<[components.UnifiedAtsRejectreasonOutput](../../models/components/unifiedatsrejectreasonoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

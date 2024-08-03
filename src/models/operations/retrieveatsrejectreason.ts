@@ -3,7 +3,6 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
-import * as components from "../components/index.js";
 import * as z from "zod";
 
 export type RetrieveAtsRejectReasonRequest = {
@@ -19,11 +18,6 @@ export type RetrieveAtsRejectReasonRequest = {
      * Set to true to include data from the original Ats software.
      */
     remoteData?: boolean | undefined;
-};
-
-export type RetrieveAtsRejectReasonResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedAtsRejectreasonOutput?: components.UnifiedAtsRejectreasonOutput | undefined;
 };
 
 /** @internal */
@@ -80,59 +74,4 @@ export namespace RetrieveAtsRejectReasonRequest$ {
     export const outboundSchema = RetrieveAtsRejectReasonRequest$outboundSchema;
     /** @deprecated use `RetrieveAtsRejectReasonRequest$Outbound` instead. */
     export type Outbound = RetrieveAtsRejectReasonRequest$Outbound;
-}
-
-/** @internal */
-export const RetrieveAtsRejectReasonResponse$inboundSchema: z.ZodType<
-    RetrieveAtsRejectReasonResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedAtsRejectreasonOutput:
-            components.UnifiedAtsRejectreasonOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedAtsRejectreasonOutput: "unifiedAtsRejectreasonOutput",
-        });
-    });
-
-/** @internal */
-export type RetrieveAtsRejectReasonResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedAtsRejectreasonOutput?: components.UnifiedAtsRejectreasonOutput$Outbound | undefined;
-};
-
-/** @internal */
-export const RetrieveAtsRejectReasonResponse$outboundSchema: z.ZodType<
-    RetrieveAtsRejectReasonResponse$Outbound,
-    z.ZodTypeDef,
-    RetrieveAtsRejectReasonResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedAtsRejectreasonOutput:
-            components.UnifiedAtsRejectreasonOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedAtsRejectreasonOutput: "UnifiedAtsRejectreasonOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveAtsRejectReasonResponse$ {
-    /** @deprecated use `RetrieveAtsRejectReasonResponse$inboundSchema` instead. */
-    export const inboundSchema = RetrieveAtsRejectReasonResponse$inboundSchema;
-    /** @deprecated use `RetrieveAtsRejectReasonResponse$outboundSchema` instead. */
-    export const outboundSchema = RetrieveAtsRejectReasonResponse$outboundSchema;
-    /** @deprecated use `RetrieveAtsRejectReasonResponse$Outbound` instead. */
-    export type Outbound = RetrieveAtsRejectReasonResponse$Outbound;
 }

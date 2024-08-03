@@ -3,7 +3,6 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
-import * as components from "../components/index.js";
 import * as z from "zod";
 
 export type RetrieveAtsOfficeRequest = {
@@ -19,11 +18,6 @@ export type RetrieveAtsOfficeRequest = {
      * Set to true to include data from the original Ats software.
      */
     remoteData?: boolean | undefined;
-};
-
-export type RetrieveAtsOfficeResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedAtsOfficeOutput?: components.UnifiedAtsOfficeOutput | undefined;
 };
 
 /** @internal */
@@ -80,57 +74,4 @@ export namespace RetrieveAtsOfficeRequest$ {
     export const outboundSchema = RetrieveAtsOfficeRequest$outboundSchema;
     /** @deprecated use `RetrieveAtsOfficeRequest$Outbound` instead. */
     export type Outbound = RetrieveAtsOfficeRequest$Outbound;
-}
-
-/** @internal */
-export const RetrieveAtsOfficeResponse$inboundSchema: z.ZodType<
-    RetrieveAtsOfficeResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedAtsOfficeOutput: components.UnifiedAtsOfficeOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedAtsOfficeOutput: "unifiedAtsOfficeOutput",
-        });
-    });
-
-/** @internal */
-export type RetrieveAtsOfficeResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedAtsOfficeOutput?: components.UnifiedAtsOfficeOutput$Outbound | undefined;
-};
-
-/** @internal */
-export const RetrieveAtsOfficeResponse$outboundSchema: z.ZodType<
-    RetrieveAtsOfficeResponse$Outbound,
-    z.ZodTypeDef,
-    RetrieveAtsOfficeResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedAtsOfficeOutput: components.UnifiedAtsOfficeOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedAtsOfficeOutput: "UnifiedAtsOfficeOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveAtsOfficeResponse$ {
-    /** @deprecated use `RetrieveAtsOfficeResponse$inboundSchema` instead. */
-    export const inboundSchema = RetrieveAtsOfficeResponse$inboundSchema;
-    /** @deprecated use `RetrieveAtsOfficeResponse$outboundSchema` instead. */
-    export const outboundSchema = RetrieveAtsOfficeResponse$outboundSchema;
-    /** @deprecated use `RetrieveAtsOfficeResponse$Outbound` instead. */
-    export type Outbound = RetrieveAtsOfficeResponse$Outbound;
 }

@@ -16,7 +16,7 @@ List  Emails
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -43,7 +43,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListMarketingautomationEmailsResponse](../../models/operations/listmarketingautomationemailsresponse.md)\>**
+**Promise\<[operations.ListMarketingautomationEmailsResponseBody](../../models/operations/listmarketingautomationemailsresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -60,7 +60,7 @@ Retrieve Emails from any connected Marketingautomation software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -88,7 +88,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveMarketingautomationEmailResponse](../../models/operations/retrievemarketingautomationemailresponse.md)\>**
+**Promise\<[components.UnifiedMarketingautomationEmailOutput](../../models/components/unifiedmarketingautomationemailoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

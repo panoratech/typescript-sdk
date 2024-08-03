@@ -31,11 +31,6 @@ export type ListAccountingPurchaseOrderResponseBody = {
     data: Array<components.UnifiedAccountingPurchaseorderOutput>;
 };
 
-export type ListAccountingPurchaseOrderResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListAccountingPurchaseOrderResponseBody | undefined;
-};
-
 /** @internal */
 export const ListAccountingPurchaseOrderRequest$inboundSchema: z.ZodType<
     ListAccountingPurchaseOrderRequest,
@@ -149,55 +144,4 @@ export namespace ListAccountingPurchaseOrderResponseBody$ {
     export const outboundSchema = ListAccountingPurchaseOrderResponseBody$outboundSchema;
     /** @deprecated use `ListAccountingPurchaseOrderResponseBody$Outbound` instead. */
     export type Outbound = ListAccountingPurchaseOrderResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListAccountingPurchaseOrderResponse$inboundSchema: z.ZodType<
-    ListAccountingPurchaseOrderResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListAccountingPurchaseOrderResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListAccountingPurchaseOrderResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListAccountingPurchaseOrderResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListAccountingPurchaseOrderResponse$outboundSchema: z.ZodType<
-    ListAccountingPurchaseOrderResponse$Outbound,
-    z.ZodTypeDef,
-    ListAccountingPurchaseOrderResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListAccountingPurchaseOrderResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAccountingPurchaseOrderResponse$ {
-    /** @deprecated use `ListAccountingPurchaseOrderResponse$inboundSchema` instead. */
-    export const inboundSchema = ListAccountingPurchaseOrderResponse$inboundSchema;
-    /** @deprecated use `ListAccountingPurchaseOrderResponse$outboundSchema` instead. */
-    export const outboundSchema = ListAccountingPurchaseOrderResponse$outboundSchema;
-    /** @deprecated use `ListAccountingPurchaseOrderResponse$Outbound` instead. */
-    export type Outbound = ListAccountingPurchaseOrderResponse$Outbound;
 }

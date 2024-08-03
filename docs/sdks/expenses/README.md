@@ -17,7 +17,7 @@ List  Expenses
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -44,7 +44,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListAccountingExpenseResponse](../../models/operations/listaccountingexpenseresponse.md)\>**
+**Promise\<[operations.ListAccountingExpenseResponseBody](../../models/operations/listaccountingexpenseresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -61,7 +61,7 @@ Create Expenses in any supported Accounting software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -89,7 +89,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.CreateAccountingExpenseResponse](../../models/operations/createaccountingexpenseresponse.md)\>**
+**Promise\<[components.UnifiedAccountingExpenseOutput](../../models/components/unifiedaccountingexpenseoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -106,7 +106,7 @@ Retrieve Expenses from any connected Accounting software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -134,7 +134,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveAccountingExpenseResponse](../../models/operations/retrieveaccountingexpenseresponse.md)\>**
+**Promise\<[components.UnifiedAccountingExpenseOutput](../../models/components/unifiedaccountingexpenseoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

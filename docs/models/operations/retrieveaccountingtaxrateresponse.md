@@ -1,9 +1,0 @@
-# RetrieveAccountingTaxRateResponse
-
-
-## Fields
-
-| Field                                                                                                  | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
-| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
-| `httpMeta`                                                                                             | [components.HTTPMetadata](../../models/components/httpmetadata.md)                                     | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
-| `unifiedAccountingTaxrateOutput`                                                                       | [components.UnifiedAccountingTaxrateOutput](../../models/components/unifiedaccountingtaxrateoutput.md) | :heavy_minus_sign:                                                                                     | N/A                                                                                                    |

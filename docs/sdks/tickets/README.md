@@ -17,7 +17,7 @@ List  Tickets
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -44,7 +44,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListTicketingTicketResponse](../../models/operations/listticketingticketresponse.md)\>**
+**Promise\<[operations.ListTicketingTicketResponseBody](../../models/operations/listticketingticketresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -61,7 +61,7 @@ Create Tickets in any supported Ticketing software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -92,7 +92,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.CreateTicketingTicketResponse](../../models/operations/createticketingticketresponse.md)\>**
+**Promise\<[components.UnifiedTicketingTicketOutput](../../models/components/unifiedticketingticketoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -109,7 +109,7 @@ Retrieve Tickets from any connected Ticketing software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -137,7 +137,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveTicketingTicketResponse](../../models/operations/retrieveticketingticketresponse.md)\>**
+**Promise\<[components.UnifiedTicketingTicketOutput](../../models/components/unifiedticketingticketoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

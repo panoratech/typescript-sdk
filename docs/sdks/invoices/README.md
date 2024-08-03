@@ -17,7 +17,7 @@ List  Invoices
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -44,7 +44,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListAccountingInvoiceResponse](../../models/operations/listaccountinginvoiceresponse.md)\>**
+**Promise\<[operations.ListAccountingInvoiceResponseBody](../../models/operations/listaccountinginvoiceresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -61,7 +61,7 @@ Create invoices in any supported Accounting software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -89,7 +89,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.CreateAccountingInvoiceResponse](../../models/operations/createaccountinginvoiceresponse.md)\>**
+**Promise\<[components.UnifiedAccountingInvoiceOutput](../../models/components/unifiedaccountinginvoiceoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -106,7 +106,7 @@ Retrieve Invoices from any connected Accounting software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -134,7 +134,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveAccountingInvoiceResponse](../../models/operations/retrieveaccountinginvoiceresponse.md)\>**
+**Promise\<[components.UnifiedAccountingInvoiceOutput](../../models/components/unifiedaccountinginvoiceoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

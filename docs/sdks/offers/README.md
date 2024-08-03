@@ -16,7 +16,7 @@ List  Offers
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -43,7 +43,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListAtsOfferResponse](../../models/operations/listatsofferresponse.md)\>**
+**Promise\<[operations.ListAtsOfferResponseBody](../../models/operations/listatsofferresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -60,7 +60,7 @@ Retrieve Offers from any connected Ats software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -88,7 +88,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveAtsOfferResponse](../../models/operations/retrieveatsofferresponse.md)\>**
+**Promise\<[components.UnifiedAtsOfferOutput](../../models/components/unifiedatsofferoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

@@ -17,7 +17,7 @@ List  Timeoffs
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -44,7 +44,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListHrisTimeoffsResponse](../../models/operations/listhristimeoffsresponse.md)\>**
+**Promise\<[operations.ListHrisTimeoffsResponseBody](../../models/operations/listhristimeoffsresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -61,7 +61,7 @@ Create Timeoffs in any supported Hris software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -89,7 +89,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.CreateHrisTimeoffResponse](../../models/operations/createhristimeoffresponse.md)\>**
+**Promise\<[components.UnifiedHrisTimeoffOutput](../../models/components/unifiedhristimeoffoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -106,7 +106,7 @@ Retrieve Timeoffs from any connected Hris software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -134,7 +134,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveHrisTimeoffResponse](../../models/operations/retrievehristimeoffresponse.md)\>**
+**Promise\<[components.UnifiedHrisTimeoffOutput](../../models/components/unifiedhristimeoffoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

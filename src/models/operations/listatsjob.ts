@@ -31,11 +31,6 @@ export type ListAtsJobResponseBody = {
     data: Array<components.UnifiedAtsJobOutput>;
 };
 
-export type ListAtsJobResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListAtsJobResponseBody | undefined;
-};
-
 /** @internal */
 export const ListAtsJobRequest$inboundSchema: z.ZodType<ListAtsJobRequest, z.ZodTypeDef, unknown> =
     z
@@ -146,55 +141,4 @@ export namespace ListAtsJobResponseBody$ {
     export const outboundSchema = ListAtsJobResponseBody$outboundSchema;
     /** @deprecated use `ListAtsJobResponseBody$Outbound` instead. */
     export type Outbound = ListAtsJobResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListAtsJobResponse$inboundSchema: z.ZodType<
-    ListAtsJobResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListAtsJobResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListAtsJobResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListAtsJobResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListAtsJobResponse$outboundSchema: z.ZodType<
-    ListAtsJobResponse$Outbound,
-    z.ZodTypeDef,
-    ListAtsJobResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListAtsJobResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAtsJobResponse$ {
-    /** @deprecated use `ListAtsJobResponse$inboundSchema` instead. */
-    export const inboundSchema = ListAtsJobResponse$inboundSchema;
-    /** @deprecated use `ListAtsJobResponse$outboundSchema` instead. */
-    export const outboundSchema = ListAtsJobResponse$outboundSchema;
-    /** @deprecated use `ListAtsJobResponse$Outbound` instead. */
-    export type Outbound = ListAtsJobResponse$Outbound;
 }

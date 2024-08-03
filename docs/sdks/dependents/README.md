@@ -16,7 +16,7 @@ List  Dependents
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -43,7 +43,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListHrisDependentsResponse](../../models/operations/listhrisdependentsresponse.md)\>**
+**Promise\<[operations.ListHrisDependentsResponseBody](../../models/operations/listhrisdependentsresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -60,7 +60,7 @@ Retrieve Dependents from any connected Hris software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -88,7 +88,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveHrisDependentResponse](../../models/operations/retrievehrisdependentresponse.md)\>**
+**Promise\<[components.UnifiedHrisDependentOutput](../../models/components/unifiedhrisdependentoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

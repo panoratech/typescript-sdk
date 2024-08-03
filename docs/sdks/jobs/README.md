@@ -16,7 +16,7 @@ List  Jobs
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -43,7 +43,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListAtsJobResponse](../../models/operations/listatsjobresponse.md)\>**
+**Promise\<[operations.ListAtsJobResponseBody](../../models/operations/listatsjobresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -60,7 +60,7 @@ Retrieve Jobs from any connected Ats software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -88,7 +88,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveAtsJobResponse](../../models/operations/retrieveatsjobresponse.md)\>**
+**Promise\<[components.UnifiedAtsJobOutput](../../models/components/unifiedatsjoboutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

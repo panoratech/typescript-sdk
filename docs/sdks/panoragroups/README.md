@@ -16,7 +16,7 @@ List  Groups
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -43,7 +43,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListFilestorageGroupResponse](../../models/operations/listfilestoragegroupresponse.md)\>**
+**Promise\<[operations.ListFilestorageGroupResponseBody](../../models/operations/listfilestoragegroupresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -60,7 +60,7 @@ Retrieve Groups from any connected Filestorage software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -88,7 +88,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveFilestorageGroupResponse](../../models/operations/retrievefilestoragegroupresponse.md)\>**
+**Promise\<[components.UnifiedFilestorageGroupOutput](../../models/components/unifiedfilestoragegroupoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

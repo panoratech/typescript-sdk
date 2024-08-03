@@ -16,7 +16,7 @@ List  Accounts
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -43,7 +43,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListTicketingAccountResponse](../../models/operations/listticketingaccountresponse.md)\>**
+**Promise\<[operations.ListTicketingAccountResponseBody](../../models/operations/listticketingaccountresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -60,7 +60,7 @@ Retrieve Accounts from any connected Ticketing software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -88,7 +88,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveTicketingAccountResponse](../../models/operations/retrieveticketingaccountresponse.md)\>**
+**Promise\<[components.UnifiedTicketingAccountOutput](../../models/components/unifiedticketingaccountoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

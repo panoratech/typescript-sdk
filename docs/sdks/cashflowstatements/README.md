@@ -16,7 +16,7 @@ List  CashflowStatements
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -43,7 +43,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListAccountingCashflowStatementResponse](../../models/operations/listaccountingcashflowstatementresponse.md)\>**
+**Promise\<[operations.ListAccountingCashflowStatementResponseBody](../../models/operations/listaccountingcashflowstatementresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -60,7 +60,7 @@ Retrieve Cashflow Statements from any connected Accounting software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -88,7 +88,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveAccountingCashflowStatementResponse](../../models/operations/retrieveaccountingcashflowstatementresponse.md)\>**
+**Promise\<[components.UnifiedAccountingCashflowstatementOutput](../../models/components/unifiedaccountingcashflowstatementoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

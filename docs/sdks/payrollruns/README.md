@@ -15,7 +15,7 @@ List  PayrollRuns
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -42,7 +42,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListHrisPayrollRunsResponse](../../models/operations/listhrispayrollrunsresponse.md)\>**
+**Promise\<[operations.ListHrisPayrollRunsResponseBody](../../models/operations/listhrispayrollrunsresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

@@ -16,7 +16,7 @@ List  JobInterviewStages
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -43,7 +43,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListAtsJobInterviewStageResponse](../../models/operations/listatsjobinterviewstageresponse.md)\>**
+**Promise\<[operations.ListAtsJobInterviewStageResponseBody](../../models/operations/listatsjobinterviewstageresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -60,7 +60,7 @@ Retrieve Job Interview Stages from any connected Ats software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -88,7 +88,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveAtsJobInterviewStageResponse](../../models/operations/retrieveatsjobinterviewstageresponse.md)\>**
+**Promise\<[components.UnifiedAtsJobinterviewstageOutput](../../models/components/unifiedatsjobinterviewstageoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

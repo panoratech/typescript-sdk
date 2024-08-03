@@ -3,7 +3,6 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
-import * as components from "../components/index.js";
 import * as z from "zod";
 
 export type RetrieveAtsAttachmentRequest = {
@@ -19,11 +18,6 @@ export type RetrieveAtsAttachmentRequest = {
      * Set to true to include data from the original Ats software.
      */
     remoteData?: boolean | undefined;
-};
-
-export type RetrieveAtsAttachmentResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedAtsAttachmentOutput?: components.UnifiedAtsAttachmentOutput | undefined;
 };
 
 /** @internal */
@@ -80,57 +74,4 @@ export namespace RetrieveAtsAttachmentRequest$ {
     export const outboundSchema = RetrieveAtsAttachmentRequest$outboundSchema;
     /** @deprecated use `RetrieveAtsAttachmentRequest$Outbound` instead. */
     export type Outbound = RetrieveAtsAttachmentRequest$Outbound;
-}
-
-/** @internal */
-export const RetrieveAtsAttachmentResponse$inboundSchema: z.ZodType<
-    RetrieveAtsAttachmentResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedAtsAttachmentOutput: components.UnifiedAtsAttachmentOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedAtsAttachmentOutput: "unifiedAtsAttachmentOutput",
-        });
-    });
-
-/** @internal */
-export type RetrieveAtsAttachmentResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedAtsAttachmentOutput?: components.UnifiedAtsAttachmentOutput$Outbound | undefined;
-};
-
-/** @internal */
-export const RetrieveAtsAttachmentResponse$outboundSchema: z.ZodType<
-    RetrieveAtsAttachmentResponse$Outbound,
-    z.ZodTypeDef,
-    RetrieveAtsAttachmentResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedAtsAttachmentOutput: components.UnifiedAtsAttachmentOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedAtsAttachmentOutput: "UnifiedAtsAttachmentOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveAtsAttachmentResponse$ {
-    /** @deprecated use `RetrieveAtsAttachmentResponse$inboundSchema` instead. */
-    export const inboundSchema = RetrieveAtsAttachmentResponse$inboundSchema;
-    /** @deprecated use `RetrieveAtsAttachmentResponse$outboundSchema` instead. */
-    export const outboundSchema = RetrieveAtsAttachmentResponse$outboundSchema;
-    /** @deprecated use `RetrieveAtsAttachmentResponse$Outbound` instead. */
-    export type Outbound = RetrieveAtsAttachmentResponse$Outbound;
 }

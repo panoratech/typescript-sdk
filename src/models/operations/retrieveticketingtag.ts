@@ -3,7 +3,6 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
-import * as components from "../components/index.js";
 import * as z from "zod";
 
 export type RetrieveTicketingTagRequest = {
@@ -19,11 +18,6 @@ export type RetrieveTicketingTagRequest = {
      * Set to true to include data from the original Ticketing software.
      */
     remoteData?: boolean | undefined;
-};
-
-export type RetrieveTicketingTagResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedTicketingTagOutput?: components.UnifiedTicketingTagOutput | undefined;
 };
 
 /** @internal */
@@ -80,57 +74,4 @@ export namespace RetrieveTicketingTagRequest$ {
     export const outboundSchema = RetrieveTicketingTagRequest$outboundSchema;
     /** @deprecated use `RetrieveTicketingTagRequest$Outbound` instead. */
     export type Outbound = RetrieveTicketingTagRequest$Outbound;
-}
-
-/** @internal */
-export const RetrieveTicketingTagResponse$inboundSchema: z.ZodType<
-    RetrieveTicketingTagResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedTicketingTagOutput: components.UnifiedTicketingTagOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedTicketingTagOutput: "unifiedTicketingTagOutput",
-        });
-    });
-
-/** @internal */
-export type RetrieveTicketingTagResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedTicketingTagOutput?: components.UnifiedTicketingTagOutput$Outbound | undefined;
-};
-
-/** @internal */
-export const RetrieveTicketingTagResponse$outboundSchema: z.ZodType<
-    RetrieveTicketingTagResponse$Outbound,
-    z.ZodTypeDef,
-    RetrieveTicketingTagResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedTicketingTagOutput: components.UnifiedTicketingTagOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedTicketingTagOutput: "UnifiedTicketingTagOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveTicketingTagResponse$ {
-    /** @deprecated use `RetrieveTicketingTagResponse$inboundSchema` instead. */
-    export const inboundSchema = RetrieveTicketingTagResponse$inboundSchema;
-    /** @deprecated use `RetrieveTicketingTagResponse$outboundSchema` instead. */
-    export const outboundSchema = RetrieveTicketingTagResponse$outboundSchema;
-    /** @deprecated use `RetrieveTicketingTagResponse$Outbound` instead. */
-    export type Outbound = RetrieveTicketingTagResponse$Outbound;
 }

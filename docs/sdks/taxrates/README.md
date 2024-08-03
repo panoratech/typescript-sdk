@@ -16,7 +16,7 @@ List  TaxRates
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -43,7 +43,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListAccountingTaxRateResponse](../../models/operations/listaccountingtaxrateresponse.md)\>**
+**Promise\<[operations.ListAccountingTaxRateResponseBody](../../models/operations/listaccountingtaxrateresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -60,7 +60,7 @@ Retrieve Tax Rates from any connected Accounting software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -88,7 +88,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveAccountingTaxRateResponse](../../models/operations/retrieveaccountingtaxrateresponse.md)\>**
+**Promise\<[components.UnifiedAccountingTaxrateOutput](../../models/components/unifiedaccountingtaxrateoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

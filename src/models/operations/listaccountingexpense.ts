@@ -31,11 +31,6 @@ export type ListAccountingExpenseResponseBody = {
     data: Array<components.UnifiedAccountingExpenseOutput>;
 };
 
-export type ListAccountingExpenseResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListAccountingExpenseResponseBody | undefined;
-};
-
 /** @internal */
 export const ListAccountingExpenseRequest$inboundSchema: z.ZodType<
     ListAccountingExpenseRequest,
@@ -149,55 +144,4 @@ export namespace ListAccountingExpenseResponseBody$ {
     export const outboundSchema = ListAccountingExpenseResponseBody$outboundSchema;
     /** @deprecated use `ListAccountingExpenseResponseBody$Outbound` instead. */
     export type Outbound = ListAccountingExpenseResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListAccountingExpenseResponse$inboundSchema: z.ZodType<
-    ListAccountingExpenseResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListAccountingExpenseResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListAccountingExpenseResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListAccountingExpenseResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListAccountingExpenseResponse$outboundSchema: z.ZodType<
-    ListAccountingExpenseResponse$Outbound,
-    z.ZodTypeDef,
-    ListAccountingExpenseResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListAccountingExpenseResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAccountingExpenseResponse$ {
-    /** @deprecated use `ListAccountingExpenseResponse$inboundSchema` instead. */
-    export const inboundSchema = ListAccountingExpenseResponse$inboundSchema;
-    /** @deprecated use `ListAccountingExpenseResponse$outboundSchema` instead. */
-    export const outboundSchema = ListAccountingExpenseResponse$outboundSchema;
-    /** @deprecated use `ListAccountingExpenseResponse$Outbound` instead. */
-    export type Outbound = ListAccountingExpenseResponse$Outbound;
 }

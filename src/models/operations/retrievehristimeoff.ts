@@ -3,7 +3,6 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
-import * as components from "../components/index.js";
 import * as z from "zod";
 
 export type RetrieveHrisTimeoffRequest = {
@@ -19,11 +18,6 @@ export type RetrieveHrisTimeoffRequest = {
      * Set to true to include data from the original Hris software.
      */
     remoteData?: boolean | undefined;
-};
-
-export type RetrieveHrisTimeoffResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedHrisTimeoffOutput?: components.UnifiedHrisTimeoffOutput | undefined;
 };
 
 /** @internal */
@@ -80,57 +74,4 @@ export namespace RetrieveHrisTimeoffRequest$ {
     export const outboundSchema = RetrieveHrisTimeoffRequest$outboundSchema;
     /** @deprecated use `RetrieveHrisTimeoffRequest$Outbound` instead. */
     export type Outbound = RetrieveHrisTimeoffRequest$Outbound;
-}
-
-/** @internal */
-export const RetrieveHrisTimeoffResponse$inboundSchema: z.ZodType<
-    RetrieveHrisTimeoffResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedHrisTimeoffOutput: components.UnifiedHrisTimeoffOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedHrisTimeoffOutput: "unifiedHrisTimeoffOutput",
-        });
-    });
-
-/** @internal */
-export type RetrieveHrisTimeoffResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedHrisTimeoffOutput?: components.UnifiedHrisTimeoffOutput$Outbound | undefined;
-};
-
-/** @internal */
-export const RetrieveHrisTimeoffResponse$outboundSchema: z.ZodType<
-    RetrieveHrisTimeoffResponse$Outbound,
-    z.ZodTypeDef,
-    RetrieveHrisTimeoffResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedHrisTimeoffOutput: components.UnifiedHrisTimeoffOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedHrisTimeoffOutput: "UnifiedHrisTimeoffOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveHrisTimeoffResponse$ {
-    /** @deprecated use `RetrieveHrisTimeoffResponse$inboundSchema` instead. */
-    export const inboundSchema = RetrieveHrisTimeoffResponse$inboundSchema;
-    /** @deprecated use `RetrieveHrisTimeoffResponse$outboundSchema` instead. */
-    export const outboundSchema = RetrieveHrisTimeoffResponse$outboundSchema;
-    /** @deprecated use `RetrieveHrisTimeoffResponse$Outbound` instead. */
-    export type Outbound = RetrieveHrisTimeoffResponse$Outbound;
 }

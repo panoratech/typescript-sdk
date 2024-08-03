@@ -17,7 +17,7 @@ List  Folders
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -44,7 +44,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListFilestorageFolderResponse](../../models/operations/listfilestoragefolderresponse.md)\>**
+**Promise\<[operations.ListFilestorageFolderResponseBody](../../models/operations/listfilestoragefolderresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -61,7 +61,7 @@ Create Folders in any supported Filestorage software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -99,7 +99,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.CreateFilestorageFolderResponse](../../models/operations/createfilestoragefolderresponse.md)\>**
+**Promise\<[components.UnifiedFilestorageFolderOutput](../../models/components/unifiedfilestoragefolderoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -116,7 +116,7 @@ Retrieve Folders from any connected Filestorage software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -144,7 +144,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveFilestorageFolderResponse](../../models/operations/retrievefilestoragefolderresponse.md)\>**
+**Promise\<[components.UnifiedFilestorageFolderOutput](../../models/components/unifiedfilestoragefolderoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

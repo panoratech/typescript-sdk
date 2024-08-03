@@ -31,11 +31,6 @@ export type ListAtsRejectReasonsResponseBody = {
     data: Array<components.UnifiedAtsRejectreasonOutput>;
 };
 
-export type ListAtsRejectReasonsResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: ListAtsRejectReasonsResponseBody | undefined;
-};
-
 /** @internal */
 export const ListAtsRejectReasonsRequest$inboundSchema: z.ZodType<
     ListAtsRejectReasonsRequest,
@@ -149,55 +144,4 @@ export namespace ListAtsRejectReasonsResponseBody$ {
     export const outboundSchema = ListAtsRejectReasonsResponseBody$outboundSchema;
     /** @deprecated use `ListAtsRejectReasonsResponseBody$Outbound` instead. */
     export type Outbound = ListAtsRejectReasonsResponseBody$Outbound;
-}
-
-/** @internal */
-export const ListAtsRejectReasonsResponse$inboundSchema: z.ZodType<
-    ListAtsRejectReasonsResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => ListAtsRejectReasonsResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type ListAtsRejectReasonsResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: ListAtsRejectReasonsResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const ListAtsRejectReasonsResponse$outboundSchema: z.ZodType<
-    ListAtsRejectReasonsResponse$Outbound,
-    z.ZodTypeDef,
-    ListAtsRejectReasonsResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => ListAtsRejectReasonsResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAtsRejectReasonsResponse$ {
-    /** @deprecated use `ListAtsRejectReasonsResponse$inboundSchema` instead. */
-    export const inboundSchema = ListAtsRejectReasonsResponse$inboundSchema;
-    /** @deprecated use `ListAtsRejectReasonsResponse$outboundSchema` instead. */
-    export const outboundSchema = ListAtsRejectReasonsResponse$outboundSchema;
-    /** @deprecated use `ListAtsRejectReasonsResponse$Outbound` instead. */
-    export type Outbound = ListAtsRejectReasonsResponse$Outbound;
 }

@@ -18,11 +18,6 @@ export type CreateAccountingExpenseRequest = {
     unifiedAccountingExpenseInput: components.UnifiedAccountingExpenseInput;
 };
 
-export type CreateAccountingExpenseResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedAccountingExpenseOutput?: components.UnifiedAccountingExpenseOutput | undefined;
-};
-
 /** @internal */
 export const CreateAccountingExpenseRequest$inboundSchema: z.ZodType<
     CreateAccountingExpenseRequest,
@@ -79,59 +74,4 @@ export namespace CreateAccountingExpenseRequest$ {
     export const outboundSchema = CreateAccountingExpenseRequest$outboundSchema;
     /** @deprecated use `CreateAccountingExpenseRequest$Outbound` instead. */
     export type Outbound = CreateAccountingExpenseRequest$Outbound;
-}
-
-/** @internal */
-export const CreateAccountingExpenseResponse$inboundSchema: z.ZodType<
-    CreateAccountingExpenseResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedAccountingExpenseOutput:
-            components.UnifiedAccountingExpenseOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedAccountingExpenseOutput: "unifiedAccountingExpenseOutput",
-        });
-    });
-
-/** @internal */
-export type CreateAccountingExpenseResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedAccountingExpenseOutput?: components.UnifiedAccountingExpenseOutput$Outbound | undefined;
-};
-
-/** @internal */
-export const CreateAccountingExpenseResponse$outboundSchema: z.ZodType<
-    CreateAccountingExpenseResponse$Outbound,
-    z.ZodTypeDef,
-    CreateAccountingExpenseResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedAccountingExpenseOutput:
-            components.UnifiedAccountingExpenseOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedAccountingExpenseOutput: "UnifiedAccountingExpenseOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateAccountingExpenseResponse$ {
-    /** @deprecated use `CreateAccountingExpenseResponse$inboundSchema` instead. */
-    export const inboundSchema = CreateAccountingExpenseResponse$inboundSchema;
-    /** @deprecated use `CreateAccountingExpenseResponse$outboundSchema` instead. */
-    export const outboundSchema = CreateAccountingExpenseResponse$outboundSchema;
-    /** @deprecated use `CreateAccountingExpenseResponse$Outbound` instead. */
-    export type Outbound = CreateAccountingExpenseResponse$Outbound;
 }

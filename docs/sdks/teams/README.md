@@ -16,7 +16,7 @@ List  Teams
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -43,7 +43,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListTicketingTeamsResponse](../../models/operations/listticketingteamsresponse.md)\>**
+**Promise\<[operations.ListTicketingTeamsResponseBody](../../models/operations/listticketingteamsresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -60,7 +60,7 @@ Retrieve Teams from any connected Ticketing software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -88,7 +88,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveTicketingTeamResponse](../../models/operations/retrieveticketingteamresponse.md)\>**
+**Promise\<[components.UnifiedTicketingTeamOutput](../../models/components/unifiedticketingteamoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

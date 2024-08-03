@@ -3,7 +3,6 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
-import * as components from "../components/index.js";
 import * as z from "zod";
 
 export type RetrieveAccountingTaxRateRequest = {
@@ -19,11 +18,6 @@ export type RetrieveAccountingTaxRateRequest = {
      * Set to true to include data from the original Accounting software.
      */
     remoteData?: boolean | undefined;
-};
-
-export type RetrieveAccountingTaxRateResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedAccountingTaxrateOutput?: components.UnifiedAccountingTaxrateOutput | undefined;
 };
 
 /** @internal */
@@ -80,59 +74,4 @@ export namespace RetrieveAccountingTaxRateRequest$ {
     export const outboundSchema = RetrieveAccountingTaxRateRequest$outboundSchema;
     /** @deprecated use `RetrieveAccountingTaxRateRequest$Outbound` instead. */
     export type Outbound = RetrieveAccountingTaxRateRequest$Outbound;
-}
-
-/** @internal */
-export const RetrieveAccountingTaxRateResponse$inboundSchema: z.ZodType<
-    RetrieveAccountingTaxRateResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedAccountingTaxrateOutput:
-            components.UnifiedAccountingTaxrateOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedAccountingTaxrateOutput: "unifiedAccountingTaxrateOutput",
-        });
-    });
-
-/** @internal */
-export type RetrieveAccountingTaxRateResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedAccountingTaxrateOutput?: components.UnifiedAccountingTaxrateOutput$Outbound | undefined;
-};
-
-/** @internal */
-export const RetrieveAccountingTaxRateResponse$outboundSchema: z.ZodType<
-    RetrieveAccountingTaxRateResponse$Outbound,
-    z.ZodTypeDef,
-    RetrieveAccountingTaxRateResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedAccountingTaxrateOutput:
-            components.UnifiedAccountingTaxrateOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedAccountingTaxrateOutput: "UnifiedAccountingTaxrateOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveAccountingTaxRateResponse$ {
-    /** @deprecated use `RetrieveAccountingTaxRateResponse$inboundSchema` instead. */
-    export const inboundSchema = RetrieveAccountingTaxRateResponse$inboundSchema;
-    /** @deprecated use `RetrieveAccountingTaxRateResponse$outboundSchema` instead. */
-    export const outboundSchema = RetrieveAccountingTaxRateResponse$outboundSchema;
-    /** @deprecated use `RetrieveAccountingTaxRateResponse$Outbound` instead. */
-    export type Outbound = RetrieveAccountingTaxRateResponse$Outbound;
 }

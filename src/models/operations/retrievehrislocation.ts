@@ -3,7 +3,6 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
-import * as components from "../components/index.js";
 import * as z from "zod";
 
 export type RetrieveHrisLocationRequest = {
@@ -19,11 +18,6 @@ export type RetrieveHrisLocationRequest = {
      * Set to true to include data from the original Hris software.
      */
     remoteData?: boolean | undefined;
-};
-
-export type RetrieveHrisLocationResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedHrisLocationOutput?: components.UnifiedHrisLocationOutput | undefined;
 };
 
 /** @internal */
@@ -80,57 +74,4 @@ export namespace RetrieveHrisLocationRequest$ {
     export const outboundSchema = RetrieveHrisLocationRequest$outboundSchema;
     /** @deprecated use `RetrieveHrisLocationRequest$Outbound` instead. */
     export type Outbound = RetrieveHrisLocationRequest$Outbound;
-}
-
-/** @internal */
-export const RetrieveHrisLocationResponse$inboundSchema: z.ZodType<
-    RetrieveHrisLocationResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedHrisLocationOutput: components.UnifiedHrisLocationOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedHrisLocationOutput: "unifiedHrisLocationOutput",
-        });
-    });
-
-/** @internal */
-export type RetrieveHrisLocationResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedHrisLocationOutput?: components.UnifiedHrisLocationOutput$Outbound | undefined;
-};
-
-/** @internal */
-export const RetrieveHrisLocationResponse$outboundSchema: z.ZodType<
-    RetrieveHrisLocationResponse$Outbound,
-    z.ZodTypeDef,
-    RetrieveHrisLocationResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedHrisLocationOutput: components.UnifiedHrisLocationOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedHrisLocationOutput: "UnifiedHrisLocationOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveHrisLocationResponse$ {
-    /** @deprecated use `RetrieveHrisLocationResponse$inboundSchema` instead. */
-    export const inboundSchema = RetrieveHrisLocationResponse$inboundSchema;
-    /** @deprecated use `RetrieveHrisLocationResponse$outboundSchema` instead. */
-    export const outboundSchema = RetrieveHrisLocationResponse$outboundSchema;
-    /** @deprecated use `RetrieveHrisLocationResponse$Outbound` instead. */
-    export type Outbound = RetrieveHrisLocationResponse$Outbound;
 }

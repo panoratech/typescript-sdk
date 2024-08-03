@@ -17,7 +17,7 @@ List  PurchaseOrders
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -44,7 +44,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListAccountingPurchaseOrderResponse](../../models/operations/listaccountingpurchaseorderresponse.md)\>**
+**Promise\<[operations.ListAccountingPurchaseOrderResponseBody](../../models/operations/listaccountingpurchaseorderresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -61,7 +61,7 @@ Create Purchase Orders in any supported Accounting software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -89,7 +89,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.CreateAccountingPurchaseOrderResponse](../../models/operations/createaccountingpurchaseorderresponse.md)\>**
+**Promise\<[components.UnifiedAccountingPurchaseorderOutput](../../models/components/unifiedaccountingpurchaseorderoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -106,7 +106,7 @@ Retrieve Purchase Orders from any connected Accounting software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -134,7 +134,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveAccountingPurchaseOrderResponse](../../models/operations/retrieveaccountingpurchaseorderresponse.md)\>**
+**Promise\<[components.UnifiedAccountingPurchaseorderOutput](../../models/components/unifiedaccountingpurchaseorderoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

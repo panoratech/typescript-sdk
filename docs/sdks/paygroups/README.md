@@ -16,7 +16,7 @@ List  PayGroups
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -43,7 +43,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListHrisPaygroupResponse](../../models/operations/listhrispaygroupresponse.md)\>**
+**Promise\<[operations.ListHrisPaygroupResponseBody](../../models/operations/listhrispaygroupresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -60,7 +60,7 @@ Retrieve Pay Groups from any connected Hris software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -88,7 +88,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveHrisPaygroupResponse](../../models/operations/retrievehrispaygroupresponse.md)\>**
+**Promise\<[components.UnifiedHrisPaygroupOutput](../../models/components/unifiedhrispaygroupoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

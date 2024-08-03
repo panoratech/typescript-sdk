@@ -15,7 +15,7 @@ Retrieve a Linked User From A Remote Id
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -42,7 +42,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RemoteIdResponse](../../models/operations/remoteidresponse.md)\>**
+**Promise\<[components.LinkedUserResponse](../../models/components/linkeduserresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

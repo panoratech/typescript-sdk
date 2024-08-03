@@ -16,7 +16,7 @@ List  Users
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -43,7 +43,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListAtsUsersResponse](../../models/operations/listatsusersresponse.md)\>**
+**Promise\<[operations.ListAtsUsersResponseBody](../../models/operations/listatsusersresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -60,7 +60,7 @@ Retrieve Users from any connected Ats software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -88,7 +88,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveAtsUserResponse](../../models/operations/retrieveatsuserresponse.md)\>**
+**Promise\<[components.UnifiedAtsUserOutput](../../models/components/unifiedatsuseroutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

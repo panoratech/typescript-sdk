@@ -3,7 +3,6 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
-import * as components from "../components/index.js";
 import * as z from "zod";
 
 export type RetrieveFilestorageDriveRequest = {
@@ -19,11 +18,6 @@ export type RetrieveFilestorageDriveRequest = {
      * Set to true to include data from the original File Storage software.
      */
     remoteData?: boolean | undefined;
-};
-
-export type RetrieveFilestorageDriveResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedFilestorageDriveOutput?: components.UnifiedFilestorageDriveOutput | undefined;
 };
 
 /** @internal */
@@ -80,59 +74,4 @@ export namespace RetrieveFilestorageDriveRequest$ {
     export const outboundSchema = RetrieveFilestorageDriveRequest$outboundSchema;
     /** @deprecated use `RetrieveFilestorageDriveRequest$Outbound` instead. */
     export type Outbound = RetrieveFilestorageDriveRequest$Outbound;
-}
-
-/** @internal */
-export const RetrieveFilestorageDriveResponse$inboundSchema: z.ZodType<
-    RetrieveFilestorageDriveResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedFilestorageDriveOutput:
-            components.UnifiedFilestorageDriveOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedFilestorageDriveOutput: "unifiedFilestorageDriveOutput",
-        });
-    });
-
-/** @internal */
-export type RetrieveFilestorageDriveResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedFilestorageDriveOutput?: components.UnifiedFilestorageDriveOutput$Outbound | undefined;
-};
-
-/** @internal */
-export const RetrieveFilestorageDriveResponse$outboundSchema: z.ZodType<
-    RetrieveFilestorageDriveResponse$Outbound,
-    z.ZodTypeDef,
-    RetrieveFilestorageDriveResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedFilestorageDriveOutput:
-            components.UnifiedFilestorageDriveOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedFilestorageDriveOutput: "UnifiedFilestorageDriveOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveFilestorageDriveResponse$ {
-    /** @deprecated use `RetrieveFilestorageDriveResponse$inboundSchema` instead. */
-    export const inboundSchema = RetrieveFilestorageDriveResponse$inboundSchema;
-    /** @deprecated use `RetrieveFilestorageDriveResponse$outboundSchema` instead. */
-    export const outboundSchema = RetrieveFilestorageDriveResponse$outboundSchema;
-    /** @deprecated use `RetrieveFilestorageDriveResponse$Outbound` instead. */
-    export type Outbound = RetrieveFilestorageDriveResponse$Outbound;
 }

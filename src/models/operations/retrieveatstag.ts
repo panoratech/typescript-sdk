@@ -3,7 +3,6 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
-import * as components from "../components/index.js";
 import * as z from "zod";
 
 export type RetrieveAtsTagRequest = {
@@ -19,11 +18,6 @@ export type RetrieveAtsTagRequest = {
      * Set to true to include data from the original Ats software.
      */
     remoteData?: boolean | undefined;
-};
-
-export type RetrieveAtsTagResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedAtsTagOutput?: components.UnifiedAtsTagOutput | undefined;
 };
 
 /** @internal */
@@ -80,57 +74,4 @@ export namespace RetrieveAtsTagRequest$ {
     export const outboundSchema = RetrieveAtsTagRequest$outboundSchema;
     /** @deprecated use `RetrieveAtsTagRequest$Outbound` instead. */
     export type Outbound = RetrieveAtsTagRequest$Outbound;
-}
-
-/** @internal */
-export const RetrieveAtsTagResponse$inboundSchema: z.ZodType<
-    RetrieveAtsTagResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedAtsTagOutput: components.UnifiedAtsTagOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedAtsTagOutput: "unifiedAtsTagOutput",
-        });
-    });
-
-/** @internal */
-export type RetrieveAtsTagResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedAtsTagOutput?: components.UnifiedAtsTagOutput$Outbound | undefined;
-};
-
-/** @internal */
-export const RetrieveAtsTagResponse$outboundSchema: z.ZodType<
-    RetrieveAtsTagResponse$Outbound,
-    z.ZodTypeDef,
-    RetrieveAtsTagResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedAtsTagOutput: components.UnifiedAtsTagOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedAtsTagOutput: "UnifiedAtsTagOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveAtsTagResponse$ {
-    /** @deprecated use `RetrieveAtsTagResponse$inboundSchema` instead. */
-    export const inboundSchema = RetrieveAtsTagResponse$inboundSchema;
-    /** @deprecated use `RetrieveAtsTagResponse$outboundSchema` instead. */
-    export const outboundSchema = RetrieveAtsTagResponse$outboundSchema;
-    /** @deprecated use `RetrieveAtsTagResponse$Outbound` instead. */
-    export type Outbound = RetrieveAtsTagResponse$Outbound;
 }

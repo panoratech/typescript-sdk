@@ -18,11 +18,6 @@ export type CreateAtsInterviewRequest = {
     unifiedAtsInterviewInput: components.UnifiedAtsInterviewInput;
 };
 
-export type CreateAtsInterviewResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedAtsInterviewOutput?: components.UnifiedAtsInterviewOutput | undefined;
-};
-
 /** @internal */
 export const CreateAtsInterviewRequest$inboundSchema: z.ZodType<
     CreateAtsInterviewRequest,
@@ -79,57 +74,4 @@ export namespace CreateAtsInterviewRequest$ {
     export const outboundSchema = CreateAtsInterviewRequest$outboundSchema;
     /** @deprecated use `CreateAtsInterviewRequest$Outbound` instead. */
     export type Outbound = CreateAtsInterviewRequest$Outbound;
-}
-
-/** @internal */
-export const CreateAtsInterviewResponse$inboundSchema: z.ZodType<
-    CreateAtsInterviewResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedAtsInterviewOutput: components.UnifiedAtsInterviewOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedAtsInterviewOutput: "unifiedAtsInterviewOutput",
-        });
-    });
-
-/** @internal */
-export type CreateAtsInterviewResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedAtsInterviewOutput?: components.UnifiedAtsInterviewOutput$Outbound | undefined;
-};
-
-/** @internal */
-export const CreateAtsInterviewResponse$outboundSchema: z.ZodType<
-    CreateAtsInterviewResponse$Outbound,
-    z.ZodTypeDef,
-    CreateAtsInterviewResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedAtsInterviewOutput: components.UnifiedAtsInterviewOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedAtsInterviewOutput: "UnifiedAtsInterviewOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateAtsInterviewResponse$ {
-    /** @deprecated use `CreateAtsInterviewResponse$inboundSchema` instead. */
-    export const inboundSchema = CreateAtsInterviewResponse$inboundSchema;
-    /** @deprecated use `CreateAtsInterviewResponse$outboundSchema` instead. */
-    export const outboundSchema = CreateAtsInterviewResponse$outboundSchema;
-    /** @deprecated use `CreateAtsInterviewResponse$Outbound` instead. */
-    export type Outbound = CreateAtsInterviewResponse$Outbound;
 }

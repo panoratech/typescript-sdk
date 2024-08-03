@@ -27,11 +27,6 @@ export type RetrieveTicketingCommentResponseBody = {
     data: Array<components.UnifiedTicketingCommentOutput>;
 };
 
-export type RetrieveTicketingCommentResponse = {
-    httpMeta: components.HTTPMetadata;
-    object?: RetrieveTicketingCommentResponseBody | undefined;
-};
-
 /** @internal */
 export const RetrieveTicketingCommentRequest$inboundSchema: z.ZodType<
     RetrieveTicketingCommentRequest,
@@ -142,55 +137,4 @@ export namespace RetrieveTicketingCommentResponseBody$ {
     export const outboundSchema = RetrieveTicketingCommentResponseBody$outboundSchema;
     /** @deprecated use `RetrieveTicketingCommentResponseBody$Outbound` instead. */
     export type Outbound = RetrieveTicketingCommentResponseBody$Outbound;
-}
-
-/** @internal */
-export const RetrieveTicketingCommentResponse$inboundSchema: z.ZodType<
-    RetrieveTicketingCommentResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        object: z.lazy(() => RetrieveTicketingCommentResponseBody$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-        });
-    });
-
-/** @internal */
-export type RetrieveTicketingCommentResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    object?: RetrieveTicketingCommentResponseBody$Outbound | undefined;
-};
-
-/** @internal */
-export const RetrieveTicketingCommentResponse$outboundSchema: z.ZodType<
-    RetrieveTicketingCommentResponse$Outbound,
-    z.ZodTypeDef,
-    RetrieveTicketingCommentResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        object: z.lazy(() => RetrieveTicketingCommentResponseBody$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveTicketingCommentResponse$ {
-    /** @deprecated use `RetrieveTicketingCommentResponse$inboundSchema` instead. */
-    export const inboundSchema = RetrieveTicketingCommentResponse$inboundSchema;
-    /** @deprecated use `RetrieveTicketingCommentResponse$outboundSchema` instead. */
-    export const outboundSchema = RetrieveTicketingCommentResponse$outboundSchema;
-    /** @deprecated use `RetrieveTicketingCommentResponse$Outbound` instead. */
-    export type Outbound = RetrieveTicketingCommentResponse$Outbound;
 }

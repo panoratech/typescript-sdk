@@ -3,7 +3,6 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
-import * as components from "../components/index.js";
 import * as z from "zod";
 
 export type RetrieveCrmNoteRequest = {
@@ -19,11 +18,6 @@ export type RetrieveCrmNoteRequest = {
      * Set to true to include data from the original Crm software.
      */
     remoteData?: boolean | undefined;
-};
-
-export type RetrieveCrmNoteResponse = {
-    httpMeta: components.HTTPMetadata;
-    unifiedCrmNoteOutput?: components.UnifiedCrmNoteOutput | undefined;
 };
 
 /** @internal */
@@ -80,57 +74,4 @@ export namespace RetrieveCrmNoteRequest$ {
     export const outboundSchema = RetrieveCrmNoteRequest$outboundSchema;
     /** @deprecated use `RetrieveCrmNoteRequest$Outbound` instead. */
     export type Outbound = RetrieveCrmNoteRequest$Outbound;
-}
-
-/** @internal */
-export const RetrieveCrmNoteResponse$inboundSchema: z.ZodType<
-    RetrieveCrmNoteResponse,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        HttpMeta: components.HTTPMetadata$inboundSchema,
-        UnifiedCrmNoteOutput: components.UnifiedCrmNoteOutput$inboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            HttpMeta: "httpMeta",
-            UnifiedCrmNoteOutput: "unifiedCrmNoteOutput",
-        });
-    });
-
-/** @internal */
-export type RetrieveCrmNoteResponse$Outbound = {
-    HttpMeta: components.HTTPMetadata$Outbound;
-    UnifiedCrmNoteOutput?: components.UnifiedCrmNoteOutput$Outbound | undefined;
-};
-
-/** @internal */
-export const RetrieveCrmNoteResponse$outboundSchema: z.ZodType<
-    RetrieveCrmNoteResponse$Outbound,
-    z.ZodTypeDef,
-    RetrieveCrmNoteResponse
-> = z
-    .object({
-        httpMeta: components.HTTPMetadata$outboundSchema,
-        unifiedCrmNoteOutput: components.UnifiedCrmNoteOutput$outboundSchema.optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            httpMeta: "HttpMeta",
-            unifiedCrmNoteOutput: "UnifiedCrmNoteOutput",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetrieveCrmNoteResponse$ {
-    /** @deprecated use `RetrieveCrmNoteResponse$inboundSchema` instead. */
-    export const inboundSchema = RetrieveCrmNoteResponse$inboundSchema;
-    /** @deprecated use `RetrieveCrmNoteResponse$outboundSchema` instead. */
-    export const outboundSchema = RetrieveCrmNoteResponse$outboundSchema;
-    /** @deprecated use `RetrieveCrmNoteResponse$Outbound` instead. */
-    export type Outbound = RetrieveCrmNoteResponse$Outbound;
 }

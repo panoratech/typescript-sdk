@@ -17,7 +17,7 @@ List CRM Contacts
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -44,7 +44,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListCrmContactsResponse](../../models/operations/listcrmcontactsresponse.md)\>**
+**Promise\<[operations.ListCrmContactsResponseBody](../../models/operations/listcrmcontactsresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -61,7 +61,7 @@ Create Contacts in any supported CRM
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -92,7 +92,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.CreateCrmContactResponse](../../models/operations/createcrmcontactresponse.md)\>**
+**Promise\<[components.UnifiedCrmContactOutput](../../models/components/unifiedcrmcontactoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -109,7 +109,7 @@ Retrieve Contacts from any connected CRM
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -137,7 +137,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveCrmContactResponse](../../models/operations/retrievecrmcontactresponse.md)\>**
+**Promise\<[components.UnifiedCrmContactOutput](../../models/components/unifiedcrmcontactoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

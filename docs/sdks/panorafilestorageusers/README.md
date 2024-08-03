@@ -16,7 +16,7 @@ List  Users
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -43,7 +43,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListFilestorageUsersResponse](../../models/operations/listfilestorageusersresponse.md)\>**
+**Promise\<[operations.ListFilestorageUsersResponseBody](../../models/operations/listfilestorageusersresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -60,7 +60,7 @@ Retrieve Users from any connected Filestorage software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -88,7 +88,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveFilestorageUserResponse](../../models/operations/retrievefilestorageuserresponse.md)\>**
+**Promise\<[components.UnifiedUserOutput](../../models/components/unifieduseroutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

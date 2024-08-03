@@ -16,7 +16,7 @@ List  IncomeStatements
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -43,7 +43,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListAccountingIncomeStatementResponse](../../models/operations/listaccountingincomestatementresponse.md)\>**
+**Promise\<[operations.ListAccountingIncomeStatementResponseBody](../../models/operations/listaccountingincomestatementresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -60,7 +60,7 @@ Retrieve Income Statements from any connected Accounting software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  bearer: process.env.BEARER,
+  apiKey: process.env.API_KEY,
 });
 
 async function run() {
@@ -88,7 +88,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetrieveAccountingIncomeStatementResponse](../../models/operations/retrieveaccountingincomestatementresponse.md)\>**
+**Promise\<[components.UnifiedAccountingIncomestatementOutput](../../models/components/unifiedaccountingincomestatementoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
