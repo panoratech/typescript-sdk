@@ -7,9 +7,9 @@ import { Actions } from "./actions.js";
 import { Automations } from "./automations.js";
 import { Campaigns } from "./campaigns.js";
 import { Emails } from "./emails.js";
-import { Events } from "./events.js";
 import { Lists } from "./lists.js";
 import { Messages } from "./messages.js";
+import { PanoraEvents } from "./panoraevents.js";
 import { PanoraMarketingautomationContacts } from "./panoramarketingautomationcontacts.js";
 import { PanoraMarketingautomationUsers } from "./panoramarketingautomationusers.js";
 import { Templates } from "./templates.js";
@@ -40,9 +40,9 @@ export class Marketingautomation extends ClientSDK {
         return (this._emails ??= new Emails(this.options$));
     }
 
-    private _events?: Events;
-    get events(): Events {
-        return (this._events ??= new Events(this.options$));
+    private _events?: PanoraEvents;
+    get events(): PanoraEvents {
+        return (this._events ??= new PanoraEvents(this.options$));
     }
 
     private _lists?: Lists;

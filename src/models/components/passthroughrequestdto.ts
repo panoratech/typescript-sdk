@@ -4,7 +4,7 @@
 
 import * as z from "zod";
 
-export enum Method {
+export enum PassThroughRequestDtoMethod {
     Get = "GET",
     Post = "POST",
     Patch = "PATCH",
@@ -15,27 +15,31 @@ export enum Method {
 export type Data = { [k: string]: any } | Array<{ [k: string]: any }>;
 
 export type PassThroughRequestDto = {
-    method: Method;
+    method: PassThroughRequestDtoMethod;
     path: string | null;
     data: { [k: string]: any } | Array<{ [k: string]: any }> | null;
     headers: { [k: string]: any } | null;
 };
 
 /** @internal */
-export const Method$inboundSchema: z.ZodNativeEnum<typeof Method> = z.nativeEnum(Method);
+export const PassThroughRequestDtoMethod$inboundSchema: z.ZodNativeEnum<
+    typeof PassThroughRequestDtoMethod
+> = z.nativeEnum(PassThroughRequestDtoMethod);
 
 /** @internal */
-export const Method$outboundSchema: z.ZodNativeEnum<typeof Method> = Method$inboundSchema;
+export const PassThroughRequestDtoMethod$outboundSchema: z.ZodNativeEnum<
+    typeof PassThroughRequestDtoMethod
+> = PassThroughRequestDtoMethod$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Method$ {
-    /** @deprecated use `Method$inboundSchema` instead. */
-    export const inboundSchema = Method$inboundSchema;
-    /** @deprecated use `Method$outboundSchema` instead. */
-    export const outboundSchema = Method$outboundSchema;
+export namespace PassThroughRequestDtoMethod$ {
+    /** @deprecated use `PassThroughRequestDtoMethod$inboundSchema` instead. */
+    export const inboundSchema = PassThroughRequestDtoMethod$inboundSchema;
+    /** @deprecated use `PassThroughRequestDtoMethod$outboundSchema` instead. */
+    export const outboundSchema = PassThroughRequestDtoMethod$outboundSchema;
 }
 
 /** @internal */
@@ -72,7 +76,7 @@ export const PassThroughRequestDto$inboundSchema: z.ZodType<
     z.ZodTypeDef,
     unknown
 > = z.object({
-    method: Method$inboundSchema,
+    method: PassThroughRequestDtoMethod$inboundSchema,
     path: z.nullable(z.string()),
     data: z.nullable(z.union([z.record(z.any()), z.array(z.record(z.any()))])),
     headers: z.nullable(z.record(z.any())),
@@ -92,7 +96,7 @@ export const PassThroughRequestDto$outboundSchema: z.ZodType<
     z.ZodTypeDef,
     PassThroughRequestDto
 > = z.object({
-    method: Method$outboundSchema,
+    method: PassThroughRequestDtoMethod$outboundSchema,
     path: z.nullable(z.string()),
     data: z.nullable(z.union([z.record(z.any()), z.array(z.record(z.any()))])),
     headers: z.nullable(z.record(z.any())),

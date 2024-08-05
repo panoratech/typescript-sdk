@@ -1,13 +1,13 @@
-# Id
-(*linkedUsers.id*)
+# Login
+(*auth.login*)
 
 ### Available Operations
 
-* [retrieve](#retrieve) - Retrieve Linked Users
+* [signIn](#signin) - Log In
 
-## retrieve
+## signIn
 
-Retrieve Linked Users
+Log In
 
 ### Example Usage
 
@@ -19,12 +19,13 @@ const panora = new Panora({
 });
 
 async function run() {
-  const result = await panora.linkedUsers.id.retrieve({
-    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+  await panora.auth.login.signIn({
+    idUser: "<value>",
+    email: "Oda.Treutel97@hotmail.com",
+    passwordHash: "<value>",
   });
 
-  // Handle the result
-  console.log(result)
+  
 }
 
 run();
@@ -34,7 +35,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.RetrieveLinkedUserRequest](../../models/operations/retrievelinkeduserrequest.md)                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [components.LoginDto](../../models/components/logindto.md)                                                                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -42,7 +43,7 @@ run();
 
 ### Response
 
-**Promise\<[components.LinkedUserResponse](../../models/components/linkeduserresponse.md)\>**
+**Promise\<void\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

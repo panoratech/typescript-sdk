@@ -4,12 +4,64 @@
 
 import * as z from "zod";
 
+export enum Vertical {
+    Ticketing = "ticketing",
+    Ats = "ats",
+    Accounting = "accounting",
+    Hris = "hris",
+    Crm = "crm",
+    Filestorage = "filestorage",
+    Ecommerce = "ecommerce",
+    Marketingautomation = "marketingautomation",
+}
+
+export enum ResyncStatusDtoStatus {
+    Success = "success",
+    Fail = "fail",
+}
+
 export type ResyncStatusDto = {
     timestamp: Date | null;
-    vertical: string | null;
+    vertical: Vertical | null;
     provider: string | null;
-    status: string | null;
+    status: ResyncStatusDtoStatus | null;
 };
+
+/** @internal */
+export const Vertical$inboundSchema: z.ZodNativeEnum<typeof Vertical> = z.nativeEnum(Vertical);
+
+/** @internal */
+export const Vertical$outboundSchema: z.ZodNativeEnum<typeof Vertical> = Vertical$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Vertical$ {
+    /** @deprecated use `Vertical$inboundSchema` instead. */
+    export const inboundSchema = Vertical$inboundSchema;
+    /** @deprecated use `Vertical$outboundSchema` instead. */
+    export const outboundSchema = Vertical$outboundSchema;
+}
+
+/** @internal */
+export const ResyncStatusDtoStatus$inboundSchema: z.ZodNativeEnum<typeof ResyncStatusDtoStatus> =
+    z.nativeEnum(ResyncStatusDtoStatus);
+
+/** @internal */
+export const ResyncStatusDtoStatus$outboundSchema: z.ZodNativeEnum<typeof ResyncStatusDtoStatus> =
+    ResyncStatusDtoStatus$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ResyncStatusDtoStatus$ {
+    /** @deprecated use `ResyncStatusDtoStatus$inboundSchema` instead. */
+    export const inboundSchema = ResyncStatusDtoStatus$inboundSchema;
+    /** @deprecated use `ResyncStatusDtoStatus$outboundSchema` instead. */
+    export const outboundSchema = ResyncStatusDtoStatus$outboundSchema;
+}
 
 /** @internal */
 export const ResyncStatusDto$inboundSchema: z.ZodType<ResyncStatusDto, z.ZodTypeDef, unknown> =
@@ -20,9 +72,9 @@ export const ResyncStatusDto$inboundSchema: z.ZodType<ResyncStatusDto, z.ZodType
                 .datetime({ offset: true })
                 .transform((v) => new Date(v))
         ),
-        vertical: z.nullable(z.string()),
+        vertical: z.nullable(Vertical$inboundSchema),
         provider: z.nullable(z.string()),
-        status: z.nullable(z.string()),
+        status: z.nullable(ResyncStatusDtoStatus$inboundSchema),
     });
 
 /** @internal */
@@ -40,9 +92,9 @@ export const ResyncStatusDto$outboundSchema: z.ZodType<
     ResyncStatusDto
 > = z.object({
     timestamp: z.nullable(z.date().transform((v) => v.toISOString())),
-    vertical: z.nullable(z.string()),
+    vertical: z.nullable(Vertical$outboundSchema),
     provider: z.nullable(z.string()),
-    status: z.nullable(z.string()),
+    status: z.nullable(ResyncStatusDtoStatus$outboundSchema),
 });
 
 /**

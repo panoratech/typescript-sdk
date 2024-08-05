@@ -13,7 +13,7 @@ Make a passthrough request
 
 ```typescript
 import { Panora } from "@panora/sdk";
-import { Method } from "@panora/sdk/models/components";
+import { PassThroughRequestDtoMethod } from "@panora/sdk/models/components";
 
 const panora = new Panora({
   apiKey: "<YOUR_API_KEY_HERE>",
@@ -25,7 +25,7 @@ async function run() {
     linkedUserId: "<value>",
     vertical: "<value>",
     passThroughRequestDto: {
-      method: Method.Get,
+      method: PassThroughRequestDtoMethod.Get,
       path: "/dev",
     data:     {
           "key": "<value>",

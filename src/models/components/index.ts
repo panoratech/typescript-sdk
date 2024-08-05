@@ -3,17 +3,22 @@
  */
 
 export * from "./address.js";
+export * from "./connection.js";
 export * from "./createbatchlinkeduserdto.js";
 export * from "./createlinkeduserdto.js";
+export * from "./createprojectdto.js";
 export * from "./customfieldcreatedto.js";
 export * from "./customfieldresponse.js";
 export * from "./definetargetfielddto.js";
 export * from "./email.js";
+export * from "./eventresponse.js";
 export * from "./linkeduserresponse.js";
+export * from "./logindto.js";
 export * from "./mapfieldtoproviderdto.js";
 export * from "./passthroughrequestdto.js";
 export * from "./passthroughresponse.js";
 export * from "./phone.js";
+export * from "./projectresponse.js";
 export * from "./resyncstatusdto.js";
 export * from "./security.js";
 export * from "./signatureverificationdto.js";

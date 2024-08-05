@@ -35,6 +35,7 @@ export * from "./createticketingattachment.js";
 export * from "./createticketingcomment.js";
 export * from "./createticketingticket.js";
 export * from "./delete.js";
+export * from "./getpanoracoreevents.js";
 export * from "./listaccountingaccounts.js";
 export * from "./listaccountingaddress.js";
 export * from "./listaccountingattachments.js";
