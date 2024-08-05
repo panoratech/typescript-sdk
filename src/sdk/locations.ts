@@ -19,17 +19,17 @@ import { unwrap as unwrap$ } from "../types/fp.js";
 
 export class Locations extends ClientSDK {
     /**
-     * List  Locations
+     * List Locations
      */
     async list(
-        request: operations.ListHrisLocationRequest,
+        request: operations.ListHrisLocationsRequest,
         options?: RequestOptions
-    ): Promise<operations.ListHrisLocationResponseBody> {
+    ): Promise<operations.ListHrisLocationsResponseBody> {
         const input$ = request;
 
         const parsed$ = schemas$.safeParse(
             input$,
-            (value$) => operations.ListHrisLocationRequest$outboundSchema.parse(value$),
+            (value$) => operations.ListHrisLocationsRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const payload$ = unwrap$(parsed$);
@@ -55,7 +55,7 @@ export class Locations extends ClientSDK {
         const apiKey$ = await extractSecurity(this.options$.apiKey);
         const security$ = apiKey$ == null ? {} : { apiKey: apiKey$ };
         const context = {
-            operationID: "listHrisLocation",
+            operationID: "listHrisLocations",
             oAuth2Scopes: [],
             securitySource: this.options$.apiKey,
         };
@@ -85,10 +85,10 @@ export class Locations extends ClientSDK {
         const response = unwrap$(doResult);
 
         const [result$] = await m$.match<
-            operations.ListHrisLocationResponseBody,
+            operations.ListHrisLocationsResponseBody,
             SDKError | SDKValidationError
         >(
-            m$.json(200, operations.ListHrisLocationResponseBody$inboundSchema),
+            m$.json(200, operations.ListHrisLocationsResponseBody$inboundSchema),
             m$.fail(["4XX", "5XX"])
         )(response);
 
@@ -96,10 +96,10 @@ export class Locations extends ClientSDK {
     }
 
     /**
-     * Retrieve Locations
+     * Retrieve Location
      *
      * @remarks
-     * Retrieve Locations from any connected Hris software
+     * Retrieve a Location from any connected Hris software
      */
     async retrieve(
         request: operations.RetrieveHrisLocationRequest,

@@ -20,7 +20,7 @@ import { unwrap as unwrap$ } from "../types/fp.js";
 
 export class Comments extends ClientSDK {
     /**
-     * List  Comments
+     * List Comments
      */
     async list(
         request: operations.ListTicketingCommentsRequest,
@@ -176,10 +176,10 @@ export class Comments extends ClientSDK {
     }
 
     /**
-     * Retrieve Comments
+     * Retrieve Comment
      *
      * @remarks
-     * Retrieve Comments from any connected Ticketing software
+     * Retrieve a Comment from any connected Ticketing software
      */
     async retrieve(
         request: operations.RetrieveTicketingCommentRequest,

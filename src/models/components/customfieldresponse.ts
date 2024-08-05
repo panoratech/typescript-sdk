@@ -5,6 +5,14 @@
 import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
+/**
+ * Attribute Data Type
+ */
+export enum CustomFieldResponseDataType {
+    String = "string",
+    Number = "number",
+}
+
 export type CustomFieldResponse = {
     /**
      * Attribute Id
@@ -29,7 +37,7 @@ export type CustomFieldResponse = {
     /**
      * Attribute Data Type
      */
-    dataType: string | null;
+    dataType: CustomFieldResponseDataType | null;
     /**
      * Attribute Remote Id
      */
@@ -39,11 +47,11 @@ export type CustomFieldResponse = {
      */
     source: string | null;
     /**
-     * Attribute Id Entity
+     * Attribute Entity Id
      */
     idEntity: string | null;
     /**
-     * Attribute Id Project
+     * Attribute Project Id
      */
     idProject: string | null;
     /**
@@ -51,7 +59,7 @@ export type CustomFieldResponse = {
      */
     scope: string | null;
     /**
-     * Attribute Id Consumer
+     * Attribute Consumer Id
      */
     idConsumer: string | null;
     /**
@@ -65,6 +73,27 @@ export type CustomFieldResponse = {
 };
 
 /** @internal */
+export const CustomFieldResponseDataType$inboundSchema: z.ZodNativeEnum<
+    typeof CustomFieldResponseDataType
+> = z.nativeEnum(CustomFieldResponseDataType);
+
+/** @internal */
+export const CustomFieldResponseDataType$outboundSchema: z.ZodNativeEnum<
+    typeof CustomFieldResponseDataType
+> = CustomFieldResponseDataType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CustomFieldResponseDataType$ {
+    /** @deprecated use `CustomFieldResponseDataType$inboundSchema` instead. */
+    export const inboundSchema = CustomFieldResponseDataType$inboundSchema;
+    /** @deprecated use `CustomFieldResponseDataType$outboundSchema` instead. */
+    export const outboundSchema = CustomFieldResponseDataType$outboundSchema;
+}
+
+/** @internal */
 export const CustomFieldResponse$inboundSchema: z.ZodType<
     CustomFieldResponse,
     z.ZodTypeDef,
@@ -76,7 +105,7 @@ export const CustomFieldResponse$inboundSchema: z.ZodType<
         ressource_owner_type: z.nullable(z.string()),
         slug: z.nullable(z.string()),
         description: z.nullable(z.string()),
-        data_type: z.nullable(z.string()),
+        data_type: z.nullable(CustomFieldResponseDataType$inboundSchema),
         remote_id: z.nullable(z.string()),
         source: z.nullable(z.string()),
         id_entity: z.nullable(z.string()),
@@ -140,7 +169,7 @@ export const CustomFieldResponse$outboundSchema: z.ZodType<
         ressourceOwnerType: z.nullable(z.string()),
         slug: z.nullable(z.string()),
         description: z.nullable(z.string()),
-        dataType: z.nullable(z.string()),
+        dataType: z.nullable(CustomFieldResponseDataType$outboundSchema),
         remoteId: z.nullable(z.string()),
         source: z.nullable(z.string()),
         idEntity: z.nullable(z.string()),

@@ -6,6 +6,21 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
 /**
+ * The status of the offer
+ */
+export enum UnifiedAtsOfferOutputStatus {
+    Draft = "DRAFT",
+    ApprovalSent = "APPROVAL_SENT",
+    Approved = "APPROVED",
+    Sent = "SENT",
+    SentManually = "SENT_MANUALLY",
+    Opened = "OPENED",
+    Denied = "DENIED",
+    Signed = "SIGNED",
+    Deprecated = "DEPRECATED",
+}
+
+/**
  * The created date of the object
  */
 export type UnifiedAtsOfferOutputCreatedAt = {};
@@ -39,7 +54,7 @@ export type UnifiedAtsOfferOutput = {
     /**
      * The status of the offer
      */
-    status?: string | null | undefined;
+    status?: UnifiedAtsOfferOutputStatus | null | undefined;
     /**
      * The UUID of the application
      */
@@ -69,6 +84,27 @@ export type UnifiedAtsOfferOutput = {
      */
     modifiedAt?: UnifiedAtsOfferOutputModifiedAt | null | undefined;
 };
+
+/** @internal */
+export const UnifiedAtsOfferOutputStatus$inboundSchema: z.ZodNativeEnum<
+    typeof UnifiedAtsOfferOutputStatus
+> = z.nativeEnum(UnifiedAtsOfferOutputStatus);
+
+/** @internal */
+export const UnifiedAtsOfferOutputStatus$outboundSchema: z.ZodNativeEnum<
+    typeof UnifiedAtsOfferOutputStatus
+> = UnifiedAtsOfferOutputStatus$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UnifiedAtsOfferOutputStatus$ {
+    /** @deprecated use `UnifiedAtsOfferOutputStatus$inboundSchema` instead. */
+    export const inboundSchema = UnifiedAtsOfferOutputStatus$inboundSchema;
+    /** @deprecated use `UnifiedAtsOfferOutputStatus$outboundSchema` instead. */
+    export const outboundSchema = UnifiedAtsOfferOutputStatus$outboundSchema;
+}
 
 /** @internal */
 export const UnifiedAtsOfferOutputCreatedAt$inboundSchema: z.ZodType<
@@ -170,7 +206,7 @@ export const UnifiedAtsOfferOutput$inboundSchema: z.ZodType<
                     .transform((v) => new Date(v))
             )
             .optional(),
-        status: z.nullable(z.string()).optional(),
+        status: z.nullable(UnifiedAtsOfferOutputStatus$inboundSchema).optional(),
         application_id: z.nullable(z.string()).optional(),
         field_mappings: z.nullable(z.record(z.any())).optional(),
         id: z.nullable(z.string()).optional(),
@@ -228,7 +264,7 @@ export const UnifiedAtsOfferOutput$outboundSchema: z.ZodType<
         closedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         sentAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         startDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-        status: z.nullable(z.string()).optional(),
+        status: z.nullable(UnifiedAtsOfferOutputStatus$outboundSchema).optional(),
         applicationId: z.nullable(z.string()).optional(),
         fieldMappings: z.nullable(z.record(z.any())).optional(),
         id: z.nullable(z.string()).optional(),

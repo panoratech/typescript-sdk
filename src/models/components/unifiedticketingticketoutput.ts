@@ -6,6 +6,41 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
 /**
+ * The status of the ticket. Authorized values are OPEN or CLOSED.
+ */
+export enum Status {
+    Open = "OPEN",
+    Closed = "CLOSED",
+}
+
+/**
+ * The type of the ticket. Authorized values are PROBLEM, QUESTION, or TASK
+ */
+export enum Type {
+    Bug = "BUG",
+    Subtask = "SUBTASK",
+    Task = "TASK",
+    ToDo = "TO-DO",
+}
+
+/**
+ * The priority of the ticket. Authorized values are HIGH, MEDIUM or LOW.
+ */
+export enum Priority {
+    High = "HIGH",
+    Medium = "MEDIUM",
+    Low = "LOW",
+}
+
+/**
+ * The creator type of the comment. Authorized values are either USER or CONTACT
+ */
+export enum UnifiedTicketingTicketOutputCreatorType {
+    User = "USER",
+    Contact = "CONTACT",
+}
+
+/**
  * The comment of the ticket
  */
 export type Comment = {
@@ -24,7 +59,7 @@ export type Comment = {
     /**
      * The creator type of the comment. Authorized values are either USER or CONTACT
      */
-    creatorType?: string | null | undefined;
+    creatorType?: UnifiedTicketingTicketOutputCreatorType | null | undefined;
     /**
      * The UUID of the ticket the comment is tied to
      */
@@ -51,7 +86,7 @@ export type UnifiedTicketingTicketOutput = {
     /**
      * The status of the ticket. Authorized values are OPEN or CLOSED.
      */
-    status?: string | null | undefined;
+    status?: Status | null | undefined;
     /**
      * The description of the ticket
      */
@@ -63,7 +98,7 @@ export type UnifiedTicketingTicketOutput = {
     /**
      * The type of the ticket. Authorized values are PROBLEM, QUESTION, or TASK
      */
-    type?: string | null | undefined;
+    type?: Type | null | undefined;
     /**
      * The UUID of the parent ticket
      */
@@ -83,7 +118,7 @@ export type UnifiedTicketingTicketOutput = {
     /**
      * The priority of the ticket. Authorized values are HIGH, MEDIUM or LOW.
      */
-    priority?: string | null | undefined;
+    priority?: Priority | null | undefined;
     /**
      * The users UUIDs the ticket is assigned to
      */
@@ -101,7 +136,7 @@ export type UnifiedTicketingTicketOutput = {
      */
     contactId?: string | null | undefined;
     /**
-     * The attachments UUIDs tied to the ticket
+     * The attachements UUIDs tied to the ticket
      */
     attachments?: Array<string> | null | undefined;
     /**
@@ -131,12 +166,84 @@ export type UnifiedTicketingTicketOutput = {
 };
 
 /** @internal */
+export const Status$inboundSchema: z.ZodNativeEnum<typeof Status> = z.nativeEnum(Status);
+
+/** @internal */
+export const Status$outboundSchema: z.ZodNativeEnum<typeof Status> = Status$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Status$ {
+    /** @deprecated use `Status$inboundSchema` instead. */
+    export const inboundSchema = Status$inboundSchema;
+    /** @deprecated use `Status$outboundSchema` instead. */
+    export const outboundSchema = Status$outboundSchema;
+}
+
+/** @internal */
+export const Type$inboundSchema: z.ZodNativeEnum<typeof Type> = z.nativeEnum(Type);
+
+/** @internal */
+export const Type$outboundSchema: z.ZodNativeEnum<typeof Type> = Type$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Type$ {
+    /** @deprecated use `Type$inboundSchema` instead. */
+    export const inboundSchema = Type$inboundSchema;
+    /** @deprecated use `Type$outboundSchema` instead. */
+    export const outboundSchema = Type$outboundSchema;
+}
+
+/** @internal */
+export const Priority$inboundSchema: z.ZodNativeEnum<typeof Priority> = z.nativeEnum(Priority);
+
+/** @internal */
+export const Priority$outboundSchema: z.ZodNativeEnum<typeof Priority> = Priority$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Priority$ {
+    /** @deprecated use `Priority$inboundSchema` instead. */
+    export const inboundSchema = Priority$inboundSchema;
+    /** @deprecated use `Priority$outboundSchema` instead. */
+    export const outboundSchema = Priority$outboundSchema;
+}
+
+/** @internal */
+export const UnifiedTicketingTicketOutputCreatorType$inboundSchema: z.ZodNativeEnum<
+    typeof UnifiedTicketingTicketOutputCreatorType
+> = z.nativeEnum(UnifiedTicketingTicketOutputCreatorType);
+
+/** @internal */
+export const UnifiedTicketingTicketOutputCreatorType$outboundSchema: z.ZodNativeEnum<
+    typeof UnifiedTicketingTicketOutputCreatorType
+> = UnifiedTicketingTicketOutputCreatorType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UnifiedTicketingTicketOutputCreatorType$ {
+    /** @deprecated use `UnifiedTicketingTicketOutputCreatorType$inboundSchema` instead. */
+    export const inboundSchema = UnifiedTicketingTicketOutputCreatorType$inboundSchema;
+    /** @deprecated use `UnifiedTicketingTicketOutputCreatorType$outboundSchema` instead. */
+    export const outboundSchema = UnifiedTicketingTicketOutputCreatorType$outboundSchema;
+}
+
+/** @internal */
 export const Comment$inboundSchema: z.ZodType<Comment, z.ZodTypeDef, unknown> = z
     .object({
         body: z.nullable(z.string()),
         html_body: z.nullable(z.string()).optional(),
         is_private: z.nullable(z.boolean()).optional(),
-        creator_type: z.nullable(z.string()).optional(),
+        creator_type: z.nullable(UnifiedTicketingTicketOutputCreatorType$inboundSchema).optional(),
         ticket_id: z.nullable(z.string()).optional(),
         contact_id: z.nullable(z.string()).optional(),
         user_id: z.nullable(z.string()).optional(),
@@ -171,7 +278,7 @@ export const Comment$outboundSchema: z.ZodType<Comment$Outbound, z.ZodTypeDef, C
         body: z.nullable(z.string()),
         htmlBody: z.nullable(z.string()).optional(),
         isPrivate: z.nullable(z.boolean()).optional(),
-        creatorType: z.nullable(z.string()).optional(),
+        creatorType: z.nullable(UnifiedTicketingTicketOutputCreatorType$outboundSchema).optional(),
         ticketId: z.nullable(z.string()).optional(),
         contactId: z.nullable(z.string()).optional(),
         userId: z.nullable(z.string()).optional(),
@@ -209,7 +316,7 @@ export const UnifiedTicketingTicketOutput$inboundSchema: z.ZodType<
 > = z
     .object({
         name: z.nullable(z.string()),
-        status: z.nullable(z.string()).optional(),
+        status: z.nullable(Status$inboundSchema).optional(),
         description: z.nullable(z.string()),
         due_date: z
             .nullable(
@@ -219,7 +326,7 @@ export const UnifiedTicketingTicketOutput$inboundSchema: z.ZodType<
                     .transform((v) => new Date(v))
             )
             .optional(),
-        type: z.nullable(z.string()).optional(),
+        type: z.nullable(Type$inboundSchema).optional(),
         parent_ticket: z.nullable(z.string()).optional(),
         collections: z.nullable(z.string()).optional(),
         tags: z.nullable(z.array(z.string())).optional(),
@@ -231,7 +338,7 @@ export const UnifiedTicketingTicketOutput$inboundSchema: z.ZodType<
                     .transform((v) => new Date(v))
             )
             .optional(),
-        priority: z.nullable(z.string()).optional(),
+        priority: z.nullable(Priority$inboundSchema).optional(),
         assigned_to: z.nullable(z.array(z.string())).optional(),
         comment: z.nullable(z.lazy(() => Comment$inboundSchema)).optional(),
         account_id: z.nullable(z.string()).optional(),
@@ -307,15 +414,15 @@ export const UnifiedTicketingTicketOutput$outboundSchema: z.ZodType<
 > = z
     .object({
         name: z.nullable(z.string()),
-        status: z.nullable(z.string()).optional(),
+        status: z.nullable(Status$outboundSchema).optional(),
         description: z.nullable(z.string()),
         dueDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-        type: z.nullable(z.string()).optional(),
+        type: z.nullable(Type$outboundSchema).optional(),
         parentTicket: z.nullable(z.string()).optional(),
         collections: z.nullable(z.string()).optional(),
         tags: z.nullable(z.array(z.string())).optional(),
         completedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-        priority: z.nullable(z.string()).optional(),
+        priority: z.nullable(Priority$outboundSchema).optional(),
         assignedTo: z.nullable(z.array(z.string())).optional(),
         comment: z.nullable(z.lazy(() => Comment$outboundSchema)).optional(),
         accountId: z.nullable(z.string()).optional(),

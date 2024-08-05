@@ -19,7 +19,7 @@ import { unwrap as unwrap$ } from "../types/fp.js";
 
 export class Drives extends ClientSDK {
     /**
-     * List  Drives
+     * List Drives
      */
     async list(
         request: operations.ListFilestorageDrivesRequest,
@@ -96,10 +96,10 @@ export class Drives extends ClientSDK {
     }
 
     /**
-     * Retrieve Drives
+     * Retrieve Drive
      *
      * @remarks
-     * Retrieve Drives from any connected Filestorage software
+     * Retrieve a Drive from any connected file storage service
      */
     async retrieve(
         request: operations.RetrieveFilestorageDriveRequest,

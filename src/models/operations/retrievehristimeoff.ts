@@ -11,7 +11,7 @@ export type RetrieveHrisTimeoffRequest = {
      */
     xConnectionToken: string;
     /**
-     * id of the timeoff you want to retrieve.
+     * id of the time off you want to retrieve.
      */
     id: string;
     /**

@@ -5,6 +5,9 @@
 import * as z from "zod";
 
 export type DeleteRequest = {
+    /**
+     * id of the webhook to delete.
+     */
     id: string;
 };
 

@@ -14,14 +14,15 @@ Retrieve sync status of a certain vertical
 
 ```typescript
 import { Panora } from "@panora/sdk";
+import { Vertical } from "@panora/sdk/models/operations";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   await panora.sync.status({
-    vertical: "<value>",
+    vertical: Vertical.Ticketing,
   });
 
   
@@ -59,7 +60,7 @@ Resync common objects across a vertical
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {

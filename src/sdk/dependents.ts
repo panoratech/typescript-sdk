@@ -19,7 +19,7 @@ import { unwrap as unwrap$ } from "../types/fp.js";
 
 export class Dependents extends ClientSDK {
     /**
-     * List  Dependents
+     * List Dependents
      */
     async list(
         request: operations.ListHrisDependentsRequest,
@@ -96,10 +96,10 @@ export class Dependents extends ClientSDK {
     }
 
     /**
-     * Retrieve Dependents
+     * Retrieve Dependent
      *
      * @remarks
-     * Retrieve Dependents from any connected Hris software
+     * Retrieve a Dependent from any connected Hris software
      */
     async retrieve(
         request: operations.RetrieveHrisDependentRequest,

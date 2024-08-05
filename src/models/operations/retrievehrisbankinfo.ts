@@ -5,13 +5,13 @@
 import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
-export type RetrieveHrisBankinfoRequest = {
+export type RetrieveHrisBankInfoRequest = {
     /**
      * The connection token
      */
     xConnectionToken: string;
     /**
-     * id of the bankinfo you want to retrieve.
+     * id of the bank info you want to retrieve.
      */
     id: string;
     /**
@@ -21,8 +21,8 @@ export type RetrieveHrisBankinfoRequest = {
 };
 
 /** @internal */
-export const RetrieveHrisBankinfoRequest$inboundSchema: z.ZodType<
-    RetrieveHrisBankinfoRequest,
+export const RetrieveHrisBankInfoRequest$inboundSchema: z.ZodType<
+    RetrieveHrisBankInfoRequest,
     z.ZodTypeDef,
     unknown
 > = z
@@ -39,17 +39,17 @@ export const RetrieveHrisBankinfoRequest$inboundSchema: z.ZodType<
     });
 
 /** @internal */
-export type RetrieveHrisBankinfoRequest$Outbound = {
+export type RetrieveHrisBankInfoRequest$Outbound = {
     "x-connection-token": string;
     id: string;
     remote_data?: boolean | undefined;
 };
 
 /** @internal */
-export const RetrieveHrisBankinfoRequest$outboundSchema: z.ZodType<
-    RetrieveHrisBankinfoRequest$Outbound,
+export const RetrieveHrisBankInfoRequest$outboundSchema: z.ZodType<
+    RetrieveHrisBankInfoRequest$Outbound,
     z.ZodTypeDef,
-    RetrieveHrisBankinfoRequest
+    RetrieveHrisBankInfoRequest
 > = z
     .object({
         xConnectionToken: z.string(),
@@ -67,11 +67,11 @@ export const RetrieveHrisBankinfoRequest$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace RetrieveHrisBankinfoRequest$ {
-    /** @deprecated use `RetrieveHrisBankinfoRequest$inboundSchema` instead. */
-    export const inboundSchema = RetrieveHrisBankinfoRequest$inboundSchema;
-    /** @deprecated use `RetrieveHrisBankinfoRequest$outboundSchema` instead. */
-    export const outboundSchema = RetrieveHrisBankinfoRequest$outboundSchema;
-    /** @deprecated use `RetrieveHrisBankinfoRequest$Outbound` instead. */
-    export type Outbound = RetrieveHrisBankinfoRequest$Outbound;
+export namespace RetrieveHrisBankInfoRequest$ {
+    /** @deprecated use `RetrieveHrisBankInfoRequest$inboundSchema` instead. */
+    export const inboundSchema = RetrieveHrisBankInfoRequest$inboundSchema;
+    /** @deprecated use `RetrieveHrisBankInfoRequest$outboundSchema` instead. */
+    export const outboundSchema = RetrieveHrisBankInfoRequest$outboundSchema;
+    /** @deprecated use `RetrieveHrisBankInfoRequest$Outbound` instead. */
+    export type Outbound = RetrieveHrisBankInfoRequest$Outbound;
 }

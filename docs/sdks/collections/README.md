@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List  Collections
+* [list](#list) - List Collections
 * [retrieve](#retrieve) - Retrieve Collections
 
 ## list
 
-List  Collections
+List Collections
 
 ### Example Usage
 
@@ -16,7 +16,7 @@ List  Collections
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -60,13 +60,14 @@ Retrieve Collections from any connected Ticketing software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.ticketing.collections.retrieve({
     xConnectionToken: "<value>",
-    id: "<id>",
+    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    remoteData: false,
   });
 
   // Handle the result

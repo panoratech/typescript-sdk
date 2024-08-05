@@ -47,7 +47,7 @@ export type UnifiedFilestorageFolderOutput = {
      */
     id?: string | null | undefined;
     /**
-     * The id of the folder in the context of the 3rd Party
+     * The remote ID of the folder in the context of the 3rd Party
      */
     remoteId?: string | null | undefined;
     /**
@@ -55,11 +55,11 @@ export type UnifiedFilestorageFolderOutput = {
      */
     remoteData?: { [k: string]: any } | null | undefined;
     /**
-     * The created date of the object
+     * The created date of the folder
      */
     createdAt?: Date | null | undefined;
     /**
-     * The modified date of the object
+     * The modified date of the folder
      */
     modifiedAt?: Date | null | undefined;
 };

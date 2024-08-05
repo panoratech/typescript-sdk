@@ -19,7 +19,7 @@ import { unwrap as unwrap$ } from "../types/fp.js";
 
 export class Collections extends ClientSDK {
     /**
-     * List  Collections
+     * List Collections
      */
     async list(
         request: operations.ListTicketingCollectionsRequest,

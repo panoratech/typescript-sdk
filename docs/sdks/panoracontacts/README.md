@@ -17,7 +17,7 @@ List CRM Contacts
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -59,17 +59,48 @@ Create Contacts in any supported CRM
 
 ```typescript
 import { Panora } from "@panora/sdk";
+import { AddressType, EmailAddressType, PhoneType } from "@panora/sdk/models/components";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.crm.contacts.create({
     xConnectionToken: "<value>",
+    remoteData: false,
     unifiedCrmContactInput: {
-      firstName: "Jed",
-      lastName: "Kuhn",
+      firstName: "John",
+      lastName: "Doe",
+      emailAddresses: [
+        {
+          emailAddress: "Jena.Nienow28@yahoo.com",
+          emailAddressType: EmailAddressType.Personal,
+        },
+      ],
+      phoneNumbers: [
+        {
+          phoneNumber: "<value>",
+          phoneType: PhoneType.Work,
+        },
+      ],
+      addresses: [
+        {
+          street1: "<value>",
+          street2: "<value>",
+          city: "Anytown",
+          state: "CA",
+          postalCode: "97398",
+          country: "USA",
+          addressType: AddressType.Personal,
+          ownerType: "<value>",
+        },
+      ],
+      userId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      fieldMappings: {
+        "fav_dish": "broccoli",
+        "fav_color": "red",
+      },
     },
   });
 
@@ -109,13 +140,14 @@ Retrieve Contacts from any connected CRM
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.crm.contacts.retrieve({
     xConnectionToken: "<value>",
-    id: "<id>",
+    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    remoteData: false,
   });
 
   // Handle the result

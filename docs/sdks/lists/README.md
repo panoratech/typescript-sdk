@@ -3,13 +3,13 @@
 
 ### Available Operations
 
-* [list](#list) - List  Lists
+* [list](#list) - List Lists
 * [create](#create) - Create Lists
-* [retrieve](#retrieve) - Retrieve Lists
+* [retrieve](#retrieve) - Retrieve List
 
 ## list
 
-List  Lists
+List Lists
 
 ### Example Usage
 
@@ -17,7 +17,7 @@ List  Lists
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -61,7 +61,7 @@ Create Lists in any supported Marketingautomation software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -98,7 +98,7 @@ run();
 
 ## retrieve
 
-Retrieve Lists from any connected Marketingautomation software
+Retrieve a List from any connected Marketingautomation software
 
 ### Example Usage
 
@@ -106,13 +106,14 @@ Retrieve Lists from any connected Marketingautomation software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.marketingautomation.lists.retrieve({
     xConnectionToken: "<value>",
-    id: "<id>",
+    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    remoteData: false,
   });
 
   // Handle the result

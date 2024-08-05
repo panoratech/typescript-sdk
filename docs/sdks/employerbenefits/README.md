@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List  EmployerBenefits
-* [retrieve](#retrieve) - Retrieve Employer Benefits
+* [list](#list) - List Employer Benefits
+* [retrieve](#retrieve) - Retrieve Employer Benefit
 
 ## list
 
-List  EmployerBenefits
+List Employer Benefits
 
 ### Example Usage
 
@@ -16,7 +16,7 @@ List  EmployerBenefits
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -35,7 +35,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.ListHrisEmployerBenefitRequest](../../models/operations/listhrisemployerbenefitrequest.md)                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.ListHrisEmployerBenefitsRequest](../../models/operations/listhrisemployerbenefitsrequest.md)                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -43,7 +43,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListHrisEmployerBenefitResponseBody](../../models/operations/listhrisemployerbenefitresponsebody.md)\>**
+**Promise\<[operations.ListHrisEmployerBenefitsResponseBody](../../models/operations/listhrisemployerbenefitsresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -52,7 +52,7 @@ run();
 
 ## retrieve
 
-Retrieve Employer Benefits from any connected Hris software
+Retrieve an Employer Benefit from any connected Hris software
 
 ### Example Usage
 
@@ -60,13 +60,14 @@ Retrieve Employer Benefits from any connected Hris software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.hris.employerbenefits.retrieve({
     xConnectionToken: "<value>",
-    id: "<id>",
+    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    remoteData: false,
   });
 
   // Handle the result

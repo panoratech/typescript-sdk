@@ -20,18 +20,18 @@ import { unwrap as unwrap$ } from "../types/fp.js";
 
 export class Campaigns extends ClientSDK {
     /**
-     * List  Campaigns
+     * List Campaigns
      */
     async list(
-        request: operations.ListMarketingautomationCampaignRequest,
+        request: operations.ListMarketingautomationCampaignsRequest,
         options?: RequestOptions
-    ): Promise<operations.ListMarketingautomationCampaignResponseBody> {
+    ): Promise<operations.ListMarketingautomationCampaignsResponseBody> {
         const input$ = request;
 
         const parsed$ = schemas$.safeParse(
             input$,
             (value$) =>
-                operations.ListMarketingautomationCampaignRequest$outboundSchema.parse(value$),
+                operations.ListMarketingautomationCampaignsRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const payload$ = unwrap$(parsed$);
@@ -57,7 +57,7 @@ export class Campaigns extends ClientSDK {
         const apiKey$ = await extractSecurity(this.options$.apiKey);
         const security$ = apiKey$ == null ? {} : { apiKey: apiKey$ };
         const context = {
-            operationID: "listMarketingautomationCampaign",
+            operationID: "listMarketingautomationCampaigns",
             oAuth2Scopes: [],
             securitySource: this.options$.apiKey,
         };
@@ -87,10 +87,10 @@ export class Campaigns extends ClientSDK {
         const response = unwrap$(doResult);
 
         const [result$] = await m$.match<
-            operations.ListMarketingautomationCampaignResponseBody,
+            operations.ListMarketingautomationCampaignsResponseBody,
             SDKError | SDKValidationError
         >(
-            m$.json(200, operations.ListMarketingautomationCampaignResponseBody$inboundSchema),
+            m$.json(200, operations.ListMarketingautomationCampaignsResponseBody$inboundSchema),
             m$.fail(["4XX", "5XX"])
         )(response);
 
@@ -106,7 +106,7 @@ export class Campaigns extends ClientSDK {
     async create(
         request: operations.CreateMarketingautomationCampaignRequest,
         options?: RequestOptions
-    ): Promise<components.UnifiedCampaignOutput> {
+    ): Promise<components.UnifiedMarketingautomationCampaignOutput> {
         const input$ = request;
 
         const parsed$ = schemas$.safeParse(
@@ -169,10 +169,10 @@ export class Campaigns extends ClientSDK {
         const response = unwrap$(doResult);
 
         const [result$] = await m$.match<
-            components.UnifiedCampaignOutput,
+            components.UnifiedMarketingautomationCampaignOutput,
             SDKError | SDKValidationError
         >(
-            m$.json(201, components.UnifiedCampaignOutput$inboundSchema),
+            m$.json(201, components.UnifiedMarketingautomationCampaignOutput$inboundSchema),
             m$.fail(["4XX", "5XX"])
         )(response);
 
@@ -180,15 +180,15 @@ export class Campaigns extends ClientSDK {
     }
 
     /**
-     * Retrieve Campaigns
+     * Retrieve Campaign
      *
      * @remarks
-     * Retrieve Campaigns from any connected Marketingautomation software
+     * Retrieve a Campaign from any connected Marketingautomation software
      */
     async retrieve(
         request: operations.RetrieveMarketingautomationCampaignRequest,
         options?: RequestOptions
-    ): Promise<components.UnifiedCampaignOutput> {
+    ): Promise<components.UnifiedMarketingautomationCampaignOutput> {
         const input$ = request;
 
         const parsed$ = schemas$.safeParse(
@@ -252,10 +252,10 @@ export class Campaigns extends ClientSDK {
         const response = unwrap$(doResult);
 
         const [result$] = await m$.match<
-            components.UnifiedCampaignOutput,
+            components.UnifiedMarketingautomationCampaignOutput,
             SDKError | SDKValidationError
         >(
-            m$.json(200, components.UnifiedCampaignOutput$inboundSchema),
+            m$.json(200, components.UnifiedMarketingautomationCampaignOutput$inboundSchema),
             m$.fail(["4XX", "5XX"])
         )(response);
 

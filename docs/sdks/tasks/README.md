@@ -3,13 +3,13 @@
 
 ### Available Operations
 
-* [list](#list) - List  Tasks
+* [list](#list) - List Tasks
 * [create](#create) - Create Tasks
 * [retrieve](#retrieve) - Retrieve Tasks
 
 ## list
 
-List  Tasks
+List Tasks
 
 ### Example Usage
 
@@ -17,7 +17,7 @@ List  Tasks
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -59,18 +59,28 @@ Create Tasks in any supported Crm software
 
 ```typescript
 import { Panora } from "@panora/sdk";
+import { UnifiedCrmTaskInputStatus } from "@panora/sdk/models/components";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.crm.tasks.create({
     xConnectionToken: "<value>",
     unifiedCrmTaskInput: {
-      subject: "<value>",
-      content: "<value>",
-      status: "<value>",
+      subject: "Answer customers",
+      content: "Prepare email campaign",
+      status: UnifiedCrmTaskInputStatus.Pending,
+      dueDate: "2024-10-01T12:00:00Z",
+      finishedDate: "2024-10-01T12:00:00Z",
+      userId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      companyId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      dealId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      fieldMappings: {
+        "fav_dish": "broccoli",
+        "fav_color": "red",
+      },
     },
   });
 
@@ -110,13 +120,14 @@ Retrieve Tasks from any connected Crm software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.crm.tasks.retrieve({
     xConnectionToken: "<value>",
-    id: "<id>",
+    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    remoteData: false,
   });
 
   // Handle the result

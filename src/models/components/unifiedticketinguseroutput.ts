@@ -25,7 +25,7 @@ export type UnifiedTicketingUserOutput = {
     /**
      * The custom field mappings of the user between the remote 3rd party & Panora
      */
-    fieldMappings: { [k: string]: any } | null;
+    fieldMappings?: { [k: string]: any } | null | undefined;
     /**
      * The UUID of the user
      */
@@ -59,7 +59,7 @@ export const UnifiedTicketingUserOutput$inboundSchema: z.ZodType<
         email_address: z.nullable(z.string()),
         teams: z.nullable(z.array(z.string())).optional(),
         account_id: z.nullable(z.string()).optional(),
-        field_mappings: z.nullable(z.record(z.any())),
+        field_mappings: z.nullable(z.record(z.any())).optional(),
         id: z.nullable(z.string()).optional(),
         remote_id: z.nullable(z.string()).optional(),
         remote_data: z.nullable(z.record(z.any())).optional(),
@@ -98,7 +98,7 @@ export type UnifiedTicketingUserOutput$Outbound = {
     email_address: string | null;
     teams?: Array<string> | null | undefined;
     account_id?: string | null | undefined;
-    field_mappings: { [k: string]: any } | null;
+    field_mappings?: { [k: string]: any } | null | undefined;
     id?: string | null | undefined;
     remote_id?: string | null | undefined;
     remote_data?: { [k: string]: any } | null | undefined;
@@ -117,7 +117,7 @@ export const UnifiedTicketingUserOutput$outboundSchema: z.ZodType<
         emailAddress: z.nullable(z.string()),
         teams: z.nullable(z.array(z.string())).optional(),
         accountId: z.nullable(z.string()).optional(),
-        fieldMappings: z.nullable(z.record(z.any())),
+        fieldMappings: z.nullable(z.record(z.any())).optional(),
         id: z.nullable(z.string()).optional(),
         remoteId: z.nullable(z.string()).optional(),
         remoteData: z.nullable(z.record(z.any())).optional(),

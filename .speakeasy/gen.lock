@@ -1,23 +1,22 @@
 lockVersion: 2.0.0
 id: caaaa8c3-6dd7-43a5-841e-c3193e68cc73
 management:
-  docChecksum: 60112bba1ada46f22ab482e42dd98db2
+  docChecksum: 5318f76de9f42523396aae8e51f30ca5
   docVersion: "1.0"
-  speakeasyVersion: 1.352.1
-  generationVersion: 2.385.1
-  releaseVersion: 0.4.2
-  configChecksum: 764e671a86cc92de8e4f4b291070ac63
+  speakeasyVersion: 1.352.2
+  generationVersion: 2.385.2
+  releaseVersion: 0.5.0
+  configChecksum: 471661da6f31f24888f2d7cb584b97cd
   repoURL: https://github.com/panoratech/typescript-sdk.git
   installationURL: https://github.com/panoratech/typescript-sdk
   published: true
 features:
   typescript:
     additionalDependencies: 0.1.0
-    constsAndDefaults: 0.1.5
     core: 3.11.13
     defaultEnabledRetries: 0.1.0
     envVarSecurityUsage: 0.1.1
-    globalSecurity: 2.82.9
+    globalSecurity: 2.82.10
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.4
@@ -51,7 +50,7 @@ generatedFiles:
   - src/sdk/panorausers.ts
   - src/sdk/crm.ts
   - src/sdk/batch.ts
-  - src/sdk/single.ts
+  - src/sdk/id.ts
   - src/sdk/fromremoteid.ts
   - src/sdk/linkedusers.ts
   - src/sdk/define.ts
@@ -220,7 +219,7 @@ generatedFiles:
   - src/models/components/unifiedmarketingautomationactioninput.ts
   - src/models/components/unifiedmarketingautomationautomationoutput.ts
   - src/models/components/unifiedmarketingautomationautomationinput.ts
-  - src/models/components/unifiedcampaignoutput.ts
+  - src/models/components/unifiedmarketingautomationcampaignoutput.ts
   - src/models/components/unifiedmarketingautomationcampaigninput.ts
   - src/models/components/unifiedmarketingautomationcontactoutput.ts
   - src/models/components/unifiedmarketingautomationcontactinput.ts
@@ -287,7 +286,7 @@ generatedFiles:
   - src/models/components/unifiedfilestoragefolderoutput.ts
   - src/models/components/unifiedfilestoragefolderinput.ts
   - src/models/components/unifiedfilestoragegroupoutput.ts
-  - src/models/components/unifieduseroutput.ts
+  - src/models/components/unifiedfilestorageuseroutput.ts
   - src/models/components/security.ts
   - src/models/operations/delete.ts
   - src/models/operations/updatestatus.ts
@@ -341,39 +340,41 @@ generatedFiles:
   - src/models/operations/request.ts
   - src/models/operations/listhrisbankinfo.ts
   - src/models/operations/retrievehrisbankinfo.ts
-  - src/models/operations/listhrisbenefit.ts
+  - src/models/operations/listhrisbenefits.ts
   - src/models/operations/retrievehrisbenefit.ts
-  - src/models/operations/listhriscompanys.ts
+  - src/models/operations/listhriscompanies.ts
+  - src/models/operations/retrievehriscompany.ts
   - src/models/operations/listhrisdependents.ts
   - src/models/operations/retrievehrisdependent.ts
   - src/models/operations/listhrisemployeepayrollrun.ts
   - src/models/operations/retrievehrisemployeepayrollrun.ts
-  - src/models/operations/listhrisemployee.ts
+  - src/models/operations/listhrisemployees.ts
   - src/models/operations/createhrisemployee.ts
   - src/models/operations/retrievehrisemployee.ts
-  - src/models/operations/listhrisemployerbenefit.ts
+  - src/models/operations/listhrisemployerbenefits.ts
   - src/models/operations/retrievehrisemployerbenefit.ts
-  - src/models/operations/listhrisemployment.ts
+  - src/models/operations/listhrisemployments.ts
   - src/models/operations/retrievehrisemployment.ts
-  - src/models/operations/listhrisgroup.ts
+  - src/models/operations/listhrisgroups.ts
   - src/models/operations/retrievehrisgroup.ts
-  - src/models/operations/listhrislocation.ts
+  - src/models/operations/listhrislocations.ts
   - src/models/operations/retrievehrislocation.ts
-  - src/models/operations/listhrispaygroup.ts
+  - src/models/operations/listhrispaygroups.ts
   - src/models/operations/retrievehrispaygroup.ts
   - src/models/operations/listhrispayrollruns.ts
+  - src/models/operations/retrievehrispayrollrun.ts
   - src/models/operations/listhristimeoffs.ts
   - src/models/operations/createhristimeoff.ts
   - src/models/operations/retrievehristimeoff.ts
-  - src/models/operations/listhristimeoffbalance.ts
+  - src/models/operations/listhristimeoffbalances.ts
   - src/models/operations/retrievehristimeoffbalance.ts
   - src/models/operations/listmarketingautomationaction.ts
   - src/models/operations/createmarketingautomationaction.ts
   - src/models/operations/retrievemarketingautomationaction.ts
-  - src/models/operations/listmarketingautomationautomation.ts
+  - src/models/operations/listmarketingautomationautomations.ts
   - src/models/operations/createmarketingautomationautomation.ts
   - src/models/operations/retrievemarketingautomationautomation.ts
-  - src/models/operations/listmarketingautomationcampaign.ts
+  - src/models/operations/listmarketingautomationcampaigns.ts
   - src/models/operations/createmarketingautomationcampaign.ts
   - src/models/operations/retrievemarketingautomationcampaign.ts
   - src/models/operations/listmarketingautomationcontacts.ts
@@ -494,49 +495,75 @@ generatedFiles:
   - docs/models/components/webhookresponse.md
   - docs/models/components/webhookdto.md
   - docs/models/components/signatureverificationdto.md
+  - docs/models/components/status.md
+  - docs/models/components/type.md
+  - docs/models/components/priority.md
+  - docs/models/components/unifiedticketingticketoutputcreatortype.md
   - docs/models/components/comment.md
   - docs/models/components/unifiedticketingticketoutput.md
+  - docs/models/components/unifiedticketingticketinputstatus.md
+  - docs/models/components/unifiedticketingticketinputtype.md
+  - docs/models/components/unifiedticketingticketinputpriority.md
+  - docs/models/components/unifiedticketingticketinputcreatortype.md
   - docs/models/components/unifiedticketingticketinputcomment.md
   - docs/models/components/unifiedticketingticketinput.md
   - docs/models/components/unifiedticketinguseroutput.md
   - docs/models/components/unifiedticketingaccountoutput.md
   - docs/models/components/unifiedticketingcontactoutput.md
+  - docs/models/components/collectiontype.md
   - docs/models/components/unifiedticketingcollectionoutput.md
+  - docs/models/components/creatortype.md
   - docs/models/components/unifiedticketingcommentoutput.md
+  - docs/models/components/unifiedticketingcommentinputcreatortype.md
   - docs/models/components/unifiedticketingcommentinput.md
   - docs/models/components/unifiedticketingtagoutput.md
   - docs/models/components/unifiedticketingteamoutput.md
   - docs/models/components/unifiedticketingattachmentoutput.md
   - docs/models/components/unifiedticketingattachmentinput.md
   - docs/models/components/resyncstatusdto.md
+  - docs/models/components/industry.md
   - docs/models/components/createdat.md
   - docs/models/components/modifiedat.md
   - docs/models/components/unifiedcrmcompanyoutput.md
+  - docs/models/components/phonetype.md
   - docs/models/components/phone.md
+  - docs/models/components/addresstype.md
   - docs/models/components/address.md
+  - docs/models/components/emailaddresstype.md
+  - docs/models/components/ownertype.md
   - docs/models/components/email.md
+  - docs/models/components/unifiedcrmcompanyinputindustry.md
   - docs/models/components/unifiedcrmcompanyinput.md
   - docs/models/components/unifiedcrmcontactoutput.md
   - docs/models/components/unifiedcrmcontactinput.md
   - docs/models/components/unifiedcrmdealoutput.md
   - docs/models/components/unifiedcrmdealinput.md
+  - docs/models/components/direction.md
+  - docs/models/components/unifiedcrmengagementoutputtype.md
   - docs/models/components/unifiedcrmengagementoutput.md
+  - docs/models/components/unifiedcrmengagementinputdirection.md
+  - docs/models/components/unifiedcrmengagementinputtype.md
   - docs/models/components/unifiedcrmengagementinput.md
   - docs/models/components/unifiedcrmnoteoutput.md
   - docs/models/components/unifiedcrmnoteinput.md
   - docs/models/components/unifiedcrmstageoutputcreatedat.md
   - docs/models/components/unifiedcrmstageoutputmodifiedat.md
   - docs/models/components/unifiedcrmstageoutput.md
-  - docs/models/components/unifiedcrmtaskoutputcreatedat.md
-  - docs/models/components/unifiedcrmtaskoutputmodifiedat.md
+  - docs/models/components/unifiedcrmtaskoutputstatus.md
   - docs/models/components/unifiedcrmtaskoutput.md
+  - docs/models/components/unifiedcrmtaskinputstatus.md
   - docs/models/components/unifiedcrmtaskinput.md
   - docs/models/components/unifiedcrmuseroutput.md
   - docs/models/components/linkeduserresponse.md
   - docs/models/components/createlinkeduserdto.md
   - docs/models/components/createbatchlinkeduserdto.md
+  - docs/models/components/customfieldresponsedatatype.md
   - docs/models/components/customfieldresponse.md
+  - docs/models/components/customfieldcreatedtoobjecttypeowner.md
+  - docs/models/components/customfieldcreatedtodatatype.md
   - docs/models/components/customfieldcreatedto.md
+  - docs/models/components/objecttypeowner.md
+  - docs/models/components/datatype.md
   - docs/models/components/definetargetfielddto.md
   - docs/models/components/mapfieldtoproviderdto.md
   - docs/models/components/passthroughresponsedata.md
@@ -564,7 +591,7 @@ generatedFiles:
   - docs/models/components/unifiedmarketingautomationactioninput.md
   - docs/models/components/unifiedmarketingautomationautomationoutput.md
   - docs/models/components/unifiedmarketingautomationautomationinput.md
-  - docs/models/components/unifiedcampaignoutput.md
+  - docs/models/components/unifiedmarketingautomationcampaignoutput.md
   - docs/models/components/unifiedmarketingautomationcampaigninput.md
   - docs/models/components/unifiedmarketingautomationcontactoutput.md
   - docs/models/components/unifiedmarketingautomationcontactinput.md
@@ -576,28 +603,45 @@ generatedFiles:
   - docs/models/components/unifiedmarketingautomationtemplateoutput.md
   - docs/models/components/unifiedmarketingautomationtemplateinput.md
   - docs/models/components/unifiedmarketingautomationuseroutput.md
+  - docs/models/components/activitytype.md
+  - docs/models/components/visibility.md
   - docs/models/components/unifiedatsactivityoutput.md
+  - docs/models/components/unifiedatsactivityinputactivitytype.md
+  - docs/models/components/unifiedatsactivityinputvisibility.md
   - docs/models/components/unifiedatsactivityinput.md
   - docs/models/components/unifiedatsapplicationoutput.md
   - docs/models/components/unifiedatsapplicationinput.md
+  - docs/models/components/attachmenttype.md
   - docs/models/components/unifiedatsattachmentoutput.md
+  - docs/models/components/unifiedatsattachmentinputattachmenttype.md
   - docs/models/components/unifiedatsattachmentinput.md
   - docs/models/components/unifiedatscandidateoutput.md
   - docs/models/components/url.md
   - docs/models/components/unifiedatscandidateinput.md
   - docs/models/components/unifiedatsdepartmentoutput.md
+  - docs/models/components/unifiedatsinterviewoutputstatus.md
   - docs/models/components/unifiedatsinterviewoutput.md
+  - docs/models/components/unifiedatsinterviewinputstatus.md
   - docs/models/components/unifiedatsinterviewinput.md
   - docs/models/components/unifiedatsjobinterviewstageoutput.md
+  - docs/models/components/unifiedatsjoboutputstatus.md
+  - docs/models/components/unifiedatsjoboutputtype.md
   - docs/models/components/unifiedatsjoboutput.md
+  - docs/models/components/unifiedatsofferoutputstatus.md
   - docs/models/components/unifiedatsofferoutputcreatedat.md
   - docs/models/components/unifiedatsofferoutputmodifiedat.md
   - docs/models/components/unifiedatsofferoutput.md
   - docs/models/components/unifiedatsofficeoutput.md
   - docs/models/components/unifiedatsrejectreasonoutput.md
+  - docs/models/components/overallrecommendation.md
   - docs/models/components/unifiedatsscorecardoutput.md
   - docs/models/components/unifiedatstagoutput.md
+  - docs/models/components/accessrole.md
   - docs/models/components/unifiedatsuseroutput.md
+  - docs/models/components/race.md
+  - docs/models/components/gender.md
+  - docs/models/components/veteranstatus.md
+  - docs/models/components/disabilitystatus.md
   - docs/models/components/unifiedatseeocsoutput.md
   - docs/models/components/unifiedaccountingaccountoutput.md
   - docs/models/components/unifiedaccountingaccountinput.md
@@ -633,7 +677,7 @@ generatedFiles:
   - docs/models/components/unifiedfilestoragefolderoutput.md
   - docs/models/components/unifiedfilestoragefolderinput.md
   - docs/models/components/unifiedfilestoragegroupoutput.md
-  - docs/models/components/unifieduseroutput.md
+  - docs/models/components/unifiedfilestorageuseroutput.md
   - docs/models/components/security.md
   - docs/models/operations/deleterequest.md
   - docs/models/operations/updatestatusrequest.md
@@ -670,6 +714,7 @@ generatedFiles:
   - docs/models/operations/listticketingattachmentsresponsebody.md
   - docs/models/operations/createticketingattachmentrequest.md
   - docs/models/operations/retrieveticketingattachmentrequest.md
+  - docs/models/operations/vertical.md
   - docs/models/operations/statusrequest.md
   - docs/models/operations/listcrmcompanyrequest.md
   - docs/models/operations/listcrmcompanyresponsebody.md
@@ -707,55 +752,57 @@ generatedFiles:
   - docs/models/operations/listhrisbankinforequest.md
   - docs/models/operations/listhrisbankinforesponsebody.md
   - docs/models/operations/retrievehrisbankinforequest.md
-  - docs/models/operations/listhrisbenefitrequest.md
-  - docs/models/operations/listhrisbenefitresponsebody.md
+  - docs/models/operations/listhrisbenefitsrequest.md
+  - docs/models/operations/listhrisbenefitsresponsebody.md
   - docs/models/operations/retrievehrisbenefitrequest.md
-  - docs/models/operations/listhriscompanysrequest.md
-  - docs/models/operations/listhriscompanysresponsebody.md
+  - docs/models/operations/listhriscompaniesrequest.md
+  - docs/models/operations/listhriscompaniesresponsebody.md
+  - docs/models/operations/retrievehriscompanyrequest.md
   - docs/models/operations/listhrisdependentsrequest.md
   - docs/models/operations/listhrisdependentsresponsebody.md
   - docs/models/operations/retrievehrisdependentrequest.md
   - docs/models/operations/listhrisemployeepayrollrunrequest.md
   - docs/models/operations/listhrisemployeepayrollrunresponsebody.md
   - docs/models/operations/retrievehrisemployeepayrollrunrequest.md
-  - docs/models/operations/listhrisemployeerequest.md
-  - docs/models/operations/listhrisemployeeresponsebody.md
+  - docs/models/operations/listhrisemployeesrequest.md
+  - docs/models/operations/listhrisemployeesresponsebody.md
   - docs/models/operations/createhrisemployeerequest.md
   - docs/models/operations/retrievehrisemployeerequest.md
-  - docs/models/operations/listhrisemployerbenefitrequest.md
-  - docs/models/operations/listhrisemployerbenefitresponsebody.md
+  - docs/models/operations/listhrisemployerbenefitsrequest.md
+  - docs/models/operations/listhrisemployerbenefitsresponsebody.md
   - docs/models/operations/retrievehrisemployerbenefitrequest.md
-  - docs/models/operations/listhrisemploymentrequest.md
-  - docs/models/operations/listhrisemploymentresponsebody.md
+  - docs/models/operations/listhrisemploymentsrequest.md
+  - docs/models/operations/listhrisemploymentsresponsebody.md
   - docs/models/operations/retrievehrisemploymentrequest.md
-  - docs/models/operations/listhrisgrouprequest.md
-  - docs/models/operations/listhrisgroupresponsebody.md
+  - docs/models/operations/listhrisgroupsrequest.md
+  - docs/models/operations/listhrisgroupsresponsebody.md
   - docs/models/operations/retrievehrisgrouprequest.md
-  - docs/models/operations/listhrislocationrequest.md
-  - docs/models/operations/listhrislocationresponsebody.md
+  - docs/models/operations/listhrislocationsrequest.md
+  - docs/models/operations/listhrislocationsresponsebody.md
   - docs/models/operations/retrievehrislocationrequest.md
-  - docs/models/operations/listhrispaygrouprequest.md
-  - docs/models/operations/listhrispaygroupresponsebody.md
+  - docs/models/operations/listhrispaygroupsrequest.md
+  - docs/models/operations/listhrispaygroupsresponsebody.md
   - docs/models/operations/retrievehrispaygrouprequest.md
   - docs/models/operations/listhrispayrollrunsrequest.md
   - docs/models/operations/listhrispayrollrunsresponsebody.md
+  - docs/models/operations/retrievehrispayrollrunrequest.md
   - docs/models/operations/listhristimeoffsrequest.md
   - docs/models/operations/listhristimeoffsresponsebody.md
   - docs/models/operations/createhristimeoffrequest.md
   - docs/models/operations/retrievehristimeoffrequest.md
-  - docs/models/operations/listhristimeoffbalancerequest.md
-  - docs/models/operations/listhristimeoffbalanceresponsebody.md
+  - docs/models/operations/listhristimeoffbalancesrequest.md
+  - docs/models/operations/listhristimeoffbalancesresponsebody.md
   - docs/models/operations/retrievehristimeoffbalancerequest.md
   - docs/models/operations/listmarketingautomationactionrequest.md
   - docs/models/operations/listmarketingautomationactionresponsebody.md
   - docs/models/operations/createmarketingautomationactionrequest.md
   - docs/models/operations/retrievemarketingautomationactionrequest.md
-  - docs/models/operations/listmarketingautomationautomationrequest.md
-  - docs/models/operations/listmarketingautomationautomationresponsebody.md
+  - docs/models/operations/listmarketingautomationautomationsrequest.md
+  - docs/models/operations/listmarketingautomationautomationsresponsebody.md
   - docs/models/operations/createmarketingautomationautomationrequest.md
   - docs/models/operations/retrievemarketingautomationautomationrequest.md
-  - docs/models/operations/listmarketingautomationcampaignrequest.md
-  - docs/models/operations/listmarketingautomationcampaignresponsebody.md
+  - docs/models/operations/listmarketingautomationcampaignsrequest.md
+  - docs/models/operations/listmarketingautomationcampaignsresponsebody.md
   - docs/models/operations/createmarketingautomationcampaignrequest.md
   - docs/models/operations/retrievemarketingautomationcampaignrequest.md
   - docs/models/operations/listmarketingautomationcontactsrequest.md
@@ -942,7 +989,7 @@ generatedFiles:
   - docs/sdks/panorausers/README.md
   - docs/sdks/linkedusers/README.md
   - docs/sdks/batch/README.md
-  - docs/sdks/single/README.md
+  - docs/sdks/id/README.md
   - docs/sdks/fromremoteid/README.md
   - docs/sdks/fieldmappings/README.md
   - docs/sdks/define/README.md

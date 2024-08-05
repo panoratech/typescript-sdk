@@ -11,7 +11,7 @@ export type UnifiedCrmNoteOutput = {
      */
     content: string | null;
     /**
-     * The UUID of the user tied the note
+     * The UUID of the user tied to the note
      */
     userId?: string | null | undefined;
     /**
@@ -19,7 +19,7 @@ export type UnifiedCrmNoteOutput = {
      */
     companyId?: string | null | undefined;
     /**
-     * The UUID fo the contact tied to the note
+     * The UUID of the contact tied to the note
      */
     contactId?: string | null | undefined;
     /**
@@ -35,7 +35,7 @@ export type UnifiedCrmNoteOutput = {
      */
     id?: string | null | undefined;
     /**
-     * The id of the note in the context of the Crm 3rd Party
+     * The ID of the note in the context of the Crm 3rd Party
      */
     remoteId?: string | null | undefined;
     /**

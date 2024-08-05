@@ -29,7 +29,7 @@ export type UnifiedCrmStageOutput = {
      */
     id?: string | null | undefined;
     /**
-     * The id of the stage in the context of the Crm 3rd Party
+     * The ID of the stage in the context of the Crm 3rd Party
      */
     remoteId?: string | null | undefined;
     /**

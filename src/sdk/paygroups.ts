@@ -19,17 +19,17 @@ import { unwrap as unwrap$ } from "../types/fp.js";
 
 export class Paygroups extends ClientSDK {
     /**
-     * List  PayGroups
+     * List Pay Groups
      */
     async list(
-        request: operations.ListHrisPaygroupRequest,
+        request: operations.ListHrisPaygroupsRequest,
         options?: RequestOptions
-    ): Promise<operations.ListHrisPaygroupResponseBody> {
+    ): Promise<operations.ListHrisPaygroupsResponseBody> {
         const input$ = request;
 
         const parsed$ = schemas$.safeParse(
             input$,
-            (value$) => operations.ListHrisPaygroupRequest$outboundSchema.parse(value$),
+            (value$) => operations.ListHrisPaygroupsRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const payload$ = unwrap$(parsed$);
@@ -55,7 +55,7 @@ export class Paygroups extends ClientSDK {
         const apiKey$ = await extractSecurity(this.options$.apiKey);
         const security$ = apiKey$ == null ? {} : { apiKey: apiKey$ };
         const context = {
-            operationID: "listHrisPaygroup",
+            operationID: "listHrisPaygroups",
             oAuth2Scopes: [],
             securitySource: this.options$.apiKey,
         };
@@ -85,10 +85,10 @@ export class Paygroups extends ClientSDK {
         const response = unwrap$(doResult);
 
         const [result$] = await m$.match<
-            operations.ListHrisPaygroupResponseBody,
+            operations.ListHrisPaygroupsResponseBody,
             SDKError | SDKValidationError
         >(
-            m$.json(200, operations.ListHrisPaygroupResponseBody$inboundSchema),
+            m$.json(200, operations.ListHrisPaygroupsResponseBody$inboundSchema),
             m$.fail(["4XX", "5XX"])
         )(response);
 
@@ -96,10 +96,10 @@ export class Paygroups extends ClientSDK {
     }
 
     /**
-     * Retrieve Pay Groups
+     * Retrieve Pay Group
      *
      * @remarks
-     * Retrieve Pay Groups from any connected Hris software
+     * Retrieve a Pay Group from any connected Hris software
      */
     async retrieve(
         request: operations.RetrieveHrisPaygroupRequest,

@@ -17,7 +17,7 @@ List  Attachments
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -61,18 +61,21 @@ Create Attachments in any supported Ticketing software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.ticketing.attachments.create({
     xConnectionToken: "<value>",
     unifiedTicketingAttachmentInput: {
-      fileName: "your_file_here",
-      fileUrl: "<value>",
-      uploader: "<value>",
+      fileName: "features_planning.pdf",
+      fileUrl: "https://example.com/features_planning.pdf",
+      uploader: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      ticketId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      commentId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
       fieldMappings: {
-        "key": "<value>",
+        "fav_dish": "broccoli",
+        "fav_color": "red",
       },
     },
   });
@@ -113,13 +116,14 @@ Retrieve Attachments from any connected Ticketing software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.ticketing.attachments.retrieve({
     xConnectionToken: "<value>",
-    id: "<id>",
+    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    remoteData: false,
   });
 
   // Handle the result

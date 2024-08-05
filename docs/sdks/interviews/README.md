@@ -17,7 +17,7 @@ List  Interviews
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -59,15 +59,34 @@ Create Interviews in any supported Ats software
 
 ```typescript
 import { Panora } from "@panora/sdk";
+import { UnifiedAtsInterviewInputStatus } from "@panora/sdk/models/components";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.ats.interviews.create({
     xConnectionToken: "<value>",
-    unifiedAtsInterviewInput: {},
+    remoteData: false,
+    unifiedAtsInterviewInput: {
+      status: UnifiedAtsInterviewInputStatus.Scheduled,
+      applicationId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      jobInterviewStageId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      organizedBy: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      interviewers: [
+        "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      ],
+      location: "San Francisco",
+      startAt: new Date("2024-10-01T12:00:00Z"),
+      endAt: new Date("2024-10-01T12:00:00Z"),
+      remoteCreatedAt: new Date("2024-10-01T12:00:00Z"),
+      remoteUpdatedAt: new Date("2024-10-01T12:00:00Z"),
+      fieldMappings: {
+        "fav_dish": "broccoli",
+        "fav_color": "red",
+      },
+    },
   });
 
   // Handle the result
@@ -106,13 +125,14 @@ Retrieve Interviews from any connected Ats software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.ats.interviews.retrieve({
     xConnectionToken: "<value>",
-    id: "<id>",
+    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    remoteData: false,
   });
 
   // Handle the result

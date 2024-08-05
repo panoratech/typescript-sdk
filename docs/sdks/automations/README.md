@@ -3,13 +3,13 @@
 
 ### Available Operations
 
-* [list](#list) - List  Automations
+* [list](#list) - List Automations
 * [create](#create) - Create Automation
-* [retrieve](#retrieve) - Retrieve Automations
+* [retrieve](#retrieve) - Retrieve Automation
 
 ## list
 
-List  Automations
+List Automations
 
 ### Example Usage
 
@@ -17,7 +17,7 @@ List  Automations
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -36,7 +36,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.ListMarketingautomationAutomationRequest](../../models/operations/listmarketingautomationautomationrequest.md)                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.ListMarketingautomationAutomationsRequest](../../models/operations/listmarketingautomationautomationsrequest.md)                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -44,7 +44,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListMarketingautomationAutomationResponseBody](../../models/operations/listmarketingautomationautomationresponsebody.md)\>**
+**Promise\<[operations.ListMarketingautomationAutomationsResponseBody](../../models/operations/listmarketingautomationautomationsresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -61,12 +61,13 @@ Create a automation in any supported Marketingautomation software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.marketingautomation.automations.create({
     xConnectionToken: "<value>",
+    remoteData: false,
     unifiedMarketingautomationAutomationInput: {},
   });
 
@@ -98,7 +99,7 @@ run();
 
 ## retrieve
 
-Retrieve Automations from any connected Marketingautomation software
+Retrieve an Automation from any connected Marketingautomation software
 
 ### Example Usage
 
@@ -106,13 +107,14 @@ Retrieve Automations from any connected Marketingautomation software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.marketingautomation.automations.retrieve({
     xConnectionToken: "<value>",
-    id: "<id>",
+    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    remoteData: false,
   });
 
   // Handle the result

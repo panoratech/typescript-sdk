@@ -22,14 +22,14 @@ export class Timeoffbalances extends ClientSDK {
      * List  TimeoffBalances
      */
     async list(
-        request: operations.ListHrisTimeoffbalanceRequest,
+        request: operations.ListHrisTimeoffbalancesRequest,
         options?: RequestOptions
-    ): Promise<operations.ListHrisTimeoffbalanceResponseBody> {
+    ): Promise<operations.ListHrisTimeoffbalancesResponseBody> {
         const input$ = request;
 
         const parsed$ = schemas$.safeParse(
             input$,
-            (value$) => operations.ListHrisTimeoffbalanceRequest$outboundSchema.parse(value$),
+            (value$) => operations.ListHrisTimeoffbalancesRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const payload$ = unwrap$(parsed$);
@@ -55,7 +55,7 @@ export class Timeoffbalances extends ClientSDK {
         const apiKey$ = await extractSecurity(this.options$.apiKey);
         const security$ = apiKey$ == null ? {} : { apiKey: apiKey$ };
         const context = {
-            operationID: "listHrisTimeoffbalance",
+            operationID: "listHrisTimeoffbalances",
             oAuth2Scopes: [],
             securitySource: this.options$.apiKey,
         };
@@ -85,10 +85,10 @@ export class Timeoffbalances extends ClientSDK {
         const response = unwrap$(doResult);
 
         const [result$] = await m$.match<
-            operations.ListHrisTimeoffbalanceResponseBody,
+            operations.ListHrisTimeoffbalancesResponseBody,
             SDKError | SDKValidationError
         >(
-            m$.json(200, operations.ListHrisTimeoffbalanceResponseBody$inboundSchema),
+            m$.json(200, operations.ListHrisTimeoffbalancesResponseBody$inboundSchema),
             m$.fail(["4XX", "5XX"])
         )(response);
 

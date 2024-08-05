@@ -7,19 +7,19 @@ import * as z from "zod";
 
 export type MapFieldToProviderDto = {
     /**
-     * Attribute Id
+     * The attribute ID
      */
     attributeId: string | null;
     /**
-     * Attribute Id
+     * The source custom field ID
      */
     sourceCustomFieldId: string | null;
     /**
-     * Attribute Id
+     * The source provider
      */
     sourceProvider: string | null;
     /**
-     * Attribute Id
+     * The linked user ID
      */
     linkedUserId: string | null;
 };

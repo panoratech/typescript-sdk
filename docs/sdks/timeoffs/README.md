@@ -3,13 +3,13 @@
 
 ### Available Operations
 
-* [list](#list) - List  Timeoffs
+* [list](#list) - List Time Offs
 * [create](#create) - Create Timeoffs
-* [retrieve](#retrieve) - Retrieve Timeoffs
+* [retrieve](#retrieve) - Retrieve Time Off
 
 ## list
 
-List  Timeoffs
+List Time Offs
 
 ### Example Usage
 
@@ -17,7 +17,7 @@ List  Timeoffs
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -61,7 +61,7 @@ Create Timeoffs in any supported Hris software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -98,7 +98,7 @@ run();
 
 ## retrieve
 
-Retrieve Timeoffs from any connected Hris software
+Retrieve a Time Off from any connected Hris software
 
 ### Example Usage
 
@@ -106,13 +106,14 @@ Retrieve Timeoffs from any connected Hris software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.hris.timeoffs.retrieve({
     xConnectionToken: "<value>",
-    id: "<id>",
+    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    remoteData: false,
   });
 
   // Handle the result

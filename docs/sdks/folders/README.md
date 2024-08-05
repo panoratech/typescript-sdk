@@ -17,7 +17,7 @@ List  Folders
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -61,7 +61,7 @@ Create Folders in any supported Filestorage software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -69,14 +69,18 @@ async function run() {
     xConnectionToken: "<value>",
     remoteData: false,
     unifiedFilestorageFolderInput: {
-      name: "<value>",
-      size: "<value>",
-      folderUrl: "<value>",
-      description: "Multi-tiered human-resource model",
-      driveId: "<value>",
-      parentFolderId: "<value>",
-      sharedLink: "<value>",
-      permission: "<value>",
+      name: "school",
+      size: "2048",
+      folderUrl: "https://example.com/school",
+      description: "All things school related",
+      driveId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      parentFolderId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      sharedLink: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      permission: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      fieldMappings: {
+        "fav_dish": "broccoli",
+        "fav_color": "red",
+      },
     },
   });
 
@@ -116,13 +120,14 @@ Retrieve Folders from any connected Filestorage software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.filestorage.folders.retrieve({
     xConnectionToken: "<value>",
-    id: "<id>",
+    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    remoteData: false,
   });
 
   // Handle the result

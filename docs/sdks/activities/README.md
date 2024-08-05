@@ -17,7 +17,7 @@ List  Activities
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -59,15 +59,28 @@ Create Activities in any supported Ats software
 
 ```typescript
 import { Panora } from "@panora/sdk";
+import { UnifiedAtsActivityInputActivityType, UnifiedAtsActivityInputVisibility } from "@panora/sdk/models/components";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.ats.activities.create({
     xConnectionToken: "<value>",
-    unifiedAtsActivityInput: {},
+    remoteData: false,
+    unifiedAtsActivityInput: {
+      activityType: UnifiedAtsActivityInputActivityType.Note,
+      subject: "Email subject",
+      body: "Dear Diana, I love you",
+      visibility: UnifiedAtsActivityInputVisibility.Public,
+      candidateId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      remoteCreatedAt: new Date("2024-10-01T12:00:00Z"),
+      fieldMappings: {
+        "fav_dish": "broccoli",
+        "fav_color": "red",
+      },
+    },
   });
 
   // Handle the result
@@ -106,13 +119,14 @@ Retrieve Activities from any connected Ats software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.ats.activities.retrieve({
     xConnectionToken: "<value>",
-    id: "<id>",
+    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    remoteData: false,
   });
 
   // Handle the result

@@ -11,7 +11,7 @@ export type RetrieveHrisEmployerBenefitRequest = {
      */
     xConnectionToken: string;
     /**
-     * id of the employerbenefit you want to retrieve.
+     * id of the employer benefit you want to retrieve.
      */
     id: string;
     /**

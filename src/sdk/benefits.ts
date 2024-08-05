@@ -19,17 +19,17 @@ import { unwrap as unwrap$ } from "../types/fp.js";
 
 export class Benefits extends ClientSDK {
     /**
-     * List  Benefits
+     * List Benefits
      */
     async list(
-        request: operations.ListHrisBenefitRequest,
+        request: operations.ListHrisBenefitsRequest,
         options?: RequestOptions
-    ): Promise<operations.ListHrisBenefitResponseBody> {
+    ): Promise<operations.ListHrisBenefitsResponseBody> {
         const input$ = request;
 
         const parsed$ = schemas$.safeParse(
             input$,
-            (value$) => operations.ListHrisBenefitRequest$outboundSchema.parse(value$),
+            (value$) => operations.ListHrisBenefitsRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const payload$ = unwrap$(parsed$);
@@ -55,7 +55,7 @@ export class Benefits extends ClientSDK {
         const apiKey$ = await extractSecurity(this.options$.apiKey);
         const security$ = apiKey$ == null ? {} : { apiKey: apiKey$ };
         const context = {
-            operationID: "listHrisBenefit",
+            operationID: "listHrisBenefits",
             oAuth2Scopes: [],
             securitySource: this.options$.apiKey,
         };
@@ -85,10 +85,10 @@ export class Benefits extends ClientSDK {
         const response = unwrap$(doResult);
 
         const [result$] = await m$.match<
-            operations.ListHrisBenefitResponseBody,
+            operations.ListHrisBenefitsResponseBody,
             SDKError | SDKValidationError
         >(
-            m$.json(200, operations.ListHrisBenefitResponseBody$inboundSchema),
+            m$.json(200, operations.ListHrisBenefitsResponseBody$inboundSchema),
             m$.fail(["4XX", "5XX"])
         )(response);
 
@@ -96,10 +96,10 @@ export class Benefits extends ClientSDK {
     }
 
     /**
-     * Retrieve Benefits
+     * Retrieve Benefit
      *
      * @remarks
-     * Retrieve Benefits from any connected Hris software
+     * Retrieve a Benefit from any connected Hris software
      */
     async retrieve(
         request: operations.RetrieveHrisBenefitRequest,

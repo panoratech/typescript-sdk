@@ -136,7 +136,7 @@ export class Webhooks extends ClientSDK {
     async delete(
         request: operations.DeleteRequest,
         options?: RequestOptions
-    ): Promise<components.WebhookResponse | undefined> {
+    ): Promise<components.WebhookResponse> {
         const input$ = request;
 
         const parsed$ = schemas$.safeParse(
@@ -188,12 +188,8 @@ export class Webhooks extends ClientSDK {
         });
         const response = unwrap$(doResult);
 
-        const [result$] = await m$.match<
-            components.WebhookResponse | undefined,
-            SDKError | SDKValidationError
-        >(
-            m$.nil(200, components.WebhookResponse$inboundSchema.optional()),
-            m$.json(201, components.WebhookResponse$inboundSchema.optional()),
+        const [result$] = await m$.match<components.WebhookResponse, SDKError | SDKValidationError>(
+            m$.json(201, components.WebhookResponse$inboundSchema),
             m$.fail(["4XX", "5XX"])
         )(response);
 
@@ -206,7 +202,7 @@ export class Webhooks extends ClientSDK {
     async updateStatus(
         request: operations.UpdateStatusRequest,
         options?: RequestOptions
-    ): Promise<components.WebhookResponse | undefined> {
+    ): Promise<components.WebhookResponse> {
         const input$ = request;
 
         const parsed$ = schemas$.safeParse(
@@ -258,12 +254,8 @@ export class Webhooks extends ClientSDK {
         });
         const response = unwrap$(doResult);
 
-        const [result$] = await m$.match<
-            components.WebhookResponse | undefined,
-            SDKError | SDKValidationError
-        >(
-            m$.nil(200, components.WebhookResponse$inboundSchema.optional()),
-            m$.json(201, components.WebhookResponse$inboundSchema.optional()),
+        const [result$] = await m$.match<components.WebhookResponse, SDKError | SDKValidationError>(
+            m$.json(201, components.WebhookResponse$inboundSchema),
             m$.fail(["4XX", "5XX"])
         )(response);
 
@@ -276,7 +268,7 @@ export class Webhooks extends ClientSDK {
     async verifyEvent(
         request: components.SignatureVerificationDto,
         options?: RequestOptions
-    ): Promise<operations.VerifyEventResponseBody | undefined> {
+    ): Promise<operations.VerifyEventResponseBody> {
         const input$ = request;
 
         const parsed$ = schemas$.safeParse(
@@ -326,11 +318,10 @@ export class Webhooks extends ClientSDK {
         const response = unwrap$(doResult);
 
         const [result$] = await m$.match<
-            operations.VerifyEventResponseBody | undefined,
+            operations.VerifyEventResponseBody,
             SDKError | SDKValidationError
         >(
-            m$.json(200, operations.VerifyEventResponseBody$inboundSchema.optional()),
-            m$.nil(201, operations.VerifyEventResponseBody$inboundSchema.optional()),
+            m$.json(200, operations.VerifyEventResponseBody$inboundSchema),
             m$.fail(["4XX", "5XX"])
         )(response);
 

@@ -5,6 +5,9 @@
 import * as z from "zod";
 
 export type UpdateStatusRequest = {
+    /**
+     * id of the webhook to update.
+     */
     id: string;
 };
 

@@ -17,7 +17,7 @@ List Companies
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -59,16 +59,49 @@ Create Companies in any supported CRM software
 
 ```typescript
 import { Panora } from "@panora/sdk";
+import { AddressType, EmailAddressType, PhoneType, UnifiedCrmCompanyInputIndustry } from "@panora/sdk/models/components";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.crm.companies.create({
     xConnectionToken: "<value>",
+    remoteData: false,
     unifiedCrmCompanyInput: {
-      name: "<value>",
+      name: "Acme",
+      industry: UnifiedCrmCompanyInputIndustry.Accounting,
+      numberOfEmployees: 10,
+      userId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      emailAddresses: [
+        {
+          emailAddress: "acme@gmail.com",
+          emailAddressType: EmailAddressType.Work,
+        },
+      ],
+      addresses: [
+        {
+          street1: "5th Avenue",
+          street2: "<value>",
+          city: "New York",
+          state: "NY",
+          postalCode: "46842",
+          country: "USA",
+          addressType: AddressType.Work,
+          ownerType: "<value>",
+        },
+      ],
+      phoneNumbers: [
+        {
+          phoneNumber: "+33660606067",
+          phoneType: PhoneType.Work,
+        },
+      ],
+      fieldMappings: {
+        "fav_dish": "broccoli",
+        "fav_color": "red",
+      },
     },
   });
 
@@ -108,13 +141,14 @@ Retrieve Companies from any connected Crm software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.crm.companies.retrieve({
     xConnectionToken: "<value>",
-    id: "<id>",
+    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    remoteData: false,
   });
 
   // Handle the result

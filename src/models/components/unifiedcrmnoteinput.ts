@@ -11,7 +11,7 @@ export type UnifiedCrmNoteInput = {
      */
     content: string | null;
     /**
-     * The UUID of the user tied the note
+     * The UUID of the user tied to the note
      */
     userId?: string | null | undefined;
     /**
@@ -19,7 +19,7 @@ export type UnifiedCrmNoteInput = {
      */
     companyId?: string | null | undefined;
     /**
-     * The UUID fo the contact tied to the note
+     * The UUID of the contact tied to the note
      */
     contactId?: string | null | undefined;
     /**

@@ -19,7 +19,7 @@ import { unwrap as unwrap$ } from "../types/fp.js";
 
 export class Emails extends ClientSDK {
     /**
-     * List  Emails
+     * List Emails
      */
     async list(
         request: operations.ListMarketingautomationEmailsRequest,
@@ -97,10 +97,10 @@ export class Emails extends ClientSDK {
     }
 
     /**
-     * Retrieve Emails
+     * Retrieve Email
      *
      * @remarks
-     * Retrieve Emails from any connected Marketingautomation software
+     * Retrieve an Email from any connected Marketingautomation software
      */
     async retrieve(
         request: operations.RetrieveMarketingautomationEmailRequest,

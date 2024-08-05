@@ -5,12 +5,77 @@
 import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
+export enum ObjectTypeOwner {
+    Company = "company",
+    Contact = "contact",
+    Deal = "deal",
+    Lead = "lead",
+    Note = "note",
+    Task = "task",
+    Engagement = "engagement",
+    Stage = "stage",
+    User = "user",
+}
+
+/**
+ * The data type of the target field
+ */
+export enum DataType {
+    String = "string",
+    Number = "number",
+}
+
 export type DefineTargetFieldDto = {
-    objectTypeOwner: string | null;
+    objectTypeOwner: ObjectTypeOwner | null;
+    /**
+     * The name of the target field
+     */
     name: string | null;
+    /**
+     * The description of the target field
+     */
     description: string | null;
-    dataType: string | null;
+    /**
+     * The data type of the target field
+     */
+    dataType: DataType | null;
 };
+
+/** @internal */
+export const ObjectTypeOwner$inboundSchema: z.ZodNativeEnum<typeof ObjectTypeOwner> =
+    z.nativeEnum(ObjectTypeOwner);
+
+/** @internal */
+export const ObjectTypeOwner$outboundSchema: z.ZodNativeEnum<typeof ObjectTypeOwner> =
+    ObjectTypeOwner$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ObjectTypeOwner$ {
+    /** @deprecated use `ObjectTypeOwner$inboundSchema` instead. */
+    export const inboundSchema = ObjectTypeOwner$inboundSchema;
+    /** @deprecated use `ObjectTypeOwner$outboundSchema` instead. */
+    export const outboundSchema = ObjectTypeOwner$outboundSchema;
+}
+
+/** @internal */
+export const DataType$inboundSchema: z.ZodNativeEnum<typeof DataType> = z.nativeEnum(DataType);
+
+/** @internal */
+export const DataType$outboundSchema: z.ZodNativeEnum<typeof DataType> = DataType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace DataType$ {
+    /** @deprecated use `DataType$inboundSchema` instead. */
+    export const inboundSchema = DataType$inboundSchema;
+    /** @deprecated use `DataType$outboundSchema` instead. */
+    export const outboundSchema = DataType$outboundSchema;
+}
 
 /** @internal */
 export const DefineTargetFieldDto$inboundSchema: z.ZodType<
@@ -19,10 +84,10 @@ export const DefineTargetFieldDto$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        object_type_owner: z.nullable(z.string()),
+        object_type_owner: z.nullable(ObjectTypeOwner$inboundSchema),
         name: z.nullable(z.string()),
         description: z.nullable(z.string()),
-        data_type: z.nullable(z.string()),
+        data_type: z.nullable(DataType$inboundSchema),
     })
     .transform((v) => {
         return remap$(v, {
@@ -46,10 +111,10 @@ export const DefineTargetFieldDto$outboundSchema: z.ZodType<
     DefineTargetFieldDto
 > = z
     .object({
-        objectTypeOwner: z.nullable(z.string()),
+        objectTypeOwner: z.nullable(ObjectTypeOwner$outboundSchema),
         name: z.nullable(z.string()),
         description: z.nullable(z.string()),
-        dataType: z.nullable(z.string()),
+        dataType: z.nullable(DataType$outboundSchema),
     })
     .transform((v) => {
         return remap$(v, {

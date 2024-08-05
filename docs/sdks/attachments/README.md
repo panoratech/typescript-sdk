@@ -17,7 +17,7 @@ List  Attachments
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -59,15 +59,28 @@ Create Attachments in any supported ATS software
 
 ```typescript
 import { Panora } from "@panora/sdk";
+import { UnifiedAtsAttachmentInputAttachmentType } from "@panora/sdk/models/components";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.ats.attachments.create({
     xConnectionToken: "<value>",
-    unifiedAtsAttachmentInput: {},
+    remoteData: false,
+    unifiedAtsAttachmentInput: {
+      fileUrl: "https://example.com/file.pdf",
+      fileName: "file.pdf",
+      attachmentType: UnifiedAtsAttachmentInputAttachmentType.Resume,
+      remoteCreatedAt: new Date("2024-10-01T12:00:00Z"),
+      remoteModifiedAt: new Date("2024-10-01T12:00:00Z"),
+      candidateId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      fieldMappings: {
+        "fav_dish": "broccoli",
+        "fav_color": "red",
+      },
+    },
   });
 
   // Handle the result
@@ -106,13 +119,14 @@ Retrieve Attachments from any connected Ats software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.ats.attachments.retrieve({
     xConnectionToken: "<value>",
-    id: "<id>",
+    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    remoteData: false,
   });
 
   // Handle the result

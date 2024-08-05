@@ -14,7 +14,7 @@ import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrap as unwrap$ } from "../types/fp.js";
 import { Batch } from "./batch.js";
 import { Fromremoteid } from "./fromremoteid.js";
-import { Single } from "./single.js";
+import { Id } from "./id.js";
 import * as z from "zod";
 
 export class LinkedUsers extends ClientSDK {
@@ -23,9 +23,9 @@ export class LinkedUsers extends ClientSDK {
         return (this._batch ??= new Batch(this.options$));
     }
 
-    private _single?: Single;
-    get single(): Single {
-        return (this._single ??= new Single(this.options$));
+    private _id?: Id;
+    get id(): Id {
+        return (this._id ??= new Id(this.options$));
     }
 
     private _fromremoteid?: Fromremoteid;
