@@ -19,7 +19,7 @@ import { unwrap as unwrap$ } from "../types/fp.js";
 
 export class Events extends ClientSDK {
     /**
-     * List  Events
+     * List Events
      */
     async list(
         request: operations.ListMarketingAutomationEventsRequest,
@@ -97,10 +97,10 @@ export class Events extends ClientSDK {
     }
 
     /**
-     * Retrieve Events
+     * Retrieve Event
      *
      * @remarks
-     * Retrieve Events from any connected Marketingautomation software
+     * Retrieve an Event from any connected Marketingautomation software
      */
     async retrieve(
         request: operations.RetrieveMarketingautomationEventRequest,

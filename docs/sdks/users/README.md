@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List  Users
-* [retrieve](#retrieve) - Retrieve Users
+* [list](#list) - List Users
+* [retrieve](#retrieve) - Retrieve User
 
 ## list
 
-List  Users
+List Users
 
 ### Example Usage
 
@@ -16,7 +16,7 @@ List  Users
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -52,7 +52,7 @@ run();
 
 ## retrieve
 
-Retrieve Users from any connected Ticketing software
+Retrieve a User from any connected Ticketing software
 
 ### Example Usage
 
@@ -60,13 +60,14 @@ Retrieve Users from any connected Ticketing software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.ticketing.users.retrieve({
     xConnectionToken: "<value>",
-    id: "<id>",
+    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    remoteData: false,
   });
 
   // Handle the result

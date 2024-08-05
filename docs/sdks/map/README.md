@@ -15,15 +15,15 @@ Map Custom Field
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.fieldMappings.map.map({
-    attributeId: "<value>",
-    sourceCustomFieldId: "<value>",
-    sourceProvider: "<value>",
-    linkedUserId: "<value>",
+    attributeId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    sourceCustomFieldId: "id_1",
+    sourceProvider: "hubspot",
+    linkedUserId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
   });
 
   // Handle the result

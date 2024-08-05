@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List  Emails
-* [retrieve](#retrieve) - Retrieve Emails
+* [list](#list) - List Emails
+* [retrieve](#retrieve) - Retrieve Email
 
 ## list
 
-List  Emails
+List Emails
 
 ### Example Usage
 
@@ -16,7 +16,7 @@ List  Emails
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -52,7 +52,7 @@ run();
 
 ## retrieve
 
-Retrieve Emails from any connected Marketingautomation software
+Retrieve an Email from any connected Marketingautomation software
 
 ### Example Usage
 
@@ -60,13 +60,14 @@ Retrieve Emails from any connected Marketingautomation software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.marketingautomation.emails.retrieve({
     xConnectionToken: "<value>",
-    id: "<id>",
+    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    remoteData: false,
   });
 
   // Handle the result

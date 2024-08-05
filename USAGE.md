@@ -3,7 +3,7 @@
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-    apiKey: process.env.API_KEY,
+    apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {

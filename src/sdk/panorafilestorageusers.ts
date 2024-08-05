@@ -19,7 +19,7 @@ import { unwrap as unwrap$ } from "../types/fp.js";
 
 export class PanoraFilestorageUsers extends ClientSDK {
     /**
-     * List  Users
+     * List Users
      */
     async list(
         request: operations.ListFilestorageUsersRequest,
@@ -104,7 +104,7 @@ export class PanoraFilestorageUsers extends ClientSDK {
     async retrieve(
         request: operations.RetrieveFilestorageUserRequest,
         options?: RequestOptions
-    ): Promise<components.UnifiedUserOutput> {
+    ): Promise<components.UnifiedFilestorageUserOutput> {
         const input$ = request;
 
         const parsed$ = schemas$.safeParse(
@@ -167,10 +167,10 @@ export class PanoraFilestorageUsers extends ClientSDK {
         const response = unwrap$(doResult);
 
         const [result$] = await m$.match<
-            components.UnifiedUserOutput,
+            components.UnifiedFilestorageUserOutput,
             SDKError | SDKValidationError
         >(
-            m$.json(200, components.UnifiedUserOutput$inboundSchema),
+            m$.json(200, components.UnifiedFilestorageUserOutput$inboundSchema),
             m$.fail(["4XX", "5XX"])
         )(response);
 

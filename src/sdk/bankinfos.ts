@@ -19,17 +19,17 @@ import { unwrap as unwrap$ } from "../types/fp.js";
 
 export class Bankinfos extends ClientSDK {
     /**
-     * List  Bankinfos
+     * List Bank Info
      */
     async list(
-        request: operations.ListHrisBankinfoRequest,
+        request: operations.ListHrisBankInfoRequest,
         options?: RequestOptions
-    ): Promise<operations.ListHrisBankinfoResponseBody> {
+    ): Promise<operations.ListHrisBankInfoResponseBody> {
         const input$ = request;
 
         const parsed$ = schemas$.safeParse(
             input$,
-            (value$) => operations.ListHrisBankinfoRequest$outboundSchema.parse(value$),
+            (value$) => operations.ListHrisBankInfoRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const payload$ = unwrap$(parsed$);
@@ -55,7 +55,7 @@ export class Bankinfos extends ClientSDK {
         const apiKey$ = await extractSecurity(this.options$.apiKey);
         const security$ = apiKey$ == null ? {} : { apiKey: apiKey$ };
         const context = {
-            operationID: "listHrisBankinfo",
+            operationID: "listHrisBankInfo",
             oAuth2Scopes: [],
             securitySource: this.options$.apiKey,
         };
@@ -85,10 +85,10 @@ export class Bankinfos extends ClientSDK {
         const response = unwrap$(doResult);
 
         const [result$] = await m$.match<
-            operations.ListHrisBankinfoResponseBody,
+            operations.ListHrisBankInfoResponseBody,
             SDKError | SDKValidationError
         >(
-            m$.json(200, operations.ListHrisBankinfoResponseBody$inboundSchema),
+            m$.json(200, operations.ListHrisBankInfoResponseBody$inboundSchema),
             m$.fail(["4XX", "5XX"])
         )(response);
 
@@ -96,20 +96,20 @@ export class Bankinfos extends ClientSDK {
     }
 
     /**
-     * Retrieve Bank Infos
+     * Retrieve Bank Info
      *
      * @remarks
-     * Retrieve Bank Infos from any connected Hris software
+     * Retrieve Bank Info from any connected Hris software
      */
     async retrieve(
-        request: operations.RetrieveHrisBankinfoRequest,
+        request: operations.RetrieveHrisBankInfoRequest,
         options?: RequestOptions
     ): Promise<components.UnifiedHrisBankinfoOutput> {
         const input$ = request;
 
         const parsed$ = schemas$.safeParse(
             input$,
-            (value$) => operations.RetrieveHrisBankinfoRequest$outboundSchema.parse(value$),
+            (value$) => operations.RetrieveHrisBankInfoRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const payload$ = unwrap$(parsed$);
@@ -137,7 +137,7 @@ export class Bankinfos extends ClientSDK {
         const apiKey$ = await extractSecurity(this.options$.apiKey);
         const security$ = apiKey$ == null ? {} : { apiKey: apiKey$ };
         const context = {
-            operationID: "retrieveHrisBankinfo",
+            operationID: "retrieveHrisBankInfo",
             oAuth2Scopes: [],
             securitySource: this.options$.apiKey,
         };

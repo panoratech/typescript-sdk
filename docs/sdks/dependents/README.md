@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List  Dependents
-* [retrieve](#retrieve) - Retrieve Dependents
+* [list](#list) - List Dependents
+* [retrieve](#retrieve) - Retrieve Dependent
 
 ## list
 
-List  Dependents
+List Dependents
 
 ### Example Usage
 
@@ -16,7 +16,7 @@ List  Dependents
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -52,7 +52,7 @@ run();
 
 ## retrieve
 
-Retrieve Dependents from any connected Hris software
+Retrieve a Dependent from any connected Hris software
 
 ### Example Usage
 
@@ -60,13 +60,14 @@ Retrieve Dependents from any connected Hris software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.hris.dependents.retrieve({
     xConnectionToken: "<value>",
-    id: "<id>",
+    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    remoteData: false,
   });
 
   // Handle the result

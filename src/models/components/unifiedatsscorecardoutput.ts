@@ -5,11 +5,22 @@
 import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
+/**
+ * The overall recommendation
+ */
+export enum OverallRecommendation {
+    DefinitelyNo = "DEFINITELY_NO",
+    No = "NO",
+    Yes = "YES",
+    StrongYes = "STRONG_YES",
+    NoDecision = "NO_DECISION",
+}
+
 export type UnifiedAtsScorecardOutput = {
     /**
      * The overall recommendation
      */
-    overallRecommendation?: string | null | undefined;
+    overallRecommendation?: OverallRecommendation | null | undefined;
     /**
      * The UUID of the application
      */
@@ -21,11 +32,11 @@ export type UnifiedAtsScorecardOutput = {
     /**
      * The remote creation date of the scorecard
      */
-    remoteCreatedAt?: string | null | undefined;
+    remoteCreatedAt?: Date | null | undefined;
     /**
      * The submission date of the scorecard
      */
-    submittedAt?: string | null | undefined;
+    submittedAt?: Date | null | undefined;
     /**
      * The custom field mappings of the object between the remote 3rd party & Panora
      */
@@ -53,17 +64,50 @@ export type UnifiedAtsScorecardOutput = {
 };
 
 /** @internal */
+export const OverallRecommendation$inboundSchema: z.ZodNativeEnum<typeof OverallRecommendation> =
+    z.nativeEnum(OverallRecommendation);
+
+/** @internal */
+export const OverallRecommendation$outboundSchema: z.ZodNativeEnum<typeof OverallRecommendation> =
+    OverallRecommendation$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace OverallRecommendation$ {
+    /** @deprecated use `OverallRecommendation$inboundSchema` instead. */
+    export const inboundSchema = OverallRecommendation$inboundSchema;
+    /** @deprecated use `OverallRecommendation$outboundSchema` instead. */
+    export const outboundSchema = OverallRecommendation$outboundSchema;
+}
+
+/** @internal */
 export const UnifiedAtsScorecardOutput$inboundSchema: z.ZodType<
     UnifiedAtsScorecardOutput,
     z.ZodTypeDef,
     unknown
 > = z
     .object({
-        overall_recommendation: z.nullable(z.string()).optional(),
+        overall_recommendation: z.nullable(OverallRecommendation$inboundSchema).optional(),
         application_id: z.nullable(z.string()).optional(),
         interview_id: z.nullable(z.string()).optional(),
-        remote_created_at: z.nullable(z.string()).optional(),
-        submitted_at: z.nullable(z.string()).optional(),
+        remote_created_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        submitted_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
         field_mappings: z.nullable(z.record(z.any())).optional(),
         id: z.string().optional(),
         remote_id: z.nullable(z.string()).optional(),
@@ -122,11 +166,11 @@ export const UnifiedAtsScorecardOutput$outboundSchema: z.ZodType<
     UnifiedAtsScorecardOutput
 > = z
     .object({
-        overallRecommendation: z.nullable(z.string()).optional(),
+        overallRecommendation: z.nullable(OverallRecommendation$outboundSchema).optional(),
         applicationId: z.nullable(z.string()).optional(),
         interviewId: z.nullable(z.string()).optional(),
-        remoteCreatedAt: z.nullable(z.string()).optional(),
-        submittedAt: z.nullable(z.string()).optional(),
+        remoteCreatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        submittedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         fieldMappings: z.nullable(z.record(z.any())).optional(),
         id: z.string().optional(),
         remoteId: z.nullable(z.string()).optional(),

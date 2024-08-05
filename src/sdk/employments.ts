@@ -19,17 +19,17 @@ import { unwrap as unwrap$ } from "../types/fp.js";
 
 export class Employments extends ClientSDK {
     /**
-     * List  Employments
+     * List Employments
      */
     async list(
-        request: operations.ListHrisEmploymentRequest,
+        request: operations.ListHrisEmploymentsRequest,
         options?: RequestOptions
-    ): Promise<operations.ListHrisEmploymentResponseBody> {
+    ): Promise<operations.ListHrisEmploymentsResponseBody> {
         const input$ = request;
 
         const parsed$ = schemas$.safeParse(
             input$,
-            (value$) => operations.ListHrisEmploymentRequest$outboundSchema.parse(value$),
+            (value$) => operations.ListHrisEmploymentsRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const payload$ = unwrap$(parsed$);
@@ -55,7 +55,7 @@ export class Employments extends ClientSDK {
         const apiKey$ = await extractSecurity(this.options$.apiKey);
         const security$ = apiKey$ == null ? {} : { apiKey: apiKey$ };
         const context = {
-            operationID: "listHrisEmployment",
+            operationID: "listHrisEmployments",
             oAuth2Scopes: [],
             securitySource: this.options$.apiKey,
         };
@@ -85,10 +85,10 @@ export class Employments extends ClientSDK {
         const response = unwrap$(doResult);
 
         const [result$] = await m$.match<
-            operations.ListHrisEmploymentResponseBody,
+            operations.ListHrisEmploymentsResponseBody,
             SDKError | SDKValidationError
         >(
-            m$.json(200, operations.ListHrisEmploymentResponseBody$inboundSchema),
+            m$.json(200, operations.ListHrisEmploymentsResponseBody$inboundSchema),
             m$.fail(["4XX", "5XX"])
         )(response);
 
@@ -96,10 +96,10 @@ export class Employments extends ClientSDK {
     }
 
     /**
-     * Retrieve Employments
+     * Retrieve Employment
      *
      * @remarks
-     * Retrieve Employments from any connected Hris software
+     * Retrieve an Employment from any connected Hris software
      */
     async retrieve(
         request: operations.RetrieveHrisEmploymentRequest,

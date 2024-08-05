@@ -5,6 +5,14 @@
 import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
+/**
+ * The creator type of the comment. Authorized values are either USER or CONTACT
+ */
+export enum UnifiedTicketingCommentInputCreatorType {
+    User = "USER",
+    Contact = "CONTACT",
+}
+
 export type UnifiedTicketingCommentInput = {
     /**
      * The body of the comment
@@ -21,7 +29,7 @@ export type UnifiedTicketingCommentInput = {
     /**
      * The creator type of the comment. Authorized values are either USER or CONTACT
      */
-    creatorType?: string | null | undefined;
+    creatorType?: UnifiedTicketingCommentInputCreatorType | null | undefined;
     /**
      * The UUID of the ticket the comment is tied to
      */
@@ -41,6 +49,27 @@ export type UnifiedTicketingCommentInput = {
 };
 
 /** @internal */
+export const UnifiedTicketingCommentInputCreatorType$inboundSchema: z.ZodNativeEnum<
+    typeof UnifiedTicketingCommentInputCreatorType
+> = z.nativeEnum(UnifiedTicketingCommentInputCreatorType);
+
+/** @internal */
+export const UnifiedTicketingCommentInputCreatorType$outboundSchema: z.ZodNativeEnum<
+    typeof UnifiedTicketingCommentInputCreatorType
+> = UnifiedTicketingCommentInputCreatorType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UnifiedTicketingCommentInputCreatorType$ {
+    /** @deprecated use `UnifiedTicketingCommentInputCreatorType$inboundSchema` instead. */
+    export const inboundSchema = UnifiedTicketingCommentInputCreatorType$inboundSchema;
+    /** @deprecated use `UnifiedTicketingCommentInputCreatorType$outboundSchema` instead. */
+    export const outboundSchema = UnifiedTicketingCommentInputCreatorType$outboundSchema;
+}
+
+/** @internal */
 export const UnifiedTicketingCommentInput$inboundSchema: z.ZodType<
     UnifiedTicketingCommentInput,
     z.ZodTypeDef,
@@ -50,7 +79,7 @@ export const UnifiedTicketingCommentInput$inboundSchema: z.ZodType<
         body: z.nullable(z.string()),
         html_body: z.nullable(z.string()).optional(),
         is_private: z.nullable(z.boolean()).optional(),
-        creator_type: z.nullable(z.string()).optional(),
+        creator_type: z.nullable(UnifiedTicketingCommentInputCreatorType$inboundSchema).optional(),
         ticket_id: z.nullable(z.string()).optional(),
         contact_id: z.nullable(z.string()).optional(),
         user_id: z.nullable(z.string()).optional(),
@@ -89,7 +118,7 @@ export const UnifiedTicketingCommentInput$outboundSchema: z.ZodType<
         body: z.nullable(z.string()),
         htmlBody: z.nullable(z.string()).optional(),
         isPrivate: z.nullable(z.boolean()).optional(),
-        creatorType: z.nullable(z.string()).optional(),
+        creatorType: z.nullable(UnifiedTicketingCommentInputCreatorType$outboundSchema).optional(),
         ticketId: z.nullable(z.string()).optional(),
         contactId: z.nullable(z.string()).optional(),
         userId: z.nullable(z.string()).optional(),

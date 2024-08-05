@@ -4,14 +4,42 @@
 
 import * as z from "zod";
 
+export enum Vertical {
+    Ticketing = "ticketing",
+    Marketingautomation = "marketingautomation",
+    Crm = "crm",
+    Filestorage = "filestorage",
+    Ats = "ats",
+    Hris = "hris",
+    Accounting = "accounting",
+    Ecommerce = "ecommerce",
+}
+
 export type StatusRequest = {
-    vertical: string;
+    vertical: Vertical;
 };
+
+/** @internal */
+export const Vertical$inboundSchema: z.ZodNativeEnum<typeof Vertical> = z.nativeEnum(Vertical);
+
+/** @internal */
+export const Vertical$outboundSchema: z.ZodNativeEnum<typeof Vertical> = Vertical$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Vertical$ {
+    /** @deprecated use `Vertical$inboundSchema` instead. */
+    export const inboundSchema = Vertical$inboundSchema;
+    /** @deprecated use `Vertical$outboundSchema` instead. */
+    export const outboundSchema = Vertical$outboundSchema;
+}
 
 /** @internal */
 export const StatusRequest$inboundSchema: z.ZodType<StatusRequest, z.ZodTypeDef, unknown> =
     z.object({
-        vertical: z.string(),
+        vertical: Vertical$inboundSchema,
     });
 
 /** @internal */
@@ -25,7 +53,7 @@ export const StatusRequest$outboundSchema: z.ZodType<
     z.ZodTypeDef,
     StatusRequest
 > = z.object({
-    vertical: z.string(),
+    vertical: Vertical$outboundSchema,
 });
 
 /**

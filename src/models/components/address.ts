@@ -5,6 +5,14 @@
 import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
+/**
+ * The address type. Authorized values are either PERSONAL or WORK.
+ */
+export enum AddressType {
+    Personal = "PERSONAL",
+    Work = "WORK",
+}
+
 export type Address = {
     /**
      * The street
@@ -33,12 +41,31 @@ export type Address = {
     /**
      * The address type. Authorized values are either PERSONAL or WORK.
      */
-    addressType: string | null;
+    addressType: AddressType | null;
     /**
      * The owner type of the address
      */
     ownerType: string | null;
 };
+
+/** @internal */
+export const AddressType$inboundSchema: z.ZodNativeEnum<typeof AddressType> =
+    z.nativeEnum(AddressType);
+
+/** @internal */
+export const AddressType$outboundSchema: z.ZodNativeEnum<typeof AddressType> =
+    AddressType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace AddressType$ {
+    /** @deprecated use `AddressType$inboundSchema` instead. */
+    export const inboundSchema = AddressType$inboundSchema;
+    /** @deprecated use `AddressType$outboundSchema` instead. */
+    export const outboundSchema = AddressType$outboundSchema;
+}
 
 /** @internal */
 export const Address$inboundSchema: z.ZodType<Address, z.ZodTypeDef, unknown> = z
@@ -49,7 +76,7 @@ export const Address$inboundSchema: z.ZodType<Address, z.ZodTypeDef, unknown> = 
         state: z.nullable(z.string()),
         postal_code: z.nullable(z.string()),
         country: z.nullable(z.string()),
-        address_type: z.nullable(z.string()),
+        address_type: z.nullable(AddressType$inboundSchema),
         owner_type: z.nullable(z.string()),
     })
     .transform((v) => {
@@ -83,7 +110,7 @@ export const Address$outboundSchema: z.ZodType<Address$Outbound, z.ZodTypeDef, A
         state: z.nullable(z.string()),
         postalCode: z.nullable(z.string()),
         country: z.nullable(z.string()),
-        addressType: z.nullable(z.string()),
+        addressType: z.nullable(AddressType$outboundSchema),
         ownerType: z.nullable(z.string()),
     })
     .transform((v) => {

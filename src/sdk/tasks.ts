@@ -20,7 +20,7 @@ import { unwrap as unwrap$ } from "../types/fp.js";
 
 export class Tasks extends ClientSDK {
     /**
-     * List  Tasks
+     * List Tasks
      */
     async list(
         request: operations.ListCrmTaskRequest,

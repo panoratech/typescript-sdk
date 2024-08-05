@@ -3,13 +3,13 @@
 
 ### Available Operations
 
-* [list](#list) - List  Campaigns
+* [list](#list) - List Campaigns
 * [create](#create) - Create Campaign
-* [retrieve](#retrieve) - Retrieve Campaigns
+* [retrieve](#retrieve) - Retrieve Campaign
 
 ## list
 
-List  Campaigns
+List Campaigns
 
 ### Example Usage
 
@@ -17,7 +17,7 @@ List  Campaigns
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -36,7 +36,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.ListMarketingautomationCampaignRequest](../../models/operations/listmarketingautomationcampaignrequest.md)                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.ListMarketingautomationCampaignsRequest](../../models/operations/listmarketingautomationcampaignsrequest.md)                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -44,7 +44,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListMarketingautomationCampaignResponseBody](../../models/operations/listmarketingautomationcampaignresponsebody.md)\>**
+**Promise\<[operations.ListMarketingautomationCampaignsResponseBody](../../models/operations/listmarketingautomationcampaignsresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -61,12 +61,13 @@ Create a campaign in any supported Marketingautomation software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.marketingautomation.campaigns.create({
     xConnectionToken: "<value>",
+    remoteData: false,
     unifiedMarketingautomationCampaignInput: {},
   });
 
@@ -89,7 +90,7 @@ run();
 
 ### Response
 
-**Promise\<[components.UnifiedCampaignOutput](../../models/components/unifiedcampaignoutput.md)\>**
+**Promise\<[components.UnifiedMarketingautomationCampaignOutput](../../models/components/unifiedmarketingautomationcampaignoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -98,7 +99,7 @@ run();
 
 ## retrieve
 
-Retrieve Campaigns from any connected Marketingautomation software
+Retrieve a Campaign from any connected Marketingautomation software
 
 ### Example Usage
 
@@ -106,13 +107,14 @@ Retrieve Campaigns from any connected Marketingautomation software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.marketingautomation.campaigns.retrieve({
     xConnectionToken: "<value>",
-    id: "<id>",
+    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    remoteData: false,
   });
 
   // Handle the result
@@ -134,7 +136,7 @@ run();
 
 ### Response
 
-**Promise\<[components.UnifiedCampaignOutput](../../models/components/unifiedcampaignoutput.md)\>**
+**Promise\<[components.UnifiedMarketingautomationCampaignOutput](../../models/components/unifiedmarketingautomationcampaignoutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

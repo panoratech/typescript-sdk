@@ -19,7 +19,7 @@ import { unwrap as unwrap$ } from "../types/fp.js";
 
 export class Messages extends ClientSDK {
     /**
-     * List  Messages
+     * List Messages
      */
     async list(
         request: operations.ListMarketingautomationMessagesRequest,

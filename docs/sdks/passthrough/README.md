@@ -16,7 +16,7 @@ import { Panora } from "@panora/sdk";
 import { Method } from "@panora/sdk/models/components";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -27,6 +27,12 @@ async function run() {
     passThroughRequestDto: {
       method: Method.Get,
       path: "/dev",
+    data:     {
+          "key": "<value>",
+        },
+      headers: {
+        "key": "<value>",
+      },
     },
   });
 

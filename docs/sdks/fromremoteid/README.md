@@ -15,12 +15,12 @@ Retrieve a Linked User From A Remote Id
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.linkedUsers.fromremoteid.remoteId({
-    remoteId: "<value>",
+    remoteId: "id_1",
   });
 
   // Handle the result

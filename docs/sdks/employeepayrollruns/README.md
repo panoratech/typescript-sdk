@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List  EmployeePayrollRuns
-* [retrieve](#retrieve) - Retrieve Employee Payroll Runs
+* [list](#list) - List Employee Payroll Runs
+* [retrieve](#retrieve) - Retrieve Employee Payroll Run
 
 ## list
 
-List  EmployeePayrollRuns
+List Employee Payroll Runs
 
 ### Example Usage
 
@@ -16,7 +16,7 @@ List  EmployeePayrollRuns
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -52,7 +52,7 @@ run();
 
 ## retrieve
 
-Retrieve Employee Payroll Runs from any connected Hris software
+Retrieve Employee Payroll Run from any connected Hris software
 
 ### Example Usage
 
@@ -60,13 +60,14 @@ Retrieve Employee Payroll Runs from any connected Hris software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.hris.employeepayrollruns.retrieve({
     xConnectionToken: "<value>",
-    id: "<id>",
+    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    remoteData: false,
   });
 
   // Handle the result

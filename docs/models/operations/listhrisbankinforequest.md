@@ -1,4 +1,4 @@
-# ListHrisBankinfoRequest
+# ListHrisBankInfoRequest
 
 
 ## Fields

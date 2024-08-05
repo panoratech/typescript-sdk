@@ -3,13 +3,13 @@
 
 ### Available Operations
 
-* [list](#list) - List  Comments
+* [list](#list) - List Comments
 * [create](#create) - Create Comments
-* [retrieve](#retrieve) - Retrieve Comments
+* [retrieve](#retrieve) - Retrieve Comment
 
 ## list
 
-List  Comments
+List Comments
 
 ### Example Usage
 
@@ -17,7 +17,7 @@ List  Comments
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -59,16 +59,26 @@ Create Comments in any supported Ticketing software
 
 ```typescript
 import { Panora } from "@panora/sdk";
+import { UnifiedTicketingCommentInputCreatorType } from "@panora/sdk/models/components";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.ticketing.comments.create({
     xConnectionToken: "<value>",
     unifiedTicketingCommentInput: {
-      body: "<value>",
+      body: "Assigned to Eric !",
+      htmlBody: "<p>Assigned to Eric !</p>",
+      isPrivate: false,
+      creatorType: UnifiedTicketingCommentInputCreatorType.User,
+      ticketId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      contactId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      userId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      attachments: [
+        "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      ],
     },
   });
 
@@ -100,7 +110,7 @@ run();
 
 ## retrieve
 
-Retrieve Comments from any connected Ticketing software
+Retrieve a Comment from any connected Ticketing software
 
 ### Example Usage
 
@@ -108,7 +118,7 @@ Retrieve Comments from any connected Ticketing software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {

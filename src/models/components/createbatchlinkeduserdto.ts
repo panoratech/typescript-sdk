@@ -6,7 +6,13 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
 export type CreateBatchLinkedUserDto = {
+    /**
+     * The ids of the users in the context of your own software
+     */
     linkedUserOriginIds: Array<string> | null;
+    /**
+     * Your company alias
+     */
     alias: string | null;
 };
 

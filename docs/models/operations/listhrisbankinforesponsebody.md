@@ -1,4 +1,4 @@
-# ListHrisBankinfoResponseBody
+# ListHrisBankInfoResponseBody
 
 
 ## Fields

@@ -5,15 +5,95 @@
 import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
+export enum CustomFieldCreateDtoObjectTypeOwner {
+    Company = "company",
+    Contact = "contact",
+    Deal = "deal",
+    Lead = "lead",
+    Note = "note",
+    Task = "task",
+    Engagement = "engagement",
+    Stage = "stage",
+    User = "user",
+}
+
+/**
+ * The data type of the custom field
+ */
+export enum CustomFieldCreateDtoDataType {
+    String = "string",
+    Number = "number",
+}
+
 export type CustomFieldCreateDto = {
-    objectTypeOwner: string | null;
+    objectTypeOwner: CustomFieldCreateDtoObjectTypeOwner | null;
+    /**
+     * The name of the custom field
+     */
     name: string | null;
+    /**
+     * The description of the custom field
+     */
     description: string | null;
-    dataType: string | null;
+    /**
+     * The data type of the custom field
+     */
+    dataType: CustomFieldCreateDtoDataType | null;
+    /**
+     * The source custom field ID
+     */
     sourceCustomFieldId: string | null;
+    /**
+     * The name of the source software/provider
+     */
     sourceProvider: string | null;
+    /**
+     * The linked user ID
+     */
     linkedUserId: string | null;
 };
+
+/** @internal */
+export const CustomFieldCreateDtoObjectTypeOwner$inboundSchema: z.ZodNativeEnum<
+    typeof CustomFieldCreateDtoObjectTypeOwner
+> = z.nativeEnum(CustomFieldCreateDtoObjectTypeOwner);
+
+/** @internal */
+export const CustomFieldCreateDtoObjectTypeOwner$outboundSchema: z.ZodNativeEnum<
+    typeof CustomFieldCreateDtoObjectTypeOwner
+> = CustomFieldCreateDtoObjectTypeOwner$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CustomFieldCreateDtoObjectTypeOwner$ {
+    /** @deprecated use `CustomFieldCreateDtoObjectTypeOwner$inboundSchema` instead. */
+    export const inboundSchema = CustomFieldCreateDtoObjectTypeOwner$inboundSchema;
+    /** @deprecated use `CustomFieldCreateDtoObjectTypeOwner$outboundSchema` instead. */
+    export const outboundSchema = CustomFieldCreateDtoObjectTypeOwner$outboundSchema;
+}
+
+/** @internal */
+export const CustomFieldCreateDtoDataType$inboundSchema: z.ZodNativeEnum<
+    typeof CustomFieldCreateDtoDataType
+> = z.nativeEnum(CustomFieldCreateDtoDataType);
+
+/** @internal */
+export const CustomFieldCreateDtoDataType$outboundSchema: z.ZodNativeEnum<
+    typeof CustomFieldCreateDtoDataType
+> = CustomFieldCreateDtoDataType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CustomFieldCreateDtoDataType$ {
+    /** @deprecated use `CustomFieldCreateDtoDataType$inboundSchema` instead. */
+    export const inboundSchema = CustomFieldCreateDtoDataType$inboundSchema;
+    /** @deprecated use `CustomFieldCreateDtoDataType$outboundSchema` instead. */
+    export const outboundSchema = CustomFieldCreateDtoDataType$outboundSchema;
+}
 
 /** @internal */
 export const CustomFieldCreateDto$inboundSchema: z.ZodType<
@@ -22,10 +102,10 @@ export const CustomFieldCreateDto$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        object_type_owner: z.nullable(z.string()),
+        object_type_owner: z.nullable(CustomFieldCreateDtoObjectTypeOwner$inboundSchema),
         name: z.nullable(z.string()),
         description: z.nullable(z.string()),
-        data_type: z.nullable(z.string()),
+        data_type: z.nullable(CustomFieldCreateDtoDataType$inboundSchema),
         source_custom_field_id: z.nullable(z.string()),
         source_provider: z.nullable(z.string()),
         linked_user_id: z.nullable(z.string()),
@@ -58,10 +138,10 @@ export const CustomFieldCreateDto$outboundSchema: z.ZodType<
     CustomFieldCreateDto
 > = z
     .object({
-        objectTypeOwner: z.nullable(z.string()),
+        objectTypeOwner: z.nullable(CustomFieldCreateDtoObjectTypeOwner$outboundSchema),
         name: z.nullable(z.string()),
         description: z.nullable(z.string()),
-        dataType: z.nullable(z.string()),
+        dataType: z.nullable(CustomFieldCreateDtoDataType$outboundSchema),
         sourceCustomFieldId: z.nullable(z.string()),
         sourceProvider: z.nullable(z.string()),
         linkedUserId: z.nullable(z.string()),

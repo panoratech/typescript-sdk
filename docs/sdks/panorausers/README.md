@@ -16,7 +16,7 @@ List  Users
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -60,13 +60,14 @@ Retrieve Users from any connected Crm software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.crm.users.retrieve({
     xConnectionToken: "<value>",
-    id: "<id>",
+    id: "b008e199-eda9-4629-bd41-a01b6195864a",
+    remoteData: true,
   });
 
   // Handle the result

@@ -17,7 +17,7 @@ List  Files
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -61,7 +61,7 @@ Create Files in any supported Filestorage software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -69,13 +69,17 @@ async function run() {
     xConnectionToken: "<value>",
     remoteData: false,
     unifiedFilestorageFileInput: {
-      name: "<value>",
-      fileUrl: "<value>",
-      mimeType: "<value>",
-      size: "<value>",
-      folderId: "<value>",
-      permission: "<value>",
-      sharedLink: "<value>",
+      name: "my_paris_photo.png",
+      fileUrl: "https://example.com/my_paris_photo.png",
+      mimeType: "application/pdf",
+      size: "1024",
+      folderId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      permission: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      sharedLink: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      fieldMappings: {
+        "fav_dish": "broccoli",
+        "fav_color": "red",
+      },
     },
   });
 
@@ -115,13 +119,14 @@ Retrieve Files from any connected Filestorage software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.filestorage.files.retrieve({
     xConnectionToken: "<value>",
-    id: "<id>",
+    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    remoteData: false,
   });
 
   // Handle the result

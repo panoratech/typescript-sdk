@@ -6,7 +6,7 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as components from "../components/index.js";
 import * as z from "zod";
 
-export type ListHrisBankinfoRequest = {
+export type ListHrisBankInfoRequest = {
     /**
      * The connection token
      */
@@ -25,22 +25,22 @@ export type ListHrisBankinfoRequest = {
     cursor?: string | undefined;
 };
 
-export type ListHrisBankinfoResponseBody = {
+export type ListHrisBankInfoResponseBody = {
     prevCursor: string | null;
     nextCursor: string | null;
     data: Array<components.UnifiedHrisBankinfoOutput>;
 };
 
 /** @internal */
-export const ListHrisBankinfoRequest$inboundSchema: z.ZodType<
-    ListHrisBankinfoRequest,
+export const ListHrisBankInfoRequest$inboundSchema: z.ZodType<
+    ListHrisBankInfoRequest,
     z.ZodTypeDef,
     unknown
 > = z
     .object({
         "x-connection-token": z.string(),
         remote_data: z.boolean().optional(),
-        limit: z.number().default(50),
+        limit: z.number().optional(),
         cursor: z.string().optional(),
     })
     .transform((v) => {
@@ -51,23 +51,23 @@ export const ListHrisBankinfoRequest$inboundSchema: z.ZodType<
     });
 
 /** @internal */
-export type ListHrisBankinfoRequest$Outbound = {
+export type ListHrisBankInfoRequest$Outbound = {
     "x-connection-token": string;
     remote_data?: boolean | undefined;
-    limit: number;
+    limit?: number | undefined;
     cursor?: string | undefined;
 };
 
 /** @internal */
-export const ListHrisBankinfoRequest$outboundSchema: z.ZodType<
-    ListHrisBankinfoRequest$Outbound,
+export const ListHrisBankInfoRequest$outboundSchema: z.ZodType<
+    ListHrisBankInfoRequest$Outbound,
     z.ZodTypeDef,
-    ListHrisBankinfoRequest
+    ListHrisBankInfoRequest
 > = z
     .object({
         xConnectionToken: z.string(),
         remoteData: z.boolean().optional(),
-        limit: z.number().default(50),
+        limit: z.number().optional(),
         cursor: z.string().optional(),
     })
     .transform((v) => {
@@ -81,18 +81,18 @@ export const ListHrisBankinfoRequest$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ListHrisBankinfoRequest$ {
-    /** @deprecated use `ListHrisBankinfoRequest$inboundSchema` instead. */
-    export const inboundSchema = ListHrisBankinfoRequest$inboundSchema;
-    /** @deprecated use `ListHrisBankinfoRequest$outboundSchema` instead. */
-    export const outboundSchema = ListHrisBankinfoRequest$outboundSchema;
-    /** @deprecated use `ListHrisBankinfoRequest$Outbound` instead. */
-    export type Outbound = ListHrisBankinfoRequest$Outbound;
+export namespace ListHrisBankInfoRequest$ {
+    /** @deprecated use `ListHrisBankInfoRequest$inboundSchema` instead. */
+    export const inboundSchema = ListHrisBankInfoRequest$inboundSchema;
+    /** @deprecated use `ListHrisBankInfoRequest$outboundSchema` instead. */
+    export const outboundSchema = ListHrisBankInfoRequest$outboundSchema;
+    /** @deprecated use `ListHrisBankInfoRequest$Outbound` instead. */
+    export type Outbound = ListHrisBankInfoRequest$Outbound;
 }
 
 /** @internal */
-export const ListHrisBankinfoResponseBody$inboundSchema: z.ZodType<
-    ListHrisBankinfoResponseBody,
+export const ListHrisBankInfoResponseBody$inboundSchema: z.ZodType<
+    ListHrisBankInfoResponseBody,
     z.ZodTypeDef,
     unknown
 > = z
@@ -109,17 +109,17 @@ export const ListHrisBankinfoResponseBody$inboundSchema: z.ZodType<
     });
 
 /** @internal */
-export type ListHrisBankinfoResponseBody$Outbound = {
+export type ListHrisBankInfoResponseBody$Outbound = {
     prev_cursor: string | null;
     next_cursor: string | null;
     data: Array<components.UnifiedHrisBankinfoOutput$Outbound>;
 };
 
 /** @internal */
-export const ListHrisBankinfoResponseBody$outboundSchema: z.ZodType<
-    ListHrisBankinfoResponseBody$Outbound,
+export const ListHrisBankInfoResponseBody$outboundSchema: z.ZodType<
+    ListHrisBankInfoResponseBody$Outbound,
     z.ZodTypeDef,
-    ListHrisBankinfoResponseBody
+    ListHrisBankInfoResponseBody
 > = z
     .object({
         prevCursor: z.nullable(z.string()),
@@ -137,11 +137,11 @@ export const ListHrisBankinfoResponseBody$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ListHrisBankinfoResponseBody$ {
-    /** @deprecated use `ListHrisBankinfoResponseBody$inboundSchema` instead. */
-    export const inboundSchema = ListHrisBankinfoResponseBody$inboundSchema;
-    /** @deprecated use `ListHrisBankinfoResponseBody$outboundSchema` instead. */
-    export const outboundSchema = ListHrisBankinfoResponseBody$outboundSchema;
-    /** @deprecated use `ListHrisBankinfoResponseBody$Outbound` instead. */
-    export type Outbound = ListHrisBankinfoResponseBody$Outbound;
+export namespace ListHrisBankInfoResponseBody$ {
+    /** @deprecated use `ListHrisBankInfoResponseBody$inboundSchema` instead. */
+    export const inboundSchema = ListHrisBankInfoResponseBody$inboundSchema;
+    /** @deprecated use `ListHrisBankInfoResponseBody$outboundSchema` instead. */
+    export const outboundSchema = ListHrisBankInfoResponseBody$outboundSchema;
+    /** @deprecated use `ListHrisBankInfoResponseBody$Outbound` instead. */
+    export type Outbound = ListHrisBankInfoResponseBody$Outbound;
 }

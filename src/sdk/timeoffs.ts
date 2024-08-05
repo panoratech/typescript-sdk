@@ -20,7 +20,7 @@ import { unwrap as unwrap$ } from "../types/fp.js";
 
 export class Timeoffs extends ClientSDK {
     /**
-     * List  Timeoffs
+     * List Time Offs
      */
     async list(
         request: operations.ListHrisTimeoffsRequest,
@@ -176,10 +176,10 @@ export class Timeoffs extends ClientSDK {
     }
 
     /**
-     * Retrieve Timeoffs
+     * Retrieve Time Off
      *
      * @remarks
-     * Retrieve Timeoffs from any connected Hris software
+     * Retrieve a Time Off from any connected Hris software
      */
     async retrieve(
         request: operations.RetrieveHrisTimeoffRequest,

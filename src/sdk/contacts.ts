@@ -18,7 +18,7 @@ import { unwrap as unwrap$ } from "../types/fp.js";
 
 export class Contacts extends ClientSDK {
     /**
-     * List all Contacts
+     * List Contacts
      */
     async list(
         request: operations.ListTicketingContactsRequest,
@@ -95,10 +95,10 @@ export class Contacts extends ClientSDK {
     }
 
     /**
-     * Retrieve Contacts
+     * Retrieve Contact
      *
      * @remarks
-     * Retrieve Contacts from any connected Ticketing software
+     * Retrieve a Contact from any connected Ticketing software
      */
     async retrieve(
         request: operations.RetrieveTicketingContactRequest,

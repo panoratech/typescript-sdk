@@ -17,7 +17,7 @@ List  Tickets
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -59,17 +59,59 @@ Create Tickets in any supported Ticketing software
 
 ```typescript
 import { Panora } from "@panora/sdk";
+import {
+  UnifiedTicketingTicketInputCreatorType,
+  UnifiedTicketingTicketInputPriority,
+  UnifiedTicketingTicketInputStatus,
+  UnifiedTicketingTicketInputType,
+} from "@panora/sdk/models/components";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.ticketing.tickets.create({
     xConnectionToken: "<value>",
+    remoteData: false,
     unifiedTicketingTicketInput: {
-      name: "<value>",
-      description: "Multi-tiered human-resource model",
+      name: "Customer Service Inquiry",
+      status: UnifiedTicketingTicketInputStatus.Open,
+      description: "Help customer",
+      dueDate: new Date("2024-10-01T12:00:00Z"),
+      type: UnifiedTicketingTicketInputType.Bug,
+      parentTicket: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      collections: "[\"801f9ede-c698-4e66-a7fc-48d19eebaa4f\"]",
+      tags: [
+        "my_tag",
+        "urgent_tag",
+      ],
+      completedAt: new Date("2024-10-01T12:00:00Z"),
+      priority: UnifiedTicketingTicketInputPriority.High,
+      assignedTo: [
+        "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      ],
+      comment: {
+        body: "Assigned to Eric !",
+        htmlBody: "<p>Assigned to Eric !</p>",
+        isPrivate: false,
+        creatorType: UnifiedTicketingTicketInputCreatorType.User,
+        ticketId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+        contactId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+        userId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+        attachments: [
+          "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+        ],
+      },
+      accountId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      contactId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      attachments: [
+        "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      ],
+      fieldMappings: {
+        "fav_dish": "broccoli",
+        "fav_color": "red",
+      },
     },
   });
 
@@ -109,13 +151,14 @@ Retrieve Tickets from any connected Ticketing software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.ticketing.tickets.retrieve({
     xConnectionToken: "<value>",
-    id: "<id>",
+    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    remoteData: false,
   });
 
   // Handle the result

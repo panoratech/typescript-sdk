@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List  Users
+* [list](#list) - List Users
 * [retrieve](#retrieve) - Retrieve Users
 
 ## list
 
-List  Users
+List Users
 
 ### Example Usage
 
@@ -16,7 +16,7 @@ List  Users
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -60,13 +60,14 @@ Retrieve Users from any connected Filestorage software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.filestorage.users.retrieve({
     xConnectionToken: "<value>",
-    id: "<id>",
+    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    remoteData: false,
   });
 
   // Handle the result
@@ -88,7 +89,7 @@ run();
 
 ### Response
 
-**Promise\<[components.UnifiedUserOutput](../../models/components/unifieduseroutput.md)\>**
+**Promise\<[components.UnifiedFilestorageUserOutput](../../models/components/unifiedfilestorageuseroutput.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

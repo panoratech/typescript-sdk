@@ -1,0 +1,10 @@
+# ListHrisEmployeesResponseBody
+
+
+## Fields
+
+| Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `prevCursor`                                                                                   | *string*                                                                                       | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| `nextCursor`                                                                                   | *string*                                                                                       | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| `data`                                                                                         | [components.UnifiedHrisEmployeeOutput](../../models/components/unifiedhrisemployeeoutput.md)[] | :heavy_check_mark:                                                                             | N/A                                                                                            |

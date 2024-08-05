@@ -31,7 +31,7 @@ export type UnifiedTicketingContactOutput = {
      */
     id?: string | undefined;
     /**
-     * The id of the contact in the context of the 3rd Party
+     * The remote ID of the contact in the context of the 3rd Party
      */
     remoteId?: string | null | undefined;
     /**

@@ -20,7 +20,7 @@ import { unwrap as unwrap$ } from "../types/fp.js";
 
 export class Notes extends ClientSDK {
     /**
-     * List  Notes
+     * List Notes
      */
     async list(
         request: operations.ListCrmNoteRequest,

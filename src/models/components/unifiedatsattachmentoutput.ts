@@ -5,6 +5,16 @@
 import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
+/**
+ * The type of the file
+ */
+export enum AttachmentType {
+    Resume = "RESUME",
+    CoverLetter = "COVER_LETTER",
+    OfferLetter = "OFFER_LETTER",
+    Other = "OTHER",
+}
+
 export type UnifiedAtsAttachmentOutput = {
     /**
      * The URL of the file
@@ -17,7 +27,7 @@ export type UnifiedAtsAttachmentOutput = {
     /**
      * The type of the file
      */
-    attachmentType?: string | null | undefined;
+    attachmentType?: AttachmentType | null | undefined;
     /**
      * The remote creation date of the attachment
      */
@@ -57,6 +67,25 @@ export type UnifiedAtsAttachmentOutput = {
 };
 
 /** @internal */
+export const AttachmentType$inboundSchema: z.ZodNativeEnum<typeof AttachmentType> =
+    z.nativeEnum(AttachmentType);
+
+/** @internal */
+export const AttachmentType$outboundSchema: z.ZodNativeEnum<typeof AttachmentType> =
+    AttachmentType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace AttachmentType$ {
+    /** @deprecated use `AttachmentType$inboundSchema` instead. */
+    export const inboundSchema = AttachmentType$inboundSchema;
+    /** @deprecated use `AttachmentType$outboundSchema` instead. */
+    export const outboundSchema = AttachmentType$outboundSchema;
+}
+
+/** @internal */
 export const UnifiedAtsAttachmentOutput$inboundSchema: z.ZodType<
     UnifiedAtsAttachmentOutput,
     z.ZodTypeDef,
@@ -65,7 +94,7 @@ export const UnifiedAtsAttachmentOutput$inboundSchema: z.ZodType<
     .object({
         file_url: z.nullable(z.string()).optional(),
         file_name: z.nullable(z.string()).optional(),
-        attachment_type: z.nullable(z.string()).optional(),
+        attachment_type: z.nullable(AttachmentType$inboundSchema).optional(),
         remote_created_at: z
             .nullable(
                 z
@@ -145,7 +174,7 @@ export const UnifiedAtsAttachmentOutput$outboundSchema: z.ZodType<
     .object({
         fileUrl: z.nullable(z.string()).optional(),
         fileName: z.nullable(z.string()).optional(),
-        attachmentType: z.nullable(z.string()).optional(),
+        attachmentType: z.nullable(AttachmentType$outboundSchema).optional(),
         remoteCreatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         remoteModifiedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         candidateId: z.nullable(z.string()).optional(),

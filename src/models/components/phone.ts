@@ -5,6 +5,14 @@
 import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
+/**
+ * The phone type. Authorized values are either MOBILE or WORK
+ */
+export enum PhoneType {
+    Mobile = "MOBILE",
+    Work = "WORK",
+}
+
 export type Phone = {
     /**
      * The phone number starting with a plus (+) followed by the country code (e.g +336676778890 for France)
@@ -13,7 +21,7 @@ export type Phone = {
     /**
      * The phone type. Authorized values are either MOBILE or WORK
      */
-    phoneType: string | null;
+    phoneType: PhoneType | null;
     /**
      * The owner type of a phone number
      */
@@ -21,10 +29,27 @@ export type Phone = {
 };
 
 /** @internal */
+export const PhoneType$inboundSchema: z.ZodNativeEnum<typeof PhoneType> = z.nativeEnum(PhoneType);
+
+/** @internal */
+export const PhoneType$outboundSchema: z.ZodNativeEnum<typeof PhoneType> = PhoneType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PhoneType$ {
+    /** @deprecated use `PhoneType$inboundSchema` instead. */
+    export const inboundSchema = PhoneType$inboundSchema;
+    /** @deprecated use `PhoneType$outboundSchema` instead. */
+    export const outboundSchema = PhoneType$outboundSchema;
+}
+
+/** @internal */
 export const Phone$inboundSchema: z.ZodType<Phone, z.ZodTypeDef, unknown> = z
     .object({
         phone_number: z.nullable(z.string()),
-        phone_type: z.nullable(z.string()),
+        phone_type: z.nullable(PhoneType$inboundSchema),
         owner_type: z.nullable(z.string()).optional(),
     })
     .transform((v) => {
@@ -46,7 +71,7 @@ export type Phone$Outbound = {
 export const Phone$outboundSchema: z.ZodType<Phone$Outbound, z.ZodTypeDef, Phone> = z
     .object({
         phoneNumber: z.nullable(z.string()),
-        phoneType: z.nullable(z.string()),
+        phoneType: z.nullable(PhoneType$outboundSchema),
         ownerType: z.nullable(z.string()).optional(),
     })
     .transform((v) => {

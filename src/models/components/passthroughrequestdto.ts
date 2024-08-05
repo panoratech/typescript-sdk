@@ -17,8 +17,8 @@ export type Data = { [k: string]: any } | Array<{ [k: string]: any }>;
 export type PassThroughRequestDto = {
     method: Method;
     path: string | null;
-    data?: { [k: string]: any } | Array<{ [k: string]: any }> | null | undefined;
-    headers?: { [k: string]: any } | null | undefined;
+    data: { [k: string]: any } | Array<{ [k: string]: any }> | null;
+    headers: { [k: string]: any } | null;
 };
 
 /** @internal */
@@ -74,16 +74,16 @@ export const PassThroughRequestDto$inboundSchema: z.ZodType<
 > = z.object({
     method: Method$inboundSchema,
     path: z.nullable(z.string()),
-    data: z.nullable(z.union([z.record(z.any()), z.array(z.record(z.any()))])).optional(),
-    headers: z.nullable(z.record(z.any())).optional(),
+    data: z.nullable(z.union([z.record(z.any()), z.array(z.record(z.any()))])),
+    headers: z.nullable(z.record(z.any())),
 });
 
 /** @internal */
 export type PassThroughRequestDto$Outbound = {
     method: string;
     path: string | null;
-    data?: { [k: string]: any } | Array<{ [k: string]: any }> | null | undefined;
-    headers?: { [k: string]: any } | null | undefined;
+    data: { [k: string]: any } | Array<{ [k: string]: any }> | null;
+    headers: { [k: string]: any } | null;
 };
 
 /** @internal */
@@ -94,8 +94,8 @@ export const PassThroughRequestDto$outboundSchema: z.ZodType<
 > = z.object({
     method: Method$outboundSchema,
     path: z.nullable(z.string()),
-    data: z.nullable(z.union([z.record(z.any()), z.array(z.record(z.any()))])).optional(),
-    headers: z.nullable(z.record(z.any())).optional(),
+    data: z.nullable(z.union([z.record(z.any()), z.array(z.record(z.any()))])),
+    headers: z.nullable(z.record(z.any())),
 });
 
 /**

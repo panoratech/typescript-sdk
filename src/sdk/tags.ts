@@ -19,7 +19,7 @@ import { unwrap as unwrap$ } from "../types/fp.js";
 
 export class Tags extends ClientSDK {
     /**
-     * List  Tags
+     * List Tags
      */
     async list(
         request: operations.ListTicketingTagsRequest,
@@ -96,10 +96,10 @@ export class Tags extends ClientSDK {
     }
 
     /**
-     * Retrieve Tags
+     * Retrieve Tag
      *
      * @remarks
-     * Retrieve Tags from any connected Ticketing software
+     * Retrieve a Tag from any connected Ticketing software
      */
     async retrieve(
         request: operations.RetrieveTicketingTagRequest,

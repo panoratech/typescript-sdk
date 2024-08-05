@@ -3,13 +3,13 @@
 
 ### Available Operations
 
-* [list](#list) - List  Notes
+* [list](#list) - List Notes
 * [create](#create) - Create Notes
 * [retrieve](#retrieve) - Retrieve Notes
 
 ## list
 
-List  Notes
+List Notes
 
 ### Example Usage
 
@@ -17,7 +17,7 @@ List  Notes
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -61,14 +61,23 @@ Create Notes in any supported Crm software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.crm.notes.create({
     xConnectionToken: "<value>",
+    remoteData: false,
     unifiedCrmNoteInput: {
-      content: "<value>",
+      content: "My notes taken during the meeting",
+      userId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      companyId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      contactId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      dealId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      fieldMappings: {
+        "fav_dish": "broccoli",
+        "fav_color": "red",
+      },
     },
   });
 
@@ -108,13 +117,14 @@ Retrieve Notes from any connected Crm software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.crm.notes.retrieve({
     xConnectionToken: "<value>",
-    id: "<id>",
+    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    remoteData: false,
   });
 
   // Handle the result

@@ -13,20 +13,21 @@ Create Custom Field
 
 ```typescript
 import { Panora } from "@panora/sdk";
+import { CustomFieldCreateDtoDataType, CustomFieldCreateDtoObjectTypeOwner } from "@panora/sdk/models/components";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.fieldMappings.defineCustomField({
-    objectTypeOwner: "<value>",
-    name: "<value>",
-    description: "Balanced multimedia policy",
-    dataType: "point",
-    sourceCustomFieldId: "<value>",
-    sourceProvider: "<value>",
-    linkedUserId: "<value>",
+    objectTypeOwner: CustomFieldCreateDtoObjectTypeOwner.Company,
+    name: "my_favorite_dish",
+    description: "Favorite Dish",
+    dataType: CustomFieldCreateDtoDataType.String,
+    sourceCustomFieldId: "id_1",
+    sourceProvider: "hubspot",
+    linkedUserId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
   });
 
   // Handle the result

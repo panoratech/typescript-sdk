@@ -12,7 +12,7 @@ export type WebhookDto = {
     /**
      * The description of the webhook.
      */
-    description?: string | null | undefined;
+    description: string | null;
     /**
      * The events that the webhook listen to.
      */
@@ -22,14 +22,14 @@ export type WebhookDto = {
 /** @internal */
 export const WebhookDto$inboundSchema: z.ZodType<WebhookDto, z.ZodTypeDef, unknown> = z.object({
     url: z.nullable(z.string()),
-    description: z.nullable(z.string()).optional(),
+    description: z.nullable(z.string()),
     scope: z.nullable(z.array(z.string())),
 });
 
 /** @internal */
 export type WebhookDto$Outbound = {
     url: string | null;
-    description?: string | null | undefined;
+    description: string | null;
     scope: Array<string> | null;
 };
 
@@ -37,7 +37,7 @@ export type WebhookDto$Outbound = {
 export const WebhookDto$outboundSchema: z.ZodType<WebhookDto$Outbound, z.ZodTypeDef, WebhookDto> =
     z.object({
         url: z.nullable(z.string()),
-        description: z.nullable(z.string()).optional(),
+        description: z.nullable(z.string()),
         scope: z.nullable(z.array(z.string())),
     });
 

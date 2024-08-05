@@ -28,7 +28,7 @@ export type ListFilestorageUsersRequest = {
 export type ListFilestorageUsersResponseBody = {
     prevCursor: string | null;
     nextCursor: string | null;
-    data: Array<components.UnifiedUserOutput>;
+    data: Array<components.UnifiedFilestorageUserOutput>;
 };
 
 /** @internal */
@@ -40,7 +40,7 @@ export const ListFilestorageUsersRequest$inboundSchema: z.ZodType<
     .object({
         "x-connection-token": z.string(),
         remote_data: z.boolean().optional(),
-        limit: z.number().default(50),
+        limit: z.number().optional(),
         cursor: z.string().optional(),
     })
     .transform((v) => {
@@ -54,7 +54,7 @@ export const ListFilestorageUsersRequest$inboundSchema: z.ZodType<
 export type ListFilestorageUsersRequest$Outbound = {
     "x-connection-token": string;
     remote_data?: boolean | undefined;
-    limit: number;
+    limit?: number | undefined;
     cursor?: string | undefined;
 };
 
@@ -67,7 +67,7 @@ export const ListFilestorageUsersRequest$outboundSchema: z.ZodType<
     .object({
         xConnectionToken: z.string(),
         remoteData: z.boolean().optional(),
-        limit: z.number().default(50),
+        limit: z.number().optional(),
         cursor: z.string().optional(),
     })
     .transform((v) => {
@@ -99,7 +99,7 @@ export const ListFilestorageUsersResponseBody$inboundSchema: z.ZodType<
     .object({
         prev_cursor: z.nullable(z.string()),
         next_cursor: z.nullable(z.string()),
-        data: z.array(components.UnifiedUserOutput$inboundSchema),
+        data: z.array(components.UnifiedFilestorageUserOutput$inboundSchema),
     })
     .transform((v) => {
         return remap$(v, {
@@ -112,7 +112,7 @@ export const ListFilestorageUsersResponseBody$inboundSchema: z.ZodType<
 export type ListFilestorageUsersResponseBody$Outbound = {
     prev_cursor: string | null;
     next_cursor: string | null;
-    data: Array<components.UnifiedUserOutput$Outbound>;
+    data: Array<components.UnifiedFilestorageUserOutput$Outbound>;
 };
 
 /** @internal */
@@ -124,7 +124,7 @@ export const ListFilestorageUsersResponseBody$outboundSchema: z.ZodType<
     .object({
         prevCursor: z.nullable(z.string()),
         nextCursor: z.nullable(z.string()),
-        data: z.array(components.UnifiedUserOutput$outboundSchema),
+        data: z.array(components.UnifiedFilestorageUserOutput$outboundSchema),
     })
     .transform((v) => {
         return remap$(v, {

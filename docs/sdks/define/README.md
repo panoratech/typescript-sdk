@@ -13,17 +13,18 @@ Define target Field
 
 ```typescript
 import { Panora } from "@panora/sdk";
+import { DataType, ObjectTypeOwner } from "@panora/sdk/models/components";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.fieldMappings.define.definitions({
-    objectTypeOwner: "<value>",
-    name: "<value>",
-    description: "Universal heuristic matrices",
-    dataType: "decimal",
+    objectTypeOwner: ObjectTypeOwner.Company,
+    name: "fav_dish",
+    description: "My favorite dish",
+    dataType: DataType.String,
   });
 
   // Handle the result

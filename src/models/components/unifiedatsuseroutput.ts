@@ -5,6 +5,17 @@
 import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
+/**
+ * The access role of the user
+ */
+export enum AccessRole {
+    SuperAdmin = "SUPER_ADMIN",
+    Admin = "ADMIN",
+    TeamMember = "TEAM_MEMBER",
+    LimitedTeamMember = "LIMITED_TEAM_MEMBER",
+    Interviewer = "INTERVIEWER",
+}
+
 export type UnifiedAtsUserOutput = {
     /**
      * The first name of the user
@@ -25,7 +36,7 @@ export type UnifiedAtsUserOutput = {
     /**
      * The access role of the user
      */
-    accessRole?: string | null | undefined;
+    accessRole?: AccessRole | null | undefined;
     /**
      * The remote creation date of the user
      */
@@ -61,6 +72,25 @@ export type UnifiedAtsUserOutput = {
 };
 
 /** @internal */
+export const AccessRole$inboundSchema: z.ZodNativeEnum<typeof AccessRole> =
+    z.nativeEnum(AccessRole);
+
+/** @internal */
+export const AccessRole$outboundSchema: z.ZodNativeEnum<typeof AccessRole> =
+    AccessRole$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace AccessRole$ {
+    /** @deprecated use `AccessRole$inboundSchema` instead. */
+    export const inboundSchema = AccessRole$inboundSchema;
+    /** @deprecated use `AccessRole$outboundSchema` instead. */
+    export const outboundSchema = AccessRole$outboundSchema;
+}
+
+/** @internal */
 export const UnifiedAtsUserOutput$inboundSchema: z.ZodType<
     UnifiedAtsUserOutput,
     z.ZodTypeDef,
@@ -71,7 +101,7 @@ export const UnifiedAtsUserOutput$inboundSchema: z.ZodType<
         last_name: z.nullable(z.string()).optional(),
         email: z.nullable(z.string()).optional(),
         disabled: z.nullable(z.boolean()).optional(),
-        access_role: z.nullable(z.string()).optional(),
+        access_role: z.nullable(AccessRole$inboundSchema).optional(),
         remote_created_at: z
             .nullable(
                 z
@@ -152,7 +182,7 @@ export const UnifiedAtsUserOutput$outboundSchema: z.ZodType<
         lastName: z.nullable(z.string()).optional(),
         email: z.nullable(z.string()).optional(),
         disabled: z.nullable(z.boolean()).optional(),
-        accessRole: z.nullable(z.string()).optional(),
+        accessRole: z.nullable(AccessRole$outboundSchema).optional(),
         remoteCreatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         remoteModifiedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         fieldMappings: z.nullable(z.record(z.any())).optional(),

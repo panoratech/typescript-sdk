@@ -20,7 +20,7 @@ import { unwrap as unwrap$ } from "../types/fp.js";
 
 export class Templates extends ClientSDK {
     /**
-     * List  Templates
+     * List Templates
      */
     async list(
         request: operations.ListMarketingautomationTemplatesRequest,
@@ -180,10 +180,10 @@ export class Templates extends ClientSDK {
     }
 
     /**
-     * Retrieve Templates
+     * Retrieve Template
      *
      * @remarks
-     * Retrieve Templates from any connected Marketingautomation software
+     * Retrieve a Template from any connected Marketingautomation software
      */
     async retrieve(
         request: operations.RetrieveMarketingautomationTemplateRequest,

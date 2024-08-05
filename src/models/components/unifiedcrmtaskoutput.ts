@@ -6,14 +6,12 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
 /**
- * The created date of the object
+ * The status of the task. Authorized values are PENDING, COMPLETED.
  */
-export type UnifiedCrmTaskOutputCreatedAt = {};
-
-/**
- * The modified date of the object
- */
-export type UnifiedCrmTaskOutputModifiedAt = {};
+export enum UnifiedCrmTaskOutputStatus {
+    Pending = "PENDING",
+    Completed = "COMPLETED",
+}
 
 export type UnifiedCrmTaskOutput = {
     /**
@@ -27,15 +25,15 @@ export type UnifiedCrmTaskOutput = {
     /**
      * The status of the task. Authorized values are PENDING, COMPLETED.
      */
-    status: string | null;
+    status: UnifiedCrmTaskOutputStatus | null;
     /**
      * The due date of the task
      */
-    dueDate?: Date | null | undefined;
+    dueDate?: string | null | undefined;
     /**
      * The finished date of the task
      */
-    finishedDate?: Date | null | undefined;
+    finishedDate?: string | null | undefined;
     /**
      * The UUID of the user tied to the task
      */
@@ -57,7 +55,7 @@ export type UnifiedCrmTaskOutput = {
      */
     id?: string | null | undefined;
     /**
-     * The id of the task in the context of the Crm 3rd Party
+     * The ID of the task in the context of the Crm 3rd Party
      */
     remoteId?: string | null | undefined;
     /**
@@ -67,71 +65,32 @@ export type UnifiedCrmTaskOutput = {
     /**
      * The created date of the object
      */
-    createdAt?: UnifiedCrmTaskOutputCreatedAt | null | undefined;
+    createdAt?: Date | null | undefined;
     /**
      * The modified date of the object
      */
-    modifiedAt?: UnifiedCrmTaskOutputModifiedAt | null | undefined;
+    modifiedAt?: Date | null | undefined;
 };
 
 /** @internal */
-export const UnifiedCrmTaskOutputCreatedAt$inboundSchema: z.ZodType<
-    UnifiedCrmTaskOutputCreatedAt,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
+export const UnifiedCrmTaskOutputStatus$inboundSchema: z.ZodNativeEnum<
+    typeof UnifiedCrmTaskOutputStatus
+> = z.nativeEnum(UnifiedCrmTaskOutputStatus);
 
 /** @internal */
-export type UnifiedCrmTaskOutputCreatedAt$Outbound = {};
-
-/** @internal */
-export const UnifiedCrmTaskOutputCreatedAt$outboundSchema: z.ZodType<
-    UnifiedCrmTaskOutputCreatedAt$Outbound,
-    z.ZodTypeDef,
-    UnifiedCrmTaskOutputCreatedAt
-> = z.object({});
+export const UnifiedCrmTaskOutputStatus$outboundSchema: z.ZodNativeEnum<
+    typeof UnifiedCrmTaskOutputStatus
+> = UnifiedCrmTaskOutputStatus$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UnifiedCrmTaskOutputCreatedAt$ {
-    /** @deprecated use `UnifiedCrmTaskOutputCreatedAt$inboundSchema` instead. */
-    export const inboundSchema = UnifiedCrmTaskOutputCreatedAt$inboundSchema;
-    /** @deprecated use `UnifiedCrmTaskOutputCreatedAt$outboundSchema` instead. */
-    export const outboundSchema = UnifiedCrmTaskOutputCreatedAt$outboundSchema;
-    /** @deprecated use `UnifiedCrmTaskOutputCreatedAt$Outbound` instead. */
-    export type Outbound = UnifiedCrmTaskOutputCreatedAt$Outbound;
-}
-
-/** @internal */
-export const UnifiedCrmTaskOutputModifiedAt$inboundSchema: z.ZodType<
-    UnifiedCrmTaskOutputModifiedAt,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type UnifiedCrmTaskOutputModifiedAt$Outbound = {};
-
-/** @internal */
-export const UnifiedCrmTaskOutputModifiedAt$outboundSchema: z.ZodType<
-    UnifiedCrmTaskOutputModifiedAt$Outbound,
-    z.ZodTypeDef,
-    UnifiedCrmTaskOutputModifiedAt
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedCrmTaskOutputModifiedAt$ {
-    /** @deprecated use `UnifiedCrmTaskOutputModifiedAt$inboundSchema` instead. */
-    export const inboundSchema = UnifiedCrmTaskOutputModifiedAt$inboundSchema;
-    /** @deprecated use `UnifiedCrmTaskOutputModifiedAt$outboundSchema` instead. */
-    export const outboundSchema = UnifiedCrmTaskOutputModifiedAt$outboundSchema;
-    /** @deprecated use `UnifiedCrmTaskOutputModifiedAt$Outbound` instead. */
-    export type Outbound = UnifiedCrmTaskOutputModifiedAt$Outbound;
+export namespace UnifiedCrmTaskOutputStatus$ {
+    /** @deprecated use `UnifiedCrmTaskOutputStatus$inboundSchema` instead. */
+    export const inboundSchema = UnifiedCrmTaskOutputStatus$inboundSchema;
+    /** @deprecated use `UnifiedCrmTaskOutputStatus$outboundSchema` instead. */
+    export const outboundSchema = UnifiedCrmTaskOutputStatus$outboundSchema;
 }
 
 /** @internal */
@@ -143,23 +102,9 @@ export const UnifiedCrmTaskOutput$inboundSchema: z.ZodType<
     .object({
         subject: z.nullable(z.string()),
         content: z.nullable(z.string()),
-        status: z.nullable(z.string()),
-        due_date: z
-            .nullable(
-                z
-                    .string()
-                    .datetime({ offset: true })
-                    .transform((v) => new Date(v))
-            )
-            .optional(),
-        finished_date: z
-            .nullable(
-                z
-                    .string()
-                    .datetime({ offset: true })
-                    .transform((v) => new Date(v))
-            )
-            .optional(),
+        status: z.nullable(UnifiedCrmTaskOutputStatus$inboundSchema),
+        due_date: z.nullable(z.string()).optional(),
+        finished_date: z.nullable(z.string()).optional(),
         user_id: z.nullable(z.string()).optional(),
         company_id: z.nullable(z.string()).optional(),
         deal_id: z.nullable(z.string()).optional(),
@@ -168,10 +113,20 @@ export const UnifiedCrmTaskOutput$inboundSchema: z.ZodType<
         remote_id: z.nullable(z.string()).optional(),
         remote_data: z.nullable(z.record(z.any())).optional(),
         created_at: z
-            .nullable(z.lazy(() => UnifiedCrmTaskOutputCreatedAt$inboundSchema))
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
             .optional(),
         modified_at: z
-            .nullable(z.lazy(() => UnifiedCrmTaskOutputModifiedAt$inboundSchema))
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
             .optional(),
     })
     .transform((v) => {
@@ -203,8 +158,8 @@ export type UnifiedCrmTaskOutput$Outbound = {
     id?: string | null | undefined;
     remote_id?: string | null | undefined;
     remote_data?: { [k: string]: any } | null | undefined;
-    created_at?: UnifiedCrmTaskOutputCreatedAt$Outbound | null | undefined;
-    modified_at?: UnifiedCrmTaskOutputModifiedAt$Outbound | null | undefined;
+    created_at?: string | null | undefined;
+    modified_at?: string | null | undefined;
 };
 
 /** @internal */
@@ -216,9 +171,9 @@ export const UnifiedCrmTaskOutput$outboundSchema: z.ZodType<
     .object({
         subject: z.nullable(z.string()),
         content: z.nullable(z.string()),
-        status: z.nullable(z.string()),
-        dueDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-        finishedDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        status: z.nullable(UnifiedCrmTaskOutputStatus$outboundSchema),
+        dueDate: z.nullable(z.string()).optional(),
+        finishedDate: z.nullable(z.string()).optional(),
         userId: z.nullable(z.string()).optional(),
         companyId: z.nullable(z.string()).optional(),
         dealId: z.nullable(z.string()).optional(),
@@ -226,12 +181,8 @@ export const UnifiedCrmTaskOutput$outboundSchema: z.ZodType<
         id: z.nullable(z.string()).optional(),
         remoteId: z.nullable(z.string()).optional(),
         remoteData: z.nullable(z.record(z.any())).optional(),
-        createdAt: z
-            .nullable(z.lazy(() => UnifiedCrmTaskOutputCreatedAt$outboundSchema))
-            .optional(),
-        modifiedAt: z
-            .nullable(z.lazy(() => UnifiedCrmTaskOutputModifiedAt$outboundSchema))
-            .optional(),
+        createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        modifiedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
     })
     .transform((v) => {
         return remap$(v, {

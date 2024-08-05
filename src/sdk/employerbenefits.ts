@@ -19,17 +19,17 @@ import { unwrap as unwrap$ } from "../types/fp.js";
 
 export class Employerbenefits extends ClientSDK {
     /**
-     * List  EmployerBenefits
+     * List Employer Benefits
      */
     async list(
-        request: operations.ListHrisEmployerBenefitRequest,
+        request: operations.ListHrisEmployerBenefitsRequest,
         options?: RequestOptions
-    ): Promise<operations.ListHrisEmployerBenefitResponseBody> {
+    ): Promise<operations.ListHrisEmployerBenefitsResponseBody> {
         const input$ = request;
 
         const parsed$ = schemas$.safeParse(
             input$,
-            (value$) => operations.ListHrisEmployerBenefitRequest$outboundSchema.parse(value$),
+            (value$) => operations.ListHrisEmployerBenefitsRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const payload$ = unwrap$(parsed$);
@@ -55,7 +55,7 @@ export class Employerbenefits extends ClientSDK {
         const apiKey$ = await extractSecurity(this.options$.apiKey);
         const security$ = apiKey$ == null ? {} : { apiKey: apiKey$ };
         const context = {
-            operationID: "listHrisEmployerBenefit",
+            operationID: "listHrisEmployerBenefits",
             oAuth2Scopes: [],
             securitySource: this.options$.apiKey,
         };
@@ -85,10 +85,10 @@ export class Employerbenefits extends ClientSDK {
         const response = unwrap$(doResult);
 
         const [result$] = await m$.match<
-            operations.ListHrisEmployerBenefitResponseBody,
+            operations.ListHrisEmployerBenefitsResponseBody,
             SDKError | SDKValidationError
         >(
-            m$.json(200, operations.ListHrisEmployerBenefitResponseBody$inboundSchema),
+            m$.json(200, operations.ListHrisEmployerBenefitsResponseBody$inboundSchema),
             m$.fail(["4XX", "5XX"])
         )(response);
 
@@ -96,10 +96,10 @@ export class Employerbenefits extends ClientSDK {
     }
 
     /**
-     * Retrieve Employer Benefits
+     * Retrieve Employer Benefit
      *
      * @remarks
-     * Retrieve Employer Benefits from any connected Hris software
+     * Retrieve an Employer Benefit from any connected Hris software
      */
     async retrieve(
         request: operations.RetrieveHrisEmployerBenefitRequest,

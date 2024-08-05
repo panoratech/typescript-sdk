@@ -29,7 +29,7 @@ export type UnifiedTicketingAttachmentInput = {
     /**
      * The custom field mappings of the attachment between the remote 3rd party & Panora
      */
-    fieldMappings: { [k: string]: any } | null;
+    fieldMappings?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
@@ -44,7 +44,7 @@ export const UnifiedTicketingAttachmentInput$inboundSchema: z.ZodType<
         uploader: z.nullable(z.string()),
         ticket_id: z.nullable(z.string()).optional(),
         comment_id: z.nullable(z.string()).optional(),
-        field_mappings: z.nullable(z.record(z.any())),
+        field_mappings: z.nullable(z.record(z.any())).optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -63,7 +63,7 @@ export type UnifiedTicketingAttachmentInput$Outbound = {
     uploader: string | null;
     ticket_id?: string | null | undefined;
     comment_id?: string | null | undefined;
-    field_mappings: { [k: string]: any } | null;
+    field_mappings?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
@@ -78,7 +78,7 @@ export const UnifiedTicketingAttachmentInput$outboundSchema: z.ZodType<
         uploader: z.nullable(z.string()),
         ticketId: z.nullable(z.string()).optional(),
         commentId: z.nullable(z.string()).optional(),
-        fieldMappings: z.nullable(z.record(z.any())),
+        fieldMappings: z.nullable(z.record(z.any())).optional(),
     })
     .transform((v) => {
         return remap$(v, {

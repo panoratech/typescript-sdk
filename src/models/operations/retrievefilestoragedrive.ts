@@ -15,7 +15,7 @@ export type RetrieveFilestorageDriveRequest = {
      */
     id: string;
     /**
-     * Set to true to include data from the original File Storage software.
+     * Set to true to include data from the original file storage service.
      */
     remoteData?: boolean | undefined;
 };

@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List all Contacts
-* [retrieve](#retrieve) - Retrieve Contacts
+* [list](#list) - List Contacts
+* [retrieve](#retrieve) - Retrieve Contact
 
 ## list
 
-List all Contacts
+List Contacts
 
 ### Example Usage
 
@@ -16,7 +16,7 @@ List all Contacts
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -52,7 +52,7 @@ run();
 
 ## retrieve
 
-Retrieve Contacts from any connected Ticketing software
+Retrieve a Contact from any connected Ticketing software
 
 ### Example Usage
 
@@ -60,7 +60,7 @@ Retrieve Contacts from any connected Ticketing software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {

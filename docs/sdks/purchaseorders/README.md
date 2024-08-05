@@ -17,7 +17,7 @@ List  PurchaseOrders
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -61,12 +61,13 @@ Create Purchase Orders in any supported Accounting software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.accounting.purchaseorders.create({
     xConnectionToken: "<value>",
+    remoteData: false,
     unifiedAccountingPurchaseorderInput: {},
   });
 
@@ -106,13 +107,14 @@ Retrieve Purchase Orders from any connected Accounting software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.accounting.purchaseorders.retrieve({
     xConnectionToken: "<value>",
-    id: "<id>",
+    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    remoteData: false,
   });
 
   // Handle the result

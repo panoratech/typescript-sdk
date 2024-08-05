@@ -5,6 +5,22 @@
 import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
+/**
+ * The email address type. Authorized values are either PERSONAL or WORK.
+ */
+export enum EmailAddressType {
+    Personal = "PERSONAL",
+    Work = "WORK",
+}
+
+/**
+ * The owner type of an email
+ */
+export enum OwnerType {
+    Company = "COMPANY",
+    Contact = "CONTACT",
+}
+
 export type Email = {
     /**
      * The email address
@@ -13,19 +29,55 @@ export type Email = {
     /**
      * The email address type. Authorized values are either PERSONAL or WORK.
      */
-    emailAddressType: string | null;
+    emailAddressType: EmailAddressType | null;
     /**
      * The owner type of an email
      */
-    ownerType?: string | null | undefined;
+    ownerType?: OwnerType | null | undefined;
 };
+
+/** @internal */
+export const EmailAddressType$inboundSchema: z.ZodNativeEnum<typeof EmailAddressType> =
+    z.nativeEnum(EmailAddressType);
+
+/** @internal */
+export const EmailAddressType$outboundSchema: z.ZodNativeEnum<typeof EmailAddressType> =
+    EmailAddressType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EmailAddressType$ {
+    /** @deprecated use `EmailAddressType$inboundSchema` instead. */
+    export const inboundSchema = EmailAddressType$inboundSchema;
+    /** @deprecated use `EmailAddressType$outboundSchema` instead. */
+    export const outboundSchema = EmailAddressType$outboundSchema;
+}
+
+/** @internal */
+export const OwnerType$inboundSchema: z.ZodNativeEnum<typeof OwnerType> = z.nativeEnum(OwnerType);
+
+/** @internal */
+export const OwnerType$outboundSchema: z.ZodNativeEnum<typeof OwnerType> = OwnerType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace OwnerType$ {
+    /** @deprecated use `OwnerType$inboundSchema` instead. */
+    export const inboundSchema = OwnerType$inboundSchema;
+    /** @deprecated use `OwnerType$outboundSchema` instead. */
+    export const outboundSchema = OwnerType$outboundSchema;
+}
 
 /** @internal */
 export const Email$inboundSchema: z.ZodType<Email, z.ZodTypeDef, unknown> = z
     .object({
         email_address: z.nullable(z.string()),
-        email_address_type: z.nullable(z.string()),
-        owner_type: z.nullable(z.string()).optional(),
+        email_address_type: z.nullable(EmailAddressType$inboundSchema),
+        owner_type: z.nullable(OwnerType$inboundSchema).optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -46,8 +98,8 @@ export type Email$Outbound = {
 export const Email$outboundSchema: z.ZodType<Email$Outbound, z.ZodTypeDef, Email> = z
     .object({
         emailAddress: z.nullable(z.string()),
-        emailAddressType: z.nullable(z.string()),
-        ownerType: z.nullable(z.string()).optional(),
+        emailAddressType: z.nullable(EmailAddressType$outboundSchema),
+        ownerType: z.nullable(OwnerType$outboundSchema).optional(),
     })
     .transform((v) => {
         return remap$(v, {

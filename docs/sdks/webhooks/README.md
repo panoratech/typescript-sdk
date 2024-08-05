@@ -19,7 +19,7 @@ List webhooks
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -60,14 +60,15 @@ Add webhook metadata
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.webhooks.create({
-    url: "http://limp-pastry.org",
+    url: "https://acme.com/webhook_receiver",
+    description: "Webhook to receive connection events",
     scope: [
-      "<value>",
+      "connection.created",
     ],
   });
 
@@ -107,12 +108,12 @@ Delete Webhook
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.webhooks.delete({
-    id: "<id>",
+    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
   });
 
   // Handle the result
@@ -151,12 +152,12 @@ Update webhook status
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.webhooks.updateStatus({
-    id: "<id>",
+    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
   });
 
   // Handle the result
@@ -195,7 +196,7 @@ Verify payload signature of the webhook
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {

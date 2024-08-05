@@ -20,18 +20,18 @@ import { unwrap as unwrap$ } from "../types/fp.js";
 
 export class Automations extends ClientSDK {
     /**
-     * List  Automations
+     * List Automations
      */
     async list(
-        request: operations.ListMarketingautomationAutomationRequest,
+        request: operations.ListMarketingautomationAutomationsRequest,
         options?: RequestOptions
-    ): Promise<operations.ListMarketingautomationAutomationResponseBody> {
+    ): Promise<operations.ListMarketingautomationAutomationsResponseBody> {
         const input$ = request;
 
         const parsed$ = schemas$.safeParse(
             input$,
             (value$) =>
-                operations.ListMarketingautomationAutomationRequest$outboundSchema.parse(value$),
+                operations.ListMarketingautomationAutomationsRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const payload$ = unwrap$(parsed$);
@@ -57,7 +57,7 @@ export class Automations extends ClientSDK {
         const apiKey$ = await extractSecurity(this.options$.apiKey);
         const security$ = apiKey$ == null ? {} : { apiKey: apiKey$ };
         const context = {
-            operationID: "listMarketingautomationAutomation",
+            operationID: "listMarketingautomationAutomations",
             oAuth2Scopes: [],
             securitySource: this.options$.apiKey,
         };
@@ -87,10 +87,10 @@ export class Automations extends ClientSDK {
         const response = unwrap$(doResult);
 
         const [result$] = await m$.match<
-            operations.ListMarketingautomationAutomationResponseBody,
+            operations.ListMarketingautomationAutomationsResponseBody,
             SDKError | SDKValidationError
         >(
-            m$.json(200, operations.ListMarketingautomationAutomationResponseBody$inboundSchema),
+            m$.json(200, operations.ListMarketingautomationAutomationsResponseBody$inboundSchema),
             m$.fail(["4XX", "5XX"])
         )(response);
 
@@ -180,10 +180,10 @@ export class Automations extends ClientSDK {
     }
 
     /**
-     * Retrieve Automations
+     * Retrieve Automation
      *
      * @remarks
-     * Retrieve Automations from any connected Marketingautomation software
+     * Retrieve an Automation from any connected Marketingautomation software
      */
     async retrieve(
         request: operations.RetrieveMarketingautomationAutomationRequest,

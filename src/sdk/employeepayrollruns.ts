@@ -19,7 +19,7 @@ import { unwrap as unwrap$ } from "../types/fp.js";
 
 export class Employeepayrollruns extends ClientSDK {
     /**
-     * List  EmployeePayrollRuns
+     * List Employee Payroll Runs
      */
     async list(
         request: operations.ListHrisEmployeePayrollRunRequest,
@@ -96,10 +96,10 @@ export class Employeepayrollruns extends ClientSDK {
     }
 
     /**
-     * Retrieve Employee Payroll Runs
+     * Retrieve Employee Payroll Run
      *
      * @remarks
-     * Retrieve Employee Payroll Runs from any connected Hris software
+     * Retrieve Employee Payroll Run from any connected Hris software
      */
     async retrieve(
         request: operations.RetrieveHrisEmployeePayrollRunRequest,

@@ -21,13 +21,13 @@ export type WebhookResponse = {
     /**
      * The secret of the webhook.
      */
-    secret: string | null;
+    secret: string;
     /**
      * The status of the webhook.
      */
     active: boolean | null;
     /**
-     * The created date  of the webhook.
+     * The created date of the webhook.
      */
     createdAt: Date | null;
     /**
@@ -50,7 +50,7 @@ export const WebhookResponse$inboundSchema: z.ZodType<WebhookResponse, z.ZodType
         id_webhook_endpoint: z.nullable(z.string()),
         endpoint_description: z.nullable(z.string()),
         url: z.nullable(z.string()),
-        secret: z.nullable(z.string()),
+        secret: z.string(),
         active: z.nullable(z.boolean()),
         created_at: z.nullable(
             z
@@ -82,7 +82,7 @@ export type WebhookResponse$Outbound = {
     id_webhook_endpoint: string | null;
     endpoint_description: string | null;
     url: string | null;
-    secret: string | null;
+    secret: string;
     active: boolean | null;
     created_at: string | null;
     scope: Array<string> | null;
@@ -100,7 +100,7 @@ export const WebhookResponse$outboundSchema: z.ZodType<
         idWebhookEndpoint: z.nullable(z.string()),
         endpointDescription: z.nullable(z.string()),
         url: z.nullable(z.string()),
-        secret: z.nullable(z.string()),
+        secret: z.string(),
         active: z.nullable(z.boolean()),
         createdAt: z.nullable(z.date().transform((v) => v.toISOString())),
         scope: z.nullable(z.array(z.string())),

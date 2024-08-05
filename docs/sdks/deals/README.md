@@ -3,13 +3,13 @@
 
 ### Available Operations
 
-* [list](#list) - List  Deals
+* [list](#list) - List Deals
 * [create](#create) - Create Deals
 * [retrieve](#retrieve) - Retrieve Deals
 
 ## list
 
-List  Deals
+List Deals
 
 ### Example Usage
 
@@ -17,7 +17,7 @@ List  Deals
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -61,16 +61,23 @@ Create Deals in any supported Crm software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.crm.deals.create({
     xConnectionToken: "<value>",
     unifiedCrmDealInput: {
-      name: "<value>",
-      description: "Multi-tiered human-resource model",
-      amount: 8592.13,
+      name: "Huge Contract with Acme",
+      description: "Contract with Sales Operations Team",
+      amount: 1000,
+      userId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      stageId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      companyId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      fieldMappings: {
+        "fav_dish": "broccoli",
+        "fav_color": "red",
+      },
     },
   });
 
@@ -110,13 +117,14 @@ Retrieve Deals from any connected Crm software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.crm.deals.retrieve({
     xConnectionToken: "<value>",
-    id: "<id>",
+    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    remoteData: false,
   });
 
   // Handle the result

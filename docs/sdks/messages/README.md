@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List  Messages
+* [list](#list) - List Messages
 * [retrieve](#retrieve) - Retrieve Messages
 
 ## list
 
-List  Messages
+List Messages
 
 ### Example Usage
 
@@ -16,7 +16,7 @@ List  Messages
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
@@ -60,13 +60,14 @@ Retrieve Messages from any connected Marketingautomation software
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-  apiKey: process.env.API_KEY,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
   const result = await panora.marketingautomation.messages.retrieve({
     xConnectionToken: "<value>",
-    id: "<id>",
+    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    remoteData: false,
   });
 
   // Handle the result

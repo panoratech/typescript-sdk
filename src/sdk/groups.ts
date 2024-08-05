@@ -19,17 +19,17 @@ import { unwrap as unwrap$ } from "../types/fp.js";
 
 export class Groups extends ClientSDK {
     /**
-     * List  Groups
+     * List Groups
      */
     async list(
-        request: operations.ListHrisGroupRequest,
+        request: operations.ListHrisGroupsRequest,
         options?: RequestOptions
-    ): Promise<operations.ListHrisGroupResponseBody> {
+    ): Promise<operations.ListHrisGroupsResponseBody> {
         const input$ = request;
 
         const parsed$ = schemas$.safeParse(
             input$,
-            (value$) => operations.ListHrisGroupRequest$outboundSchema.parse(value$),
+            (value$) => operations.ListHrisGroupsRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const payload$ = unwrap$(parsed$);
@@ -55,7 +55,7 @@ export class Groups extends ClientSDK {
         const apiKey$ = await extractSecurity(this.options$.apiKey);
         const security$ = apiKey$ == null ? {} : { apiKey: apiKey$ };
         const context = {
-            operationID: "listHrisGroup",
+            operationID: "listHrisGroups",
             oAuth2Scopes: [],
             securitySource: this.options$.apiKey,
         };
@@ -85,10 +85,10 @@ export class Groups extends ClientSDK {
         const response = unwrap$(doResult);
 
         const [result$] = await m$.match<
-            operations.ListHrisGroupResponseBody,
+            operations.ListHrisGroupsResponseBody,
             SDKError | SDKValidationError
         >(
-            m$.json(200, operations.ListHrisGroupResponseBody$inboundSchema),
+            m$.json(200, operations.ListHrisGroupsResponseBody$inboundSchema),
             m$.fail(["4XX", "5XX"])
         )(response);
 
@@ -96,10 +96,10 @@ export class Groups extends ClientSDK {
     }
 
     /**
-     * Retrieve Groups
+     * Retrieve Group
      *
      * @remarks
-     * Retrieve Groups from any connected Hris software
+     * Retrieve a Group from any connected Hris software
      */
     async retrieve(
         request: operations.RetrieveHrisGroupRequest,
