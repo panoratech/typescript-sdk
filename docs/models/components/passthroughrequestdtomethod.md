@@ -1,6 +1,4 @@
-# Method
-
-HTTP method used for the event
+# PassThroughRequestDtoMethod
 
 
 ## Values
@@ -9,5 +7,6 @@ HTTP method used for the event
 | -------- | -------- |
 | `Get`    | GET      |
 | `Post`   | POST     |
-| `Put`    | PUT      |
+| `Patch`  | PATCH    |
 | `Delete` | DELETE   |
+| `Put`    | PUT      |

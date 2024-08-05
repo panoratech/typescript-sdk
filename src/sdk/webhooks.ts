@@ -68,7 +68,7 @@ export class Webhooks extends ClientSDK {
     }
 
     /**
-     * Add webhook metadata
+     * Create webhook
      */
     async create(
         request: components.WebhookDto,

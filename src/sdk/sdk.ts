@@ -11,19 +11,33 @@ import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrap as unwrap$ } from "../types/fp.js";
 import { Accounting } from "./accounting.js";
 import { Ats } from "./ats.js";
+import { Auth } from "./auth.js";
+import { Connections } from "./connections.js";
 import { Crm } from "./crm.js";
+import { Events } from "./events.js";
 import { FieldMappings } from "./fieldmappings.js";
 import { Filestorage } from "./filestorage.js";
 import { Hris } from "./hris.js";
 import { LinkedUsers } from "./linkedusers.js";
 import { Marketingautomation } from "./marketingautomation.js";
 import { Passthrough } from "./passthrough.js";
+import { Projects } from "./projects.js";
 import { Sync } from "./sync.js";
 import { Ticketing } from "./ticketing.js";
 import { Webhooks } from "./webhooks.js";
 import * as z from "zod";
 
 export class Panora extends ClientSDK {
+    private _auth?: Auth;
+    get auth(): Auth {
+        return (this._auth ??= new Auth(this.options$));
+    }
+
+    private _connections?: Connections;
+    get connections(): Connections {
+        return (this._connections ??= new Connections(this.options$));
+    }
+
     private _webhooks?: Webhooks;
     get webhooks(): Webhooks {
         return (this._webhooks ??= new Webhooks(this.options$));
@@ -49,9 +63,19 @@ export class Panora extends ClientSDK {
         return (this._linkedUsers ??= new LinkedUsers(this.options$));
     }
 
+    private _projects?: Projects;
+    get projects(): Projects {
+        return (this._projects ??= new Projects(this.options$));
+    }
+
     private _fieldMappings?: FieldMappings;
     get fieldMappings(): FieldMappings {
         return (this._fieldMappings ??= new FieldMappings(this.options$));
+    }
+
+    private _events?: Events;
+    get events(): Events {
+        return (this._events ??= new Events(this.options$));
     }
 
     private _passthrough?: Passthrough;

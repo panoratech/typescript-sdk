@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: caaaa8c3-6dd7-43a5-841e-c3193e68cc73
 management:
-  docChecksum: 5318f76de9f42523396aae8e51f30ca5
+  docChecksum: 73ce3778a891c9bdb1d0d00c8a42490f
   docVersion: "1.0"
   speakeasyVersion: 1.352.2
   generationVersion: 2.385.2
-  releaseVersion: 0.5.0
-  configChecksum: 471661da6f31f24888f2d7cb584b97cd
+  releaseVersion: 0.5.1
+  configChecksum: 36082a99a0f6afb5f706af6e12de6dbe
   repoURL: https://github.com/panoratech/typescript-sdk.git
   installationURL: https://github.com/panoratech/typescript-sdk
   published: true
@@ -28,6 +28,9 @@ features:
     sdkHooks: 0.1.0
     unions: 2.85.6
 generatedFiles:
+  - src/sdk/login.ts
+  - src/sdk/auth.ts
+  - src/sdk/connections.ts
   - src/sdk/webhooks.ts
   - src/sdk/tickets.ts
   - src/sdk/users.ts
@@ -53,9 +56,11 @@ generatedFiles:
   - src/sdk/id.ts
   - src/sdk/fromremoteid.ts
   - src/sdk/linkedusers.ts
+  - src/sdk/projects.ts
   - src/sdk/define.ts
   - src/sdk/map.ts
   - src/sdk/fieldmappings.ts
+  - src/sdk/events.ts
   - src/sdk/passthrough.ts
   - src/sdk/bankinfos.ts
   - src/sdk/benefits.ts
@@ -77,7 +82,7 @@ generatedFiles:
   - src/sdk/campaigns.ts
   - src/sdk/panoramarketingautomationcontacts.ts
   - src/sdk/emails.ts
-  - src/sdk/events.ts
+  - src/sdk/panoraevents.ts
   - src/sdk/lists.ts
   - src/sdk/messages.ts
   - src/sdk/templates.ts
@@ -157,6 +162,8 @@ generatedFiles:
   - src/types/operations.ts
   - src/types/rfcdate.ts
   - tsconfig.json
+  - src/models/components/logindto.ts
+  - src/models/components/connection.ts
   - src/models/components/webhookresponse.ts
   - src/models/components/webhookdto.ts
   - src/models/components/signatureverificationdto.ts
@@ -193,10 +200,13 @@ generatedFiles:
   - src/models/components/linkeduserresponse.ts
   - src/models/components/createlinkeduserdto.ts
   - src/models/components/createbatchlinkeduserdto.ts
+  - src/models/components/projectresponse.ts
+  - src/models/components/createprojectdto.ts
   - src/models/components/customfieldresponse.ts
   - src/models/components/customfieldcreatedto.ts
   - src/models/components/definetargetfielddto.ts
   - src/models/components/mapfieldtoproviderdto.ts
+  - src/models/components/eventresponse.ts
   - src/models/components/passthroughresponse.ts
   - src/models/components/passthroughrequestdto.ts
   - src/models/components/unifiedhrisbankinfooutput.ts
@@ -337,6 +347,7 @@ generatedFiles:
   - src/models/operations/retrievecrmuser.ts
   - src/models/operations/retrievelinkeduser.ts
   - src/models/operations/remoteid.ts
+  - src/models/operations/getpanoracoreevents.ts
   - src/models/operations/request.ts
   - src/models/operations/listhrisbankinfo.ts
   - src/models/operations/retrievehrisbankinfo.ts
@@ -492,6 +503,9 @@ generatedFiles:
   - src/models/errors/index.ts
   - src/models/components/index.ts
   - src/models/operations/index.ts
+  - docs/models/components/logindto.md
+  - docs/models/components/tokentype.md
+  - docs/models/components/connection.md
   - docs/models/components/webhookresponse.md
   - docs/models/components/webhookdto.md
   - docs/models/components/signatureverificationdto.md
@@ -520,6 +534,8 @@ generatedFiles:
   - docs/models/components/unifiedticketingteamoutput.md
   - docs/models/components/unifiedticketingattachmentoutput.md
   - docs/models/components/unifiedticketingattachmentinput.md
+  - docs/models/components/vertical.md
+  - docs/models/components/resyncstatusdtostatus.md
   - docs/models/components/resyncstatusdto.md
   - docs/models/components/industry.md
   - docs/models/components/createdat.md
@@ -557,6 +573,8 @@ generatedFiles:
   - docs/models/components/linkeduserresponse.md
   - docs/models/components/createlinkeduserdto.md
   - docs/models/components/createbatchlinkeduserdto.md
+  - docs/models/components/projectresponse.md
+  - docs/models/components/createprojectdto.md
   - docs/models/components/customfieldresponsedatatype.md
   - docs/models/components/customfieldresponse.md
   - docs/models/components/customfieldcreatedtoobjecttypeowner.md
@@ -566,9 +584,13 @@ generatedFiles:
   - docs/models/components/datatype.md
   - docs/models/components/definetargetfielddto.md
   - docs/models/components/mapfieldtoproviderdto.md
+  - docs/models/components/eventresponsetype.md
+  - docs/models/components/eventresponsestatus.md
+  - docs/models/components/method.md
+  - docs/models/components/eventresponse.md
   - docs/models/components/passthroughresponsedata.md
   - docs/models/components/passthroughresponse.md
-  - docs/models/components/method.md
+  - docs/models/components/passthroughrequestdtomethod.md
   - docs/models/components/data.md
   - docs/models/components/passthroughrequestdto.md
   - docs/models/components/unifiedhrisbankinfooutput.md
@@ -748,6 +770,7 @@ generatedFiles:
   - docs/models/operations/retrievecrmuserrequest.md
   - docs/models/operations/retrievelinkeduserrequest.md
   - docs/models/operations/remoteidrequest.md
+  - docs/models/operations/getpanoracoreeventsrequest.md
   - docs/models/operations/requestrequest.md
   - docs/models/operations/listhrisbankinforequest.md
   - docs/models/operations/listhrisbankinforesponsebody.md
@@ -966,6 +989,9 @@ generatedFiles:
   - docs/models/operations/retrievefilestorageuserrequest.md
   - docs/lib/utils/retryconfig.md
   - docs/sdks/panora/README.md
+  - docs/sdks/auth/README.md
+  - docs/sdks/login/README.md
+  - docs/sdks/connections/README.md
   - docs/sdks/webhooks/README.md
   - docs/sdks/ticketing/README.md
   - docs/sdks/tickets/README.md
@@ -991,9 +1017,11 @@ generatedFiles:
   - docs/sdks/batch/README.md
   - docs/sdks/id/README.md
   - docs/sdks/fromremoteid/README.md
+  - docs/sdks/projects/README.md
   - docs/sdks/fieldmappings/README.md
   - docs/sdks/define/README.md
   - docs/sdks/map/README.md
+  - docs/sdks/events/README.md
   - docs/sdks/passthrough/README.md
   - docs/sdks/hris/README.md
   - docs/sdks/bankinfos/README.md
@@ -1016,7 +1044,7 @@ generatedFiles:
   - docs/sdks/campaigns/README.md
   - docs/sdks/panoramarketingautomationcontacts/README.md
   - docs/sdks/emails/README.md
-  - docs/sdks/events/README.md
+  - docs/sdks/panoraevents/README.md
   - docs/sdks/lists/README.md
   - docs/sdks/messages/README.md
   - docs/sdks/templates/README.md

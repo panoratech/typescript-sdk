@@ -85,10 +85,19 @@ run();
 * [hello](docs/sdks/panora/README.md#hello)
 * [health](docs/sdks/panora/README.md#health)
 
+
+### [auth.login](docs/sdks/login/README.md)
+
+* [signIn](docs/sdks/login/README.md#signin) - Log In
+
+### [connections](docs/sdks/connections/README.md)
+
+* [getConnections](docs/sdks/connections/README.md#getconnections) - List Connections
+
 ### [webhooks](docs/sdks/webhooks/README.md)
 
 * [list](docs/sdks/webhooks/README.md#list) - List webhooks
-* [create](docs/sdks/webhooks/README.md#create) - Add webhook metadata
+* [create](docs/sdks/webhooks/README.md#create) - Create webhook
 * [delete](docs/sdks/webhooks/README.md#delete) - Delete Webhook
 * [updateStatus](docs/sdks/webhooks/README.md#updatestatus) - Update webhook status
 * [verifyEvent](docs/sdks/webhooks/README.md#verifyevent) - Verify payload signature of the webhook
@@ -211,6 +220,11 @@ run();
 
 * [remoteId](docs/sdks/fromremoteid/README.md#remoteid) - Retrieve a Linked User From A Remote Id
 
+### [projects](docs/sdks/projects/README.md)
+
+* [getProjects](docs/sdks/projects/README.md#getprojects) - Retrieve projects
+* [create](docs/sdks/projects/README.md#create) - Create a project
+
 ### [fieldMappings](docs/sdks/fieldmappings/README.md)
 
 * [defineCustomField](docs/sdks/fieldmappings/README.md#definecustomfield) - Create Custom Field
@@ -222,6 +236,10 @@ run();
 ### [fieldMappings.map](docs/sdks/map/README.md)
 
 * [map](docs/sdks/map/README.md#map) - Map Custom Field
+
+### [events](docs/sdks/events/README.md)
+
+* [getPanoraCoreEvents](docs/sdks/events/README.md#getpanoracoreevents) - List Events
 
 ### [passthrough](docs/sdks/passthrough/README.md)
 
@@ -330,10 +348,10 @@ run();
 * [list](docs/sdks/emails/README.md#list) - List Emails
 * [retrieve](docs/sdks/emails/README.md#retrieve) - Retrieve Email
 
-### [marketingautomation.events](docs/sdks/events/README.md)
+### [marketingautomation.events](docs/sdks/panoraevents/README.md)
 
-* [list](docs/sdks/events/README.md#list) - List Events
-* [retrieve](docs/sdks/events/README.md#retrieve) - Retrieve Event
+* [list](docs/sdks/panoraevents/README.md#list) - List Events
+* [retrieve](docs/sdks/panoraevents/README.md#retrieve) - Retrieve Event
 
 ### [marketingautomation.lists](docs/sdks/lists/README.md)
 

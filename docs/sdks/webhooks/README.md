@@ -4,7 +4,7 @@
 ### Available Operations
 
 * [list](#list) - List webhooks
-* [create](#create) - Add webhook metadata
+* [create](#create) - Create webhook
 * [delete](#delete) - Delete Webhook
 * [updateStatus](#updatestatus) - Update webhook status
 * [verifyEvent](#verifyevent) - Verify payload signature of the webhook
@@ -52,7 +52,7 @@ run();
 
 ## create
 
-Add webhook metadata
+Create webhook
 
 ### Example Usage
 
