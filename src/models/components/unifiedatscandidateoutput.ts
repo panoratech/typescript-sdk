@@ -5,8 +5,32 @@
 import { remap as remap$ } from "../../lib/primitives.js";
 import { Email, Email$inboundSchema, Email$Outbound, Email$outboundSchema } from "./email.js";
 import { Phone, Phone$inboundSchema, Phone$Outbound, Phone$outboundSchema } from "./phone.js";
+import {
+    UnifiedAtsApplicationOutput,
+    UnifiedAtsApplicationOutput$inboundSchema,
+    UnifiedAtsApplicationOutput$Outbound,
+    UnifiedAtsApplicationOutput$outboundSchema,
+} from "./unifiedatsapplicationoutput.js";
+import {
+    UnifiedAtsAttachmentOutput,
+    UnifiedAtsAttachmentOutput$inboundSchema,
+    UnifiedAtsAttachmentOutput$Outbound,
+    UnifiedAtsAttachmentOutput$outboundSchema,
+} from "./unifiedatsattachmentoutput.js";
+import {
+    UnifiedAtsTagOutput,
+    UnifiedAtsTagOutput$inboundSchema,
+    UnifiedAtsTagOutput$Outbound,
+    UnifiedAtsTagOutput$outboundSchema,
+} from "./unifiedatstagoutput.js";
 import { Url, Url$inboundSchema, Url$Outbound, Url$outboundSchema } from "./url.js";
 import * as z from "zod";
+
+export type UnifiedAtsCandidateOutputAttachments = UnifiedAtsAttachmentOutput | string;
+
+export type Applications = UnifiedAtsApplicationOutput | string;
+
+export type UnifiedAtsCandidateOutputTags = UnifiedAtsTagOutput | string;
 
 export type UnifiedAtsCandidateOutput = {
     /**
@@ -52,15 +76,15 @@ export type UnifiedAtsCandidateOutput = {
     /**
      * The attachments UUIDs of the candidate
      */
-    attachments?: Array<string> | null | undefined;
+    attachments?: Array<UnifiedAtsAttachmentOutput | string> | null | undefined;
     /**
      * The applications UUIDs of the candidate
      */
-    applications?: Array<string> | null | undefined;
+    applications?: Array<UnifiedAtsApplicationOutput | string> | null | undefined;
     /**
      * The tags of the candidate
      */
-    tags?: Array<string> | null | undefined;
+    tags?: Array<UnifiedAtsTagOutput | string> | null | undefined;
     /**
      * The urls of the candidate, possible values for Url type are WEBSITE, BLOG, LINKEDIN, GITHUB, or OTHER
      */
@@ -100,6 +124,97 @@ export type UnifiedAtsCandidateOutput = {
 };
 
 /** @internal */
+export const UnifiedAtsCandidateOutputAttachments$inboundSchema: z.ZodType<
+    UnifiedAtsCandidateOutputAttachments,
+    z.ZodTypeDef,
+    unknown
+> = z.union([UnifiedAtsAttachmentOutput$inboundSchema, z.string()]);
+
+/** @internal */
+export type UnifiedAtsCandidateOutputAttachments$Outbound =
+    | UnifiedAtsAttachmentOutput$Outbound
+    | string;
+
+/** @internal */
+export const UnifiedAtsCandidateOutputAttachments$outboundSchema: z.ZodType<
+    UnifiedAtsCandidateOutputAttachments$Outbound,
+    z.ZodTypeDef,
+    UnifiedAtsCandidateOutputAttachments
+> = z.union([UnifiedAtsAttachmentOutput$outboundSchema, z.string()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UnifiedAtsCandidateOutputAttachments$ {
+    /** @deprecated use `UnifiedAtsCandidateOutputAttachments$inboundSchema` instead. */
+    export const inboundSchema = UnifiedAtsCandidateOutputAttachments$inboundSchema;
+    /** @deprecated use `UnifiedAtsCandidateOutputAttachments$outboundSchema` instead. */
+    export const outboundSchema = UnifiedAtsCandidateOutputAttachments$outboundSchema;
+    /** @deprecated use `UnifiedAtsCandidateOutputAttachments$Outbound` instead. */
+    export type Outbound = UnifiedAtsCandidateOutputAttachments$Outbound;
+}
+
+/** @internal */
+export const Applications$inboundSchema: z.ZodType<Applications, z.ZodTypeDef, unknown> = z.union([
+    UnifiedAtsApplicationOutput$inboundSchema,
+    z.string(),
+]);
+
+/** @internal */
+export type Applications$Outbound = UnifiedAtsApplicationOutput$Outbound | string;
+
+/** @internal */
+export const Applications$outboundSchema: z.ZodType<
+    Applications$Outbound,
+    z.ZodTypeDef,
+    Applications
+> = z.union([UnifiedAtsApplicationOutput$outboundSchema, z.string()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Applications$ {
+    /** @deprecated use `Applications$inboundSchema` instead. */
+    export const inboundSchema = Applications$inboundSchema;
+    /** @deprecated use `Applications$outboundSchema` instead. */
+    export const outboundSchema = Applications$outboundSchema;
+    /** @deprecated use `Applications$Outbound` instead. */
+    export type Outbound = Applications$Outbound;
+}
+
+/** @internal */
+export const UnifiedAtsCandidateOutputTags$inboundSchema: z.ZodType<
+    UnifiedAtsCandidateOutputTags,
+    z.ZodTypeDef,
+    unknown
+> = z.union([UnifiedAtsTagOutput$inboundSchema, z.string()]);
+
+/** @internal */
+export type UnifiedAtsCandidateOutputTags$Outbound = UnifiedAtsTagOutput$Outbound | string;
+
+/** @internal */
+export const UnifiedAtsCandidateOutputTags$outboundSchema: z.ZodType<
+    UnifiedAtsCandidateOutputTags$Outbound,
+    z.ZodTypeDef,
+    UnifiedAtsCandidateOutputTags
+> = z.union([UnifiedAtsTagOutput$outboundSchema, z.string()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UnifiedAtsCandidateOutputTags$ {
+    /** @deprecated use `UnifiedAtsCandidateOutputTags$inboundSchema` instead. */
+    export const inboundSchema = UnifiedAtsCandidateOutputTags$inboundSchema;
+    /** @deprecated use `UnifiedAtsCandidateOutputTags$outboundSchema` instead. */
+    export const outboundSchema = UnifiedAtsCandidateOutputTags$outboundSchema;
+    /** @deprecated use `UnifiedAtsCandidateOutputTags$Outbound` instead. */
+    export type Outbound = UnifiedAtsCandidateOutputTags$Outbound;
+}
+
+/** @internal */
 export const UnifiedAtsCandidateOutput$inboundSchema: z.ZodType<
     UnifiedAtsCandidateOutput,
     z.ZodTypeDef,
@@ -137,9 +252,15 @@ export const UnifiedAtsCandidateOutput$inboundSchema: z.ZodType<
                     .transform((v) => new Date(v))
             )
             .optional(),
-        attachments: z.nullable(z.array(z.string())).optional(),
-        applications: z.nullable(z.array(z.string())).optional(),
-        tags: z.nullable(z.array(z.string())).optional(),
+        attachments: z
+            .nullable(z.array(z.union([UnifiedAtsAttachmentOutput$inboundSchema, z.string()])))
+            .optional(),
+        applications: z
+            .nullable(z.array(z.union([UnifiedAtsApplicationOutput$inboundSchema, z.string()])))
+            .optional(),
+        tags: z
+            .nullable(z.array(z.union([UnifiedAtsTagOutput$inboundSchema, z.string()])))
+            .optional(),
         urls: z.nullable(z.array(Url$inboundSchema)).optional(),
         phone_numbers: z.nullable(z.array(Phone$inboundSchema)).optional(),
         email_addresses: z.nullable(z.array(Email$inboundSchema)).optional(),
@@ -195,9 +316,9 @@ export type UnifiedAtsCandidateOutput$Outbound = {
     remote_created_at?: string | null | undefined;
     remote_modified_at?: string | null | undefined;
     last_interaction_at?: string | null | undefined;
-    attachments?: Array<string> | null | undefined;
-    applications?: Array<string> | null | undefined;
-    tags?: Array<string> | null | undefined;
+    attachments?: Array<UnifiedAtsAttachmentOutput$Outbound | string> | null | undefined;
+    applications?: Array<UnifiedAtsApplicationOutput$Outbound | string> | null | undefined;
+    tags?: Array<UnifiedAtsTagOutput$Outbound | string> | null | undefined;
     urls?: Array<Url$Outbound> | null | undefined;
     phone_numbers?: Array<Phone$Outbound> | null | undefined;
     email_addresses?: Array<Email$Outbound> | null | undefined;
@@ -226,9 +347,15 @@ export const UnifiedAtsCandidateOutput$outboundSchema: z.ZodType<
         remoteCreatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         remoteModifiedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         lastInteractionAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-        attachments: z.nullable(z.array(z.string())).optional(),
-        applications: z.nullable(z.array(z.string())).optional(),
-        tags: z.nullable(z.array(z.string())).optional(),
+        attachments: z
+            .nullable(z.array(z.union([UnifiedAtsAttachmentOutput$outboundSchema, z.string()])))
+            .optional(),
+        applications: z
+            .nullable(z.array(z.union([UnifiedAtsApplicationOutput$outboundSchema, z.string()])))
+            .optional(),
+        tags: z
+            .nullable(z.array(z.union([UnifiedAtsTagOutput$outboundSchema, z.string()])))
+            .optional(),
         urls: z.nullable(z.array(Url$outboundSchema)).optional(),
         phoneNumbers: z.nullable(z.array(Phone$outboundSchema)).optional(),
         emailAddresses: z.nullable(z.array(Email$outboundSchema)).optional(),

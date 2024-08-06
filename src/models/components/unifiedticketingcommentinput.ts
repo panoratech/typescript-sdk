@@ -3,6 +3,12 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
+import {
+    UnifiedTicketingAttachmentOutput,
+    UnifiedTicketingAttachmentOutput$inboundSchema,
+    UnifiedTicketingAttachmentOutput$Outbound,
+    UnifiedTicketingAttachmentOutput$outboundSchema,
+} from "./unifiedticketingattachmentoutput.js";
 import * as z from "zod";
 
 /**
@@ -12,6 +18,8 @@ export enum UnifiedTicketingCommentInputCreatorType {
     User = "USER",
     Contact = "CONTACT",
 }
+
+export type UnifiedTicketingCommentInputAttachments = UnifiedTicketingAttachmentOutput | string;
 
 export type UnifiedTicketingCommentInput = {
     /**
@@ -45,7 +53,7 @@ export type UnifiedTicketingCommentInput = {
     /**
      * The attachements UUIDs tied to the comment
      */
-    attachments?: Array<string> | null | undefined;
+    attachments?: Array<UnifiedTicketingAttachmentOutput | string> | null | undefined;
 };
 
 /** @internal */
@@ -70,6 +78,38 @@ export namespace UnifiedTicketingCommentInputCreatorType$ {
 }
 
 /** @internal */
+export const UnifiedTicketingCommentInputAttachments$inboundSchema: z.ZodType<
+    UnifiedTicketingCommentInputAttachments,
+    z.ZodTypeDef,
+    unknown
+> = z.union([UnifiedTicketingAttachmentOutput$inboundSchema, z.string()]);
+
+/** @internal */
+export type UnifiedTicketingCommentInputAttachments$Outbound =
+    | UnifiedTicketingAttachmentOutput$Outbound
+    | string;
+
+/** @internal */
+export const UnifiedTicketingCommentInputAttachments$outboundSchema: z.ZodType<
+    UnifiedTicketingCommentInputAttachments$Outbound,
+    z.ZodTypeDef,
+    UnifiedTicketingCommentInputAttachments
+> = z.union([UnifiedTicketingAttachmentOutput$outboundSchema, z.string()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UnifiedTicketingCommentInputAttachments$ {
+    /** @deprecated use `UnifiedTicketingCommentInputAttachments$inboundSchema` instead. */
+    export const inboundSchema = UnifiedTicketingCommentInputAttachments$inboundSchema;
+    /** @deprecated use `UnifiedTicketingCommentInputAttachments$outboundSchema` instead. */
+    export const outboundSchema = UnifiedTicketingCommentInputAttachments$outboundSchema;
+    /** @deprecated use `UnifiedTicketingCommentInputAttachments$Outbound` instead. */
+    export type Outbound = UnifiedTicketingCommentInputAttachments$Outbound;
+}
+
+/** @internal */
 export const UnifiedTicketingCommentInput$inboundSchema: z.ZodType<
     UnifiedTicketingCommentInput,
     z.ZodTypeDef,
@@ -83,7 +123,11 @@ export const UnifiedTicketingCommentInput$inboundSchema: z.ZodType<
         ticket_id: z.nullable(z.string()).optional(),
         contact_id: z.nullable(z.string()).optional(),
         user_id: z.nullable(z.string()).optional(),
-        attachments: z.nullable(z.array(z.string())).optional(),
+        attachments: z
+            .nullable(
+                z.array(z.union([UnifiedTicketingAttachmentOutput$inboundSchema, z.string()]))
+            )
+            .optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -105,7 +149,7 @@ export type UnifiedTicketingCommentInput$Outbound = {
     ticket_id?: string | null | undefined;
     contact_id?: string | null | undefined;
     user_id?: string | null | undefined;
-    attachments?: Array<string> | null | undefined;
+    attachments?: Array<UnifiedTicketingAttachmentOutput$Outbound | string> | null | undefined;
 };
 
 /** @internal */
@@ -122,7 +166,11 @@ export const UnifiedTicketingCommentInput$outboundSchema: z.ZodType<
         ticketId: z.nullable(z.string()).optional(),
         contactId: z.nullable(z.string()).optional(),
         userId: z.nullable(z.string()).optional(),
-        attachments: z.nullable(z.array(z.string())).optional(),
+        attachments: z
+            .nullable(
+                z.array(z.union([UnifiedTicketingAttachmentOutput$outboundSchema, z.string()]))
+            )
+            .optional(),
     })
     .transform((v) => {
         return remap$(v, {

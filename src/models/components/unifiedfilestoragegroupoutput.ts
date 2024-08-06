@@ -3,7 +3,15 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
+import {
+    UnifiedFilestorageUserOutput,
+    UnifiedFilestorageUserOutput$inboundSchema,
+    UnifiedFilestorageUserOutput$Outbound,
+    UnifiedFilestorageUserOutput$outboundSchema,
+} from "./unifiedfilestorageuseroutput.js";
 import * as z from "zod";
+
+export type Users = UnifiedFilestorageUserOutput | string;
 
 export type UnifiedFilestorageGroupOutput = {
     /**
@@ -13,7 +21,7 @@ export type UnifiedFilestorageGroupOutput = {
     /**
      * Uuids of users of the group
      */
-    users: Array<string>;
+    users: Array<UnifiedFilestorageUserOutput | string>;
     /**
      * Indicates whether or not this object has been deleted in the third party platform.
      */
@@ -45,6 +53,34 @@ export type UnifiedFilestorageGroupOutput = {
 };
 
 /** @internal */
+export const Users$inboundSchema: z.ZodType<Users, z.ZodTypeDef, unknown> = z.union([
+    UnifiedFilestorageUserOutput$inboundSchema,
+    z.string(),
+]);
+
+/** @internal */
+export type Users$Outbound = UnifiedFilestorageUserOutput$Outbound | string;
+
+/** @internal */
+export const Users$outboundSchema: z.ZodType<Users$Outbound, z.ZodTypeDef, Users> = z.union([
+    UnifiedFilestorageUserOutput$outboundSchema,
+    z.string(),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Users$ {
+    /** @deprecated use `Users$inboundSchema` instead. */
+    export const inboundSchema = Users$inboundSchema;
+    /** @deprecated use `Users$outboundSchema` instead. */
+    export const outboundSchema = Users$outboundSchema;
+    /** @deprecated use `Users$Outbound` instead. */
+    export type Outbound = Users$Outbound;
+}
+
+/** @internal */
 export const UnifiedFilestorageGroupOutput$inboundSchema: z.ZodType<
     UnifiedFilestorageGroupOutput,
     z.ZodTypeDef,
@@ -52,7 +88,7 @@ export const UnifiedFilestorageGroupOutput$inboundSchema: z.ZodType<
 > = z
     .object({
         name: z.nullable(z.string()),
-        users: z.array(z.string()),
+        users: z.array(z.union([UnifiedFilestorageUserOutput$inboundSchema, z.string()])),
         remote_was_deleted: z.nullable(z.boolean()),
         field_mappings: z.nullable(z.record(z.any())).optional(),
         id: z.nullable(z.string()).optional(),
@@ -89,7 +125,7 @@ export const UnifiedFilestorageGroupOutput$inboundSchema: z.ZodType<
 /** @internal */
 export type UnifiedFilestorageGroupOutput$Outbound = {
     name: string | null;
-    users: Array<string>;
+    users: Array<UnifiedFilestorageUserOutput$Outbound | string>;
     remote_was_deleted: boolean | null;
     field_mappings?: { [k: string]: any } | null | undefined;
     id?: string | null | undefined;
@@ -107,7 +143,7 @@ export const UnifiedFilestorageGroupOutput$outboundSchema: z.ZodType<
 > = z
     .object({
         name: z.nullable(z.string()),
-        users: z.array(z.string()),
+        users: z.array(z.union([UnifiedFilestorageUserOutput$outboundSchema, z.string()])),
         remoteWasDeleted: z.nullable(z.boolean()),
         fieldMappings: z.nullable(z.record(z.any())).optional(),
         id: z.nullable(z.string()).optional(),
