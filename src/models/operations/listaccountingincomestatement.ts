@@ -31,6 +31,10 @@ export type ListAccountingIncomeStatementResponseBody = {
     data: Array<components.UnifiedAccountingIncomestatementOutput>;
 };
 
+export type ListAccountingIncomeStatementResponse = {
+    result: ListAccountingIncomeStatementResponseBody;
+};
+
 /** @internal */
 export const ListAccountingIncomeStatementRequest$inboundSchema: z.ZodType<
     ListAccountingIncomeStatementRequest,
@@ -144,4 +148,52 @@ export namespace ListAccountingIncomeStatementResponseBody$ {
     export const outboundSchema = ListAccountingIncomeStatementResponseBody$outboundSchema;
     /** @deprecated use `ListAccountingIncomeStatementResponseBody$Outbound` instead. */
     export type Outbound = ListAccountingIncomeStatementResponseBody$Outbound;
+}
+
+/** @internal */
+export const ListAccountingIncomeStatementResponse$inboundSchema: z.ZodType<
+    ListAccountingIncomeStatementResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        Result: z.lazy(() => ListAccountingIncomeStatementResponseBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Result: "result",
+        });
+    });
+
+/** @internal */
+export type ListAccountingIncomeStatementResponse$Outbound = {
+    Result: ListAccountingIncomeStatementResponseBody$Outbound;
+};
+
+/** @internal */
+export const ListAccountingIncomeStatementResponse$outboundSchema: z.ZodType<
+    ListAccountingIncomeStatementResponse$Outbound,
+    z.ZodTypeDef,
+    ListAccountingIncomeStatementResponse
+> = z
+    .object({
+        result: z.lazy(() => ListAccountingIncomeStatementResponseBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            result: "Result",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListAccountingIncomeStatementResponse$ {
+    /** @deprecated use `ListAccountingIncomeStatementResponse$inboundSchema` instead. */
+    export const inboundSchema = ListAccountingIncomeStatementResponse$inboundSchema;
+    /** @deprecated use `ListAccountingIncomeStatementResponse$outboundSchema` instead. */
+    export const outboundSchema = ListAccountingIncomeStatementResponse$outboundSchema;
+    /** @deprecated use `ListAccountingIncomeStatementResponse$Outbound` instead. */
+    export type Outbound = ListAccountingIncomeStatementResponse$Outbound;
 }

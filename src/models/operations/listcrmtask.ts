@@ -31,6 +31,10 @@ export type ListCrmTaskResponseBody = {
     data: Array<components.UnifiedCrmTaskOutput>;
 };
 
+export type ListCrmTaskResponse = {
+    result: ListCrmTaskResponseBody;
+};
+
 /** @internal */
 export const ListCrmTaskRequest$inboundSchema: z.ZodType<
     ListCrmTaskRequest,
@@ -144,4 +148,52 @@ export namespace ListCrmTaskResponseBody$ {
     export const outboundSchema = ListCrmTaskResponseBody$outboundSchema;
     /** @deprecated use `ListCrmTaskResponseBody$Outbound` instead. */
     export type Outbound = ListCrmTaskResponseBody$Outbound;
+}
+
+/** @internal */
+export const ListCrmTaskResponse$inboundSchema: z.ZodType<
+    ListCrmTaskResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        Result: z.lazy(() => ListCrmTaskResponseBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Result: "result",
+        });
+    });
+
+/** @internal */
+export type ListCrmTaskResponse$Outbound = {
+    Result: ListCrmTaskResponseBody$Outbound;
+};
+
+/** @internal */
+export const ListCrmTaskResponse$outboundSchema: z.ZodType<
+    ListCrmTaskResponse$Outbound,
+    z.ZodTypeDef,
+    ListCrmTaskResponse
+> = z
+    .object({
+        result: z.lazy(() => ListCrmTaskResponseBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            result: "Result",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListCrmTaskResponse$ {
+    /** @deprecated use `ListCrmTaskResponse$inboundSchema` instead. */
+    export const inboundSchema = ListCrmTaskResponse$inboundSchema;
+    /** @deprecated use `ListCrmTaskResponse$outboundSchema` instead. */
+    export const outboundSchema = ListCrmTaskResponse$outboundSchema;
+    /** @deprecated use `ListCrmTaskResponse$Outbound` instead. */
+    export type Outbound = ListCrmTaskResponse$Outbound;
 }

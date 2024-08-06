@@ -31,6 +31,10 @@ export type ListAccountingTrackingCategorysResponseBody = {
     data: Array<components.UnifiedAccountingTrackingcategoryOutput>;
 };
 
+export type ListAccountingTrackingCategorysResponse = {
+    result: ListAccountingTrackingCategorysResponseBody;
+};
+
 /** @internal */
 export const ListAccountingTrackingCategorysRequest$inboundSchema: z.ZodType<
     ListAccountingTrackingCategorysRequest,
@@ -144,4 +148,52 @@ export namespace ListAccountingTrackingCategorysResponseBody$ {
     export const outboundSchema = ListAccountingTrackingCategorysResponseBody$outboundSchema;
     /** @deprecated use `ListAccountingTrackingCategorysResponseBody$Outbound` instead. */
     export type Outbound = ListAccountingTrackingCategorysResponseBody$Outbound;
+}
+
+/** @internal */
+export const ListAccountingTrackingCategorysResponse$inboundSchema: z.ZodType<
+    ListAccountingTrackingCategorysResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        Result: z.lazy(() => ListAccountingTrackingCategorysResponseBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Result: "result",
+        });
+    });
+
+/** @internal */
+export type ListAccountingTrackingCategorysResponse$Outbound = {
+    Result: ListAccountingTrackingCategorysResponseBody$Outbound;
+};
+
+/** @internal */
+export const ListAccountingTrackingCategorysResponse$outboundSchema: z.ZodType<
+    ListAccountingTrackingCategorysResponse$Outbound,
+    z.ZodTypeDef,
+    ListAccountingTrackingCategorysResponse
+> = z
+    .object({
+        result: z.lazy(() => ListAccountingTrackingCategorysResponseBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            result: "Result",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListAccountingTrackingCategorysResponse$ {
+    /** @deprecated use `ListAccountingTrackingCategorysResponse$inboundSchema` instead. */
+    export const inboundSchema = ListAccountingTrackingCategorysResponse$inboundSchema;
+    /** @deprecated use `ListAccountingTrackingCategorysResponse$outboundSchema` instead. */
+    export const outboundSchema = ListAccountingTrackingCategorysResponse$outboundSchema;
+    /** @deprecated use `ListAccountingTrackingCategorysResponse$Outbound` instead. */
+    export type Outbound = ListAccountingTrackingCategorysResponse$Outbound;
 }

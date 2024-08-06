@@ -31,6 +31,10 @@ export type ListCrmUsersResponseBody = {
     data: Array<components.UnifiedCrmUserOutput>;
 };
 
+export type ListCrmUsersResponse = {
+    result: ListCrmUsersResponseBody;
+};
+
 /** @internal */
 export const ListCrmUsersRequest$inboundSchema: z.ZodType<
     ListCrmUsersRequest,
@@ -144,4 +148,52 @@ export namespace ListCrmUsersResponseBody$ {
     export const outboundSchema = ListCrmUsersResponseBody$outboundSchema;
     /** @deprecated use `ListCrmUsersResponseBody$Outbound` instead. */
     export type Outbound = ListCrmUsersResponseBody$Outbound;
+}
+
+/** @internal */
+export const ListCrmUsersResponse$inboundSchema: z.ZodType<
+    ListCrmUsersResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        Result: z.lazy(() => ListCrmUsersResponseBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Result: "result",
+        });
+    });
+
+/** @internal */
+export type ListCrmUsersResponse$Outbound = {
+    Result: ListCrmUsersResponseBody$Outbound;
+};
+
+/** @internal */
+export const ListCrmUsersResponse$outboundSchema: z.ZodType<
+    ListCrmUsersResponse$Outbound,
+    z.ZodTypeDef,
+    ListCrmUsersResponse
+> = z
+    .object({
+        result: z.lazy(() => ListCrmUsersResponseBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            result: "Result",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListCrmUsersResponse$ {
+    /** @deprecated use `ListCrmUsersResponse$inboundSchema` instead. */
+    export const inboundSchema = ListCrmUsersResponse$inboundSchema;
+    /** @deprecated use `ListCrmUsersResponse$outboundSchema` instead. */
+    export const outboundSchema = ListCrmUsersResponse$outboundSchema;
+    /** @deprecated use `ListCrmUsersResponse$Outbound` instead. */
+    export type Outbound = ListCrmUsersResponse$Outbound;
 }

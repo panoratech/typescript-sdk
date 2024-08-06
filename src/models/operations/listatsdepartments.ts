@@ -31,6 +31,10 @@ export type ListAtsDepartmentsResponseBody = {
     data: Array<components.UnifiedAtsDepartmentOutput>;
 };
 
+export type ListAtsDepartmentsResponse = {
+    result: ListAtsDepartmentsResponseBody;
+};
+
 /** @internal */
 export const ListAtsDepartmentsRequest$inboundSchema: z.ZodType<
     ListAtsDepartmentsRequest,
@@ -144,4 +148,52 @@ export namespace ListAtsDepartmentsResponseBody$ {
     export const outboundSchema = ListAtsDepartmentsResponseBody$outboundSchema;
     /** @deprecated use `ListAtsDepartmentsResponseBody$Outbound` instead. */
     export type Outbound = ListAtsDepartmentsResponseBody$Outbound;
+}
+
+/** @internal */
+export const ListAtsDepartmentsResponse$inboundSchema: z.ZodType<
+    ListAtsDepartmentsResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        Result: z.lazy(() => ListAtsDepartmentsResponseBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Result: "result",
+        });
+    });
+
+/** @internal */
+export type ListAtsDepartmentsResponse$Outbound = {
+    Result: ListAtsDepartmentsResponseBody$Outbound;
+};
+
+/** @internal */
+export const ListAtsDepartmentsResponse$outboundSchema: z.ZodType<
+    ListAtsDepartmentsResponse$Outbound,
+    z.ZodTypeDef,
+    ListAtsDepartmentsResponse
+> = z
+    .object({
+        result: z.lazy(() => ListAtsDepartmentsResponseBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            result: "Result",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListAtsDepartmentsResponse$ {
+    /** @deprecated use `ListAtsDepartmentsResponse$inboundSchema` instead. */
+    export const inboundSchema = ListAtsDepartmentsResponse$inboundSchema;
+    /** @deprecated use `ListAtsDepartmentsResponse$outboundSchema` instead. */
+    export const outboundSchema = ListAtsDepartmentsResponse$outboundSchema;
+    /** @deprecated use `ListAtsDepartmentsResponse$Outbound` instead. */
+    export type Outbound = ListAtsDepartmentsResponse$Outbound;
 }

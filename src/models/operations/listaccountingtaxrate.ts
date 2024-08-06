@@ -31,6 +31,10 @@ export type ListAccountingTaxRateResponseBody = {
     data: Array<components.UnifiedAccountingTaxrateOutput>;
 };
 
+export type ListAccountingTaxRateResponse = {
+    result: ListAccountingTaxRateResponseBody;
+};
+
 /** @internal */
 export const ListAccountingTaxRateRequest$inboundSchema: z.ZodType<
     ListAccountingTaxRateRequest,
@@ -144,4 +148,52 @@ export namespace ListAccountingTaxRateResponseBody$ {
     export const outboundSchema = ListAccountingTaxRateResponseBody$outboundSchema;
     /** @deprecated use `ListAccountingTaxRateResponseBody$Outbound` instead. */
     export type Outbound = ListAccountingTaxRateResponseBody$Outbound;
+}
+
+/** @internal */
+export const ListAccountingTaxRateResponse$inboundSchema: z.ZodType<
+    ListAccountingTaxRateResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        Result: z.lazy(() => ListAccountingTaxRateResponseBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Result: "result",
+        });
+    });
+
+/** @internal */
+export type ListAccountingTaxRateResponse$Outbound = {
+    Result: ListAccountingTaxRateResponseBody$Outbound;
+};
+
+/** @internal */
+export const ListAccountingTaxRateResponse$outboundSchema: z.ZodType<
+    ListAccountingTaxRateResponse$Outbound,
+    z.ZodTypeDef,
+    ListAccountingTaxRateResponse
+> = z
+    .object({
+        result: z.lazy(() => ListAccountingTaxRateResponseBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            result: "Result",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListAccountingTaxRateResponse$ {
+    /** @deprecated use `ListAccountingTaxRateResponse$inboundSchema` instead. */
+    export const inboundSchema = ListAccountingTaxRateResponse$inboundSchema;
+    /** @deprecated use `ListAccountingTaxRateResponse$outboundSchema` instead. */
+    export const outboundSchema = ListAccountingTaxRateResponse$outboundSchema;
+    /** @deprecated use `ListAccountingTaxRateResponse$Outbound` instead. */
+    export type Outbound = ListAccountingTaxRateResponse$Outbound;
 }

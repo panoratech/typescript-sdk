@@ -31,6 +31,10 @@ export type ListFilestorageFolderResponseBody = {
     data: Array<components.UnifiedFilestorageFolderOutput>;
 };
 
+export type ListFilestorageFolderResponse = {
+    result: ListFilestorageFolderResponseBody;
+};
+
 /** @internal */
 export const ListFilestorageFolderRequest$inboundSchema: z.ZodType<
     ListFilestorageFolderRequest,
@@ -144,4 +148,52 @@ export namespace ListFilestorageFolderResponseBody$ {
     export const outboundSchema = ListFilestorageFolderResponseBody$outboundSchema;
     /** @deprecated use `ListFilestorageFolderResponseBody$Outbound` instead. */
     export type Outbound = ListFilestorageFolderResponseBody$Outbound;
+}
+
+/** @internal */
+export const ListFilestorageFolderResponse$inboundSchema: z.ZodType<
+    ListFilestorageFolderResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        Result: z.lazy(() => ListFilestorageFolderResponseBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Result: "result",
+        });
+    });
+
+/** @internal */
+export type ListFilestorageFolderResponse$Outbound = {
+    Result: ListFilestorageFolderResponseBody$Outbound;
+};
+
+/** @internal */
+export const ListFilestorageFolderResponse$outboundSchema: z.ZodType<
+    ListFilestorageFolderResponse$Outbound,
+    z.ZodTypeDef,
+    ListFilestorageFolderResponse
+> = z
+    .object({
+        result: z.lazy(() => ListFilestorageFolderResponseBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            result: "Result",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListFilestorageFolderResponse$ {
+    /** @deprecated use `ListFilestorageFolderResponse$inboundSchema` instead. */
+    export const inboundSchema = ListFilestorageFolderResponse$inboundSchema;
+    /** @deprecated use `ListFilestorageFolderResponse$outboundSchema` instead. */
+    export const outboundSchema = ListFilestorageFolderResponse$outboundSchema;
+    /** @deprecated use `ListFilestorageFolderResponse$Outbound` instead. */
+    export type Outbound = ListFilestorageFolderResponse$Outbound;
 }

@@ -31,6 +31,10 @@ export type ListAccountingAttachmentsResponseBody = {
     data: Array<components.UnifiedAccountingAttachmentOutput>;
 };
 
+export type ListAccountingAttachmentsResponse = {
+    result: ListAccountingAttachmentsResponseBody;
+};
+
 /** @internal */
 export const ListAccountingAttachmentsRequest$inboundSchema: z.ZodType<
     ListAccountingAttachmentsRequest,
@@ -144,4 +148,52 @@ export namespace ListAccountingAttachmentsResponseBody$ {
     export const outboundSchema = ListAccountingAttachmentsResponseBody$outboundSchema;
     /** @deprecated use `ListAccountingAttachmentsResponseBody$Outbound` instead. */
     export type Outbound = ListAccountingAttachmentsResponseBody$Outbound;
+}
+
+/** @internal */
+export const ListAccountingAttachmentsResponse$inboundSchema: z.ZodType<
+    ListAccountingAttachmentsResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        Result: z.lazy(() => ListAccountingAttachmentsResponseBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Result: "result",
+        });
+    });
+
+/** @internal */
+export type ListAccountingAttachmentsResponse$Outbound = {
+    Result: ListAccountingAttachmentsResponseBody$Outbound;
+};
+
+/** @internal */
+export const ListAccountingAttachmentsResponse$outboundSchema: z.ZodType<
+    ListAccountingAttachmentsResponse$Outbound,
+    z.ZodTypeDef,
+    ListAccountingAttachmentsResponse
+> = z
+    .object({
+        result: z.lazy(() => ListAccountingAttachmentsResponseBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            result: "Result",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListAccountingAttachmentsResponse$ {
+    /** @deprecated use `ListAccountingAttachmentsResponse$inboundSchema` instead. */
+    export const inboundSchema = ListAccountingAttachmentsResponse$inboundSchema;
+    /** @deprecated use `ListAccountingAttachmentsResponse$outboundSchema` instead. */
+    export const outboundSchema = ListAccountingAttachmentsResponse$outboundSchema;
+    /** @deprecated use `ListAccountingAttachmentsResponse$Outbound` instead. */
+    export type Outbound = ListAccountingAttachmentsResponse$Outbound;
 }

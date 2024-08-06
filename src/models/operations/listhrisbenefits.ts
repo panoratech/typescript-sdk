@@ -31,6 +31,10 @@ export type ListHrisBenefitsResponseBody = {
     data: Array<components.UnifiedHrisBenefitOutput>;
 };
 
+export type ListHrisBenefitsResponse = {
+    result: ListHrisBenefitsResponseBody;
+};
+
 /** @internal */
 export const ListHrisBenefitsRequest$inboundSchema: z.ZodType<
     ListHrisBenefitsRequest,
@@ -144,4 +148,52 @@ export namespace ListHrisBenefitsResponseBody$ {
     export const outboundSchema = ListHrisBenefitsResponseBody$outboundSchema;
     /** @deprecated use `ListHrisBenefitsResponseBody$Outbound` instead. */
     export type Outbound = ListHrisBenefitsResponseBody$Outbound;
+}
+
+/** @internal */
+export const ListHrisBenefitsResponse$inboundSchema: z.ZodType<
+    ListHrisBenefitsResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        Result: z.lazy(() => ListHrisBenefitsResponseBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Result: "result",
+        });
+    });
+
+/** @internal */
+export type ListHrisBenefitsResponse$Outbound = {
+    Result: ListHrisBenefitsResponseBody$Outbound;
+};
+
+/** @internal */
+export const ListHrisBenefitsResponse$outboundSchema: z.ZodType<
+    ListHrisBenefitsResponse$Outbound,
+    z.ZodTypeDef,
+    ListHrisBenefitsResponse
+> = z
+    .object({
+        result: z.lazy(() => ListHrisBenefitsResponseBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            result: "Result",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListHrisBenefitsResponse$ {
+    /** @deprecated use `ListHrisBenefitsResponse$inboundSchema` instead. */
+    export const inboundSchema = ListHrisBenefitsResponse$inboundSchema;
+    /** @deprecated use `ListHrisBenefitsResponse$outboundSchema` instead. */
+    export const outboundSchema = ListHrisBenefitsResponse$outboundSchema;
+    /** @deprecated use `ListHrisBenefitsResponse$Outbound` instead. */
+    export type Outbound = ListHrisBenefitsResponse$Outbound;
 }

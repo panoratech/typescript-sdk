@@ -31,6 +31,10 @@ export type ListAccountingJournalEntryResponseBody = {
     data: Array<components.UnifiedAccountingJournalentryOutput>;
 };
 
+export type ListAccountingJournalEntryResponse = {
+    result: ListAccountingJournalEntryResponseBody;
+};
+
 /** @internal */
 export const ListAccountingJournalEntryRequest$inboundSchema: z.ZodType<
     ListAccountingJournalEntryRequest,
@@ -144,4 +148,52 @@ export namespace ListAccountingJournalEntryResponseBody$ {
     export const outboundSchema = ListAccountingJournalEntryResponseBody$outboundSchema;
     /** @deprecated use `ListAccountingJournalEntryResponseBody$Outbound` instead. */
     export type Outbound = ListAccountingJournalEntryResponseBody$Outbound;
+}
+
+/** @internal */
+export const ListAccountingJournalEntryResponse$inboundSchema: z.ZodType<
+    ListAccountingJournalEntryResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        Result: z.lazy(() => ListAccountingJournalEntryResponseBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Result: "result",
+        });
+    });
+
+/** @internal */
+export type ListAccountingJournalEntryResponse$Outbound = {
+    Result: ListAccountingJournalEntryResponseBody$Outbound;
+};
+
+/** @internal */
+export const ListAccountingJournalEntryResponse$outboundSchema: z.ZodType<
+    ListAccountingJournalEntryResponse$Outbound,
+    z.ZodTypeDef,
+    ListAccountingJournalEntryResponse
+> = z
+    .object({
+        result: z.lazy(() => ListAccountingJournalEntryResponseBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            result: "Result",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListAccountingJournalEntryResponse$ {
+    /** @deprecated use `ListAccountingJournalEntryResponse$inboundSchema` instead. */
+    export const inboundSchema = ListAccountingJournalEntryResponse$inboundSchema;
+    /** @deprecated use `ListAccountingJournalEntryResponse$outboundSchema` instead. */
+    export const outboundSchema = ListAccountingJournalEntryResponse$outboundSchema;
+    /** @deprecated use `ListAccountingJournalEntryResponse$Outbound` instead. */
+    export type Outbound = ListAccountingJournalEntryResponse$Outbound;
 }

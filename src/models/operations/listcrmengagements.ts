@@ -31,6 +31,10 @@ export type ListCrmEngagementsResponseBody = {
     data: Array<components.UnifiedCrmEngagementOutput>;
 };
 
+export type ListCrmEngagementsResponse = {
+    result: ListCrmEngagementsResponseBody;
+};
+
 /** @internal */
 export const ListCrmEngagementsRequest$inboundSchema: z.ZodType<
     ListCrmEngagementsRequest,
@@ -144,4 +148,52 @@ export namespace ListCrmEngagementsResponseBody$ {
     export const outboundSchema = ListCrmEngagementsResponseBody$outboundSchema;
     /** @deprecated use `ListCrmEngagementsResponseBody$Outbound` instead. */
     export type Outbound = ListCrmEngagementsResponseBody$Outbound;
+}
+
+/** @internal */
+export const ListCrmEngagementsResponse$inboundSchema: z.ZodType<
+    ListCrmEngagementsResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        Result: z.lazy(() => ListCrmEngagementsResponseBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Result: "result",
+        });
+    });
+
+/** @internal */
+export type ListCrmEngagementsResponse$Outbound = {
+    Result: ListCrmEngagementsResponseBody$Outbound;
+};
+
+/** @internal */
+export const ListCrmEngagementsResponse$outboundSchema: z.ZodType<
+    ListCrmEngagementsResponse$Outbound,
+    z.ZodTypeDef,
+    ListCrmEngagementsResponse
+> = z
+    .object({
+        result: z.lazy(() => ListCrmEngagementsResponseBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            result: "Result",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListCrmEngagementsResponse$ {
+    /** @deprecated use `ListCrmEngagementsResponse$inboundSchema` instead. */
+    export const inboundSchema = ListCrmEngagementsResponse$inboundSchema;
+    /** @deprecated use `ListCrmEngagementsResponse$outboundSchema` instead. */
+    export const outboundSchema = ListCrmEngagementsResponse$outboundSchema;
+    /** @deprecated use `ListCrmEngagementsResponse$Outbound` instead. */
+    export type Outbound = ListCrmEngagementsResponse$Outbound;
 }

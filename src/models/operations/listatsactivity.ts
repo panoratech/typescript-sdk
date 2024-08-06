@@ -31,6 +31,10 @@ export type ListAtsActivityResponseBody = {
     data: Array<components.UnifiedAtsActivityOutput>;
 };
 
+export type ListAtsActivityResponse = {
+    result: ListAtsActivityResponseBody;
+};
+
 /** @internal */
 export const ListAtsActivityRequest$inboundSchema: z.ZodType<
     ListAtsActivityRequest,
@@ -144,4 +148,52 @@ export namespace ListAtsActivityResponseBody$ {
     export const outboundSchema = ListAtsActivityResponseBody$outboundSchema;
     /** @deprecated use `ListAtsActivityResponseBody$Outbound` instead. */
     export type Outbound = ListAtsActivityResponseBody$Outbound;
+}
+
+/** @internal */
+export const ListAtsActivityResponse$inboundSchema: z.ZodType<
+    ListAtsActivityResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        Result: z.lazy(() => ListAtsActivityResponseBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Result: "result",
+        });
+    });
+
+/** @internal */
+export type ListAtsActivityResponse$Outbound = {
+    Result: ListAtsActivityResponseBody$Outbound;
+};
+
+/** @internal */
+export const ListAtsActivityResponse$outboundSchema: z.ZodType<
+    ListAtsActivityResponse$Outbound,
+    z.ZodTypeDef,
+    ListAtsActivityResponse
+> = z
+    .object({
+        result: z.lazy(() => ListAtsActivityResponseBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            result: "Result",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListAtsActivityResponse$ {
+    /** @deprecated use `ListAtsActivityResponse$inboundSchema` instead. */
+    export const inboundSchema = ListAtsActivityResponse$inboundSchema;
+    /** @deprecated use `ListAtsActivityResponse$outboundSchema` instead. */
+    export const outboundSchema = ListAtsActivityResponse$outboundSchema;
+    /** @deprecated use `ListAtsActivityResponse$Outbound` instead. */
+    export type Outbound = ListAtsActivityResponse$Outbound;
 }

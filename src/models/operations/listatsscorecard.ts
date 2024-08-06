@@ -31,6 +31,10 @@ export type ListAtsScorecardResponseBody = {
     data: Array<components.UnifiedAtsScorecardOutput>;
 };
 
+export type ListAtsScorecardResponse = {
+    result: ListAtsScorecardResponseBody;
+};
+
 /** @internal */
 export const ListAtsScorecardRequest$inboundSchema: z.ZodType<
     ListAtsScorecardRequest,
@@ -144,4 +148,52 @@ export namespace ListAtsScorecardResponseBody$ {
     export const outboundSchema = ListAtsScorecardResponseBody$outboundSchema;
     /** @deprecated use `ListAtsScorecardResponseBody$Outbound` instead. */
     export type Outbound = ListAtsScorecardResponseBody$Outbound;
+}
+
+/** @internal */
+export const ListAtsScorecardResponse$inboundSchema: z.ZodType<
+    ListAtsScorecardResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        Result: z.lazy(() => ListAtsScorecardResponseBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Result: "result",
+        });
+    });
+
+/** @internal */
+export type ListAtsScorecardResponse$Outbound = {
+    Result: ListAtsScorecardResponseBody$Outbound;
+};
+
+/** @internal */
+export const ListAtsScorecardResponse$outboundSchema: z.ZodType<
+    ListAtsScorecardResponse$Outbound,
+    z.ZodTypeDef,
+    ListAtsScorecardResponse
+> = z
+    .object({
+        result: z.lazy(() => ListAtsScorecardResponseBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            result: "Result",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListAtsScorecardResponse$ {
+    /** @deprecated use `ListAtsScorecardResponse$inboundSchema` instead. */
+    export const inboundSchema = ListAtsScorecardResponse$inboundSchema;
+    /** @deprecated use `ListAtsScorecardResponse$outboundSchema` instead. */
+    export const outboundSchema = ListAtsScorecardResponse$outboundSchema;
+    /** @deprecated use `ListAtsScorecardResponse$Outbound` instead. */
+    export type Outbound = ListAtsScorecardResponse$Outbound;
 }

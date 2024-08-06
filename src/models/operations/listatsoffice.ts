@@ -31,6 +31,10 @@ export type ListAtsOfficeResponseBody = {
     data: Array<components.UnifiedAtsOfficeOutput>;
 };
 
+export type ListAtsOfficeResponse = {
+    result: ListAtsOfficeResponseBody;
+};
+
 /** @internal */
 export const ListAtsOfficeRequest$inboundSchema: z.ZodType<
     ListAtsOfficeRequest,
@@ -144,4 +148,52 @@ export namespace ListAtsOfficeResponseBody$ {
     export const outboundSchema = ListAtsOfficeResponseBody$outboundSchema;
     /** @deprecated use `ListAtsOfficeResponseBody$Outbound` instead. */
     export type Outbound = ListAtsOfficeResponseBody$Outbound;
+}
+
+/** @internal */
+export const ListAtsOfficeResponse$inboundSchema: z.ZodType<
+    ListAtsOfficeResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        Result: z.lazy(() => ListAtsOfficeResponseBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Result: "result",
+        });
+    });
+
+/** @internal */
+export type ListAtsOfficeResponse$Outbound = {
+    Result: ListAtsOfficeResponseBody$Outbound;
+};
+
+/** @internal */
+export const ListAtsOfficeResponse$outboundSchema: z.ZodType<
+    ListAtsOfficeResponse$Outbound,
+    z.ZodTypeDef,
+    ListAtsOfficeResponse
+> = z
+    .object({
+        result: z.lazy(() => ListAtsOfficeResponseBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            result: "Result",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListAtsOfficeResponse$ {
+    /** @deprecated use `ListAtsOfficeResponse$inboundSchema` instead. */
+    export const inboundSchema = ListAtsOfficeResponse$inboundSchema;
+    /** @deprecated use `ListAtsOfficeResponse$outboundSchema` instead. */
+    export const outboundSchema = ListAtsOfficeResponse$outboundSchema;
+    /** @deprecated use `ListAtsOfficeResponse$Outbound` instead. */
+    export type Outbound = ListAtsOfficeResponse$Outbound;
 }

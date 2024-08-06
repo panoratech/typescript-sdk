@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: caaaa8c3-6dd7-43a5-841e-c3193e68cc73
 management:
-  docChecksum: dd7efeb95cef6daa10a1d8d56e4c9f80
+  docChecksum: f31581b6c385b4f8f05068b0f2598833
   docVersion: "1.0"
   speakeasyVersion: 1.352.2
   generationVersion: 2.385.2
-  releaseVersion: 0.8.0
-  configChecksum: 7589c0488e2ec56115f50034f3c91a7d
+  releaseVersion: 0.8.1
+  configChecksum: 498967b334f13ae4c825fac0e7b0a978
   repoURL: https://github.com/panoratech/typescript-sdk.git
   installationURL: https://github.com/panoratech/typescript-sdk
   published: true
@@ -724,63 +724,79 @@ generatedFiles:
   - docs/models/operations/retrieveticketingticketrequest.md
   - docs/models/operations/listticketingusersrequest.md
   - docs/models/operations/listticketingusersresponsebody.md
+  - docs/models/operations/listticketingusersresponse.md
   - docs/models/operations/retrieveticketinguserrequest.md
   - docs/models/operations/listticketingaccountrequest.md
   - docs/models/operations/listticketingaccountresponsebody.md
+  - docs/models/operations/listticketingaccountresponse.md
   - docs/models/operations/retrieveticketingaccountrequest.md
   - docs/models/operations/listticketingcontactsrequest.md
   - docs/models/operations/listticketingcontactsresponsebody.md
+  - docs/models/operations/listticketingcontactsresponse.md
   - docs/models/operations/retrieveticketingcontactrequest.md
   - docs/models/operations/retrieveticketingcontactresponsebody.md
   - docs/models/operations/listticketingcollectionsrequest.md
   - docs/models/operations/listticketingcollectionsresponsebody.md
+  - docs/models/operations/listticketingcollectionsresponse.md
   - docs/models/operations/retrievecollectionrequest.md
   - docs/models/operations/listticketingcommentsrequest.md
   - docs/models/operations/listticketingcommentsresponsebody.md
+  - docs/models/operations/listticketingcommentsresponse.md
   - docs/models/operations/createticketingcommentrequest.md
   - docs/models/operations/retrieveticketingcommentrequest.md
   - docs/models/operations/retrieveticketingcommentresponsebody.md
   - docs/models/operations/listticketingtagsrequest.md
   - docs/models/operations/listticketingtagsresponsebody.md
+  - docs/models/operations/listticketingtagsresponse.md
   - docs/models/operations/retrieveticketingtagrequest.md
   - docs/models/operations/listticketingteamsrequest.md
   - docs/models/operations/listticketingteamsresponsebody.md
+  - docs/models/operations/listticketingteamsresponse.md
   - docs/models/operations/retrieveticketingteamrequest.md
   - docs/models/operations/listticketingattachmentsrequest.md
   - docs/models/operations/listticketingattachmentsresponsebody.md
+  - docs/models/operations/listticketingattachmentsresponse.md
   - docs/models/operations/createticketingattachmentrequest.md
   - docs/models/operations/retrieveticketingattachmentrequest.md
   - docs/models/operations/vertical.md
   - docs/models/operations/statusrequest.md
   - docs/models/operations/listcrmcompanyrequest.md
   - docs/models/operations/listcrmcompanyresponsebody.md
+  - docs/models/operations/listcrmcompanyresponse.md
   - docs/models/operations/createcrmcompanyrequest.md
   - docs/models/operations/retrievecrmcompanyrequest.md
   - docs/models/operations/listcrmcontactsrequest.md
   - docs/models/operations/listcrmcontactsresponsebody.md
+  - docs/models/operations/listcrmcontactsresponse.md
   - docs/models/operations/createcrmcontactrequest.md
   - docs/models/operations/retrievecrmcontactrequest.md
   - docs/models/operations/listcrmdealsrequest.md
   - docs/models/operations/listcrmdealsresponsebody.md
+  - docs/models/operations/listcrmdealsresponse.md
   - docs/models/operations/createcrmdealrequest.md
   - docs/models/operations/retrievecrmdealrequest.md
   - docs/models/operations/listcrmengagementsrequest.md
   - docs/models/operations/listcrmengagementsresponsebody.md
+  - docs/models/operations/listcrmengagementsresponse.md
   - docs/models/operations/createcrmengagementrequest.md
   - docs/models/operations/retrievecrmengagementrequest.md
   - docs/models/operations/listcrmnoterequest.md
   - docs/models/operations/listcrmnoteresponsebody.md
+  - docs/models/operations/listcrmnoteresponse.md
   - docs/models/operations/createcrmnoterequest.md
   - docs/models/operations/retrievecrmnoterequest.md
   - docs/models/operations/listcrmstagesrequest.md
   - docs/models/operations/listcrmstagesresponsebody.md
+  - docs/models/operations/listcrmstagesresponse.md
   - docs/models/operations/retrievecrmstagerequest.md
   - docs/models/operations/listcrmtaskrequest.md
   - docs/models/operations/listcrmtaskresponsebody.md
+  - docs/models/operations/listcrmtaskresponse.md
   - docs/models/operations/createcrmtaskrequest.md
   - docs/models/operations/retrievecrmtaskrequest.md
   - docs/models/operations/listcrmusersrequest.md
   - docs/models/operations/listcrmusersresponsebody.md
+  - docs/models/operations/listcrmusersresponse.md
   - docs/models/operations/retrievecrmuserrequest.md
   - docs/models/operations/retrievelinkeduserrequest.md
   - docs/models/operations/remoteidrequest.md
@@ -788,218 +804,282 @@ generatedFiles:
   - docs/models/operations/requestrequest.md
   - docs/models/operations/listhrisbankinforequest.md
   - docs/models/operations/listhrisbankinforesponsebody.md
+  - docs/models/operations/listhrisbankinforesponse.md
   - docs/models/operations/retrievehrisbankinforequest.md
   - docs/models/operations/listhrisbenefitsrequest.md
   - docs/models/operations/listhrisbenefitsresponsebody.md
+  - docs/models/operations/listhrisbenefitsresponse.md
   - docs/models/operations/retrievehrisbenefitrequest.md
   - docs/models/operations/listhriscompaniesrequest.md
   - docs/models/operations/listhriscompaniesresponsebody.md
+  - docs/models/operations/listhriscompaniesresponse.md
   - docs/models/operations/retrievehriscompanyrequest.md
   - docs/models/operations/listhrisdependentsrequest.md
   - docs/models/operations/listhrisdependentsresponsebody.md
+  - docs/models/operations/listhrisdependentsresponse.md
   - docs/models/operations/retrievehrisdependentrequest.md
   - docs/models/operations/listhrisemployeepayrollrunrequest.md
   - docs/models/operations/listhrisemployeepayrollrunresponsebody.md
+  - docs/models/operations/listhrisemployeepayrollrunresponse.md
   - docs/models/operations/retrievehrisemployeepayrollrunrequest.md
   - docs/models/operations/listhrisemployeesrequest.md
   - docs/models/operations/listhrisemployeesresponsebody.md
+  - docs/models/operations/listhrisemployeesresponse.md
   - docs/models/operations/createhrisemployeerequest.md
   - docs/models/operations/retrievehrisemployeerequest.md
   - docs/models/operations/listhrisemployerbenefitsrequest.md
   - docs/models/operations/listhrisemployerbenefitsresponsebody.md
+  - docs/models/operations/listhrisemployerbenefitsresponse.md
   - docs/models/operations/retrievehrisemployerbenefitrequest.md
   - docs/models/operations/listhrisemploymentsrequest.md
   - docs/models/operations/listhrisemploymentsresponsebody.md
+  - docs/models/operations/listhrisemploymentsresponse.md
   - docs/models/operations/retrievehrisemploymentrequest.md
   - docs/models/operations/listhrisgroupsrequest.md
   - docs/models/operations/listhrisgroupsresponsebody.md
+  - docs/models/operations/listhrisgroupsresponse.md
   - docs/models/operations/retrievehrisgrouprequest.md
   - docs/models/operations/listhrislocationsrequest.md
   - docs/models/operations/listhrislocationsresponsebody.md
+  - docs/models/operations/listhrislocationsresponse.md
   - docs/models/operations/retrievehrislocationrequest.md
   - docs/models/operations/listhrispaygroupsrequest.md
   - docs/models/operations/listhrispaygroupsresponsebody.md
+  - docs/models/operations/listhrispaygroupsresponse.md
   - docs/models/operations/retrievehrispaygrouprequest.md
   - docs/models/operations/listhrispayrollrunsrequest.md
   - docs/models/operations/listhrispayrollrunsresponsebody.md
+  - docs/models/operations/listhrispayrollrunsresponse.md
   - docs/models/operations/retrievehrispayrollrunrequest.md
   - docs/models/operations/listhristimeoffsrequest.md
   - docs/models/operations/listhristimeoffsresponsebody.md
+  - docs/models/operations/listhristimeoffsresponse.md
   - docs/models/operations/createhristimeoffrequest.md
   - docs/models/operations/retrievehristimeoffrequest.md
   - docs/models/operations/listhristimeoffbalancesrequest.md
   - docs/models/operations/listhristimeoffbalancesresponsebody.md
+  - docs/models/operations/listhristimeoffbalancesresponse.md
   - docs/models/operations/retrievehristimeoffbalancerequest.md
   - docs/models/operations/listmarketingautomationactionrequest.md
   - docs/models/operations/listmarketingautomationactionresponsebody.md
+  - docs/models/operations/listmarketingautomationactionresponse.md
   - docs/models/operations/createmarketingautomationactionrequest.md
   - docs/models/operations/retrievemarketingautomationactionrequest.md
   - docs/models/operations/listmarketingautomationautomationsrequest.md
   - docs/models/operations/listmarketingautomationautomationsresponsebody.md
+  - docs/models/operations/listmarketingautomationautomationsresponse.md
   - docs/models/operations/createmarketingautomationautomationrequest.md
   - docs/models/operations/retrievemarketingautomationautomationrequest.md
   - docs/models/operations/listmarketingautomationcampaignsrequest.md
   - docs/models/operations/listmarketingautomationcampaignsresponsebody.md
+  - docs/models/operations/listmarketingautomationcampaignsresponse.md
   - docs/models/operations/createmarketingautomationcampaignrequest.md
   - docs/models/operations/retrievemarketingautomationcampaignrequest.md
   - docs/models/operations/listmarketingautomationcontactsrequest.md
   - docs/models/operations/listmarketingautomationcontactsresponsebody.md
+  - docs/models/operations/listmarketingautomationcontactsresponse.md
   - docs/models/operations/createmarketingautomationcontactrequest.md
   - docs/models/operations/retrievemarketingautomationcontactrequest.md
   - docs/models/operations/listmarketingautomationemailsrequest.md
   - docs/models/operations/listmarketingautomationemailsresponsebody.md
+  - docs/models/operations/listmarketingautomationemailsresponse.md
   - docs/models/operations/retrievemarketingautomationemailrequest.md
   - docs/models/operations/listmarketingautomationeventsrequest.md
   - docs/models/operations/listmarketingautomationeventsresponsebody.md
+  - docs/models/operations/listmarketingautomationeventsresponse.md
   - docs/models/operations/retrievemarketingautomationeventrequest.md
   - docs/models/operations/listmarketingautomationlistsrequest.md
   - docs/models/operations/listmarketingautomationlistsresponsebody.md
+  - docs/models/operations/listmarketingautomationlistsresponse.md
   - docs/models/operations/createmarketingautomationlistrequest.md
   - docs/models/operations/retrievemarketingautomationlistrequest.md
   - docs/models/operations/listmarketingautomationmessagesrequest.md
   - docs/models/operations/listmarketingautomationmessagesresponsebody.md
+  - docs/models/operations/listmarketingautomationmessagesresponse.md
   - docs/models/operations/retrievemarketingautomationmessagerequest.md
   - docs/models/operations/listmarketingautomationtemplatesrequest.md
   - docs/models/operations/listmarketingautomationtemplatesresponsebody.md
+  - docs/models/operations/listmarketingautomationtemplatesresponse.md
   - docs/models/operations/createmarketingautomationtemplaterequest.md
   - docs/models/operations/retrievemarketingautomationtemplaterequest.md
   - docs/models/operations/listmarketingautomationusersrequest.md
   - docs/models/operations/listmarketingautomationusersresponsebody.md
+  - docs/models/operations/listmarketingautomationusersresponse.md
   - docs/models/operations/retrievemarketingautomationuserrequest.md
   - docs/models/operations/listatsactivityrequest.md
   - docs/models/operations/listatsactivityresponsebody.md
+  - docs/models/operations/listatsactivityresponse.md
   - docs/models/operations/createatsactivityrequest.md
   - docs/models/operations/retrieveatsactivityrequest.md
   - docs/models/operations/listatsapplicationrequest.md
   - docs/models/operations/listatsapplicationresponsebody.md
+  - docs/models/operations/listatsapplicationresponse.md
   - docs/models/operations/createatsapplicationrequest.md
   - docs/models/operations/retrieveatsapplicationrequest.md
   - docs/models/operations/listatsattachmentrequest.md
   - docs/models/operations/listatsattachmentresponsebody.md
+  - docs/models/operations/listatsattachmentresponse.md
   - docs/models/operations/createatsattachmentrequest.md
   - docs/models/operations/retrieveatsattachmentrequest.md
   - docs/models/operations/listatscandidaterequest.md
   - docs/models/operations/listatscandidateresponsebody.md
+  - docs/models/operations/listatscandidateresponse.md
   - docs/models/operations/createatscandidaterequest.md
   - docs/models/operations/retrieveatscandidaterequest.md
   - docs/models/operations/listatsdepartmentsrequest.md
   - docs/models/operations/listatsdepartmentsresponsebody.md
+  - docs/models/operations/listatsdepartmentsresponse.md
   - docs/models/operations/retrieveatsdepartmentrequest.md
   - docs/models/operations/listatsinterviewrequest.md
   - docs/models/operations/listatsinterviewresponsebody.md
+  - docs/models/operations/listatsinterviewresponse.md
   - docs/models/operations/createatsinterviewrequest.md
   - docs/models/operations/retrieveatsinterviewrequest.md
   - docs/models/operations/listatsjobinterviewstagerequest.md
   - docs/models/operations/listatsjobinterviewstageresponsebody.md
+  - docs/models/operations/listatsjobinterviewstageresponse.md
   - docs/models/operations/retrieveatsjobinterviewstagerequest.md
   - docs/models/operations/listatsjobrequest.md
   - docs/models/operations/listatsjobresponsebody.md
+  - docs/models/operations/listatsjobresponse.md
   - docs/models/operations/retrieveatsjobrequest.md
   - docs/models/operations/listatsofferrequest.md
   - docs/models/operations/listatsofferresponsebody.md
+  - docs/models/operations/listatsofferresponse.md
   - docs/models/operations/retrieveatsofferrequest.md
   - docs/models/operations/listatsofficerequest.md
   - docs/models/operations/listatsofficeresponsebody.md
+  - docs/models/operations/listatsofficeresponse.md
   - docs/models/operations/retrieveatsofficerequest.md
   - docs/models/operations/listatsrejectreasonsrequest.md
   - docs/models/operations/listatsrejectreasonsresponsebody.md
+  - docs/models/operations/listatsrejectreasonsresponse.md
   - docs/models/operations/retrieveatsrejectreasonrequest.md
   - docs/models/operations/listatsscorecardrequest.md
   - docs/models/operations/listatsscorecardresponsebody.md
+  - docs/models/operations/listatsscorecardresponse.md
   - docs/models/operations/retrieveatsscorecardrequest.md
   - docs/models/operations/listatstagsrequest.md
   - docs/models/operations/listatstagsresponsebody.md
+  - docs/models/operations/listatstagsresponse.md
   - docs/models/operations/retrieveatstagrequest.md
   - docs/models/operations/listatsusersrequest.md
   - docs/models/operations/listatsusersresponsebody.md
+  - docs/models/operations/listatsusersresponse.md
   - docs/models/operations/retrieveatsuserrequest.md
   - docs/models/operations/listatseeocsrequest.md
   - docs/models/operations/listatseeocsresponsebody.md
+  - docs/models/operations/listatseeocsresponse.md
   - docs/models/operations/retrieveatseeocsrequest.md
   - docs/models/operations/listaccountingaccountsrequest.md
   - docs/models/operations/listaccountingaccountsresponsebody.md
+  - docs/models/operations/listaccountingaccountsresponse.md
   - docs/models/operations/createaccountingaccountrequest.md
   - docs/models/operations/retrieveaccountingaccountrequest.md
   - docs/models/operations/listaccountingaddressrequest.md
   - docs/models/operations/listaccountingaddressresponsebody.md
+  - docs/models/operations/listaccountingaddressresponse.md
   - docs/models/operations/retrieveaccountingaddressrequest.md
   - docs/models/operations/listaccountingattachmentsrequest.md
   - docs/models/operations/listaccountingattachmentsresponsebody.md
+  - docs/models/operations/listaccountingattachmentsresponse.md
   - docs/models/operations/createaccountingattachmentrequest.md
   - docs/models/operations/retrieveaccountingattachmentrequest.md
   - docs/models/operations/listaccountingbalancesheetsrequest.md
   - docs/models/operations/listaccountingbalancesheetsresponsebody.md
+  - docs/models/operations/listaccountingbalancesheetsresponse.md
   - docs/models/operations/retrieveaccountingbalancesheetrequest.md
   - docs/models/operations/listaccountingcashflowstatementrequest.md
   - docs/models/operations/listaccountingcashflowstatementresponsebody.md
+  - docs/models/operations/listaccountingcashflowstatementresponse.md
   - docs/models/operations/retrieveaccountingcashflowstatementrequest.md
   - docs/models/operations/listaccountingcompanyinfosrequest.md
   - docs/models/operations/listaccountingcompanyinfosresponsebody.md
+  - docs/models/operations/listaccountingcompanyinfosresponse.md
   - docs/models/operations/retrieveaccountingcompanyinforequest.md
   - docs/models/operations/listaccountingcontactsrequest.md
   - docs/models/operations/listaccountingcontactsresponsebody.md
+  - docs/models/operations/listaccountingcontactsresponse.md
   - docs/models/operations/createaccountingcontactrequest.md
   - docs/models/operations/retrieveaccountingcontactrequest.md
   - docs/models/operations/listaccountingcreditnoterequest.md
   - docs/models/operations/listaccountingcreditnoteresponsebody.md
+  - docs/models/operations/listaccountingcreditnoteresponse.md
   - docs/models/operations/retrieveaccountingcreditnoterequest.md
   - docs/models/operations/listaccountingexpenserequest.md
   - docs/models/operations/listaccountingexpenseresponsebody.md
+  - docs/models/operations/listaccountingexpenseresponse.md
   - docs/models/operations/createaccountingexpenserequest.md
   - docs/models/operations/retrieveaccountingexpenserequest.md
   - docs/models/operations/listaccountingincomestatementrequest.md
   - docs/models/operations/listaccountingincomestatementresponsebody.md
+  - docs/models/operations/listaccountingincomestatementresponse.md
   - docs/models/operations/retrieveaccountingincomestatementrequest.md
   - docs/models/operations/listaccountinginvoicerequest.md
   - docs/models/operations/listaccountinginvoiceresponsebody.md
+  - docs/models/operations/listaccountinginvoiceresponse.md
   - docs/models/operations/createaccountinginvoicerequest.md
   - docs/models/operations/retrieveaccountinginvoicerequest.md
   - docs/models/operations/listaccountingitemrequest.md
   - docs/models/operations/listaccountingitemresponsebody.md
+  - docs/models/operations/listaccountingitemresponse.md
   - docs/models/operations/retrieveaccountingitemrequest.md
   - docs/models/operations/listaccountingjournalentryrequest.md
   - docs/models/operations/listaccountingjournalentryresponsebody.md
+  - docs/models/operations/listaccountingjournalentryresponse.md
   - docs/models/operations/createaccountingjournalentryrequest.md
   - docs/models/operations/retrieveaccountingjournalentryrequest.md
   - docs/models/operations/listaccountingpaymentrequest.md
   - docs/models/operations/listaccountingpaymentresponsebody.md
+  - docs/models/operations/listaccountingpaymentresponse.md
   - docs/models/operations/createaccountingpaymentrequest.md
   - docs/models/operations/retrieveaccountingpaymentrequest.md
   - docs/models/operations/listaccountingphonenumberrequest.md
   - docs/models/operations/listaccountingphonenumberresponsebody.md
+  - docs/models/operations/listaccountingphonenumberresponse.md
   - docs/models/operations/retrieveaccountingphonenumberrequest.md
   - docs/models/operations/listaccountingpurchaseorderrequest.md
   - docs/models/operations/listaccountingpurchaseorderresponsebody.md
+  - docs/models/operations/listaccountingpurchaseorderresponse.md
   - docs/models/operations/createaccountingpurchaseorderrequest.md
   - docs/models/operations/retrieveaccountingpurchaseorderrequest.md
   - docs/models/operations/listaccountingtaxraterequest.md
   - docs/models/operations/listaccountingtaxrateresponsebody.md
+  - docs/models/operations/listaccountingtaxrateresponse.md
   - docs/models/operations/retrieveaccountingtaxraterequest.md
   - docs/models/operations/listaccountingtrackingcategorysrequest.md
   - docs/models/operations/listaccountingtrackingcategorysresponsebody.md
+  - docs/models/operations/listaccountingtrackingcategorysresponse.md
   - docs/models/operations/retrieveaccountingtrackingcategoryrequest.md
   - docs/models/operations/listaccountingtransactionrequest.md
   - docs/models/operations/listaccountingtransactionresponsebody.md
+  - docs/models/operations/listaccountingtransactionresponse.md
   - docs/models/operations/retrieveaccountingtransactionrequest.md
   - docs/models/operations/listaccountingvendorcreditrequest.md
   - docs/models/operations/listaccountingvendorcreditresponsebody.md
+  - docs/models/operations/listaccountingvendorcreditresponse.md
   - docs/models/operations/retrieveaccountingvendorcreditrequest.md
   - docs/models/operations/listfilestoragedrivesrequest.md
   - docs/models/operations/listfilestoragedrivesresponsebody.md
+  - docs/models/operations/listfilestoragedrivesresponse.md
   - docs/models/operations/retrievefilestoragedriverequest.md
   - docs/models/operations/listfilestoragefilerequest.md
   - docs/models/operations/listfilestoragefileresponsebody.md
+  - docs/models/operations/listfilestoragefileresponse.md
   - docs/models/operations/createfilestoragefilerequest.md
   - docs/models/operations/retrievefilestoragefilerequest.md
   - docs/models/operations/listfilestoragefolderrequest.md
   - docs/models/operations/listfilestoragefolderresponsebody.md
+  - docs/models/operations/listfilestoragefolderresponse.md
   - docs/models/operations/createfilestoragefolderrequest.md
   - docs/models/operations/retrievefilestoragefolderrequest.md
   - docs/models/operations/listfilestoragegrouprequest.md
   - docs/models/operations/listfilestoragegroupresponsebody.md
+  - docs/models/operations/listfilestoragegroupresponse.md
   - docs/models/operations/retrievefilestoragegrouprequest.md
   - docs/models/operations/listfilestorageusersrequest.md
   - docs/models/operations/listfilestorageusersresponsebody.md
+  - docs/models/operations/listfilestorageusersresponse.md
   - docs/models/operations/retrievefilestorageuserrequest.md
   - docs/lib/utils/retryconfig.md
   - docs/sdks/panora/README.md

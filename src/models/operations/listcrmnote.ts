@@ -31,6 +31,10 @@ export type ListCrmNoteResponseBody = {
     data: Array<components.UnifiedCrmNoteOutput>;
 };
 
+export type ListCrmNoteResponse = {
+    result: ListCrmNoteResponseBody;
+};
+
 /** @internal */
 export const ListCrmNoteRequest$inboundSchema: z.ZodType<
     ListCrmNoteRequest,
@@ -144,4 +148,52 @@ export namespace ListCrmNoteResponseBody$ {
     export const outboundSchema = ListCrmNoteResponseBody$outboundSchema;
     /** @deprecated use `ListCrmNoteResponseBody$Outbound` instead. */
     export type Outbound = ListCrmNoteResponseBody$Outbound;
+}
+
+/** @internal */
+export const ListCrmNoteResponse$inboundSchema: z.ZodType<
+    ListCrmNoteResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        Result: z.lazy(() => ListCrmNoteResponseBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Result: "result",
+        });
+    });
+
+/** @internal */
+export type ListCrmNoteResponse$Outbound = {
+    Result: ListCrmNoteResponseBody$Outbound;
+};
+
+/** @internal */
+export const ListCrmNoteResponse$outboundSchema: z.ZodType<
+    ListCrmNoteResponse$Outbound,
+    z.ZodTypeDef,
+    ListCrmNoteResponse
+> = z
+    .object({
+        result: z.lazy(() => ListCrmNoteResponseBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            result: "Result",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListCrmNoteResponse$ {
+    /** @deprecated use `ListCrmNoteResponse$inboundSchema` instead. */
+    export const inboundSchema = ListCrmNoteResponse$inboundSchema;
+    /** @deprecated use `ListCrmNoteResponse$outboundSchema` instead. */
+    export const outboundSchema = ListCrmNoteResponse$outboundSchema;
+    /** @deprecated use `ListCrmNoteResponse$Outbound` instead. */
+    export type Outbound = ListCrmNoteResponse$Outbound;
 }

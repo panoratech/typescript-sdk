@@ -31,6 +31,10 @@ export type ListTicketingTeamsResponseBody = {
     data: Array<components.UnifiedTicketingTeamOutput>;
 };
 
+export type ListTicketingTeamsResponse = {
+    result: ListTicketingTeamsResponseBody;
+};
+
 /** @internal */
 export const ListTicketingTeamsRequest$inboundSchema: z.ZodType<
     ListTicketingTeamsRequest,
@@ -144,4 +148,52 @@ export namespace ListTicketingTeamsResponseBody$ {
     export const outboundSchema = ListTicketingTeamsResponseBody$outboundSchema;
     /** @deprecated use `ListTicketingTeamsResponseBody$Outbound` instead. */
     export type Outbound = ListTicketingTeamsResponseBody$Outbound;
+}
+
+/** @internal */
+export const ListTicketingTeamsResponse$inboundSchema: z.ZodType<
+    ListTicketingTeamsResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        Result: z.lazy(() => ListTicketingTeamsResponseBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Result: "result",
+        });
+    });
+
+/** @internal */
+export type ListTicketingTeamsResponse$Outbound = {
+    Result: ListTicketingTeamsResponseBody$Outbound;
+};
+
+/** @internal */
+export const ListTicketingTeamsResponse$outboundSchema: z.ZodType<
+    ListTicketingTeamsResponse$Outbound,
+    z.ZodTypeDef,
+    ListTicketingTeamsResponse
+> = z
+    .object({
+        result: z.lazy(() => ListTicketingTeamsResponseBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            result: "Result",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListTicketingTeamsResponse$ {
+    /** @deprecated use `ListTicketingTeamsResponse$inboundSchema` instead. */
+    export const inboundSchema = ListTicketingTeamsResponse$inboundSchema;
+    /** @deprecated use `ListTicketingTeamsResponse$outboundSchema` instead. */
+    export const outboundSchema = ListTicketingTeamsResponse$outboundSchema;
+    /** @deprecated use `ListTicketingTeamsResponse$Outbound` instead. */
+    export type Outbound = ListTicketingTeamsResponse$Outbound;
 }

@@ -31,6 +31,10 @@ export type ListHrisTimeoffbalancesResponseBody = {
     data: Array<components.UnifiedHrisTimeoffbalanceOutput>;
 };
 
+export type ListHrisTimeoffbalancesResponse = {
+    result: ListHrisTimeoffbalancesResponseBody;
+};
+
 /** @internal */
 export const ListHrisTimeoffbalancesRequest$inboundSchema: z.ZodType<
     ListHrisTimeoffbalancesRequest,
@@ -144,4 +148,52 @@ export namespace ListHrisTimeoffbalancesResponseBody$ {
     export const outboundSchema = ListHrisTimeoffbalancesResponseBody$outboundSchema;
     /** @deprecated use `ListHrisTimeoffbalancesResponseBody$Outbound` instead. */
     export type Outbound = ListHrisTimeoffbalancesResponseBody$Outbound;
+}
+
+/** @internal */
+export const ListHrisTimeoffbalancesResponse$inboundSchema: z.ZodType<
+    ListHrisTimeoffbalancesResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        Result: z.lazy(() => ListHrisTimeoffbalancesResponseBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Result: "result",
+        });
+    });
+
+/** @internal */
+export type ListHrisTimeoffbalancesResponse$Outbound = {
+    Result: ListHrisTimeoffbalancesResponseBody$Outbound;
+};
+
+/** @internal */
+export const ListHrisTimeoffbalancesResponse$outboundSchema: z.ZodType<
+    ListHrisTimeoffbalancesResponse$Outbound,
+    z.ZodTypeDef,
+    ListHrisTimeoffbalancesResponse
+> = z
+    .object({
+        result: z.lazy(() => ListHrisTimeoffbalancesResponseBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            result: "Result",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListHrisTimeoffbalancesResponse$ {
+    /** @deprecated use `ListHrisTimeoffbalancesResponse$inboundSchema` instead. */
+    export const inboundSchema = ListHrisTimeoffbalancesResponse$inboundSchema;
+    /** @deprecated use `ListHrisTimeoffbalancesResponse$outboundSchema` instead. */
+    export const outboundSchema = ListHrisTimeoffbalancesResponse$outboundSchema;
+    /** @deprecated use `ListHrisTimeoffbalancesResponse$Outbound` instead. */
+    export type Outbound = ListHrisTimeoffbalancesResponse$Outbound;
 }

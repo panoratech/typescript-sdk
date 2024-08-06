@@ -31,6 +31,10 @@ export type ListHrisTimeoffsResponseBody = {
     data: Array<components.UnifiedHrisTimeoffOutput>;
 };
 
+export type ListHrisTimeoffsResponse = {
+    result: ListHrisTimeoffsResponseBody;
+};
+
 /** @internal */
 export const ListHrisTimeoffsRequest$inboundSchema: z.ZodType<
     ListHrisTimeoffsRequest,
@@ -144,4 +148,52 @@ export namespace ListHrisTimeoffsResponseBody$ {
     export const outboundSchema = ListHrisTimeoffsResponseBody$outboundSchema;
     /** @deprecated use `ListHrisTimeoffsResponseBody$Outbound` instead. */
     export type Outbound = ListHrisTimeoffsResponseBody$Outbound;
+}
+
+/** @internal */
+export const ListHrisTimeoffsResponse$inboundSchema: z.ZodType<
+    ListHrisTimeoffsResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        Result: z.lazy(() => ListHrisTimeoffsResponseBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Result: "result",
+        });
+    });
+
+/** @internal */
+export type ListHrisTimeoffsResponse$Outbound = {
+    Result: ListHrisTimeoffsResponseBody$Outbound;
+};
+
+/** @internal */
+export const ListHrisTimeoffsResponse$outboundSchema: z.ZodType<
+    ListHrisTimeoffsResponse$Outbound,
+    z.ZodTypeDef,
+    ListHrisTimeoffsResponse
+> = z
+    .object({
+        result: z.lazy(() => ListHrisTimeoffsResponseBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            result: "Result",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListHrisTimeoffsResponse$ {
+    /** @deprecated use `ListHrisTimeoffsResponse$inboundSchema` instead. */
+    export const inboundSchema = ListHrisTimeoffsResponse$inboundSchema;
+    /** @deprecated use `ListHrisTimeoffsResponse$outboundSchema` instead. */
+    export const outboundSchema = ListHrisTimeoffsResponse$outboundSchema;
+    /** @deprecated use `ListHrisTimeoffsResponse$Outbound` instead. */
+    export type Outbound = ListHrisTimeoffsResponse$Outbound;
 }

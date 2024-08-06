@@ -31,6 +31,10 @@ export type ListTicketingContactsResponseBody = {
     data: Array<components.UnifiedTicketingContactOutput>;
 };
 
+export type ListTicketingContactsResponse = {
+    result: ListTicketingContactsResponseBody;
+};
+
 /** @internal */
 export const ListTicketingContactsRequest$inboundSchema: z.ZodType<
     ListTicketingContactsRequest,
@@ -144,4 +148,52 @@ export namespace ListTicketingContactsResponseBody$ {
     export const outboundSchema = ListTicketingContactsResponseBody$outboundSchema;
     /** @deprecated use `ListTicketingContactsResponseBody$Outbound` instead. */
     export type Outbound = ListTicketingContactsResponseBody$Outbound;
+}
+
+/** @internal */
+export const ListTicketingContactsResponse$inboundSchema: z.ZodType<
+    ListTicketingContactsResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        Result: z.lazy(() => ListTicketingContactsResponseBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Result: "result",
+        });
+    });
+
+/** @internal */
+export type ListTicketingContactsResponse$Outbound = {
+    Result: ListTicketingContactsResponseBody$Outbound;
+};
+
+/** @internal */
+export const ListTicketingContactsResponse$outboundSchema: z.ZodType<
+    ListTicketingContactsResponse$Outbound,
+    z.ZodTypeDef,
+    ListTicketingContactsResponse
+> = z
+    .object({
+        result: z.lazy(() => ListTicketingContactsResponseBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            result: "Result",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListTicketingContactsResponse$ {
+    /** @deprecated use `ListTicketingContactsResponse$inboundSchema` instead. */
+    export const inboundSchema = ListTicketingContactsResponse$inboundSchema;
+    /** @deprecated use `ListTicketingContactsResponse$outboundSchema` instead. */
+    export const outboundSchema = ListTicketingContactsResponse$outboundSchema;
+    /** @deprecated use `ListTicketingContactsResponse$Outbound` instead. */
+    export type Outbound = ListTicketingContactsResponse$Outbound;
 }

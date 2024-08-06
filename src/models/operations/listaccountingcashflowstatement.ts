@@ -31,6 +31,10 @@ export type ListAccountingCashflowStatementResponseBody = {
     data: Array<components.UnifiedAccountingCashflowstatementOutput>;
 };
 
+export type ListAccountingCashflowStatementResponse = {
+    result: ListAccountingCashflowStatementResponseBody;
+};
+
 /** @internal */
 export const ListAccountingCashflowStatementRequest$inboundSchema: z.ZodType<
     ListAccountingCashflowStatementRequest,
@@ -144,4 +148,52 @@ export namespace ListAccountingCashflowStatementResponseBody$ {
     export const outboundSchema = ListAccountingCashflowStatementResponseBody$outboundSchema;
     /** @deprecated use `ListAccountingCashflowStatementResponseBody$Outbound` instead. */
     export type Outbound = ListAccountingCashflowStatementResponseBody$Outbound;
+}
+
+/** @internal */
+export const ListAccountingCashflowStatementResponse$inboundSchema: z.ZodType<
+    ListAccountingCashflowStatementResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        Result: z.lazy(() => ListAccountingCashflowStatementResponseBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Result: "result",
+        });
+    });
+
+/** @internal */
+export type ListAccountingCashflowStatementResponse$Outbound = {
+    Result: ListAccountingCashflowStatementResponseBody$Outbound;
+};
+
+/** @internal */
+export const ListAccountingCashflowStatementResponse$outboundSchema: z.ZodType<
+    ListAccountingCashflowStatementResponse$Outbound,
+    z.ZodTypeDef,
+    ListAccountingCashflowStatementResponse
+> = z
+    .object({
+        result: z.lazy(() => ListAccountingCashflowStatementResponseBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            result: "Result",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListAccountingCashflowStatementResponse$ {
+    /** @deprecated use `ListAccountingCashflowStatementResponse$inboundSchema` instead. */
+    export const inboundSchema = ListAccountingCashflowStatementResponse$inboundSchema;
+    /** @deprecated use `ListAccountingCashflowStatementResponse$outboundSchema` instead. */
+    export const outboundSchema = ListAccountingCashflowStatementResponse$outboundSchema;
+    /** @deprecated use `ListAccountingCashflowStatementResponse$Outbound` instead. */
+    export type Outbound = ListAccountingCashflowStatementResponse$Outbound;
 }
