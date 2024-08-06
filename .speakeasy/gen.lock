@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: caaaa8c3-6dd7-43a5-841e-c3193e68cc73
 management:
-  docChecksum: 73ce3778a891c9bdb1d0d00c8a42490f
+  docChecksum: 6285cb7ccee4454432a81b1d7aaf3a30
   docVersion: "1.0"
   speakeasyVersion: 1.352.2
   generationVersion: 2.385.2
-  releaseVersion: 0.5.1
-  configChecksum: 36082a99a0f6afb5f706af6e12de6dbe
+  releaseVersion: 0.6.0
+  configChecksum: b367c72f5dc7f7633c5f0b19b3a43714
   repoURL: https://github.com/panoratech/typescript-sdk.git
   installationURL: https://github.com/panoratech/typescript-sdk
   published: true
@@ -23,6 +23,7 @@ features:
     groups: 2.81.2
     nameOverrides: 2.81.2
     nullables: 0.1.0
+    pagination: 2.82.6
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.1.0
@@ -52,13 +53,8 @@ generatedFiles:
   - src/sdk/tasks.ts
   - src/sdk/panorausers.ts
   - src/sdk/crm.ts
-  - src/sdk/batch.ts
-  - src/sdk/id.ts
-  - src/sdk/fromremoteid.ts
   - src/sdk/linkedusers.ts
   - src/sdk/projects.ts
-  - src/sdk/define.ts
-  - src/sdk/map.ts
   - src/sdk/fieldmappings.ts
   - src/sdk/events.ts
   - src/sdk/passthrough.ts
@@ -203,8 +199,8 @@ generatedFiles:
   - src/models/components/projectresponse.ts
   - src/models/components/createprojectdto.ts
   - src/models/components/customfieldresponse.ts
-  - src/models/components/customfieldcreatedto.ts
   - src/models/components/definetargetfielddto.ts
+  - src/models/components/customfieldcreatedto.ts
   - src/models/components/mapfieldtoproviderdto.ts
   - src/models/components/eventresponse.ts
   - src/models/components/passthroughresponse.ts
@@ -577,12 +573,12 @@ generatedFiles:
   - docs/models/components/createprojectdto.md
   - docs/models/components/customfieldresponsedatatype.md
   - docs/models/components/customfieldresponse.md
-  - docs/models/components/customfieldcreatedtoobjecttypeowner.md
-  - docs/models/components/customfieldcreatedtodatatype.md
-  - docs/models/components/customfieldcreatedto.md
   - docs/models/components/objecttypeowner.md
   - docs/models/components/datatype.md
   - docs/models/components/definetargetfielddto.md
+  - docs/models/components/customfieldcreatedtoobjecttypeowner.md
+  - docs/models/components/customfieldcreatedtodatatype.md
+  - docs/models/components/customfieldcreatedto.md
   - docs/models/components/mapfieldtoproviderdto.md
   - docs/models/components/eventresponsetype.md
   - docs/models/components/eventresponsestatus.md
@@ -706,6 +702,7 @@ generatedFiles:
   - docs/models/operations/verifyeventresponsebody.md
   - docs/models/operations/listticketingticketrequest.md
   - docs/models/operations/listticketingticketresponsebody.md
+  - docs/models/operations/listticketingticketresponse.md
   - docs/models/operations/createticketingticketrequest.md
   - docs/models/operations/retrieveticketingticketrequest.md
   - docs/models/operations/listticketingusersrequest.md
@@ -1014,13 +1011,8 @@ generatedFiles:
   - docs/sdks/tasks/README.md
   - docs/sdks/panorausers/README.md
   - docs/sdks/linkedusers/README.md
-  - docs/sdks/batch/README.md
-  - docs/sdks/id/README.md
-  - docs/sdks/fromremoteid/README.md
   - docs/sdks/projects/README.md
   - docs/sdks/fieldmappings/README.md
-  - docs/sdks/define/README.md
-  - docs/sdks/map/README.md
   - docs/sdks/events/README.md
   - docs/sdks/passthrough/README.md
   - docs/sdks/hris/README.md

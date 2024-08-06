@@ -207,18 +207,9 @@ run();
 
 * [create](docs/sdks/linkedusers/README.md#create) - Create Linked Users
 * [list](docs/sdks/linkedusers/README.md#list) - List Linked Users
-
-### [linkedUsers.batch](docs/sdks/batch/README.md)
-
-* [importBatch](docs/sdks/batch/README.md#importbatch) - Add Batch Linked Users
-
-### [linkedUsers.id](docs/sdks/id/README.md)
-
-* [retrieve](docs/sdks/id/README.md#retrieve) - Retrieve Linked Users
-
-### [linkedUsers.fromremoteid](docs/sdks/fromremoteid/README.md)
-
-* [remoteId](docs/sdks/fromremoteid/README.md#remoteid) - Retrieve a Linked User From A Remote Id
+* [importBatch](docs/sdks/linkedusers/README.md#importbatch) - Add Batch Linked Users
+* [retrieve](docs/sdks/linkedusers/README.md#retrieve) - Retrieve Linked Users
+* [remoteId](docs/sdks/linkedusers/README.md#remoteid) - Retrieve a Linked User From A Remote Id
 
 ### [projects](docs/sdks/projects/README.md)
 
@@ -227,15 +218,9 @@ run();
 
 ### [fieldMappings](docs/sdks/fieldmappings/README.md)
 
+* [definitions](docs/sdks/fieldmappings/README.md#definitions) - Define target Field
 * [defineCustomField](docs/sdks/fieldmappings/README.md#definecustomfield) - Create Custom Field
-
-### [fieldMappings.define](docs/sdks/define/README.md)
-
-* [definitions](docs/sdks/define/README.md#definitions) - Define target Field
-
-### [fieldMappings.map](docs/sdks/map/README.md)
-
-* [map](docs/sdks/map/README.md#map) - Map Custom Field
+* [map](docs/sdks/fieldmappings/README.md#map) - Map Custom Field
 
 ### [events](docs/sdks/events/README.md)
 
@@ -843,6 +828,43 @@ run();
 
 ```
 <!-- End Authentication [security] -->
+
+<!-- Start Pagination [pagination] -->
+## Pagination
+
+Some of the endpoints in this SDK support pagination. To use pagination, you
+make your SDK calls as usual, but the returned response object will also be an
+async iterable that can be consumed using the [`for await...of`][for-await-of]
+syntax.
+
+[for-await-of]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of
+
+Here's an example of one such pagination call:
+
+```typescript
+import { Panora } from "@panora/sdk";
+
+const panora = new Panora({
+    apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+    const result = await panora.ticketing.tickets.list({
+        xConnectionToken: "<value>",
+        remoteData: true,
+        limit: 10,
+        cursor: "1b8b05bb-5273-4012-b520-8657b0b90874",
+    });
+
+    for await (const page of result) {
+        // handle page
+    }
+}
+
+run();
+
+```
+<!-- End Pagination [pagination] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

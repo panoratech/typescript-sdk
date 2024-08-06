@@ -12,18 +12,72 @@ import * as components from "../models/components/index.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrap as unwrap$ } from "../types/fp.js";
-import { Define } from "./define.js";
-import { Map } from "./map.js";
 
 export class FieldMappings extends ClientSDK {
-    private _define?: Define;
-    get define(): Define {
-        return (this._define ??= new Define(this.options$));
-    }
+    /**
+     * Define target Field
+     */
+    async definitions(
+        request: components.DefineTargetFieldDto,
+        options?: RequestOptions
+    ): Promise<components.CustomFieldResponse> {
+        const input$ = request;
 
-    private _map?: Map;
-    get map(): Map {
-        return (this._map ??= new Map(this.options$));
+        const parsed$ = schemas$.safeParse(
+            input$,
+            (value$) => components.DefineTargetFieldDto$outboundSchema.parse(value$),
+            "Input validation failed"
+        );
+        const payload$ = unwrap$(parsed$);
+        const body$ = encodeJSON$("body", payload$, { explode: true });
+
+        const path$ = pathToFunc("/field_mappings/define")();
+
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        });
+
+        const apiKey$ = await extractSecurity(this.options$.apiKey);
+        const security$ = apiKey$ == null ? {} : { apiKey: apiKey$ };
+        const context = {
+            operationID: "definitions",
+            oAuth2Scopes: [],
+            securitySource: this.options$.apiKey,
+        };
+        const securitySettings$ = resolveGlobalSecurity(security$);
+
+        const requestRes$ = this.createRequest$(
+            context,
+            {
+                security: securitySettings$,
+                method: "POST",
+                path: path$,
+                headers: headers$,
+                body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
+            },
+            options
+        );
+        const request$ = unwrap$(requestRes$);
+
+        const doResult = await this.do$(request$, {
+            context,
+            errorCodes: ["4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
+        const response = unwrap$(doResult);
+
+        const [result$] = await m$.match<
+            components.CustomFieldResponse,
+            SDKError | SDKValidationError
+        >(
+            m$.json(201, components.CustomFieldResponse$inboundSchema),
+            m$.fail(["4XX", "5XX"])
+        )(response);
+
+        return unwrap$(result$);
     }
 
     /**
@@ -54,6 +108,72 @@ export class FieldMappings extends ClientSDK {
         const security$ = apiKey$ == null ? {} : { apiKey: apiKey$ };
         const context = {
             operationID: "defineCustomField",
+            oAuth2Scopes: [],
+            securitySource: this.options$.apiKey,
+        };
+        const securitySettings$ = resolveGlobalSecurity(security$);
+
+        const requestRes$ = this.createRequest$(
+            context,
+            {
+                security: securitySettings$,
+                method: "POST",
+                path: path$,
+                headers: headers$,
+                body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
+            },
+            options
+        );
+        const request$ = unwrap$(requestRes$);
+
+        const doResult = await this.do$(request$, {
+            context,
+            errorCodes: ["4XX", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
+        const response = unwrap$(doResult);
+
+        const [result$] = await m$.match<
+            components.CustomFieldResponse,
+            SDKError | SDKValidationError
+        >(
+            m$.json(201, components.CustomFieldResponse$inboundSchema),
+            m$.fail(["4XX", "5XX"])
+        )(response);
+
+        return unwrap$(result$);
+    }
+
+    /**
+     * Map Custom Field
+     */
+    async map(
+        request: components.MapFieldToProviderDto,
+        options?: RequestOptions
+    ): Promise<components.CustomFieldResponse> {
+        const input$ = request;
+
+        const parsed$ = schemas$.safeParse(
+            input$,
+            (value$) => components.MapFieldToProviderDto$outboundSchema.parse(value$),
+            "Input validation failed"
+        );
+        const payload$ = unwrap$(parsed$);
+        const body$ = encodeJSON$("body", payload$, { explode: true });
+
+        const path$ = pathToFunc("/field_mappings/map")();
+
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        });
+
+        const apiKey$ = await extractSecurity(this.options$.apiKey);
+        const security$ = apiKey$ == null ? {} : { apiKey: apiKey$ };
+        const context = {
+            operationID: "map",
             oAuth2Scopes: [],
             securitySource: this.options$.apiKey,
         };

@@ -23,10 +23,14 @@ const panora = new Panora({
 async function run() {
   const result = await panora.ticketing.tickets.list({
     xConnectionToken: "<value>",
+    remoteData: true,
+    limit: 10,
+    cursor: "1b8b05bb-5273-4012-b520-8657b0b90874",
   });
 
-  // Handle the result
-  console.log(result)
+  for await (const page of result) {
+    // handle page
+  }
 }
 
 run();
@@ -44,7 +48,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListTicketingTicketResponseBody](../../models/operations/listticketingticketresponsebody.md)\>**
+**Promise\<[operations.ListTicketingTicketResponse](../../models/operations/listticketingticketresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
