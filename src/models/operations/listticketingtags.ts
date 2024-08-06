@@ -31,6 +31,10 @@ export type ListTicketingTagsResponseBody = {
     data: Array<components.UnifiedTicketingTagOutput>;
 };
 
+export type ListTicketingTagsResponse = {
+    result: ListTicketingTagsResponseBody;
+};
+
 /** @internal */
 export const ListTicketingTagsRequest$inboundSchema: z.ZodType<
     ListTicketingTagsRequest,
@@ -144,4 +148,52 @@ export namespace ListTicketingTagsResponseBody$ {
     export const outboundSchema = ListTicketingTagsResponseBody$outboundSchema;
     /** @deprecated use `ListTicketingTagsResponseBody$Outbound` instead. */
     export type Outbound = ListTicketingTagsResponseBody$Outbound;
+}
+
+/** @internal */
+export const ListTicketingTagsResponse$inboundSchema: z.ZodType<
+    ListTicketingTagsResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        Result: z.lazy(() => ListTicketingTagsResponseBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Result: "result",
+        });
+    });
+
+/** @internal */
+export type ListTicketingTagsResponse$Outbound = {
+    Result: ListTicketingTagsResponseBody$Outbound;
+};
+
+/** @internal */
+export const ListTicketingTagsResponse$outboundSchema: z.ZodType<
+    ListTicketingTagsResponse$Outbound,
+    z.ZodTypeDef,
+    ListTicketingTagsResponse
+> = z
+    .object({
+        result: z.lazy(() => ListTicketingTagsResponseBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            result: "Result",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListTicketingTagsResponse$ {
+    /** @deprecated use `ListTicketingTagsResponse$inboundSchema` instead. */
+    export const inboundSchema = ListTicketingTagsResponse$inboundSchema;
+    /** @deprecated use `ListTicketingTagsResponse$outboundSchema` instead. */
+    export const outboundSchema = ListTicketingTagsResponse$outboundSchema;
+    /** @deprecated use `ListTicketingTagsResponse$Outbound` instead. */
+    export type Outbound = ListTicketingTagsResponse$Outbound;
 }

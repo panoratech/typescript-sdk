@@ -31,6 +31,10 @@ export type ListCrmCompanyResponseBody = {
     data: Array<components.UnifiedCrmCompanyOutput>;
 };
 
+export type ListCrmCompanyResponse = {
+    result: ListCrmCompanyResponseBody;
+};
+
 /** @internal */
 export const ListCrmCompanyRequest$inboundSchema: z.ZodType<
     ListCrmCompanyRequest,
@@ -144,4 +148,52 @@ export namespace ListCrmCompanyResponseBody$ {
     export const outboundSchema = ListCrmCompanyResponseBody$outboundSchema;
     /** @deprecated use `ListCrmCompanyResponseBody$Outbound` instead. */
     export type Outbound = ListCrmCompanyResponseBody$Outbound;
+}
+
+/** @internal */
+export const ListCrmCompanyResponse$inboundSchema: z.ZodType<
+    ListCrmCompanyResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        Result: z.lazy(() => ListCrmCompanyResponseBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Result: "result",
+        });
+    });
+
+/** @internal */
+export type ListCrmCompanyResponse$Outbound = {
+    Result: ListCrmCompanyResponseBody$Outbound;
+};
+
+/** @internal */
+export const ListCrmCompanyResponse$outboundSchema: z.ZodType<
+    ListCrmCompanyResponse$Outbound,
+    z.ZodTypeDef,
+    ListCrmCompanyResponse
+> = z
+    .object({
+        result: z.lazy(() => ListCrmCompanyResponseBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            result: "Result",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListCrmCompanyResponse$ {
+    /** @deprecated use `ListCrmCompanyResponse$inboundSchema` instead. */
+    export const inboundSchema = ListCrmCompanyResponse$inboundSchema;
+    /** @deprecated use `ListCrmCompanyResponse$outboundSchema` instead. */
+    export const outboundSchema = ListCrmCompanyResponse$outboundSchema;
+    /** @deprecated use `ListCrmCompanyResponse$Outbound` instead. */
+    export type Outbound = ListCrmCompanyResponse$Outbound;
 }

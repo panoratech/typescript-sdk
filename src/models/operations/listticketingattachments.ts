@@ -31,6 +31,10 @@ export type ListTicketingAttachmentsResponseBody = {
     data: Array<components.UnifiedTicketingAttachmentOutput>;
 };
 
+export type ListTicketingAttachmentsResponse = {
+    result: ListTicketingAttachmentsResponseBody;
+};
+
 /** @internal */
 export const ListTicketingAttachmentsRequest$inboundSchema: z.ZodType<
     ListTicketingAttachmentsRequest,
@@ -144,4 +148,52 @@ export namespace ListTicketingAttachmentsResponseBody$ {
     export const outboundSchema = ListTicketingAttachmentsResponseBody$outboundSchema;
     /** @deprecated use `ListTicketingAttachmentsResponseBody$Outbound` instead. */
     export type Outbound = ListTicketingAttachmentsResponseBody$Outbound;
+}
+
+/** @internal */
+export const ListTicketingAttachmentsResponse$inboundSchema: z.ZodType<
+    ListTicketingAttachmentsResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        Result: z.lazy(() => ListTicketingAttachmentsResponseBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Result: "result",
+        });
+    });
+
+/** @internal */
+export type ListTicketingAttachmentsResponse$Outbound = {
+    Result: ListTicketingAttachmentsResponseBody$Outbound;
+};
+
+/** @internal */
+export const ListTicketingAttachmentsResponse$outboundSchema: z.ZodType<
+    ListTicketingAttachmentsResponse$Outbound,
+    z.ZodTypeDef,
+    ListTicketingAttachmentsResponse
+> = z
+    .object({
+        result: z.lazy(() => ListTicketingAttachmentsResponseBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            result: "Result",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListTicketingAttachmentsResponse$ {
+    /** @deprecated use `ListTicketingAttachmentsResponse$inboundSchema` instead. */
+    export const inboundSchema = ListTicketingAttachmentsResponse$inboundSchema;
+    /** @deprecated use `ListTicketingAttachmentsResponse$outboundSchema` instead. */
+    export const outboundSchema = ListTicketingAttachmentsResponse$outboundSchema;
+    /** @deprecated use `ListTicketingAttachmentsResponse$Outbound` instead. */
+    export type Outbound = ListTicketingAttachmentsResponse$Outbound;
 }

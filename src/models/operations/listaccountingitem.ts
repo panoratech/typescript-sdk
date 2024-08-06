@@ -31,6 +31,10 @@ export type ListAccountingItemResponseBody = {
     data: Array<components.UnifiedAccountingItemOutput>;
 };
 
+export type ListAccountingItemResponse = {
+    result: ListAccountingItemResponseBody;
+};
+
 /** @internal */
 export const ListAccountingItemRequest$inboundSchema: z.ZodType<
     ListAccountingItemRequest,
@@ -144,4 +148,52 @@ export namespace ListAccountingItemResponseBody$ {
     export const outboundSchema = ListAccountingItemResponseBody$outboundSchema;
     /** @deprecated use `ListAccountingItemResponseBody$Outbound` instead. */
     export type Outbound = ListAccountingItemResponseBody$Outbound;
+}
+
+/** @internal */
+export const ListAccountingItemResponse$inboundSchema: z.ZodType<
+    ListAccountingItemResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        Result: z.lazy(() => ListAccountingItemResponseBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Result: "result",
+        });
+    });
+
+/** @internal */
+export type ListAccountingItemResponse$Outbound = {
+    Result: ListAccountingItemResponseBody$Outbound;
+};
+
+/** @internal */
+export const ListAccountingItemResponse$outboundSchema: z.ZodType<
+    ListAccountingItemResponse$Outbound,
+    z.ZodTypeDef,
+    ListAccountingItemResponse
+> = z
+    .object({
+        result: z.lazy(() => ListAccountingItemResponseBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            result: "Result",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListAccountingItemResponse$ {
+    /** @deprecated use `ListAccountingItemResponse$inboundSchema` instead. */
+    export const inboundSchema = ListAccountingItemResponse$inboundSchema;
+    /** @deprecated use `ListAccountingItemResponse$outboundSchema` instead. */
+    export const outboundSchema = ListAccountingItemResponse$outboundSchema;
+    /** @deprecated use `ListAccountingItemResponse$Outbound` instead. */
+    export type Outbound = ListAccountingItemResponse$Outbound;
 }

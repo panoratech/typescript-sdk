@@ -31,6 +31,10 @@ export type ListAccountingBalanceSheetsResponseBody = {
     data: Array<components.UnifiedAccountingBalancesheetOutput>;
 };
 
+export type ListAccountingBalanceSheetsResponse = {
+    result: ListAccountingBalanceSheetsResponseBody;
+};
+
 /** @internal */
 export const ListAccountingBalanceSheetsRequest$inboundSchema: z.ZodType<
     ListAccountingBalanceSheetsRequest,
@@ -144,4 +148,52 @@ export namespace ListAccountingBalanceSheetsResponseBody$ {
     export const outboundSchema = ListAccountingBalanceSheetsResponseBody$outboundSchema;
     /** @deprecated use `ListAccountingBalanceSheetsResponseBody$Outbound` instead. */
     export type Outbound = ListAccountingBalanceSheetsResponseBody$Outbound;
+}
+
+/** @internal */
+export const ListAccountingBalanceSheetsResponse$inboundSchema: z.ZodType<
+    ListAccountingBalanceSheetsResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        Result: z.lazy(() => ListAccountingBalanceSheetsResponseBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Result: "result",
+        });
+    });
+
+/** @internal */
+export type ListAccountingBalanceSheetsResponse$Outbound = {
+    Result: ListAccountingBalanceSheetsResponseBody$Outbound;
+};
+
+/** @internal */
+export const ListAccountingBalanceSheetsResponse$outboundSchema: z.ZodType<
+    ListAccountingBalanceSheetsResponse$Outbound,
+    z.ZodTypeDef,
+    ListAccountingBalanceSheetsResponse
+> = z
+    .object({
+        result: z.lazy(() => ListAccountingBalanceSheetsResponseBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            result: "Result",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListAccountingBalanceSheetsResponse$ {
+    /** @deprecated use `ListAccountingBalanceSheetsResponse$inboundSchema` instead. */
+    export const inboundSchema = ListAccountingBalanceSheetsResponse$inboundSchema;
+    /** @deprecated use `ListAccountingBalanceSheetsResponse$outboundSchema` instead. */
+    export const outboundSchema = ListAccountingBalanceSheetsResponse$outboundSchema;
+    /** @deprecated use `ListAccountingBalanceSheetsResponse$Outbound` instead. */
+    export type Outbound = ListAccountingBalanceSheetsResponse$Outbound;
 }

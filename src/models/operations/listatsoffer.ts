@@ -31,6 +31,10 @@ export type ListAtsOfferResponseBody = {
     data: Array<components.UnifiedAtsOfferOutput>;
 };
 
+export type ListAtsOfferResponse = {
+    result: ListAtsOfferResponseBody;
+};
+
 /** @internal */
 export const ListAtsOfferRequest$inboundSchema: z.ZodType<
     ListAtsOfferRequest,
@@ -144,4 +148,52 @@ export namespace ListAtsOfferResponseBody$ {
     export const outboundSchema = ListAtsOfferResponseBody$outboundSchema;
     /** @deprecated use `ListAtsOfferResponseBody$Outbound` instead. */
     export type Outbound = ListAtsOfferResponseBody$Outbound;
+}
+
+/** @internal */
+export const ListAtsOfferResponse$inboundSchema: z.ZodType<
+    ListAtsOfferResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        Result: z.lazy(() => ListAtsOfferResponseBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Result: "result",
+        });
+    });
+
+/** @internal */
+export type ListAtsOfferResponse$Outbound = {
+    Result: ListAtsOfferResponseBody$Outbound;
+};
+
+/** @internal */
+export const ListAtsOfferResponse$outboundSchema: z.ZodType<
+    ListAtsOfferResponse$Outbound,
+    z.ZodTypeDef,
+    ListAtsOfferResponse
+> = z
+    .object({
+        result: z.lazy(() => ListAtsOfferResponseBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            result: "Result",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListAtsOfferResponse$ {
+    /** @deprecated use `ListAtsOfferResponse$inboundSchema` instead. */
+    export const inboundSchema = ListAtsOfferResponse$inboundSchema;
+    /** @deprecated use `ListAtsOfferResponse$outboundSchema` instead. */
+    export const outboundSchema = ListAtsOfferResponse$outboundSchema;
+    /** @deprecated use `ListAtsOfferResponse$Outbound` instead. */
+    export type Outbound = ListAtsOfferResponse$Outbound;
 }

@@ -1,6 +1,6 @@
 {
   "name": "@panora/sdk",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "author": "Speakeasy",
   "main": "./index.js",
   "sideEffects": false,

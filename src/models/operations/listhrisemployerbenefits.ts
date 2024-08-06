@@ -31,6 +31,10 @@ export type ListHrisEmployerBenefitsResponseBody = {
     data: Array<components.UnifiedHrisEmployerbenefitOutput>;
 };
 
+export type ListHrisEmployerBenefitsResponse = {
+    result: ListHrisEmployerBenefitsResponseBody;
+};
+
 /** @internal */
 export const ListHrisEmployerBenefitsRequest$inboundSchema: z.ZodType<
     ListHrisEmployerBenefitsRequest,
@@ -144,4 +148,52 @@ export namespace ListHrisEmployerBenefitsResponseBody$ {
     export const outboundSchema = ListHrisEmployerBenefitsResponseBody$outboundSchema;
     /** @deprecated use `ListHrisEmployerBenefitsResponseBody$Outbound` instead. */
     export type Outbound = ListHrisEmployerBenefitsResponseBody$Outbound;
+}
+
+/** @internal */
+export const ListHrisEmployerBenefitsResponse$inboundSchema: z.ZodType<
+    ListHrisEmployerBenefitsResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        Result: z.lazy(() => ListHrisEmployerBenefitsResponseBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Result: "result",
+        });
+    });
+
+/** @internal */
+export type ListHrisEmployerBenefitsResponse$Outbound = {
+    Result: ListHrisEmployerBenefitsResponseBody$Outbound;
+};
+
+/** @internal */
+export const ListHrisEmployerBenefitsResponse$outboundSchema: z.ZodType<
+    ListHrisEmployerBenefitsResponse$Outbound,
+    z.ZodTypeDef,
+    ListHrisEmployerBenefitsResponse
+> = z
+    .object({
+        result: z.lazy(() => ListHrisEmployerBenefitsResponseBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            result: "Result",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListHrisEmployerBenefitsResponse$ {
+    /** @deprecated use `ListHrisEmployerBenefitsResponse$inboundSchema` instead. */
+    export const inboundSchema = ListHrisEmployerBenefitsResponse$inboundSchema;
+    /** @deprecated use `ListHrisEmployerBenefitsResponse$outboundSchema` instead. */
+    export const outboundSchema = ListHrisEmployerBenefitsResponse$outboundSchema;
+    /** @deprecated use `ListHrisEmployerBenefitsResponse$Outbound` instead. */
+    export type Outbound = ListHrisEmployerBenefitsResponse$Outbound;
 }

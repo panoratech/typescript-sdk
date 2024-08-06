@@ -31,6 +31,10 @@ export type ListHrisCompaniesResponseBody = {
     data: Array<components.UnifiedHrisCompanyOutput>;
 };
 
+export type ListHrisCompaniesResponse = {
+    result: ListHrisCompaniesResponseBody;
+};
+
 /** @internal */
 export const ListHrisCompaniesRequest$inboundSchema: z.ZodType<
     ListHrisCompaniesRequest,
@@ -144,4 +148,52 @@ export namespace ListHrisCompaniesResponseBody$ {
     export const outboundSchema = ListHrisCompaniesResponseBody$outboundSchema;
     /** @deprecated use `ListHrisCompaniesResponseBody$Outbound` instead. */
     export type Outbound = ListHrisCompaniesResponseBody$Outbound;
+}
+
+/** @internal */
+export const ListHrisCompaniesResponse$inboundSchema: z.ZodType<
+    ListHrisCompaniesResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        Result: z.lazy(() => ListHrisCompaniesResponseBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Result: "result",
+        });
+    });
+
+/** @internal */
+export type ListHrisCompaniesResponse$Outbound = {
+    Result: ListHrisCompaniesResponseBody$Outbound;
+};
+
+/** @internal */
+export const ListHrisCompaniesResponse$outboundSchema: z.ZodType<
+    ListHrisCompaniesResponse$Outbound,
+    z.ZodTypeDef,
+    ListHrisCompaniesResponse
+> = z
+    .object({
+        result: z.lazy(() => ListHrisCompaniesResponseBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            result: "Result",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListHrisCompaniesResponse$ {
+    /** @deprecated use `ListHrisCompaniesResponse$inboundSchema` instead. */
+    export const inboundSchema = ListHrisCompaniesResponse$inboundSchema;
+    /** @deprecated use `ListHrisCompaniesResponse$outboundSchema` instead. */
+    export const outboundSchema = ListHrisCompaniesResponse$outboundSchema;
+    /** @deprecated use `ListHrisCompaniesResponse$Outbound` instead. */
+    export type Outbound = ListHrisCompaniesResponse$Outbound;
 }

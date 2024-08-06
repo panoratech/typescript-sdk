@@ -31,6 +31,10 @@ export type ListHrisDependentsResponseBody = {
     data: Array<components.UnifiedHrisDependentOutput>;
 };
 
+export type ListHrisDependentsResponse = {
+    result: ListHrisDependentsResponseBody;
+};
+
 /** @internal */
 export const ListHrisDependentsRequest$inboundSchema: z.ZodType<
     ListHrisDependentsRequest,
@@ -144,4 +148,52 @@ export namespace ListHrisDependentsResponseBody$ {
     export const outboundSchema = ListHrisDependentsResponseBody$outboundSchema;
     /** @deprecated use `ListHrisDependentsResponseBody$Outbound` instead. */
     export type Outbound = ListHrisDependentsResponseBody$Outbound;
+}
+
+/** @internal */
+export const ListHrisDependentsResponse$inboundSchema: z.ZodType<
+    ListHrisDependentsResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        Result: z.lazy(() => ListHrisDependentsResponseBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Result: "result",
+        });
+    });
+
+/** @internal */
+export type ListHrisDependentsResponse$Outbound = {
+    Result: ListHrisDependentsResponseBody$Outbound;
+};
+
+/** @internal */
+export const ListHrisDependentsResponse$outboundSchema: z.ZodType<
+    ListHrisDependentsResponse$Outbound,
+    z.ZodTypeDef,
+    ListHrisDependentsResponse
+> = z
+    .object({
+        result: z.lazy(() => ListHrisDependentsResponseBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            result: "Result",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListHrisDependentsResponse$ {
+    /** @deprecated use `ListHrisDependentsResponse$inboundSchema` instead. */
+    export const inboundSchema = ListHrisDependentsResponse$inboundSchema;
+    /** @deprecated use `ListHrisDependentsResponse$outboundSchema` instead. */
+    export const outboundSchema = ListHrisDependentsResponse$outboundSchema;
+    /** @deprecated use `ListHrisDependentsResponse$Outbound` instead. */
+    export type Outbound = ListHrisDependentsResponse$Outbound;
 }

@@ -31,6 +31,10 @@ export type ListMarketingautomationCampaignsResponseBody = {
     data: Array<components.UnifiedMarketingautomationCampaignOutput>;
 };
 
+export type ListMarketingautomationCampaignsResponse = {
+    result: ListMarketingautomationCampaignsResponseBody;
+};
+
 /** @internal */
 export const ListMarketingautomationCampaignsRequest$inboundSchema: z.ZodType<
     ListMarketingautomationCampaignsRequest,
@@ -144,4 +148,52 @@ export namespace ListMarketingautomationCampaignsResponseBody$ {
     export const outboundSchema = ListMarketingautomationCampaignsResponseBody$outboundSchema;
     /** @deprecated use `ListMarketingautomationCampaignsResponseBody$Outbound` instead. */
     export type Outbound = ListMarketingautomationCampaignsResponseBody$Outbound;
+}
+
+/** @internal */
+export const ListMarketingautomationCampaignsResponse$inboundSchema: z.ZodType<
+    ListMarketingautomationCampaignsResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        Result: z.lazy(() => ListMarketingautomationCampaignsResponseBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Result: "result",
+        });
+    });
+
+/** @internal */
+export type ListMarketingautomationCampaignsResponse$Outbound = {
+    Result: ListMarketingautomationCampaignsResponseBody$Outbound;
+};
+
+/** @internal */
+export const ListMarketingautomationCampaignsResponse$outboundSchema: z.ZodType<
+    ListMarketingautomationCampaignsResponse$Outbound,
+    z.ZodTypeDef,
+    ListMarketingautomationCampaignsResponse
+> = z
+    .object({
+        result: z.lazy(() => ListMarketingautomationCampaignsResponseBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            result: "Result",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListMarketingautomationCampaignsResponse$ {
+    /** @deprecated use `ListMarketingautomationCampaignsResponse$inboundSchema` instead. */
+    export const inboundSchema = ListMarketingautomationCampaignsResponse$inboundSchema;
+    /** @deprecated use `ListMarketingautomationCampaignsResponse$outboundSchema` instead. */
+    export const outboundSchema = ListMarketingautomationCampaignsResponse$outboundSchema;
+    /** @deprecated use `ListMarketingautomationCampaignsResponse$Outbound` instead. */
+    export type Outbound = ListMarketingautomationCampaignsResponse$Outbound;
 }

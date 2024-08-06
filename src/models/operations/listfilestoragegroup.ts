@@ -31,6 +31,10 @@ export type ListFilestorageGroupResponseBody = {
     data: Array<components.UnifiedFilestorageGroupOutput>;
 };
 
+export type ListFilestorageGroupResponse = {
+    result: ListFilestorageGroupResponseBody;
+};
+
 /** @internal */
 export const ListFilestorageGroupRequest$inboundSchema: z.ZodType<
     ListFilestorageGroupRequest,
@@ -144,4 +148,52 @@ export namespace ListFilestorageGroupResponseBody$ {
     export const outboundSchema = ListFilestorageGroupResponseBody$outboundSchema;
     /** @deprecated use `ListFilestorageGroupResponseBody$Outbound` instead. */
     export type Outbound = ListFilestorageGroupResponseBody$Outbound;
+}
+
+/** @internal */
+export const ListFilestorageGroupResponse$inboundSchema: z.ZodType<
+    ListFilestorageGroupResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        Result: z.lazy(() => ListFilestorageGroupResponseBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Result: "result",
+        });
+    });
+
+/** @internal */
+export type ListFilestorageGroupResponse$Outbound = {
+    Result: ListFilestorageGroupResponseBody$Outbound;
+};
+
+/** @internal */
+export const ListFilestorageGroupResponse$outboundSchema: z.ZodType<
+    ListFilestorageGroupResponse$Outbound,
+    z.ZodTypeDef,
+    ListFilestorageGroupResponse
+> = z
+    .object({
+        result: z.lazy(() => ListFilestorageGroupResponseBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            result: "Result",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListFilestorageGroupResponse$ {
+    /** @deprecated use `ListFilestorageGroupResponse$inboundSchema` instead. */
+    export const inboundSchema = ListFilestorageGroupResponse$inboundSchema;
+    /** @deprecated use `ListFilestorageGroupResponse$outboundSchema` instead. */
+    export const outboundSchema = ListFilestorageGroupResponse$outboundSchema;
+    /** @deprecated use `ListFilestorageGroupResponse$Outbound` instead. */
+    export type Outbound = ListFilestorageGroupResponse$Outbound;
 }

@@ -31,6 +31,10 @@ export type ListAccountingTransactionResponseBody = {
     data: Array<components.UnifiedAccountingTransactionOutput>;
 };
 
+export type ListAccountingTransactionResponse = {
+    result: ListAccountingTransactionResponseBody;
+};
+
 /** @internal */
 export const ListAccountingTransactionRequest$inboundSchema: z.ZodType<
     ListAccountingTransactionRequest,
@@ -144,4 +148,52 @@ export namespace ListAccountingTransactionResponseBody$ {
     export const outboundSchema = ListAccountingTransactionResponseBody$outboundSchema;
     /** @deprecated use `ListAccountingTransactionResponseBody$Outbound` instead. */
     export type Outbound = ListAccountingTransactionResponseBody$Outbound;
+}
+
+/** @internal */
+export const ListAccountingTransactionResponse$inboundSchema: z.ZodType<
+    ListAccountingTransactionResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        Result: z.lazy(() => ListAccountingTransactionResponseBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Result: "result",
+        });
+    });
+
+/** @internal */
+export type ListAccountingTransactionResponse$Outbound = {
+    Result: ListAccountingTransactionResponseBody$Outbound;
+};
+
+/** @internal */
+export const ListAccountingTransactionResponse$outboundSchema: z.ZodType<
+    ListAccountingTransactionResponse$Outbound,
+    z.ZodTypeDef,
+    ListAccountingTransactionResponse
+> = z
+    .object({
+        result: z.lazy(() => ListAccountingTransactionResponseBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            result: "Result",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListAccountingTransactionResponse$ {
+    /** @deprecated use `ListAccountingTransactionResponse$inboundSchema` instead. */
+    export const inboundSchema = ListAccountingTransactionResponse$inboundSchema;
+    /** @deprecated use `ListAccountingTransactionResponse$outboundSchema` instead. */
+    export const outboundSchema = ListAccountingTransactionResponse$outboundSchema;
+    /** @deprecated use `ListAccountingTransactionResponse$Outbound` instead. */
+    export type Outbound = ListAccountingTransactionResponse$Outbound;
 }

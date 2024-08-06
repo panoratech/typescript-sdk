@@ -31,6 +31,10 @@ export type ListMarketingAutomationEventsResponseBody = {
     data: Array<components.UnifiedMarketingautomationEventOutput>;
 };
 
+export type ListMarketingAutomationEventsResponse = {
+    result: ListMarketingAutomationEventsResponseBody;
+};
+
 /** @internal */
 export const ListMarketingAutomationEventsRequest$inboundSchema: z.ZodType<
     ListMarketingAutomationEventsRequest,
@@ -144,4 +148,52 @@ export namespace ListMarketingAutomationEventsResponseBody$ {
     export const outboundSchema = ListMarketingAutomationEventsResponseBody$outboundSchema;
     /** @deprecated use `ListMarketingAutomationEventsResponseBody$Outbound` instead. */
     export type Outbound = ListMarketingAutomationEventsResponseBody$Outbound;
+}
+
+/** @internal */
+export const ListMarketingAutomationEventsResponse$inboundSchema: z.ZodType<
+    ListMarketingAutomationEventsResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        Result: z.lazy(() => ListMarketingAutomationEventsResponseBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Result: "result",
+        });
+    });
+
+/** @internal */
+export type ListMarketingAutomationEventsResponse$Outbound = {
+    Result: ListMarketingAutomationEventsResponseBody$Outbound;
+};
+
+/** @internal */
+export const ListMarketingAutomationEventsResponse$outboundSchema: z.ZodType<
+    ListMarketingAutomationEventsResponse$Outbound,
+    z.ZodTypeDef,
+    ListMarketingAutomationEventsResponse
+> = z
+    .object({
+        result: z.lazy(() => ListMarketingAutomationEventsResponseBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            result: "Result",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListMarketingAutomationEventsResponse$ {
+    /** @deprecated use `ListMarketingAutomationEventsResponse$inboundSchema` instead. */
+    export const inboundSchema = ListMarketingAutomationEventsResponse$inboundSchema;
+    /** @deprecated use `ListMarketingAutomationEventsResponse$outboundSchema` instead. */
+    export const outboundSchema = ListMarketingAutomationEventsResponse$outboundSchema;
+    /** @deprecated use `ListMarketingAutomationEventsResponse$Outbound` instead. */
+    export type Outbound = ListMarketingAutomationEventsResponse$Outbound;
 }

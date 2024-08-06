@@ -31,6 +31,10 @@ export type ListAtsInterviewResponseBody = {
     data: Array<components.UnifiedAtsInterviewOutput>;
 };
 
+export type ListAtsInterviewResponse = {
+    result: ListAtsInterviewResponseBody;
+};
+
 /** @internal */
 export const ListAtsInterviewRequest$inboundSchema: z.ZodType<
     ListAtsInterviewRequest,
@@ -144,4 +148,52 @@ export namespace ListAtsInterviewResponseBody$ {
     export const outboundSchema = ListAtsInterviewResponseBody$outboundSchema;
     /** @deprecated use `ListAtsInterviewResponseBody$Outbound` instead. */
     export type Outbound = ListAtsInterviewResponseBody$Outbound;
+}
+
+/** @internal */
+export const ListAtsInterviewResponse$inboundSchema: z.ZodType<
+    ListAtsInterviewResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        Result: z.lazy(() => ListAtsInterviewResponseBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Result: "result",
+        });
+    });
+
+/** @internal */
+export type ListAtsInterviewResponse$Outbound = {
+    Result: ListAtsInterviewResponseBody$Outbound;
+};
+
+/** @internal */
+export const ListAtsInterviewResponse$outboundSchema: z.ZodType<
+    ListAtsInterviewResponse$Outbound,
+    z.ZodTypeDef,
+    ListAtsInterviewResponse
+> = z
+    .object({
+        result: z.lazy(() => ListAtsInterviewResponseBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            result: "Result",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListAtsInterviewResponse$ {
+    /** @deprecated use `ListAtsInterviewResponse$inboundSchema` instead. */
+    export const inboundSchema = ListAtsInterviewResponse$inboundSchema;
+    /** @deprecated use `ListAtsInterviewResponse$outboundSchema` instead. */
+    export const outboundSchema = ListAtsInterviewResponse$outboundSchema;
+    /** @deprecated use `ListAtsInterviewResponse$Outbound` instead. */
+    export type Outbound = ListAtsInterviewResponse$Outbound;
 }

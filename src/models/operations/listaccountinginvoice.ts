@@ -31,6 +31,10 @@ export type ListAccountingInvoiceResponseBody = {
     data: Array<components.UnifiedAccountingInvoiceOutput>;
 };
 
+export type ListAccountingInvoiceResponse = {
+    result: ListAccountingInvoiceResponseBody;
+};
+
 /** @internal */
 export const ListAccountingInvoiceRequest$inboundSchema: z.ZodType<
     ListAccountingInvoiceRequest,
@@ -144,4 +148,52 @@ export namespace ListAccountingInvoiceResponseBody$ {
     export const outboundSchema = ListAccountingInvoiceResponseBody$outboundSchema;
     /** @deprecated use `ListAccountingInvoiceResponseBody$Outbound` instead. */
     export type Outbound = ListAccountingInvoiceResponseBody$Outbound;
+}
+
+/** @internal */
+export const ListAccountingInvoiceResponse$inboundSchema: z.ZodType<
+    ListAccountingInvoiceResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        Result: z.lazy(() => ListAccountingInvoiceResponseBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Result: "result",
+        });
+    });
+
+/** @internal */
+export type ListAccountingInvoiceResponse$Outbound = {
+    Result: ListAccountingInvoiceResponseBody$Outbound;
+};
+
+/** @internal */
+export const ListAccountingInvoiceResponse$outboundSchema: z.ZodType<
+    ListAccountingInvoiceResponse$Outbound,
+    z.ZodTypeDef,
+    ListAccountingInvoiceResponse
+> = z
+    .object({
+        result: z.lazy(() => ListAccountingInvoiceResponseBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            result: "Result",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListAccountingInvoiceResponse$ {
+    /** @deprecated use `ListAccountingInvoiceResponse$inboundSchema` instead. */
+    export const inboundSchema = ListAccountingInvoiceResponse$inboundSchema;
+    /** @deprecated use `ListAccountingInvoiceResponse$outboundSchema` instead. */
+    export const outboundSchema = ListAccountingInvoiceResponse$outboundSchema;
+    /** @deprecated use `ListAccountingInvoiceResponse$Outbound` instead. */
+    export type Outbound = ListAccountingInvoiceResponse$Outbound;
 }

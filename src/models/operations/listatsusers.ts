@@ -31,6 +31,10 @@ export type ListAtsUsersResponseBody = {
     data: Array<components.UnifiedAtsUserOutput>;
 };
 
+export type ListAtsUsersResponse = {
+    result: ListAtsUsersResponseBody;
+};
+
 /** @internal */
 export const ListAtsUsersRequest$inboundSchema: z.ZodType<
     ListAtsUsersRequest,
@@ -144,4 +148,52 @@ export namespace ListAtsUsersResponseBody$ {
     export const outboundSchema = ListAtsUsersResponseBody$outboundSchema;
     /** @deprecated use `ListAtsUsersResponseBody$Outbound` instead. */
     export type Outbound = ListAtsUsersResponseBody$Outbound;
+}
+
+/** @internal */
+export const ListAtsUsersResponse$inboundSchema: z.ZodType<
+    ListAtsUsersResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        Result: z.lazy(() => ListAtsUsersResponseBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Result: "result",
+        });
+    });
+
+/** @internal */
+export type ListAtsUsersResponse$Outbound = {
+    Result: ListAtsUsersResponseBody$Outbound;
+};
+
+/** @internal */
+export const ListAtsUsersResponse$outboundSchema: z.ZodType<
+    ListAtsUsersResponse$Outbound,
+    z.ZodTypeDef,
+    ListAtsUsersResponse
+> = z
+    .object({
+        result: z.lazy(() => ListAtsUsersResponseBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            result: "Result",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListAtsUsersResponse$ {
+    /** @deprecated use `ListAtsUsersResponse$inboundSchema` instead. */
+    export const inboundSchema = ListAtsUsersResponse$inboundSchema;
+    /** @deprecated use `ListAtsUsersResponse$outboundSchema` instead. */
+    export const outboundSchema = ListAtsUsersResponse$outboundSchema;
+    /** @deprecated use `ListAtsUsersResponse$Outbound` instead. */
+    export type Outbound = ListAtsUsersResponse$Outbound;
 }

@@ -31,6 +31,10 @@ export type ListAccountingPhonenumberResponseBody = {
     data: Array<components.UnifiedAccountingPhonenumberOutput>;
 };
 
+export type ListAccountingPhonenumberResponse = {
+    result: ListAccountingPhonenumberResponseBody;
+};
+
 /** @internal */
 export const ListAccountingPhonenumberRequest$inboundSchema: z.ZodType<
     ListAccountingPhonenumberRequest,
@@ -144,4 +148,52 @@ export namespace ListAccountingPhonenumberResponseBody$ {
     export const outboundSchema = ListAccountingPhonenumberResponseBody$outboundSchema;
     /** @deprecated use `ListAccountingPhonenumberResponseBody$Outbound` instead. */
     export type Outbound = ListAccountingPhonenumberResponseBody$Outbound;
+}
+
+/** @internal */
+export const ListAccountingPhonenumberResponse$inboundSchema: z.ZodType<
+    ListAccountingPhonenumberResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        Result: z.lazy(() => ListAccountingPhonenumberResponseBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Result: "result",
+        });
+    });
+
+/** @internal */
+export type ListAccountingPhonenumberResponse$Outbound = {
+    Result: ListAccountingPhonenumberResponseBody$Outbound;
+};
+
+/** @internal */
+export const ListAccountingPhonenumberResponse$outboundSchema: z.ZodType<
+    ListAccountingPhonenumberResponse$Outbound,
+    z.ZodTypeDef,
+    ListAccountingPhonenumberResponse
+> = z
+    .object({
+        result: z.lazy(() => ListAccountingPhonenumberResponseBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            result: "Result",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListAccountingPhonenumberResponse$ {
+    /** @deprecated use `ListAccountingPhonenumberResponse$inboundSchema` instead. */
+    export const inboundSchema = ListAccountingPhonenumberResponse$inboundSchema;
+    /** @deprecated use `ListAccountingPhonenumberResponse$outboundSchema` instead. */
+    export const outboundSchema = ListAccountingPhonenumberResponse$outboundSchema;
+    /** @deprecated use `ListAccountingPhonenumberResponse$Outbound` instead. */
+    export type Outbound = ListAccountingPhonenumberResponse$Outbound;
 }

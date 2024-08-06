@@ -31,6 +31,10 @@ export type ListFilestorageUsersResponseBody = {
     data: Array<components.UnifiedFilestorageUserOutput>;
 };
 
+export type ListFilestorageUsersResponse = {
+    result: ListFilestorageUsersResponseBody;
+};
+
 /** @internal */
 export const ListFilestorageUsersRequest$inboundSchema: z.ZodType<
     ListFilestorageUsersRequest,
@@ -144,4 +148,52 @@ export namespace ListFilestorageUsersResponseBody$ {
     export const outboundSchema = ListFilestorageUsersResponseBody$outboundSchema;
     /** @deprecated use `ListFilestorageUsersResponseBody$Outbound` instead. */
     export type Outbound = ListFilestorageUsersResponseBody$Outbound;
+}
+
+/** @internal */
+export const ListFilestorageUsersResponse$inboundSchema: z.ZodType<
+    ListFilestorageUsersResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        Result: z.lazy(() => ListFilestorageUsersResponseBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Result: "result",
+        });
+    });
+
+/** @internal */
+export type ListFilestorageUsersResponse$Outbound = {
+    Result: ListFilestorageUsersResponseBody$Outbound;
+};
+
+/** @internal */
+export const ListFilestorageUsersResponse$outboundSchema: z.ZodType<
+    ListFilestorageUsersResponse$Outbound,
+    z.ZodTypeDef,
+    ListFilestorageUsersResponse
+> = z
+    .object({
+        result: z.lazy(() => ListFilestorageUsersResponseBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            result: "Result",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListFilestorageUsersResponse$ {
+    /** @deprecated use `ListFilestorageUsersResponse$inboundSchema` instead. */
+    export const inboundSchema = ListFilestorageUsersResponse$inboundSchema;
+    /** @deprecated use `ListFilestorageUsersResponse$outboundSchema` instead. */
+    export const outboundSchema = ListFilestorageUsersResponse$outboundSchema;
+    /** @deprecated use `ListFilestorageUsersResponse$Outbound` instead. */
+    export type Outbound = ListFilestorageUsersResponse$Outbound;
 }

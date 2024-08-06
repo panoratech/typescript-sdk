@@ -31,6 +31,10 @@ export type ListAtsCandidateResponseBody = {
     data: Array<components.UnifiedAtsCandidateOutput>;
 };
 
+export type ListAtsCandidateResponse = {
+    result: ListAtsCandidateResponseBody;
+};
+
 /** @internal */
 export const ListAtsCandidateRequest$inboundSchema: z.ZodType<
     ListAtsCandidateRequest,
@@ -144,4 +148,52 @@ export namespace ListAtsCandidateResponseBody$ {
     export const outboundSchema = ListAtsCandidateResponseBody$outboundSchema;
     /** @deprecated use `ListAtsCandidateResponseBody$Outbound` instead. */
     export type Outbound = ListAtsCandidateResponseBody$Outbound;
+}
+
+/** @internal */
+export const ListAtsCandidateResponse$inboundSchema: z.ZodType<
+    ListAtsCandidateResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        Result: z.lazy(() => ListAtsCandidateResponseBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Result: "result",
+        });
+    });
+
+/** @internal */
+export type ListAtsCandidateResponse$Outbound = {
+    Result: ListAtsCandidateResponseBody$Outbound;
+};
+
+/** @internal */
+export const ListAtsCandidateResponse$outboundSchema: z.ZodType<
+    ListAtsCandidateResponse$Outbound,
+    z.ZodTypeDef,
+    ListAtsCandidateResponse
+> = z
+    .object({
+        result: z.lazy(() => ListAtsCandidateResponseBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            result: "Result",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListAtsCandidateResponse$ {
+    /** @deprecated use `ListAtsCandidateResponse$inboundSchema` instead. */
+    export const inboundSchema = ListAtsCandidateResponse$inboundSchema;
+    /** @deprecated use `ListAtsCandidateResponse$outboundSchema` instead. */
+    export const outboundSchema = ListAtsCandidateResponse$outboundSchema;
+    /** @deprecated use `ListAtsCandidateResponse$Outbound` instead. */
+    export type Outbound = ListAtsCandidateResponse$Outbound;
 }

@@ -31,6 +31,10 @@ export type ListTicketingCommentsResponseBody = {
     data: Array<components.UnifiedTicketingCommentOutput>;
 };
 
+export type ListTicketingCommentsResponse = {
+    result: ListTicketingCommentsResponseBody;
+};
+
 /** @internal */
 export const ListTicketingCommentsRequest$inboundSchema: z.ZodType<
     ListTicketingCommentsRequest,
@@ -144,4 +148,52 @@ export namespace ListTicketingCommentsResponseBody$ {
     export const outboundSchema = ListTicketingCommentsResponseBody$outboundSchema;
     /** @deprecated use `ListTicketingCommentsResponseBody$Outbound` instead. */
     export type Outbound = ListTicketingCommentsResponseBody$Outbound;
+}
+
+/** @internal */
+export const ListTicketingCommentsResponse$inboundSchema: z.ZodType<
+    ListTicketingCommentsResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        Result: z.lazy(() => ListTicketingCommentsResponseBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Result: "result",
+        });
+    });
+
+/** @internal */
+export type ListTicketingCommentsResponse$Outbound = {
+    Result: ListTicketingCommentsResponseBody$Outbound;
+};
+
+/** @internal */
+export const ListTicketingCommentsResponse$outboundSchema: z.ZodType<
+    ListTicketingCommentsResponse$Outbound,
+    z.ZodTypeDef,
+    ListTicketingCommentsResponse
+> = z
+    .object({
+        result: z.lazy(() => ListTicketingCommentsResponseBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            result: "Result",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListTicketingCommentsResponse$ {
+    /** @deprecated use `ListTicketingCommentsResponse$inboundSchema` instead. */
+    export const inboundSchema = ListTicketingCommentsResponse$inboundSchema;
+    /** @deprecated use `ListTicketingCommentsResponse$outboundSchema` instead. */
+    export const outboundSchema = ListTicketingCommentsResponse$outboundSchema;
+    /** @deprecated use `ListTicketingCommentsResponse$Outbound` instead. */
+    export type Outbound = ListTicketingCommentsResponse$Outbound;
 }

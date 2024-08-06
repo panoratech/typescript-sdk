@@ -31,6 +31,10 @@ export type ListHrisGroupsResponseBody = {
     data: Array<components.UnifiedHrisGroupOutput>;
 };
 
+export type ListHrisGroupsResponse = {
+    result: ListHrisGroupsResponseBody;
+};
+
 /** @internal */
 export const ListHrisGroupsRequest$inboundSchema: z.ZodType<
     ListHrisGroupsRequest,
@@ -144,4 +148,52 @@ export namespace ListHrisGroupsResponseBody$ {
     export const outboundSchema = ListHrisGroupsResponseBody$outboundSchema;
     /** @deprecated use `ListHrisGroupsResponseBody$Outbound` instead. */
     export type Outbound = ListHrisGroupsResponseBody$Outbound;
+}
+
+/** @internal */
+export const ListHrisGroupsResponse$inboundSchema: z.ZodType<
+    ListHrisGroupsResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        Result: z.lazy(() => ListHrisGroupsResponseBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Result: "result",
+        });
+    });
+
+/** @internal */
+export type ListHrisGroupsResponse$Outbound = {
+    Result: ListHrisGroupsResponseBody$Outbound;
+};
+
+/** @internal */
+export const ListHrisGroupsResponse$outboundSchema: z.ZodType<
+    ListHrisGroupsResponse$Outbound,
+    z.ZodTypeDef,
+    ListHrisGroupsResponse
+> = z
+    .object({
+        result: z.lazy(() => ListHrisGroupsResponseBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            result: "Result",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListHrisGroupsResponse$ {
+    /** @deprecated use `ListHrisGroupsResponse$inboundSchema` instead. */
+    export const inboundSchema = ListHrisGroupsResponse$inboundSchema;
+    /** @deprecated use `ListHrisGroupsResponse$outboundSchema` instead. */
+    export const outboundSchema = ListHrisGroupsResponse$outboundSchema;
+    /** @deprecated use `ListHrisGroupsResponse$Outbound` instead. */
+    export type Outbound = ListHrisGroupsResponse$Outbound;
 }

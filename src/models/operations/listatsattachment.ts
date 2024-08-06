@@ -31,6 +31,10 @@ export type ListAtsAttachmentResponseBody = {
     data: Array<components.UnifiedAtsAttachmentOutput>;
 };
 
+export type ListAtsAttachmentResponse = {
+    result: ListAtsAttachmentResponseBody;
+};
+
 /** @internal */
 export const ListAtsAttachmentRequest$inboundSchema: z.ZodType<
     ListAtsAttachmentRequest,
@@ -144,4 +148,52 @@ export namespace ListAtsAttachmentResponseBody$ {
     export const outboundSchema = ListAtsAttachmentResponseBody$outboundSchema;
     /** @deprecated use `ListAtsAttachmentResponseBody$Outbound` instead. */
     export type Outbound = ListAtsAttachmentResponseBody$Outbound;
+}
+
+/** @internal */
+export const ListAtsAttachmentResponse$inboundSchema: z.ZodType<
+    ListAtsAttachmentResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        Result: z.lazy(() => ListAtsAttachmentResponseBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Result: "result",
+        });
+    });
+
+/** @internal */
+export type ListAtsAttachmentResponse$Outbound = {
+    Result: ListAtsAttachmentResponseBody$Outbound;
+};
+
+/** @internal */
+export const ListAtsAttachmentResponse$outboundSchema: z.ZodType<
+    ListAtsAttachmentResponse$Outbound,
+    z.ZodTypeDef,
+    ListAtsAttachmentResponse
+> = z
+    .object({
+        result: z.lazy(() => ListAtsAttachmentResponseBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            result: "Result",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListAtsAttachmentResponse$ {
+    /** @deprecated use `ListAtsAttachmentResponse$inboundSchema` instead. */
+    export const inboundSchema = ListAtsAttachmentResponse$inboundSchema;
+    /** @deprecated use `ListAtsAttachmentResponse$outboundSchema` instead. */
+    export const outboundSchema = ListAtsAttachmentResponse$outboundSchema;
+    /** @deprecated use `ListAtsAttachmentResponse$Outbound` instead. */
+    export type Outbound = ListAtsAttachmentResponse$Outbound;
 }

@@ -31,6 +31,10 @@ export type ListAccountingCompanyInfosResponseBody = {
     data: Array<components.UnifiedAccountingCompanyinfoOutput>;
 };
 
+export type ListAccountingCompanyInfosResponse = {
+    result: ListAccountingCompanyInfosResponseBody;
+};
+
 /** @internal */
 export const ListAccountingCompanyInfosRequest$inboundSchema: z.ZodType<
     ListAccountingCompanyInfosRequest,
@@ -144,4 +148,52 @@ export namespace ListAccountingCompanyInfosResponseBody$ {
     export const outboundSchema = ListAccountingCompanyInfosResponseBody$outboundSchema;
     /** @deprecated use `ListAccountingCompanyInfosResponseBody$Outbound` instead. */
     export type Outbound = ListAccountingCompanyInfosResponseBody$Outbound;
+}
+
+/** @internal */
+export const ListAccountingCompanyInfosResponse$inboundSchema: z.ZodType<
+    ListAccountingCompanyInfosResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        Result: z.lazy(() => ListAccountingCompanyInfosResponseBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Result: "result",
+        });
+    });
+
+/** @internal */
+export type ListAccountingCompanyInfosResponse$Outbound = {
+    Result: ListAccountingCompanyInfosResponseBody$Outbound;
+};
+
+/** @internal */
+export const ListAccountingCompanyInfosResponse$outboundSchema: z.ZodType<
+    ListAccountingCompanyInfosResponse$Outbound,
+    z.ZodTypeDef,
+    ListAccountingCompanyInfosResponse
+> = z
+    .object({
+        result: z.lazy(() => ListAccountingCompanyInfosResponseBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            result: "Result",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListAccountingCompanyInfosResponse$ {
+    /** @deprecated use `ListAccountingCompanyInfosResponse$inboundSchema` instead. */
+    export const inboundSchema = ListAccountingCompanyInfosResponse$inboundSchema;
+    /** @deprecated use `ListAccountingCompanyInfosResponse$outboundSchema` instead. */
+    export const outboundSchema = ListAccountingCompanyInfosResponse$outboundSchema;
+    /** @deprecated use `ListAccountingCompanyInfosResponse$Outbound` instead. */
+    export type Outbound = ListAccountingCompanyInfosResponse$Outbound;
 }

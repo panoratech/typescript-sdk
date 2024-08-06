@@ -31,6 +31,10 @@ export type ListHrisBankInfoResponseBody = {
     data: Array<components.UnifiedHrisBankinfoOutput>;
 };
 
+export type ListHrisBankInfoResponse = {
+    result: ListHrisBankInfoResponseBody;
+};
+
 /** @internal */
 export const ListHrisBankInfoRequest$inboundSchema: z.ZodType<
     ListHrisBankInfoRequest,
@@ -144,4 +148,52 @@ export namespace ListHrisBankInfoResponseBody$ {
     export const outboundSchema = ListHrisBankInfoResponseBody$outboundSchema;
     /** @deprecated use `ListHrisBankInfoResponseBody$Outbound` instead. */
     export type Outbound = ListHrisBankInfoResponseBody$Outbound;
+}
+
+/** @internal */
+export const ListHrisBankInfoResponse$inboundSchema: z.ZodType<
+    ListHrisBankInfoResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        Result: z.lazy(() => ListHrisBankInfoResponseBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Result: "result",
+        });
+    });
+
+/** @internal */
+export type ListHrisBankInfoResponse$Outbound = {
+    Result: ListHrisBankInfoResponseBody$Outbound;
+};
+
+/** @internal */
+export const ListHrisBankInfoResponse$outboundSchema: z.ZodType<
+    ListHrisBankInfoResponse$Outbound,
+    z.ZodTypeDef,
+    ListHrisBankInfoResponse
+> = z
+    .object({
+        result: z.lazy(() => ListHrisBankInfoResponseBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            result: "Result",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListHrisBankInfoResponse$ {
+    /** @deprecated use `ListHrisBankInfoResponse$inboundSchema` instead. */
+    export const inboundSchema = ListHrisBankInfoResponse$inboundSchema;
+    /** @deprecated use `ListHrisBankInfoResponse$outboundSchema` instead. */
+    export const outboundSchema = ListHrisBankInfoResponse$outboundSchema;
+    /** @deprecated use `ListHrisBankInfoResponse$Outbound` instead. */
+    export type Outbound = ListHrisBankInfoResponse$Outbound;
 }

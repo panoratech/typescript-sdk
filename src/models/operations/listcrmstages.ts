@@ -31,6 +31,10 @@ export type ListCrmStagesResponseBody = {
     data: Array<components.UnifiedCrmStageOutput>;
 };
 
+export type ListCrmStagesResponse = {
+    result: ListCrmStagesResponseBody;
+};
+
 /** @internal */
 export const ListCrmStagesRequest$inboundSchema: z.ZodType<
     ListCrmStagesRequest,
@@ -144,4 +148,52 @@ export namespace ListCrmStagesResponseBody$ {
     export const outboundSchema = ListCrmStagesResponseBody$outboundSchema;
     /** @deprecated use `ListCrmStagesResponseBody$Outbound` instead. */
     export type Outbound = ListCrmStagesResponseBody$Outbound;
+}
+
+/** @internal */
+export const ListCrmStagesResponse$inboundSchema: z.ZodType<
+    ListCrmStagesResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        Result: z.lazy(() => ListCrmStagesResponseBody$inboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Result: "result",
+        });
+    });
+
+/** @internal */
+export type ListCrmStagesResponse$Outbound = {
+    Result: ListCrmStagesResponseBody$Outbound;
+};
+
+/** @internal */
+export const ListCrmStagesResponse$outboundSchema: z.ZodType<
+    ListCrmStagesResponse$Outbound,
+    z.ZodTypeDef,
+    ListCrmStagesResponse
+> = z
+    .object({
+        result: z.lazy(() => ListCrmStagesResponseBody$outboundSchema),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            result: "Result",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ListCrmStagesResponse$ {
+    /** @deprecated use `ListCrmStagesResponse$inboundSchema` instead. */
+    export const inboundSchema = ListCrmStagesResponse$inboundSchema;
+    /** @deprecated use `ListCrmStagesResponse$outboundSchema` instead. */
+    export const outboundSchema = ListCrmStagesResponse$outboundSchema;
+    /** @deprecated use `ListCrmStagesResponse$Outbound` instead. */
+    export type Outbound = ListCrmStagesResponse$Outbound;
 }
