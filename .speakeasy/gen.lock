@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: caaaa8c3-6dd7-43a5-841e-c3193e68cc73
 management:
-  docChecksum: 6285cb7ccee4454432a81b1d7aaf3a30
+  docChecksum: 4302e3a6306363cdae4631f35837a08f
   docVersion: "1.0"
   speakeasyVersion: 1.352.2
   generationVersion: 2.385.2
-  releaseVersion: 0.6.0
-  configChecksum: b367c72f5dc7f7633c5f0b19b3a43714
+  releaseVersion: 0.7.0
+  configChecksum: 667ddfd9e17e10eb9bff49fdaa24ee48
   repoURL: https://github.com/panoratech/typescript-sdk.git
   installationURL: https://github.com/panoratech/typescript-sdk
   published: true
@@ -23,7 +23,6 @@ features:
     groups: 2.81.2
     nameOverrides: 2.81.2
     nullables: 0.1.0
-    pagination: 2.82.6
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.1.0
@@ -164,17 +163,17 @@ generatedFiles:
   - src/models/components/webhookdto.ts
   - src/models/components/signatureverificationdto.ts
   - src/models/components/unifiedticketingticketoutput.ts
+  - src/models/components/unifiedticketingattachmentinput.ts
+  - src/models/components/unifiedticketingattachmentoutput.ts
+  - src/models/components/unifiedticketingtagoutput.ts
+  - src/models/components/unifiedticketingcollectionoutput.ts
   - src/models/components/unifiedticketingticketinput.ts
   - src/models/components/unifiedticketinguseroutput.ts
   - src/models/components/unifiedticketingaccountoutput.ts
   - src/models/components/unifiedticketingcontactoutput.ts
-  - src/models/components/unifiedticketingcollectionoutput.ts
   - src/models/components/unifiedticketingcommentoutput.ts
   - src/models/components/unifiedticketingcommentinput.ts
-  - src/models/components/unifiedticketingtagoutput.ts
   - src/models/components/unifiedticketingteamoutput.ts
-  - src/models/components/unifiedticketingattachmentoutput.ts
-  - src/models/components/unifiedticketingattachmentinput.ts
   - src/models/components/resyncstatusdto.ts
   - src/models/components/unifiedcrmcompanyoutput.ts
   - src/models/components/phone.ts
@@ -245,6 +244,7 @@ generatedFiles:
   - src/models/components/unifiedatsattachmentinput.ts
   - src/models/components/unifiedatscandidateoutput.ts
   - src/models/components/url.ts
+  - src/models/components/unifiedatstagoutput.ts
   - src/models/components/unifiedatscandidateinput.ts
   - src/models/components/unifiedatsdepartmentoutput.ts
   - src/models/components/unifiedatsinterviewoutput.ts
@@ -255,7 +255,6 @@ generatedFiles:
   - src/models/components/unifiedatsofficeoutput.ts
   - src/models/components/unifiedatsrejectreasonoutput.ts
   - src/models/components/unifiedatsscorecardoutput.ts
-  - src/models/components/unifiedatstagoutput.ts
   - src/models/components/unifiedatsuseroutput.ts
   - src/models/components/unifiedatseeocsoutput.ts
   - src/models/components/unifiedaccountingaccountoutput.ts
@@ -507,29 +506,39 @@ generatedFiles:
   - docs/models/components/signatureverificationdto.md
   - docs/models/components/status.md
   - docs/models/components/type.md
+  - docs/models/components/collections.md
+  - docs/models/components/tags.md
   - docs/models/components/priority.md
   - docs/models/components/unifiedticketingticketoutputcreatortype.md
+  - docs/models/components/unifiedticketingticketoutputattachments.md
   - docs/models/components/comment.md
+  - docs/models/components/attachments.md
   - docs/models/components/unifiedticketingticketoutput.md
+  - docs/models/components/unifiedticketingattachmentinput.md
+  - docs/models/components/unifiedticketingattachmentoutput.md
+  - docs/models/components/unifiedticketingtagoutput.md
+  - docs/models/components/collectiontype.md
+  - docs/models/components/unifiedticketingcollectionoutput.md
   - docs/models/components/unifiedticketingticketinputstatus.md
   - docs/models/components/unifiedticketingticketinputtype.md
+  - docs/models/components/unifiedticketingticketinputcollections.md
+  - docs/models/components/unifiedticketingticketinputtags.md
   - docs/models/components/unifiedticketingticketinputpriority.md
   - docs/models/components/unifiedticketingticketinputcreatortype.md
+  - docs/models/components/unifiedticketingticketinputcommentattachments.md
   - docs/models/components/unifiedticketingticketinputcomment.md
+  - docs/models/components/unifiedticketingticketinputattachments.md
   - docs/models/components/unifiedticketingticketinput.md
   - docs/models/components/unifiedticketinguseroutput.md
   - docs/models/components/unifiedticketingaccountoutput.md
   - docs/models/components/unifiedticketingcontactoutput.md
-  - docs/models/components/collectiontype.md
-  - docs/models/components/unifiedticketingcollectionoutput.md
   - docs/models/components/creatortype.md
+  - docs/models/components/unifiedticketingcommentoutputattachments.md
   - docs/models/components/unifiedticketingcommentoutput.md
   - docs/models/components/unifiedticketingcommentinputcreatortype.md
+  - docs/models/components/unifiedticketingcommentinputattachments.md
   - docs/models/components/unifiedticketingcommentinput.md
-  - docs/models/components/unifiedticketingtagoutput.md
   - docs/models/components/unifiedticketingteamoutput.md
-  - docs/models/components/unifiedticketingattachmentoutput.md
-  - docs/models/components/unifiedticketingattachmentinput.md
   - docs/models/components/vertical.md
   - docs/models/components/resyncstatusdtostatus.md
   - docs/models/components/resyncstatusdto.md
@@ -633,8 +642,15 @@ generatedFiles:
   - docs/models/components/unifiedatsattachmentoutput.md
   - docs/models/components/unifiedatsattachmentinputattachmenttype.md
   - docs/models/components/unifiedatsattachmentinput.md
+  - docs/models/components/unifiedatscandidateoutputattachments.md
+  - docs/models/components/applications.md
+  - docs/models/components/unifiedatscandidateoutputtags.md
   - docs/models/components/unifiedatscandidateoutput.md
   - docs/models/components/url.md
+  - docs/models/components/unifiedatstagoutput.md
+  - docs/models/components/unifiedatscandidateinputattachments.md
+  - docs/models/components/unifiedatscandidateinputapplications.md
+  - docs/models/components/unifiedatscandidateinputtags.md
   - docs/models/components/unifiedatscandidateinput.md
   - docs/models/components/unifiedatsdepartmentoutput.md
   - docs/models/components/unifiedatsinterviewoutputstatus.md
@@ -653,7 +669,6 @@ generatedFiles:
   - docs/models/components/unifiedatsrejectreasonoutput.md
   - docs/models/components/overallrecommendation.md
   - docs/models/components/unifiedatsscorecardoutput.md
-  - docs/models/components/unifiedatstagoutput.md
   - docs/models/components/accessrole.md
   - docs/models/components/unifiedatsuseroutput.md
   - docs/models/components/race.md
@@ -694,6 +709,7 @@ generatedFiles:
   - docs/models/components/unifiedfilestoragefileinput.md
   - docs/models/components/unifiedfilestoragefolderoutput.md
   - docs/models/components/unifiedfilestoragefolderinput.md
+  - docs/models/components/users.md
   - docs/models/components/unifiedfilestoragegroupoutput.md
   - docs/models/components/unifiedfilestorageuseroutput.md
   - docs/models/components/security.md
@@ -702,7 +718,6 @@ generatedFiles:
   - docs/models/operations/verifyeventresponsebody.md
   - docs/models/operations/listticketingticketrequest.md
   - docs/models/operations/listticketingticketresponsebody.md
-  - docs/models/operations/listticketingticketresponse.md
   - docs/models/operations/createticketingticketrequest.md
   - docs/models/operations/retrieveticketingticketrequest.md
   - docs/models/operations/listticketingusersrequest.md

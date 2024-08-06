@@ -3,6 +3,12 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
+import {
+    UnifiedTicketingAttachmentOutput,
+    UnifiedTicketingAttachmentOutput$inboundSchema,
+    UnifiedTicketingAttachmentOutput$Outbound,
+    UnifiedTicketingAttachmentOutput$outboundSchema,
+} from "./unifiedticketingattachmentoutput.js";
 import * as z from "zod";
 
 /**
@@ -12,6 +18,8 @@ export enum CreatorType {
     User = "USER",
     Contact = "CONTACT",
 }
+
+export type UnifiedTicketingCommentOutputAttachments = UnifiedTicketingAttachmentOutput | string;
 
 export type UnifiedTicketingCommentOutput = {
     /**
@@ -45,7 +53,7 @@ export type UnifiedTicketingCommentOutput = {
     /**
      * The attachements UUIDs tied to the comment
      */
-    attachments?: Array<string> | null | undefined;
+    attachments?: Array<UnifiedTicketingAttachmentOutput | string> | null | undefined;
     /**
      * The UUID of the comment
      */
@@ -88,6 +96,38 @@ export namespace CreatorType$ {
 }
 
 /** @internal */
+export const UnifiedTicketingCommentOutputAttachments$inboundSchema: z.ZodType<
+    UnifiedTicketingCommentOutputAttachments,
+    z.ZodTypeDef,
+    unknown
+> = z.union([UnifiedTicketingAttachmentOutput$inboundSchema, z.string()]);
+
+/** @internal */
+export type UnifiedTicketingCommentOutputAttachments$Outbound =
+    | UnifiedTicketingAttachmentOutput$Outbound
+    | string;
+
+/** @internal */
+export const UnifiedTicketingCommentOutputAttachments$outboundSchema: z.ZodType<
+    UnifiedTicketingCommentOutputAttachments$Outbound,
+    z.ZodTypeDef,
+    UnifiedTicketingCommentOutputAttachments
+> = z.union([UnifiedTicketingAttachmentOutput$outboundSchema, z.string()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UnifiedTicketingCommentOutputAttachments$ {
+    /** @deprecated use `UnifiedTicketingCommentOutputAttachments$inboundSchema` instead. */
+    export const inboundSchema = UnifiedTicketingCommentOutputAttachments$inboundSchema;
+    /** @deprecated use `UnifiedTicketingCommentOutputAttachments$outboundSchema` instead. */
+    export const outboundSchema = UnifiedTicketingCommentOutputAttachments$outboundSchema;
+    /** @deprecated use `UnifiedTicketingCommentOutputAttachments$Outbound` instead. */
+    export type Outbound = UnifiedTicketingCommentOutputAttachments$Outbound;
+}
+
+/** @internal */
 export const UnifiedTicketingCommentOutput$inboundSchema: z.ZodType<
     UnifiedTicketingCommentOutput,
     z.ZodTypeDef,
@@ -101,7 +141,11 @@ export const UnifiedTicketingCommentOutput$inboundSchema: z.ZodType<
         ticket_id: z.nullable(z.string()).optional(),
         contact_id: z.nullable(z.string()).optional(),
         user_id: z.nullable(z.string()).optional(),
-        attachments: z.nullable(z.array(z.string())).optional(),
+        attachments: z
+            .nullable(
+                z.array(z.union([UnifiedTicketingAttachmentOutput$inboundSchema, z.string()]))
+            )
+            .optional(),
         id: z.nullable(z.string()).optional(),
         remote_id: z.nullable(z.string()).optional(),
         remote_data: z.nullable(z.record(z.any())).optional(),
@@ -146,7 +190,7 @@ export type UnifiedTicketingCommentOutput$Outbound = {
     ticket_id?: string | null | undefined;
     contact_id?: string | null | undefined;
     user_id?: string | null | undefined;
-    attachments?: Array<string> | null | undefined;
+    attachments?: Array<UnifiedTicketingAttachmentOutput$Outbound | string> | null | undefined;
     id?: string | null | undefined;
     remote_id?: string | null | undefined;
     remote_data?: { [k: string]: any } | null | undefined;
@@ -168,7 +212,11 @@ export const UnifiedTicketingCommentOutput$outboundSchema: z.ZodType<
         ticketId: z.nullable(z.string()).optional(),
         contactId: z.nullable(z.string()).optional(),
         userId: z.nullable(z.string()).optional(),
-        attachments: z.nullable(z.array(z.string())).optional(),
+        attachments: z
+            .nullable(
+                z.array(z.union([UnifiedTicketingAttachmentOutput$outboundSchema, z.string()]))
+            )
+            .optional(),
         id: z.nullable(z.string()).optional(),
         remoteId: z.nullable(z.string()).optional(),
         remoteData: z.nullable(z.record(z.any())).optional(),

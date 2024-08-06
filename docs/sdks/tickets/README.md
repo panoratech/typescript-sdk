@@ -28,9 +28,8 @@ async function run() {
     cursor: "1b8b05bb-5273-4012-b520-8657b0b90874",
   });
 
-  for await (const page of result) {
-    // handle page
-  }
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -48,7 +47,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.ListTicketingTicketResponse](../../models/operations/listticketingticketresponse.md)\>**
+**Promise\<[operations.ListTicketingTicketResponseBody](../../models/operations/listticketingticketresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -85,7 +84,9 @@ async function run() {
       dueDate: new Date("2024-10-01T12:00:00Z"),
       type: UnifiedTicketingTicketInputType.Bug,
       parentTicket: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-      collections: "[\"801f9ede-c698-4e66-a7fc-48d19eebaa4f\"]",
+      collections: [
+        "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      ],
       tags: [
         "my_tag",
         "urgent_tag",
