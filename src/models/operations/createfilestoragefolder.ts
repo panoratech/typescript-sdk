@@ -11,7 +11,10 @@ export type CreateFilestorageFolderRequest = {
      * The connection token
      */
     xConnectionToken: string;
-    remoteData: boolean;
+    /**
+     * Set to true to include data from the original Accounting software.
+     */
+    remoteData?: boolean | undefined;
     unifiedFilestorageFolderInput: components.UnifiedFilestorageFolderInput;
 };
 
@@ -23,7 +26,7 @@ export const CreateFilestorageFolderRequest$inboundSchema: z.ZodType<
 > = z
     .object({
         "x-connection-token": z.string(),
-        remote_data: z.boolean(),
+        remote_data: z.boolean().optional(),
         UnifiedFilestorageFolderInput: components.UnifiedFilestorageFolderInput$inboundSchema,
     })
     .transform((v) => {
@@ -37,7 +40,7 @@ export const CreateFilestorageFolderRequest$inboundSchema: z.ZodType<
 /** @internal */
 export type CreateFilestorageFolderRequest$Outbound = {
     "x-connection-token": string;
-    remote_data: boolean;
+    remote_data?: boolean | undefined;
     UnifiedFilestorageFolderInput: components.UnifiedFilestorageFolderInput$Outbound;
 };
 
@@ -49,7 +52,7 @@ export const CreateFilestorageFolderRequest$outboundSchema: z.ZodType<
 > = z
     .object({
         xConnectionToken: z.string(),
-        remoteData: z.boolean(),
+        remoteData: z.boolean().optional(),
         unifiedFilestorageFolderInput: components.UnifiedFilestorageFolderInput$outboundSchema,
     })
     .transform((v) => {

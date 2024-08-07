@@ -159,3 +159,13 @@ Based on:
 - [typescript v0.8.1] .
 ### Releases
 - [NPM v0.8.1] https://www.npmjs.com/package/@panora/sdk/v/0.8.1 - .
+
+## 2024-08-07 01:02:56
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.355.0 (2.387.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.9.0] .
+### Releases
+- [NPM v0.9.0] https://www.npmjs.com/package/@panora/sdk/v/0.9.0 - .

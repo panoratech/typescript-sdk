@@ -1,19 +1,20 @@
 lockVersion: 2.0.0
 id: caaaa8c3-6dd7-43a5-841e-c3193e68cc73
 management:
-  docChecksum: f31581b6c385b4f8f05068b0f2598833
+  docChecksum: 0ec320fe6c4af64ca01910309ed024e7
   docVersion: "1.0"
-  speakeasyVersion: 1.352.2
-  generationVersion: 2.385.2
-  releaseVersion: 0.8.1
-  configChecksum: 498967b334f13ae4c825fac0e7b0a978
+  speakeasyVersion: 1.355.0
+  generationVersion: 2.387.0
+  releaseVersion: 0.9.0
+  configChecksum: 94707cc0064bba1ab19e9a698377b3b6
   repoURL: https://github.com/panoratech/typescript-sdk.git
   installationURL: https://github.com/panoratech/typescript-sdk
   published: true
 features:
   typescript:
     additionalDependencies: 0.1.0
-    core: 3.11.13
+    constsAndDefaults: 0.1.6
+    core: 3.12.1
     defaultEnabledRetries: 0.1.0
     envVarSecurityUsage: 0.1.1
     globalSecurity: 2.82.10
@@ -29,6 +30,237 @@ features:
     sdkHooks: 0.1.0
     unions: 2.85.6
 generatedFiles:
+  - src/funcs/hello.ts
+  - src/funcs/health.ts
+  - src/funcs/connectionsGetConnections.ts
+  - src/funcs/webhooksList.ts
+  - src/funcs/webhooksCreate.ts
+  - src/funcs/webhooksDelete.ts
+  - src/funcs/webhooksUpdateStatus.ts
+  - src/funcs/webhooksVerifyEvent.ts
+  - src/funcs/syncStatus.ts
+  - src/funcs/syncResync.ts
+  - src/funcs/linkedUsersCreate.ts
+  - src/funcs/linkedUsersList.ts
+  - src/funcs/linkedUsersImportBatch.ts
+  - src/funcs/linkedUsersRetrieve.ts
+  - src/funcs/linkedUsersRemoteId.ts
+  - src/funcs/projectsGetProjects.ts
+  - src/funcs/projectsCreate.ts
+  - src/funcs/fieldMappingsGetFieldMappingValues.ts
+  - src/funcs/fieldMappingsGetFieldMappingsEntities.ts
+  - src/funcs/fieldMappingsGetFieldMappings.ts
+  - src/funcs/fieldMappingsDefinitions.ts
+  - src/funcs/fieldMappingsDefineCustomField.ts
+  - src/funcs/fieldMappingsMap.ts
+  - src/funcs/eventsGetPanoraCoreEvents.ts
+  - src/funcs/passthroughRequest.ts
+  - src/funcs/authLoginSignIn.ts
+  - src/funcs/ticketingTicketsList.ts
+  - src/funcs/ticketingTicketsCreate.ts
+  - src/funcs/ticketingTicketsRetrieve.ts
+  - src/funcs/ticketingUsersList.ts
+  - src/funcs/ticketingUsersRetrieve.ts
+  - src/funcs/ticketingAccountsList.ts
+  - src/funcs/ticketingAccountsRetrieve.ts
+  - src/funcs/ticketingContactsList.ts
+  - src/funcs/ticketingContactsRetrieve.ts
+  - src/funcs/ticketingCollectionsList.ts
+  - src/funcs/ticketingCollectionsRetrieve.ts
+  - src/funcs/ticketingCommentsList.ts
+  - src/funcs/ticketingCommentsCreate.ts
+  - src/funcs/ticketingCommentsRetrieve.ts
+  - src/funcs/ticketingTagsList.ts
+  - src/funcs/ticketingTagsRetrieve.ts
+  - src/funcs/ticketingTeamsList.ts
+  - src/funcs/ticketingTeamsRetrieve.ts
+  - src/funcs/ticketingAttachmentsList.ts
+  - src/funcs/ticketingAttachmentsCreate.ts
+  - src/funcs/ticketingAttachmentsRetrieve.ts
+  - src/funcs/crmCompaniesList.ts
+  - src/funcs/crmCompaniesCreate.ts
+  - src/funcs/crmCompaniesRetrieve.ts
+  - src/funcs/crmContactsList.ts
+  - src/funcs/crmContactsCreate.ts
+  - src/funcs/crmContactsRetrieve.ts
+  - src/funcs/crmDealsList.ts
+  - src/funcs/crmDealsCreate.ts
+  - src/funcs/crmDealsRetrieve.ts
+  - src/funcs/crmEngagementsList.ts
+  - src/funcs/crmEngagementsCreate.ts
+  - src/funcs/crmEngagementsRetrieve.ts
+  - src/funcs/crmNotesList.ts
+  - src/funcs/crmNotesCreate.ts
+  - src/funcs/crmNotesRetrieve.ts
+  - src/funcs/crmStagesList.ts
+  - src/funcs/crmStagesRetrieve.ts
+  - src/funcs/crmTasksList.ts
+  - src/funcs/crmTasksCreate.ts
+  - src/funcs/crmTasksRetrieve.ts
+  - src/funcs/crmUsersList.ts
+  - src/funcs/crmUsersRetrieve.ts
+  - src/funcs/passthroughRetryidGetRetriedRequestResponse.ts
+  - src/funcs/hrisBankinfosList.ts
+  - src/funcs/hrisBankinfosRetrieve.ts
+  - src/funcs/hrisBenefitsList.ts
+  - src/funcs/hrisBenefitsRetrieve.ts
+  - src/funcs/hrisCompaniesList.ts
+  - src/funcs/hrisCompaniesRetrieve.ts
+  - src/funcs/hrisDependentsList.ts
+  - src/funcs/hrisDependentsRetrieve.ts
+  - src/funcs/hrisEmployeepayrollrunsList.ts
+  - src/funcs/hrisEmployeepayrollrunsRetrieve.ts
+  - src/funcs/hrisEmployeesList.ts
+  - src/funcs/hrisEmployeesCreate.ts
+  - src/funcs/hrisEmployeesRetrieve.ts
+  - src/funcs/hrisEmployerbenefitsList.ts
+  - src/funcs/hrisEmployerbenefitsRetrieve.ts
+  - src/funcs/hrisEmploymentsList.ts
+  - src/funcs/hrisEmploymentsRetrieve.ts
+  - src/funcs/hrisGroupsList.ts
+  - src/funcs/hrisGroupsRetrieve.ts
+  - src/funcs/hrisLocationsList.ts
+  - src/funcs/hrisLocationsRetrieve.ts
+  - src/funcs/hrisPaygroupsList.ts
+  - src/funcs/hrisPaygroupsRetrieve.ts
+  - src/funcs/hrisPayrollrunsList.ts
+  - src/funcs/hrisPayrollrunsRetrieve.ts
+  - src/funcs/hrisTimeoffsList.ts
+  - src/funcs/hrisTimeoffsCreate.ts
+  - src/funcs/hrisTimeoffsRetrieve.ts
+  - src/funcs/hrisTimeoffbalancesList.ts
+  - src/funcs/hrisTimeoffbalancesRetrieve.ts
+  - src/funcs/marketingautomationActionsList.ts
+  - src/funcs/marketingautomationActionsCreate.ts
+  - src/funcs/marketingautomationActionsRetrieve.ts
+  - src/funcs/marketingautomationAutomationsList.ts
+  - src/funcs/marketingautomationAutomationsCreate.ts
+  - src/funcs/marketingautomationAutomationsRetrieve.ts
+  - src/funcs/marketingautomationCampaignsList.ts
+  - src/funcs/marketingautomationCampaignsCreate.ts
+  - src/funcs/marketingautomationCampaignsRetrieve.ts
+  - src/funcs/marketingautomationContactsList.ts
+  - src/funcs/marketingautomationContactsCreate.ts
+  - src/funcs/marketingautomationContactsRetrieve.ts
+  - src/funcs/marketingautomationEmailsList.ts
+  - src/funcs/marketingautomationEmailsRetrieve.ts
+  - src/funcs/marketingautomationEventsList.ts
+  - src/funcs/marketingautomationEventsRetrieve.ts
+  - src/funcs/marketingautomationListsList.ts
+  - src/funcs/marketingautomationListsCreate.ts
+  - src/funcs/marketingautomationListsRetrieve.ts
+  - src/funcs/marketingautomationMessagesList.ts
+  - src/funcs/marketingautomationMessagesRetrieve.ts
+  - src/funcs/marketingautomationTemplatesList.ts
+  - src/funcs/marketingautomationTemplatesCreate.ts
+  - src/funcs/marketingautomationTemplatesRetrieve.ts
+  - src/funcs/marketingautomationUsersList.ts
+  - src/funcs/marketingautomationUsersRetrieve.ts
+  - src/funcs/atsActivitiesList.ts
+  - src/funcs/atsActivitiesCreate.ts
+  - src/funcs/atsActivitiesRetrieve.ts
+  - src/funcs/atsApplicationsList.ts
+  - src/funcs/atsApplicationsCreate.ts
+  - src/funcs/atsApplicationsRetrieve.ts
+  - src/funcs/atsAttachmentsList.ts
+  - src/funcs/atsAttachmentsCreate.ts
+  - src/funcs/atsAttachmentsRetrieve.ts
+  - src/funcs/atsCandidatesList.ts
+  - src/funcs/atsCandidatesCreate.ts
+  - src/funcs/atsCandidatesRetrieve.ts
+  - src/funcs/atsDepartmentsList.ts
+  - src/funcs/atsDepartmentsRetrieve.ts
+  - src/funcs/atsInterviewsList.ts
+  - src/funcs/atsInterviewsCreate.ts
+  - src/funcs/atsInterviewsRetrieve.ts
+  - src/funcs/atsJobinterviewstagesList.ts
+  - src/funcs/atsJobinterviewstagesRetrieve.ts
+  - src/funcs/atsJobsList.ts
+  - src/funcs/atsJobsRetrieve.ts
+  - src/funcs/atsOffersList.ts
+  - src/funcs/atsOffersRetrieve.ts
+  - src/funcs/atsOfficesList.ts
+  - src/funcs/atsOfficesRetrieve.ts
+  - src/funcs/atsRejectreasonsList.ts
+  - src/funcs/atsRejectreasonsRetrieve.ts
+  - src/funcs/atsScorecardsList.ts
+  - src/funcs/atsScorecardsRetrieve.ts
+  - src/funcs/atsTagsList.ts
+  - src/funcs/atsTagsRetrieve.ts
+  - src/funcs/atsUsersList.ts
+  - src/funcs/atsUsersRetrieve.ts
+  - src/funcs/atsEeocsList.ts
+  - src/funcs/atsEeocsRetrieve.ts
+  - src/funcs/accountingAccountsList.ts
+  - src/funcs/accountingAccountsCreate.ts
+  - src/funcs/accountingAccountsRetrieve.ts
+  - src/funcs/accountingAddressesList.ts
+  - src/funcs/accountingAddressesRetrieve.ts
+  - src/funcs/accountingAttachmentsList.ts
+  - src/funcs/accountingAttachmentsCreate.ts
+  - src/funcs/accountingAttachmentsRetrieve.ts
+  - src/funcs/accountingBalancesheetsList.ts
+  - src/funcs/accountingBalancesheetsRetrieve.ts
+  - src/funcs/accountingCashflowstatementsList.ts
+  - src/funcs/accountingCashflowstatementsRetrieve.ts
+  - src/funcs/accountingCompanyinfosList.ts
+  - src/funcs/accountingCompanyinfosRetrieve.ts
+  - src/funcs/accountingContactsList.ts
+  - src/funcs/accountingContactsCreate.ts
+  - src/funcs/accountingContactsRetrieve.ts
+  - src/funcs/accountingCreditnotesList.ts
+  - src/funcs/accountingCreditnotesRetrieve.ts
+  - src/funcs/accountingExpensesList.ts
+  - src/funcs/accountingExpensesCreate.ts
+  - src/funcs/accountingExpensesRetrieve.ts
+  - src/funcs/accountingIncomestatementsList.ts
+  - src/funcs/accountingIncomestatementsRetrieve.ts
+  - src/funcs/accountingInvoicesList.ts
+  - src/funcs/accountingInvoicesCreate.ts
+  - src/funcs/accountingInvoicesRetrieve.ts
+  - src/funcs/accountingItemsList.ts
+  - src/funcs/accountingItemsRetrieve.ts
+  - src/funcs/accountingJournalentriesList.ts
+  - src/funcs/accountingJournalentriesCreate.ts
+  - src/funcs/accountingJournalentriesRetrieve.ts
+  - src/funcs/accountingPaymentsList.ts
+  - src/funcs/accountingPaymentsCreate.ts
+  - src/funcs/accountingPaymentsRetrieve.ts
+  - src/funcs/accountingPhonenumbersList.ts
+  - src/funcs/accountingPhonenumbersRetrieve.ts
+  - src/funcs/accountingPurchaseordersList.ts
+  - src/funcs/accountingPurchaseordersCreate.ts
+  - src/funcs/accountingPurchaseordersRetrieve.ts
+  - src/funcs/accountingTaxratesList.ts
+  - src/funcs/accountingTaxratesRetrieve.ts
+  - src/funcs/accountingTrackingcategoriesList.ts
+  - src/funcs/accountingTrackingcategoriesRetrieve.ts
+  - src/funcs/accountingTransactionsList.ts
+  - src/funcs/accountingTransactionsRetrieve.ts
+  - src/funcs/accountingVendorcreditsList.ts
+  - src/funcs/accountingVendorcreditsRetrieve.ts
+  - src/funcs/filestorageDrivesList.ts
+  - src/funcs/filestorageDrivesRetrieve.ts
+  - src/funcs/filestorageFilesList.ts
+  - src/funcs/filestorageFilesCreate.ts
+  - src/funcs/filestorageFilesRetrieve.ts
+  - src/funcs/filestorageFoldersList.ts
+  - src/funcs/filestorageFoldersCreate.ts
+  - src/funcs/filestorageFoldersRetrieve.ts
+  - src/funcs/filestorageGroupsList.ts
+  - src/funcs/filestorageGroupsRetrieve.ts
+  - src/funcs/filestorageUsersList.ts
+  - src/funcs/filestorageUsersRetrieve.ts
+  - src/funcs/ecommerceProductsList.ts
+  - src/funcs/ecommerceProductsCreate.ts
+  - src/funcs/ecommerceProductsRetrieve.ts
+  - src/funcs/ecommerceOrdersList.ts
+  - src/funcs/ecommerceOrdersCreate.ts
+  - src/funcs/ecommerceOrdersRetrieve.ts
+  - src/funcs/ecommerceCustomersList.ts
+  - src/funcs/ecommerceCustomersRetrieve.ts
+  - src/funcs/ecommerceFulfillmentsList.ts
+  - src/funcs/ecommerceFulfillmentsRetrieve.ts
   - src/sdk/login.ts
   - src/sdk/auth.ts
   - src/sdk/connections.ts
@@ -57,6 +289,7 @@ generatedFiles:
   - src/sdk/projects.ts
   - src/sdk/fieldmappings.ts
   - src/sdk/events.ts
+  - src/sdk/retryid.ts
   - src/sdk/passthrough.ts
   - src/sdk/bankinfos.ts
   - src/sdk/benefits.ts
@@ -127,12 +360,18 @@ generatedFiles:
   - src/sdk/panoragroups.ts
   - src/sdk/panorafilestorageusers.ts
   - src/sdk/filestorage.ts
+  - src/sdk/products.ts
+  - src/sdk/orders.ts
+  - src/sdk/customers.ts
+  - src/sdk/fulfillments.ts
+  - src/sdk/ecommerce.ts
   - src/sdk/sdk.ts
   - .eslintrc.cjs
   - .npmignore
   - RUNTIMES.md
   - jsr.json
   - package.json
+  - src/core.ts
   - src/index.ts
   - src/lib/base64.ts
   - src/lib/config.ts
@@ -203,7 +442,6 @@ generatedFiles:
   - src/models/components/customfieldcreatedto.ts
   - src/models/components/mapfieldtoproviderdto.ts
   - src/models/components/eventresponse.ts
-  - src/models/components/passthroughresponse.ts
   - src/models/components/passthroughrequestdto.ts
   - src/models/components/unifiedhrisbankinfooutput.ts
   - src/models/components/unifiedhrisbenefitoutput.ts
@@ -293,6 +531,12 @@ generatedFiles:
   - src/models/components/unifiedfilestoragefolderinput.ts
   - src/models/components/unifiedfilestoragegroupoutput.ts
   - src/models/components/unifiedfilestorageuseroutput.ts
+  - src/models/components/unifiedecommerceproductoutput.ts
+  - src/models/components/unifiedecommerceproductinput.ts
+  - src/models/components/unifiedecommerceorderoutput.ts
+  - src/models/components/unifiedecommerceorderinput.ts
+  - src/models/components/unifiedecommercecustomeroutput.ts
+  - src/models/components/unifiedecommercefulfillmentoutput.ts
   - src/models/components/security.ts
   - src/models/operations/delete.ts
   - src/models/operations/updatestatus.ts
@@ -345,6 +589,7 @@ generatedFiles:
   - src/models/operations/remoteid.ts
   - src/models/operations/getpanoracoreevents.ts
   - src/models/operations/request.ts
+  - src/models/operations/getretriedrequestresponse.ts
   - src/models/operations/listhrisbankinfo.ts
   - src/models/operations/retrievehrisbankinfo.ts
   - src/models/operations/listhrisbenefits.ts
@@ -496,6 +741,16 @@ generatedFiles:
   - src/models/operations/retrievefilestoragegroup.ts
   - src/models/operations/listfilestorageusers.ts
   - src/models/operations/retrievefilestorageuser.ts
+  - src/models/operations/listecommerceproducts.ts
+  - src/models/operations/createecommerceproduct.ts
+  - src/models/operations/retrieveecommerceproduct.ts
+  - src/models/operations/listecommerceorders.ts
+  - src/models/operations/createecommerceorder.ts
+  - src/models/operations/retrieveecommerceorder.ts
+  - src/models/operations/listecommercecustomers.ts
+  - src/models/operations/retrieveecommercecustomer.ts
+  - src/models/operations/listecommercefulfillments.ts
+  - src/models/operations/retrieveecommercefulfillment.ts
   - src/models/errors/index.ts
   - src/models/components/index.ts
   - src/models/operations/index.ts
@@ -594,10 +849,10 @@ generatedFiles:
   - docs/models/components/eventresponsestatus.md
   - docs/models/components/method.md
   - docs/models/components/eventresponse.md
-  - docs/models/components/passthroughresponsedata.md
-  - docs/models/components/passthroughresponse.md
   - docs/models/components/passthroughrequestdtomethod.md
   - docs/models/components/data.md
+  - docs/models/components/requestformat.md
+  - docs/models/components/headers.md
   - docs/models/components/passthroughrequestdto.md
   - docs/models/components/unifiedhrisbankinfooutput.md
   - docs/models/components/unifiedhrisbenefitoutput.md
@@ -713,6 +968,28 @@ generatedFiles:
   - docs/models/components/users.md
   - docs/models/components/unifiedfilestoragegroupoutput.md
   - docs/models/components/unifiedfilestorageuseroutput.md
+  - docs/models/components/variants.md
+  - docs/models/components/fieldmappings.md
+  - docs/models/components/remotedata.md
+  - docs/models/components/unifiedecommerceproductoutput.md
+  - docs/models/components/unifiedecommerceproductinputvariants.md
+  - docs/models/components/unifiedecommerceproductinputfieldmappings.md
+  - docs/models/components/unifiedecommerceproductinput.md
+  - docs/models/components/items.md
+  - docs/models/components/unifiedecommerceorderoutputfieldmappings.md
+  - docs/models/components/unifiedecommerceorderoutputremotedata.md
+  - docs/models/components/unifiedecommerceorderoutput.md
+  - docs/models/components/unifiedecommerceorderinputitems.md
+  - docs/models/components/unifiedecommerceorderinputfieldmappings.md
+  - docs/models/components/unifiedecommerceorderinput.md
+  - docs/models/components/addresses.md
+  - docs/models/components/unifiedecommercecustomeroutputfieldmappings.md
+  - docs/models/components/unifiedecommercecustomeroutputremotedata.md
+  - docs/models/components/unifiedecommercecustomeroutput.md
+  - docs/models/components/unifiedecommercefulfillmentoutputitems.md
+  - docs/models/components/unifiedecommercefulfillmentoutputfieldmappings.md
+  - docs/models/components/unifiedecommercefulfillmentoutputremotedata.md
+  - docs/models/components/unifiedecommercefulfillmentoutput.md
   - docs/models/components/security.md
   - docs/models/operations/deleterequest.md
   - docs/models/operations/updatestatusrequest.md
@@ -802,6 +1079,10 @@ generatedFiles:
   - docs/models/operations/remoteidrequest.md
   - docs/models/operations/getpanoracoreeventsrequest.md
   - docs/models/operations/requestrequest.md
+  - docs/models/operations/requestpassthroughresponsebody.md
+  - docs/models/operations/requestresponsebody.md
+  - docs/models/operations/requestresponse.md
+  - docs/models/operations/getretriedrequestresponserequest.md
   - docs/models/operations/listhrisbankinforequest.md
   - docs/models/operations/listhrisbankinforesponsebody.md
   - docs/models/operations/listhrisbankinforesponse.md
@@ -1081,6 +1362,24 @@ generatedFiles:
   - docs/models/operations/listfilestorageusersresponsebody.md
   - docs/models/operations/listfilestorageusersresponse.md
   - docs/models/operations/retrievefilestorageuserrequest.md
+  - docs/models/operations/listecommerceproductsrequest.md
+  - docs/models/operations/listecommerceproductsresponsebody.md
+  - docs/models/operations/listecommerceproductsresponse.md
+  - docs/models/operations/createecommerceproductrequest.md
+  - docs/models/operations/retrieveecommerceproductrequest.md
+  - docs/models/operations/listecommerceordersrequest.md
+  - docs/models/operations/listecommerceordersresponsebody.md
+  - docs/models/operations/listecommerceordersresponse.md
+  - docs/models/operations/createecommerceorderrequest.md
+  - docs/models/operations/retrieveecommerceorderrequest.md
+  - docs/models/operations/listecommercecustomersrequest.md
+  - docs/models/operations/listecommercecustomersresponsebody.md
+  - docs/models/operations/listecommercecustomersresponse.md
+  - docs/models/operations/retrieveecommercecustomerrequest.md
+  - docs/models/operations/listecommercefulfillmentsrequest.md
+  - docs/models/operations/listecommercefulfillmentsresponsebody.md
+  - docs/models/operations/listecommercefulfillmentsresponse.md
+  - docs/models/operations/retrieveecommercefulfillmentrequest.md
   - docs/lib/utils/retryconfig.md
   - docs/sdks/panora/README.md
   - docs/sdks/auth/README.md
@@ -1112,6 +1411,7 @@ generatedFiles:
   - docs/sdks/fieldmappings/README.md
   - docs/sdks/events/README.md
   - docs/sdks/passthrough/README.md
+  - docs/sdks/retryid/README.md
   - docs/sdks/hris/README.md
   - docs/sdks/bankinfos/README.md
   - docs/sdks/benefits/README.md
@@ -1181,6 +1481,11 @@ generatedFiles:
   - docs/sdks/folders/README.md
   - docs/sdks/panoragroups/README.md
   - docs/sdks/panorafilestorageusers/README.md
+  - docs/sdks/ecommerce/README.md
+  - docs/sdks/products/README.md
+  - docs/sdks/orders/README.md
+  - docs/sdks/customers/README.md
+  - docs/sdks/fulfillments/README.md
   - USAGE.md
   - .gitattributes
   - src/hooks/hooks.ts

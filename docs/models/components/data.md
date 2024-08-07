@@ -1,17 +1,7 @@
 # Data
 
 
-## Supported Types
+## Fields
 
-### `{ [k: string]: any }`
-
-```typescript
-const value: { [k: string]: any } = /* values here */
-```
-
-### `{ [k: string]: any }[]`
-
-```typescript
-const value: { [k: string]: any }[] = /* values here */
-```
-
+| Field       | Type        | Required    | Description |
+| ----------- | ----------- | ----------- | ----------- |
