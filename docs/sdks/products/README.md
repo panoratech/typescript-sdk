@@ -3,13 +3,13 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Products
+* [list](#list) - List Products
 * [create](#create) - Create Products
-* [retrieve](#retrieve) - Retrieve a Product
+* [retrieve](#retrieve) - Retrieve Products
 
 ## list
 
-List a batch of Products
+List Products
 
 ### Example Usage
 
@@ -63,6 +63,7 @@ Create Products in any supported Ecommerce software
 
 ```typescript
 import { Panora } from "@panora/sdk";
+import { UnifiedEcommerceProductInputProductStatus } from "@panora/sdk/models/components";
 
 const panora = new Panora({
   apiKey: "<YOUR_API_KEY_HERE>",
@@ -72,7 +73,23 @@ async function run() {
   const result = await panora.ecommerce.products.create({
     xConnectionToken: "<value>",
     remoteData: false,
-    unifiedEcommerceProductInput: {},
+    unifiedEcommerceProductInput: {
+      productUrl: "https://product_url/tee",
+      productType: "teeshirt",
+      productStatus: UnifiedEcommerceProductInputProductStatus.Active,
+      imagesUrls: [
+        "https://myproduct/image",
+      ],
+      description: "best tee ever",
+      vendor: "vendor_extern",
+      variants: [
+        {},
+      ],
+      tags: [
+        "tag_1",
+      ],
+      fieldMappings: {},
+    },
   });
 
   // Handle the result
@@ -103,7 +120,7 @@ run();
 
 ## retrieve
 
-Retrieve a product from any connected Ats software
+Retrieve products from any connected Ats software
 
 ### Example Usage
 

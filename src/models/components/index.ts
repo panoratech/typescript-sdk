@@ -141,5 +141,6 @@ export * from "./unifiedticketingticketinput.js";
 export * from "./unifiedticketingticketoutput.js";
 export * from "./unifiedticketinguseroutput.js";
 export * from "./url.js";
+export * from "./variant.js";
 export * from "./webhookdto.js";
 export * from "./webhookresponse.js";

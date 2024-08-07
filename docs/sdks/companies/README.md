@@ -87,10 +87,10 @@ async function run() {
       addresses: [
         {
           street1: "5th Avenue",
-          street2: "<value>",
+          street2: "Street 2",
           city: "New York",
           state: "NY",
-          postalCode: "46842",
+          postalCode: "10001",
           country: "USA",
           addressType: AddressType.Work,
           ownerType: "<value>",

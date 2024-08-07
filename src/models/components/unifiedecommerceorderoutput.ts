@@ -6,6 +6,174 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
 /**
+ * The currency of the order. Authorized value must be of type CurrencyCode (ISO 4217)
+ */
+export enum Currency {
+    Aed = "AED",
+    Afn = "AFN",
+    All = "ALL",
+    Amd = "AMD",
+    Ang = "ANG",
+    Aoa = "AOA",
+    Ars = "ARS",
+    Aud = "AUD",
+    Awg = "AWG",
+    Azn = "AZN",
+    Bam = "BAM",
+    Bbd = "BBD",
+    Bdt = "BDT",
+    Bgn = "BGN",
+    Bhd = "BHD",
+    Bif = "BIF",
+    Bmd = "BMD",
+    Bnd = "BND",
+    Bob = "BOB",
+    Brl = "BRL",
+    Bsd = "BSD",
+    Btn = "BTN",
+    Bwp = "BWP",
+    Byn = "BYN",
+    Bzd = "BZD",
+    Cad = "CAD",
+    Cdf = "CDF",
+    Chf = "CHF",
+    Clp = "CLP",
+    Cny = "CNY",
+    Cop = "COP",
+    Crc = "CRC",
+    Cup = "CUP",
+    Cve = "CVE",
+    Czk = "CZK",
+    Djf = "DJF",
+    Dkk = "DKK",
+    Dop = "DOP",
+    Dzd = "DZD",
+    Egp = "EGP",
+    Ern = "ERN",
+    Etb = "ETB",
+    Eur = "EUR",
+    Fjd = "FJD",
+    Fkp = "FKP",
+    Fok = "FOK",
+    Gbp = "GBP",
+    Gel = "GEL",
+    Ggp = "GGP",
+    Ghs = "GHS",
+    Gip = "GIP",
+    Gmd = "GMD",
+    Gnf = "GNF",
+    Gtq = "GTQ",
+    Gyd = "GYD",
+    Hkd = "HKD",
+    Hnl = "HNL",
+    Hrk = "HRK",
+    Htg = "HTG",
+    Huf = "HUF",
+    Idr = "IDR",
+    Ils = "ILS",
+    Imp = "IMP",
+    Inr = "INR",
+    Iqd = "IQD",
+    Irr = "IRR",
+    Isk = "ISK",
+    Jep = "JEP",
+    Jmd = "JMD",
+    Jod = "JOD",
+    Jpy = "JPY",
+    Kes = "KES",
+    Kgs = "KGS",
+    Khr = "KHR",
+    Kid = "KID",
+    Kmf = "KMF",
+    Krw = "KRW",
+    Kwd = "KWD",
+    Kyd = "KYD",
+    Kzt = "KZT",
+    Lak = "LAK",
+    Lbp = "LBP",
+    Lkr = "LKR",
+    Lrd = "LRD",
+    Lsl = "LSL",
+    Lyd = "LYD",
+    Mad = "MAD",
+    Mdl = "MDL",
+    Mga = "MGA",
+    Mkd = "MKD",
+    Mmk = "MMK",
+    Mnt = "MNT",
+    Mop = "MOP",
+    Mru = "MRU",
+    Mur = "MUR",
+    Mvr = "MVR",
+    Mwk = "MWK",
+    Mxn = "MXN",
+    Myr = "MYR",
+    Mzn = "MZN",
+    Nad = "NAD",
+    Ngn = "NGN",
+    Nio = "NIO",
+    Nok = "NOK",
+    Npr = "NPR",
+    Nzd = "NZD",
+    Omr = "OMR",
+    Pab = "PAB",
+    Pen = "PEN",
+    Pgk = "PGK",
+    Php = "PHP",
+    Pkr = "PKR",
+    Pln = "PLN",
+    Pyg = "PYG",
+    Qar = "QAR",
+    Ron = "RON",
+    Rsd = "RSD",
+    Rub = "RUB",
+    Rwf = "RWF",
+    Sar = "SAR",
+    Sbd = "SBD",
+    Scr = "SCR",
+    Sdg = "SDG",
+    Sek = "SEK",
+    Sgd = "SGD",
+    Shp = "SHP",
+    Sle = "SLE",
+    Sll = "SLL",
+    Sos = "SOS",
+    Srd = "SRD",
+    Ssp = "SSP",
+    Stn = "STN",
+    Syp = "SYP",
+    Szl = "SZL",
+    Thb = "THB",
+    Tjs = "TJS",
+    Tmt = "TMT",
+    Tnd = "TND",
+    Top = "TOP",
+    Try = "TRY",
+    Ttd = "TTD",
+    Tvd = "TVD",
+    Twd = "TWD",
+    Tzs = "TZS",
+    Uah = "UAH",
+    Ugx = "UGX",
+    Usd = "USD",
+    Uyu = "UYU",
+    Uzs = "UZS",
+    Ves = "VES",
+    Vnd = "VND",
+    Vuv = "VUV",
+    Wst = "WST",
+    Xaf = "XAF",
+    Xcd = "XCD",
+    Xdr = "XDR",
+    Xof = "XOF",
+    Xpf = "XPF",
+    Yer = "YER",
+    Zar = "ZAR",
+    Zmw = "ZMW",
+    Zwl = "ZWL",
+}
+
+/**
  * The items in the order
  */
 export type Items = {};
@@ -24,72 +192,89 @@ export type UnifiedEcommerceOrderOutput = {
     /**
      * The status of the order
      */
-    orderStatus?: string | undefined;
+    orderStatus?: string | null | undefined;
     /**
      * The number of the order
      */
-    orderNumber?: string | undefined;
+    orderNumber?: string | null | undefined;
     /**
      * The payment status of the order
      */
-    paymentStatus?: string | undefined;
+    paymentStatus?: string | null | undefined;
     /**
      * The currency of the order. Authorized value must be of type CurrencyCode (ISO 4217)
      */
-    currency?: string | undefined;
+    currency?: Currency | null | undefined;
     /**
      * The total price of the order
      */
-    totalPrice?: number | undefined;
+    totalPrice?: number | null | undefined;
     /**
      * The total discount on the order
      */
-    totalDiscount?: number | undefined;
+    totalDiscount?: number | null | undefined;
     /**
      * The total shipping cost of the order
      */
-    totalShipping?: number | undefined;
+    totalShipping?: number | null | undefined;
     /**
      * The total tax on the order
      */
-    totalTax?: number | undefined;
+    totalTax?: number | null | undefined;
     /**
      * The fulfillment status of the order
      */
-    fulfillmentStatus?: string | undefined;
+    fulfillmentStatus?: string | null | undefined;
     /**
      * The UUID of the customer associated with the order
      */
-    customerId?: string | undefined;
+    customerId?: string | null | undefined;
     /**
      * The items in the order
      */
-    items?: Items | undefined;
+    items?: Items | null | undefined;
     /**
      * The custom field mappings of the object between the remote 3rd party & Panora
      */
-    fieldMappings?: UnifiedEcommerceOrderOutputFieldMappings | undefined;
+    fieldMappings?: UnifiedEcommerceOrderOutputFieldMappings | null | undefined;
     /**
      * The UUID of the order
      */
-    id?: string | undefined;
+    id?: string | null | undefined;
     /**
      * The remote ID of the order in the context of the 3rd Party
      */
-    remoteId?: string | undefined;
+    remoteId?: string | null | undefined;
     /**
      * The remote data of the customer in the context of the 3rd Party
      */
-    remoteData?: UnifiedEcommerceOrderOutputRemoteData | undefined;
+    remoteData?: UnifiedEcommerceOrderOutputRemoteData | null | undefined;
     /**
      * The created date of the object
      */
-    createdAt?: string | undefined;
+    createdAt?: string | null | undefined;
     /**
      * The modified date of the object
      */
-    modifiedAt?: string | undefined;
+    modifiedAt?: string | null | undefined;
 };
+
+/** @internal */
+export const Currency$inboundSchema: z.ZodNativeEnum<typeof Currency> = z.nativeEnum(Currency);
+
+/** @internal */
+export const Currency$outboundSchema: z.ZodNativeEnum<typeof Currency> = Currency$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Currency$ {
+    /** @deprecated use `Currency$inboundSchema` instead. */
+    export const inboundSchema = Currency$inboundSchema;
+    /** @deprecated use `Currency$outboundSchema` instead. */
+    export const outboundSchema = Currency$outboundSchema;
+}
 
 /** @internal */
 export const Items$inboundSchema: z.ZodType<Items, z.ZodTypeDef, unknown> = z.object({});
@@ -180,25 +365,27 @@ export const UnifiedEcommerceOrderOutput$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        order_status: z.string().optional(),
-        order_number: z.string().optional(),
-        payment_status: z.string().optional(),
-        currency: z.string().optional(),
-        total_price: z.number().optional(),
-        total_discount: z.number().optional(),
-        total_shipping: z.number().optional(),
-        total_tax: z.number().optional(),
-        fulfillment_status: z.string().optional(),
-        customer_id: z.string().optional(),
-        items: z.lazy(() => Items$inboundSchema).optional(),
+        order_status: z.nullable(z.string()).optional(),
+        order_number: z.nullable(z.string()).optional(),
+        payment_status: z.nullable(z.string()).optional(),
+        currency: z.nullable(Currency$inboundSchema).optional(),
+        total_price: z.nullable(z.number()).optional(),
+        total_discount: z.nullable(z.number()).optional(),
+        total_shipping: z.nullable(z.number()).optional(),
+        total_tax: z.nullable(z.number()).optional(),
+        fulfillment_status: z.nullable(z.string()).optional(),
+        customer_id: z.nullable(z.string()).optional(),
+        items: z.nullable(z.lazy(() => Items$inboundSchema)).optional(),
         field_mappings: z
-            .lazy(() => UnifiedEcommerceOrderOutputFieldMappings$inboundSchema)
+            .nullable(z.lazy(() => UnifiedEcommerceOrderOutputFieldMappings$inboundSchema))
             .optional(),
-        id: z.string().optional(),
-        remote_id: z.string().optional(),
-        remote_data: z.lazy(() => UnifiedEcommerceOrderOutputRemoteData$inboundSchema).optional(),
-        created_at: z.string().optional(),
-        modified_at: z.string().optional(),
+        id: z.nullable(z.string()).optional(),
+        remote_id: z.nullable(z.string()).optional(),
+        remote_data: z
+            .nullable(z.lazy(() => UnifiedEcommerceOrderOutputRemoteData$inboundSchema))
+            .optional(),
+        created_at: z.nullable(z.string()).optional(),
+        modified_at: z.nullable(z.string()).optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -221,23 +408,23 @@ export const UnifiedEcommerceOrderOutput$inboundSchema: z.ZodType<
 
 /** @internal */
 export type UnifiedEcommerceOrderOutput$Outbound = {
-    order_status?: string | undefined;
-    order_number?: string | undefined;
-    payment_status?: string | undefined;
-    currency?: string | undefined;
-    total_price?: number | undefined;
-    total_discount?: number | undefined;
-    total_shipping?: number | undefined;
-    total_tax?: number | undefined;
-    fulfillment_status?: string | undefined;
-    customer_id?: string | undefined;
-    items?: Items$Outbound | undefined;
-    field_mappings?: UnifiedEcommerceOrderOutputFieldMappings$Outbound | undefined;
-    id?: string | undefined;
-    remote_id?: string | undefined;
-    remote_data?: UnifiedEcommerceOrderOutputRemoteData$Outbound | undefined;
-    created_at?: string | undefined;
-    modified_at?: string | undefined;
+    order_status?: string | null | undefined;
+    order_number?: string | null | undefined;
+    payment_status?: string | null | undefined;
+    currency?: string | null | undefined;
+    total_price?: number | null | undefined;
+    total_discount?: number | null | undefined;
+    total_shipping?: number | null | undefined;
+    total_tax?: number | null | undefined;
+    fulfillment_status?: string | null | undefined;
+    customer_id?: string | null | undefined;
+    items?: Items$Outbound | null | undefined;
+    field_mappings?: UnifiedEcommerceOrderOutputFieldMappings$Outbound | null | undefined;
+    id?: string | null | undefined;
+    remote_id?: string | null | undefined;
+    remote_data?: UnifiedEcommerceOrderOutputRemoteData$Outbound | null | undefined;
+    created_at?: string | null | undefined;
+    modified_at?: string | null | undefined;
 };
 
 /** @internal */
@@ -247,25 +434,27 @@ export const UnifiedEcommerceOrderOutput$outboundSchema: z.ZodType<
     UnifiedEcommerceOrderOutput
 > = z
     .object({
-        orderStatus: z.string().optional(),
-        orderNumber: z.string().optional(),
-        paymentStatus: z.string().optional(),
-        currency: z.string().optional(),
-        totalPrice: z.number().optional(),
-        totalDiscount: z.number().optional(),
-        totalShipping: z.number().optional(),
-        totalTax: z.number().optional(),
-        fulfillmentStatus: z.string().optional(),
-        customerId: z.string().optional(),
-        items: z.lazy(() => Items$outboundSchema).optional(),
+        orderStatus: z.nullable(z.string()).optional(),
+        orderNumber: z.nullable(z.string()).optional(),
+        paymentStatus: z.nullable(z.string()).optional(),
+        currency: z.nullable(Currency$outboundSchema).optional(),
+        totalPrice: z.nullable(z.number()).optional(),
+        totalDiscount: z.nullable(z.number()).optional(),
+        totalShipping: z.nullable(z.number()).optional(),
+        totalTax: z.nullable(z.number()).optional(),
+        fulfillmentStatus: z.nullable(z.string()).optional(),
+        customerId: z.nullable(z.string()).optional(),
+        items: z.nullable(z.lazy(() => Items$outboundSchema)).optional(),
         fieldMappings: z
-            .lazy(() => UnifiedEcommerceOrderOutputFieldMappings$outboundSchema)
+            .nullable(z.lazy(() => UnifiedEcommerceOrderOutputFieldMappings$outboundSchema))
             .optional(),
-        id: z.string().optional(),
-        remoteId: z.string().optional(),
-        remoteData: z.lazy(() => UnifiedEcommerceOrderOutputRemoteData$outboundSchema).optional(),
-        createdAt: z.string().optional(),
-        modifiedAt: z.string().optional(),
+        id: z.nullable(z.string()).optional(),
+        remoteId: z.nullable(z.string()).optional(),
+        remoteData: z
+            .nullable(z.lazy(() => UnifiedEcommerceOrderOutputRemoteData$outboundSchema))
+            .optional(),
+        createdAt: z.nullable(z.string()).optional(),
+        modifiedAt: z.nullable(z.string()).optional(),
     })
     .transform((v) => {
         return remap$(v, {

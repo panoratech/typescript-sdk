@@ -26,10 +26,10 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Retrieve a Order
+ * Retrieve Orders
  *
  * @remarks
- * Retrieve a order from any connected Ats software
+ * Retrieve orders from any connected Ats software
  */
 export async function ecommerceOrdersRetrieve(
     client$: PanoraCore,

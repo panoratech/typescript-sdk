@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Fulfillments
-* [retrieve](#retrieve) - Retrieve a Fulfillment
+* [list](#list) - List Fulfillments
+* [retrieve](#retrieve) - Retrieve Fulfillments
 
 ## list
 
-List a batch of Fulfillments
+List Fulfillments
 
 ### Example Usage
 
@@ -56,7 +56,7 @@ run();
 
 ## retrieve
 
-Retrieve a fulfillment from any connected Ats software
+Retrieve fulfillments from any connected Ats software
 
 ### Example Usage
 

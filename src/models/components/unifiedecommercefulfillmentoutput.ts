@@ -24,47 +24,47 @@ export type UnifiedEcommerceFulfillmentOutput = {
     /**
      * The carrier of the fulfilment
      */
-    carrier?: string | undefined;
+    carrier?: string | null | undefined;
     /**
      * The tracking URLs of the fulfilment
      */
-    trackingUrls?: Array<string> | undefined;
+    trackingUrls?: Array<string> | null | undefined;
     /**
      * The tracking numbers of the fulfilment
      */
-    trackingNumbers?: Array<string> | undefined;
+    trackingNumbers?: Array<string> | null | undefined;
     /**
      * The items in the fulfilment
      */
-    items?: UnifiedEcommerceFulfillmentOutputItems | undefined;
+    items?: UnifiedEcommerceFulfillmentOutputItems | null | undefined;
     /**
      * The UUID of the order associated with the fulfilment
      */
-    orderId?: string | undefined;
+    orderId?: string | null | undefined;
     /**
      * The custom field mappings of the object between the remote 3rd party & Panora
      */
-    fieldMappings?: UnifiedEcommerceFulfillmentOutputFieldMappings | undefined;
+    fieldMappings?: UnifiedEcommerceFulfillmentOutputFieldMappings | null | undefined;
     /**
      * The UUID of the fulfilment
      */
-    id?: string | undefined;
+    id?: string | null | undefined;
     /**
      * The remote ID of the fulfilment in the context of the 3rd Party
      */
-    remoteId?: string | undefined;
+    remoteId?: string | null | undefined;
     /**
      * The remote data of the customer in the context of the 3rd Party
      */
-    remoteData?: UnifiedEcommerceFulfillmentOutputRemoteData | undefined;
+    remoteData?: UnifiedEcommerceFulfillmentOutputRemoteData | null | undefined;
     /**
      * The created date of the object
      */
-    createdAt?: string | undefined;
+    createdAt?: string | null | undefined;
     /**
      * The modified date of the object
      */
-    modifiedAt?: string | undefined;
+    modifiedAt?: string | null | undefined;
 };
 
 /** @internal */
@@ -164,21 +164,23 @@ export const UnifiedEcommerceFulfillmentOutput$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        carrier: z.string().optional(),
-        tracking_urls: z.array(z.string()).optional(),
-        tracking_numbers: z.array(z.string()).optional(),
-        items: z.lazy(() => UnifiedEcommerceFulfillmentOutputItems$inboundSchema).optional(),
-        order_id: z.string().optional(),
+        carrier: z.nullable(z.string()).optional(),
+        tracking_urls: z.nullable(z.array(z.string())).optional(),
+        tracking_numbers: z.nullable(z.array(z.string())).optional(),
+        items: z
+            .nullable(z.lazy(() => UnifiedEcommerceFulfillmentOutputItems$inboundSchema))
+            .optional(),
+        order_id: z.nullable(z.string()).optional(),
         field_mappings: z
-            .lazy(() => UnifiedEcommerceFulfillmentOutputFieldMappings$inboundSchema)
+            .nullable(z.lazy(() => UnifiedEcommerceFulfillmentOutputFieldMappings$inboundSchema))
             .optional(),
-        id: z.string().optional(),
-        remote_id: z.string().optional(),
+        id: z.nullable(z.string()).optional(),
+        remote_id: z.nullable(z.string()).optional(),
         remote_data: z
-            .lazy(() => UnifiedEcommerceFulfillmentOutputRemoteData$inboundSchema)
+            .nullable(z.lazy(() => UnifiedEcommerceFulfillmentOutputRemoteData$inboundSchema))
             .optional(),
-        created_at: z.string().optional(),
-        modified_at: z.string().optional(),
+        created_at: z.nullable(z.string()).optional(),
+        modified_at: z.nullable(z.string()).optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -195,17 +197,17 @@ export const UnifiedEcommerceFulfillmentOutput$inboundSchema: z.ZodType<
 
 /** @internal */
 export type UnifiedEcommerceFulfillmentOutput$Outbound = {
-    carrier?: string | undefined;
-    tracking_urls?: Array<string> | undefined;
-    tracking_numbers?: Array<string> | undefined;
-    items?: UnifiedEcommerceFulfillmentOutputItems$Outbound | undefined;
-    order_id?: string | undefined;
-    field_mappings?: UnifiedEcommerceFulfillmentOutputFieldMappings$Outbound | undefined;
-    id?: string | undefined;
-    remote_id?: string | undefined;
-    remote_data?: UnifiedEcommerceFulfillmentOutputRemoteData$Outbound | undefined;
-    created_at?: string | undefined;
-    modified_at?: string | undefined;
+    carrier?: string | null | undefined;
+    tracking_urls?: Array<string> | null | undefined;
+    tracking_numbers?: Array<string> | null | undefined;
+    items?: UnifiedEcommerceFulfillmentOutputItems$Outbound | null | undefined;
+    order_id?: string | null | undefined;
+    field_mappings?: UnifiedEcommerceFulfillmentOutputFieldMappings$Outbound | null | undefined;
+    id?: string | null | undefined;
+    remote_id?: string | null | undefined;
+    remote_data?: UnifiedEcommerceFulfillmentOutputRemoteData$Outbound | null | undefined;
+    created_at?: string | null | undefined;
+    modified_at?: string | null | undefined;
 };
 
 /** @internal */
@@ -215,21 +217,23 @@ export const UnifiedEcommerceFulfillmentOutput$outboundSchema: z.ZodType<
     UnifiedEcommerceFulfillmentOutput
 > = z
     .object({
-        carrier: z.string().optional(),
-        trackingUrls: z.array(z.string()).optional(),
-        trackingNumbers: z.array(z.string()).optional(),
-        items: z.lazy(() => UnifiedEcommerceFulfillmentOutputItems$outboundSchema).optional(),
-        orderId: z.string().optional(),
+        carrier: z.nullable(z.string()).optional(),
+        trackingUrls: z.nullable(z.array(z.string())).optional(),
+        trackingNumbers: z.nullable(z.array(z.string())).optional(),
+        items: z
+            .nullable(z.lazy(() => UnifiedEcommerceFulfillmentOutputItems$outboundSchema))
+            .optional(),
+        orderId: z.nullable(z.string()).optional(),
         fieldMappings: z
-            .lazy(() => UnifiedEcommerceFulfillmentOutputFieldMappings$outboundSchema)
+            .nullable(z.lazy(() => UnifiedEcommerceFulfillmentOutputFieldMappings$outboundSchema))
             .optional(),
-        id: z.string().optional(),
-        remoteId: z.string().optional(),
+        id: z.nullable(z.string()).optional(),
+        remoteId: z.nullable(z.string()).optional(),
         remoteData: z
-            .lazy(() => UnifiedEcommerceFulfillmentOutputRemoteData$outboundSchema)
+            .nullable(z.lazy(() => UnifiedEcommerceFulfillmentOutputRemoteData$outboundSchema))
             .optional(),
-        createdAt: z.string().optional(),
-        modifiedAt: z.string().optional(),
+        createdAt: z.nullable(z.string()).optional(),
+        modifiedAt: z.nullable(z.string()).optional(),
     })
     .transform((v) => {
         return remap$(v, {

@@ -588,25 +588,25 @@ run();
 
 ### [ecommerce.products](docs/sdks/products/README.md)
 
-* [list](docs/sdks/products/README.md#list) - List a batch of Products
+* [list](docs/sdks/products/README.md#list) - List Products
 * [create](docs/sdks/products/README.md#create) - Create Products
-* [retrieve](docs/sdks/products/README.md#retrieve) - Retrieve a Product
+* [retrieve](docs/sdks/products/README.md#retrieve) - Retrieve Products
 
 ### [ecommerce.orders](docs/sdks/orders/README.md)
 
-* [list](docs/sdks/orders/README.md#list) - List a batch of Orders
+* [list](docs/sdks/orders/README.md#list) - List Orders
 * [create](docs/sdks/orders/README.md#create) - Create Orders
-* [retrieve](docs/sdks/orders/README.md#retrieve) - Retrieve a Order
+* [retrieve](docs/sdks/orders/README.md#retrieve) - Retrieve Orders
 
 ### [ecommerce.customers](docs/sdks/customers/README.md)
 
-* [list](docs/sdks/customers/README.md#list) - List a batch of Customers
-* [retrieve](docs/sdks/customers/README.md#retrieve) - Retrieve a Customer
+* [list](docs/sdks/customers/README.md#list) - List Customers
+* [retrieve](docs/sdks/customers/README.md#retrieve) - Retrieve Customers
 
 ### [ecommerce.fulfillments](docs/sdks/fulfillments/README.md)
 
-* [list](docs/sdks/fulfillments/README.md#list) - List a batch of Fulfillments
-* [retrieve](docs/sdks/fulfillments/README.md#retrieve) - Retrieve a Fulfillment
+* [list](docs/sdks/fulfillments/README.md#list) - List Fulfillments
+* [retrieve](docs/sdks/fulfillments/README.md#retrieve) - Retrieve Fulfillments
 <!-- End Available Resources and Operations [operations] -->
 
 <!-- Start Error Handling [errors] -->
@@ -839,7 +839,7 @@ This SDK supports the following security scheme globally:
 | -------- | -------- | -------- |
 | `apiKey` | apiKey   | API key  |
 
-To authenticate with the API the `nullT` parameter must be set when initializing the SDK client instance. For example:
+To authenticate with the API the `apiKey` parameter must be set when initializing the SDK client instance. For example:
 ```typescript
 import { Panora } from "@panora/sdk";
 

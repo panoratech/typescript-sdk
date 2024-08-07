@@ -27,7 +27,7 @@ import { Result } from "../types/fp.js";
 import { createPageIterator, haltIterator, PageIterator, Paginator } from "../types/operations.js";
 
 /**
- * List a batch of Orders
+ * List Orders
  */
 export async function ecommerceOrdersList(
     client$: PanoraCore,
