@@ -7,31 +7,32 @@ import * as components from "../components/index.js";
 import * as z from "zod";
 
 export type RequestRequest = {
-    integrationId: string;
-    linkedUserId: string;
-    vertical: string;
+    xConnectionToken: string;
     passThroughRequestDto: components.PassThroughRequestDto;
 };
+
+export type RequestPassthroughResponseBody = {};
+
+export type RequestResponseBody = {};
+
+export type RequestResponse = RequestResponseBody | RequestPassthroughResponseBody;
 
 /** @internal */
 export const RequestRequest$inboundSchema: z.ZodType<RequestRequest, z.ZodTypeDef, unknown> = z
     .object({
-        integrationId: z.string(),
-        linkedUserId: z.string(),
-        vertical: z.string(),
+        "x-connection-token": z.string(),
         PassThroughRequestDto: components.PassThroughRequestDto$inboundSchema,
     })
     .transform((v) => {
         return remap$(v, {
+            "x-connection-token": "xConnectionToken",
             PassThroughRequestDto: "passThroughRequestDto",
         });
     });
 
 /** @internal */
 export type RequestRequest$Outbound = {
-    integrationId: string;
-    linkedUserId: string;
-    vertical: string;
+    "x-connection-token": string;
     PassThroughRequestDto: components.PassThroughRequestDto$Outbound;
 };
 
@@ -42,13 +43,12 @@ export const RequestRequest$outboundSchema: z.ZodType<
     RequestRequest
 > = z
     .object({
-        integrationId: z.string(),
-        linkedUserId: z.string(),
-        vertical: z.string(),
+        xConnectionToken: z.string(),
         passThroughRequestDto: components.PassThroughRequestDto$outboundSchema,
     })
     .transform((v) => {
         return remap$(v, {
+            xConnectionToken: "x-connection-token",
             passThroughRequestDto: "PassThroughRequestDto",
         });
     });
@@ -64,4 +64,99 @@ export namespace RequestRequest$ {
     export const outboundSchema = RequestRequest$outboundSchema;
     /** @deprecated use `RequestRequest$Outbound` instead. */
     export type Outbound = RequestRequest$Outbound;
+}
+
+/** @internal */
+export const RequestPassthroughResponseBody$inboundSchema: z.ZodType<
+    RequestPassthroughResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type RequestPassthroughResponseBody$Outbound = {};
+
+/** @internal */
+export const RequestPassthroughResponseBody$outboundSchema: z.ZodType<
+    RequestPassthroughResponseBody$Outbound,
+    z.ZodTypeDef,
+    RequestPassthroughResponseBody
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RequestPassthroughResponseBody$ {
+    /** @deprecated use `RequestPassthroughResponseBody$inboundSchema` instead. */
+    export const inboundSchema = RequestPassthroughResponseBody$inboundSchema;
+    /** @deprecated use `RequestPassthroughResponseBody$outboundSchema` instead. */
+    export const outboundSchema = RequestPassthroughResponseBody$outboundSchema;
+    /** @deprecated use `RequestPassthroughResponseBody$Outbound` instead. */
+    export type Outbound = RequestPassthroughResponseBody$Outbound;
+}
+
+/** @internal */
+export const RequestResponseBody$inboundSchema: z.ZodType<
+    RequestResponseBody,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type RequestResponseBody$Outbound = {};
+
+/** @internal */
+export const RequestResponseBody$outboundSchema: z.ZodType<
+    RequestResponseBody$Outbound,
+    z.ZodTypeDef,
+    RequestResponseBody
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RequestResponseBody$ {
+    /** @deprecated use `RequestResponseBody$inboundSchema` instead. */
+    export const inboundSchema = RequestResponseBody$inboundSchema;
+    /** @deprecated use `RequestResponseBody$outboundSchema` instead. */
+    export const outboundSchema = RequestResponseBody$outboundSchema;
+    /** @deprecated use `RequestResponseBody$Outbound` instead. */
+    export type Outbound = RequestResponseBody$Outbound;
+}
+
+/** @internal */
+export const RequestResponse$inboundSchema: z.ZodType<RequestResponse, z.ZodTypeDef, unknown> =
+    z.union([
+        z.lazy(() => RequestResponseBody$inboundSchema),
+        z.lazy(() => RequestPassthroughResponseBody$inboundSchema),
+    ]);
+
+/** @internal */
+export type RequestResponse$Outbound =
+    | RequestResponseBody$Outbound
+    | RequestPassthroughResponseBody$Outbound;
+
+/** @internal */
+export const RequestResponse$outboundSchema: z.ZodType<
+    RequestResponse$Outbound,
+    z.ZodTypeDef,
+    RequestResponse
+> = z.union([
+    z.lazy(() => RequestResponseBody$outboundSchema),
+    z.lazy(() => RequestPassthroughResponseBody$outboundSchema),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RequestResponse$ {
+    /** @deprecated use `RequestResponse$inboundSchema` instead. */
+    export const inboundSchema = RequestResponse$inboundSchema;
+    /** @deprecated use `RequestResponse$outboundSchema` instead. */
+    export const outboundSchema = RequestResponse$outboundSchema;
+    /** @deprecated use `RequestResponse$Outbound` instead. */
+    export type Outbound = RequestResponse$Outbound;
 }

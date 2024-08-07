@@ -21,18 +21,10 @@ const panora = new Panora({
 
 async function run() {
   const result = await panora.passthrough.request({
-    integrationId: "<value>",
-    linkedUserId: "<value>",
-    vertical: "<value>",
+    xConnectionToken: "<value>",
     passThroughRequestDto: {
       method: PassThroughRequestDtoMethod.Get,
       path: "/dev",
-    data:     {
-          "key": "<value>",
-        },
-      headers: {
-        "key": "<value>",
-      },
     },
   });
 
@@ -55,7 +47,7 @@ run();
 
 ### Response
 
-**Promise\<[components.PassThroughResponse](../../models/components/passthroughresponse.md)\>**
+**Promise\<[operations.RequestResponse](../../models/operations/requestresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
