@@ -3,13 +3,13 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Orders
+* [list](#list) - List Orders
 * [create](#create) - Create Orders
-* [retrieve](#retrieve) - Retrieve a Order
+* [retrieve](#retrieve) - Retrieve Orders
 
 ## list
 
-List a batch of Orders
+List Orders
 
 ### Example Usage
 
@@ -63,6 +63,7 @@ Create Orders in any supported Ecommerce software
 
 ```typescript
 import { Panora } from "@panora/sdk";
+import { UnifiedEcommerceOrderInputCurrency } from "@panora/sdk/models/components";
 
 const panora = new Panora({
   apiKey: "<YOUR_API_KEY_HERE>",
@@ -72,7 +73,20 @@ async function run() {
   const result = await panora.ecommerce.orders.create({
     xConnectionToken: "<value>",
     remoteData: false,
-    unifiedEcommerceOrderInput: {},
+    unifiedEcommerceOrderInput: {
+      orderStatus: "PAID",
+      orderNumber: "19823838833",
+      paymentStatus: "SUCCESS",
+      currency: UnifiedEcommerceOrderInputCurrency.Aud,
+      totalPrice: 300,
+      totalDiscount: 10,
+      totalShipping: 120,
+      totalTax: 120,
+      fulfillmentStatus: "delivered",
+      customerId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      items: {},
+      fieldMappings: {},
+    },
   });
 
   // Handle the result
@@ -103,7 +117,7 @@ run();
 
 ## retrieve
 
-Retrieve a order from any connected Ats software
+Retrieve orders from any connected Ats software
 
 ### Example Usage
 

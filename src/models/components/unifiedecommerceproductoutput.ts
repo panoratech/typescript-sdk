@@ -3,9 +3,22 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
+import {
+    Variant,
+    Variant$inboundSchema,
+    Variant$Outbound,
+    Variant$outboundSchema,
+} from "./variant.js";
 import * as z from "zod";
 
-export type Variants = {};
+/**
+ * The status of the product. Either ACTIVE, DRAFT OR ARCHIVED.
+ */
+export enum ProductStatus {
+    Archived = "ARCHIVED",
+    Active = "ACTIVE",
+    Draft = "DRAFT",
+}
 
 /**
  * The custom field mappings of the object between the remote 3rd party & Panora
@@ -21,82 +34,78 @@ export type UnifiedEcommerceProductOutput = {
     /**
      * The URL of the product
      */
-    productUrl?: string | undefined;
+    productUrl?: string | null | undefined;
     /**
      * The type of the product
      */
-    productType?: string | undefined;
+    productType?: string | null | undefined;
     /**
      * The status of the product. Either ACTIVE, DRAFT OR ARCHIVED.
      */
-    productStatus?: string | undefined;
+    productStatus?: ProductStatus | null | undefined;
     /**
      * The URLs of the product images
      */
-    imagesUrls?: Array<string> | undefined;
+    imagesUrls?: Array<string> | null | undefined;
     /**
      * The description of the product
      */
-    description?: string | undefined;
+    description?: string | null | undefined;
     /**
      * The vendor of the product
      */
-    vendor?: string | undefined;
+    vendor?: string | null | undefined;
     /**
      * The variants of the product
      */
-    variants?: Array<Variants> | undefined;
+    variants?: Array<Variant> | undefined;
     /**
      * The tags associated with the product
      */
-    tags?: Array<string> | undefined;
+    tags?: Array<string> | null | undefined;
     /**
      * The custom field mappings of the object between the remote 3rd party & Panora
      */
-    fieldMappings?: FieldMappings | undefined;
+    fieldMappings?: FieldMappings | null | undefined;
     /**
      * The UUID of the product
      */
-    id?: string | undefined;
+    id?: string | null | undefined;
     /**
      * The remote ID of the product in the context of the 3rd Party
      */
-    remoteId?: string | undefined;
+    remoteId?: string | null | undefined;
     /**
      * The remote data of the customer in the context of the 3rd Party
      */
-    remoteData?: RemoteData | undefined;
+    remoteData?: RemoteData | null | undefined;
     /**
      * The created date of the object
      */
-    createdAt?: string | undefined;
+    createdAt?: string | null | undefined;
     /**
      * The modified date of the object
      */
-    modifiedAt?: string | undefined;
+    modifiedAt?: string | null | undefined;
 };
 
 /** @internal */
-export const Variants$inboundSchema: z.ZodType<Variants, z.ZodTypeDef, unknown> = z.object({});
+export const ProductStatus$inboundSchema: z.ZodNativeEnum<typeof ProductStatus> =
+    z.nativeEnum(ProductStatus);
 
 /** @internal */
-export type Variants$Outbound = {};
-
-/** @internal */
-export const Variants$outboundSchema: z.ZodType<Variants$Outbound, z.ZodTypeDef, Variants> =
-    z.object({});
+export const ProductStatus$outboundSchema: z.ZodNativeEnum<typeof ProductStatus> =
+    ProductStatus$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Variants$ {
-    /** @deprecated use `Variants$inboundSchema` instead. */
-    export const inboundSchema = Variants$inboundSchema;
-    /** @deprecated use `Variants$outboundSchema` instead. */
-    export const outboundSchema = Variants$outboundSchema;
-    /** @deprecated use `Variants$Outbound` instead. */
-    export type Outbound = Variants$Outbound;
+export namespace ProductStatus$ {
+    /** @deprecated use `ProductStatus$inboundSchema` instead. */
+    export const inboundSchema = ProductStatus$inboundSchema;
+    /** @deprecated use `ProductStatus$outboundSchema` instead. */
+    export const outboundSchema = ProductStatus$outboundSchema;
 }
 
 /** @internal */
@@ -156,20 +165,20 @@ export const UnifiedEcommerceProductOutput$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        product_url: z.string().optional(),
-        product_type: z.string().optional(),
-        product_status: z.string().optional(),
-        images_urls: z.array(z.string()).optional(),
-        description: z.string().optional(),
-        vendor: z.string().optional(),
-        variants: z.array(z.lazy(() => Variants$inboundSchema)).optional(),
-        tags: z.array(z.string()).optional(),
-        field_mappings: z.lazy(() => FieldMappings$inboundSchema).optional(),
-        id: z.string().optional(),
-        remote_id: z.string().optional(),
-        remote_data: z.lazy(() => RemoteData$inboundSchema).optional(),
-        created_at: z.string().optional(),
-        modified_at: z.string().optional(),
+        product_url: z.nullable(z.string()).optional(),
+        product_type: z.nullable(z.string()).optional(),
+        product_status: z.nullable(ProductStatus$inboundSchema).optional(),
+        images_urls: z.nullable(z.array(z.string())).optional(),
+        description: z.nullable(z.string()).optional(),
+        vendor: z.nullable(z.string()).optional(),
+        variants: z.array(Variant$inboundSchema).optional(),
+        tags: z.nullable(z.array(z.string())).optional(),
+        field_mappings: z.nullable(z.lazy(() => FieldMappings$inboundSchema)).optional(),
+        id: z.nullable(z.string()).optional(),
+        remote_id: z.nullable(z.string()).optional(),
+        remote_data: z.nullable(z.lazy(() => RemoteData$inboundSchema)).optional(),
+        created_at: z.nullable(z.string()).optional(),
+        modified_at: z.nullable(z.string()).optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -187,20 +196,20 @@ export const UnifiedEcommerceProductOutput$inboundSchema: z.ZodType<
 
 /** @internal */
 export type UnifiedEcommerceProductOutput$Outbound = {
-    product_url?: string | undefined;
-    product_type?: string | undefined;
-    product_status?: string | undefined;
-    images_urls?: Array<string> | undefined;
-    description?: string | undefined;
-    vendor?: string | undefined;
-    variants?: Array<Variants$Outbound> | undefined;
-    tags?: Array<string> | undefined;
-    field_mappings?: FieldMappings$Outbound | undefined;
-    id?: string | undefined;
-    remote_id?: string | undefined;
-    remote_data?: RemoteData$Outbound | undefined;
-    created_at?: string | undefined;
-    modified_at?: string | undefined;
+    product_url?: string | null | undefined;
+    product_type?: string | null | undefined;
+    product_status?: string | null | undefined;
+    images_urls?: Array<string> | null | undefined;
+    description?: string | null | undefined;
+    vendor?: string | null | undefined;
+    variants?: Array<Variant$Outbound> | undefined;
+    tags?: Array<string> | null | undefined;
+    field_mappings?: FieldMappings$Outbound | null | undefined;
+    id?: string | null | undefined;
+    remote_id?: string | null | undefined;
+    remote_data?: RemoteData$Outbound | null | undefined;
+    created_at?: string | null | undefined;
+    modified_at?: string | null | undefined;
 };
 
 /** @internal */
@@ -210,20 +219,20 @@ export const UnifiedEcommerceProductOutput$outboundSchema: z.ZodType<
     UnifiedEcommerceProductOutput
 > = z
     .object({
-        productUrl: z.string().optional(),
-        productType: z.string().optional(),
-        productStatus: z.string().optional(),
-        imagesUrls: z.array(z.string()).optional(),
-        description: z.string().optional(),
-        vendor: z.string().optional(),
-        variants: z.array(z.lazy(() => Variants$outboundSchema)).optional(),
-        tags: z.array(z.string()).optional(),
-        fieldMappings: z.lazy(() => FieldMappings$outboundSchema).optional(),
-        id: z.string().optional(),
-        remoteId: z.string().optional(),
-        remoteData: z.lazy(() => RemoteData$outboundSchema).optional(),
-        createdAt: z.string().optional(),
-        modifiedAt: z.string().optional(),
+        productUrl: z.nullable(z.string()).optional(),
+        productType: z.nullable(z.string()).optional(),
+        productStatus: z.nullable(ProductStatus$outboundSchema).optional(),
+        imagesUrls: z.nullable(z.array(z.string())).optional(),
+        description: z.nullable(z.string()).optional(),
+        vendor: z.nullable(z.string()).optional(),
+        variants: z.array(Variant$outboundSchema).optional(),
+        tags: z.nullable(z.array(z.string())).optional(),
+        fieldMappings: z.nullable(z.lazy(() => FieldMappings$outboundSchema)).optional(),
+        id: z.nullable(z.string()).optional(),
+        remoteId: z.nullable(z.string()).optional(),
+        remoteData: z.nullable(z.lazy(() => RemoteData$outboundSchema)).optional(),
+        createdAt: z.nullable(z.string()).optional(),
+        modifiedAt: z.nullable(z.string()).optional(),
     })
     .transform((v) => {
         return remap$(v, {

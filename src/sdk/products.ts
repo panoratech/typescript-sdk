@@ -13,7 +13,7 @@ import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Products extends ClientSDK {
     /**
-     * List a batch of Products
+     * List Products
      */
     async list(
         request: operations.ListEcommerceProductsRequest,
@@ -36,10 +36,10 @@ export class Products extends ClientSDK {
     }
 
     /**
-     * Retrieve a Product
+     * Retrieve Products
      *
      * @remarks
-     * Retrieve a product from any connected Ats software
+     * Retrieve products from any connected Ats software
      */
     async retrieve(
         request: operations.RetrieveEcommerceProductRequest,

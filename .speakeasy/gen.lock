@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: caaaa8c3-6dd7-43a5-841e-c3193e68cc73
 management:
-  docChecksum: 0ec320fe6c4af64ca01910309ed024e7
+  docChecksum: 3f1e9daf4aac029a9feac317b3c9365a
   docVersion: "1.0"
-  speakeasyVersion: 1.355.0
-  generationVersion: 2.387.0
-  releaseVersion: 0.9.0
-  configChecksum: 94707cc0064bba1ab19e9a698377b3b6
+  speakeasyVersion: 1.357.1
+  generationVersion: 2.390.0
+  releaseVersion: 0.9.1
+  configChecksum: fa4a5ac4ffd27febedbc5e30080f67f2
   repoURL: https://github.com/panoratech/typescript-sdk.git
   installationURL: https://github.com/panoratech/typescript-sdk
   published: true
@@ -14,10 +14,10 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.6
-    core: 3.12.1
+    core: 3.12.2
     defaultEnabledRetries: 0.1.0
     envVarSecurityUsage: 0.1.1
-    globalSecurity: 2.82.10
+    globalSecurity: 2.82.11
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.4
@@ -532,6 +532,7 @@ generatedFiles:
   - src/models/components/unifiedfilestoragegroupoutput.ts
   - src/models/components/unifiedfilestorageuseroutput.ts
   - src/models/components/unifiedecommerceproductoutput.ts
+  - src/models/components/variant.ts
   - src/models/components/unifiedecommerceproductinput.ts
   - src/models/components/unifiedecommerceorderoutput.ts
   - src/models/components/unifiedecommerceorderinput.ts
@@ -968,21 +969,23 @@ generatedFiles:
   - docs/models/components/users.md
   - docs/models/components/unifiedfilestoragegroupoutput.md
   - docs/models/components/unifiedfilestorageuseroutput.md
-  - docs/models/components/variants.md
+  - docs/models/components/productstatus.md
   - docs/models/components/fieldmappings.md
   - docs/models/components/remotedata.md
   - docs/models/components/unifiedecommerceproductoutput.md
-  - docs/models/components/unifiedecommerceproductinputvariants.md
+  - docs/models/components/variant.md
+  - docs/models/components/unifiedecommerceproductinputproductstatus.md
   - docs/models/components/unifiedecommerceproductinputfieldmappings.md
   - docs/models/components/unifiedecommerceproductinput.md
+  - docs/models/components/currency.md
   - docs/models/components/items.md
   - docs/models/components/unifiedecommerceorderoutputfieldmappings.md
   - docs/models/components/unifiedecommerceorderoutputremotedata.md
   - docs/models/components/unifiedecommerceorderoutput.md
+  - docs/models/components/unifiedecommerceorderinputcurrency.md
   - docs/models/components/unifiedecommerceorderinputitems.md
   - docs/models/components/unifiedecommerceorderinputfieldmappings.md
   - docs/models/components/unifiedecommerceorderinput.md
-  - docs/models/components/addresses.md
   - docs/models/components/unifiedecommercecustomeroutputfieldmappings.md
   - docs/models/components/unifiedecommercecustomeroutputremotedata.md
   - docs/models/components/unifiedecommercecustomeroutput.md

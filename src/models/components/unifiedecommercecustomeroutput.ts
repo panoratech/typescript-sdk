@@ -3,9 +3,13 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
+import {
+    Address,
+    Address$inboundSchema,
+    Address$Outbound,
+    Address$outboundSchema,
+} from "./address.js";
 import * as z from "zod";
-
-export type Addresses = {};
 
 /**
  * The custom field mappings of the object between the remote 3rd party & Panora
@@ -21,71 +25,48 @@ export type UnifiedEcommerceCustomerOutput = {
     /**
      * The email of the customer
      */
-    email?: string | undefined;
+    email?: string | null | undefined;
     /**
      * The first name of the customer
      */
-    firstName?: string | undefined;
+    firstName?: string | null | undefined;
     /**
      * The last name of the customer
      */
-    lastName?: string | undefined;
+    lastName?: string | null | undefined;
     /**
      * The phone number of the customer
      */
-    phoneNumber?: string | undefined;
+    phoneNumber?: string | null | undefined;
     /**
      * The addresses of the customer
      */
-    addresses?: Array<Addresses> | undefined;
+    addresses?: Array<Address> | null | undefined;
     /**
      * The custom field mappings of the object between the remote 3rd party & Panora
      */
-    fieldMappings?: UnifiedEcommerceCustomerOutputFieldMappings | undefined;
+    fieldMappings?: UnifiedEcommerceCustomerOutputFieldMappings | null | undefined;
     /**
      * The UUID of the customer
      */
-    id?: string | undefined;
+    id?: string | null | undefined;
     /**
      * The remote ID of the customer in the context of the 3rd Party
      */
-    remoteId?: string | undefined;
+    remoteId?: string | null | undefined;
     /**
      * The remote data of the customer in the context of the 3rd Party
      */
-    remoteData?: UnifiedEcommerceCustomerOutputRemoteData | undefined;
+    remoteData?: UnifiedEcommerceCustomerOutputRemoteData | null | undefined;
     /**
      * The created date of the object
      */
-    createdAt?: string | undefined;
+    createdAt?: string | null | undefined;
     /**
      * The modified date of the object
      */
-    modifiedAt?: string | undefined;
+    modifiedAt?: string | null | undefined;
 };
-
-/** @internal */
-export const Addresses$inboundSchema: z.ZodType<Addresses, z.ZodTypeDef, unknown> = z.object({});
-
-/** @internal */
-export type Addresses$Outbound = {};
-
-/** @internal */
-export const Addresses$outboundSchema: z.ZodType<Addresses$Outbound, z.ZodTypeDef, Addresses> =
-    z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Addresses$ {
-    /** @deprecated use `Addresses$inboundSchema` instead. */
-    export const inboundSchema = Addresses$inboundSchema;
-    /** @deprecated use `Addresses$outboundSchema` instead. */
-    export const outboundSchema = Addresses$outboundSchema;
-    /** @deprecated use `Addresses$Outbound` instead. */
-    export type Outbound = Addresses$Outbound;
-}
 
 /** @internal */
 export const UnifiedEcommerceCustomerOutputFieldMappings$inboundSchema: z.ZodType<
@@ -154,21 +135,21 @@ export const UnifiedEcommerceCustomerOutput$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        email: z.string().optional(),
-        first_name: z.string().optional(),
-        last_name: z.string().optional(),
-        phone_number: z.string().optional(),
-        addresses: z.array(z.lazy(() => Addresses$inboundSchema)).optional(),
+        email: z.nullable(z.string()).optional(),
+        first_name: z.nullable(z.string()).optional(),
+        last_name: z.nullable(z.string()).optional(),
+        phone_number: z.nullable(z.string()).optional(),
+        addresses: z.nullable(z.array(Address$inboundSchema)).optional(),
         field_mappings: z
-            .lazy(() => UnifiedEcommerceCustomerOutputFieldMappings$inboundSchema)
+            .nullable(z.lazy(() => UnifiedEcommerceCustomerOutputFieldMappings$inboundSchema))
             .optional(),
-        id: z.string().optional(),
-        remote_id: z.string().optional(),
+        id: z.nullable(z.string()).optional(),
+        remote_id: z.nullable(z.string()).optional(),
         remote_data: z
-            .lazy(() => UnifiedEcommerceCustomerOutputRemoteData$inboundSchema)
+            .nullable(z.lazy(() => UnifiedEcommerceCustomerOutputRemoteData$inboundSchema))
             .optional(),
-        created_at: z.string().optional(),
-        modified_at: z.string().optional(),
+        created_at: z.nullable(z.string()).optional(),
+        modified_at: z.nullable(z.string()).optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -185,17 +166,17 @@ export const UnifiedEcommerceCustomerOutput$inboundSchema: z.ZodType<
 
 /** @internal */
 export type UnifiedEcommerceCustomerOutput$Outbound = {
-    email?: string | undefined;
-    first_name?: string | undefined;
-    last_name?: string | undefined;
-    phone_number?: string | undefined;
-    addresses?: Array<Addresses$Outbound> | undefined;
-    field_mappings?: UnifiedEcommerceCustomerOutputFieldMappings$Outbound | undefined;
-    id?: string | undefined;
-    remote_id?: string | undefined;
-    remote_data?: UnifiedEcommerceCustomerOutputRemoteData$Outbound | undefined;
-    created_at?: string | undefined;
-    modified_at?: string | undefined;
+    email?: string | null | undefined;
+    first_name?: string | null | undefined;
+    last_name?: string | null | undefined;
+    phone_number?: string | null | undefined;
+    addresses?: Array<Address$Outbound> | null | undefined;
+    field_mappings?: UnifiedEcommerceCustomerOutputFieldMappings$Outbound | null | undefined;
+    id?: string | null | undefined;
+    remote_id?: string | null | undefined;
+    remote_data?: UnifiedEcommerceCustomerOutputRemoteData$Outbound | null | undefined;
+    created_at?: string | null | undefined;
+    modified_at?: string | null | undefined;
 };
 
 /** @internal */
@@ -205,21 +186,21 @@ export const UnifiedEcommerceCustomerOutput$outboundSchema: z.ZodType<
     UnifiedEcommerceCustomerOutput
 > = z
     .object({
-        email: z.string().optional(),
-        firstName: z.string().optional(),
-        lastName: z.string().optional(),
-        phoneNumber: z.string().optional(),
-        addresses: z.array(z.lazy(() => Addresses$outboundSchema)).optional(),
+        email: z.nullable(z.string()).optional(),
+        firstName: z.nullable(z.string()).optional(),
+        lastName: z.nullable(z.string()).optional(),
+        phoneNumber: z.nullable(z.string()).optional(),
+        addresses: z.nullable(z.array(Address$outboundSchema)).optional(),
         fieldMappings: z
-            .lazy(() => UnifiedEcommerceCustomerOutputFieldMappings$outboundSchema)
+            .nullable(z.lazy(() => UnifiedEcommerceCustomerOutputFieldMappings$outboundSchema))
             .optional(),
-        id: z.string().optional(),
-        remoteId: z.string().optional(),
+        id: z.nullable(z.string()).optional(),
+        remoteId: z.nullable(z.string()).optional(),
         remoteData: z
-            .lazy(() => UnifiedEcommerceCustomerOutputRemoteData$outboundSchema)
+            .nullable(z.lazy(() => UnifiedEcommerceCustomerOutputRemoteData$outboundSchema))
             .optional(),
-        createdAt: z.string().optional(),
-        modifiedAt: z.string().optional(),
+        createdAt: z.nullable(z.string()).optional(),
+        modifiedAt: z.nullable(z.string()).optional(),
     })
     .transform((v) => {
         return remap$(v, {

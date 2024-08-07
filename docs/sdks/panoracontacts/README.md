@@ -90,11 +90,11 @@ async function run() {
       ],
       addresses: [
         {
-          street1: "<value>",
-          street2: "<value>",
+          street1: "5th Avenue",
+          street2: "Street 2",
           city: "Anytown",
           state: "CA",
-          postalCode: "97398",
+          postalCode: "10001",
           country: "USA",
           addressType: AddressType.Personal,
           ownerType: "<value>",

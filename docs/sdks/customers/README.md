@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [list](#list) - List a batch of Customers
-* [retrieve](#retrieve) - Retrieve a Customer
+* [list](#list) - List Customers
+* [retrieve](#retrieve) - Retrieve Customers
 
 ## list
 
-List a batch of Customers
+List Customers
 
 ### Example Usage
 
@@ -56,7 +56,7 @@ run();
 
 ## retrieve
 
-Retrieve a customer from any connected Ats software
+Retrieve customers from any connected Ats software
 
 ### Example Usage
 

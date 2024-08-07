@@ -3,9 +3,22 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
+import {
+    Variant,
+    Variant$inboundSchema,
+    Variant$Outbound,
+    Variant$outboundSchema,
+} from "./variant.js";
 import * as z from "zod";
 
-export type UnifiedEcommerceProductInputVariants = {};
+/**
+ * The status of the product. Either ACTIVE, DRAFT OR ARCHIVED.
+ */
+export enum UnifiedEcommerceProductInputProductStatus {
+    Archived = "ARCHIVED",
+    Active = "ACTIVE",
+    Draft = "DRAFT",
+}
 
 /**
  * The custom field mappings of the object between the remote 3rd party & Panora
@@ -16,69 +29,60 @@ export type UnifiedEcommerceProductInput = {
     /**
      * The URL of the product
      */
-    productUrl?: string | undefined;
+    productUrl?: string | null | undefined;
     /**
      * The type of the product
      */
-    productType?: string | undefined;
+    productType?: string | null | undefined;
     /**
      * The status of the product. Either ACTIVE, DRAFT OR ARCHIVED.
      */
-    productStatus?: string | undefined;
+    productStatus?: UnifiedEcommerceProductInputProductStatus | null | undefined;
     /**
      * The URLs of the product images
      */
-    imagesUrls?: Array<string> | undefined;
+    imagesUrls?: Array<string> | null | undefined;
     /**
      * The description of the product
      */
-    description?: string | undefined;
+    description?: string | null | undefined;
     /**
      * The vendor of the product
      */
-    vendor?: string | undefined;
+    vendor?: string | null | undefined;
     /**
      * The variants of the product
      */
-    variants?: Array<UnifiedEcommerceProductInputVariants> | undefined;
+    variants?: Array<Variant> | undefined;
     /**
      * The tags associated with the product
      */
-    tags?: Array<string> | undefined;
+    tags?: Array<string> | null | undefined;
     /**
      * The custom field mappings of the object between the remote 3rd party & Panora
      */
-    fieldMappings?: UnifiedEcommerceProductInputFieldMappings | undefined;
+    fieldMappings?: UnifiedEcommerceProductInputFieldMappings | null | undefined;
 };
 
 /** @internal */
-export const UnifiedEcommerceProductInputVariants$inboundSchema: z.ZodType<
-    UnifiedEcommerceProductInputVariants,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
+export const UnifiedEcommerceProductInputProductStatus$inboundSchema: z.ZodNativeEnum<
+    typeof UnifiedEcommerceProductInputProductStatus
+> = z.nativeEnum(UnifiedEcommerceProductInputProductStatus);
 
 /** @internal */
-export type UnifiedEcommerceProductInputVariants$Outbound = {};
-
-/** @internal */
-export const UnifiedEcommerceProductInputVariants$outboundSchema: z.ZodType<
-    UnifiedEcommerceProductInputVariants$Outbound,
-    z.ZodTypeDef,
-    UnifiedEcommerceProductInputVariants
-> = z.object({});
+export const UnifiedEcommerceProductInputProductStatus$outboundSchema: z.ZodNativeEnum<
+    typeof UnifiedEcommerceProductInputProductStatus
+> = UnifiedEcommerceProductInputProductStatus$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UnifiedEcommerceProductInputVariants$ {
-    /** @deprecated use `UnifiedEcommerceProductInputVariants$inboundSchema` instead. */
-    export const inboundSchema = UnifiedEcommerceProductInputVariants$inboundSchema;
-    /** @deprecated use `UnifiedEcommerceProductInputVariants$outboundSchema` instead. */
-    export const outboundSchema = UnifiedEcommerceProductInputVariants$outboundSchema;
-    /** @deprecated use `UnifiedEcommerceProductInputVariants$Outbound` instead. */
-    export type Outbound = UnifiedEcommerceProductInputVariants$Outbound;
+export namespace UnifiedEcommerceProductInputProductStatus$ {
+    /** @deprecated use `UnifiedEcommerceProductInputProductStatus$inboundSchema` instead. */
+    export const inboundSchema = UnifiedEcommerceProductInputProductStatus$inboundSchema;
+    /** @deprecated use `UnifiedEcommerceProductInputProductStatus$outboundSchema` instead. */
+    export const outboundSchema = UnifiedEcommerceProductInputProductStatus$outboundSchema;
 }
 
 /** @internal */
@@ -118,18 +122,18 @@ export const UnifiedEcommerceProductInput$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        product_url: z.string().optional(),
-        product_type: z.string().optional(),
-        product_status: z.string().optional(),
-        images_urls: z.array(z.string()).optional(),
-        description: z.string().optional(),
-        vendor: z.string().optional(),
-        variants: z
-            .array(z.lazy(() => UnifiedEcommerceProductInputVariants$inboundSchema))
+        product_url: z.nullable(z.string()).optional(),
+        product_type: z.nullable(z.string()).optional(),
+        product_status: z
+            .nullable(UnifiedEcommerceProductInputProductStatus$inboundSchema)
             .optional(),
-        tags: z.array(z.string()).optional(),
+        images_urls: z.nullable(z.array(z.string())).optional(),
+        description: z.nullable(z.string()).optional(),
+        vendor: z.nullable(z.string()).optional(),
+        variants: z.array(Variant$inboundSchema).optional(),
+        tags: z.nullable(z.array(z.string())).optional(),
         field_mappings: z
-            .lazy(() => UnifiedEcommerceProductInputFieldMappings$inboundSchema)
+            .nullable(z.lazy(() => UnifiedEcommerceProductInputFieldMappings$inboundSchema))
             .optional(),
     })
     .transform((v) => {
@@ -144,15 +148,15 @@ export const UnifiedEcommerceProductInput$inboundSchema: z.ZodType<
 
 /** @internal */
 export type UnifiedEcommerceProductInput$Outbound = {
-    product_url?: string | undefined;
-    product_type?: string | undefined;
-    product_status?: string | undefined;
-    images_urls?: Array<string> | undefined;
-    description?: string | undefined;
-    vendor?: string | undefined;
-    variants?: Array<UnifiedEcommerceProductInputVariants$Outbound> | undefined;
-    tags?: Array<string> | undefined;
-    field_mappings?: UnifiedEcommerceProductInputFieldMappings$Outbound | undefined;
+    product_url?: string | null | undefined;
+    product_type?: string | null | undefined;
+    product_status?: string | null | undefined;
+    images_urls?: Array<string> | null | undefined;
+    description?: string | null | undefined;
+    vendor?: string | null | undefined;
+    variants?: Array<Variant$Outbound> | undefined;
+    tags?: Array<string> | null | undefined;
+    field_mappings?: UnifiedEcommerceProductInputFieldMappings$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -162,18 +166,18 @@ export const UnifiedEcommerceProductInput$outboundSchema: z.ZodType<
     UnifiedEcommerceProductInput
 > = z
     .object({
-        productUrl: z.string().optional(),
-        productType: z.string().optional(),
-        productStatus: z.string().optional(),
-        imagesUrls: z.array(z.string()).optional(),
-        description: z.string().optional(),
-        vendor: z.string().optional(),
-        variants: z
-            .array(z.lazy(() => UnifiedEcommerceProductInputVariants$outboundSchema))
+        productUrl: z.nullable(z.string()).optional(),
+        productType: z.nullable(z.string()).optional(),
+        productStatus: z
+            .nullable(UnifiedEcommerceProductInputProductStatus$outboundSchema)
             .optional(),
-        tags: z.array(z.string()).optional(),
+        imagesUrls: z.nullable(z.array(z.string())).optional(),
+        description: z.nullable(z.string()).optional(),
+        vendor: z.nullable(z.string()).optional(),
+        variants: z.array(Variant$outboundSchema).optional(),
+        tags: z.nullable(z.array(z.string())).optional(),
         fieldMappings: z
-            .lazy(() => UnifiedEcommerceProductInputFieldMappings$outboundSchema)
+            .nullable(z.lazy(() => UnifiedEcommerceProductInputFieldMappings$outboundSchema))
             .optional(),
     })
     .transform((v) => {
