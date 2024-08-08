@@ -41,7 +41,7 @@ export const ListAtsJobRequest$inboundSchema: z.ZodType<ListAtsJobRequest, z.Zod
         .object({
             "x-connection-token": z.string(),
             remote_data: z.boolean().optional(),
-            limit: z.number().default(30),
+            limit: z.number().optional(),
             cursor: z.string().optional(),
         })
         .transform((v) => {
@@ -55,7 +55,7 @@ export const ListAtsJobRequest$inboundSchema: z.ZodType<ListAtsJobRequest, z.Zod
 export type ListAtsJobRequest$Outbound = {
     "x-connection-token": string;
     remote_data?: boolean | undefined;
-    limit: number;
+    limit?: number | undefined;
     cursor?: string | undefined;
 };
 
@@ -68,7 +68,7 @@ export const ListAtsJobRequest$outboundSchema: z.ZodType<
     .object({
         xConnectionToken: z.string(),
         remoteData: z.boolean().optional(),
-        limit: z.number().default(30),
+        limit: z.number().optional(),
         cursor: z.string().optional(),
     })
     .transform((v) => {

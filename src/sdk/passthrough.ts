@@ -20,7 +20,7 @@ export class Passthrough extends ClientSDK {
     async request(
         request: operations.RequestRequest,
         options?: RequestOptions
-    ): Promise<operations.RequestResponse> {
+    ): Promise<operations.RequestResponseBody> {
         return unwrapAsync(passthroughRequest(this, request, options));
     }
 }

@@ -1,20 +1,19 @@
 lockVersion: 2.0.0
 id: caaaa8c3-6dd7-43a5-841e-c3193e68cc73
 management:
-  docChecksum: 3f1e9daf4aac029a9feac317b3c9365a
+  docChecksum: 1194665c11b81da571b7d83b1e1bd669
   docVersion: "1.0"
-  speakeasyVersion: 1.357.1
-  generationVersion: 2.390.0
-  releaseVersion: 0.9.1
-  configChecksum: fa4a5ac4ffd27febedbc5e30080f67f2
+  speakeasyVersion: 1.358.0
+  generationVersion: 2.390.6
+  releaseVersion: 0.10.0
+  configChecksum: 97ed8d87769e8d7b56fc5319a8226b27
   repoURL: https://github.com/panoratech/typescript-sdk.git
   installationURL: https://github.com/panoratech/typescript-sdk
   published: true
 features:
   typescript:
     additionalDependencies: 0.1.0
-    constsAndDefaults: 0.1.6
-    core: 3.12.2
+    core: 3.12.3
     defaultEnabledRetries: 0.1.0
     envVarSecurityUsage: 0.1.1
     globalSecurity: 2.82.11
@@ -853,7 +852,6 @@ generatedFiles:
   - docs/models/components/passthroughrequestdtomethod.md
   - docs/models/components/data.md
   - docs/models/components/requestformat.md
-  - docs/models/components/headers.md
   - docs/models/components/passthroughrequestdto.md
   - docs/models/components/unifiedhrisbankinfooutput.md
   - docs/models/components/unifiedhrisbenefitoutput.md
@@ -1082,9 +1080,7 @@ generatedFiles:
   - docs/models/operations/remoteidrequest.md
   - docs/models/operations/getpanoracoreeventsrequest.md
   - docs/models/operations/requestrequest.md
-  - docs/models/operations/requestpassthroughresponsebody.md
   - docs/models/operations/requestresponsebody.md
-  - docs/models/operations/requestresponse.md
   - docs/models/operations/getretriedrequestresponserequest.md
   - docs/models/operations/listhrisbankinforequest.md
   - docs/models/operations/listhrisbankinforesponsebody.md

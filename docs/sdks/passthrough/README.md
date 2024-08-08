@@ -25,6 +25,13 @@ async function run() {
     passThroughRequestDto: {
       method: PassThroughRequestDtoMethod.Get,
       path: "/dev",
+      data: {},
+    requestFormat:     {
+          "key": "<value>",
+        },
+      overrideBaseUrl: {
+        "key": "<value>",
+      },
     },
   });
 
@@ -47,7 +54,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RequestResponse](../../models/operations/requestresponse.md)\>**
+**Promise\<[operations.RequestResponseBody](../../models/operations/requestresponsebody.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

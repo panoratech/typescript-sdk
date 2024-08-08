@@ -44,7 +44,7 @@ export const ListMarketingautomationAutomationsRequest$inboundSchema: z.ZodType<
     .object({
         "x-connection-token": z.string(),
         remote_data: z.boolean().optional(),
-        limit: z.number().default(30),
+        limit: z.number().optional(),
         cursor: z.string().optional(),
     })
     .transform((v) => {
@@ -58,7 +58,7 @@ export const ListMarketingautomationAutomationsRequest$inboundSchema: z.ZodType<
 export type ListMarketingautomationAutomationsRequest$Outbound = {
     "x-connection-token": string;
     remote_data?: boolean | undefined;
-    limit: number;
+    limit?: number | undefined;
     cursor?: string | undefined;
 };
 
@@ -71,7 +71,7 @@ export const ListMarketingautomationAutomationsRequest$outboundSchema: z.ZodType
     .object({
         xConnectionToken: z.string(),
         remoteData: z.boolean().optional(),
-        limit: z.number().default(30),
+        limit: z.number().optional(),
         cursor: z.string().optional(),
     })
     .transform((v) => {
