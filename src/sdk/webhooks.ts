@@ -36,7 +36,7 @@ export class Webhooks extends ClientSDK {
     async delete(
         request: operations.DeleteRequest,
         options?: RequestOptions
-    ): Promise<components.WebhookResponse | undefined> {
+    ): Promise<components.WebhookResponse> {
         return unwrapAsync(webhooksDelete(this, request, options));
     }
 
@@ -46,7 +46,7 @@ export class Webhooks extends ClientSDK {
     async updateStatus(
         request: operations.UpdateStatusRequest,
         options?: RequestOptions
-    ): Promise<components.WebhookResponse | undefined> {
+    ): Promise<components.WebhookResponse> {
         return unwrapAsync(webhooksUpdateStatus(this, request, options));
     }
 
@@ -56,7 +56,7 @@ export class Webhooks extends ClientSDK {
     async verifyEvent(
         request: components.SignatureVerificationDto,
         options?: RequestOptions
-    ): Promise<operations.VerifyEventResponseBody | undefined> {
+    ): Promise<operations.VerifyEventResponseBody> {
         return unwrapAsync(webhooksVerifyEvent(this, request, options));
     }
 }

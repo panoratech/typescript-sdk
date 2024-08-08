@@ -31,7 +31,7 @@ export async function webhooksVerifyEvent(
     options?: RequestOptions
 ): Promise<
     Result<
-        operations.VerifyEventResponseBody | undefined,
+        operations.VerifyEventResponseBody,
         | SDKError
         | SDKValidationError
         | UnexpectedClientError
@@ -99,7 +99,7 @@ export async function webhooksVerifyEvent(
     const response = doResult.value;
 
     const [result$] = await m$.match<
-        operations.VerifyEventResponseBody | undefined,
+        operations.VerifyEventResponseBody,
         | SDKError
         | SDKValidationError
         | UnexpectedClientError
@@ -108,8 +108,7 @@ export async function webhooksVerifyEvent(
         | RequestTimeoutError
         | ConnectionError
     >(
-        m$.json(200, operations.VerifyEventResponseBody$inboundSchema.optional()),
-        m$.nil(201, operations.VerifyEventResponseBody$inboundSchema.optional()),
+        m$.json(200, operations.VerifyEventResponseBody$inboundSchema),
         m$.fail(["4XX", "5XX"])
     )(response);
     if (!result$.ok) {

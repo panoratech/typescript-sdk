@@ -6,7 +6,7 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
 export type LoginDto = {
-    idUser?: string | undefined;
+    idUser: string;
     email: string;
     passwordHash: string;
 };
@@ -14,7 +14,7 @@ export type LoginDto = {
 /** @internal */
 export const LoginDto$inboundSchema: z.ZodType<LoginDto, z.ZodTypeDef, unknown> = z
     .object({
-        id_user: z.string().optional(),
+        id_user: z.string(),
         email: z.string(),
         password_hash: z.string(),
     })
@@ -27,7 +27,7 @@ export const LoginDto$inboundSchema: z.ZodType<LoginDto, z.ZodTypeDef, unknown> 
 
 /** @internal */
 export type LoginDto$Outbound = {
-    id_user?: string | undefined;
+    id_user: string;
     email: string;
     password_hash: string;
 };
@@ -35,7 +35,7 @@ export type LoginDto$Outbound = {
 /** @internal */
 export const LoginDto$outboundSchema: z.ZodType<LoginDto$Outbound, z.ZodTypeDef, LoginDto> = z
     .object({
-        idUser: z.string().optional(),
+        idUser: z.string(),
         email: z.string(),
         passwordHash: z.string(),
     })

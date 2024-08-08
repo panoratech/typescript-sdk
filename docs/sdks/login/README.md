@@ -20,6 +20,7 @@ const panora = new Panora({
 
 async function run() {
   await panora.auth.login.signIn({
+    idUser: "<value>",
     email: "Oda.Treutel97@hotmail.com",
     passwordHash: "<value>",
   });
