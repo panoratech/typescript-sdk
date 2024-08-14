@@ -29,6 +29,37 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { PanoraCore } from "@panora/sdk/core.js";
+import { projectsGetProjects } from "@panora/sdk/funcs/projectsGetProjects.js";
+
+// Use `PanoraCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const panora = new PanoraCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await projectsGetProjects(panora);
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -66,6 +97,41 @@ async function run() {
     idOrganization: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
     idUser: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { PanoraCore } from "@panora/sdk/core.js";
+import { projectsCreate } from "@panora/sdk/funcs/projectsCreate.js";
+
+// Use `PanoraCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const panora = new PanoraCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await projectsCreate(panora, {
+    name: "Project Name",
+    idOrganization: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    idUser: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)

@@ -8,7 +8,7 @@ import * as z from "zod";
 /**
  * The items in the fulfilment
  */
-export type UnifiedEcommerceFulfillmentOutputItems = {};
+export type Items = {};
 
 /**
  * The custom field mappings of the object between the remote 3rd party & Panora
@@ -36,7 +36,7 @@ export type UnifiedEcommerceFulfillmentOutput = {
     /**
      * The items in the fulfilment
      */
-    items?: UnifiedEcommerceFulfillmentOutputItems | null | undefined;
+    items?: Items | null | undefined;
     /**
      * The UUID of the order associated with the fulfilment
      */
@@ -68,33 +68,25 @@ export type UnifiedEcommerceFulfillmentOutput = {
 };
 
 /** @internal */
-export const UnifiedEcommerceFulfillmentOutputItems$inboundSchema: z.ZodType<
-    UnifiedEcommerceFulfillmentOutputItems,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
+export const Items$inboundSchema: z.ZodType<Items, z.ZodTypeDef, unknown> = z.object({});
 
 /** @internal */
-export type UnifiedEcommerceFulfillmentOutputItems$Outbound = {};
+export type Items$Outbound = {};
 
 /** @internal */
-export const UnifiedEcommerceFulfillmentOutputItems$outboundSchema: z.ZodType<
-    UnifiedEcommerceFulfillmentOutputItems$Outbound,
-    z.ZodTypeDef,
-    UnifiedEcommerceFulfillmentOutputItems
-> = z.object({});
+export const Items$outboundSchema: z.ZodType<Items$Outbound, z.ZodTypeDef, Items> = z.object({});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UnifiedEcommerceFulfillmentOutputItems$ {
-    /** @deprecated use `UnifiedEcommerceFulfillmentOutputItems$inboundSchema` instead. */
-    export const inboundSchema = UnifiedEcommerceFulfillmentOutputItems$inboundSchema;
-    /** @deprecated use `UnifiedEcommerceFulfillmentOutputItems$outboundSchema` instead. */
-    export const outboundSchema = UnifiedEcommerceFulfillmentOutputItems$outboundSchema;
-    /** @deprecated use `UnifiedEcommerceFulfillmentOutputItems$Outbound` instead. */
-    export type Outbound = UnifiedEcommerceFulfillmentOutputItems$Outbound;
+export namespace Items$ {
+    /** @deprecated use `Items$inboundSchema` instead. */
+    export const inboundSchema = Items$inboundSchema;
+    /** @deprecated use `Items$outboundSchema` instead. */
+    export const outboundSchema = Items$outboundSchema;
+    /** @deprecated use `Items$Outbound` instead. */
+    export type Outbound = Items$Outbound;
 }
 
 /** @internal */
@@ -167,9 +159,7 @@ export const UnifiedEcommerceFulfillmentOutput$inboundSchema: z.ZodType<
         carrier: z.nullable(z.string()).optional(),
         tracking_urls: z.nullable(z.array(z.string())).optional(),
         tracking_numbers: z.nullable(z.array(z.string())).optional(),
-        items: z
-            .nullable(z.lazy(() => UnifiedEcommerceFulfillmentOutputItems$inboundSchema))
-            .optional(),
+        items: z.nullable(z.lazy(() => Items$inboundSchema)).optional(),
         order_id: z.nullable(z.string()).optional(),
         field_mappings: z
             .nullable(z.lazy(() => UnifiedEcommerceFulfillmentOutputFieldMappings$inboundSchema))
@@ -200,7 +190,7 @@ export type UnifiedEcommerceFulfillmentOutput$Outbound = {
     carrier?: string | null | undefined;
     tracking_urls?: Array<string> | null | undefined;
     tracking_numbers?: Array<string> | null | undefined;
-    items?: UnifiedEcommerceFulfillmentOutputItems$Outbound | null | undefined;
+    items?: Items$Outbound | null | undefined;
     order_id?: string | null | undefined;
     field_mappings?: UnifiedEcommerceFulfillmentOutputFieldMappings$Outbound | null | undefined;
     id?: string | null | undefined;
@@ -220,9 +210,7 @@ export const UnifiedEcommerceFulfillmentOutput$outboundSchema: z.ZodType<
         carrier: z.nullable(z.string()).optional(),
         trackingUrls: z.nullable(z.array(z.string())).optional(),
         trackingNumbers: z.nullable(z.array(z.string())).optional(),
-        items: z
-            .nullable(z.lazy(() => UnifiedEcommerceFulfillmentOutputItems$outboundSchema))
-            .optional(),
+        items: z.nullable(z.lazy(() => Items$outboundSchema)).optional(),
         orderId: z.nullable(z.string()).optional(),
         fieldMappings: z
             .nullable(z.lazy(() => UnifiedEcommerceFulfillmentOutputFieldMappings$outboundSchema))

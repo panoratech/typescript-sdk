@@ -3,12 +3,36 @@
  */
 
 import { remap as remap$ } from "../../lib/primitives.js";
+import {
+    LineItem,
+    LineItem$inboundSchema,
+    LineItem$Outbound,
+    LineItem$outboundSchema,
+} from "./lineitem.js";
 import * as z from "zod";
+
+/**
+ * The status of the order
+ */
+export enum OrderStatus {
+    Pending = "PENDING",
+    Unshipped = "UNSHIPPED",
+    Shipped = "SHIPPED",
+    Canceled = "CANCELED",
+}
+
+/**
+ * The payment status of the order
+ */
+export enum PaymentStatus {
+    Success = "SUCCESS",
+    Fail = "FAIL",
+}
 
 /**
  * The currency of the order. Authorized value must be of type CurrencyCode (ISO 4217)
  */
-export enum Currency {
+export enum UnifiedEcommerceOrderOutputCurrency {
     Aed = "AED",
     Afn = "AFN",
     All = "ALL",
@@ -174,9 +198,13 @@ export enum Currency {
 }
 
 /**
- * The items in the order
+ * The fulfillment status of the order
  */
-export type Items = {};
+export enum FulfillmentStatus {
+    Pending = "PENDING",
+    Fulfilled = "FULFILLED",
+    Canceled = "CANCELED",
+}
 
 /**
  * The custom field mappings of the object between the remote 3rd party & Panora
@@ -192,7 +220,7 @@ export type UnifiedEcommerceOrderOutput = {
     /**
      * The status of the order
      */
-    orderStatus?: string | null | undefined;
+    orderStatus?: OrderStatus | null | undefined;
     /**
      * The number of the order
      */
@@ -200,11 +228,11 @@ export type UnifiedEcommerceOrderOutput = {
     /**
      * The payment status of the order
      */
-    paymentStatus?: string | null | undefined;
+    paymentStatus?: PaymentStatus | null | undefined;
     /**
      * The currency of the order. Authorized value must be of type CurrencyCode (ISO 4217)
      */
-    currency?: Currency | null | undefined;
+    currency?: UnifiedEcommerceOrderOutputCurrency | null | undefined;
     /**
      * The total price of the order
      */
@@ -224,7 +252,7 @@ export type UnifiedEcommerceOrderOutput = {
     /**
      * The fulfillment status of the order
      */
-    fulfillmentStatus?: string | null | undefined;
+    fulfillmentStatus?: FulfillmentStatus | null | undefined;
     /**
      * The UUID of the customer associated with the order
      */
@@ -232,7 +260,7 @@ export type UnifiedEcommerceOrderOutput = {
     /**
      * The items in the order
      */
-    items?: Items | null | undefined;
+    items?: Array<LineItem> | null | undefined;
     /**
      * The custom field mappings of the object between the remote 3rd party & Panora
      */
@@ -260,42 +288,81 @@ export type UnifiedEcommerceOrderOutput = {
 };
 
 /** @internal */
-export const Currency$inboundSchema: z.ZodNativeEnum<typeof Currency> = z.nativeEnum(Currency);
+export const OrderStatus$inboundSchema: z.ZodNativeEnum<typeof OrderStatus> =
+    z.nativeEnum(OrderStatus);
 
 /** @internal */
-export const Currency$outboundSchema: z.ZodNativeEnum<typeof Currency> = Currency$inboundSchema;
+export const OrderStatus$outboundSchema: z.ZodNativeEnum<typeof OrderStatus> =
+    OrderStatus$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Currency$ {
-    /** @deprecated use `Currency$inboundSchema` instead. */
-    export const inboundSchema = Currency$inboundSchema;
-    /** @deprecated use `Currency$outboundSchema` instead. */
-    export const outboundSchema = Currency$outboundSchema;
+export namespace OrderStatus$ {
+    /** @deprecated use `OrderStatus$inboundSchema` instead. */
+    export const inboundSchema = OrderStatus$inboundSchema;
+    /** @deprecated use `OrderStatus$outboundSchema` instead. */
+    export const outboundSchema = OrderStatus$outboundSchema;
 }
 
 /** @internal */
-export const Items$inboundSchema: z.ZodType<Items, z.ZodTypeDef, unknown> = z.object({});
+export const PaymentStatus$inboundSchema: z.ZodNativeEnum<typeof PaymentStatus> =
+    z.nativeEnum(PaymentStatus);
 
 /** @internal */
-export type Items$Outbound = {};
-
-/** @internal */
-export const Items$outboundSchema: z.ZodType<Items$Outbound, z.ZodTypeDef, Items> = z.object({});
+export const PaymentStatus$outboundSchema: z.ZodNativeEnum<typeof PaymentStatus> =
+    PaymentStatus$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Items$ {
-    /** @deprecated use `Items$inboundSchema` instead. */
-    export const inboundSchema = Items$inboundSchema;
-    /** @deprecated use `Items$outboundSchema` instead. */
-    export const outboundSchema = Items$outboundSchema;
-    /** @deprecated use `Items$Outbound` instead. */
-    export type Outbound = Items$Outbound;
+export namespace PaymentStatus$ {
+    /** @deprecated use `PaymentStatus$inboundSchema` instead. */
+    export const inboundSchema = PaymentStatus$inboundSchema;
+    /** @deprecated use `PaymentStatus$outboundSchema` instead. */
+    export const outboundSchema = PaymentStatus$outboundSchema;
+}
+
+/** @internal */
+export const UnifiedEcommerceOrderOutputCurrency$inboundSchema: z.ZodNativeEnum<
+    typeof UnifiedEcommerceOrderOutputCurrency
+> = z.nativeEnum(UnifiedEcommerceOrderOutputCurrency);
+
+/** @internal */
+export const UnifiedEcommerceOrderOutputCurrency$outboundSchema: z.ZodNativeEnum<
+    typeof UnifiedEcommerceOrderOutputCurrency
+> = UnifiedEcommerceOrderOutputCurrency$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UnifiedEcommerceOrderOutputCurrency$ {
+    /** @deprecated use `UnifiedEcommerceOrderOutputCurrency$inboundSchema` instead. */
+    export const inboundSchema = UnifiedEcommerceOrderOutputCurrency$inboundSchema;
+    /** @deprecated use `UnifiedEcommerceOrderOutputCurrency$outboundSchema` instead. */
+    export const outboundSchema = UnifiedEcommerceOrderOutputCurrency$outboundSchema;
+}
+
+/** @internal */
+export const FulfillmentStatus$inboundSchema: z.ZodNativeEnum<typeof FulfillmentStatus> =
+    z.nativeEnum(FulfillmentStatus);
+
+/** @internal */
+export const FulfillmentStatus$outboundSchema: z.ZodNativeEnum<typeof FulfillmentStatus> =
+    FulfillmentStatus$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace FulfillmentStatus$ {
+    /** @deprecated use `FulfillmentStatus$inboundSchema` instead. */
+    export const inboundSchema = FulfillmentStatus$inboundSchema;
+    /** @deprecated use `FulfillmentStatus$outboundSchema` instead. */
+    export const outboundSchema = FulfillmentStatus$outboundSchema;
 }
 
 /** @internal */
@@ -365,17 +432,17 @@ export const UnifiedEcommerceOrderOutput$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        order_status: z.nullable(z.string()).optional(),
+        order_status: z.nullable(OrderStatus$inboundSchema).optional(),
         order_number: z.nullable(z.string()).optional(),
-        payment_status: z.nullable(z.string()).optional(),
-        currency: z.nullable(Currency$inboundSchema).optional(),
+        payment_status: z.nullable(PaymentStatus$inboundSchema).optional(),
+        currency: z.nullable(UnifiedEcommerceOrderOutputCurrency$inboundSchema).optional(),
         total_price: z.nullable(z.number()).optional(),
         total_discount: z.nullable(z.number()).optional(),
         total_shipping: z.nullable(z.number()).optional(),
         total_tax: z.nullable(z.number()).optional(),
-        fulfillment_status: z.nullable(z.string()).optional(),
+        fulfillment_status: z.nullable(FulfillmentStatus$inboundSchema).optional(),
         customer_id: z.nullable(z.string()).optional(),
-        items: z.nullable(z.lazy(() => Items$inboundSchema)).optional(),
+        items: z.nullable(z.array(LineItem$inboundSchema)).optional(),
         field_mappings: z
             .nullable(z.lazy(() => UnifiedEcommerceOrderOutputFieldMappings$inboundSchema))
             .optional(),
@@ -418,7 +485,7 @@ export type UnifiedEcommerceOrderOutput$Outbound = {
     total_tax?: number | null | undefined;
     fulfillment_status?: string | null | undefined;
     customer_id?: string | null | undefined;
-    items?: Items$Outbound | null | undefined;
+    items?: Array<LineItem$Outbound> | null | undefined;
     field_mappings?: UnifiedEcommerceOrderOutputFieldMappings$Outbound | null | undefined;
     id?: string | null | undefined;
     remote_id?: string | null | undefined;
@@ -434,17 +501,17 @@ export const UnifiedEcommerceOrderOutput$outboundSchema: z.ZodType<
     UnifiedEcommerceOrderOutput
 > = z
     .object({
-        orderStatus: z.nullable(z.string()).optional(),
+        orderStatus: z.nullable(OrderStatus$outboundSchema).optional(),
         orderNumber: z.nullable(z.string()).optional(),
-        paymentStatus: z.nullable(z.string()).optional(),
-        currency: z.nullable(Currency$outboundSchema).optional(),
+        paymentStatus: z.nullable(PaymentStatus$outboundSchema).optional(),
+        currency: z.nullable(UnifiedEcommerceOrderOutputCurrency$outboundSchema).optional(),
         totalPrice: z.nullable(z.number()).optional(),
         totalDiscount: z.nullable(z.number()).optional(),
         totalShipping: z.nullable(z.number()).optional(),
         totalTax: z.nullable(z.number()).optional(),
-        fulfillmentStatus: z.nullable(z.string()).optional(),
+        fulfillmentStatus: z.nullable(FulfillmentStatus$outboundSchema).optional(),
         customerId: z.nullable(z.string()).optional(),
-        items: z.nullable(z.lazy(() => Items$outboundSchema)).optional(),
+        items: z.nullable(z.array(LineItem$outboundSchema)).optional(),
         fieldMappings: z
             .nullable(z.lazy(() => UnifiedEcommerceOrderOutputFieldMappings$outboundSchema))
             .optional(),

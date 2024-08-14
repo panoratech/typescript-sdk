@@ -44,7 +44,7 @@ export const ListAccountingAddressRequest$inboundSchema: z.ZodType<
     .object({
         "x-connection-token": z.string(),
         remote_data: z.boolean().optional(),
-        limit: z.number().optional(),
+        limit: z.number().default(50),
         cursor: z.string().optional(),
     })
     .transform((v) => {
@@ -58,7 +58,7 @@ export const ListAccountingAddressRequest$inboundSchema: z.ZodType<
 export type ListAccountingAddressRequest$Outbound = {
     "x-connection-token": string;
     remote_data?: boolean | undefined;
-    limit?: number | undefined;
+    limit: number;
     cursor?: string | undefined;
 };
 
@@ -71,7 +71,7 @@ export const ListAccountingAddressRequest$outboundSchema: z.ZodType<
     .object({
         xConnectionToken: z.string(),
         remoteData: z.boolean().optional(),
-        limit: z.number().optional(),
+        limit: z.number().default(50),
         cursor: z.string().optional(),
     })
     .transform((v) => {
