@@ -3,6 +3,7 @@
  */
 
 import { HTTPClient } from "./http.js";
+import { Logger } from "./logger.js";
 import { RetryConfig } from "./retries.js";
 import { Params, pathToFunc } from "./url.js";
 
@@ -41,6 +42,7 @@ export type SDKOptions = {
      */
     retryConfig?: RetryConfig;
     timeoutMs?: number;
+    debugLogger?: Logger;
 };
 
 export function serverURLFromOptions(options: SDKOptions): URL | null {
@@ -63,7 +65,7 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
 export const SDK_METADATA = {
     language: "typescript",
     openapiDocVersion: "1.0",
-    sdkVersion: "0.10.0",
-    genVersion: "2.390.6",
-    userAgent: "speakeasy-sdk/typescript 0.10.0 2.390.6 1.0 @panora/sdk",
+    sdkVersion: "0.11.0",
+    genVersion: "2.396.0",
+    userAgent: "speakeasy-sdk/typescript 0.11.0 2.396.0 1.0 @panora/sdk",
 } as const;

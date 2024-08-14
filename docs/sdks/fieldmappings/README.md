@@ -32,6 +32,36 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { PanoraCore } from "@panora/sdk/core.js";
+import { fieldMappingsGetFieldMappingValues } from "@panora/sdk/funcs/fieldMappingsGetFieldMappingValues.js";
+
+// Use `PanoraCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const panora = new PanoraCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await fieldMappingsGetFieldMappingValues(panora);
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -65,6 +95,36 @@ const panora = new Panora({
 
 async function run() {
   await panora.fieldMappings.getFieldMappingsEntities();
+
+  
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { PanoraCore } from "@panora/sdk/core.js";
+import { fieldMappingsGetFieldMappingsEntities } from "@panora/sdk/funcs/fieldMappingsGetFieldMappingsEntities.js";
+
+// Use `PanoraCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const panora = new PanoraCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await fieldMappingsGetFieldMappingsEntities(panora);
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   
 }
@@ -112,6 +172,36 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { PanoraCore } from "@panora/sdk/core.js";
+import { fieldMappingsGetFieldMappings } from "@panora/sdk/funcs/fieldMappingsGetFieldMappings.js";
+
+// Use `PanoraCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const panora = new PanoraCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await fieldMappingsGetFieldMappings(panora);
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -151,6 +241,43 @@ async function run() {
     description: "My favorite dish",
     dataType: DataType.String,
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { PanoraCore } from "@panora/sdk/core.js";
+import { fieldMappingsDefinitions } from "@panora/sdk/funcs/fieldMappingsDefinitions.js";
+import { DataType, ObjectTypeOwner } from "@panora/sdk/models/components";
+
+// Use `PanoraCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const panora = new PanoraCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await fieldMappingsDefinitions(panora, {
+    objectTypeOwner: ObjectTypeOwner.Company,
+    name: "fav_dish",
+    description: "My favorite dish",
+    dataType: DataType.String,
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -210,6 +337,46 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { PanoraCore } from "@panora/sdk/core.js";
+import { fieldMappingsDefineCustomField } from "@panora/sdk/funcs/fieldMappingsDefineCustomField.js";
+import { CustomFieldCreateDtoDataType, CustomFieldCreateDtoObjectTypeOwner } from "@panora/sdk/models/components";
+
+// Use `PanoraCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const panora = new PanoraCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await fieldMappingsDefineCustomField(panora, {
+    objectTypeOwner: CustomFieldCreateDtoObjectTypeOwner.Company,
+    name: "my_favorite_dish",
+    description: "Favorite Dish",
+    dataType: CustomFieldCreateDtoDataType.String,
+    sourceCustomFieldId: "id_1",
+    sourceProvider: "hubspot",
+    linkedUserId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -249,6 +416,42 @@ async function run() {
     sourceProvider: "hubspot",
     linkedUserId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { PanoraCore } from "@panora/sdk/core.js";
+import { fieldMappingsMap } from "@panora/sdk/funcs/fieldMappingsMap.js";
+
+// Use `PanoraCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const panora = new PanoraCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await fieldMappingsMap(panora, {
+    attributeId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    sourceCustomFieldId: "id_1",
+    sourceProvider: "hubspot",
+    linkedUserId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)

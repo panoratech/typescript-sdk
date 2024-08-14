@@ -1,6 +1,6 @@
 # Currency
 
-The currency of the order. Authorized value must be of type CurrencyCode (ISO 4217)
+The currency of the account
 
 
 ## Values

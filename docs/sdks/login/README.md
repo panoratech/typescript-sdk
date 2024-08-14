@@ -20,10 +20,42 @@ const panora = new Panora({
 
 async function run() {
   await panora.auth.login.signIn({
-    idUser: "<value>",
     email: "Oda.Treutel97@hotmail.com",
     passwordHash: "<value>",
   });
+
+  
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { PanoraCore } from "@panora/sdk/core.js";
+import { authLoginSignIn } from "@panora/sdk/funcs/authLoginSignIn.js";
+
+// Use `PanoraCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const panora = new PanoraCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await authLoginSignIn(panora, {
+    email: "Kennedi_Olson40@hotmail.com",
+    passwordHash: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   
 }

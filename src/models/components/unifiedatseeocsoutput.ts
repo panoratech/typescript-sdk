@@ -22,7 +22,7 @@ export enum Race {
 /**
  * The gender of the candidate
  */
-export enum Gender {
+export enum UnifiedAtsEeocsOutputGender {
     Male = "MALE",
     Female = "FEMALE",
     NonBinary = "NON_BINARY",
@@ -64,7 +64,7 @@ export type UnifiedAtsEeocsOutput = {
     /**
      * The gender of the candidate
      */
-    gender?: Gender | null | undefined;
+    gender?: UnifiedAtsEeocsOutputGender | null | undefined;
     /**
      * The veteran status of the candidate
      */
@@ -117,20 +117,24 @@ export namespace Race$ {
 }
 
 /** @internal */
-export const Gender$inboundSchema: z.ZodNativeEnum<typeof Gender> = z.nativeEnum(Gender);
+export const UnifiedAtsEeocsOutputGender$inboundSchema: z.ZodNativeEnum<
+    typeof UnifiedAtsEeocsOutputGender
+> = z.nativeEnum(UnifiedAtsEeocsOutputGender);
 
 /** @internal */
-export const Gender$outboundSchema: z.ZodNativeEnum<typeof Gender> = Gender$inboundSchema;
+export const UnifiedAtsEeocsOutputGender$outboundSchema: z.ZodNativeEnum<
+    typeof UnifiedAtsEeocsOutputGender
+> = UnifiedAtsEeocsOutputGender$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Gender$ {
-    /** @deprecated use `Gender$inboundSchema` instead. */
-    export const inboundSchema = Gender$inboundSchema;
-    /** @deprecated use `Gender$outboundSchema` instead. */
-    export const outboundSchema = Gender$outboundSchema;
+export namespace UnifiedAtsEeocsOutputGender$ {
+    /** @deprecated use `UnifiedAtsEeocsOutputGender$inboundSchema` instead. */
+    export const inboundSchema = UnifiedAtsEeocsOutputGender$inboundSchema;
+    /** @deprecated use `UnifiedAtsEeocsOutputGender$outboundSchema` instead. */
+    export const outboundSchema = UnifiedAtsEeocsOutputGender$outboundSchema;
 }
 
 /** @internal */
@@ -188,7 +192,7 @@ export const UnifiedAtsEeocsOutput$inboundSchema: z.ZodType<
             )
             .optional(),
         race: z.nullable(Race$inboundSchema).optional(),
-        gender: z.nullable(Gender$inboundSchema).optional(),
+        gender: z.nullable(UnifiedAtsEeocsOutputGender$inboundSchema).optional(),
         veteran_status: z.nullable(VeteranStatus$inboundSchema).optional(),
         disability_status: z.nullable(DisabilityStatus$inboundSchema).optional(),
         field_mappings: z.nullable(z.record(z.any())).optional(),
@@ -252,7 +256,7 @@ export const UnifiedAtsEeocsOutput$outboundSchema: z.ZodType<
         candidateId: z.nullable(z.string()).optional(),
         submittedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         race: z.nullable(Race$outboundSchema).optional(),
-        gender: z.nullable(Gender$outboundSchema).optional(),
+        gender: z.nullable(UnifiedAtsEeocsOutputGender$outboundSchema).optional(),
         veteranStatus: z.nullable(VeteranStatus$outboundSchema).optional(),
         disabilityStatus: z.nullable(DisabilityStatus$outboundSchema).optional(),
         fieldMappings: z.nullable(z.record(z.any())).optional(),

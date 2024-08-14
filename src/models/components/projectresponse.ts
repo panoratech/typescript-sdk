@@ -21,11 +21,11 @@ export type ProjectResponse = {
     /**
      * Frequency of pulling data in seconds
      */
-    pullFrequency: number;
+    pullFrequency?: number | undefined;
     /**
      * Redirect URL for the project
      */
-    redirectUrl: string;
+    redirectUrl?: string | undefined;
     /**
      * User ID associated with the project
      */
@@ -42,8 +42,8 @@ export const ProjectResponse$inboundSchema: z.ZodType<ProjectResponse, z.ZodType
         id_project: z.string(),
         name: z.string(),
         sync_mode: z.string(),
-        pull_frequency: z.number(),
-        redirect_url: z.string(),
+        pull_frequency: z.number().optional(),
+        redirect_url: z.string().optional(),
         id_user: z.string(),
         id_connector_set: z.string(),
     })
@@ -63,8 +63,8 @@ export type ProjectResponse$Outbound = {
     id_project: string;
     name: string;
     sync_mode: string;
-    pull_frequency: number;
-    redirect_url: string;
+    pull_frequency?: number | undefined;
+    redirect_url?: string | undefined;
     id_user: string;
     id_connector_set: string;
 };
@@ -79,8 +79,8 @@ export const ProjectResponse$outboundSchema: z.ZodType<
         idProject: z.string(),
         name: z.string(),
         syncMode: z.string(),
-        pullFrequency: z.number(),
-        redirectUrl: z.string(),
+        pullFrequency: z.number().optional(),
+        redirectUrl: z.string().optional(),
         idUser: z.string(),
         idConnectorSet: z.string(),
     })

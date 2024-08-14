@@ -31,6 +31,37 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { PanoraCore } from "@panora/sdk/core.js";
+import { hello } from "@panora/sdk/funcs/hello.js";
+
+// Use `PanoraCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const panora = new PanoraCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await hello(panora);
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -62,6 +93,37 @@ const panora = new Panora({
 
 async function run() {
   const result = await panora.health();
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { PanoraCore } from "@panora/sdk/core.js";
+import { health } from "@panora/sdk/funcs/health.js";
+
+// Use `PanoraCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const panora = new PanoraCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await health(panora);
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)

@@ -36,6 +36,43 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { PanoraCore } from "@panora/sdk/core.js";
+import { accountingAccountsList } from "@panora/sdk/funcs/accountingAccountsList.js";
+
+// Use `PanoraCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const panora = new PanoraCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await accountingAccountsList(panora, {
+    xConnectionToken: "<value>",
+    remoteData: true,
+    limit: 10,
+    cursor: "1b8b05bb-5273-4012-b520-8657b0b90874",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  for await (const page of result) {
+    // handle page
+  }
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -63,6 +100,7 @@ Create accounts in any supported Accounting software
 
 ```typescript
 import { Panora } from "@panora/sdk";
+import { UnifiedAccountingAccountInputCurrency } from "@panora/sdk/models/components";
 
 const panora = new Panora({
   apiKey: "<YOUR_API_KEY_HERE>",
@@ -72,8 +110,68 @@ async function run() {
   const result = await panora.accounting.accounts.create({
     xConnectionToken: "<value>",
     remoteData: false,
-    unifiedAccountingAccountInput: {},
+    unifiedAccountingAccountInput: {
+      name: "Cash",
+      description: "Main cash account for daily operations",
+      classification: "Asset",
+      type: "Current Asset",
+      status: "Active",
+      currentBalance: 10000,
+      currency: UnifiedAccountingAccountInputCurrency.Usd,
+      accountNumber: "1000",
+      parentAccount: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      companyInfoId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      fieldMappings: {},
+    },
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { PanoraCore } from "@panora/sdk/core.js";
+import { accountingAccountsCreate } from "@panora/sdk/funcs/accountingAccountsCreate.js";
+import { UnifiedAccountingAccountInputCurrency } from "@panora/sdk/models/components";
+
+// Use `PanoraCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const panora = new PanoraCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await accountingAccountsCreate(panora, {
+    xConnectionToken: "<value>",
+    remoteData: false,
+    unifiedAccountingAccountInput: {
+      name: "Cash",
+      description: "Main cash account for daily operations",
+      classification: "Asset",
+      type: "Current Asset",
+      status: "Active",
+      currentBalance: 10000,
+      currency: UnifiedAccountingAccountInputCurrency.Usd,
+      accountNumber: "1000",
+      parentAccount: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      companyInfoId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      fieldMappings: {},
+    },
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -120,6 +218,41 @@ async function run() {
     id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
     remoteData: false,
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { PanoraCore } from "@panora/sdk/core.js";
+import { accountingAccountsRetrieve } from "@panora/sdk/funcs/accountingAccountsRetrieve.js";
+
+// Use `PanoraCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const panora = new PanoraCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await accountingAccountsRetrieve(panora, {
+    xConnectionToken: "<value>",
+    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    remoteData: false,
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)

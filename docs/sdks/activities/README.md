@@ -36,6 +36,43 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { PanoraCore } from "@panora/sdk/core.js";
+import { atsActivitiesList } from "@panora/sdk/funcs/atsActivitiesList.js";
+
+// Use `PanoraCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const panora = new PanoraCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await atsActivitiesList(panora, {
+    xConnectionToken: "<value>",
+    remoteData: true,
+    limit: 10,
+    cursor: "1b8b05bb-5273-4012-b520-8657b0b90874",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  for await (const page of result) {
+    // handle page
+  }
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -94,6 +131,53 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { PanoraCore } from "@panora/sdk/core.js";
+import { atsActivitiesCreate } from "@panora/sdk/funcs/atsActivitiesCreate.js";
+import { UnifiedAtsActivityInputActivityType, UnifiedAtsActivityInputVisibility } from "@panora/sdk/models/components";
+
+// Use `PanoraCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const panora = new PanoraCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await atsActivitiesCreate(panora, {
+    xConnectionToken: "<value>",
+    remoteData: false,
+    unifiedAtsActivityInput: {
+      activityType: UnifiedAtsActivityInputActivityType.Note,
+      subject: "Email subject",
+      body: "Dear Diana, I love you",
+      visibility: UnifiedAtsActivityInputVisibility.Public,
+      candidateId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      remoteCreatedAt: new Date("2024-10-01T12:00:00Z"),
+      fieldMappings: {
+        "fav_dish": "broccoli",
+        "fav_color": "red",
+      },
+    },
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -132,6 +216,41 @@ async function run() {
     id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
     remoteData: false,
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { PanoraCore } from "@panora/sdk/core.js";
+import { atsActivitiesRetrieve } from "@panora/sdk/funcs/atsActivitiesRetrieve.js";
+
+// Use `PanoraCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const panora = new PanoraCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await atsActivitiesRetrieve(panora, {
+    xConnectionToken: "<value>",
+    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    remoteData: false,
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)

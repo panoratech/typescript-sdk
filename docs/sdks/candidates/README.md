@@ -36,6 +36,43 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { PanoraCore } from "@panora/sdk/core.js";
+import { atsCandidatesList } from "@panora/sdk/funcs/atsCandidatesList.js";
+
+// Use `PanoraCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const panora = new PanoraCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await atsCandidatesList(panora, {
+    xConnectionToken: "<value>",
+    remoteData: true,
+    limit: 10,
+    cursor: "1b8b05bb-5273-4012-b520-8657b0b90874",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  for await (const page of result) {
+    // handle page
+  }
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -126,6 +163,85 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { PanoraCore } from "@panora/sdk/core.js";
+import { atsCandidatesCreate } from "@panora/sdk/funcs/atsCandidatesCreate.js";
+import { EmailAddressType, PhoneType } from "@panora/sdk/models/components";
+
+// Use `PanoraCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const panora = new PanoraCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await atsCandidatesCreate(panora, {
+    xConnectionToken: "<value>",
+    remoteData: false,
+    unifiedAtsCandidateInput: {
+      firstName: "Joe",
+      lastName: "Doe",
+      company: "Acme",
+      title: "Analyst",
+      locations: "New York",
+      isPrivate: false,
+      emailReachable: true,
+      remoteCreatedAt: new Date("2024-10-01T12:00:00Z"),
+      remoteModifiedAt: new Date("2024-10-01T12:00:00Z"),
+      lastInteractionAt: new Date("2024-10-01T12:00:00Z"),
+      attachments: [
+        "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      ],
+      applications: [
+        "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      ],
+      tags: [
+        "tag_1",
+        "tag_2",
+      ],
+      urls: [
+        {
+          url: "mywebsite.com",
+          urlType: "WEBSITE",
+        },
+      ],
+      phoneNumbers: [
+        {
+          phoneNumber: "+33660688899",
+          phoneType: PhoneType.Work,
+        },
+      ],
+      emailAddresses: [
+        {
+          emailAddress: "joedoe@gmail.com",
+          emailAddressType: EmailAddressType.Work,
+        },
+      ],
+      fieldMappings: {
+        "fav_dish": "broccoli",
+        "fav_color": "red",
+      },
+    },
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -164,6 +280,41 @@ async function run() {
     id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
     remoteData: false,
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { PanoraCore } from "@panora/sdk/core.js";
+import { atsCandidatesRetrieve } from "@panora/sdk/funcs/atsCandidatesRetrieve.js";
+
+// Use `PanoraCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const panora = new PanoraCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await atsCandidatesRetrieve(panora, {
+    xConnectionToken: "<value>",
+    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    remoteData: false,
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)

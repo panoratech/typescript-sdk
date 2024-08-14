@@ -36,6 +36,43 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { PanoraCore } from "@panora/sdk/core.js";
+import { ticketingTicketsList } from "@panora/sdk/funcs/ticketingTicketsList.js";
+
+// Use `PanoraCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const panora = new PanoraCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await ticketingTicketsList(panora, {
+    xConnectionToken: "<value>",
+    remoteData: true,
+    limit: 10,
+    cursor: "1b8b05bb-5273-4012-b520-8657b0b90874",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  for await (const page of result) {
+    // handle page
+  }
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -128,6 +165,87 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { PanoraCore } from "@panora/sdk/core.js";
+import { ticketingTicketsCreate } from "@panora/sdk/funcs/ticketingTicketsCreate.js";
+import {
+  UnifiedTicketingTicketInputCreatorType,
+  UnifiedTicketingTicketInputPriority,
+  UnifiedTicketingTicketInputStatus,
+  UnifiedTicketingTicketInputType,
+} from "@panora/sdk/models/components";
+
+// Use `PanoraCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const panora = new PanoraCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await ticketingTicketsCreate(panora, {
+    xConnectionToken: "<value>",
+    remoteData: false,
+    unifiedTicketingTicketInput: {
+      name: "Customer Service Inquiry",
+      status: UnifiedTicketingTicketInputStatus.Open,
+      description: "Help customer",
+      dueDate: new Date("2024-10-01T12:00:00Z"),
+      type: UnifiedTicketingTicketInputType.Bug,
+      parentTicket: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      collections: [
+        "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      ],
+      tags: [
+        "my_tag",
+        "urgent_tag",
+      ],
+      completedAt: new Date("2024-10-01T12:00:00Z"),
+      priority: UnifiedTicketingTicketInputPriority.High,
+      assignedTo: [
+        "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      ],
+      comment: {
+        body: "Assigned to Eric !",
+        htmlBody: "<p>Assigned to Eric !</p>",
+        isPrivate: false,
+        creatorType: UnifiedTicketingTicketInputCreatorType.User,
+        ticketId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+        contactId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+        userId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+        attachments: [
+          "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+        ],
+      },
+      accountId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      contactId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      attachments: [
+        "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      ],
+      fieldMappings: {
+        "fav_dish": "broccoli",
+        "fav_color": "red",
+      },
+    },
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -166,6 +284,41 @@ async function run() {
     id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
     remoteData: false,
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { PanoraCore } from "@panora/sdk/core.js";
+import { ticketingTicketsRetrieve } from "@panora/sdk/funcs/ticketingTicketsRetrieve.js";
+
+// Use `PanoraCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const panora = new PanoraCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await ticketingTicketsRetrieve(panora, {
+    xConnectionToken: "<value>",
+    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    remoteData: false,
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)

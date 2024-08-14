@@ -25,15 +25,46 @@ async function run() {
     passThroughRequestDto: {
       method: PassThroughRequestDtoMethod.Get,
       path: "/dev",
-      data: {},
-    requestFormat:     {
-          "key": "<value>",
-        },
-      overrideBaseUrl: {
-        "key": "<value>",
-      },
     },
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { PanoraCore } from "@panora/sdk/core.js";
+import { passthroughRequest } from "@panora/sdk/funcs/passthroughRequest.js";
+import { PassThroughRequestDtoMethod } from "@panora/sdk/models/components";
+
+// Use `PanoraCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const panora = new PanoraCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await passthroughRequest(panora, {
+    xConnectionToken: "<value>",
+    passThroughRequestDto: {
+      method: PassThroughRequestDtoMethod.Get,
+      path: "/usr/src",
+    },
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)

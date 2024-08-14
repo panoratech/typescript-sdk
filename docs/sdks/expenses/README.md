@@ -36,6 +36,43 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { PanoraCore } from "@panora/sdk/core.js";
+import { accountingExpensesList } from "@panora/sdk/funcs/accountingExpensesList.js";
+
+// Use `PanoraCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const panora = new PanoraCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await accountingExpensesList(panora, {
+    xConnectionToken: "<value>",
+    remoteData: true,
+    limit: 10,
+    cursor: "1b8b05bb-5273-4012-b520-8657b0b90874",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  for await (const page of result) {
+    // handle page
+  }
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -63,6 +100,7 @@ Create Expenses in any supported Accounting software
 
 ```typescript
 import { Panora } from "@panora/sdk";
+import { UnifiedAccountingExpenseInputCurrency } from "@panora/sdk/models/components";
 
 const panora = new Panora({
   apiKey: "<YOUR_API_KEY_HERE>",
@@ -72,8 +110,100 @@ async function run() {
   const result = await panora.accounting.expenses.create({
     xConnectionToken: "<value>",
     remoteData: false,
-    unifiedAccountingExpenseInput: {},
+    unifiedAccountingExpenseInput: {
+      transactionDate: new Date("2024-06-15T12:00:00Z"),
+      totalAmount: 10000,
+      subTotal: 9000,
+      totalTaxAmount: 1000,
+      currency: UnifiedAccountingExpenseInputCurrency.Usd,
+      exchangeRate: "1.2",
+      memo: "Business lunch with client",
+      accountId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      contactId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      companyInfoId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      trackingCategories: [
+        "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      ],
+      lineItems: [
+        {
+          name: "Net Income",
+          value: 100000,
+          type: "Operating Activities",
+          parentItem: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+          remoteId: "report_item_1234",
+          remoteGeneratedAt: new Date("2024-07-01T12:00:00Z"),
+          companyInfoId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+          createdAt: new Date("2024-06-15T12:00:00Z"),
+          modifiedAt: new Date("2024-06-15T12:00:00Z"),
+        },
+      ],
+      fieldMappings: {},
+    },
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { PanoraCore } from "@panora/sdk/core.js";
+import { accountingExpensesCreate } from "@panora/sdk/funcs/accountingExpensesCreate.js";
+import { UnifiedAccountingExpenseInputCurrency } from "@panora/sdk/models/components";
+
+// Use `PanoraCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const panora = new PanoraCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await accountingExpensesCreate(panora, {
+    xConnectionToken: "<value>",
+    remoteData: false,
+    unifiedAccountingExpenseInput: {
+      transactionDate: new Date("2024-06-15T12:00:00Z"),
+      totalAmount: 10000,
+      subTotal: 9000,
+      totalTaxAmount: 1000,
+      currency: UnifiedAccountingExpenseInputCurrency.Usd,
+      exchangeRate: "1.2",
+      memo: "Business lunch with client",
+      accountId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      contactId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      companyInfoId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      trackingCategories: [
+        "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      ],
+      lineItems: [
+        {
+          name: "Net Income",
+          value: 100000,
+          type: "Operating Activities",
+          parentItem: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+          remoteId: "report_item_1234",
+          remoteGeneratedAt: new Date("2024-07-01T12:00:00Z"),
+          companyInfoId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+          createdAt: new Date("2024-06-15T12:00:00Z"),
+          modifiedAt: new Date("2024-06-15T12:00:00Z"),
+        },
+      ],
+      fieldMappings: {},
+    },
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -120,6 +250,41 @@ async function run() {
     id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
     remoteData: false,
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { PanoraCore } from "@panora/sdk/core.js";
+import { accountingExpensesRetrieve } from "@panora/sdk/funcs/accountingExpensesRetrieve.js";
+
+// Use `PanoraCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const panora = new PanoraCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await accountingExpensesRetrieve(panora, {
+    xConnectionToken: "<value>",
+    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    remoteData: false,
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)

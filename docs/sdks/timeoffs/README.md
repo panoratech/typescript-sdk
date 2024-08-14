@@ -36,6 +36,43 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { PanoraCore } from "@panora/sdk/core.js";
+import { hrisTimeoffsList } from "@panora/sdk/funcs/hrisTimeoffsList.js";
+
+// Use `PanoraCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const panora = new PanoraCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await hrisTimeoffsList(panora, {
+    xConnectionToken: "<value>",
+    remoteData: true,
+    limit: 10,
+    cursor: "1b8b05bb-5273-4012-b520-8657b0b90874",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  for await (const page of result) {
+    // handle page
+  }
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -63,6 +100,11 @@ Create Timeoffs in any supported Hris software
 
 ```typescript
 import { Panora } from "@panora/sdk";
+import {
+  UnifiedHrisTimeoffInputRequestType,
+  UnifiedHrisTimeoffInputStatus,
+  UnifiedHrisTimeoffInputUnits,
+} from "@panora/sdk/models/components";
 
 const panora = new Panora({
   apiKey: "<YOUR_API_KEY_HERE>",
@@ -71,8 +113,69 @@ const panora = new Panora({
 async function run() {
   const result = await panora.hris.timeoffs.create({
     xConnectionToken: "<value>",
-    unifiedHrisTimeoffInput: {},
+    unifiedHrisTimeoffInput: {
+      employee: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      approver: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      status: UnifiedHrisTimeoffInputStatus.Requested,
+      employeeNote: "Annual vacation",
+      units: UnifiedHrisTimeoffInputUnits.Days,
+      amount: 5,
+      requestType: UnifiedHrisTimeoffInputRequestType.Vacation,
+      startTime: new Date("2024-07-01T09:00:00Z"),
+      endTime: new Date("2024-07-05T17:00:00Z"),
+      fieldMappings: {},
+    },
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { PanoraCore } from "@panora/sdk/core.js";
+import { hrisTimeoffsCreate } from "@panora/sdk/funcs/hrisTimeoffsCreate.js";
+import {
+  UnifiedHrisTimeoffInputRequestType,
+  UnifiedHrisTimeoffInputStatus,
+  UnifiedHrisTimeoffInputUnits,
+} from "@panora/sdk/models/components";
+
+// Use `PanoraCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const panora = new PanoraCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await hrisTimeoffsCreate(panora, {
+    xConnectionToken: "<value>",
+    unifiedHrisTimeoffInput: {
+      employee: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      approver: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      status: UnifiedHrisTimeoffInputStatus.Requested,
+      employeeNote: "Annual vacation",
+      units: UnifiedHrisTimeoffInputUnits.Days,
+      amount: 5,
+      requestType: UnifiedHrisTimeoffInputRequestType.Vacation,
+      startTime: new Date("2024-07-01T09:00:00Z"),
+      endTime: new Date("2024-07-05T17:00:00Z"),
+      fieldMappings: {},
+    },
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -119,6 +222,41 @@ async function run() {
     id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
     remoteData: false,
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { PanoraCore } from "@panora/sdk/core.js";
+import { hrisTimeoffsRetrieve } from "@panora/sdk/funcs/hrisTimeoffsRetrieve.js";
+
+// Use `PanoraCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const panora = new PanoraCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await hrisTimeoffsRetrieve(panora, {
+    xConnectionToken: "<value>",
+    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    remoteData: false,
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)

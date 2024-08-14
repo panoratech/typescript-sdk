@@ -1,6 +1,6 @@
 # Items
 
-The items in the order
+The items in the fulfilment
 
 
 ## Fields

@@ -17,6 +17,7 @@ import { Paygroups } from "./paygroups.js";
 import { Payrollruns } from "./payrollruns.js";
 import { Timeoffbalances } from "./timeoffbalances.js";
 import { Timeoffs } from "./timeoffs.js";
+import { Timesheetentries } from "./timesheetentries.js";
 
 export class Hris extends ClientSDK {
     private _bankinfos?: Bankinfos;
@@ -87,5 +88,10 @@ export class Hris extends ClientSDK {
     private _timeoffbalances?: Timeoffbalances;
     get timeoffbalances(): Timeoffbalances {
         return (this._timeoffbalances ??= new Timeoffbalances(this.options$));
+    }
+
+    private _timesheetentries?: Timesheetentries;
+    get timesheetentries(): Timesheetentries {
+        return (this._timesheetentries ??= new Timesheetentries(this.options$));
     }
 }

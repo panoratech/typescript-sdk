@@ -23,12 +23,12 @@ export enum ProductStatus {
 /**
  * The custom field mappings of the object between the remote 3rd party & Panora
  */
-export type FieldMappings = {};
+export type UnifiedEcommerceProductOutputFieldMappings = {};
 
 /**
  * The remote data of the customer in the context of the 3rd Party
  */
-export type RemoteData = {};
+export type UnifiedEcommerceProductOutputRemoteData = {};
 
 export type UnifiedEcommerceProductOutput = {
     /**
@@ -66,7 +66,7 @@ export type UnifiedEcommerceProductOutput = {
     /**
      * The custom field mappings of the object between the remote 3rd party & Panora
      */
-    fieldMappings?: FieldMappings | null | undefined;
+    fieldMappings?: UnifiedEcommerceProductOutputFieldMappings | null | undefined;
     /**
      * The UUID of the product
      */
@@ -78,7 +78,7 @@ export type UnifiedEcommerceProductOutput = {
     /**
      * The remote data of the customer in the context of the 3rd Party
      */
-    remoteData?: RemoteData | null | undefined;
+    remoteData?: UnifiedEcommerceProductOutputRemoteData | null | undefined;
     /**
      * The created date of the object
      */
@@ -109,53 +109,63 @@ export namespace ProductStatus$ {
 }
 
 /** @internal */
-export const FieldMappings$inboundSchema: z.ZodType<FieldMappings, z.ZodTypeDef, unknown> =
-    z.object({});
-
-/** @internal */
-export type FieldMappings$Outbound = {};
-
-/** @internal */
-export const FieldMappings$outboundSchema: z.ZodType<
-    FieldMappings$Outbound,
+export const UnifiedEcommerceProductOutputFieldMappings$inboundSchema: z.ZodType<
+    UnifiedEcommerceProductOutputFieldMappings,
     z.ZodTypeDef,
-    FieldMappings
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedEcommerceProductOutputFieldMappings$Outbound = {};
+
+/** @internal */
+export const UnifiedEcommerceProductOutputFieldMappings$outboundSchema: z.ZodType<
+    UnifiedEcommerceProductOutputFieldMappings$Outbound,
+    z.ZodTypeDef,
+    UnifiedEcommerceProductOutputFieldMappings
 > = z.object({});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace FieldMappings$ {
-    /** @deprecated use `FieldMappings$inboundSchema` instead. */
-    export const inboundSchema = FieldMappings$inboundSchema;
-    /** @deprecated use `FieldMappings$outboundSchema` instead. */
-    export const outboundSchema = FieldMappings$outboundSchema;
-    /** @deprecated use `FieldMappings$Outbound` instead. */
-    export type Outbound = FieldMappings$Outbound;
+export namespace UnifiedEcommerceProductOutputFieldMappings$ {
+    /** @deprecated use `UnifiedEcommerceProductOutputFieldMappings$inboundSchema` instead. */
+    export const inboundSchema = UnifiedEcommerceProductOutputFieldMappings$inboundSchema;
+    /** @deprecated use `UnifiedEcommerceProductOutputFieldMappings$outboundSchema` instead. */
+    export const outboundSchema = UnifiedEcommerceProductOutputFieldMappings$outboundSchema;
+    /** @deprecated use `UnifiedEcommerceProductOutputFieldMappings$Outbound` instead. */
+    export type Outbound = UnifiedEcommerceProductOutputFieldMappings$Outbound;
 }
 
 /** @internal */
-export const RemoteData$inboundSchema: z.ZodType<RemoteData, z.ZodTypeDef, unknown> = z.object({});
+export const UnifiedEcommerceProductOutputRemoteData$inboundSchema: z.ZodType<
+    UnifiedEcommerceProductOutputRemoteData,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
 
 /** @internal */
-export type RemoteData$Outbound = {};
+export type UnifiedEcommerceProductOutputRemoteData$Outbound = {};
 
 /** @internal */
-export const RemoteData$outboundSchema: z.ZodType<RemoteData$Outbound, z.ZodTypeDef, RemoteData> =
-    z.object({});
+export const UnifiedEcommerceProductOutputRemoteData$outboundSchema: z.ZodType<
+    UnifiedEcommerceProductOutputRemoteData$Outbound,
+    z.ZodTypeDef,
+    UnifiedEcommerceProductOutputRemoteData
+> = z.object({});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace RemoteData$ {
-    /** @deprecated use `RemoteData$inboundSchema` instead. */
-    export const inboundSchema = RemoteData$inboundSchema;
-    /** @deprecated use `RemoteData$outboundSchema` instead. */
-    export const outboundSchema = RemoteData$outboundSchema;
-    /** @deprecated use `RemoteData$Outbound` instead. */
-    export type Outbound = RemoteData$Outbound;
+export namespace UnifiedEcommerceProductOutputRemoteData$ {
+    /** @deprecated use `UnifiedEcommerceProductOutputRemoteData$inboundSchema` instead. */
+    export const inboundSchema = UnifiedEcommerceProductOutputRemoteData$inboundSchema;
+    /** @deprecated use `UnifiedEcommerceProductOutputRemoteData$outboundSchema` instead. */
+    export const outboundSchema = UnifiedEcommerceProductOutputRemoteData$outboundSchema;
+    /** @deprecated use `UnifiedEcommerceProductOutputRemoteData$Outbound` instead. */
+    export type Outbound = UnifiedEcommerceProductOutputRemoteData$Outbound;
 }
 
 /** @internal */
@@ -173,10 +183,14 @@ export const UnifiedEcommerceProductOutput$inboundSchema: z.ZodType<
         vendor: z.nullable(z.string()).optional(),
         variants: z.array(Variant$inboundSchema).optional(),
         tags: z.nullable(z.array(z.string())).optional(),
-        field_mappings: z.nullable(z.lazy(() => FieldMappings$inboundSchema)).optional(),
+        field_mappings: z
+            .nullable(z.lazy(() => UnifiedEcommerceProductOutputFieldMappings$inboundSchema))
+            .optional(),
         id: z.nullable(z.string()).optional(),
         remote_id: z.nullable(z.string()).optional(),
-        remote_data: z.nullable(z.lazy(() => RemoteData$inboundSchema)).optional(),
+        remote_data: z
+            .nullable(z.lazy(() => UnifiedEcommerceProductOutputRemoteData$inboundSchema))
+            .optional(),
         created_at: z.nullable(z.string()).optional(),
         modified_at: z.nullable(z.string()).optional(),
     })
@@ -204,10 +218,10 @@ export type UnifiedEcommerceProductOutput$Outbound = {
     vendor?: string | null | undefined;
     variants?: Array<Variant$Outbound> | undefined;
     tags?: Array<string> | null | undefined;
-    field_mappings?: FieldMappings$Outbound | null | undefined;
+    field_mappings?: UnifiedEcommerceProductOutputFieldMappings$Outbound | null | undefined;
     id?: string | null | undefined;
     remote_id?: string | null | undefined;
-    remote_data?: RemoteData$Outbound | null | undefined;
+    remote_data?: UnifiedEcommerceProductOutputRemoteData$Outbound | null | undefined;
     created_at?: string | null | undefined;
     modified_at?: string | null | undefined;
 };
@@ -227,10 +241,14 @@ export const UnifiedEcommerceProductOutput$outboundSchema: z.ZodType<
         vendor: z.nullable(z.string()).optional(),
         variants: z.array(Variant$outboundSchema).optional(),
         tags: z.nullable(z.array(z.string())).optional(),
-        fieldMappings: z.nullable(z.lazy(() => FieldMappings$outboundSchema)).optional(),
+        fieldMappings: z
+            .nullable(z.lazy(() => UnifiedEcommerceProductOutputFieldMappings$outboundSchema))
+            .optional(),
         id: z.nullable(z.string()).optional(),
         remoteId: z.nullable(z.string()).optional(),
-        remoteData: z.nullable(z.lazy(() => RemoteData$outboundSchema)).optional(),
+        remoteData: z
+            .nullable(z.lazy(() => UnifiedEcommerceProductOutputRemoteData$outboundSchema))
+            .optional(),
         createdAt: z.nullable(z.string()).optional(),
         modifiedAt: z.nullable(z.string()).optional(),
     })

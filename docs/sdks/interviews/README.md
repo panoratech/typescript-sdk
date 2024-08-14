@@ -36,6 +36,43 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { PanoraCore } from "@panora/sdk/core.js";
+import { atsInterviewsList } from "@panora/sdk/funcs/atsInterviewsList.js";
+
+// Use `PanoraCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const panora = new PanoraCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await atsInterviewsList(panora, {
+    xConnectionToken: "<value>",
+    remoteData: true,
+    limit: 10,
+    cursor: "1b8b05bb-5273-4012-b520-8657b0b90874",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  for await (const page of result) {
+    // handle page
+  }
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -100,6 +137,59 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { PanoraCore } from "@panora/sdk/core.js";
+import { atsInterviewsCreate } from "@panora/sdk/funcs/atsInterviewsCreate.js";
+import { UnifiedAtsInterviewInputStatus } from "@panora/sdk/models/components";
+
+// Use `PanoraCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const panora = new PanoraCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await atsInterviewsCreate(panora, {
+    xConnectionToken: "<value>",
+    remoteData: false,
+    unifiedAtsInterviewInput: {
+      status: UnifiedAtsInterviewInputStatus.Scheduled,
+      applicationId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      jobInterviewStageId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      organizedBy: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      interviewers: [
+        "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      ],
+      location: "San Francisco",
+      startAt: new Date("2024-10-01T12:00:00Z"),
+      endAt: new Date("2024-10-01T12:00:00Z"),
+      remoteCreatedAt: new Date("2024-10-01T12:00:00Z"),
+      remoteUpdatedAt: new Date("2024-10-01T12:00:00Z"),
+      fieldMappings: {
+        "fav_dish": "broccoli",
+        "fav_color": "red",
+      },
+    },
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -138,6 +228,41 @@ async function run() {
     id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
     remoteData: false,
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { PanoraCore } from "@panora/sdk/core.js";
+import { atsInterviewsRetrieve } from "@panora/sdk/funcs/atsInterviewsRetrieve.js";
+
+// Use `PanoraCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const panora = new PanoraCore({
+  apiKey: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await atsInterviewsRetrieve(panora, {
+    xConnectionToken: "<value>",
+    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    remoteData: false,
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
