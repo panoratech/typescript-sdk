@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: caaaa8c3-6dd7-43a5-841e-c3193e68cc73
 management:
-  docChecksum: 124c1a4b77042f351cfd73fe0c3e5ac7
+  docChecksum: 7d33fddca2a3ec786869a0fbff92d6d4
   docVersion: "1.0"
   speakeasyVersion: 1.379.0
   generationVersion: 2.404.3
-  releaseVersion: 0.12.0
-  configChecksum: 07abd4346da89750c2377416f5799a45
+  releaseVersion: 0.12.1
+  configChecksum: c0e14d47d02fcc074a699455bcb95b8d
   repoURL: https://github.com/panoratech/typescript-sdk.git
   installationURL: https://github.com/panoratech/typescript-sdk
   published: true
@@ -554,7 +554,6 @@ generatedFiles:
   - src/models/components/security.ts
   - src/models/operations/delete.ts
   - src/models/operations/updatestatus.ts
-  - src/models/operations/verifyevent.ts
   - src/models/operations/listticketingticket.ts
   - src/models/operations/createticketingticket.ts
   - src/models/operations/retrieveticketingticket.ts
@@ -1152,7 +1151,6 @@ generatedFiles:
   - docs/models/components/security.md
   - docs/models/operations/deleterequest.md
   - docs/models/operations/updatestatusrequest.md
-  - docs/models/operations/verifyeventresponsebody.md
   - docs/models/operations/listticketingticketrequest.md
   - docs/models/operations/listticketingticketresponsebody.md
   - docs/models/operations/listticketingticketresponse.md

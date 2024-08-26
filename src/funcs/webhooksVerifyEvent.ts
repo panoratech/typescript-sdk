@@ -19,8 +19,8 @@ import {
 } from "../models/errors/httpclienterrors.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
+import * as z from "zod";
 
 /**
  * Verify payload signature of the webhook
@@ -31,7 +31,7 @@ export async function webhooksVerifyEvent(
     options?: RequestOptions
 ): Promise<
     Result<
-        operations.VerifyEventResponseBody,
+        { [k: string]: any },
         | SDKError
         | SDKValidationError
         | UnexpectedClientError
@@ -99,7 +99,7 @@ export async function webhooksVerifyEvent(
     const response = doResult.value;
 
     const [result$] = await m$.match<
-        operations.VerifyEventResponseBody,
+        { [k: string]: any },
         | SDKError
         | SDKValidationError
         | UnexpectedClientError
@@ -108,7 +108,7 @@ export async function webhooksVerifyEvent(
         | RequestTimeoutError
         | ConnectionError
     >(
-        m$.json(201, operations.VerifyEventResponseBody$inboundSchema),
+        m$.json(201, z.record(z.any())),
         m$.fail(["4XX", "5XX"])
     )(response);
     if (!result$.ok) {
