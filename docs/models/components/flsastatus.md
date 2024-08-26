@@ -2,6 +2,13 @@
 
 The FLSA status of the employment
 
+## Example Usage
+
+```typescript
+import { FlsaStatus } from "@panora/sdk/models/components";
+
+let value: FlsaStatus = FlsaStatus.Exempt;
+```
 
 ## Values
 

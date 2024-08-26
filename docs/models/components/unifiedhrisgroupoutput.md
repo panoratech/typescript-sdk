@@ -1,5 +1,24 @@
 # UnifiedHrisGroupOutput
 
+## Example Usage
+
+```typescript
+import { UnifiedHrisGroupOutput, UnifiedHrisGroupOutputType } from "@panora/sdk/models/components";
+
+let value: UnifiedHrisGroupOutput = {
+    parentGroup: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    name: "Engineering Team",
+    type: UnifiedHrisGroupOutputType.Department,
+    fieldMappings: {},
+    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    remoteId: "group_1234",
+    remoteData: {},
+    remoteCreatedAt: new Date("2024-10-01T12:00:00Z"),
+    createdAt: new Date("2024-10-01T12:00:00Z"),
+    modifiedAt: new Date("2024-10-01T12:00:00Z"),
+    remoteWasDeleted: false,
+};
+```
 
 ## Fields
 

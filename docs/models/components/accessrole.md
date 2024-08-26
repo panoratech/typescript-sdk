@@ -2,6 +2,13 @@
 
 The access role of the user
 
+## Example Usage
+
+```typescript
+import { AccessRole } from "@panora/sdk/models/components";
+
+let value: AccessRole = AccessRole.Admin;
+```
 
 ## Values
 

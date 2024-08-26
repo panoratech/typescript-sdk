@@ -1,5 +1,18 @@
 # ListMarketingautomationActionResponse
 
+## Example Usage
+
+```typescript
+import { ListMarketingautomationActionResponse } from "@panora/sdk/models/operations";
+
+let value: ListMarketingautomationActionResponse = {
+    result: {
+        prevCursor: "<value>",
+        nextCursor: "<value>",
+        data: [{}],
+    },
+};
+```
 
 ## Fields
 

@@ -1,5 +1,12 @@
 # VerifyEventResponseBody
 
+## Example Usage
+
+```typescript
+import { VerifyEventResponseBody } from "@panora/sdk/models/operations";
+
+let value: VerifyEventResponseBody = {};
+```
 
 ## Fields
 

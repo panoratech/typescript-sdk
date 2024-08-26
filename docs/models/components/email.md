@@ -1,5 +1,15 @@
 # Email
 
+## Example Usage
+
+```typescript
+import { Email, EmailAddressType } from "@panora/sdk/models/components";
+
+let value: Email = {
+    emailAddress: "Randy_Lehner@hotmail.com",
+    emailAddressType: EmailAddressType.Personal,
+};
+```
 
 ## Fields
 

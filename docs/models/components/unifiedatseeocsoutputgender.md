@@ -2,6 +2,13 @@
 
 The gender of the candidate
 
+## Example Usage
+
+```typescript
+import { UnifiedAtsEeocsOutputGender } from "@panora/sdk/models/components";
+
+let value: UnifiedAtsEeocsOutputGender = UnifiedAtsEeocsOutputGender.Male;
+```
 
 ## Values
 

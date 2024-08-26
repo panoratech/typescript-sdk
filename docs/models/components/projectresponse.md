@@ -1,5 +1,20 @@
 # ProjectResponse
 
+## Example Usage
+
+```typescript
+import { ProjectResponse } from "@panora/sdk/models/components";
+
+let value: ProjectResponse = {
+    idProject: "123e4567-e89b-12d3-a456-426614174000",
+    name: "My Project",
+    syncMode: "automatic",
+    pullFrequency: 3600,
+    redirectUrl: "https://example.com/redirect",
+    idUser: "123e4567-e89b-12d3-a456-426614174001",
+    idConnectorSet: "123e4567-e89b-12d3-a456-426614174002",
+};
+```
 
 ## Fields
 

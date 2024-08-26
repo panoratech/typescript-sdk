@@ -2,6 +2,13 @@
 
 The currency of the account
 
+## Example Usage
+
+```typescript
+import { Currency } from "@panora/sdk/models/components";
+
+let value: Currency = Currency.Usd;
+```
 
 ## Values
 

@@ -1,5 +1,23 @@
 # UnifiedAtsAttachmentInput
 
+## Example Usage
+
+```typescript
+import { UnifiedAtsAttachmentInput, UnifiedAtsAttachmentInputAttachmentType } from "@panora/sdk/models/components";
+
+let value: UnifiedAtsAttachmentInput = {
+    fileUrl: "https://example.com/file.pdf",
+    fileName: "file.pdf",
+    attachmentType: UnifiedAtsAttachmentInputAttachmentType.Resume,
+    remoteCreatedAt: new Date("2024-10-01T12:00:00Z"),
+    remoteModifiedAt: new Date("2024-10-01T12:00:00Z"),
+    candidateId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    fieldMappings: {
+        fav_dish: "broccoli",
+        fav_color: "red",
+    },
+};
+```
 
 ## Fields
 

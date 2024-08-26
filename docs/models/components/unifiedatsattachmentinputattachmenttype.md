@@ -2,6 +2,13 @@
 
 The type of the file
 
+## Example Usage
+
+```typescript
+import { UnifiedAtsAttachmentInputAttachmentType } from "@panora/sdk/models/components";
+
+let value: UnifiedAtsAttachmentInputAttachmentType = UnifiedAtsAttachmentInputAttachmentType.Resume;
+```
 
 ## Values
 

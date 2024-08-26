@@ -1,5 +1,24 @@
 # UnifiedFilestorageFileInput
 
+## Example Usage
+
+```typescript
+import { UnifiedFilestorageFileInput } from "@panora/sdk/models/components";
+
+let value: UnifiedFilestorageFileInput = {
+    name: "my_paris_photo.png",
+    fileUrl: "https://example.com/my_paris_photo.png",
+    mimeType: "application/pdf",
+    size: "1024",
+    folderId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    permission: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    sharedLink: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    fieldMappings: {
+        fav_dish: "broccoli",
+        fav_color: "red",
+    },
+};
+```
 
 ## Fields
 

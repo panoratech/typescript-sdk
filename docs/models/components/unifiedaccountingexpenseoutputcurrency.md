@@ -2,6 +2,13 @@
 
 The currency of the expense
 
+## Example Usage
+
+```typescript
+import { UnifiedAccountingExpenseOutputCurrency } from "@panora/sdk/models/components";
+
+let value: UnifiedAccountingExpenseOutputCurrency = UnifiedAccountingExpenseOutputCurrency.Usd;
+```
 
 ## Values
 

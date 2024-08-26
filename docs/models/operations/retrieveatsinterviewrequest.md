@@ -1,5 +1,16 @@
 # RetrieveAtsInterviewRequest
 
+## Example Usage
+
+```typescript
+import { RetrieveAtsInterviewRequest } from "@panora/sdk/models/operations";
+
+let value: RetrieveAtsInterviewRequest = {
+    xConnectionToken: "<value>",
+    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    remoteData: false,
+};
+```
 
 ## Fields
 

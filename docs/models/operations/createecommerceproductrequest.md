@@ -1,5 +1,27 @@
 # CreateEcommerceProductRequest
 
+## Example Usage
+
+```typescript
+import { UnifiedEcommerceProductInputProductStatus } from "@panora/sdk/models/components";
+import { CreateEcommerceProductRequest } from "@panora/sdk/models/operations";
+
+let value: CreateEcommerceProductRequest = {
+    xConnectionToken: "<value>",
+    remoteData: false,
+    unifiedEcommerceProductInput: {
+        productUrl: "https://product_url/tee",
+        productType: "teeshirt",
+        productStatus: UnifiedEcommerceProductInputProductStatus.Active,
+        imagesUrls: ["https://myproduct/image"],
+        description: "best tee ever",
+        vendor: "vendor_extern",
+        variants: [{}],
+        tags: ["tag_1"],
+        fieldMappings: {},
+    },
+};
+```
 
 ## Fields
 

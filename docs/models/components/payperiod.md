@@ -2,6 +2,13 @@
 
 The pay period of the employment
 
+## Example Usage
+
+```typescript
+import { PayPeriod } from "@panora/sdk/models/components";
+
+let value: PayPeriod = PayPeriod.Month;
+```
 
 ## Values
 

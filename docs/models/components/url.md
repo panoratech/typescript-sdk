@@ -1,5 +1,15 @@
 # Url
 
+## Example Usage
+
+```typescript
+import { Url } from "@panora/sdk/models/components";
+
+let value: Url = {
+    url: "https://canine-harmonise.info",
+    urlType: "<value>",
+};
+```
 
 ## Fields
 

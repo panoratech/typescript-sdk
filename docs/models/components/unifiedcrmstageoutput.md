@@ -1,5 +1,26 @@
 # UnifiedCrmStageOutput
 
+## Example Usage
+
+```typescript
+import { UnifiedCrmStageOutput } from "@panora/sdk/models/components";
+
+let value: UnifiedCrmStageOutput = {
+    stageName: "Qualified",
+    fieldMappings: {
+        fav_dish: "broccoli",
+        fav_color: "red",
+    },
+    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    remoteId: "id_1",
+    remoteData: {
+        fav_dish: "broccoli",
+        fav_color: "red",
+    },
+    createdAt: {},
+    modifiedAt: {},
+};
+```
 
 ## Fields
 

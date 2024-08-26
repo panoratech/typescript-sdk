@@ -2,6 +2,13 @@
 
 HTTP method used for the event
 
+## Example Usage
+
+```typescript
+import { Method } from "@panora/sdk/models/components";
+
+let value: Method = Method.Post;
+```
 
 ## Values
 

@@ -1,5 +1,15 @@
 # CreateBatchLinkedUserDto
 
+## Example Usage
+
+```typescript
+import { CreateBatchLinkedUserDto } from "@panora/sdk/models/components";
+
+let value: CreateBatchLinkedUserDto = {
+    linkedUserOriginIds: ["id_1"],
+    alias: "acme",
+};
+```
 
 ## Fields
 

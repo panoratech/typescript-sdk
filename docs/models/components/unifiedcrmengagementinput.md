@@ -1,5 +1,30 @@
 # UnifiedCrmEngagementInput
 
+## Example Usage
+
+```typescript
+import {
+  UnifiedCrmEngagementInput,
+  UnifiedCrmEngagementInputDirection,
+  UnifiedCrmEngagementInputType,
+} from "@panora/sdk/models/components";
+
+let value: UnifiedCrmEngagementInput = {
+    content: "Meeting call with CTO",
+    direction: UnifiedCrmEngagementInputDirection.Inbound,
+    subject: "Technical features planning",
+    startAt: new Date("2024-10-01T12:00:00Z"),
+    endTime: new Date("2024-10-01T22:00:00Z"),
+    type: UnifiedCrmEngagementInputType.Meeting,
+    userId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    companyId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    contacts: ["801f9ede-c698-4e66-a7fc-48d19eebaa4f"],
+    fieldMappings: {
+        fav_dish: "broccoli",
+        fav_color: "red",
+    },
+};
+```
 
 ## Fields
 

@@ -1,5 +1,17 @@
 # UnifiedAccountingAttachmentInput
 
+## Example Usage
+
+```typescript
+import { UnifiedAccountingAttachmentInput } from "@panora/sdk/models/components";
+
+let value: UnifiedAccountingAttachmentInput = {
+    fileName: "invoice.pdf",
+    fileUrl: "https://example.com/files/invoice.pdf",
+    accountId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    fieldMappings: {},
+};
+```
 
 ## Fields
 

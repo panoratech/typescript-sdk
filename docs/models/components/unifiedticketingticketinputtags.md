@@ -1,5 +1,12 @@
 # UnifiedTicketingTicketInputTags
 
+## Example Usage
+
+```typescript
+import { UnifiedTicketingTicketInputTags } from "@panora/sdk/models/components";
+
+let value: UnifiedTicketingTicketInputTags = "<value>";
+```
 
 ## Supported Types
 

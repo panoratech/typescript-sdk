@@ -2,6 +2,14 @@
 
 The currency of the transaction
 
+## Example Usage
+
+```typescript
+import { UnifiedAccountingTransactionOutputCurrency } from "@panora/sdk/models/components";
+
+let value: UnifiedAccountingTransactionOutputCurrency =
+    UnifiedAccountingTransactionOutputCurrency.Usd;
+```
 
 ## Values
 

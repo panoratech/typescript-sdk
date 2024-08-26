@@ -1,5 +1,51 @@
 # CreateTicketingTicketRequest
 
+## Example Usage
+
+```typescript
+import {
+  UnifiedTicketingTicketInputCreatorType,
+  UnifiedTicketingTicketInputPriority,
+  UnifiedTicketingTicketInputStatus,
+  UnifiedTicketingTicketInputType,
+} from "@panora/sdk/models/components";
+import { CreateTicketingTicketRequest } from "@panora/sdk/models/operations";
+
+let value: CreateTicketingTicketRequest = {
+    xConnectionToken: "<value>",
+    remoteData: false,
+    unifiedTicketingTicketInput: {
+        name: "Customer Service Inquiry",
+        status: UnifiedTicketingTicketInputStatus.Open,
+        description: "Help customer",
+        dueDate: new Date("2024-10-01T12:00:00Z"),
+        type: UnifiedTicketingTicketInputType.Bug,
+        parentTicket: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+        collections: ["801f9ede-c698-4e66-a7fc-48d19eebaa4f"],
+        tags: ["my_tag", "urgent_tag"],
+        completedAt: new Date("2024-10-01T12:00:00Z"),
+        priority: UnifiedTicketingTicketInputPriority.High,
+        assignedTo: ["801f9ede-c698-4e66-a7fc-48d19eebaa4f"],
+        comment: {
+            body: "Assigned to Eric !",
+            htmlBody: "<p>Assigned to Eric !</p>",
+            isPrivate: false,
+            creatorType: UnifiedTicketingTicketInputCreatorType.User,
+            ticketId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+            contactId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+            userId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+            attachments: ["801f9ede-c698-4e66-a7fc-48d19eebaa4f"],
+        },
+        accountId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+        contactId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+        attachments: ["801f9ede-c698-4e66-a7fc-48d19eebaa4f"],
+        fieldMappings: {
+            fav_dish: "broccoli",
+            fav_color: "red",
+        },
+    },
+};
+```
 
 ## Fields
 

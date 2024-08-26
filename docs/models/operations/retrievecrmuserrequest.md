@@ -1,5 +1,16 @@
 # RetrieveCrmUserRequest
 
+## Example Usage
+
+```typescript
+import { RetrieveCrmUserRequest } from "@panora/sdk/models/operations";
+
+let value: RetrieveCrmUserRequest = {
+    xConnectionToken: "<value>",
+    id: "b008e199-eda9-4629-bd41-a01b6195864a",
+    remoteData: true,
+};
+```
 
 ## Fields
 

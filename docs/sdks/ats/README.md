@@ -1,5 +1,2 @@
 # Ats
 (*ats*)
-
-### Available Operations
-

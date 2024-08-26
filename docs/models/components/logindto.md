@@ -1,5 +1,15 @@
 # LoginDto
 
+## Example Usage
+
+```typescript
+import { LoginDto } from "@panora/sdk/models/components";
+
+let value: LoginDto = {
+    email: "Larue_Rau85@yahoo.com",
+    passwordHash: "<value>",
+};
+```
 
 ## Fields
 

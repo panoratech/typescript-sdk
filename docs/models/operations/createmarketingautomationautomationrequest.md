@@ -1,5 +1,16 @@
 # CreateMarketingautomationAutomationRequest
 
+## Example Usage
+
+```typescript
+import { CreateMarketingautomationAutomationRequest } from "@panora/sdk/models/operations";
+
+let value: CreateMarketingautomationAutomationRequest = {
+    xConnectionToken: "<value>",
+    remoteData: false,
+    unifiedMarketingautomationAutomationInput: {},
+};
+```
 
 ## Fields
 

@@ -2,6 +2,14 @@
 
 The marital status of the employee
 
+## Example Usage
+
+```typescript
+import { UnifiedHrisEmployeeInputMaritalStatus } from "@panora/sdk/models/components";
+
+let value: UnifiedHrisEmployeeInputMaritalStatus =
+    UnifiedHrisEmployeeInputMaritalStatus.HeadOfHousehold;
+```
 
 ## Values
 

@@ -1,5 +1,12 @@
 # UnifiedAtsCandidateInputApplications
 
+## Example Usage
+
+```typescript
+import { UnifiedAtsCandidateInputApplications } from "@panora/sdk/models/components";
+
+let value: UnifiedAtsCandidateInputApplications = "<value>";
+```
 
 ## Supported Types
 

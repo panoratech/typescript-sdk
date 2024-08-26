@@ -1,5 +1,16 @@
 # RetrieveHrisGroupRequest
 
+## Example Usage
+
+```typescript
+import { RetrieveHrisGroupRequest } from "@panora/sdk/models/operations";
+
+let value: RetrieveHrisGroupRequest = {
+    xConnectionToken: "<value>",
+    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    remoteData: false,
+};
+```
 
 ## Fields
 

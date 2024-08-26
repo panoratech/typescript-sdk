@@ -2,6 +2,13 @@
 
 Scope of the event
 
+## Example Usage
+
+```typescript
+import { EventResponseType } from "@panora/sdk/models/components";
+
+let value: EventResponseType = EventResponseType.ConnectionCreated;
+```
 
 ## Values
 

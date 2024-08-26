@@ -1,20 +1,20 @@
 lockVersion: 2.0.0
 id: caaaa8c3-6dd7-43a5-841e-c3193e68cc73
 management:
-  docChecksum: 48ac6f67817965485d3501a5755fd4a6
+  docChecksum: 124c1a4b77042f351cfd73fe0c3e5ac7
   docVersion: "1.0"
-  speakeasyVersion: 1.366.0
-  generationVersion: 2.396.0
-  releaseVersion: 0.11.0
-  configChecksum: 6c261756723602ccee557c16cdd8bcba
+  speakeasyVersion: 1.379.0
+  generationVersion: 2.404.3
+  releaseVersion: 0.12.0
+  configChecksum: 07abd4346da89750c2377416f5799a45
   repoURL: https://github.com/panoratech/typescript-sdk.git
   installationURL: https://github.com/panoratech/typescript-sdk
   published: true
 features:
   typescript:
     additionalDependencies: 0.1.0
-    constsAndDefaults: 0.1.7
-    core: 3.13.1
+    constsAndDefaults: 0.1.11
+    core: 3.14.1
     defaultEnabledRetries: 0.1.0
     envVarSecurityUsage: 0.1.1
     globalSecurity: 2.82.11
@@ -1238,7 +1238,9 @@ generatedFiles:
   - docs/models/operations/remoteidrequest.md
   - docs/models/operations/getpanoracoreeventsrequest.md
   - docs/models/operations/requestrequest.md
+  - docs/models/operations/requestpassthroughresponsebody.md
   - docs/models/operations/requestresponsebody.md
+  - docs/models/operations/requestresponse.md
   - docs/models/operations/getretriedrequestresponserequest.md
   - docs/models/operations/listhrisbankinforequest.md
   - docs/models/operations/listhrisbankinforesponsebody.md

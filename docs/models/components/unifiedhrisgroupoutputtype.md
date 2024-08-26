@@ -2,6 +2,13 @@
 
 The type of the group
 
+## Example Usage
+
+```typescript
+import { UnifiedHrisGroupOutputType } from "@panora/sdk/models/components";
+
+let value: UnifiedHrisGroupOutputType = UnifiedHrisGroupOutputType.Department;
+```
 
 ## Values
 

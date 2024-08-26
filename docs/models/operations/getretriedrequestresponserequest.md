@@ -1,5 +1,14 @@
 # GetRetriedRequestResponseRequest
 
+## Example Usage
+
+```typescript
+import { GetRetriedRequestResponseRequest } from "@panora/sdk/models/operations";
+
+let value: GetRetriedRequestResponseRequest = {
+    retryId: "<value>",
+};
+```
 
 ## Fields
 

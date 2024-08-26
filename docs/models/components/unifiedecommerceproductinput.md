@@ -1,5 +1,22 @@
 # UnifiedEcommerceProductInput
 
+## Example Usage
+
+```typescript
+import { UnifiedEcommerceProductInput, UnifiedEcommerceProductInputProductStatus } from "@panora/sdk/models/components";
+
+let value: UnifiedEcommerceProductInput = {
+    productUrl: "https://product_url/tee",
+    productType: "teeshirt",
+    productStatus: UnifiedEcommerceProductInputProductStatus.Active,
+    imagesUrls: ["https://myproduct/image"],
+    description: "best tee ever",
+    vendor: "vendor_extern",
+    variants: [{}],
+    tags: ["tag_1"],
+    fieldMappings: {},
+};
+```
 
 ## Fields
 

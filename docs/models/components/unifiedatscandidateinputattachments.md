@@ -1,5 +1,12 @@
 # UnifiedAtsCandidateInputAttachments
 
+## Example Usage
+
+```typescript
+import { UnifiedAtsCandidateInputAttachments } from "@panora/sdk/models/components";
+
+let value: UnifiedAtsCandidateInputAttachments = "<value>";
+```
 
 ## Supported Types
 

@@ -1,5 +1,15 @@
 # RetrieveAtsEeocsRequest
 
+## Example Usage
+
+```typescript
+import { RetrieveAtsEeocsRequest } from "@panora/sdk/models/operations";
+
+let value: RetrieveAtsEeocsRequest = {
+    xConnectionToken: "<value>",
+    id: "<id>",
+};
+```
 
 ## Fields
 

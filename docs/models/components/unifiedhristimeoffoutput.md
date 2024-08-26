@@ -1,5 +1,30 @@
 # UnifiedHrisTimeoffOutput
 
+## Example Usage
+
+```typescript
+import { RequestType, UnifiedHrisTimeoffOutput, UnifiedHrisTimeoffOutputStatus, Units } from "@panora/sdk/models/components";
+
+let value: UnifiedHrisTimeoffOutput = {
+    employee: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    approver: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    status: UnifiedHrisTimeoffOutputStatus.Requested,
+    employeeNote: "Annual vacation",
+    units: Units.Days,
+    amount: 5,
+    requestType: RequestType.Vacation,
+    startTime: new Date("2024-07-01T09:00:00Z"),
+    endTime: new Date("2024-07-05T17:00:00Z"),
+    fieldMappings: {},
+    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    remoteId: "timeoff_1234",
+    remoteData: {},
+    remoteCreatedAt: new Date("2024-06-15T12:00:00Z"),
+    createdAt: new Date("2024-06-15T12:00:00Z"),
+    modifiedAt: new Date("2024-06-15T12:00:00Z"),
+    remoteWasDeleted: false,
+};
+```
 
 ## Fields
 

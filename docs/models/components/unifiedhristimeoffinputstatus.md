@@ -2,6 +2,13 @@
 
 The status of the time off request
 
+## Example Usage
+
+```typescript
+import { UnifiedHrisTimeoffInputStatus } from "@panora/sdk/models/components";
+
+let value: UnifiedHrisTimeoffInputStatus = UnifiedHrisTimeoffInputStatus.Requested;
+```
 
 ## Values
 

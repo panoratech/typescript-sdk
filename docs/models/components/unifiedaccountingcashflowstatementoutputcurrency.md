@@ -2,6 +2,14 @@
 
 The currency used in the cash flow statement
 
+## Example Usage
+
+```typescript
+import { UnifiedAccountingCashflowstatementOutputCurrency } from "@panora/sdk/models/components";
+
+let value: UnifiedAccountingCashflowstatementOutputCurrency =
+    UnifiedAccountingCashflowstatementOutputCurrency.Usd;
+```
 
 ## Values
 

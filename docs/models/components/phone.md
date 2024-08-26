@@ -1,5 +1,15 @@
 # Phone
 
+## Example Usage
+
+```typescript
+import { Phone, PhoneType } from "@panora/sdk/models/components";
+
+let value: Phone = {
+    phoneNumber: "<value>",
+    phoneType: PhoneType.Mobile,
+};
+```
 
 ## Fields
 

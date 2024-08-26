@@ -1,5 +1,2 @@
 # Auth
 (*auth*)
-
-### Available Operations
-

@@ -2,6 +2,13 @@
 
 The overall recommendation
 
+## Example Usage
+
+```typescript
+import { OverallRecommendation } from "@panora/sdk/models/components";
+
+let value: OverallRecommendation = OverallRecommendation.Yes;
+```
 
 ## Values
 
