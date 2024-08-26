@@ -398,7 +398,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.VerifyEventResponseBody](../../models/operations/verifyeventresponsebody.md)\>**
+**Promise\<[{ [k: string]: any }](../../models/.md)\>**
 
 ### Errors
 

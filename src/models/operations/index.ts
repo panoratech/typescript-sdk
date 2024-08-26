@@ -217,4 +217,3 @@ export * from "./retrieveticketingticket.js";
 export * from "./retrieveticketinguser.js";
 export * from "./status.js";
 export * from "./updatestatus.js";
-export * from "./verifyevent.js";
