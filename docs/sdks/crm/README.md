@@ -1,5 +1,2 @@
 # Crm
 (*crm*)
-
-### Available Operations
-

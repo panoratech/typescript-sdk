@@ -1,5 +1,21 @@
 # Address
 
+## Example Usage
+
+```typescript
+import { Address, AddressType } from "@panora/sdk/models/components";
+
+let value: Address = {
+    street1: "5th Avenue",
+    street2: "Street 2",
+    city: "New York",
+    state: "New York",
+    postalCode: "10001",
+    country: "United States of America",
+    addressType: AddressType.Personal,
+    ownerType: "<value>",
+};
+```
 
 ## Fields
 

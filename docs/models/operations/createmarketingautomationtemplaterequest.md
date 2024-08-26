@@ -1,5 +1,15 @@
 # CreateMarketingautomationTemplateRequest
 
+## Example Usage
+
+```typescript
+import { CreateMarketingautomationTemplateRequest } from "@panora/sdk/models/operations";
+
+let value: CreateMarketingautomationTemplateRequest = {
+    xConnectionToken: "<value>",
+    unifiedMarketingautomationTemplateInput: {},
+};
+```
 
 ## Fields
 

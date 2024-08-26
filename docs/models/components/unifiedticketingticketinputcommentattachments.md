@@ -1,5 +1,12 @@
 # UnifiedTicketingTicketInputCommentAttachments
 
+## Example Usage
+
+```typescript
+import { UnifiedTicketingTicketInputCommentAttachments } from "@panora/sdk/models/components";
+
+let value: UnifiedTicketingTicketInputCommentAttachments = "<value>";
+```
 
 ## Supported Types
 

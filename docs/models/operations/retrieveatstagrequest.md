@@ -1,5 +1,16 @@
 # RetrieveAtsTagRequest
 
+## Example Usage
+
+```typescript
+import { RetrieveAtsTagRequest } from "@panora/sdk/models/operations";
+
+let value: RetrieveAtsTagRequest = {
+    xConnectionToken: "<value>",
+    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    remoteData: false,
+};
+```
 
 ## Fields
 

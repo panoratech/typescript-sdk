@@ -1,5 +1,15 @@
 # RetrieveTicketingContactRequest
 
+## Example Usage
+
+```typescript
+import { RetrieveTicketingContactRequest } from "@panora/sdk/models/operations";
+
+let value: RetrieveTicketingContactRequest = {
+    xConnectionToken: "<value>",
+    id: "<id>",
+};
+```
 
 ## Fields
 

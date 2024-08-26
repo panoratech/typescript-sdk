@@ -2,6 +2,13 @@
 
 The status of the job
 
+## Example Usage
+
+```typescript
+import { UnifiedAtsJobOutputStatus } from "@panora/sdk/models/components";
+
+let value: UnifiedAtsJobOutputStatus = UnifiedAtsJobOutputStatus.Open;
+```
 
 ## Values
 

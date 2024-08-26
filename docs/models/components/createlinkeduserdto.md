@@ -1,5 +1,15 @@
 # CreateLinkedUserDto
 
+## Example Usage
+
+```typescript
+import { CreateLinkedUserDto } from "@panora/sdk/models/components";
+
+let value: CreateLinkedUserDto = {
+    linkedUserOriginId: "id_1",
+    alias: "acme",
+};
+```
 
 ## Fields
 

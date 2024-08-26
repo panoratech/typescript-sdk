@@ -1,5 +1,15 @@
 # RetrieveEcommerceFulfillmentRequest
 
+## Example Usage
+
+```typescript
+import { RetrieveEcommerceFulfillmentRequest } from "@panora/sdk/models/operations";
+
+let value: RetrieveEcommerceFulfillmentRequest = {
+    xConnectionToken: "<value>",
+    id: "<id>",
+};
+```
 
 ## Fields
 

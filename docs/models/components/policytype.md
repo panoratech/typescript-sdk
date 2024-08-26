@@ -2,6 +2,13 @@
 
 The type of time off policy
 
+## Example Usage
+
+```typescript
+import { PolicyType } from "@panora/sdk/models/components";
+
+let value: PolicyType = PolicyType.Vacation;
+```
 
 ## Values
 

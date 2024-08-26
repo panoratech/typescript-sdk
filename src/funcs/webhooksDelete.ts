@@ -31,7 +31,7 @@ export async function webhooksDelete(
     options?: RequestOptions
 ): Promise<
     Result<
-        components.WebhookResponse,
+        components.WebhookResponse | undefined,
         | SDKError
         | SDKValidationError
         | UnexpectedClientError
@@ -102,7 +102,7 @@ export async function webhooksDelete(
     const response = doResult.value;
 
     const [result$] = await m$.match<
-        components.WebhookResponse,
+        components.WebhookResponse | undefined,
         | SDKError
         | SDKValidationError
         | UnexpectedClientError
@@ -111,7 +111,8 @@ export async function webhooksDelete(
         | RequestTimeoutError
         | ConnectionError
     >(
-        m$.json(201, components.WebhookResponse$inboundSchema),
+        m$.nil(200, components.WebhookResponse$inboundSchema.optional()),
+        m$.json(201, components.WebhookResponse$inboundSchema.optional()),
         m$.fail(["4XX", "5XX"])
     )(response);
     if (!result$.ok) {

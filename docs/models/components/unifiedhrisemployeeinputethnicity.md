@@ -2,6 +2,14 @@
 
 The ethnicity of the employee
 
+## Example Usage
+
+```typescript
+import { UnifiedHrisEmployeeInputEthnicity } from "@panora/sdk/models/components";
+
+let value: UnifiedHrisEmployeeInputEthnicity =
+    UnifiedHrisEmployeeInputEthnicity.AmericanIndianOrAlaskaNative;
+```
 
 ## Values
 

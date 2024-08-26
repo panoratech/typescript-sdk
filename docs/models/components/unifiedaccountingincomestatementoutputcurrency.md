@@ -2,6 +2,14 @@
 
 The currency used in the income statement
 
+## Example Usage
+
+```typescript
+import { UnifiedAccountingIncomestatementOutputCurrency } from "@panora/sdk/models/components";
+
+let value: UnifiedAccountingIncomestatementOutputCurrency =
+    UnifiedAccountingIncomestatementOutputCurrency.Usd;
+```
 
 ## Values
 

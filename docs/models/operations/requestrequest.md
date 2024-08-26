@@ -1,5 +1,19 @@
 # RequestRequest
 
+## Example Usage
+
+```typescript
+import { PassThroughRequestDtoMethod } from "@panora/sdk/models/components";
+import { RequestRequest } from "@panora/sdk/models/operations";
+
+let value: RequestRequest = {
+    xConnectionToken: "<value>",
+    passThroughRequestDto: {
+        method: PassThroughRequestDtoMethod.Get,
+        path: "/boot/defaults",
+    },
+};
+```
 
 ## Fields
 

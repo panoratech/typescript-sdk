@@ -1,5 +1,27 @@
 # UnifiedAtsActivityInput
 
+## Example Usage
+
+```typescript
+import {
+  UnifiedAtsActivityInput,
+  UnifiedAtsActivityInputActivityType,
+  UnifiedAtsActivityInputVisibility,
+} from "@panora/sdk/models/components";
+
+let value: UnifiedAtsActivityInput = {
+    activityType: UnifiedAtsActivityInputActivityType.Note,
+    subject: "Email subject",
+    body: "Dear Diana, I love you",
+    visibility: UnifiedAtsActivityInputVisibility.Public,
+    candidateId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    remoteCreatedAt: new Date("2024-10-01T12:00:00Z"),
+    fieldMappings: {
+        fav_dish: "broccoli",
+        fav_color: "red",
+    },
+};
+```
 
 ## Fields
 

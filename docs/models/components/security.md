@@ -1,5 +1,14 @@
 # Security
 
+## Example Usage
+
+```typescript
+import { Security } from "@panora/sdk/models/components";
+
+let value: Security = {
+    apiKey: "<value>",
+};
+```
 
 ## Fields
 

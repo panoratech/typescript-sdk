@@ -1,5 +1,16 @@
 # RequestFormat
 
+## Example Usage
+
+```typescript
+import { RequestFormat } from "@panora/sdk/models/components";
+
+let value: RequestFormat = [
+    {
+        key: "<value>",
+    },
+];
+```
 
 ## Supported Types
 

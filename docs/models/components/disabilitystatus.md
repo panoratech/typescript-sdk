@@ -2,6 +2,13 @@
 
 The disability status of the candidate
 
+## Example Usage
+
+```typescript
+import { DisabilityStatus } from "@panora/sdk/models/components";
+
+let value: DisabilityStatus = DisabilityStatus.YesIHaveADisabilityOrPreviouslyHadADisability;
+```
 
 ## Values
 

@@ -2,6 +2,13 @@
 
 The status of the offer
 
+## Example Usage
+
+```typescript
+import { UnifiedAtsOfferOutputStatus } from "@panora/sdk/models/components";
+
+let value: UnifiedAtsOfferOutputStatus = UnifiedAtsOfferOutputStatus.Draft;
+```
 
 ## Values
 

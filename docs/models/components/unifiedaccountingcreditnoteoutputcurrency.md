@@ -2,6 +2,14 @@
 
 The currency of the credit note
 
+## Example Usage
+
+```typescript
+import { UnifiedAccountingCreditnoteOutputCurrency } from "@panora/sdk/models/components";
+
+let value: UnifiedAccountingCreditnoteOutputCurrency =
+    UnifiedAccountingCreditnoteOutputCurrency.Usd;
+```
 
 ## Values
 

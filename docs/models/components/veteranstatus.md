@@ -2,6 +2,13 @@
 
 The veteran status of the candidate
 
+## Example Usage
+
+```typescript
+import { VeteranStatus } from "@panora/sdk/models/components";
+
+let value: VeteranStatus = VeteranStatus.IAmNotAProtectedVeteran;
+```
 
 ## Values
 

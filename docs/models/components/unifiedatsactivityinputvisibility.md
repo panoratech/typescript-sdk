@@ -2,6 +2,13 @@
 
 The visibility of the activity
 
+## Example Usage
+
+```typescript
+import { UnifiedAtsActivityInputVisibility } from "@panora/sdk/models/components";
+
+let value: UnifiedAtsActivityInputVisibility = UnifiedAtsActivityInputVisibility.Public;
+```
 
 ## Values
 

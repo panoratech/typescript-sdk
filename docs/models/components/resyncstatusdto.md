@@ -1,5 +1,17 @@
 # ResyncStatusDto
 
+## Example Usage
+
+```typescript
+import { ResyncStatusDto, ResyncStatusDtoStatus, Vertical } from "@panora/sdk/models/components";
+
+let value: ResyncStatusDto = {
+    timestamp: new Date(""),
+    vertical: Vertical.Ticketing,
+    provider: "gitlab",
+    status: ResyncStatusDtoStatus.Success,
+};
+```
 
 ## Fields
 

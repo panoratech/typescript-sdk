@@ -1,5 +1,16 @@
 # RetrieveAtsDepartmentRequest
 
+## Example Usage
+
+```typescript
+import { RetrieveAtsDepartmentRequest } from "@panora/sdk/models/operations";
+
+let value: RetrieveAtsDepartmentRequest = {
+    xConnectionToken: "<value>",
+    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    remoteData: false,
+};
+```
 
 ## Fields
 

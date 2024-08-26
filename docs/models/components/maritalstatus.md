@@ -2,6 +2,13 @@
 
 The marital status of the employee
 
+## Example Usage
+
+```typescript
+import { MaritalStatus } from "@panora/sdk/models/components";
+
+let value: MaritalStatus = MaritalStatus.MarriedFilingSeparately;
+```
 
 ## Values
 

@@ -2,6 +2,14 @@
 
 The currency of the journal entry
 
+## Example Usage
+
+```typescript
+import { UnifiedAccountingJournalentryInputCurrency } from "@panora/sdk/models/components";
+
+let value: UnifiedAccountingJournalentryInputCurrency =
+    UnifiedAccountingJournalentryInputCurrency.Usd;
+```
 
 ## Values
 

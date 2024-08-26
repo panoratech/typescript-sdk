@@ -1,5 +1,12 @@
 # GetPanoraCoreEventsRequest
 
+## Example Usage
+
+```typescript
+import { GetPanoraCoreEventsRequest } from "@panora/sdk/models/operations";
+
+let value: GetPanoraCoreEventsRequest = {};
+```
 
 ## Fields
 

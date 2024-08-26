@@ -2,6 +2,13 @@
 
 The pay frequency of the employment
 
+## Example Usage
+
+```typescript
+import { PayFrequency } from "@panora/sdk/models/components";
+
+let value: PayFrequency = PayFrequency.Weekly;
+```
 
 ## Values
 

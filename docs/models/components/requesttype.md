@@ -2,6 +2,13 @@
 
 The type of time off request
 
+## Example Usage
+
+```typescript
+import { RequestType } from "@panora/sdk/models/components";
+
+let value: RequestType = RequestType.Vacation;
+```
 
 ## Values
 

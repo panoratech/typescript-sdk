@@ -2,6 +2,13 @@
 
 The currency of the order. Authorized value must be of type CurrencyCode (ISO 4217)
 
+## Example Usage
+
+```typescript
+import { UnifiedEcommerceOrderOutputCurrency } from "@panora/sdk/models/components";
+
+let value: UnifiedEcommerceOrderOutputCurrency = UnifiedEcommerceOrderOutputCurrency.Aud;
+```
 
 ## Values
 

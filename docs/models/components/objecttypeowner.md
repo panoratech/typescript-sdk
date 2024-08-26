@@ -1,5 +1,12 @@
 # ObjectTypeOwner
 
+## Example Usage
+
+```typescript
+import { ObjectTypeOwner } from "@panora/sdk/models/components";
+
+let value: ObjectTypeOwner = ObjectTypeOwner.Company;
+```
 
 ## Values
 

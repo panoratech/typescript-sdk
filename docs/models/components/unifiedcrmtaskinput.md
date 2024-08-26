@@ -1,5 +1,25 @@
 # UnifiedCrmTaskInput
 
+## Example Usage
+
+```typescript
+import { UnifiedCrmTaskInput, UnifiedCrmTaskInputStatus } from "@panora/sdk/models/components";
+
+let value: UnifiedCrmTaskInput = {
+    subject: "Answer customers",
+    content: "Prepare email campaign",
+    status: UnifiedCrmTaskInputStatus.Pending,
+    dueDate: "2024-10-01T12:00:00Z",
+    finishedDate: "2024-10-01T12:00:00Z",
+    userId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    companyId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    dealId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    fieldMappings: {
+        fav_dish: "broccoli",
+        fav_color: "red",
+    },
+};
+```
 
 ## Fields
 

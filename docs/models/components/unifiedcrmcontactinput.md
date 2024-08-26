@@ -1,5 +1,44 @@
 # UnifiedCrmContactInput
 
+## Example Usage
+
+```typescript
+import { AddressType, EmailAddressType, PhoneType, UnifiedCrmContactInput } from "@panora/sdk/models/components";
+
+let value: UnifiedCrmContactInput = {
+    firstName: "John",
+    lastName: "Doe",
+    emailAddresses: [
+        {
+            emailAddress: "Rita.Will87@yahoo.com",
+            emailAddressType: EmailAddressType.Work,
+        },
+    ],
+    phoneNumbers: [
+        {
+            phoneNumber: "<value>",
+            phoneType: PhoneType.Work,
+        },
+    ],
+    addresses: [
+        {
+            street1: "5th Avenue",
+            street2: "Street 2",
+            city: "Anytown",
+            state: "CA",
+            postalCode: "10001",
+            country: "USA",
+            addressType: AddressType.Personal,
+            ownerType: "<value>",
+        },
+    ],
+    userId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    fieldMappings: {
+        fav_dish: "broccoli",
+        fav_color: "red",
+    },
+};
+```
 
 ## Fields
 

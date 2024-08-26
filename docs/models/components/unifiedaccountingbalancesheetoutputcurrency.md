@@ -2,6 +2,14 @@
 
 The currency used in the balance sheet
 
+## Example Usage
+
+```typescript
+import { UnifiedAccountingBalancesheetOutputCurrency } from "@panora/sdk/models/components";
+
+let value: UnifiedAccountingBalancesheetOutputCurrency =
+    UnifiedAccountingBalancesheetOutputCurrency.Usd;
+```
 
 ## Values
 

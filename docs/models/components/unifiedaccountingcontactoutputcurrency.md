@@ -2,6 +2,13 @@
 
 The currency associated with the contact
 
+## Example Usage
+
+```typescript
+import { UnifiedAccountingContactOutputCurrency } from "@panora/sdk/models/components";
+
+let value: UnifiedAccountingContactOutputCurrency = UnifiedAccountingContactOutputCurrency.Usd;
+```
 
 ## Values
 

@@ -2,6 +2,13 @@
 
 The type of time off request
 
+## Example Usage
+
+```typescript
+import { UnifiedHrisTimeoffInputRequestType } from "@panora/sdk/models/components";
+
+let value: UnifiedHrisTimeoffInputRequestType = UnifiedHrisTimeoffInputRequestType.Vacation;
+```
 
 ## Values
 

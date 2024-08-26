@@ -2,6 +2,13 @@
 
 The status of the interview
 
+## Example Usage
+
+```typescript
+import { UnifiedAtsInterviewInputStatus } from "@panora/sdk/models/components";
+
+let value: UnifiedAtsInterviewInputStatus = UnifiedAtsInterviewInputStatus.Scheduled;
+```
 
 ## Values
 

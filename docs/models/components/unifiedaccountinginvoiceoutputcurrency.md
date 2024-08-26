@@ -2,6 +2,13 @@
 
 The currency of the invoice
 
+## Example Usage
+
+```typescript
+import { UnifiedAccountingInvoiceOutputCurrency } from "@panora/sdk/models/components";
+
+let value: UnifiedAccountingInvoiceOutputCurrency = UnifiedAccountingInvoiceOutputCurrency.Usd;
+```
 
 ## Values
 

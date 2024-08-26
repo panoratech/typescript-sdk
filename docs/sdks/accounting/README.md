@@ -1,5 +1,2 @@
 # Accounting
 (*accounting*)
-
-### Available Operations
-

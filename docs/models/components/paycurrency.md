@@ -2,6 +2,13 @@
 
 The currency of the pay
 
+## Example Usage
+
+```typescript
+import { PayCurrency } from "@panora/sdk/models/components";
+
+let value: PayCurrency = PayCurrency.Usd;
+```
 
 ## Values
 

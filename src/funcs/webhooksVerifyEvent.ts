@@ -108,7 +108,7 @@ export async function webhooksVerifyEvent(
         | RequestTimeoutError
         | ConnectionError
     >(
-        m$.json(200, operations.VerifyEventResponseBody$inboundSchema),
+        m$.json(201, operations.VerifyEventResponseBody$inboundSchema),
         m$.fail(["4XX", "5XX"])
     )(response);
     if (!result$.ok) {

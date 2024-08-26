@@ -1,5 +1,16 @@
 # RetrieveHrisTimeoffRequest
 
+## Example Usage
+
+```typescript
+import { RetrieveHrisTimeoffRequest } from "@panora/sdk/models/operations";
+
+let value: RetrieveHrisTimeoffRequest = {
+    xConnectionToken: "<value>",
+    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    remoteData: false,
+};
+```
 
 ## Fields
 

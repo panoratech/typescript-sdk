@@ -2,6 +2,13 @@
 
 The ethnicity of the employee
 
+## Example Usage
+
+```typescript
+import { Ethnicity } from "@panora/sdk/models/components";
+
+let value: Ethnicity = Ethnicity.AmericanIndianOrAlaskaNative;
+```
 
 ## Values
 

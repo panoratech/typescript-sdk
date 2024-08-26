@@ -2,6 +2,13 @@
 
 The race of the candidate
 
+## Example Usage
+
+```typescript
+import { Race } from "@panora/sdk/models/components";
+
+let value: Race = Race.AmericanIndianOrAlaskanNative;
+```
 
 ## Values
 

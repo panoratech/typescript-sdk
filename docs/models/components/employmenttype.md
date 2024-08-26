@@ -2,6 +2,13 @@
 
 The type of employment
 
+## Example Usage
+
+```typescript
+import { EmploymentType } from "@panora/sdk/models/components";
+
+let value: EmploymentType = EmploymentType.FullTime;
+```
 
 ## Values
 

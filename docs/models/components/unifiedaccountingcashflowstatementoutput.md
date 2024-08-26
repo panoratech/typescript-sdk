@@ -1,5 +1,43 @@
 # UnifiedAccountingCashflowstatementOutput
 
+## Example Usage
+
+```typescript
+import {
+  UnifiedAccountingCashflowstatementOutput,
+  UnifiedAccountingCashflowstatementOutputCurrency,
+} from "@panora/sdk/models/components";
+
+let value: UnifiedAccountingCashflowstatementOutput = {
+    name: "Q2 2024 Cash Flow Statement",
+    currency: UnifiedAccountingCashflowstatementOutputCurrency.Usd,
+    companyId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    startPeriod: new Date("2024-04-01T00:00:00Z"),
+    endPeriod: new Date("2024-06-30T23:59:59Z"),
+    cashAtBeginningOfPeriod: 1000000,
+    cashAtEndOfPeriod: 1200000,
+    remoteGeneratedAt: new Date("2024-07-01T12:00:00Z"),
+    lineItems: [
+        {
+            name: "Net Income",
+            value: 100000,
+            type: "Operating Activities",
+            parentItem: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+            remoteId: "report_item_1234",
+            remoteGeneratedAt: new Date("2024-07-01T12:00:00Z"),
+            companyInfoId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+            createdAt: new Date("2024-06-15T12:00:00Z"),
+            modifiedAt: new Date("2024-06-15T12:00:00Z"),
+        },
+    ],
+    fieldMappings: {},
+    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    remoteId: "cashflowstatement_1234",
+    remoteData: {},
+    createdAt: new Date("2024-06-15T12:00:00Z"),
+    modifiedAt: new Date("2024-06-15T12:00:00Z"),
+};
+```
 
 ## Fields
 

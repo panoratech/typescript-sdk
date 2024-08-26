@@ -2,6 +2,14 @@
 
 The currency used by the company
 
+## Example Usage
+
+```typescript
+import { UnifiedAccountingCompanyinfoOutputCurrency } from "@panora/sdk/models/components";
+
+let value: UnifiedAccountingCompanyinfoOutputCurrency =
+    UnifiedAccountingCompanyinfoOutputCurrency.Usd;
+```
 
 ## Values
 

@@ -1,5 +1,16 @@
 # ListMarketingautomationTemplatesResponseBody
 
+## Example Usage
+
+```typescript
+import { ListMarketingautomationTemplatesResponseBody } from "@panora/sdk/models/operations";
+
+let value: ListMarketingautomationTemplatesResponseBody = {
+    prevCursor: "<value>",
+    nextCursor: "<value>",
+    data: [{}],
+};
+```
 
 ## Fields
 

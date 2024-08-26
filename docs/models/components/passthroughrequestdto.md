@@ -1,5 +1,15 @@
 # PassThroughRequestDto
 
+## Example Usage
+
+```typescript
+import { PassThroughRequestDto, PassThroughRequestDtoMethod } from "@panora/sdk/models/components";
+
+let value: PassThroughRequestDto = {
+    method: PassThroughRequestDtoMethod.Post,
+    path: "/private",
+};
+```
 
 ## Fields
 

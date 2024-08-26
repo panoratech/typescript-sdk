@@ -2,6 +2,13 @@
 
 The gender of the employee
 
+## Example Usage
+
+```typescript
+import { UnifiedHrisEmployeeOutputGender } from "@panora/sdk/models/components";
+
+let value: UnifiedHrisEmployeeOutputGender = UnifiedHrisEmployeeOutputGender.Male;
+```
 
 ## Values
 

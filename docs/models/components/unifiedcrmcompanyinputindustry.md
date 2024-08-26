@@ -2,6 +2,13 @@
 
 The industry of the company. Authorized values can be found in the Industry enum.
 
+## Example Usage
+
+```typescript
+import { UnifiedCrmCompanyInputIndustry } from "@panora/sdk/models/components";
+
+let value: UnifiedCrmCompanyInputIndustry = UnifiedCrmCompanyInputIndustry.Accounting;
+```
 
 ## Values
 

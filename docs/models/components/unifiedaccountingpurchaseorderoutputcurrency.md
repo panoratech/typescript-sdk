@@ -2,6 +2,14 @@
 
 The currency of the purchase order
 
+## Example Usage
+
+```typescript
+import { UnifiedAccountingPurchaseorderOutputCurrency } from "@panora/sdk/models/components";
+
+let value: UnifiedAccountingPurchaseorderOutputCurrency =
+    UnifiedAccountingPurchaseorderOutputCurrency.Usd;
+```
 
 ## Values
 

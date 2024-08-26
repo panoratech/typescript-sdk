@@ -1,5 +1,35 @@
 # UnifiedEcommerceCustomerOutput
 
+## Example Usage
+
+```typescript
+import { AddressType, UnifiedEcommerceCustomerOutput } from "@panora/sdk/models/components";
+
+let value: UnifiedEcommerceCustomerOutput = {
+    email: "joedoe@gmail.com",
+    firstName: "Joe",
+    lastName: "Doe",
+    phoneNumber: "+336666666",
+    addresses: [
+        {
+            street1: "5th Avenue",
+            street2: "Street 2",
+            city: "New York",
+            state: "New York",
+            postalCode: "10001",
+            country: "United States of America",
+            addressType: AddressType.Personal,
+            ownerType: "<value>",
+        },
+    ],
+    fieldMappings: {},
+    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    remoteId: "id_1",
+    remoteData: {},
+    createdAt: "2024-10-01T12:00:00Z",
+    modifiedAt: "2024-10-01T12:00:00Z",
+};
+```
 
 ## Fields
 

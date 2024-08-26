@@ -2,6 +2,13 @@
 
 The gender of the dependent
 
+## Example Usage
+
+```typescript
+import { Gender } from "@panora/sdk/models/components";
+
+let value: Gender = Gender.Male;
+```
 
 ## Values
 

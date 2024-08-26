@@ -2,6 +2,22 @@
 
 The comment of the ticket
 
+## Example Usage
+
+```typescript
+import { UnifiedTicketingTicketInputComment, UnifiedTicketingTicketInputCreatorType } from "@panora/sdk/models/components";
+
+let value: UnifiedTicketingTicketInputComment = {
+    body: "Assigned to Eric !",
+    htmlBody: "<p>Assigned to Eric !</p>",
+    isPrivate: false,
+    creatorType: UnifiedTicketingTicketInputCreatorType.User,
+    ticketId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    contactId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    userId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    attachments: ["801f9ede-c698-4e66-a7fc-48d19eebaa4f"],
+};
+```
 
 ## Fields
 

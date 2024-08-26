@@ -2,6 +2,14 @@
 
 The currency of the vendor credit
 
+## Example Usage
+
+```typescript
+import { UnifiedAccountingVendorcreditOutputCurrency } from "@panora/sdk/models/components";
+
+let value: UnifiedAccountingVendorcreditOutputCurrency =
+    UnifiedAccountingVendorcreditOutputCurrency.Usd;
+```
 
 ## Values
 
