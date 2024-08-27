@@ -6,17 +6,6 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
 /**
- * The type of the benefit plan
- */
-export enum BenefitPlanType {
-    Medical = "MEDICAL",
-    HealthSavings = "HEALTH_SAVINGS",
-    Insurance = "INSURANCE",
-    Retirement = "RETIREMENT",
-    Other = "OTHER",
-}
-
-/**
  * The custom field mappings of the object between the remote 3rd party & Panora
  */
 export type UnifiedHrisEmployerbenefitOutputFieldMappings = {};
@@ -30,7 +19,7 @@ export type UnifiedHrisEmployerbenefitOutput = {
     /**
      * The type of the benefit plan
      */
-    benefitPlanType?: BenefitPlanType | null | undefined;
+    benefitPlanType?: string | null | undefined;
     /**
      * The name of the employer benefit
      */
@@ -76,25 +65,6 @@ export type UnifiedHrisEmployerbenefitOutput = {
      */
     remoteWasDeleted?: boolean | null | undefined;
 };
-
-/** @internal */
-export const BenefitPlanType$inboundSchema: z.ZodNativeEnum<typeof BenefitPlanType> =
-    z.nativeEnum(BenefitPlanType);
-
-/** @internal */
-export const BenefitPlanType$outboundSchema: z.ZodNativeEnum<typeof BenefitPlanType> =
-    BenefitPlanType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BenefitPlanType$ {
-    /** @deprecated use `BenefitPlanType$inboundSchema` instead. */
-    export const inboundSchema = BenefitPlanType$inboundSchema;
-    /** @deprecated use `BenefitPlanType$outboundSchema` instead. */
-    export const outboundSchema = BenefitPlanType$outboundSchema;
-}
 
 /** @internal */
 export const UnifiedHrisEmployerbenefitOutputFieldMappings$inboundSchema: z.ZodType<
@@ -163,7 +133,7 @@ export const UnifiedHrisEmployerbenefitOutput$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        benefit_plan_type: z.nullable(BenefitPlanType$inboundSchema).optional(),
+        benefit_plan_type: z.nullable(z.string()).optional(),
         name: z.nullable(z.string()).optional(),
         description: z.nullable(z.string()).optional(),
         deduction_code: z.nullable(z.string()).optional(),
@@ -238,7 +208,7 @@ export const UnifiedHrisEmployerbenefitOutput$outboundSchema: z.ZodType<
     UnifiedHrisEmployerbenefitOutput
 > = z
     .object({
-        benefitPlanType: z.nullable(BenefitPlanType$outboundSchema).optional(),
+        benefitPlanType: z.nullable(z.string()).optional(),
         name: z.nullable(z.string()).optional(),
         description: z.nullable(z.string()).optional(),
         deductionCode: z.nullable(z.string()).optional(),

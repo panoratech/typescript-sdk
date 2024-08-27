@@ -102,7 +102,6 @@ Create Products in any supported Ecommerce software
 
 ```typescript
 import { Panora } from "@panora/sdk";
-import { UnifiedEcommerceProductInputProductStatus } from "@panora/sdk/models/components";
 
 const panora = new Panora({
   apiKey: "<YOUR_API_KEY_HERE>",
@@ -115,7 +114,7 @@ async function run() {
     unifiedEcommerceProductInput: {
       productUrl: "https://product_url/tee",
       productType: "teeshirt",
-      productStatus: UnifiedEcommerceProductInputProductStatus.Active,
+      productStatus: "ACTIVE",
       imagesUrls: [
         "https://myproduct/image",
       ],
@@ -145,7 +144,6 @@ The standalone function version of this method:
 ```typescript
 import { PanoraCore } from "@panora/sdk/core.js";
 import { ecommerceProductsCreate } from "@panora/sdk/funcs/ecommerceProductsCreate.js";
-import { UnifiedEcommerceProductInputProductStatus } from "@panora/sdk/models/components";
 
 // Use `PanoraCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -160,7 +158,7 @@ async function run() {
     unifiedEcommerceProductInput: {
       productUrl: "https://product_url/tee",
       productType: "teeshirt",
-      productStatus: UnifiedEcommerceProductInputProductStatus.Active,
+      productStatus: "ACTIVE",
       imagesUrls: [
         "https://myproduct/image",
       ],

@@ -102,7 +102,6 @@ Create Companies in any supported CRM software
 
 ```typescript
 import { Panora } from "@panora/sdk";
-import { AddressType, EmailAddressType, PhoneType, UnifiedCrmCompanyInputIndustry } from "@panora/sdk/models/components";
 
 const panora = new Panora({
   apiKey: "<YOUR_API_KEY_HERE>",
@@ -114,13 +113,13 @@ async function run() {
     remoteData: false,
     unifiedCrmCompanyInput: {
       name: "Acme",
-      industry: UnifiedCrmCompanyInputIndustry.Accounting,
+      industry: "ACCOUNTING",
       numberOfEmployees: 10,
       userId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
       emailAddresses: [
         {
           emailAddress: "acme@gmail.com",
-          emailAddressType: EmailAddressType.Work,
+          emailAddressType: "WORK",
         },
       ],
       addresses: [
@@ -131,14 +130,14 @@ async function run() {
           state: "NY",
           postalCode: "10001",
           country: "USA",
-          addressType: AddressType.Work,
+          addressType: "WORK",
           ownerType: "<value>",
         },
       ],
       phoneNumbers: [
         {
           phoneNumber: "+33660606067",
-          phoneType: PhoneType.Work,
+          phoneType: "WORK",
         },
       ],
       fieldMappings: {
@@ -162,7 +161,6 @@ The standalone function version of this method:
 ```typescript
 import { PanoraCore } from "@panora/sdk/core.js";
 import { crmCompaniesCreate } from "@panora/sdk/funcs/crmCompaniesCreate.js";
-import { AddressType, EmailAddressType, PhoneType, UnifiedCrmCompanyInputIndustry } from "@panora/sdk/models/components";
 
 // Use `PanoraCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -176,13 +174,13 @@ async function run() {
     remoteData: false,
     unifiedCrmCompanyInput: {
       name: "Acme",
-      industry: UnifiedCrmCompanyInputIndustry.Accounting,
+      industry: "ACCOUNTING",
       numberOfEmployees: 10,
       userId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
       emailAddresses: [
         {
           emailAddress: "acme@gmail.com",
-          emailAddressType: EmailAddressType.Work,
+          emailAddressType: "WORK",
         },
       ],
       addresses: [
@@ -193,14 +191,14 @@ async function run() {
           state: "NY",
           postalCode: "10001",
           country: "USA",
-          addressType: AddressType.Work,
+          addressType: "WORK",
           ownerType: "<value>",
         },
       ],
       phoneNumbers: [
         {
           phoneNumber: "+33660606067",
-          phoneType: PhoneType.Work,
+          phoneType: "WORK",
         },
       ],
       fieldMappings: {

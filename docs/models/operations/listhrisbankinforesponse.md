@@ -3,7 +3,6 @@
 ## Example Usage
 
 ```typescript
-import { AccountType } from "@panora/sdk/models/components";
 import { ListHrisBankInfoResponse } from "@panora/sdk/models/operations";
 
 let value: ListHrisBankInfoResponse = {
@@ -12,7 +11,7 @@ let value: ListHrisBankInfoResponse = {
         nextCursor: "<value>",
         data: [
             {
-                accountType: AccountType.Checking,
+                accountType: "CHECKING",
                 bankName: "Bank of America",
                 accountNumber: "1234567890",
                 routingNumber: "021000021",

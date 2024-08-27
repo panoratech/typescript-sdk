@@ -3,7 +3,6 @@
 ## Example Usage
 
 ```typescript
-import { AddressType } from "@panora/sdk/models/components";
 import { ListEcommerceCustomersResponse } from "@panora/sdk/models/operations";
 
 let value: ListEcommerceCustomersResponse = {
@@ -24,7 +23,7 @@ let value: ListEcommerceCustomersResponse = {
                         state: "New York",
                         postalCode: "10001",
                         country: "United States of America",
-                        addressType: AddressType.Personal,
+                        addressType: "PERSONAL",
                         ownerType: "<value>",
                     },
                 ],

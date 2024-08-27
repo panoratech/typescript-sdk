@@ -3,10 +3,10 @@
 ## Example Usage
 
 ```typescript
-import { OverallRecommendation, UnifiedAtsScorecardOutput } from "@panora/sdk/models/components";
+import { UnifiedAtsScorecardOutput } from "@panora/sdk/models/components";
 
 let value: UnifiedAtsScorecardOutput = {
-    overallRecommendation: OverallRecommendation.Yes,
+    overallRecommendation: "YES",
     applicationId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
     interviewId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
     remoteCreatedAt: new Date("2024-10-01T12:00:00Z"),
@@ -30,7 +30,7 @@ let value: UnifiedAtsScorecardOutput = {
 
 | Field                                                                                         | Type                                                                                          | Required                                                                                      | Description                                                                                   | Example                                                                                       |
 | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `overallRecommendation`                                                                       | [components.OverallRecommendation](../../models/components/overallrecommendation.md)          | :heavy_minus_sign:                                                                            | The overall recommendation                                                                    | YES                                                                                           |
+| `overallRecommendation`                                                                       | *string*                                                                                      | :heavy_minus_sign:                                                                            | The overall recommendation                                                                    | YES                                                                                           |
 | `applicationId`                                                                               | *string*                                                                                      | :heavy_minus_sign:                                                                            | The UUID of the application                                                                   | 801f9ede-c698-4e66-a7fc-48d19eebaa4f                                                          |
 | `interviewId`                                                                                 | *string*                                                                                      | :heavy_minus_sign:                                                                            | The UUID of the interview                                                                     | 801f9ede-c698-4e66-a7fc-48d19eebaa4f                                                          |
 | `remoteCreatedAt`                                                                             | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | The remote creation date of the scorecard                                                     | 2024-10-01T12:00:00Z                                                                          |

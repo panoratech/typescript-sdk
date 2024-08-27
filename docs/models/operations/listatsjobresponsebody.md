@@ -3,7 +3,6 @@
 ## Example Usage
 
 ```typescript
-import { UnifiedAtsJobOutputStatus, UnifiedAtsJobOutputType } from "@panora/sdk/models/components";
 import { ListAtsJobResponseBody } from "@panora/sdk/models/operations";
 
 let value: ListAtsJobResponseBody = {
@@ -14,8 +13,8 @@ let value: ListAtsJobResponseBody = {
             name: "Financial Analyst",
             description: "Extract financial data and write detailed investment thesis",
             code: "JOB123",
-            status: UnifiedAtsJobOutputStatus.Open,
-            type: UnifiedAtsJobOutputType.Posting,
+            status: "OPEN",
+            type: "POSTING",
             confidential: true,
             departments: ["801f9ede-c698-4e66-a7fc-48d19eebaa4f"],
             offices: ["801f9ede-c698-4e66-a7fc-48d19eebaa4f"],

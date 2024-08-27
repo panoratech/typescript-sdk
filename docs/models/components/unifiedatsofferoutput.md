@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UnifiedAtsOfferOutput, UnifiedAtsOfferOutputStatus } from "@panora/sdk/models/components";
+import { UnifiedAtsOfferOutput } from "@panora/sdk/models/components";
 
 let value: UnifiedAtsOfferOutput = {
     createdBy: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
@@ -11,7 +11,7 @@ let value: UnifiedAtsOfferOutput = {
     closedAt: new Date("2024-10-01T12:00:00Z"),
     sentAt: new Date("2024-10-01T12:00:00Z"),
     startDate: new Date("2024-10-01T12:00:00Z"),
-    status: UnifiedAtsOfferOutputStatus.Draft,
+    status: "DRAFT",
     applicationId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
     fieldMappings: {
         fav_dish: "broccoli",
@@ -37,7 +37,7 @@ let value: UnifiedAtsOfferOutput = {
 | `closedAt`                                                                                               | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)            | :heavy_minus_sign:                                                                                       | The closing date of the offer                                                                            | 2024-10-01T12:00:00Z                                                                                     |
 | `sentAt`                                                                                                 | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)            | :heavy_minus_sign:                                                                                       | The sending date of the offer                                                                            | 2024-10-01T12:00:00Z                                                                                     |
 | `startDate`                                                                                              | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)            | :heavy_minus_sign:                                                                                       | The start date of the offer                                                                              | 2024-10-01T12:00:00Z                                                                                     |
-| `status`                                                                                                 | [components.UnifiedAtsOfferOutputStatus](../../models/components/unifiedatsofferoutputstatus.md)         | :heavy_minus_sign:                                                                                       | The status of the offer                                                                                  | DRAFT                                                                                                    |
+| `status`                                                                                                 | *string*                                                                                                 | :heavy_minus_sign:                                                                                       | The status of the offer                                                                                  | DRAFT                                                                                                    |
 | `applicationId`                                                                                          | *string*                                                                                                 | :heavy_minus_sign:                                                                                       | The UUID of the application                                                                              | 801f9ede-c698-4e66-a7fc-48d19eebaa4f                                                                     |
 | `fieldMappings`                                                                                          | Record<string, *any*>                                                                                    | :heavy_minus_sign:                                                                                       | The custom field mappings of the object between the remote 3rd party & Panora                            | {<br/>"fav_dish": "broccoli",<br/>"fav_color": "red"<br/>}                                               |
 | `id`                                                                                                     | *string*                                                                                                 | :heavy_minus_sign:                                                                                       | The UUID of the offer                                                                                    | 801f9ede-c698-4e66-a7fc-48d19eebaa4f                                                                     |

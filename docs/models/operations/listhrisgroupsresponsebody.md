@@ -3,7 +3,6 @@
 ## Example Usage
 
 ```typescript
-import { UnifiedHrisGroupOutputType } from "@panora/sdk/models/components";
 import { ListHrisGroupsResponseBody } from "@panora/sdk/models/operations";
 
 let value: ListHrisGroupsResponseBody = {
@@ -13,7 +12,7 @@ let value: ListHrisGroupsResponseBody = {
         {
             parentGroup: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
             name: "Engineering Team",
-            type: UnifiedHrisGroupOutputType.Department,
+            type: "DEPARTMENT",
             fieldMappings: {},
             id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
             remoteId: "group_1234",

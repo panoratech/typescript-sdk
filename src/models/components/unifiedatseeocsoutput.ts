@@ -5,49 +5,6 @@
 import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
-/**
- * The race of the candidate
- */
-export enum Race {
-    AmericanIndianOrAlaskanNative = "AMERICAN_INDIAN_OR_ALASKAN_NATIVE",
-    Asian = "ASIAN",
-    BlackOrAfricanAmerican = "BLACK_OR_AFRICAN_AMERICAN",
-    HispanicOrLatino = "HISPANIC_OR_LATINO",
-    White = "WHITE",
-    NativeHawaiianOrOtherPacificIslander = "NATIVE_HAWAIIAN_OR_OTHER_PACIFIC_ISLANDER",
-    TwoOrMoreRaces = "TWO_OR_MORE_RACES",
-    DeclineToSelfIdentify = "DECLINE_TO_SELF_IDENTIFY",
-}
-
-/**
- * The gender of the candidate
- */
-export enum UnifiedAtsEeocsOutputGender {
-    Male = "MALE",
-    Female = "FEMALE",
-    NonBinary = "NON_BINARY",
-    Other = "OTHER",
-    DeclineToSelfIdentify = "DECLINE_TO_SELF_IDENTIFY",
-}
-
-/**
- * The veteran status of the candidate
- */
-export enum VeteranStatus {
-    IAmNotAProtectedVeteran = "I_AM_NOT_A_PROTECTED_VETERAN",
-    IIdentifyAsOneOrMoreOfTheClassificationsOfAProtectedVeteran = "I_IDENTIFY_AS_ONE_OR_MORE_OF_THE_CLASSIFICATIONS_OF_A_PROTECTED_VETERAN",
-    IDontWishToAnswer = "I_DONT_WISH_TO_ANSWER",
-}
-
-/**
- * The disability status of the candidate
- */
-export enum DisabilityStatus {
-    YesIHaveADisabilityOrPreviouslyHadADisability = "YES_I_HAVE_A_DISABILITY_OR_PREVIOUSLY_HAD_A_DISABILITY",
-    NoIDontHaveADisability = "NO_I_DONT_HAVE_A_DISABILITY",
-    IDontWishToAnswer = "I_DONT_WISH_TO_ANSWER",
-}
-
 export type UnifiedAtsEeocsOutput = {
     /**
      * The UUID of the candidate
@@ -60,19 +17,19 @@ export type UnifiedAtsEeocsOutput = {
     /**
      * The race of the candidate
      */
-    race?: Race | null | undefined;
+    race?: string | null | undefined;
     /**
      * The gender of the candidate
      */
-    gender?: UnifiedAtsEeocsOutputGender | null | undefined;
+    gender?: string | null | undefined;
     /**
      * The veteran status of the candidate
      */
-    veteranStatus?: VeteranStatus | null | undefined;
+    veteranStatus?: string | null | undefined;
     /**
      * The disability status of the candidate
      */
-    disabilityStatus?: DisabilityStatus | null | undefined;
+    disabilityStatus?: string | null | undefined;
     /**
      * The custom field mappings of the object between the remote 3rd party & Panora
      */
@@ -100,82 +57,6 @@ export type UnifiedAtsEeocsOutput = {
 };
 
 /** @internal */
-export const Race$inboundSchema: z.ZodNativeEnum<typeof Race> = z.nativeEnum(Race);
-
-/** @internal */
-export const Race$outboundSchema: z.ZodNativeEnum<typeof Race> = Race$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Race$ {
-    /** @deprecated use `Race$inboundSchema` instead. */
-    export const inboundSchema = Race$inboundSchema;
-    /** @deprecated use `Race$outboundSchema` instead. */
-    export const outboundSchema = Race$outboundSchema;
-}
-
-/** @internal */
-export const UnifiedAtsEeocsOutputGender$inboundSchema: z.ZodNativeEnum<
-    typeof UnifiedAtsEeocsOutputGender
-> = z.nativeEnum(UnifiedAtsEeocsOutputGender);
-
-/** @internal */
-export const UnifiedAtsEeocsOutputGender$outboundSchema: z.ZodNativeEnum<
-    typeof UnifiedAtsEeocsOutputGender
-> = UnifiedAtsEeocsOutputGender$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedAtsEeocsOutputGender$ {
-    /** @deprecated use `UnifiedAtsEeocsOutputGender$inboundSchema` instead. */
-    export const inboundSchema = UnifiedAtsEeocsOutputGender$inboundSchema;
-    /** @deprecated use `UnifiedAtsEeocsOutputGender$outboundSchema` instead. */
-    export const outboundSchema = UnifiedAtsEeocsOutputGender$outboundSchema;
-}
-
-/** @internal */
-export const VeteranStatus$inboundSchema: z.ZodNativeEnum<typeof VeteranStatus> =
-    z.nativeEnum(VeteranStatus);
-
-/** @internal */
-export const VeteranStatus$outboundSchema: z.ZodNativeEnum<typeof VeteranStatus> =
-    VeteranStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace VeteranStatus$ {
-    /** @deprecated use `VeteranStatus$inboundSchema` instead. */
-    export const inboundSchema = VeteranStatus$inboundSchema;
-    /** @deprecated use `VeteranStatus$outboundSchema` instead. */
-    export const outboundSchema = VeteranStatus$outboundSchema;
-}
-
-/** @internal */
-export const DisabilityStatus$inboundSchema: z.ZodNativeEnum<typeof DisabilityStatus> =
-    z.nativeEnum(DisabilityStatus);
-
-/** @internal */
-export const DisabilityStatus$outboundSchema: z.ZodNativeEnum<typeof DisabilityStatus> =
-    DisabilityStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DisabilityStatus$ {
-    /** @deprecated use `DisabilityStatus$inboundSchema` instead. */
-    export const inboundSchema = DisabilityStatus$inboundSchema;
-    /** @deprecated use `DisabilityStatus$outboundSchema` instead. */
-    export const outboundSchema = DisabilityStatus$outboundSchema;
-}
-
-/** @internal */
 export const UnifiedAtsEeocsOutput$inboundSchema: z.ZodType<
     UnifiedAtsEeocsOutput,
     z.ZodTypeDef,
@@ -191,10 +72,10 @@ export const UnifiedAtsEeocsOutput$inboundSchema: z.ZodType<
                     .transform((v) => new Date(v))
             )
             .optional(),
-        race: z.nullable(Race$inboundSchema).optional(),
-        gender: z.nullable(UnifiedAtsEeocsOutputGender$inboundSchema).optional(),
-        veteran_status: z.nullable(VeteranStatus$inboundSchema).optional(),
-        disability_status: z.nullable(DisabilityStatus$inboundSchema).optional(),
+        race: z.nullable(z.string()).optional(),
+        gender: z.nullable(z.string()).optional(),
+        veteran_status: z.nullable(z.string()).optional(),
+        disability_status: z.nullable(z.string()).optional(),
         field_mappings: z.nullable(z.record(z.any())).optional(),
         id: z.nullable(z.string()).optional(),
         remote_id: z.nullable(z.string()).optional(),
@@ -255,10 +136,10 @@ export const UnifiedAtsEeocsOutput$outboundSchema: z.ZodType<
     .object({
         candidateId: z.nullable(z.string()).optional(),
         submittedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-        race: z.nullable(Race$outboundSchema).optional(),
-        gender: z.nullable(UnifiedAtsEeocsOutputGender$outboundSchema).optional(),
-        veteranStatus: z.nullable(VeteranStatus$outboundSchema).optional(),
-        disabilityStatus: z.nullable(DisabilityStatus$outboundSchema).optional(),
+        race: z.nullable(z.string()).optional(),
+        gender: z.nullable(z.string()).optional(),
+        veteranStatus: z.nullable(z.string()).optional(),
+        disabilityStatus: z.nullable(z.string()).optional(),
         fieldMappings: z.nullable(z.record(z.any())).optional(),
         id: z.nullable(z.string()).optional(),
         remoteId: z.nullable(z.string()).optional(),

@@ -102,7 +102,6 @@ Create contacts in any supported Accounting software
 
 ```typescript
 import { Panora } from "@panora/sdk";
-import { UnifiedAccountingContactInputCurrency } from "@panora/sdk/models/components";
 
 const panora = new Panora({
   apiKey: "<YOUR_API_KEY_HERE>",
@@ -119,7 +118,7 @@ async function run() {
       emailAddress: "john.doe@example.com",
       taxNumber: "123456789",
       status: "Active",
-      currency: UnifiedAccountingContactInputCurrency.Usd,
+      currency: "USD",
       remoteUpdatedAt: "2024-06-15T12:00:00Z",
       companyInfoId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
       fieldMappings: {},
@@ -140,7 +139,6 @@ The standalone function version of this method:
 ```typescript
 import { PanoraCore } from "@panora/sdk/core.js";
 import { accountingContactsCreate } from "@panora/sdk/funcs/accountingContactsCreate.js";
-import { UnifiedAccountingContactInputCurrency } from "@panora/sdk/models/components";
 
 // Use `PanoraCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -159,7 +157,7 @@ async function run() {
       emailAddress: "john.doe@example.com",
       taxNumber: "123456789",
       status: "Active",
-      currency: UnifiedAccountingContactInputCurrency.Usd,
+      currency: "USD",
       remoteUpdatedAt: "2024-06-15T12:00:00Z",
       companyInfoId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
       fieldMappings: {},

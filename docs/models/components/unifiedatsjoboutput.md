@@ -3,14 +3,14 @@
 ## Example Usage
 
 ```typescript
-import { UnifiedAtsJobOutput, UnifiedAtsJobOutputStatus, UnifiedAtsJobOutputType } from "@panora/sdk/models/components";
+import { UnifiedAtsJobOutput } from "@panora/sdk/models/components";
 
 let value: UnifiedAtsJobOutput = {
     name: "Financial Analyst",
     description: "Extract financial data and write detailed investment thesis",
     code: "JOB123",
-    status: UnifiedAtsJobOutputStatus.Open,
-    type: UnifiedAtsJobOutputType.Posting,
+    status: "OPEN",
+    type: "POSTING",
     confidential: true,
     departments: ["801f9ede-c698-4e66-a7fc-48d19eebaa4f"],
     offices: ["801f9ede-c698-4e66-a7fc-48d19eebaa4f"],
@@ -41,8 +41,8 @@ let value: UnifiedAtsJobOutput = {
 | `name`                                                                                        | *string*                                                                                      | :heavy_minus_sign:                                                                            | The name of the job                                                                           | Financial Analyst                                                                             |
 | `description`                                                                                 | *string*                                                                                      | :heavy_minus_sign:                                                                            | The description of the job                                                                    | Extract financial data and write detailed investment thesis                                   |
 | `code`                                                                                        | *string*                                                                                      | :heavy_minus_sign:                                                                            | The code of the job                                                                           | JOB123                                                                                        |
-| `status`                                                                                      | [components.UnifiedAtsJobOutputStatus](../../models/components/unifiedatsjoboutputstatus.md)  | :heavy_minus_sign:                                                                            | The status of the job                                                                         | OPEN                                                                                          |
-| `type`                                                                                        | [components.UnifiedAtsJobOutputType](../../models/components/unifiedatsjoboutputtype.md)      | :heavy_minus_sign:                                                                            | The type of the job                                                                           | POSTING                                                                                       |
+| `status`                                                                                      | *string*                                                                                      | :heavy_minus_sign:                                                                            | The status of the job                                                                         | OPEN                                                                                          |
+| `type`                                                                                        | *string*                                                                                      | :heavy_minus_sign:                                                                            | The type of the job                                                                           | POSTING                                                                                       |
 | `confidential`                                                                                | *boolean*                                                                                     | :heavy_minus_sign:                                                                            | Whether the job is confidential                                                               | true                                                                                          |
 | `departments`                                                                                 | *string*[]                                                                                    | :heavy_minus_sign:                                                                            | The departments UUIDs associated with the job                                                 | [<br/>"801f9ede-c698-4e66-a7fc-48d19eebaa4f"<br/>]                                            |
 | `offices`                                                                                     | *string*[]                                                                                    | :heavy_minus_sign:                                                                            | The offices UUIDs associated with the job                                                     | [<br/>"801f9ede-c698-4e66-a7fc-48d19eebaa4f"<br/>]                                            |

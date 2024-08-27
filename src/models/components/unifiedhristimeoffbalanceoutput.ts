@@ -6,18 +6,6 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
 /**
- * The type of time off policy
- */
-export enum PolicyType {
-    Vacation = "VACATION",
-    Sick = "SICK",
-    Personal = "PERSONAL",
-    JuryDuty = "JURY_DUTY",
-    Volunteer = "VOLUNTEER",
-    Bereavement = "BEREAVEMENT",
-}
-
-/**
  * The custom field mappings of the object between the remote 3rd party & Panora
  */
 export type UnifiedHrisTimeoffbalanceOutputFieldMappings = {};
@@ -43,7 +31,7 @@ export type UnifiedHrisTimeoffbalanceOutput = {
     /**
      * The type of time off policy
      */
-    policyType?: PolicyType | null | undefined;
+    policyType?: string | null | undefined;
     /**
      * The custom field mappings of the object between the remote 3rd party & Panora
      */
@@ -77,25 +65,6 @@ export type UnifiedHrisTimeoffbalanceOutput = {
      */
     remoteWasDeleted?: boolean | null | undefined;
 };
-
-/** @internal */
-export const PolicyType$inboundSchema: z.ZodNativeEnum<typeof PolicyType> =
-    z.nativeEnum(PolicyType);
-
-/** @internal */
-export const PolicyType$outboundSchema: z.ZodNativeEnum<typeof PolicyType> =
-    PolicyType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PolicyType$ {
-    /** @deprecated use `PolicyType$inboundSchema` instead. */
-    export const inboundSchema = PolicyType$inboundSchema;
-    /** @deprecated use `PolicyType$outboundSchema` instead. */
-    export const outboundSchema = PolicyType$outboundSchema;
-}
 
 /** @internal */
 export const UnifiedHrisTimeoffbalanceOutputFieldMappings$inboundSchema: z.ZodType<
@@ -167,7 +136,7 @@ export const UnifiedHrisTimeoffbalanceOutput$inboundSchema: z.ZodType<
         balance: z.nullable(z.number()).optional(),
         employee_id: z.nullable(z.string()).optional(),
         used: z.nullable(z.number()).optional(),
-        policy_type: z.nullable(PolicyType$inboundSchema).optional(),
+        policy_type: z.nullable(z.string()).optional(),
         field_mappings: z
             .nullable(z.lazy(() => UnifiedHrisTimeoffbalanceOutputFieldMappings$inboundSchema))
             .optional(),
@@ -221,7 +190,7 @@ export const UnifiedHrisTimeoffbalanceOutput$outboundSchema: z.ZodType<
         balance: z.nullable(z.number()).optional(),
         employeeId: z.nullable(z.string()).optional(),
         used: z.nullable(z.number()).optional(),
-        policyType: z.nullable(PolicyType$outboundSchema).optional(),
+        policyType: z.nullable(z.string()).optional(),
         fieldMappings: z
             .nullable(z.lazy(() => UnifiedHrisTimeoffbalanceOutputFieldMappings$outboundSchema))
             .optional(),

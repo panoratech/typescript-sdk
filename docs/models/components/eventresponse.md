@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { EventResponse, EventResponseStatus, EventResponseType, Method } from "@panora/sdk/models/components";
+import { EventResponse, EventResponseStatus, Method, Type } from "@panora/sdk/models/components";
 
 let value: EventResponse = {
     idEvent: "123e4567-e89b-12d3-a456-426614174000",
     idConnection: "123e4567-e89b-12d3-a456-426614174001",
     idProject: "123e4567-e89b-12d3-a456-426614174002",
-    type: EventResponseType.ConnectionCreated,
+    type: Type.ConnectionCreated,
     status: EventResponseStatus.Success,
     direction: "0",
     method: Method.Post,
@@ -27,7 +27,7 @@ let value: EventResponse = {
 | `idEvent`                                                                                     | *string*                                                                                      | :heavy_check_mark:                                                                            | Unique identifier for the event                                                               | 123e4567-e89b-12d3-a456-426614174000                                                          |
 | `idConnection`                                                                                | *string*                                                                                      | :heavy_check_mark:                                                                            | Connection ID associated with the event                                                       | 123e4567-e89b-12d3-a456-426614174001                                                          |
 | `idProject`                                                                                   | *string*                                                                                      | :heavy_check_mark:                                                                            | Project ID associated with the event                                                          | 123e4567-e89b-12d3-a456-426614174002                                                          |
-| `type`                                                                                        | [components.EventResponseType](../../models/components/eventresponsetype.md)                  | :heavy_check_mark:                                                                            | Scope of the event                                                                            | connection.created                                                                            |
+| `type`                                                                                        | [components.Type](../../models/components/type.md)                                            | :heavy_check_mark:                                                                            | Scope of the event                                                                            | connection.created                                                                            |
 | `status`                                                                                      | [components.EventResponseStatus](../../models/components/eventresponsestatus.md)              | :heavy_check_mark:                                                                            | Status of the event                                                                           | success                                                                                       |
 | `direction`                                                                                   | *string*                                                                                      | :heavy_check_mark:                                                                            | Direction of the event                                                                        | 0                                                                                             |
 | `method`                                                                                      | [components.Method](../../models/components/method.md)                                        | :heavy_check_mark:                                                                            | HTTP method used for the event                                                                | POST                                                                                          |

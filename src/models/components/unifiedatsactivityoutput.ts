@@ -5,29 +5,11 @@
 import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
-/**
- * The type of activity
- */
-export enum ActivityType {
-    Note = "NOTE",
-    Email = "EMAIL",
-    Other = "OTHER",
-}
-
-/**
- * The visibility of the activity
- */
-export enum Visibility {
-    AdminOnly = "ADMIN_ONLY",
-    Public = "PUBLIC",
-    Private = "PRIVATE",
-}
-
 export type UnifiedAtsActivityOutput = {
     /**
-     * The type of activity
+     * The type of activity. NOTE, EMAIL or OTHER
      */
-    activityType?: ActivityType | null | undefined;
+    activityType?: string | null | undefined;
     /**
      * The subject of the activity
      */
@@ -37,9 +19,9 @@ export type UnifiedAtsActivityOutput = {
      */
     body?: string | null | undefined;
     /**
-     * The visibility of the activity
+     * The visibility of the activity. ADMIN_ONLY, PUBLIC or PRIVATE
      */
-    visibility?: Visibility | null | undefined;
+    visibility?: string | null | undefined;
     /**
      * The UUID of the candidate
      */
@@ -75,54 +57,16 @@ export type UnifiedAtsActivityOutput = {
 };
 
 /** @internal */
-export const ActivityType$inboundSchema: z.ZodNativeEnum<typeof ActivityType> =
-    z.nativeEnum(ActivityType);
-
-/** @internal */
-export const ActivityType$outboundSchema: z.ZodNativeEnum<typeof ActivityType> =
-    ActivityType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ActivityType$ {
-    /** @deprecated use `ActivityType$inboundSchema` instead. */
-    export const inboundSchema = ActivityType$inboundSchema;
-    /** @deprecated use `ActivityType$outboundSchema` instead. */
-    export const outboundSchema = ActivityType$outboundSchema;
-}
-
-/** @internal */
-export const Visibility$inboundSchema: z.ZodNativeEnum<typeof Visibility> =
-    z.nativeEnum(Visibility);
-
-/** @internal */
-export const Visibility$outboundSchema: z.ZodNativeEnum<typeof Visibility> =
-    Visibility$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Visibility$ {
-    /** @deprecated use `Visibility$inboundSchema` instead. */
-    export const inboundSchema = Visibility$inboundSchema;
-    /** @deprecated use `Visibility$outboundSchema` instead. */
-    export const outboundSchema = Visibility$outboundSchema;
-}
-
-/** @internal */
 export const UnifiedAtsActivityOutput$inboundSchema: z.ZodType<
     UnifiedAtsActivityOutput,
     z.ZodTypeDef,
     unknown
 > = z
     .object({
-        activity_type: z.nullable(ActivityType$inboundSchema).optional(),
+        activity_type: z.nullable(z.string()).optional(),
         subject: z.nullable(z.string()).optional(),
         body: z.nullable(z.string()).optional(),
-        visibility: z.nullable(Visibility$inboundSchema).optional(),
+        visibility: z.nullable(z.string()).optional(),
         candidate_id: z.nullable(z.string()).optional(),
         remote_created_at: z
             .nullable(
@@ -189,10 +133,10 @@ export const UnifiedAtsActivityOutput$outboundSchema: z.ZodType<
     UnifiedAtsActivityOutput
 > = z
     .object({
-        activityType: z.nullable(ActivityType$outboundSchema).optional(),
+        activityType: z.nullable(z.string()).optional(),
         subject: z.nullable(z.string()).optional(),
         body: z.nullable(z.string()).optional(),
-        visibility: z.nullable(Visibility$outboundSchema).optional(),
+        visibility: z.nullable(z.string()).optional(),
         candidateId: z.nullable(z.string()).optional(),
         remoteCreatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         fieldMappings: z.nullable(z.record(z.any())).optional(),

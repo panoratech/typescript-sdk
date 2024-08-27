@@ -3,12 +3,12 @@
 ## Example Usage
 
 ```typescript
-import { AttachmentType, UnifiedAtsCandidateOutputAttachments } from "@panora/sdk/models/components";
+import { UnifiedAtsCandidateOutputAttachments } from "@panora/sdk/models/components";
 
 let value: UnifiedAtsCandidateOutputAttachments = {
     fileUrl: "https://example.com/file.pdf",
     fileName: "file.pdf",
-    attachmentType: AttachmentType.Resume,
+    attachmentType: "RESUME",
     remoteCreatedAt: new Date("2024-10-01T12:00:00Z"),
     remoteModifiedAt: new Date("2024-10-01T12:00:00Z"),
     candidateId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",

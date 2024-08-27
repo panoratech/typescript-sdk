@@ -3,7 +3,6 @@
 ## Example Usage
 
 ```typescript
-import { UnifiedAtsInterviewOutputStatus } from "@panora/sdk/models/components";
 import { ListAtsInterviewResponseBody } from "@panora/sdk/models/operations";
 
 let value: ListAtsInterviewResponseBody = {
@@ -11,7 +10,7 @@ let value: ListAtsInterviewResponseBody = {
     nextCursor: "<value>",
     data: [
         {
-            status: UnifiedAtsInterviewOutputStatus.Scheduled,
+            status: "SCHEDULED",
             applicationId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
             jobInterviewStageId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
             organizedBy: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",

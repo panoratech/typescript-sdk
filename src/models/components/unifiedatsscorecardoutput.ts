@@ -5,22 +5,11 @@
 import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
-/**
- * The overall recommendation
- */
-export enum OverallRecommendation {
-    DefinitelyNo = "DEFINITELY_NO",
-    No = "NO",
-    Yes = "YES",
-    StrongYes = "STRONG_YES",
-    NoDecision = "NO_DECISION",
-}
-
 export type UnifiedAtsScorecardOutput = {
     /**
      * The overall recommendation
      */
-    overallRecommendation?: OverallRecommendation | null | undefined;
+    overallRecommendation?: string | null | undefined;
     /**
      * The UUID of the application
      */
@@ -64,32 +53,13 @@ export type UnifiedAtsScorecardOutput = {
 };
 
 /** @internal */
-export const OverallRecommendation$inboundSchema: z.ZodNativeEnum<typeof OverallRecommendation> =
-    z.nativeEnum(OverallRecommendation);
-
-/** @internal */
-export const OverallRecommendation$outboundSchema: z.ZodNativeEnum<typeof OverallRecommendation> =
-    OverallRecommendation$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OverallRecommendation$ {
-    /** @deprecated use `OverallRecommendation$inboundSchema` instead. */
-    export const inboundSchema = OverallRecommendation$inboundSchema;
-    /** @deprecated use `OverallRecommendation$outboundSchema` instead. */
-    export const outboundSchema = OverallRecommendation$outboundSchema;
-}
-
-/** @internal */
 export const UnifiedAtsScorecardOutput$inboundSchema: z.ZodType<
     UnifiedAtsScorecardOutput,
     z.ZodTypeDef,
     unknown
 > = z
     .object({
-        overall_recommendation: z.nullable(OverallRecommendation$inboundSchema).optional(),
+        overall_recommendation: z.nullable(z.string()).optional(),
         application_id: z.nullable(z.string()).optional(),
         interview_id: z.nullable(z.string()).optional(),
         remote_created_at: z
@@ -166,7 +136,7 @@ export const UnifiedAtsScorecardOutput$outboundSchema: z.ZodType<
     UnifiedAtsScorecardOutput
 > = z
     .object({
-        overallRecommendation: z.nullable(OverallRecommendation$outboundSchema).optional(),
+        overallRecommendation: z.nullable(z.string()).optional(),
         applicationId: z.nullable(z.string()).optional(),
         interviewId: z.nullable(z.string()).optional(),
         remoteCreatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),

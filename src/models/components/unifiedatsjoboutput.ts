@@ -5,26 +5,6 @@
 import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
-/**
- * The status of the job
- */
-export enum UnifiedAtsJobOutputStatus {
-    Open = "OPEN",
-    Closed = "CLOSED",
-    Draft = "DRAFT",
-    Archived = "ARCHIVED",
-    Pending = "PENDING",
-}
-
-/**
- * The type of the job
- */
-export enum UnifiedAtsJobOutputType {
-    Posting = "POSTING",
-    Requisition = "REQUISITION",
-    Profile = "PROFILE",
-}
-
 export type UnifiedAtsJobOutput = {
     /**
      * The name of the job
@@ -41,11 +21,11 @@ export type UnifiedAtsJobOutput = {
     /**
      * The status of the job
      */
-    status?: UnifiedAtsJobOutputStatus | null | undefined;
+    status?: string | null | undefined;
     /**
      * The type of the job
      */
-    type?: UnifiedAtsJobOutputType | null | undefined;
+    type?: string | null | undefined;
     /**
      * Whether the job is confidential
      */
@@ -101,48 +81,6 @@ export type UnifiedAtsJobOutput = {
 };
 
 /** @internal */
-export const UnifiedAtsJobOutputStatus$inboundSchema: z.ZodNativeEnum<
-    typeof UnifiedAtsJobOutputStatus
-> = z.nativeEnum(UnifiedAtsJobOutputStatus);
-
-/** @internal */
-export const UnifiedAtsJobOutputStatus$outboundSchema: z.ZodNativeEnum<
-    typeof UnifiedAtsJobOutputStatus
-> = UnifiedAtsJobOutputStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedAtsJobOutputStatus$ {
-    /** @deprecated use `UnifiedAtsJobOutputStatus$inboundSchema` instead. */
-    export const inboundSchema = UnifiedAtsJobOutputStatus$inboundSchema;
-    /** @deprecated use `UnifiedAtsJobOutputStatus$outboundSchema` instead. */
-    export const outboundSchema = UnifiedAtsJobOutputStatus$outboundSchema;
-}
-
-/** @internal */
-export const UnifiedAtsJobOutputType$inboundSchema: z.ZodNativeEnum<
-    typeof UnifiedAtsJobOutputType
-> = z.nativeEnum(UnifiedAtsJobOutputType);
-
-/** @internal */
-export const UnifiedAtsJobOutputType$outboundSchema: z.ZodNativeEnum<
-    typeof UnifiedAtsJobOutputType
-> = UnifiedAtsJobOutputType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedAtsJobOutputType$ {
-    /** @deprecated use `UnifiedAtsJobOutputType$inboundSchema` instead. */
-    export const inboundSchema = UnifiedAtsJobOutputType$inboundSchema;
-    /** @deprecated use `UnifiedAtsJobOutputType$outboundSchema` instead. */
-    export const outboundSchema = UnifiedAtsJobOutputType$outboundSchema;
-}
-
-/** @internal */
 export const UnifiedAtsJobOutput$inboundSchema: z.ZodType<
     UnifiedAtsJobOutput,
     z.ZodTypeDef,
@@ -152,8 +90,8 @@ export const UnifiedAtsJobOutput$inboundSchema: z.ZodType<
         name: z.nullable(z.string()).optional(),
         description: z.nullable(z.string()).optional(),
         code: z.nullable(z.string()).optional(),
-        status: z.nullable(UnifiedAtsJobOutputStatus$inboundSchema).optional(),
-        type: z.nullable(UnifiedAtsJobOutputType$inboundSchema).optional(),
+        status: z.nullable(z.string()).optional(),
+        type: z.nullable(z.string()).optional(),
         confidential: z.nullable(z.boolean()).optional(),
         departments: z.nullable(z.array(z.string())).optional(),
         offices: z.nullable(z.array(z.string())).optional(),
@@ -240,8 +178,8 @@ export const UnifiedAtsJobOutput$outboundSchema: z.ZodType<
         name: z.nullable(z.string()).optional(),
         description: z.nullable(z.string()).optional(),
         code: z.nullable(z.string()).optional(),
-        status: z.nullable(UnifiedAtsJobOutputStatus$outboundSchema).optional(),
-        type: z.nullable(UnifiedAtsJobOutputType$outboundSchema).optional(),
+        status: z.nullable(z.string()).optional(),
+        type: z.nullable(z.string()).optional(),
         confidential: z.nullable(z.boolean()).optional(),
         departments: z.nullable(z.array(z.string())).optional(),
         offices: z.nullable(z.array(z.string())).optional(),

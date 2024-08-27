@@ -3,7 +3,6 @@
 ## Example Usage
 
 ```typescript
-import { UnifiedAccountingPaymentInputCurrency } from "@panora/sdk/models/components";
 import { CreateAccountingPaymentRequest } from "@panora/sdk/models/operations";
 
 let value: CreateAccountingPaymentRequest = {
@@ -14,7 +13,7 @@ let value: CreateAccountingPaymentRequest = {
         transactionDate: new Date("2024-06-15T12:00:00Z"),
         contactId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
         accountId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-        currency: UnifiedAccountingPaymentInputCurrency.Usd,
+        currency: "USD",
         exchangeRate: "1.2",
         totalAmount: 10000,
         type: "Credit Card",

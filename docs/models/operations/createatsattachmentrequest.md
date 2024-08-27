@@ -3,7 +3,6 @@
 ## Example Usage
 
 ```typescript
-import { UnifiedAtsAttachmentInputAttachmentType } from "@panora/sdk/models/components";
 import { CreateAtsAttachmentRequest } from "@panora/sdk/models/operations";
 
 let value: CreateAtsAttachmentRequest = {
@@ -12,7 +11,7 @@ let value: CreateAtsAttachmentRequest = {
     unifiedAtsAttachmentInput: {
         fileUrl: "https://example.com/file.pdf",
         fileName: "file.pdf",
-        attachmentType: UnifiedAtsAttachmentInputAttachmentType.Resume,
+        attachmentType: "RESUME",
         remoteCreatedAt: new Date("2024-10-01T12:00:00Z"),
         remoteModifiedAt: new Date("2024-10-01T12:00:00Z"),
         candidateId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",

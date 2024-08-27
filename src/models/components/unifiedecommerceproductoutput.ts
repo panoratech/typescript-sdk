@@ -12,15 +12,6 @@ import {
 import * as z from "zod";
 
 /**
- * The status of the product. Either ACTIVE, DRAFT OR ARCHIVED.
- */
-export enum ProductStatus {
-    Archived = "ARCHIVED",
-    Active = "ACTIVE",
-    Draft = "DRAFT",
-}
-
-/**
  * The custom field mappings of the object between the remote 3rd party & Panora
  */
 export type UnifiedEcommerceProductOutputFieldMappings = {};
@@ -42,7 +33,7 @@ export type UnifiedEcommerceProductOutput = {
     /**
      * The status of the product. Either ACTIVE, DRAFT OR ARCHIVED.
      */
-    productStatus?: ProductStatus | null | undefined;
+    productStatus?: string | null | undefined;
     /**
      * The URLs of the product images
      */
@@ -88,25 +79,6 @@ export type UnifiedEcommerceProductOutput = {
      */
     modifiedAt?: string | null | undefined;
 };
-
-/** @internal */
-export const ProductStatus$inboundSchema: z.ZodNativeEnum<typeof ProductStatus> =
-    z.nativeEnum(ProductStatus);
-
-/** @internal */
-export const ProductStatus$outboundSchema: z.ZodNativeEnum<typeof ProductStatus> =
-    ProductStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ProductStatus$ {
-    /** @deprecated use `ProductStatus$inboundSchema` instead. */
-    export const inboundSchema = ProductStatus$inboundSchema;
-    /** @deprecated use `ProductStatus$outboundSchema` instead. */
-    export const outboundSchema = ProductStatus$outboundSchema;
-}
 
 /** @internal */
 export const UnifiedEcommerceProductOutputFieldMappings$inboundSchema: z.ZodType<
@@ -177,7 +149,7 @@ export const UnifiedEcommerceProductOutput$inboundSchema: z.ZodType<
     .object({
         product_url: z.nullable(z.string()).optional(),
         product_type: z.nullable(z.string()).optional(),
-        product_status: z.nullable(ProductStatus$inboundSchema).optional(),
+        product_status: z.nullable(z.string()).optional(),
         images_urls: z.nullable(z.array(z.string())).optional(),
         description: z.nullable(z.string()).optional(),
         vendor: z.nullable(z.string()).optional(),
@@ -235,7 +207,7 @@ export const UnifiedEcommerceProductOutput$outboundSchema: z.ZodType<
     .object({
         productUrl: z.nullable(z.string()).optional(),
         productType: z.nullable(z.string()).optional(),
-        productStatus: z.nullable(ProductStatus$outboundSchema).optional(),
+        productStatus: z.nullable(z.string()).optional(),
         imagesUrls: z.nullable(z.array(z.string())).optional(),
         description: z.nullable(z.string()).optional(),
         vendor: z.nullable(z.string()).optional(),

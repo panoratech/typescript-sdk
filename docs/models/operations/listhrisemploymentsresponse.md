@@ -3,7 +3,6 @@
 ## Example Usage
 
 ```typescript
-import { EmploymentType, FlsaStatus, PayCurrency, PayFrequency, PayPeriod } from "@panora/sdk/models/components";
 import { ListHrisEmploymentsResponse } from "@panora/sdk/models/operations";
 
 let value: ListHrisEmploymentsResponse = {
@@ -14,12 +13,12 @@ let value: ListHrisEmploymentsResponse = {
             {
                 jobTitle: "Software Engineer",
                 payRate: 100000,
-                payPeriod: PayPeriod.Day,
-                payFrequency: PayFrequency.Weekly,
-                payCurrency: PayCurrency.Usd,
-                flsaStatus: FlsaStatus.Exempt,
+                payPeriod: "MONTHLY",
+                payFrequency: "WEEKLY",
+                payCurrency: "USD",
+                flsaStatus: "EXEMPT",
                 effectiveDate: new Date("2023-01-01"),
-                employmentType: EmploymentType.FullTime,
+                employmentType: "FULL_TIME",
                 payGroupId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
                 employeeId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
                 fieldMappings: {},

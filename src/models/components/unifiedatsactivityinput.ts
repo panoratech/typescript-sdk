@@ -5,29 +5,11 @@
 import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
-/**
- * The type of activity
- */
-export enum UnifiedAtsActivityInputActivityType {
-    Note = "NOTE",
-    Email = "EMAIL",
-    Other = "OTHER",
-}
-
-/**
- * The visibility of the activity
- */
-export enum UnifiedAtsActivityInputVisibility {
-    AdminOnly = "ADMIN_ONLY",
-    Public = "PUBLIC",
-    Private = "PRIVATE",
-}
-
 export type UnifiedAtsActivityInput = {
     /**
-     * The type of activity
+     * The type of activity. NOTE, EMAIL or OTHER
      */
-    activityType?: UnifiedAtsActivityInputActivityType | null | undefined;
+    activityType?: string | null | undefined;
     /**
      * The subject of the activity
      */
@@ -37,9 +19,9 @@ export type UnifiedAtsActivityInput = {
      */
     body?: string | null | undefined;
     /**
-     * The visibility of the activity
+     * The visibility of the activity. ADMIN_ONLY, PUBLIC or PRIVATE
      */
-    visibility?: UnifiedAtsActivityInputVisibility | null | undefined;
+    visibility?: string | null | undefined;
     /**
      * The UUID of the candidate
      */
@@ -55,58 +37,16 @@ export type UnifiedAtsActivityInput = {
 };
 
 /** @internal */
-export const UnifiedAtsActivityInputActivityType$inboundSchema: z.ZodNativeEnum<
-    typeof UnifiedAtsActivityInputActivityType
-> = z.nativeEnum(UnifiedAtsActivityInputActivityType);
-
-/** @internal */
-export const UnifiedAtsActivityInputActivityType$outboundSchema: z.ZodNativeEnum<
-    typeof UnifiedAtsActivityInputActivityType
-> = UnifiedAtsActivityInputActivityType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedAtsActivityInputActivityType$ {
-    /** @deprecated use `UnifiedAtsActivityInputActivityType$inboundSchema` instead. */
-    export const inboundSchema = UnifiedAtsActivityInputActivityType$inboundSchema;
-    /** @deprecated use `UnifiedAtsActivityInputActivityType$outboundSchema` instead. */
-    export const outboundSchema = UnifiedAtsActivityInputActivityType$outboundSchema;
-}
-
-/** @internal */
-export const UnifiedAtsActivityInputVisibility$inboundSchema: z.ZodNativeEnum<
-    typeof UnifiedAtsActivityInputVisibility
-> = z.nativeEnum(UnifiedAtsActivityInputVisibility);
-
-/** @internal */
-export const UnifiedAtsActivityInputVisibility$outboundSchema: z.ZodNativeEnum<
-    typeof UnifiedAtsActivityInputVisibility
-> = UnifiedAtsActivityInputVisibility$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedAtsActivityInputVisibility$ {
-    /** @deprecated use `UnifiedAtsActivityInputVisibility$inboundSchema` instead. */
-    export const inboundSchema = UnifiedAtsActivityInputVisibility$inboundSchema;
-    /** @deprecated use `UnifiedAtsActivityInputVisibility$outboundSchema` instead. */
-    export const outboundSchema = UnifiedAtsActivityInputVisibility$outboundSchema;
-}
-
-/** @internal */
 export const UnifiedAtsActivityInput$inboundSchema: z.ZodType<
     UnifiedAtsActivityInput,
     z.ZodTypeDef,
     unknown
 > = z
     .object({
-        activity_type: z.nullable(UnifiedAtsActivityInputActivityType$inboundSchema).optional(),
+        activity_type: z.nullable(z.string()).optional(),
         subject: z.nullable(z.string()).optional(),
         body: z.nullable(z.string()).optional(),
-        visibility: z.nullable(UnifiedAtsActivityInputVisibility$inboundSchema).optional(),
+        visibility: z.nullable(z.string()).optional(),
         candidate_id: z.nullable(z.string()).optional(),
         remote_created_at: z
             .nullable(
@@ -145,10 +85,10 @@ export const UnifiedAtsActivityInput$outboundSchema: z.ZodType<
     UnifiedAtsActivityInput
 > = z
     .object({
-        activityType: z.nullable(UnifiedAtsActivityInputActivityType$outboundSchema).optional(),
+        activityType: z.nullable(z.string()).optional(),
         subject: z.nullable(z.string()).optional(),
         body: z.nullable(z.string()).optional(),
-        visibility: z.nullable(UnifiedAtsActivityInputVisibility$outboundSchema).optional(),
+        visibility: z.nullable(z.string()).optional(),
         candidateId: z.nullable(z.string()).optional(),
         remoteCreatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         fieldMappings: z.nullable(z.record(z.any())).optional(),

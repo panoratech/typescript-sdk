@@ -3,7 +3,6 @@
 ## Example Usage
 
 ```typescript
-import { Direction, UnifiedCrmEngagementOutputType } from "@panora/sdk/models/components";
 import { ListCrmEngagementsResponseBody } from "@panora/sdk/models/operations";
 
 let value: ListCrmEngagementsResponseBody = {
@@ -12,11 +11,11 @@ let value: ListCrmEngagementsResponseBody = {
     data: [
         {
             content: "Meeting call with CTO",
-            direction: Direction.Inbound,
+            direction: "INBOUND",
             subject: "Technical features planning",
             startAt: new Date("2024-10-01T12:00:00Z"),
             endTime: new Date("2024-10-01T22:00:00Z"),
-            type: UnifiedCrmEngagementOutputType.Meeting,
+            type: "MEETING",
             userId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
             companyId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
             contacts: ["801f9ede-c698-4e66-a7fc-48d19eebaa4f"],

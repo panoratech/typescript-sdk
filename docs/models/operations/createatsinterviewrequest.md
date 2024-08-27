@@ -3,14 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { UnifiedAtsInterviewInputStatus } from "@panora/sdk/models/components";
 import { CreateAtsInterviewRequest } from "@panora/sdk/models/operations";
 
 let value: CreateAtsInterviewRequest = {
     xConnectionToken: "<value>",
     remoteData: false,
     unifiedAtsInterviewInput: {
-        status: UnifiedAtsInterviewInputStatus.Scheduled,
+        status: "SCHEDULED",
         applicationId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
         jobInterviewStageId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
         organizedBy: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",

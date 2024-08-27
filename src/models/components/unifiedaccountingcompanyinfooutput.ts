@@ -6,174 +6,6 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
 /**
- * The currency used by the company
- */
-export enum UnifiedAccountingCompanyinfoOutputCurrency {
-    Aed = "AED",
-    Afn = "AFN",
-    All = "ALL",
-    Amd = "AMD",
-    Ang = "ANG",
-    Aoa = "AOA",
-    Ars = "ARS",
-    Aud = "AUD",
-    Awg = "AWG",
-    Azn = "AZN",
-    Bam = "BAM",
-    Bbd = "BBD",
-    Bdt = "BDT",
-    Bgn = "BGN",
-    Bhd = "BHD",
-    Bif = "BIF",
-    Bmd = "BMD",
-    Bnd = "BND",
-    Bob = "BOB",
-    Brl = "BRL",
-    Bsd = "BSD",
-    Btn = "BTN",
-    Bwp = "BWP",
-    Byn = "BYN",
-    Bzd = "BZD",
-    Cad = "CAD",
-    Cdf = "CDF",
-    Chf = "CHF",
-    Clp = "CLP",
-    Cny = "CNY",
-    Cop = "COP",
-    Crc = "CRC",
-    Cup = "CUP",
-    Cve = "CVE",
-    Czk = "CZK",
-    Djf = "DJF",
-    Dkk = "DKK",
-    Dop = "DOP",
-    Dzd = "DZD",
-    Egp = "EGP",
-    Ern = "ERN",
-    Etb = "ETB",
-    Eur = "EUR",
-    Fjd = "FJD",
-    Fkp = "FKP",
-    Fok = "FOK",
-    Gbp = "GBP",
-    Gel = "GEL",
-    Ggp = "GGP",
-    Ghs = "GHS",
-    Gip = "GIP",
-    Gmd = "GMD",
-    Gnf = "GNF",
-    Gtq = "GTQ",
-    Gyd = "GYD",
-    Hkd = "HKD",
-    Hnl = "HNL",
-    Hrk = "HRK",
-    Htg = "HTG",
-    Huf = "HUF",
-    Idr = "IDR",
-    Ils = "ILS",
-    Imp = "IMP",
-    Inr = "INR",
-    Iqd = "IQD",
-    Irr = "IRR",
-    Isk = "ISK",
-    Jep = "JEP",
-    Jmd = "JMD",
-    Jod = "JOD",
-    Jpy = "JPY",
-    Kes = "KES",
-    Kgs = "KGS",
-    Khr = "KHR",
-    Kid = "KID",
-    Kmf = "KMF",
-    Krw = "KRW",
-    Kwd = "KWD",
-    Kyd = "KYD",
-    Kzt = "KZT",
-    Lak = "LAK",
-    Lbp = "LBP",
-    Lkr = "LKR",
-    Lrd = "LRD",
-    Lsl = "LSL",
-    Lyd = "LYD",
-    Mad = "MAD",
-    Mdl = "MDL",
-    Mga = "MGA",
-    Mkd = "MKD",
-    Mmk = "MMK",
-    Mnt = "MNT",
-    Mop = "MOP",
-    Mru = "MRU",
-    Mur = "MUR",
-    Mvr = "MVR",
-    Mwk = "MWK",
-    Mxn = "MXN",
-    Myr = "MYR",
-    Mzn = "MZN",
-    Nad = "NAD",
-    Ngn = "NGN",
-    Nio = "NIO",
-    Nok = "NOK",
-    Npr = "NPR",
-    Nzd = "NZD",
-    Omr = "OMR",
-    Pab = "PAB",
-    Pen = "PEN",
-    Pgk = "PGK",
-    Php = "PHP",
-    Pkr = "PKR",
-    Pln = "PLN",
-    Pyg = "PYG",
-    Qar = "QAR",
-    Ron = "RON",
-    Rsd = "RSD",
-    Rub = "RUB",
-    Rwf = "RWF",
-    Sar = "SAR",
-    Sbd = "SBD",
-    Scr = "SCR",
-    Sdg = "SDG",
-    Sek = "SEK",
-    Sgd = "SGD",
-    Shp = "SHP",
-    Sle = "SLE",
-    Sll = "SLL",
-    Sos = "SOS",
-    Srd = "SRD",
-    Ssp = "SSP",
-    Stn = "STN",
-    Syp = "SYP",
-    Szl = "SZL",
-    Thb = "THB",
-    Tjs = "TJS",
-    Tmt = "TMT",
-    Tnd = "TND",
-    Top = "TOP",
-    Try = "TRY",
-    Ttd = "TTD",
-    Tvd = "TVD",
-    Twd = "TWD",
-    Tzs = "TZS",
-    Uah = "UAH",
-    Ugx = "UGX",
-    Usd = "USD",
-    Uyu = "UYU",
-    Uzs = "UZS",
-    Ves = "VES",
-    Vnd = "VND",
-    Vuv = "VUV",
-    Wst = "WST",
-    Xaf = "XAF",
-    Xcd = "XCD",
-    Xdr = "XDR",
-    Xof = "XOF",
-    Xpf = "XPF",
-    Yer = "YER",
-    Zar = "ZAR",
-    Zmw = "ZMW",
-    Zwl = "ZWL",
-}
-
-/**
  * The custom field mappings of the object between the remote 3rd party & Panora
  */
 export type UnifiedAccountingCompanyinfoOutputFieldMappings = {};
@@ -207,7 +39,7 @@ export type UnifiedAccountingCompanyinfoOutput = {
     /**
      * The currency used by the company
      */
-    currency?: UnifiedAccountingCompanyinfoOutputCurrency | null | undefined;
+    currency?: string | null | undefined;
     /**
      * The URLs associated with the company
      */
@@ -245,27 +77,6 @@ export type UnifiedAccountingCompanyinfoOutput = {
      */
     modifiedAt?: Date | null | undefined;
 };
-
-/** @internal */
-export const UnifiedAccountingCompanyinfoOutputCurrency$inboundSchema: z.ZodNativeEnum<
-    typeof UnifiedAccountingCompanyinfoOutputCurrency
-> = z.nativeEnum(UnifiedAccountingCompanyinfoOutputCurrency);
-
-/** @internal */
-export const UnifiedAccountingCompanyinfoOutputCurrency$outboundSchema: z.ZodNativeEnum<
-    typeof UnifiedAccountingCompanyinfoOutputCurrency
-> = UnifiedAccountingCompanyinfoOutputCurrency$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedAccountingCompanyinfoOutputCurrency$ {
-    /** @deprecated use `UnifiedAccountingCompanyinfoOutputCurrency$inboundSchema` instead. */
-    export const inboundSchema = UnifiedAccountingCompanyinfoOutputCurrency$inboundSchema;
-    /** @deprecated use `UnifiedAccountingCompanyinfoOutputCurrency$outboundSchema` instead. */
-    export const outboundSchema = UnifiedAccountingCompanyinfoOutputCurrency$outboundSchema;
-}
 
 /** @internal */
 export const UnifiedAccountingCompanyinfoOutputFieldMappings$inboundSchema: z.ZodType<
@@ -339,7 +150,7 @@ export const UnifiedAccountingCompanyinfoOutput$inboundSchema: z.ZodType<
         tax_number: z.nullable(z.string()).optional(),
         fiscal_year_end_month: z.nullable(z.number()).optional(),
         fiscal_year_end_day: z.nullable(z.number()).optional(),
-        currency: z.nullable(UnifiedAccountingCompanyinfoOutputCurrency$inboundSchema).optional(),
+        currency: z.nullable(z.string()).optional(),
         urls: z.nullable(z.array(z.string())).optional(),
         tracking_categories: z.nullable(z.array(z.string())).optional(),
         field_mappings: z
@@ -422,7 +233,7 @@ export const UnifiedAccountingCompanyinfoOutput$outboundSchema: z.ZodType<
         taxNumber: z.nullable(z.string()).optional(),
         fiscalYearEndMonth: z.nullable(z.number()).optional(),
         fiscalYearEndDay: z.nullable(z.number()).optional(),
-        currency: z.nullable(UnifiedAccountingCompanyinfoOutputCurrency$outboundSchema).optional(),
+        currency: z.nullable(z.string()).optional(),
         urls: z.nullable(z.array(z.string())).optional(),
         trackingCategories: z.nullable(z.array(z.string())).optional(),
         fieldMappings: z

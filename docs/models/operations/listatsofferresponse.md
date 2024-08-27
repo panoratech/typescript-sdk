@@ -3,7 +3,6 @@
 ## Example Usage
 
 ```typescript
-import { UnifiedAtsOfferOutputStatus } from "@panora/sdk/models/components";
 import { ListAtsOfferResponse } from "@panora/sdk/models/operations";
 
 let value: ListAtsOfferResponse = {
@@ -17,7 +16,7 @@ let value: ListAtsOfferResponse = {
                 closedAt: new Date("2024-10-01T12:00:00Z"),
                 sentAt: new Date("2024-10-01T12:00:00Z"),
                 startDate: new Date("2024-10-01T12:00:00Z"),
-                status: UnifiedAtsOfferOutputStatus.Draft,
+                status: "DRAFT",
                 applicationId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
                 fieldMappings: {
                     fav_dish: "broccoli",

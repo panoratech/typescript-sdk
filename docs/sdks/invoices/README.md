@@ -102,7 +102,6 @@ Create invoices in any supported Accounting software
 
 ```typescript
 import { Panora } from "@panora/sdk";
-import { UnifiedAccountingInvoiceInputCurrency } from "@panora/sdk/models/components";
 
 const panora = new Panora({
   apiKey: "<YOUR_API_KEY_HERE>",
@@ -119,7 +118,7 @@ async function run() {
       dueDate: new Date("2024-07-15T12:00:00Z"),
       paidOnDate: new Date("2024-07-10T12:00:00Z"),
       memo: "Payment for services rendered",
-      currency: UnifiedAccountingInvoiceInputCurrency.Usd,
+      currency: "USD",
       exchangeRate: "1.2",
       totalDiscount: 1000,
       subTotal: 10000,
@@ -164,7 +163,6 @@ The standalone function version of this method:
 ```typescript
 import { PanoraCore } from "@panora/sdk/core.js";
 import { accountingInvoicesCreate } from "@panora/sdk/funcs/accountingInvoicesCreate.js";
-import { UnifiedAccountingInvoiceInputCurrency } from "@panora/sdk/models/components";
 
 // Use `PanoraCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -183,7 +181,7 @@ async function run() {
       dueDate: new Date("2024-07-15T12:00:00Z"),
       paidOnDate: new Date("2024-07-10T12:00:00Z"),
       memo: "Payment for services rendered",
-      currency: UnifiedAccountingInvoiceInputCurrency.Usd,
+      currency: "USD",
       exchangeRate: "1.2",
       totalDiscount: 1000,
       subTotal: 10000,

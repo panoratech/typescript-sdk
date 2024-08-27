@@ -102,7 +102,6 @@ Create Tasks in any supported Crm software
 
 ```typescript
 import { Panora } from "@panora/sdk";
-import { UnifiedCrmTaskInputStatus } from "@panora/sdk/models/components";
 
 const panora = new Panora({
   apiKey: "<YOUR_API_KEY_HERE>",
@@ -114,7 +113,7 @@ async function run() {
     unifiedCrmTaskInput: {
       subject: "Answer customers",
       content: "Prepare email campaign",
-      status: UnifiedCrmTaskInputStatus.Pending,
+      status: "PENDING",
       dueDate: "2024-10-01T12:00:00Z",
       finishedDate: "2024-10-01T12:00:00Z",
       userId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
@@ -141,7 +140,6 @@ The standalone function version of this method:
 ```typescript
 import { PanoraCore } from "@panora/sdk/core.js";
 import { crmTasksCreate } from "@panora/sdk/funcs/crmTasksCreate.js";
-import { UnifiedCrmTaskInputStatus } from "@panora/sdk/models/components";
 
 // Use `PanoraCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -155,7 +153,7 @@ async function run() {
     unifiedCrmTaskInput: {
       subject: "Answer customers",
       content: "Prepare email campaign",
-      status: UnifiedCrmTaskInputStatus.Pending,
+      status: "PENDING",
       dueDate: "2024-10-01T12:00:00Z",
       finishedDate: "2024-10-01T12:00:00Z",
       userId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",

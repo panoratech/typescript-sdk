@@ -3,12 +3,6 @@
 ## Example Usage
 
 ```typescript
-import {
-  FulfillmentStatus,
-  OrderStatus,
-  PaymentStatus,
-  UnifiedEcommerceOrderOutputCurrency,
-} from "@panora/sdk/models/components";
 import { ListEcommerceOrdersResponseBody } from "@panora/sdk/models/operations";
 
 let value: ListEcommerceOrdersResponseBody = {
@@ -16,15 +10,15 @@ let value: ListEcommerceOrdersResponseBody = {
     nextCursor: "<value>",
     data: [
         {
-            orderStatus: OrderStatus.Unshipped,
+            orderStatus: "UNSHIPPED",
             orderNumber: "19823838833",
-            paymentStatus: PaymentStatus.Success,
-            currency: UnifiedEcommerceOrderOutputCurrency.Aud,
+            paymentStatus: "SUCCESS",
+            currency: "AUD",
             totalPrice: 300,
             totalDiscount: 10,
             totalShipping: 120,
             totalTax: 120,
-            fulfillmentStatus: FulfillmentStatus.Pending,
+            fulfillmentStatus: "PENDING",
             customerId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
             items: [
                 {

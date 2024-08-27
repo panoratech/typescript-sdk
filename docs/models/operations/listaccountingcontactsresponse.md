@@ -3,7 +3,6 @@
 ## Example Usage
 
 ```typescript
-import { UnifiedAccountingContactOutputCurrency } from "@panora/sdk/models/components";
 import { ListAccountingContactsResponse } from "@panora/sdk/models/operations";
 
 let value: ListAccountingContactsResponse = {
@@ -18,7 +17,7 @@ let value: ListAccountingContactsResponse = {
                 emailAddress: "john.doe@example.com",
                 taxNumber: "123456789",
                 status: "Active",
-                currency: UnifiedAccountingContactOutputCurrency.Usd,
+                currency: "USD",
                 remoteUpdatedAt: "2024-06-15T12:00:00Z",
                 companyInfoId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
                 fieldMappings: {},

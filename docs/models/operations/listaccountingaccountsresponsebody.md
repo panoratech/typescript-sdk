@@ -3,7 +3,6 @@
 ## Example Usage
 
 ```typescript
-import { Currency } from "@panora/sdk/models/components";
 import { ListAccountingAccountsResponseBody } from "@panora/sdk/models/operations";
 
 let value: ListAccountingAccountsResponseBody = {
@@ -17,7 +16,7 @@ let value: ListAccountingAccountsResponseBody = {
             type: "Current Asset",
             status: "Active",
             currentBalance: 10000,
-            currency: Currency.Usd,
+            currency: "USD",
             accountNumber: "1000",
             parentAccount: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
             companyInfoId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",

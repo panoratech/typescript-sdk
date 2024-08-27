@@ -3,7 +3,6 @@
 ## Example Usage
 
 ```typescript
-import { UnifiedAccountingAccountInputCurrency } from "@panora/sdk/models/components";
 import { CreateAccountingAccountRequest } from "@panora/sdk/models/operations";
 
 let value: CreateAccountingAccountRequest = {
@@ -16,7 +15,7 @@ let value: CreateAccountingAccountRequest = {
         type: "Current Asset",
         status: "Active",
         currentBalance: 10000,
-        currency: UnifiedAccountingAccountInputCurrency.Usd,
+        currency: "USD",
         accountNumber: "1000",
         parentAccount: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
         companyInfoId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",

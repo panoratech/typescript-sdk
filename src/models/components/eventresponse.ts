@@ -8,7 +8,7 @@ import * as z from "zod";
 /**
  * Scope of the event
  */
-export enum EventResponseType {
+export enum Type {
     CrmContactCreated = "crm.contact.created",
     CrmContactPulled = "crm.contact.pulled",
     CrmCompanyCreated = "crm.company.created",
@@ -101,7 +101,7 @@ export type EventResponse = {
     /**
      * Scope of the event
      */
-    type: EventResponseType;
+    type: Type;
     /**
      * Status of the event
      */
@@ -133,22 +133,20 @@ export type EventResponse = {
 };
 
 /** @internal */
-export const EventResponseType$inboundSchema: z.ZodNativeEnum<typeof EventResponseType> =
-    z.nativeEnum(EventResponseType);
+export const Type$inboundSchema: z.ZodNativeEnum<typeof Type> = z.nativeEnum(Type);
 
 /** @internal */
-export const EventResponseType$outboundSchema: z.ZodNativeEnum<typeof EventResponseType> =
-    EventResponseType$inboundSchema;
+export const Type$outboundSchema: z.ZodNativeEnum<typeof Type> = Type$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace EventResponseType$ {
-    /** @deprecated use `EventResponseType$inboundSchema` instead. */
-    export const inboundSchema = EventResponseType$inboundSchema;
-    /** @deprecated use `EventResponseType$outboundSchema` instead. */
-    export const outboundSchema = EventResponseType$outboundSchema;
+export namespace Type$ {
+    /** @deprecated use `Type$inboundSchema` instead. */
+    export const inboundSchema = Type$inboundSchema;
+    /** @deprecated use `Type$outboundSchema` instead. */
+    export const outboundSchema = Type$outboundSchema;
 }
 
 /** @internal */
@@ -193,7 +191,7 @@ export const EventResponse$inboundSchema: z.ZodType<EventResponse, z.ZodTypeDef,
         id_event: z.string(),
         id_connection: z.string(),
         id_project: z.string(),
-        type: EventResponseType$inboundSchema,
+        type: Type$inboundSchema,
         status: EventResponseStatus$inboundSchema,
         direction: z.string(),
         method: Method$inboundSchema,
@@ -239,7 +237,7 @@ export const EventResponse$outboundSchema: z.ZodType<
         idEvent: z.string(),
         idConnection: z.string(),
         idProject: z.string(),
-        type: EventResponseType$outboundSchema,
+        type: Type$outboundSchema,
         status: EventResponseStatus$outboundSchema,
         direction: z.string(),
         method: Method$outboundSchema,

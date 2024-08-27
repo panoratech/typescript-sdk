@@ -3,7 +3,6 @@
 ## Example Usage
 
 ```typescript
-import { LocationType } from "@panora/sdk/models/components";
 import { ListHrisLocationsResponseBody } from "@panora/sdk/models/operations";
 
 let value: ListHrisLocationsResponseBody = {
@@ -19,7 +18,7 @@ let value: ListHrisLocationsResponseBody = {
             state: "CA",
             zipCode: "94105",
             country: "USA",
-            locationType: LocationType.Work,
+            locationType: "WORK",
             companyId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
             employeeId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
             fieldMappings: {},

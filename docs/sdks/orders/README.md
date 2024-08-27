@@ -102,12 +102,6 @@ Create Orders in any supported Ecommerce software
 
 ```typescript
 import { Panora } from "@panora/sdk";
-import {
-  UnifiedEcommerceOrderInputCurrency,
-  UnifiedEcommerceOrderInputFulfillmentStatus,
-  UnifiedEcommerceOrderInputOrderStatus,
-  UnifiedEcommerceOrderInputPaymentStatus,
-} from "@panora/sdk/models/components";
 
 const panora = new Panora({
   apiKey: "<YOUR_API_KEY_HERE>",
@@ -118,15 +112,15 @@ async function run() {
     xConnectionToken: "<value>",
     remoteData: false,
     unifiedEcommerceOrderInput: {
-      orderStatus: UnifiedEcommerceOrderInputOrderStatus.Unshipped,
+      orderStatus: "UNSHIPPED",
       orderNumber: "19823838833",
-      paymentStatus: UnifiedEcommerceOrderInputPaymentStatus.Success,
-      currency: UnifiedEcommerceOrderInputCurrency.Aud,
+      paymentStatus: "SUCCESS",
+      currency: "AUD",
       totalPrice: 300,
       totalDiscount: 10,
       totalShipping: 120,
       totalTax: 120,
-      fulfillmentStatus: UnifiedEcommerceOrderInputFulfillmentStatus.Pending,
+      fulfillmentStatus: "PENDING",
       customerId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
       items: [
         {
@@ -159,12 +153,6 @@ The standalone function version of this method:
 ```typescript
 import { PanoraCore } from "@panora/sdk/core.js";
 import { ecommerceOrdersCreate } from "@panora/sdk/funcs/ecommerceOrdersCreate.js";
-import {
-  UnifiedEcommerceOrderInputCurrency,
-  UnifiedEcommerceOrderInputFulfillmentStatus,
-  UnifiedEcommerceOrderInputOrderStatus,
-  UnifiedEcommerceOrderInputPaymentStatus,
-} from "@panora/sdk/models/components";
 
 // Use `PanoraCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -177,15 +165,15 @@ async function run() {
     xConnectionToken: "<value>",
     remoteData: false,
     unifiedEcommerceOrderInput: {
-      orderStatus: UnifiedEcommerceOrderInputOrderStatus.Unshipped,
+      orderStatus: "UNSHIPPED",
       orderNumber: "19823838833",
-      paymentStatus: UnifiedEcommerceOrderInputPaymentStatus.Success,
-      currency: UnifiedEcommerceOrderInputCurrency.Aud,
+      paymentStatus: "SUCCESS",
+      currency: "AUD",
       totalPrice: 300,
       totalDiscount: 10,
       totalShipping: 120,
       totalTax: 120,
-      fulfillmentStatus: UnifiedEcommerceOrderInputFulfillmentStatus.Pending,
+      fulfillmentStatus: "PENDING",
       customerId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
       items: [
         {

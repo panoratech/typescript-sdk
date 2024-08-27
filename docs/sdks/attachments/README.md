@@ -102,7 +102,6 @@ Create Attachments in any supported ATS software
 
 ```typescript
 import { Panora } from "@panora/sdk";
-import { UnifiedAtsAttachmentInputAttachmentType } from "@panora/sdk/models/components";
 
 const panora = new Panora({
   apiKey: "<YOUR_API_KEY_HERE>",
@@ -115,7 +114,7 @@ async function run() {
     unifiedAtsAttachmentInput: {
       fileUrl: "https://example.com/file.pdf",
       fileName: "file.pdf",
-      attachmentType: UnifiedAtsAttachmentInputAttachmentType.Resume,
+      attachmentType: "RESUME",
       remoteCreatedAt: new Date("2024-10-01T12:00:00Z"),
       remoteModifiedAt: new Date("2024-10-01T12:00:00Z"),
       candidateId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
@@ -140,7 +139,6 @@ The standalone function version of this method:
 ```typescript
 import { PanoraCore } from "@panora/sdk/core.js";
 import { atsAttachmentsCreate } from "@panora/sdk/funcs/atsAttachmentsCreate.js";
-import { UnifiedAtsAttachmentInputAttachmentType } from "@panora/sdk/models/components";
 
 // Use `PanoraCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -155,7 +153,7 @@ async function run() {
     unifiedAtsAttachmentInput: {
       fileUrl: "https://example.com/file.pdf",
       fileName: "file.pdf",
-      attachmentType: UnifiedAtsAttachmentInputAttachmentType.Resume,
+      attachmentType: "RESUME",
       remoteCreatedAt: new Date("2024-10-01T12:00:00Z"),
       remoteModifiedAt: new Date("2024-10-01T12:00:00Z"),
       candidateId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",

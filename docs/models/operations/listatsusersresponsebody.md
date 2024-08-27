@@ -3,7 +3,6 @@
 ## Example Usage
 
 ```typescript
-import { AccessRole } from "@panora/sdk/models/components";
 import { ListAtsUsersResponseBody } from "@panora/sdk/models/operations";
 
 let value: ListAtsUsersResponseBody = {
@@ -15,7 +14,7 @@ let value: ListAtsUsersResponseBody = {
             lastName: "Doe",
             email: "john.doe@example.com",
             disabled: false,
-            accessRole: AccessRole.Admin,
+            accessRole: "ADMIN",
             remoteCreatedAt: new Date("2024-10-01T12:00:00Z"),
             remoteModifiedAt: new Date("2024-10-01T12:00:00Z"),
             fieldMappings: {

@@ -3,7 +3,6 @@
 ## Example Usage
 
 ```typescript
-import { AddressType, EmailAddressType, PhoneType } from "@panora/sdk/models/components";
 import { ListCrmContactsResponseBody } from "@panora/sdk/models/operations";
 
 let value: ListCrmContactsResponseBody = {
@@ -15,14 +14,14 @@ let value: ListCrmContactsResponseBody = {
             lastName: "Doe",
             emailAddresses: [
                 {
-                    emailAddress: "Cullen1@yahoo.com",
-                    emailAddressType: EmailAddressType.Personal,
+                    emailAddress: "Lucie53@hotmail.com",
+                    emailAddressType: "<value>",
                 },
             ],
             phoneNumbers: [
                 {
                     phoneNumber: "<value>",
-                    phoneType: PhoneType.Work,
+                    phoneType: "<value>",
                 },
             ],
             addresses: [
@@ -33,7 +32,7 @@ let value: ListCrmContactsResponseBody = {
                     state: "CA",
                     postalCode: "10001",
                     country: "USA",
-                    addressType: AddressType.Personal,
+                    addressType: "PERSONAL",
                     ownerType: "<value>",
                 },
             ],

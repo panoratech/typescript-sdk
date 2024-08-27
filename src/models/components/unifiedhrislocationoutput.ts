@@ -6,14 +6,6 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
 /**
- * The type of the location
- */
-export enum LocationType {
-    Work = "WORK",
-    Home = "HOME",
-}
-
-/**
  * The custom field mappings of the object between the remote 3rd party & Panora
  */
 export type UnifiedHrisLocationOutputFieldMappings = {};
@@ -59,7 +51,7 @@ export type UnifiedHrisLocationOutput = {
     /**
      * The type of the location
      */
-    locationType?: LocationType | null | undefined;
+    locationType?: string | null | undefined;
     /**
      * The UUID of the company associated with the location
      */
@@ -101,25 +93,6 @@ export type UnifiedHrisLocationOutput = {
      */
     remoteWasDeleted?: boolean | null | undefined;
 };
-
-/** @internal */
-export const LocationType$inboundSchema: z.ZodNativeEnum<typeof LocationType> =
-    z.nativeEnum(LocationType);
-
-/** @internal */
-export const LocationType$outboundSchema: z.ZodNativeEnum<typeof LocationType> =
-    LocationType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LocationType$ {
-    /** @deprecated use `LocationType$inboundSchema` instead. */
-    export const inboundSchema = LocationType$inboundSchema;
-    /** @deprecated use `LocationType$outboundSchema` instead. */
-    export const outboundSchema = LocationType$outboundSchema;
-}
 
 /** @internal */
 export const UnifiedHrisLocationOutputFieldMappings$inboundSchema: z.ZodType<
@@ -196,7 +169,7 @@ export const UnifiedHrisLocationOutput$inboundSchema: z.ZodType<
         state: z.nullable(z.string()).optional(),
         zip_code: z.nullable(z.string()).optional(),
         country: z.nullable(z.string()).optional(),
-        location_type: z.nullable(LocationType$inboundSchema).optional(),
+        location_type: z.nullable(z.string()).optional(),
         company_id: z.nullable(z.string()).optional(),
         employee_id: z.nullable(z.string()).optional(),
         field_mappings: z
@@ -290,7 +263,7 @@ export const UnifiedHrisLocationOutput$outboundSchema: z.ZodType<
         state: z.nullable(z.string()).optional(),
         zipCode: z.nullable(z.string()).optional(),
         country: z.nullable(z.string()).optional(),
-        locationType: z.nullable(LocationType$outboundSchema).optional(),
+        locationType: z.nullable(z.string()).optional(),
         companyId: z.nullable(z.string()).optional(),
         employeeId: z.nullable(z.string()).optional(),
         fieldMappings: z

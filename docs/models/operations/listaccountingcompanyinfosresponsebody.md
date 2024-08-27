@@ -3,7 +3,6 @@
 ## Example Usage
 
 ```typescript
-import { UnifiedAccountingCompanyinfoOutputCurrency } from "@panora/sdk/models/components";
 import { ListAccountingCompanyInfosResponseBody } from "@panora/sdk/models/operations";
 
 let value: ListAccountingCompanyInfosResponseBody = {
@@ -16,7 +15,7 @@ let value: ListAccountingCompanyInfosResponseBody = {
             taxNumber: "123456789",
             fiscalYearEndMonth: 12,
             fiscalYearEndDay: 31,
-            currency: UnifiedAccountingCompanyinfoOutputCurrency.Usd,
+            currency: "USD",
             urls: ["https://www.acmecorp.com", "https://store.acmecorp.com"],
             trackingCategories: [
                 "801f9ede-c698-4e66-a7fc-48d19eebaa4f",

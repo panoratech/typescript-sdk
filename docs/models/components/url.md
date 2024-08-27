@@ -6,7 +6,7 @@
 import { Url } from "@panora/sdk/models/components";
 
 let value: Url = {
-    url: "https://canine-harmonise.info",
+    url: "http://starchy-shorts.info",
     urlType: "<value>",
 };
 ```

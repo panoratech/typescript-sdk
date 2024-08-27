@@ -5,14 +5,6 @@
 import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
-/**
- * The type of the collection. Authorized values are either PROJECT or LIST
- */
-export enum CollectionType {
-    Project = "PROJECT",
-    List = "LIST",
-}
-
 export type UnifiedTicketingCollectionOutput = {
     /**
      * The name of the collection
@@ -25,7 +17,7 @@ export type UnifiedTicketingCollectionOutput = {
     /**
      * The type of the collection. Authorized values are either PROJECT or LIST
      */
-    collectionType?: CollectionType | null | undefined;
+    collectionType?: string | null | undefined;
     /**
      * The UUID of the collection
      */
@@ -49,25 +41,6 @@ export type UnifiedTicketingCollectionOutput = {
 };
 
 /** @internal */
-export const CollectionType$inboundSchema: z.ZodNativeEnum<typeof CollectionType> =
-    z.nativeEnum(CollectionType);
-
-/** @internal */
-export const CollectionType$outboundSchema: z.ZodNativeEnum<typeof CollectionType> =
-    CollectionType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CollectionType$ {
-    /** @deprecated use `CollectionType$inboundSchema` instead. */
-    export const inboundSchema = CollectionType$inboundSchema;
-    /** @deprecated use `CollectionType$outboundSchema` instead. */
-    export const outboundSchema = CollectionType$outboundSchema;
-}
-
-/** @internal */
 export const UnifiedTicketingCollectionOutput$inboundSchema: z.ZodType<
     UnifiedTicketingCollectionOutput,
     z.ZodTypeDef,
@@ -76,7 +49,7 @@ export const UnifiedTicketingCollectionOutput$inboundSchema: z.ZodType<
     .object({
         name: z.nullable(z.string()),
         description: z.nullable(z.string()).optional(),
-        collection_type: z.nullable(CollectionType$inboundSchema).optional(),
+        collection_type: z.nullable(z.string()).optional(),
         id: z.nullable(z.string()).optional(),
         remote_id: z.nullable(z.string()).optional(),
         remote_data: z.nullable(z.record(z.any())).optional(),
@@ -128,7 +101,7 @@ export const UnifiedTicketingCollectionOutput$outboundSchema: z.ZodType<
     .object({
         name: z.nullable(z.string()),
         description: z.nullable(z.string()).optional(),
-        collectionType: z.nullable(CollectionType$outboundSchema).optional(),
+        collectionType: z.nullable(z.string()).optional(),
         id: z.nullable(z.string()).optional(),
         remoteId: z.nullable(z.string()).optional(),
         remoteData: z.nullable(z.record(z.any())).optional(),

@@ -3,7 +3,6 @@
 ## Example Usage
 
 ```typescript
-import { UnifiedAccountingInvoiceOutputCurrency } from "@panora/sdk/models/components";
 import { ListAccountingInvoiceResponseBody } from "@panora/sdk/models/operations";
 
 let value: ListAccountingInvoiceResponseBody = {
@@ -17,7 +16,7 @@ let value: ListAccountingInvoiceResponseBody = {
             dueDate: new Date("2024-07-15T12:00:00Z"),
             paidOnDate: new Date("2024-07-10T12:00:00Z"),
             memo: "Payment for services rendered",
-            currency: UnifiedAccountingInvoiceOutputCurrency.Usd,
+            currency: "USD",
             exchangeRate: "1.2",
             totalDiscount: 1000,
             subTotal: 10000,

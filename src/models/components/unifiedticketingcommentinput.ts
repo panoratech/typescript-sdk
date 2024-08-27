@@ -11,14 +11,6 @@ import {
 } from "./unifiedticketingattachmentoutput.js";
 import * as z from "zod";
 
-/**
- * The creator type of the comment. Authorized values are either USER or CONTACT
- */
-export enum UnifiedTicketingCommentInputCreatorType {
-    User = "USER",
-    Contact = "CONTACT",
-}
-
 export type UnifiedTicketingCommentInputAttachments = UnifiedTicketingAttachmentOutput | string;
 
 export type UnifiedTicketingCommentInput = {
@@ -37,7 +29,7 @@ export type UnifiedTicketingCommentInput = {
     /**
      * The creator type of the comment. Authorized values are either USER or CONTACT
      */
-    creatorType?: UnifiedTicketingCommentInputCreatorType | null | undefined;
+    creatorType?: string | null | undefined;
     /**
      * The UUID of the ticket the comment is tied to
      */
@@ -55,27 +47,6 @@ export type UnifiedTicketingCommentInput = {
      */
     attachments?: Array<UnifiedTicketingAttachmentOutput | string> | null | undefined;
 };
-
-/** @internal */
-export const UnifiedTicketingCommentInputCreatorType$inboundSchema: z.ZodNativeEnum<
-    typeof UnifiedTicketingCommentInputCreatorType
-> = z.nativeEnum(UnifiedTicketingCommentInputCreatorType);
-
-/** @internal */
-export const UnifiedTicketingCommentInputCreatorType$outboundSchema: z.ZodNativeEnum<
-    typeof UnifiedTicketingCommentInputCreatorType
-> = UnifiedTicketingCommentInputCreatorType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedTicketingCommentInputCreatorType$ {
-    /** @deprecated use `UnifiedTicketingCommentInputCreatorType$inboundSchema` instead. */
-    export const inboundSchema = UnifiedTicketingCommentInputCreatorType$inboundSchema;
-    /** @deprecated use `UnifiedTicketingCommentInputCreatorType$outboundSchema` instead. */
-    export const outboundSchema = UnifiedTicketingCommentInputCreatorType$outboundSchema;
-}
 
 /** @internal */
 export const UnifiedTicketingCommentInputAttachments$inboundSchema: z.ZodType<
@@ -119,7 +90,7 @@ export const UnifiedTicketingCommentInput$inboundSchema: z.ZodType<
         body: z.nullable(z.string()),
         html_body: z.nullable(z.string()).optional(),
         is_private: z.nullable(z.boolean()).optional(),
-        creator_type: z.nullable(UnifiedTicketingCommentInputCreatorType$inboundSchema).optional(),
+        creator_type: z.nullable(z.string()).optional(),
         ticket_id: z.nullable(z.string()).optional(),
         contact_id: z.nullable(z.string()).optional(),
         user_id: z.nullable(z.string()).optional(),
@@ -162,7 +133,7 @@ export const UnifiedTicketingCommentInput$outboundSchema: z.ZodType<
         body: z.nullable(z.string()),
         htmlBody: z.nullable(z.string()).optional(),
         isPrivate: z.nullable(z.boolean()).optional(),
-        creatorType: z.nullable(UnifiedTicketingCommentInputCreatorType$outboundSchema).optional(),
+        creatorType: z.nullable(z.string()).optional(),
         ticketId: z.nullable(z.string()).optional(),
         contactId: z.nullable(z.string()).optional(),
         userId: z.nullable(z.string()).optional(),

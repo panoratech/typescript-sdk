@@ -3,7 +3,6 @@
 ## Example Usage
 
 ```typescript
-import { UnifiedAccountingJournalentryOutputCurrency } from "@panora/sdk/models/components";
 import { ListAccountingJournalEntryResponse } from "@panora/sdk/models/operations";
 
 let value: ListAccountingJournalEntryResponse = {
@@ -16,7 +15,7 @@ let value: ListAccountingJournalEntryResponse = {
                 payments: ["payment1", "payment2"],
                 appliedPayments: ["appliedPayment1", "appliedPayment2"],
                 memo: "Monthly expense journal entry",
-                currency: UnifiedAccountingJournalentryOutputCurrency.Usd,
+                currency: "USD",
                 exchangeRate: "1.2",
                 idAccCompanyInfo: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
                 journalNumber: "JE-001",

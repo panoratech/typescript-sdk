@@ -3,7 +3,6 @@
 ## Example Usage
 
 ```typescript
-import { UnifiedEcommerceProductInputProductStatus } from "@panora/sdk/models/components";
 import { CreateEcommerceProductRequest } from "@panora/sdk/models/operations";
 
 let value: CreateEcommerceProductRequest = {
@@ -12,7 +11,7 @@ let value: CreateEcommerceProductRequest = {
     unifiedEcommerceProductInput: {
         productUrl: "https://product_url/tee",
         productType: "teeshirt",
-        productStatus: UnifiedEcommerceProductInputProductStatus.Active,
+        productStatus: "ACTIVE",
         imagesUrls: ["https://myproduct/image"],
         description: "best tee ever",
         vendor: "vendor_extern",
