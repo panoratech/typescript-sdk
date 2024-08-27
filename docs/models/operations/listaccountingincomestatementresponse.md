@@ -3,7 +3,6 @@
 ## Example Usage
 
 ```typescript
-import { UnifiedAccountingIncomestatementOutputCurrency } from "@panora/sdk/models/components";
 import { ListAccountingIncomeStatementResponse } from "@panora/sdk/models/operations";
 
 let value: ListAccountingIncomeStatementResponse = {
@@ -13,7 +12,7 @@ let value: ListAccountingIncomeStatementResponse = {
         data: [
             {
                 name: "Q2 2024 Income Statement",
-                currency: UnifiedAccountingIncomestatementOutputCurrency.Usd,
+                currency: "USD",
                 startPeriod: new Date("2024-04-01T00:00:00Z"),
                 endPeriod: new Date("2024-06-30T23:59:59Z"),
                 grossProfit: 1000000,

@@ -5,23 +5,6 @@
 import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
-/**
- * The direction of the engagement. Authorized values are INBOUND or OUTBOUND
- */
-export enum Direction {
-    Inbound = "INBOUND",
-    Outbound = "OUTBOUND",
-}
-
-/**
- * The type of the engagement. Authorized values are EMAIL, CALL or MEETING
- */
-export enum UnifiedCrmEngagementOutputType {
-    Email = "EMAIL",
-    Call = "CALL",
-    Meeting = "MEETING",
-}
-
 export type UnifiedCrmEngagementOutput = {
     /**
      * The content of the engagement
@@ -30,7 +13,7 @@ export type UnifiedCrmEngagementOutput = {
     /**
      * The direction of the engagement. Authorized values are INBOUND or OUTBOUND
      */
-    direction?: Direction | null | undefined;
+    direction?: string | null | undefined;
     /**
      * The subject of the engagement
      */
@@ -46,7 +29,7 @@ export type UnifiedCrmEngagementOutput = {
     /**
      * The type of the engagement. Authorized values are EMAIL, CALL or MEETING
      */
-    type: UnifiedCrmEngagementOutputType | null;
+    type: string | null;
     /**
      * The UUID of the user tied to the engagement
      */
@@ -86,44 +69,6 @@ export type UnifiedCrmEngagementOutput = {
 };
 
 /** @internal */
-export const Direction$inboundSchema: z.ZodNativeEnum<typeof Direction> = z.nativeEnum(Direction);
-
-/** @internal */
-export const Direction$outboundSchema: z.ZodNativeEnum<typeof Direction> = Direction$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Direction$ {
-    /** @deprecated use `Direction$inboundSchema` instead. */
-    export const inboundSchema = Direction$inboundSchema;
-    /** @deprecated use `Direction$outboundSchema` instead. */
-    export const outboundSchema = Direction$outboundSchema;
-}
-
-/** @internal */
-export const UnifiedCrmEngagementOutputType$inboundSchema: z.ZodNativeEnum<
-    typeof UnifiedCrmEngagementOutputType
-> = z.nativeEnum(UnifiedCrmEngagementOutputType);
-
-/** @internal */
-export const UnifiedCrmEngagementOutputType$outboundSchema: z.ZodNativeEnum<
-    typeof UnifiedCrmEngagementOutputType
-> = UnifiedCrmEngagementOutputType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedCrmEngagementOutputType$ {
-    /** @deprecated use `UnifiedCrmEngagementOutputType$inboundSchema` instead. */
-    export const inboundSchema = UnifiedCrmEngagementOutputType$inboundSchema;
-    /** @deprecated use `UnifiedCrmEngagementOutputType$outboundSchema` instead. */
-    export const outboundSchema = UnifiedCrmEngagementOutputType$outboundSchema;
-}
-
-/** @internal */
 export const UnifiedCrmEngagementOutput$inboundSchema: z.ZodType<
     UnifiedCrmEngagementOutput,
     z.ZodTypeDef,
@@ -131,7 +76,7 @@ export const UnifiedCrmEngagementOutput$inboundSchema: z.ZodType<
 > = z
     .object({
         content: z.nullable(z.string()).optional(),
-        direction: z.nullable(Direction$inboundSchema).optional(),
+        direction: z.nullable(z.string()).optional(),
         subject: z.nullable(z.string()).optional(),
         start_at: z
             .nullable(
@@ -149,7 +94,7 @@ export const UnifiedCrmEngagementOutput$inboundSchema: z.ZodType<
                     .transform((v) => new Date(v))
             )
             .optional(),
-        type: z.nullable(UnifiedCrmEngagementOutputType$inboundSchema),
+        type: z.nullable(z.string()),
         user_id: z.nullable(z.string()).optional(),
         company_id: z.nullable(z.string()).optional(),
         contacts: z.nullable(z.array(z.string())).optional(),
@@ -215,11 +160,11 @@ export const UnifiedCrmEngagementOutput$outboundSchema: z.ZodType<
 > = z
     .object({
         content: z.nullable(z.string()).optional(),
-        direction: z.nullable(Direction$outboundSchema).optional(),
+        direction: z.nullable(z.string()).optional(),
         subject: z.nullable(z.string()).optional(),
         startAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         endTime: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-        type: z.nullable(UnifiedCrmEngagementOutputType$outboundSchema),
+        type: z.nullable(z.string()),
         userId: z.nullable(z.string()).optional(),
         companyId: z.nullable(z.string()).optional(),
         contacts: z.nullable(z.array(z.string())).optional(),

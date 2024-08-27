@@ -102,7 +102,6 @@ Create accounts in any supported Accounting software
 
 ```typescript
 import { Panora } from "@panora/sdk";
-import { UnifiedAccountingAccountInputCurrency } from "@panora/sdk/models/components";
 
 const panora = new Panora({
   apiKey: "<YOUR_API_KEY_HERE>",
@@ -119,7 +118,7 @@ async function run() {
       type: "Current Asset",
       status: "Active",
       currentBalance: 10000,
-      currency: UnifiedAccountingAccountInputCurrency.Usd,
+      currency: "USD",
       accountNumber: "1000",
       parentAccount: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
       companyInfoId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
@@ -141,7 +140,6 @@ The standalone function version of this method:
 ```typescript
 import { PanoraCore } from "@panora/sdk/core.js";
 import { accountingAccountsCreate } from "@panora/sdk/funcs/accountingAccountsCreate.js";
-import { UnifiedAccountingAccountInputCurrency } from "@panora/sdk/models/components";
 
 // Use `PanoraCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -160,7 +158,7 @@ async function run() {
       type: "Current Asset",
       status: "Active",
       currentBalance: 10000,
-      currency: UnifiedAccountingAccountInputCurrency.Usd,
+      currency: "USD",
       accountNumber: "1000",
       parentAccount: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
       companyInfoId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",

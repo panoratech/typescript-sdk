@@ -3,12 +3,6 @@
 ## Example Usage
 
 ```typescript
-import {
-  UnifiedHrisEmployeeInputEmploymentStatus,
-  UnifiedHrisEmployeeInputEthnicity,
-  UnifiedHrisEmployeeInputGender,
-  UnifiedHrisEmployeeInputMaritalStatus,
-} from "@panora/sdk/models/components";
 import { CreateHrisEmployeeRequest } from "@panora/sdk/models/operations";
 
 let value: CreateHrisEmployeeRequest = {
@@ -31,12 +25,12 @@ let value: CreateHrisEmployeeRequest = {
             "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
         ],
         ssn: "123-45-6789",
-        gender: UnifiedHrisEmployeeInputGender.Male,
-        ethnicity: UnifiedHrisEmployeeInputEthnicity.AmericanIndianOrAlaskaNative,
-        maritalStatus: UnifiedHrisEmployeeInputMaritalStatus.HeadOfHousehold,
+        gender: "MALE",
+        ethnicity: "AMERICAN_INDIAN_OR_ALASKA_NATIVE",
+        maritalStatus: "Married",
         dateOfBirth: new Date("1990-01-01"),
         startDate: new Date("2020-01-01"),
-        employmentStatus: UnifiedHrisEmployeeInputEmploymentStatus.Active,
+        employmentStatus: "ACTIVE",
         terminationDate: new Date("2025-01-01"),
         avatarUrl: "https://example.com/avatar.jpg",
         managerId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",

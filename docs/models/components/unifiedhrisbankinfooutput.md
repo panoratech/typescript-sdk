@@ -3,10 +3,10 @@
 ## Example Usage
 
 ```typescript
-import { AccountType, UnifiedHrisBankinfoOutput } from "@panora/sdk/models/components";
+import { UnifiedHrisBankinfoOutput } from "@panora/sdk/models/components";
 
 let value: UnifiedHrisBankinfoOutput = {
-    accountType: AccountType.Checking,
+    accountType: "CHECKING",
     bankName: "Bank of America",
     accountNumber: "1234567890",
     routingNumber: "021000021",
@@ -26,7 +26,7 @@ let value: UnifiedHrisBankinfoOutput = {
 
 | Field                                                                                         | Type                                                                                          | Required                                                                                      | Description                                                                                   | Example                                                                                       |
 | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `accountType`                                                                                 | [components.AccountType](../../models/components/accounttype.md)                              | :heavy_minus_sign:                                                                            | The type of the bank account                                                                  | CHECKING                                                                                      |
+| `accountType`                                                                                 | *string*                                                                                      | :heavy_minus_sign:                                                                            | The type of the bank account                                                                  | CHECKING                                                                                      |
 | `bankName`                                                                                    | *string*                                                                                      | :heavy_minus_sign:                                                                            | The name of the bank                                                                          | Bank of America                                                                               |
 | `accountNumber`                                                                               | *string*                                                                                      | :heavy_minus_sign:                                                                            | The account number                                                                            | 1234567890                                                                                    |
 | `routingNumber`                                                                               | *string*                                                                                      | :heavy_minus_sign:                                                                            | The routing number of the bank                                                                | 021000021                                                                                     |

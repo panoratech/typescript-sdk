@@ -102,7 +102,6 @@ Create Payments in any supported Accounting software
 
 ```typescript
 import { Panora } from "@panora/sdk";
-import { UnifiedAccountingPaymentInputCurrency } from "@panora/sdk/models/components";
 
 const panora = new Panora({
   apiKey: "<YOUR_API_KEY_HERE>",
@@ -117,7 +116,7 @@ async function run() {
       transactionDate: new Date("2024-06-15T12:00:00Z"),
       contactId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
       accountId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-      currency: UnifiedAccountingPaymentInputCurrency.Usd,
+      currency: "USD",
       exchangeRate: "1.2",
       totalAmount: 10000,
       type: "Credit Card",
@@ -157,7 +156,6 @@ The standalone function version of this method:
 ```typescript
 import { PanoraCore } from "@panora/sdk/core.js";
 import { accountingPaymentsCreate } from "@panora/sdk/funcs/accountingPaymentsCreate.js";
-import { UnifiedAccountingPaymentInputCurrency } from "@panora/sdk/models/components";
 
 // Use `PanoraCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -174,7 +172,7 @@ async function run() {
       transactionDate: new Date("2024-06-15T12:00:00Z"),
       contactId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
       accountId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-      currency: UnifiedAccountingPaymentInputCurrency.Usd,
+      currency: "USD",
       exchangeRate: "1.2",
       totalAmount: 10000,
       type: "Credit Card",

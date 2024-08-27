@@ -3,7 +3,6 @@
 ## Example Usage
 
 ```typescript
-import { UnifiedAccountingExpenseInputCurrency } from "@panora/sdk/models/components";
 import { CreateAccountingExpenseRequest } from "@panora/sdk/models/operations";
 
 let value: CreateAccountingExpenseRequest = {
@@ -14,7 +13,7 @@ let value: CreateAccountingExpenseRequest = {
         totalAmount: 10000,
         subTotal: 9000,
         totalTaxAmount: 1000,
-        currency: UnifiedAccountingExpenseInputCurrency.Usd,
+        currency: "USD",
         exchangeRate: "1.2",
         memo: "Business lunch with client",
         accountId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",

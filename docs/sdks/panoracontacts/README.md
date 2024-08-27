@@ -102,7 +102,6 @@ Create Contacts in any supported CRM
 
 ```typescript
 import { Panora } from "@panora/sdk";
-import { AddressType, EmailAddressType, PhoneType } from "@panora/sdk/models/components";
 
 const panora = new Panora({
   apiKey: "<YOUR_API_KEY_HERE>",
@@ -118,13 +117,13 @@ async function run() {
       emailAddresses: [
         {
           emailAddress: "Jena.Nienow28@yahoo.com",
-          emailAddressType: EmailAddressType.Personal,
+          emailAddressType: "<value>",
         },
       ],
       phoneNumbers: [
         {
           phoneNumber: "<value>",
-          phoneType: PhoneType.Work,
+          phoneType: "<value>",
         },
       ],
       addresses: [
@@ -135,7 +134,7 @@ async function run() {
           state: "CA",
           postalCode: "10001",
           country: "USA",
-          addressType: AddressType.Personal,
+          addressType: "PERSONAL",
           ownerType: "<value>",
         },
       ],
@@ -161,7 +160,6 @@ The standalone function version of this method:
 ```typescript
 import { PanoraCore } from "@panora/sdk/core.js";
 import { crmContactsCreate } from "@panora/sdk/funcs/crmContactsCreate.js";
-import { AddressType, EmailAddressType, PhoneType } from "@panora/sdk/models/components";
 
 // Use `PanoraCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -178,14 +176,14 @@ async function run() {
       lastName: "Doe",
       emailAddresses: [
         {
-          emailAddress: "Cecelia71@yahoo.com",
-          emailAddressType: EmailAddressType.Work,
+          emailAddress: "Silas.Abbott@hotmail.com",
+          emailAddressType: "<value>",
         },
       ],
       phoneNumbers: [
         {
           phoneNumber: "<value>",
-          phoneType: PhoneType.Work,
+          phoneType: "<value>",
         },
       ],
       addresses: [
@@ -196,7 +194,7 @@ async function run() {
           state: "CA",
           postalCode: "10001",
           country: "USA",
-          addressType: AddressType.Personal,
+          addressType: "PERSONAL",
           ownerType: "<value>",
         },
       ],

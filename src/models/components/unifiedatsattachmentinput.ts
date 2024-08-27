@@ -5,16 +5,6 @@
 import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
-/**
- * The type of the file
- */
-export enum UnifiedAtsAttachmentInputAttachmentType {
-    Resume = "RESUME",
-    CoverLetter = "COVER_LETTER",
-    OfferLetter = "OFFER_LETTER",
-    Other = "OTHER",
-}
-
 export type UnifiedAtsAttachmentInput = {
     /**
      * The URL of the file
@@ -27,7 +17,7 @@ export type UnifiedAtsAttachmentInput = {
     /**
      * The type of the file
      */
-    attachmentType?: UnifiedAtsAttachmentInputAttachmentType | null | undefined;
+    attachmentType?: string | null | undefined;
     /**
      * The remote creation date of the attachment
      */
@@ -47,27 +37,6 @@ export type UnifiedAtsAttachmentInput = {
 };
 
 /** @internal */
-export const UnifiedAtsAttachmentInputAttachmentType$inboundSchema: z.ZodNativeEnum<
-    typeof UnifiedAtsAttachmentInputAttachmentType
-> = z.nativeEnum(UnifiedAtsAttachmentInputAttachmentType);
-
-/** @internal */
-export const UnifiedAtsAttachmentInputAttachmentType$outboundSchema: z.ZodNativeEnum<
-    typeof UnifiedAtsAttachmentInputAttachmentType
-> = UnifiedAtsAttachmentInputAttachmentType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedAtsAttachmentInputAttachmentType$ {
-    /** @deprecated use `UnifiedAtsAttachmentInputAttachmentType$inboundSchema` instead. */
-    export const inboundSchema = UnifiedAtsAttachmentInputAttachmentType$inboundSchema;
-    /** @deprecated use `UnifiedAtsAttachmentInputAttachmentType$outboundSchema` instead. */
-    export const outboundSchema = UnifiedAtsAttachmentInputAttachmentType$outboundSchema;
-}
-
-/** @internal */
 export const UnifiedAtsAttachmentInput$inboundSchema: z.ZodType<
     UnifiedAtsAttachmentInput,
     z.ZodTypeDef,
@@ -76,9 +45,7 @@ export const UnifiedAtsAttachmentInput$inboundSchema: z.ZodType<
     .object({
         file_url: z.nullable(z.string()).optional(),
         file_name: z.nullable(z.string()).optional(),
-        attachment_type: z
-            .nullable(UnifiedAtsAttachmentInputAttachmentType$inboundSchema)
-            .optional(),
+        attachment_type: z.nullable(z.string()).optional(),
         remote_created_at: z
             .nullable(
                 z
@@ -130,9 +97,7 @@ export const UnifiedAtsAttachmentInput$outboundSchema: z.ZodType<
     .object({
         fileUrl: z.nullable(z.string()).optional(),
         fileName: z.nullable(z.string()).optional(),
-        attachmentType: z
-            .nullable(UnifiedAtsAttachmentInputAttachmentType$outboundSchema)
-            .optional(),
+        attachmentType: z.nullable(z.string()).optional(),
         remoteCreatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         remoteModifiedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         candidateId: z.nullable(z.string()).optional(),

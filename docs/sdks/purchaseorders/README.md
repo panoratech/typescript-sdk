@@ -102,7 +102,6 @@ Create Purchase Orders in any supported Accounting software
 
 ```typescript
 import { Panora } from "@panora/sdk";
-import { UnifiedAccountingPurchaseorderInputCurrency } from "@panora/sdk/models/components";
 
 const panora = new Panora({
   apiKey: "<YOUR_API_KEY_HERE>",
@@ -123,7 +122,7 @@ async function run() {
       memo: "Purchase order for Q3 inventory",
       companyId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
       totalAmount: 100000,
-      currency: UnifiedAccountingPurchaseorderInputCurrency.Usd,
+      currency: "USD",
       exchangeRate: "1.2",
       trackingCategories: [
         "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
@@ -160,7 +159,6 @@ The standalone function version of this method:
 ```typescript
 import { PanoraCore } from "@panora/sdk/core.js";
 import { accountingPurchaseordersCreate } from "@panora/sdk/funcs/accountingPurchaseordersCreate.js";
-import { UnifiedAccountingPurchaseorderInputCurrency } from "@panora/sdk/models/components";
 
 // Use `PanoraCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -183,7 +181,7 @@ async function run() {
       memo: "Purchase order for Q3 inventory",
       companyId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
       totalAmount: 100000,
-      currency: UnifiedAccountingPurchaseorderInputCurrency.Usd,
+      currency: "USD",
       exchangeRate: "1.2",
       trackingCategories: [
         "801f9ede-c698-4e66-a7fc-48d19eebaa4f",

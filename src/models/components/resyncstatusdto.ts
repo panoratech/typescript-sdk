@@ -15,7 +15,7 @@ export enum Vertical {
     Marketingautomation = "marketingautomation",
 }
 
-export enum ResyncStatusDtoStatus {
+export enum Status {
     Success = "success",
     Fail = "fail",
 }
@@ -24,7 +24,7 @@ export type ResyncStatusDto = {
     timestamp: Date | null;
     vertical: Vertical | null;
     provider: string | null;
-    status: ResyncStatusDtoStatus | null;
+    status: Status | null;
 };
 
 /** @internal */
@@ -45,22 +45,20 @@ export namespace Vertical$ {
 }
 
 /** @internal */
-export const ResyncStatusDtoStatus$inboundSchema: z.ZodNativeEnum<typeof ResyncStatusDtoStatus> =
-    z.nativeEnum(ResyncStatusDtoStatus);
+export const Status$inboundSchema: z.ZodNativeEnum<typeof Status> = z.nativeEnum(Status);
 
 /** @internal */
-export const ResyncStatusDtoStatus$outboundSchema: z.ZodNativeEnum<typeof ResyncStatusDtoStatus> =
-    ResyncStatusDtoStatus$inboundSchema;
+export const Status$outboundSchema: z.ZodNativeEnum<typeof Status> = Status$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ResyncStatusDtoStatus$ {
-    /** @deprecated use `ResyncStatusDtoStatus$inboundSchema` instead. */
-    export const inboundSchema = ResyncStatusDtoStatus$inboundSchema;
-    /** @deprecated use `ResyncStatusDtoStatus$outboundSchema` instead. */
-    export const outboundSchema = ResyncStatusDtoStatus$outboundSchema;
+export namespace Status$ {
+    /** @deprecated use `Status$inboundSchema` instead. */
+    export const inboundSchema = Status$inboundSchema;
+    /** @deprecated use `Status$outboundSchema` instead. */
+    export const outboundSchema = Status$outboundSchema;
 }
 
 /** @internal */
@@ -74,7 +72,7 @@ export const ResyncStatusDto$inboundSchema: z.ZodType<ResyncStatusDto, z.ZodType
         ),
         vertical: z.nullable(Vertical$inboundSchema),
         provider: z.nullable(z.string()),
-        status: z.nullable(ResyncStatusDtoStatus$inboundSchema),
+        status: z.nullable(Status$inboundSchema),
     });
 
 /** @internal */
@@ -94,7 +92,7 @@ export const ResyncStatusDto$outboundSchema: z.ZodType<
     timestamp: z.nullable(z.date().transform((v) => v.toISOString())),
     vertical: z.nullable(Vertical$outboundSchema),
     provider: z.nullable(z.string()),
-    status: z.nullable(ResyncStatusDtoStatus$outboundSchema),
+    status: z.nullable(Status$outboundSchema),
 });
 
 /**

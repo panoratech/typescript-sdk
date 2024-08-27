@@ -6,51 +6,6 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
 /**
- * The gender of the employee
- */
-export enum UnifiedHrisEmployeeInputGender {
-    Male = "MALE",
-    Female = "FEMALE",
-    NonBinary = "NON-BINARY",
-    Other = "OTHER",
-    PreferNotToDisclose = "PREFER_NOT_TO_DISCLOSE",
-}
-
-/**
- * The ethnicity of the employee
- */
-export enum UnifiedHrisEmployeeInputEthnicity {
-    AmericanIndianOrAlaskaNative = "AMERICAN_INDIAN_OR_ALASKA_NATIVE",
-    AsianOrIndianSubcontinent = "ASIAN_OR_INDIAN_SUBCONTINENT",
-    BlackOrAfricanAmerican = "BLACK_OR_AFRICAN_AMERICAN",
-    HispanicOrLatino = "HISPANIC_OR_LATINO",
-    NativeHawaiianOrOtherPacificIslander = "NATIVE_HAWAIIAN_OR_OTHER_PACIFIC_ISLANDER",
-    TwoOrMoreRaces = "TWO_OR_MORE_RACES",
-    White = "WHITE",
-    PreferNotToDisclose = "PREFER_NOT_TO_DISCLOSE",
-}
-
-/**
- * The marital status of the employee
- */
-export enum UnifiedHrisEmployeeInputMaritalStatus {
-    Single = "SINGLE",
-    MarriedFilingJointly = "MARRIED_FILING_JOINTLY",
-    MarriedFilingSeparately = "MARRIED_FILING_SEPARATELY",
-    HeadOfHousehold = "HEAD_OF_HOUSEHOLD",
-    QualifyingWidowOrWidowerWithDependentChild = "QUALIFYING_WIDOW_OR_WIDOWER_WITH_DEPENDENT_CHILD",
-}
-
-/**
- * The employment status of the employee
- */
-export enum UnifiedHrisEmployeeInputEmploymentStatus {
-    Active = "ACTIVE",
-    Pending = "PENDING",
-    Inactive = "INACTIVE",
-}
-
-/**
  * The custom field mappings of the object between the remote 3rd party & Panora
  */
 export type UnifiedHrisEmployeeInputFieldMappings = {};
@@ -115,15 +70,15 @@ export type UnifiedHrisEmployeeInput = {
     /**
      * The gender of the employee
      */
-    gender?: UnifiedHrisEmployeeInputGender | null | undefined;
+    gender?: string | null | undefined;
     /**
      * The ethnicity of the employee
      */
-    ethnicity?: UnifiedHrisEmployeeInputEthnicity | null | undefined;
+    ethnicity?: string | null | undefined;
     /**
      * The marital status of the employee
      */
-    maritalStatus?: UnifiedHrisEmployeeInputMaritalStatus | null | undefined;
+    maritalStatus?: string | null | undefined;
     /**
      * The date of birth of the employee
      */
@@ -135,7 +90,7 @@ export type UnifiedHrisEmployeeInput = {
     /**
      * The employment status of the employee
      */
-    employmentStatus?: UnifiedHrisEmployeeInputEmploymentStatus | null | undefined;
+    employmentStatus?: string | null | undefined;
     /**
      * The termination date of the employee
      */
@@ -153,90 +108,6 @@ export type UnifiedHrisEmployeeInput = {
      */
     fieldMappings?: UnifiedHrisEmployeeInputFieldMappings | null | undefined;
 };
-
-/** @internal */
-export const UnifiedHrisEmployeeInputGender$inboundSchema: z.ZodNativeEnum<
-    typeof UnifiedHrisEmployeeInputGender
-> = z.nativeEnum(UnifiedHrisEmployeeInputGender);
-
-/** @internal */
-export const UnifiedHrisEmployeeInputGender$outboundSchema: z.ZodNativeEnum<
-    typeof UnifiedHrisEmployeeInputGender
-> = UnifiedHrisEmployeeInputGender$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedHrisEmployeeInputGender$ {
-    /** @deprecated use `UnifiedHrisEmployeeInputGender$inboundSchema` instead. */
-    export const inboundSchema = UnifiedHrisEmployeeInputGender$inboundSchema;
-    /** @deprecated use `UnifiedHrisEmployeeInputGender$outboundSchema` instead. */
-    export const outboundSchema = UnifiedHrisEmployeeInputGender$outboundSchema;
-}
-
-/** @internal */
-export const UnifiedHrisEmployeeInputEthnicity$inboundSchema: z.ZodNativeEnum<
-    typeof UnifiedHrisEmployeeInputEthnicity
-> = z.nativeEnum(UnifiedHrisEmployeeInputEthnicity);
-
-/** @internal */
-export const UnifiedHrisEmployeeInputEthnicity$outboundSchema: z.ZodNativeEnum<
-    typeof UnifiedHrisEmployeeInputEthnicity
-> = UnifiedHrisEmployeeInputEthnicity$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedHrisEmployeeInputEthnicity$ {
-    /** @deprecated use `UnifiedHrisEmployeeInputEthnicity$inboundSchema` instead. */
-    export const inboundSchema = UnifiedHrisEmployeeInputEthnicity$inboundSchema;
-    /** @deprecated use `UnifiedHrisEmployeeInputEthnicity$outboundSchema` instead. */
-    export const outboundSchema = UnifiedHrisEmployeeInputEthnicity$outboundSchema;
-}
-
-/** @internal */
-export const UnifiedHrisEmployeeInputMaritalStatus$inboundSchema: z.ZodNativeEnum<
-    typeof UnifiedHrisEmployeeInputMaritalStatus
-> = z.nativeEnum(UnifiedHrisEmployeeInputMaritalStatus);
-
-/** @internal */
-export const UnifiedHrisEmployeeInputMaritalStatus$outboundSchema: z.ZodNativeEnum<
-    typeof UnifiedHrisEmployeeInputMaritalStatus
-> = UnifiedHrisEmployeeInputMaritalStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedHrisEmployeeInputMaritalStatus$ {
-    /** @deprecated use `UnifiedHrisEmployeeInputMaritalStatus$inboundSchema` instead. */
-    export const inboundSchema = UnifiedHrisEmployeeInputMaritalStatus$inboundSchema;
-    /** @deprecated use `UnifiedHrisEmployeeInputMaritalStatus$outboundSchema` instead. */
-    export const outboundSchema = UnifiedHrisEmployeeInputMaritalStatus$outboundSchema;
-}
-
-/** @internal */
-export const UnifiedHrisEmployeeInputEmploymentStatus$inboundSchema: z.ZodNativeEnum<
-    typeof UnifiedHrisEmployeeInputEmploymentStatus
-> = z.nativeEnum(UnifiedHrisEmployeeInputEmploymentStatus);
-
-/** @internal */
-export const UnifiedHrisEmployeeInputEmploymentStatus$outboundSchema: z.ZodNativeEnum<
-    typeof UnifiedHrisEmployeeInputEmploymentStatus
-> = UnifiedHrisEmployeeInputEmploymentStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedHrisEmployeeInputEmploymentStatus$ {
-    /** @deprecated use `UnifiedHrisEmployeeInputEmploymentStatus$inboundSchema` instead. */
-    export const inboundSchema = UnifiedHrisEmployeeInputEmploymentStatus$inboundSchema;
-    /** @deprecated use `UnifiedHrisEmployeeInputEmploymentStatus$outboundSchema` instead. */
-    export const outboundSchema = UnifiedHrisEmployeeInputEmploymentStatus$outboundSchema;
-}
 
 /** @internal */
 export const UnifiedHrisEmployeeInputFieldMappings$inboundSchema: z.ZodType<
@@ -289,9 +160,9 @@ export const UnifiedHrisEmployeeInput$inboundSchema: z.ZodType<
         mobile_phone_number: z.nullable(z.string()).optional(),
         employments: z.nullable(z.array(z.string())).optional(),
         ssn: z.nullable(z.string()).optional(),
-        gender: z.nullable(UnifiedHrisEmployeeInputGender$inboundSchema).optional(),
-        ethnicity: z.nullable(UnifiedHrisEmployeeInputEthnicity$inboundSchema).optional(),
-        marital_status: z.nullable(UnifiedHrisEmployeeInputMaritalStatus$inboundSchema).optional(),
+        gender: z.nullable(z.string()).optional(),
+        ethnicity: z.nullable(z.string()).optional(),
+        marital_status: z.nullable(z.string()).optional(),
         date_of_birth: z
             .nullable(
                 z
@@ -308,9 +179,7 @@ export const UnifiedHrisEmployeeInput$inboundSchema: z.ZodType<
                     .transform((v) => new Date(v))
             )
             .optional(),
-        employment_status: z
-            .nullable(UnifiedHrisEmployeeInputEmploymentStatus$inboundSchema)
-            .optional(),
+        employment_status: z.nullable(z.string()).optional(),
         termination_date: z
             .nullable(
                 z
@@ -396,14 +265,12 @@ export const UnifiedHrisEmployeeInput$outboundSchema: z.ZodType<
         mobilePhoneNumber: z.nullable(z.string()).optional(),
         employments: z.nullable(z.array(z.string())).optional(),
         ssn: z.nullable(z.string()).optional(),
-        gender: z.nullable(UnifiedHrisEmployeeInputGender$outboundSchema).optional(),
-        ethnicity: z.nullable(UnifiedHrisEmployeeInputEthnicity$outboundSchema).optional(),
-        maritalStatus: z.nullable(UnifiedHrisEmployeeInputMaritalStatus$outboundSchema).optional(),
+        gender: z.nullable(z.string()).optional(),
+        ethnicity: z.nullable(z.string()).optional(),
+        maritalStatus: z.nullable(z.string()).optional(),
         dateOfBirth: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         startDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-        employmentStatus: z
-            .nullable(UnifiedHrisEmployeeInputEmploymentStatus$outboundSchema)
-            .optional(),
+        employmentStatus: z.nullable(z.string()).optional(),
         terminationDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         avatarUrl: z.nullable(z.string()).optional(),
         managerId: z.nullable(z.string()).optional(),

@@ -3,7 +3,6 @@
 ## Example Usage
 
 ```typescript
-import { PolicyType } from "@panora/sdk/models/components";
 import { ListHrisTimeoffbalancesResponseBody } from "@panora/sdk/models/operations";
 
 let value: ListHrisTimeoffbalancesResponseBody = {
@@ -14,7 +13,7 @@ let value: ListHrisTimeoffbalancesResponseBody = {
             balance: 80,
             employeeId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
             used: 40,
-            policyType: PolicyType.Vacation,
+            policyType: "VACATION",
             fieldMappings: {},
             id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
             remoteId: "timeoff_balance_1234",

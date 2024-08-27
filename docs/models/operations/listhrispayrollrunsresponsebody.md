@@ -3,7 +3,6 @@
 ## Example Usage
 
 ```typescript
-import { RunState, RunType } from "@panora/sdk/models/components";
 import { ListHrisPayrollRunsResponseBody } from "@panora/sdk/models/operations";
 
 let value: ListHrisPayrollRunsResponseBody = {
@@ -11,8 +10,8 @@ let value: ListHrisPayrollRunsResponseBody = {
     nextCursor: "<value>",
     data: [
         {
-            runState: RunState.Paid,
-            runType: RunType.Regular,
+            runState: "PAID",
+            runType: "REGULAR",
             startDate: new Date("2024-01-01T00:00:00Z"),
             endDate: new Date("2024-01-15T23:59:59Z"),
             checkDate: new Date("2024-01-20T00:00:00Z"),

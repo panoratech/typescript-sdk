@@ -3,7 +3,6 @@
 ## Example Usage
 
 ```typescript
-import { UnifiedAccountingPurchaseorderOutputCurrency } from "@panora/sdk/models/components";
 import { ListAccountingPurchaseOrderResponseBody } from "@panora/sdk/models/operations";
 
 let value: ListAccountingPurchaseOrderResponseBody = {
@@ -21,7 +20,7 @@ let value: ListAccountingPurchaseOrderResponseBody = {
             memo: "Purchase order for Q3 inventory",
             companyId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
             totalAmount: 100000,
-            currency: UnifiedAccountingPurchaseorderOutputCurrency.Usd,
+            currency: "USD",
             exchangeRate: "1.2",
             trackingCategories: ["801f9ede-c698-4e66-a7fc-48d19eebaa4f"],
             accountingPeriodId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",

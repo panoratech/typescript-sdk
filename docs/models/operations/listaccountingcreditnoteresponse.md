@@ -3,7 +3,6 @@
 ## Example Usage
 
 ```typescript
-import { UnifiedAccountingCreditnoteOutputCurrency } from "@panora/sdk/models/components";
 import { ListAccountingCreditNoteResponse } from "@panora/sdk/models/operations";
 
 let value: ListAccountingCreditNoteResponse = {
@@ -21,7 +20,7 @@ let value: ListAccountingCreditNoteResponse = {
                 totalAmount: 10000,
                 remainingCredit: 5000,
                 trackingCategories: ["801f9ede-c698-4e66-a7fc-48d19eebaa4f"],
-                currency: UnifiedAccountingCreditnoteOutputCurrency.Usd,
+                currency: "USD",
                 payments: ["PAYMENT-001", "PAYMENT-002"],
                 appliedPayments: ["APPLIED-001", "APPLIED-002"],
                 accountingPeriodId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",

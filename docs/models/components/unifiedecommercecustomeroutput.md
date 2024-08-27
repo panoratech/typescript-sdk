@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { AddressType, UnifiedEcommerceCustomerOutput } from "@panora/sdk/models/components";
+import { UnifiedEcommerceCustomerOutput } from "@panora/sdk/models/components";
 
 let value: UnifiedEcommerceCustomerOutput = {
     email: "joedoe@gmail.com",
@@ -18,7 +18,7 @@ let value: UnifiedEcommerceCustomerOutput = {
             state: "New York",
             postalCode: "10001",
             country: "United States of America",
-            addressType: AddressType.Personal,
+            addressType: "PERSONAL",
             ownerType: "<value>",
         },
     ],

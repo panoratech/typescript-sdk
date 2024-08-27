@@ -10,7 +10,7 @@ let value: RequestRequest = {
     xConnectionToken: "<value>",
     passThroughRequestDto: {
         method: PassThroughRequestDtoMethod.Get,
-        path: "/boot/defaults",
+        path: "/selinux",
     },
 };
 ```

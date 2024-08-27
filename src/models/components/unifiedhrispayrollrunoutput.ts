@@ -6,28 +6,6 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
 /**
- * The state of the payroll run
- */
-export enum RunState {
-    Paid = "PAID",
-    Draft = "DRAFT",
-    Approved = "APPROVED",
-    Failed = "FAILED",
-    Close = "CLOSE",
-}
-
-/**
- * The type of the payroll run
- */
-export enum RunType {
-    Regular = "REGULAR",
-    OffCycle = "OFF_CYCLE",
-    Correction = "CORRECTION",
-    Termination = "TERMINATION",
-    SignOnBonus = "SIGN_ON_BONUS",
-}
-
-/**
  * The custom field mappings of the object between the remote 3rd party & Panora
  */
 export type UnifiedHrisPayrollrunOutputFieldMappings = {};
@@ -41,11 +19,11 @@ export type UnifiedHrisPayrollrunOutput = {
     /**
      * The state of the payroll run
      */
-    runState?: RunState | null | undefined;
+    runState?: string | null | undefined;
     /**
      * The type of the payroll run
      */
-    runType?: RunType | null | undefined;
+    runType?: string | null | undefined;
     /**
      * The start date of the payroll run
      */
@@ -95,40 +73,6 @@ export type UnifiedHrisPayrollrunOutput = {
      */
     employeePayrollRuns?: Array<string> | null | undefined;
 };
-
-/** @internal */
-export const RunState$inboundSchema: z.ZodNativeEnum<typeof RunState> = z.nativeEnum(RunState);
-
-/** @internal */
-export const RunState$outboundSchema: z.ZodNativeEnum<typeof RunState> = RunState$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RunState$ {
-    /** @deprecated use `RunState$inboundSchema` instead. */
-    export const inboundSchema = RunState$inboundSchema;
-    /** @deprecated use `RunState$outboundSchema` instead. */
-    export const outboundSchema = RunState$outboundSchema;
-}
-
-/** @internal */
-export const RunType$inboundSchema: z.ZodNativeEnum<typeof RunType> = z.nativeEnum(RunType);
-
-/** @internal */
-export const RunType$outboundSchema: z.ZodNativeEnum<typeof RunType> = RunType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RunType$ {
-    /** @deprecated use `RunType$inboundSchema` instead. */
-    export const inboundSchema = RunType$inboundSchema;
-    /** @deprecated use `RunType$outboundSchema` instead. */
-    export const outboundSchema = RunType$outboundSchema;
-}
 
 /** @internal */
 export const UnifiedHrisPayrollrunOutputFieldMappings$inboundSchema: z.ZodType<
@@ -197,8 +141,8 @@ export const UnifiedHrisPayrollrunOutput$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        run_state: z.nullable(RunState$inboundSchema).optional(),
-        run_type: z.nullable(RunType$inboundSchema).optional(),
+        run_state: z.nullable(z.string()).optional(),
+        run_type: z.nullable(z.string()).optional(),
         start_date: z
             .nullable(
                 z
@@ -301,8 +245,8 @@ export const UnifiedHrisPayrollrunOutput$outboundSchema: z.ZodType<
     UnifiedHrisPayrollrunOutput
 > = z
     .object({
-        runState: z.nullable(RunState$outboundSchema).optional(),
-        runType: z.nullable(RunType$outboundSchema).optional(),
+        runState: z.nullable(z.string()).optional(),
+        runType: z.nullable(z.string()).optional(),
         startDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         endDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         checkDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),

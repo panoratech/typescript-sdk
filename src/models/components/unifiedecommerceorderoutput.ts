@@ -12,201 +12,6 @@ import {
 import * as z from "zod";
 
 /**
- * The status of the order
- */
-export enum OrderStatus {
-    Pending = "PENDING",
-    Unshipped = "UNSHIPPED",
-    Shipped = "SHIPPED",
-    Canceled = "CANCELED",
-}
-
-/**
- * The payment status of the order
- */
-export enum PaymentStatus {
-    Success = "SUCCESS",
-    Fail = "FAIL",
-}
-
-/**
- * The currency of the order. Authorized value must be of type CurrencyCode (ISO 4217)
- */
-export enum UnifiedEcommerceOrderOutputCurrency {
-    Aed = "AED",
-    Afn = "AFN",
-    All = "ALL",
-    Amd = "AMD",
-    Ang = "ANG",
-    Aoa = "AOA",
-    Ars = "ARS",
-    Aud = "AUD",
-    Awg = "AWG",
-    Azn = "AZN",
-    Bam = "BAM",
-    Bbd = "BBD",
-    Bdt = "BDT",
-    Bgn = "BGN",
-    Bhd = "BHD",
-    Bif = "BIF",
-    Bmd = "BMD",
-    Bnd = "BND",
-    Bob = "BOB",
-    Brl = "BRL",
-    Bsd = "BSD",
-    Btn = "BTN",
-    Bwp = "BWP",
-    Byn = "BYN",
-    Bzd = "BZD",
-    Cad = "CAD",
-    Cdf = "CDF",
-    Chf = "CHF",
-    Clp = "CLP",
-    Cny = "CNY",
-    Cop = "COP",
-    Crc = "CRC",
-    Cup = "CUP",
-    Cve = "CVE",
-    Czk = "CZK",
-    Djf = "DJF",
-    Dkk = "DKK",
-    Dop = "DOP",
-    Dzd = "DZD",
-    Egp = "EGP",
-    Ern = "ERN",
-    Etb = "ETB",
-    Eur = "EUR",
-    Fjd = "FJD",
-    Fkp = "FKP",
-    Fok = "FOK",
-    Gbp = "GBP",
-    Gel = "GEL",
-    Ggp = "GGP",
-    Ghs = "GHS",
-    Gip = "GIP",
-    Gmd = "GMD",
-    Gnf = "GNF",
-    Gtq = "GTQ",
-    Gyd = "GYD",
-    Hkd = "HKD",
-    Hnl = "HNL",
-    Hrk = "HRK",
-    Htg = "HTG",
-    Huf = "HUF",
-    Idr = "IDR",
-    Ils = "ILS",
-    Imp = "IMP",
-    Inr = "INR",
-    Iqd = "IQD",
-    Irr = "IRR",
-    Isk = "ISK",
-    Jep = "JEP",
-    Jmd = "JMD",
-    Jod = "JOD",
-    Jpy = "JPY",
-    Kes = "KES",
-    Kgs = "KGS",
-    Khr = "KHR",
-    Kid = "KID",
-    Kmf = "KMF",
-    Krw = "KRW",
-    Kwd = "KWD",
-    Kyd = "KYD",
-    Kzt = "KZT",
-    Lak = "LAK",
-    Lbp = "LBP",
-    Lkr = "LKR",
-    Lrd = "LRD",
-    Lsl = "LSL",
-    Lyd = "LYD",
-    Mad = "MAD",
-    Mdl = "MDL",
-    Mga = "MGA",
-    Mkd = "MKD",
-    Mmk = "MMK",
-    Mnt = "MNT",
-    Mop = "MOP",
-    Mru = "MRU",
-    Mur = "MUR",
-    Mvr = "MVR",
-    Mwk = "MWK",
-    Mxn = "MXN",
-    Myr = "MYR",
-    Mzn = "MZN",
-    Nad = "NAD",
-    Ngn = "NGN",
-    Nio = "NIO",
-    Nok = "NOK",
-    Npr = "NPR",
-    Nzd = "NZD",
-    Omr = "OMR",
-    Pab = "PAB",
-    Pen = "PEN",
-    Pgk = "PGK",
-    Php = "PHP",
-    Pkr = "PKR",
-    Pln = "PLN",
-    Pyg = "PYG",
-    Qar = "QAR",
-    Ron = "RON",
-    Rsd = "RSD",
-    Rub = "RUB",
-    Rwf = "RWF",
-    Sar = "SAR",
-    Sbd = "SBD",
-    Scr = "SCR",
-    Sdg = "SDG",
-    Sek = "SEK",
-    Sgd = "SGD",
-    Shp = "SHP",
-    Sle = "SLE",
-    Sll = "SLL",
-    Sos = "SOS",
-    Srd = "SRD",
-    Ssp = "SSP",
-    Stn = "STN",
-    Syp = "SYP",
-    Szl = "SZL",
-    Thb = "THB",
-    Tjs = "TJS",
-    Tmt = "TMT",
-    Tnd = "TND",
-    Top = "TOP",
-    Try = "TRY",
-    Ttd = "TTD",
-    Tvd = "TVD",
-    Twd = "TWD",
-    Tzs = "TZS",
-    Uah = "UAH",
-    Ugx = "UGX",
-    Usd = "USD",
-    Uyu = "UYU",
-    Uzs = "UZS",
-    Ves = "VES",
-    Vnd = "VND",
-    Vuv = "VUV",
-    Wst = "WST",
-    Xaf = "XAF",
-    Xcd = "XCD",
-    Xdr = "XDR",
-    Xof = "XOF",
-    Xpf = "XPF",
-    Yer = "YER",
-    Zar = "ZAR",
-    Zmw = "ZMW",
-    Zwl = "ZWL",
-}
-
-/**
- * The fulfillment status of the order
- */
-export enum FulfillmentStatus {
-    Pending = "PENDING",
-    Fulfilled = "FULFILLED",
-    Canceled = "CANCELED",
-}
-
-/**
  * The custom field mappings of the object between the remote 3rd party & Panora
  */
 export type UnifiedEcommerceOrderOutputFieldMappings = {};
@@ -220,7 +25,7 @@ export type UnifiedEcommerceOrderOutput = {
     /**
      * The status of the order
      */
-    orderStatus?: OrderStatus | null | undefined;
+    orderStatus?: string | null | undefined;
     /**
      * The number of the order
      */
@@ -228,11 +33,11 @@ export type UnifiedEcommerceOrderOutput = {
     /**
      * The payment status of the order
      */
-    paymentStatus?: PaymentStatus | null | undefined;
+    paymentStatus?: string | null | undefined;
     /**
      * The currency of the order. Authorized value must be of type CurrencyCode (ISO 4217)
      */
-    currency?: UnifiedEcommerceOrderOutputCurrency | null | undefined;
+    currency?: string | null | undefined;
     /**
      * The total price of the order
      */
@@ -252,7 +57,7 @@ export type UnifiedEcommerceOrderOutput = {
     /**
      * The fulfillment status of the order
      */
-    fulfillmentStatus?: FulfillmentStatus | null | undefined;
+    fulfillmentStatus?: string | null | undefined;
     /**
      * The UUID of the customer associated with the order
      */
@@ -286,84 +91,6 @@ export type UnifiedEcommerceOrderOutput = {
      */
     modifiedAt?: string | null | undefined;
 };
-
-/** @internal */
-export const OrderStatus$inboundSchema: z.ZodNativeEnum<typeof OrderStatus> =
-    z.nativeEnum(OrderStatus);
-
-/** @internal */
-export const OrderStatus$outboundSchema: z.ZodNativeEnum<typeof OrderStatus> =
-    OrderStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OrderStatus$ {
-    /** @deprecated use `OrderStatus$inboundSchema` instead. */
-    export const inboundSchema = OrderStatus$inboundSchema;
-    /** @deprecated use `OrderStatus$outboundSchema` instead. */
-    export const outboundSchema = OrderStatus$outboundSchema;
-}
-
-/** @internal */
-export const PaymentStatus$inboundSchema: z.ZodNativeEnum<typeof PaymentStatus> =
-    z.nativeEnum(PaymentStatus);
-
-/** @internal */
-export const PaymentStatus$outboundSchema: z.ZodNativeEnum<typeof PaymentStatus> =
-    PaymentStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PaymentStatus$ {
-    /** @deprecated use `PaymentStatus$inboundSchema` instead. */
-    export const inboundSchema = PaymentStatus$inboundSchema;
-    /** @deprecated use `PaymentStatus$outboundSchema` instead. */
-    export const outboundSchema = PaymentStatus$outboundSchema;
-}
-
-/** @internal */
-export const UnifiedEcommerceOrderOutputCurrency$inboundSchema: z.ZodNativeEnum<
-    typeof UnifiedEcommerceOrderOutputCurrency
-> = z.nativeEnum(UnifiedEcommerceOrderOutputCurrency);
-
-/** @internal */
-export const UnifiedEcommerceOrderOutputCurrency$outboundSchema: z.ZodNativeEnum<
-    typeof UnifiedEcommerceOrderOutputCurrency
-> = UnifiedEcommerceOrderOutputCurrency$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedEcommerceOrderOutputCurrency$ {
-    /** @deprecated use `UnifiedEcommerceOrderOutputCurrency$inboundSchema` instead. */
-    export const inboundSchema = UnifiedEcommerceOrderOutputCurrency$inboundSchema;
-    /** @deprecated use `UnifiedEcommerceOrderOutputCurrency$outboundSchema` instead. */
-    export const outboundSchema = UnifiedEcommerceOrderOutputCurrency$outboundSchema;
-}
-
-/** @internal */
-export const FulfillmentStatus$inboundSchema: z.ZodNativeEnum<typeof FulfillmentStatus> =
-    z.nativeEnum(FulfillmentStatus);
-
-/** @internal */
-export const FulfillmentStatus$outboundSchema: z.ZodNativeEnum<typeof FulfillmentStatus> =
-    FulfillmentStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FulfillmentStatus$ {
-    /** @deprecated use `FulfillmentStatus$inboundSchema` instead. */
-    export const inboundSchema = FulfillmentStatus$inboundSchema;
-    /** @deprecated use `FulfillmentStatus$outboundSchema` instead. */
-    export const outboundSchema = FulfillmentStatus$outboundSchema;
-}
 
 /** @internal */
 export const UnifiedEcommerceOrderOutputFieldMappings$inboundSchema: z.ZodType<
@@ -432,15 +159,15 @@ export const UnifiedEcommerceOrderOutput$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        order_status: z.nullable(OrderStatus$inboundSchema).optional(),
+        order_status: z.nullable(z.string()).optional(),
         order_number: z.nullable(z.string()).optional(),
-        payment_status: z.nullable(PaymentStatus$inboundSchema).optional(),
-        currency: z.nullable(UnifiedEcommerceOrderOutputCurrency$inboundSchema).optional(),
+        payment_status: z.nullable(z.string()).optional(),
+        currency: z.nullable(z.string()).optional(),
         total_price: z.nullable(z.number()).optional(),
         total_discount: z.nullable(z.number()).optional(),
         total_shipping: z.nullable(z.number()).optional(),
         total_tax: z.nullable(z.number()).optional(),
-        fulfillment_status: z.nullable(FulfillmentStatus$inboundSchema).optional(),
+        fulfillment_status: z.nullable(z.string()).optional(),
         customer_id: z.nullable(z.string()).optional(),
         items: z.nullable(z.array(LineItem$inboundSchema)).optional(),
         field_mappings: z
@@ -501,15 +228,15 @@ export const UnifiedEcommerceOrderOutput$outboundSchema: z.ZodType<
     UnifiedEcommerceOrderOutput
 > = z
     .object({
-        orderStatus: z.nullable(OrderStatus$outboundSchema).optional(),
+        orderStatus: z.nullable(z.string()).optional(),
         orderNumber: z.nullable(z.string()).optional(),
-        paymentStatus: z.nullable(PaymentStatus$outboundSchema).optional(),
-        currency: z.nullable(UnifiedEcommerceOrderOutputCurrency$outboundSchema).optional(),
+        paymentStatus: z.nullable(z.string()).optional(),
+        currency: z.nullable(z.string()).optional(),
         totalPrice: z.nullable(z.number()).optional(),
         totalDiscount: z.nullable(z.number()).optional(),
         totalShipping: z.nullable(z.number()).optional(),
         totalTax: z.nullable(z.number()).optional(),
-        fulfillmentStatus: z.nullable(FulfillmentStatus$outboundSchema).optional(),
+        fulfillmentStatus: z.nullable(z.string()).optional(),
         customerId: z.nullable(z.string()).optional(),
         items: z.nullable(z.array(LineItem$outboundSchema)).optional(),
         fieldMappings: z

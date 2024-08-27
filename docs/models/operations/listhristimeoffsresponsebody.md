@@ -3,7 +3,6 @@
 ## Example Usage
 
 ```typescript
-import { RequestType, UnifiedHrisTimeoffOutputStatus, Units } from "@panora/sdk/models/components";
 import { ListHrisTimeoffsResponseBody } from "@panora/sdk/models/operations";
 
 let value: ListHrisTimeoffsResponseBody = {
@@ -13,11 +12,11 @@ let value: ListHrisTimeoffsResponseBody = {
         {
             employee: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
             approver: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-            status: UnifiedHrisTimeoffOutputStatus.Requested,
+            status: "REQUESTED",
             employeeNote: "Annual vacation",
-            units: Units.Days,
+            units: "DAYS",
             amount: 5,
-            requestType: RequestType.Vacation,
+            requestType: "VACATION",
             startTime: new Date("2024-07-01T09:00:00Z"),
             endTime: new Date("2024-07-05T17:00:00Z"),
             fieldMappings: {},

@@ -3,7 +3,6 @@
 ## Example Usage
 
 ```typescript
-import { BenefitPlanType } from "@panora/sdk/models/components";
 import { ListHrisEmployerBenefitsResponseBody } from "@panora/sdk/models/operations";
 
 let value: ListHrisEmployerBenefitsResponseBody = {
@@ -11,7 +10,7 @@ let value: ListHrisEmployerBenefitsResponseBody = {
     nextCursor: "<value>",
     data: [
         {
-            benefitPlanType: BenefitPlanType.Medical,
+            benefitPlanType: "Health Insurance",
             name: "Company Health Plan",
             description: "Comprehensive health insurance coverage for employees",
             deductionCode: "HEALTH-001",

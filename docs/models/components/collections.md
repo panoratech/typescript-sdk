@@ -3,12 +3,12 @@
 ## Example Usage
 
 ```typescript
-import { Collections, CollectionType } from "@panora/sdk/models/components";
+import { Collections } from "@panora/sdk/models/components";
 
 let value: Collections = {
     name: "My Personal Collection",
     description: "Collect issues",
-    collectionType: CollectionType.Project,
+    collectionType: "PROJECT",
     id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
     remoteId: "id_1",
     remoteData: {

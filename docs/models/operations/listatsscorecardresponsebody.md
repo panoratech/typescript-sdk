@@ -3,7 +3,6 @@
 ## Example Usage
 
 ```typescript
-import { OverallRecommendation } from "@panora/sdk/models/components";
 import { ListAtsScorecardResponseBody } from "@panora/sdk/models/operations";
 
 let value: ListAtsScorecardResponseBody = {
@@ -11,7 +10,7 @@ let value: ListAtsScorecardResponseBody = {
     nextCursor: "<value>",
     data: [
         {
-            overallRecommendation: OverallRecommendation.Yes,
+            overallRecommendation: "YES",
             applicationId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
             interviewId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
             remoteCreatedAt: new Date("2024-10-01T12:00:00Z"),

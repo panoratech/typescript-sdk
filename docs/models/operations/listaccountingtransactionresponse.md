@@ -3,7 +3,6 @@
 ## Example Usage
 
 ```typescript
-import { UnifiedAccountingTransactionOutputCurrency } from "@panora/sdk/models/components";
 import { ListAccountingTransactionResponse } from "@panora/sdk/models/operations";
 
 let value: ListAccountingTransactionResponse = {
@@ -17,7 +16,7 @@ let value: ListAccountingTransactionResponse = {
                 transactionDate: new Date("2024-06-15T12:00:00Z"),
                 totalAmount: "1000",
                 exchangeRate: "1.2",
-                currency: UnifiedAccountingTransactionOutputCurrency.Usd,
+                currency: "USD",
                 trackingCategories: ["801f9ede-c698-4e66-a7fc-48d19eebaa4f"],
                 accountId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
                 contactId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",

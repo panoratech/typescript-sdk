@@ -3,27 +3,21 @@
 ## Example Usage
 
 ```typescript
-import {
-  UnifiedEcommerceOrderInputCurrency,
-  UnifiedEcommerceOrderInputFulfillmentStatus,
-  UnifiedEcommerceOrderInputOrderStatus,
-  UnifiedEcommerceOrderInputPaymentStatus,
-} from "@panora/sdk/models/components";
 import { CreateEcommerceOrderRequest } from "@panora/sdk/models/operations";
 
 let value: CreateEcommerceOrderRequest = {
     xConnectionToken: "<value>",
     remoteData: false,
     unifiedEcommerceOrderInput: {
-        orderStatus: UnifiedEcommerceOrderInputOrderStatus.Unshipped,
+        orderStatus: "UNSHIPPED",
         orderNumber: "19823838833",
-        paymentStatus: UnifiedEcommerceOrderInputPaymentStatus.Success,
-        currency: UnifiedEcommerceOrderInputCurrency.Aud,
+        paymentStatus: "SUCCESS",
+        currency: "AUD",
         totalPrice: 300,
         totalDiscount: 10,
         totalShipping: 120,
         totalTax: 120,
-        fulfillmentStatus: UnifiedEcommerceOrderInputFulfillmentStatus.Pending,
+        fulfillmentStatus: "PENDING",
         customerId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
         items: [
             {

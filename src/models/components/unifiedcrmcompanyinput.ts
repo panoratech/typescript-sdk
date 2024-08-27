@@ -13,159 +13,6 @@ import { Email, Email$inboundSchema, Email$Outbound, Email$outboundSchema } from
 import { Phone, Phone$inboundSchema, Phone$Outbound, Phone$outboundSchema } from "./phone.js";
 import * as z from "zod";
 
-/**
- * The industry of the company. Authorized values can be found in the Industry enum.
- */
-export enum UnifiedCrmCompanyInputIndustry {
-    Accounting = "ACCOUNTING",
-    AirlinesAviation = "AIRLINES_AVIATION",
-    AlternativeDisputeResolution = "ALTERNATIVE_DISPUTE_RESOLUTION",
-    AlternativeMedicine = "ALTERNATIVE_MEDICINE",
-    Animation = "ANIMATION",
-    ApparelFashion = "APPAREL_FASHION",
-    ArchitecturePlanning = "ARCHITECTURE_PLANNING",
-    ArtsAndCrafts = "ARTS_AND_CRAFTS",
-    Automotive = "AUTOMOTIVE",
-    AviationAerospace = "AVIATION_AEROSPACE",
-    Banking = "BANKING",
-    Biotechnology = "BIOTECHNOLOGY",
-    BroadcastMedia = "BROADCAST_MEDIA",
-    BuildingMaterials = "BUILDING_MATERIALS",
-    BusinessSuppliesAndEquipment = "BUSINESS_SUPPLIES_AND_EQUIPMENT",
-    CapitalMarkets = "CAPITAL_MARKETS",
-    Chemicals = "CHEMICALS",
-    CivicSocialOrganization = "CIVIC_SOCIAL_ORGANIZATION",
-    CivilEngineering = "CIVIL_ENGINEERING",
-    CommercialRealEstate = "COMMERCIAL_REAL_ESTATE",
-    ComputerNetworkSecurity = "COMPUTER_NETWORK_SECURITY",
-    ComputerGames = "COMPUTER_GAMES",
-    ComputerHardware = "COMPUTER_HARDWARE",
-    ComputerNetworking = "COMPUTER_NETWORKING",
-    ComputerSoftware = "COMPUTER_SOFTWARE",
-    Internet = "INTERNET",
-    Construction = "CONSTRUCTION",
-    ConsumerElectronics = "CONSUMER_ELECTRONICS",
-    ConsumerGoods = "CONSUMER_GOODS",
-    ConsumerServices = "CONSUMER_SERVICES",
-    Cosmetics = "COSMETICS",
-    Dairy = "DAIRY",
-    DefenseSpace = "DEFENSE_SPACE",
-    Design = "DESIGN",
-    EducationManagement = "EDUCATION_MANAGEMENT",
-    ELearning = "E_LEARNING",
-    ElectricalElectronicManufacturing = "ELECTRICAL_ELECTRONIC_MANUFACTURING",
-    Entertainment = "ENTERTAINMENT",
-    EnvironmentalServices = "ENVIRONMENTAL_SERVICES",
-    EventsServices = "EVENTS_SERVICES",
-    ExecutiveOffice = "EXECUTIVE_OFFICE",
-    FacilitiesServices = "FACILITIES_SERVICES",
-    Farming = "FARMING",
-    FinancialServices = "FINANCIAL_SERVICES",
-    FineArt = "FINE_ART",
-    Fishery = "FISHERY",
-    FoodBeverages = "FOOD_BEVERAGES",
-    FoodProduction = "FOOD_PRODUCTION",
-    FundRaising = "FUND_RAISING",
-    Furniture = "FURNITURE",
-    GamblingCasinos = "GAMBLING_CASINOS",
-    GlassCeramicsConcrete = "GLASS_CERAMICS_CONCRETE",
-    GovernmentAdministration = "GOVERNMENT_ADMINISTRATION",
-    GovernmentRelations = "GOVERNMENT_RELATIONS",
-    GraphicDesign = "GRAPHIC_DESIGN",
-    HealthWellnessAndFitness = "HEALTH_WELLNESS_AND_FITNESS",
-    HigherEducation = "HIGHER_EDUCATION",
-    HospitalHealthCare = "HOSPITAL_HEALTH_CARE",
-    Hospitality = "HOSPITALITY",
-    HumanResources = "HUMAN_RESOURCES",
-    ImportAndExport = "IMPORT_AND_EXPORT",
-    IndividualFamilyServices = "INDIVIDUAL_FAMILY_SERVICES",
-    IndustrialAutomation = "INDUSTRIAL_AUTOMATION",
-    InformationServices = "INFORMATION_SERVICES",
-    InformationTechnologyAndServices = "INFORMATION_TECHNOLOGY_AND_SERVICES",
-    Insurance = "INSURANCE",
-    InternationalAffairs = "INTERNATIONAL_AFFAIRS",
-    InternationalTradeAndDevelopment = "INTERNATIONAL_TRADE_AND_DEVELOPMENT",
-    InvestmentBanking = "INVESTMENT_BANKING",
-    InvestmentManagement = "INVESTMENT_MANAGEMENT",
-    Judiciary = "JUDICIARY",
-    LawEnforcement = "LAW_ENFORCEMENT",
-    LawPractice = "LAW_PRACTICE",
-    LegalServices = "LEGAL_SERVICES",
-    LegislativeOffice = "LEGISLATIVE_OFFICE",
-    LeisureTravelTourism = "LEISURE_TRAVEL_TOURISM",
-    Libraries = "LIBRARIES",
-    LogisticsAndSupplyChain = "LOGISTICS_AND_SUPPLY_CHAIN",
-    LuxuryGoodsJewelry = "LUXURY_GOODS_JEWELRY",
-    Machinery = "MACHINERY",
-    ManagementConsulting = "MANAGEMENT_CONSULTING",
-    Maritime = "MARITIME",
-    MarketResearch = "MARKET_RESEARCH",
-    MarketingAndAdvertising = "MARKETING_AND_ADVERTISING",
-    MechanicalOrIndustrialEngineering = "MECHANICAL_OR_INDUSTRIAL_ENGINEERING",
-    MediaProduction = "MEDIA_PRODUCTION",
-    MedicalDevices = "MEDICAL_DEVICES",
-    MedicalPractice = "MEDICAL_PRACTICE",
-    MentalHealthCare = "MENTAL_HEALTH_CARE",
-    Military = "MILITARY",
-    MiningMetals = "MINING_METALS",
-    MotionPicturesAndFilm = "MOTION_PICTURES_AND_FILM",
-    MuseumsAndInstitutions = "MUSEUMS_AND_INSTITUTIONS",
-    Music = "MUSIC",
-    Nanotechnology = "NANOTECHNOLOGY",
-    Newspapers = "NEWSPAPERS",
-    NonProfitOrganizationManagement = "NON_PROFIT_ORGANIZATION_MANAGEMENT",
-    OilEnergy = "OIL_ENERGY",
-    OnlineMedia = "ONLINE_MEDIA",
-    OutsourcingOffshoring = "OUTSOURCING_OFFSHORING",
-    PackageFreightDelivery = "PACKAGE_FREIGHT_DELIVERY",
-    PackagingAndContainers = "PACKAGING_AND_CONTAINERS",
-    PaperForestProducts = "PAPER_FOREST_PRODUCTS",
-    PerformingArts = "PERFORMING_ARTS",
-    Pharmaceuticals = "PHARMACEUTICALS",
-    Philanthropy = "PHILANTHROPY",
-    Photography = "PHOTOGRAPHY",
-    Plastics = "PLASTICS",
-    PoliticalOrganization = "POLITICAL_ORGANIZATION",
-    PrimarySecondaryEducation = "PRIMARY_SECONDARY_EDUCATION",
-    Printing = "PRINTING",
-    ProfessionalTrainingCoaching = "PROFESSIONAL_TRAINING_COACHING",
-    ProgramDevelopment = "PROGRAM_DEVELOPMENT",
-    PublicPolicy = "PUBLIC_POLICY",
-    PublicRelationsAndCommunications = "PUBLIC_RELATIONS_AND_COMMUNICATIONS",
-    PublicSafety = "PUBLIC_SAFETY",
-    Publishing = "PUBLISHING",
-    RailroadManufacture = "RAILROAD_MANUFACTURE",
-    Ranching = "RANCHING",
-    RealEstate = "REAL_ESTATE",
-    RecreationalFacilitiesAndServices = "RECREATIONAL_FACILITIES_AND_SERVICES",
-    ReligiousInstitutions = "RELIGIOUS_INSTITUTIONS",
-    RenewablesEnvironment = "RENEWABLES_ENVIRONMENT",
-    Research = "RESEARCH",
-    Restaurants = "RESTAURANTS",
-    Retail = "RETAIL",
-    SecurityAndInvestigations = "SECURITY_AND_INVESTIGATIONS",
-    Semiconductors = "SEMICONDUCTORS",
-    Shipbuilding = "SHIPBUILDING",
-    SportingGoods = "SPORTING_GOODS",
-    Sports = "SPORTS",
-    StaffingAndRecruiting = "STAFFING_AND_RECRUITING",
-    Supermarkets = "SUPERMARKETS",
-    Telecommunications = "TELECOMMUNICATIONS",
-    Textiles = "TEXTILES",
-    ThinkTanks = "THINK_TANKS",
-    Tobacco = "TOBACCO",
-    TranslationAndLocalization = "TRANSLATION_AND_LOCALIZATION",
-    TransportationTruckingRailroad = "TRANSPORTATION_TRUCKING_RAILROAD",
-    Utilities = "UTILITIES",
-    VentureCapitalPrivateEquity = "VENTURE_CAPITAL_PRIVATE_EQUITY",
-    Veterinary = "VETERINARY",
-    Warehousing = "WAREHOUSING",
-    Wholesale = "WHOLESALE",
-    WineAndSpirits = "WINE_AND_SPIRITS",
-    Wireless = "WIRELESS",
-    WritingAndEditing = "WRITING_AND_EDITING",
-}
-
 export type UnifiedCrmCompanyInput = {
     /**
      * The name of the company
@@ -174,7 +21,7 @@ export type UnifiedCrmCompanyInput = {
     /**
      * The industry of the company. Authorized values can be found in the Industry enum.
      */
-    industry?: UnifiedCrmCompanyInputIndustry | null | undefined;
+    industry?: string | null | undefined;
     /**
      * The number of employees of the company
      */
@@ -202,27 +49,6 @@ export type UnifiedCrmCompanyInput = {
 };
 
 /** @internal */
-export const UnifiedCrmCompanyInputIndustry$inboundSchema: z.ZodNativeEnum<
-    typeof UnifiedCrmCompanyInputIndustry
-> = z.nativeEnum(UnifiedCrmCompanyInputIndustry);
-
-/** @internal */
-export const UnifiedCrmCompanyInputIndustry$outboundSchema: z.ZodNativeEnum<
-    typeof UnifiedCrmCompanyInputIndustry
-> = UnifiedCrmCompanyInputIndustry$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedCrmCompanyInputIndustry$ {
-    /** @deprecated use `UnifiedCrmCompanyInputIndustry$inboundSchema` instead. */
-    export const inboundSchema = UnifiedCrmCompanyInputIndustry$inboundSchema;
-    /** @deprecated use `UnifiedCrmCompanyInputIndustry$outboundSchema` instead. */
-    export const outboundSchema = UnifiedCrmCompanyInputIndustry$outboundSchema;
-}
-
-/** @internal */
 export const UnifiedCrmCompanyInput$inboundSchema: z.ZodType<
     UnifiedCrmCompanyInput,
     z.ZodTypeDef,
@@ -230,7 +56,7 @@ export const UnifiedCrmCompanyInput$inboundSchema: z.ZodType<
 > = z
     .object({
         name: z.nullable(z.string()),
-        industry: z.nullable(UnifiedCrmCompanyInputIndustry$inboundSchema).optional(),
+        industry: z.nullable(z.string()).optional(),
         number_of_employees: z.nullable(z.number()).optional(),
         user_id: z.nullable(z.string()).optional(),
         email_addresses: z.nullable(z.array(Email$inboundSchema)).optional(),
@@ -268,7 +94,7 @@ export const UnifiedCrmCompanyInput$outboundSchema: z.ZodType<
 > = z
     .object({
         name: z.nullable(z.string()),
-        industry: z.nullable(UnifiedCrmCompanyInputIndustry$outboundSchema).optional(),
+        industry: z.nullable(z.string()).optional(),
         numberOfEmployees: z.nullable(z.number()).optional(),
         userId: z.nullable(z.string()).optional(),
         emailAddresses: z.nullable(z.array(Email$outboundSchema)).optional(),

@@ -3,7 +3,6 @@
 ## Example Usage
 
 ```typescript
-import { AddressType, EmailAddressType, Industry, PhoneType } from "@panora/sdk/models/components";
 import { ListCrmCompanyResponseBody } from "@panora/sdk/models/operations";
 
 let value: ListCrmCompanyResponseBody = {
@@ -12,13 +11,13 @@ let value: ListCrmCompanyResponseBody = {
     data: [
         {
             name: "Acme",
-            industry: Industry.Accounting,
+            industry: "ACCOUNTING",
             numberOfEmployees: 10,
             userId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
             emailAddresses: [
                 {
                     emailAddress: "acme@gmail.com",
-                    emailAddressType: EmailAddressType.Work,
+                    emailAddressType: "WORK",
                 },
             ],
             addresses: [
@@ -29,14 +28,14 @@ let value: ListCrmCompanyResponseBody = {
                     state: "NY",
                     postalCode: "10001",
                     country: "USA",
-                    addressType: AddressType.Work,
+                    addressType: "WORK",
                     ownerType: "<value>",
                 },
             ],
             phoneNumbers: [
                 {
                     phoneNumber: "+33660606067",
-                    phoneType: PhoneType.Work,
+                    phoneType: "WORK",
                 },
             ],
             fieldMappings: {

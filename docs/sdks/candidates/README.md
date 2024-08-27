@@ -102,7 +102,6 @@ Create Candidates in any supported Ats software
 
 ```typescript
 import { Panora } from "@panora/sdk";
-import { EmailAddressType, PhoneType } from "@panora/sdk/models/components";
 
 const panora = new Panora({
   apiKey: "<YOUR_API_KEY_HERE>",
@@ -142,13 +141,13 @@ async function run() {
       phoneNumbers: [
         {
           phoneNumber: "+33660688899",
-          phoneType: PhoneType.Work,
+          phoneType: "WORK",
         },
       ],
       emailAddresses: [
         {
           emailAddress: "joedoe@gmail.com",
-          emailAddressType: EmailAddressType.Work,
+          emailAddressType: "WORK",
         },
       ],
       fieldMappings: {
@@ -172,7 +171,6 @@ The standalone function version of this method:
 ```typescript
 import { PanoraCore } from "@panora/sdk/core.js";
 import { atsCandidatesCreate } from "@panora/sdk/funcs/atsCandidatesCreate.js";
-import { EmailAddressType, PhoneType } from "@panora/sdk/models/components";
 
 // Use `PanoraCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -214,13 +212,13 @@ async function run() {
       phoneNumbers: [
         {
           phoneNumber: "+33660688899",
-          phoneType: PhoneType.Work,
+          phoneType: "WORK",
         },
       ],
       emailAddresses: [
         {
           emailAddress: "joedoe@gmail.com",
-          emailAddressType: EmailAddressType.Work,
+          emailAddressType: "WORK",
         },
       ],
       fieldMappings: {

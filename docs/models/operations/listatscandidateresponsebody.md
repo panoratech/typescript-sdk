@@ -3,7 +3,6 @@
 ## Example Usage
 
 ```typescript
-import { EmailAddressType, PhoneType } from "@panora/sdk/models/components";
 import { ListAtsCandidateResponseBody } from "@panora/sdk/models/operations";
 
 let value: ListAtsCandidateResponseBody = {
@@ -33,13 +32,13 @@ let value: ListAtsCandidateResponseBody = {
             phoneNumbers: [
                 {
                     phoneNumber: "+33660688899",
-                    phoneType: PhoneType.Work,
+                    phoneType: "WORK",
                 },
             ],
             emailAddresses: [
                 {
                     emailAddress: "joedoe@gmail.com",
-                    emailAddressType: EmailAddressType.Work,
+                    emailAddressType: "WORK",
                 },
             ],
             fieldMappings: {

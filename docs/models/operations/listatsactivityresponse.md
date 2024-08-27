@@ -3,7 +3,6 @@
 ## Example Usage
 
 ```typescript
-import { ActivityType, Visibility } from "@panora/sdk/models/components";
 import { ListAtsActivityResponse } from "@panora/sdk/models/operations";
 
 let value: ListAtsActivityResponse = {
@@ -12,10 +11,10 @@ let value: ListAtsActivityResponse = {
         nextCursor: "<value>",
         data: [
             {
-                activityType: ActivityType.Note,
+                activityType: "NOTE",
                 subject: "Email subject",
                 body: "Dear Diana, I love you",
-                visibility: Visibility.Public,
+                visibility: "PUBLIC",
                 candidateId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
                 remoteCreatedAt: new Date("2024-10-01T12:00:00Z"),
                 fieldMappings: {

@@ -6,26 +6,6 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
 /**
- * The relationship of the dependent to the employee
- */
-export enum Relationship {
-    Child = "CHILD",
-    Spouse = "SPOUSE",
-    DomesticPartner = "DOMESTIC_PARTNER",
-}
-
-/**
- * The gender of the dependent
- */
-export enum Gender {
-    Male = "MALE",
-    Female = "FEMALE",
-    NonBinary = "NON-BINARY",
-    Other = "OTHER",
-    PreferNotToDisclose = "PREFER_NOT_TO_DISCLOSE",
-}
-
-/**
  * The custom field mappings of the object between the remote 3rd party & Panora
  */
 export type UnifiedHrisDependentOutputFieldMappings = {};
@@ -51,7 +31,7 @@ export type UnifiedHrisDependentOutput = {
     /**
      * The relationship of the dependent to the employee
      */
-    relationship?: Relationship | null | undefined;
+    relationship?: string | null | undefined;
     /**
      * The date of birth of the dependent
      */
@@ -59,7 +39,7 @@ export type UnifiedHrisDependentOutput = {
     /**
      * The gender of the dependent
      */
-    gender?: Gender | null | undefined;
+    gender?: string | null | undefined;
     /**
      * The phone number of the dependent
      */
@@ -113,42 +93,6 @@ export type UnifiedHrisDependentOutput = {
      */
     remoteWasDeleted?: boolean | null | undefined;
 };
-
-/** @internal */
-export const Relationship$inboundSchema: z.ZodNativeEnum<typeof Relationship> =
-    z.nativeEnum(Relationship);
-
-/** @internal */
-export const Relationship$outboundSchema: z.ZodNativeEnum<typeof Relationship> =
-    Relationship$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Relationship$ {
-    /** @deprecated use `Relationship$inboundSchema` instead. */
-    export const inboundSchema = Relationship$inboundSchema;
-    /** @deprecated use `Relationship$outboundSchema` instead. */
-    export const outboundSchema = Relationship$outboundSchema;
-}
-
-/** @internal */
-export const Gender$inboundSchema: z.ZodNativeEnum<typeof Gender> = z.nativeEnum(Gender);
-
-/** @internal */
-export const Gender$outboundSchema: z.ZodNativeEnum<typeof Gender> = Gender$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Gender$ {
-    /** @deprecated use `Gender$inboundSchema` instead. */
-    export const inboundSchema = Gender$inboundSchema;
-    /** @deprecated use `Gender$outboundSchema` instead. */
-    export const outboundSchema = Gender$outboundSchema;
-}
 
 /** @internal */
 export const UnifiedHrisDependentOutputFieldMappings$inboundSchema: z.ZodType<
@@ -220,7 +164,7 @@ export const UnifiedHrisDependentOutput$inboundSchema: z.ZodType<
         first_name: z.nullable(z.string()).optional(),
         last_name: z.nullable(z.string()).optional(),
         middle_name: z.nullable(z.string()).optional(),
-        relationship: z.nullable(Relationship$inboundSchema).optional(),
+        relationship: z.nullable(z.string()).optional(),
         date_of_birth: z
             .nullable(
                 z
@@ -229,7 +173,7 @@ export const UnifiedHrisDependentOutput$inboundSchema: z.ZodType<
                     .transform((v) => new Date(v))
             )
             .optional(),
-        gender: z.nullable(Gender$inboundSchema).optional(),
+        gender: z.nullable(z.string()).optional(),
         phone_number: z.nullable(z.string()).optional(),
         home_location: z.nullable(z.string()).optional(),
         is_student: z.nullable(z.boolean()).optional(),
@@ -322,9 +266,9 @@ export const UnifiedHrisDependentOutput$outboundSchema: z.ZodType<
         firstName: z.nullable(z.string()).optional(),
         lastName: z.nullable(z.string()).optional(),
         middleName: z.nullable(z.string()).optional(),
-        relationship: z.nullable(Relationship$outboundSchema).optional(),
+        relationship: z.nullable(z.string()).optional(),
         dateOfBirth: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-        gender: z.nullable(Gender$outboundSchema).optional(),
+        gender: z.nullable(z.string()).optional(),
         phoneNumber: z.nullable(z.string()).optional(),
         homeLocation: z.nullable(z.string()).optional(),
         isStudent: z.nullable(z.boolean()).optional(),

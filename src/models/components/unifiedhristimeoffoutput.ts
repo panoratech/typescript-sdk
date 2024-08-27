@@ -6,37 +6,6 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
 /**
- * The status of the time off request
- */
-export enum UnifiedHrisTimeoffOutputStatus {
-    Requested = "REQUESTED",
-    Approved = "APPROVED",
-    Declined = "DECLINED",
-    Cancelled = "CANCELLED",
-    Deleted = "DELETED",
-}
-
-/**
- * The units used for the time off (e.g., Days, Hours)
- */
-export enum Units {
-    Hours = "HOURS",
-    Days = "DAYS",
-}
-
-/**
- * The type of time off request
- */
-export enum RequestType {
-    Vacation = "VACATION",
-    Sick = "SICK",
-    Personal = "PERSONAL",
-    JuryDuty = "JURY_DUTY",
-    Volunteer = "VOLUNTEER",
-    Bereavement = "BEREAVEMENT",
-}
-
-/**
  * The custom field mappings of the object between the remote 3rd party & Panora
  */
 export type UnifiedHrisTimeoffOutputFieldMappings = {};
@@ -58,7 +27,7 @@ export type UnifiedHrisTimeoffOutput = {
     /**
      * The status of the time off request
      */
-    status?: UnifiedHrisTimeoffOutputStatus | null | undefined;
+    status?: string | null | undefined;
     /**
      * A note from the employee about the time off request
      */
@@ -66,7 +35,7 @@ export type UnifiedHrisTimeoffOutput = {
     /**
      * The units used for the time off (e.g., Days, Hours)
      */
-    units?: Units | null | undefined;
+    units?: string | null | undefined;
     /**
      * The amount of time off requested
      */
@@ -74,7 +43,7 @@ export type UnifiedHrisTimeoffOutput = {
     /**
      * The type of time off request
      */
-    requestType?: RequestType | null | undefined;
+    requestType?: string | null | undefined;
     /**
      * The start time of the time off
      */
@@ -116,63 +85,6 @@ export type UnifiedHrisTimeoffOutput = {
      */
     remoteWasDeleted?: boolean | null | undefined;
 };
-
-/** @internal */
-export const UnifiedHrisTimeoffOutputStatus$inboundSchema: z.ZodNativeEnum<
-    typeof UnifiedHrisTimeoffOutputStatus
-> = z.nativeEnum(UnifiedHrisTimeoffOutputStatus);
-
-/** @internal */
-export const UnifiedHrisTimeoffOutputStatus$outboundSchema: z.ZodNativeEnum<
-    typeof UnifiedHrisTimeoffOutputStatus
-> = UnifiedHrisTimeoffOutputStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedHrisTimeoffOutputStatus$ {
-    /** @deprecated use `UnifiedHrisTimeoffOutputStatus$inboundSchema` instead. */
-    export const inboundSchema = UnifiedHrisTimeoffOutputStatus$inboundSchema;
-    /** @deprecated use `UnifiedHrisTimeoffOutputStatus$outboundSchema` instead. */
-    export const outboundSchema = UnifiedHrisTimeoffOutputStatus$outboundSchema;
-}
-
-/** @internal */
-export const Units$inboundSchema: z.ZodNativeEnum<typeof Units> = z.nativeEnum(Units);
-
-/** @internal */
-export const Units$outboundSchema: z.ZodNativeEnum<typeof Units> = Units$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Units$ {
-    /** @deprecated use `Units$inboundSchema` instead. */
-    export const inboundSchema = Units$inboundSchema;
-    /** @deprecated use `Units$outboundSchema` instead. */
-    export const outboundSchema = Units$outboundSchema;
-}
-
-/** @internal */
-export const RequestType$inboundSchema: z.ZodNativeEnum<typeof RequestType> =
-    z.nativeEnum(RequestType);
-
-/** @internal */
-export const RequestType$outboundSchema: z.ZodNativeEnum<typeof RequestType> =
-    RequestType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RequestType$ {
-    /** @deprecated use `RequestType$inboundSchema` instead. */
-    export const inboundSchema = RequestType$inboundSchema;
-    /** @deprecated use `RequestType$outboundSchema` instead. */
-    export const outboundSchema = RequestType$outboundSchema;
-}
 
 /** @internal */
 export const UnifiedHrisTimeoffOutputFieldMappings$inboundSchema: z.ZodType<
@@ -243,11 +155,11 @@ export const UnifiedHrisTimeoffOutput$inboundSchema: z.ZodType<
     .object({
         employee: z.nullable(z.string()).optional(),
         approver: z.nullable(z.string()).optional(),
-        status: z.nullable(UnifiedHrisTimeoffOutputStatus$inboundSchema).optional(),
+        status: z.nullable(z.string()).optional(),
         employee_note: z.nullable(z.string()).optional(),
-        units: z.nullable(Units$inboundSchema).optional(),
+        units: z.nullable(z.string()).optional(),
         amount: z.nullable(z.number()).optional(),
-        request_type: z.nullable(RequestType$inboundSchema).optional(),
+        request_type: z.nullable(z.string()).optional(),
         start_time: z
             .nullable(
                 z
@@ -344,11 +256,11 @@ export const UnifiedHrisTimeoffOutput$outboundSchema: z.ZodType<
     .object({
         employee: z.nullable(z.string()).optional(),
         approver: z.nullable(z.string()).optional(),
-        status: z.nullable(UnifiedHrisTimeoffOutputStatus$outboundSchema).optional(),
+        status: z.nullable(z.string()).optional(),
         employeeNote: z.nullable(z.string()).optional(),
-        units: z.nullable(Units$outboundSchema).optional(),
+        units: z.nullable(z.string()).optional(),
         amount: z.nullable(z.number()).optional(),
-        requestType: z.nullable(RequestType$outboundSchema).optional(),
+        requestType: z.nullable(z.string()).optional(),
         startTime: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         endTime: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         fieldMappings: z

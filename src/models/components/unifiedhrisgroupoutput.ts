@@ -6,17 +6,6 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
 /**
- * The type of the group
- */
-export enum UnifiedHrisGroupOutputType {
-    Team = "TEAM",
-    Department = "DEPARTMENT",
-    CostCenter = "COST_CENTER",
-    BusinessUnit = "BUSINESS_UNIT",
-    Group = "GROUP",
-}
-
-/**
  * The custom field mappings of the object between the remote 3rd party & Panora
  */
 export type UnifiedHrisGroupOutputFieldMappings = {};
@@ -38,7 +27,7 @@ export type UnifiedHrisGroupOutput = {
     /**
      * The type of the group
      */
-    type?: UnifiedHrisGroupOutputType | null | undefined;
+    type?: string | null | undefined;
     /**
      * The custom field mappings of the object between the remote 3rd party & Panora
      */
@@ -72,27 +61,6 @@ export type UnifiedHrisGroupOutput = {
      */
     remoteWasDeleted?: boolean | null | undefined;
 };
-
-/** @internal */
-export const UnifiedHrisGroupOutputType$inboundSchema: z.ZodNativeEnum<
-    typeof UnifiedHrisGroupOutputType
-> = z.nativeEnum(UnifiedHrisGroupOutputType);
-
-/** @internal */
-export const UnifiedHrisGroupOutputType$outboundSchema: z.ZodNativeEnum<
-    typeof UnifiedHrisGroupOutputType
-> = UnifiedHrisGroupOutputType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedHrisGroupOutputType$ {
-    /** @deprecated use `UnifiedHrisGroupOutputType$inboundSchema` instead. */
-    export const inboundSchema = UnifiedHrisGroupOutputType$inboundSchema;
-    /** @deprecated use `UnifiedHrisGroupOutputType$outboundSchema` instead. */
-    export const outboundSchema = UnifiedHrisGroupOutputType$outboundSchema;
-}
 
 /** @internal */
 export const UnifiedHrisGroupOutputFieldMappings$inboundSchema: z.ZodType<
@@ -163,7 +131,7 @@ export const UnifiedHrisGroupOutput$inboundSchema: z.ZodType<
     .object({
         parent_group: z.nullable(z.string()).optional(),
         name: z.nullable(z.string()).optional(),
-        type: z.nullable(UnifiedHrisGroupOutputType$inboundSchema).optional(),
+        type: z.nullable(z.string()).optional(),
         field_mappings: z
             .nullable(z.lazy(() => UnifiedHrisGroupOutputFieldMappings$inboundSchema))
             .optional(),
@@ -235,7 +203,7 @@ export const UnifiedHrisGroupOutput$outboundSchema: z.ZodType<
     .object({
         parentGroup: z.nullable(z.string()).optional(),
         name: z.nullable(z.string()).optional(),
-        type: z.nullable(UnifiedHrisGroupOutputType$outboundSchema).optional(),
+        type: z.nullable(z.string()).optional(),
         fieldMappings: z
             .nullable(z.lazy(() => UnifiedHrisGroupOutputFieldMappings$outboundSchema))
             .optional(),

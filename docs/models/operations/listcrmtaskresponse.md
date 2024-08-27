@@ -3,7 +3,6 @@
 ## Example Usage
 
 ```typescript
-import { UnifiedCrmTaskOutputStatus } from "@panora/sdk/models/components";
 import { ListCrmTaskResponse } from "@panora/sdk/models/operations";
 
 let value: ListCrmTaskResponse = {
@@ -14,7 +13,7 @@ let value: ListCrmTaskResponse = {
             {
                 subject: "Answer customers",
                 content: "Prepare email campaign",
-                status: UnifiedCrmTaskOutputStatus.Pending,
+                status: "PENDING",
                 dueDate: "2024-10-01T12:00:00Z",
                 finishedDate: "2024-10-01T12:00:00Z",
                 userId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",

@@ -3,7 +3,6 @@
 ## Example Usage
 
 ```typescript
-import { ProductStatus } from "@panora/sdk/models/components";
 import { ListEcommerceProductsResponseBody } from "@panora/sdk/models/operations";
 
 let value: ListEcommerceProductsResponseBody = {
@@ -13,7 +12,7 @@ let value: ListEcommerceProductsResponseBody = {
         {
             productUrl: "https://product_url/tee",
             productType: "teeshirt",
-            productStatus: ProductStatus.Active,
+            productStatus: "ACTIVE",
             imagesUrls: ["https://myproduct/image"],
             description: "best tee ever",
             vendor: "vendor_extern",

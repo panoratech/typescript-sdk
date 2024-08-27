@@ -3,12 +3,6 @@
 ## Example Usage
 
 ```typescript
-import {
-  UnifiedTicketingTicketInputCreatorType,
-  UnifiedTicketingTicketInputPriority,
-  UnifiedTicketingTicketInputStatus,
-  UnifiedTicketingTicketInputType,
-} from "@panora/sdk/models/components";
 import { CreateTicketingTicketRequest } from "@panora/sdk/models/operations";
 
 let value: CreateTicketingTicketRequest = {
@@ -16,21 +10,21 @@ let value: CreateTicketingTicketRequest = {
     remoteData: false,
     unifiedTicketingTicketInput: {
         name: "Customer Service Inquiry",
-        status: UnifiedTicketingTicketInputStatus.Open,
+        status: "OPEN",
         description: "Help customer",
         dueDate: new Date("2024-10-01T12:00:00Z"),
-        type: UnifiedTicketingTicketInputType.Bug,
+        type: "BUG",
         parentTicket: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
         collections: ["801f9ede-c698-4e66-a7fc-48d19eebaa4f"],
         tags: ["my_tag", "urgent_tag"],
         completedAt: new Date("2024-10-01T12:00:00Z"),
-        priority: UnifiedTicketingTicketInputPriority.High,
+        priority: "HIGH",
         assignedTo: ["801f9ede-c698-4e66-a7fc-48d19eebaa4f"],
         comment: {
             body: "Assigned to Eric !",
             htmlBody: "<p>Assigned to Eric !</p>",
             isPrivate: false,
-            creatorType: UnifiedTicketingTicketInputCreatorType.User,
+            creatorType: "USER",
             ticketId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
             contactId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
             userId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",

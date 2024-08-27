@@ -6,225 +6,6 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
 /**
- * The pay period of the employment
- */
-export enum PayPeriod {
-    Hour = "HOUR",
-    Day = "DAY",
-    Week = "WEEK",
-    EveryTwoWeeks = "EVERY_TWO_WEEKS",
-    Semimonthly = "SEMIMONTHLY",
-    Month = "MONTH",
-    Quarter = "QUARTER",
-    EverySixMonths = "EVERY_SIX_MONTHS",
-    Year = "YEAR",
-}
-
-/**
- * The pay frequency of the employment
- */
-export enum PayFrequency {
-    Weekly = "WEEKLY",
-    Biweekly = "BIWEEKLY",
-    Monthly = "MONTHLY",
-    Quarterly = "QUARTERLY",
-    Semiannually = "SEMIANNUALLY",
-    Annually = "ANNUALLY",
-    ThirteenMonthly = "THIRTEEN-MONTHLY",
-    ProRata = "PRO_RATA",
-    Semimonthly = "SEMIMONTHLY",
-}
-
-/**
- * The currency of the pay
- */
-export enum PayCurrency {
-    Aed = "AED",
-    Afn = "AFN",
-    All = "ALL",
-    Amd = "AMD",
-    Ang = "ANG",
-    Aoa = "AOA",
-    Ars = "ARS",
-    Aud = "AUD",
-    Awg = "AWG",
-    Azn = "AZN",
-    Bam = "BAM",
-    Bbd = "BBD",
-    Bdt = "BDT",
-    Bgn = "BGN",
-    Bhd = "BHD",
-    Bif = "BIF",
-    Bmd = "BMD",
-    Bnd = "BND",
-    Bob = "BOB",
-    Brl = "BRL",
-    Bsd = "BSD",
-    Btn = "BTN",
-    Bwp = "BWP",
-    Byn = "BYN",
-    Bzd = "BZD",
-    Cad = "CAD",
-    Cdf = "CDF",
-    Chf = "CHF",
-    Clp = "CLP",
-    Cny = "CNY",
-    Cop = "COP",
-    Crc = "CRC",
-    Cup = "CUP",
-    Cve = "CVE",
-    Czk = "CZK",
-    Djf = "DJF",
-    Dkk = "DKK",
-    Dop = "DOP",
-    Dzd = "DZD",
-    Egp = "EGP",
-    Ern = "ERN",
-    Etb = "ETB",
-    Eur = "EUR",
-    Fjd = "FJD",
-    Fkp = "FKP",
-    Fok = "FOK",
-    Gbp = "GBP",
-    Gel = "GEL",
-    Ggp = "GGP",
-    Ghs = "GHS",
-    Gip = "GIP",
-    Gmd = "GMD",
-    Gnf = "GNF",
-    Gtq = "GTQ",
-    Gyd = "GYD",
-    Hkd = "HKD",
-    Hnl = "HNL",
-    Hrk = "HRK",
-    Htg = "HTG",
-    Huf = "HUF",
-    Idr = "IDR",
-    Ils = "ILS",
-    Imp = "IMP",
-    Inr = "INR",
-    Iqd = "IQD",
-    Irr = "IRR",
-    Isk = "ISK",
-    Jep = "JEP",
-    Jmd = "JMD",
-    Jod = "JOD",
-    Jpy = "JPY",
-    Kes = "KES",
-    Kgs = "KGS",
-    Khr = "KHR",
-    Kid = "KID",
-    Kmf = "KMF",
-    Krw = "KRW",
-    Kwd = "KWD",
-    Kyd = "KYD",
-    Kzt = "KZT",
-    Lak = "LAK",
-    Lbp = "LBP",
-    Lkr = "LKR",
-    Lrd = "LRD",
-    Lsl = "LSL",
-    Lyd = "LYD",
-    Mad = "MAD",
-    Mdl = "MDL",
-    Mga = "MGA",
-    Mkd = "MKD",
-    Mmk = "MMK",
-    Mnt = "MNT",
-    Mop = "MOP",
-    Mru = "MRU",
-    Mur = "MUR",
-    Mvr = "MVR",
-    Mwk = "MWK",
-    Mxn = "MXN",
-    Myr = "MYR",
-    Mzn = "MZN",
-    Nad = "NAD",
-    Ngn = "NGN",
-    Nio = "NIO",
-    Nok = "NOK",
-    Npr = "NPR",
-    Nzd = "NZD",
-    Omr = "OMR",
-    Pab = "PAB",
-    Pen = "PEN",
-    Pgk = "PGK",
-    Php = "PHP",
-    Pkr = "PKR",
-    Pln = "PLN",
-    Pyg = "PYG",
-    Qar = "QAR",
-    Ron = "RON",
-    Rsd = "RSD",
-    Rub = "RUB",
-    Rwf = "RWF",
-    Sar = "SAR",
-    Sbd = "SBD",
-    Scr = "SCR",
-    Sdg = "SDG",
-    Sek = "SEK",
-    Sgd = "SGD",
-    Shp = "SHP",
-    Sle = "SLE",
-    Sll = "SLL",
-    Sos = "SOS",
-    Srd = "SRD",
-    Ssp = "SSP",
-    Stn = "STN",
-    Syp = "SYP",
-    Szl = "SZL",
-    Thb = "THB",
-    Tjs = "TJS",
-    Tmt = "TMT",
-    Tnd = "TND",
-    Top = "TOP",
-    Try = "TRY",
-    Ttd = "TTD",
-    Tvd = "TVD",
-    Twd = "TWD",
-    Tzs = "TZS",
-    Uah = "UAH",
-    Ugx = "UGX",
-    Usd = "USD",
-    Uyu = "UYU",
-    Uzs = "UZS",
-    Ves = "VES",
-    Vnd = "VND",
-    Vuv = "VUV",
-    Wst = "WST",
-    Xaf = "XAF",
-    Xcd = "XCD",
-    Xdr = "XDR",
-    Xof = "XOF",
-    Xpf = "XPF",
-    Yer = "YER",
-    Zar = "ZAR",
-    Zmw = "ZMW",
-    Zwl = "ZWL",
-}
-
-/**
- * The FLSA status of the employment
- */
-export enum FlsaStatus {
-    Exempt = "EXEMPT",
-    SalariedNonexempt = "SALARIED_NONEXEMPT",
-    Nonexempt = "NONEXEMPT",
-    Owner = "OWNER",
-}
-
-/**
- * The type of employment
- */
-export enum EmploymentType {
-    FullTime = "FULL_TIME",
-    PartTime = "PART_TIME",
-    Intern = "INTERN",
-    Contractor = "CONTRACTOR",
-    Freelance = "FREELANCE",
-}
-
-/**
  * The custom field mappings of the object between the remote 3rd party & Panora
  */
 export type UnifiedHrisEmploymentOutputFieldMappings = {};
@@ -246,19 +27,19 @@ export type UnifiedHrisEmploymentOutput = {
     /**
      * The pay period of the employment
      */
-    payPeriod?: PayPeriod | null | undefined;
+    payPeriod?: string | null | undefined;
     /**
      * The pay frequency of the employment
      */
-    payFrequency?: PayFrequency | null | undefined;
+    payFrequency?: string | null | undefined;
     /**
      * The currency of the pay
      */
-    payCurrency?: PayCurrency | null | undefined;
+    payCurrency?: string | null | undefined;
     /**
      * The FLSA status of the employment
      */
-    flsaStatus?: FlsaStatus | null | undefined;
+    flsaStatus?: string | null | undefined;
     /**
      * The effective date of the employment
      */
@@ -266,7 +47,7 @@ export type UnifiedHrisEmploymentOutput = {
     /**
      * The type of employment
      */
-    employmentType?: EmploymentType | null | undefined;
+    employmentType?: string | null | undefined;
     /**
      * The UUID of the associated pay group
      */
@@ -308,99 +89,6 @@ export type UnifiedHrisEmploymentOutput = {
      */
     remoteWasDeleted?: boolean | null | undefined;
 };
-
-/** @internal */
-export const PayPeriod$inboundSchema: z.ZodNativeEnum<typeof PayPeriod> = z.nativeEnum(PayPeriod);
-
-/** @internal */
-export const PayPeriod$outboundSchema: z.ZodNativeEnum<typeof PayPeriod> = PayPeriod$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PayPeriod$ {
-    /** @deprecated use `PayPeriod$inboundSchema` instead. */
-    export const inboundSchema = PayPeriod$inboundSchema;
-    /** @deprecated use `PayPeriod$outboundSchema` instead. */
-    export const outboundSchema = PayPeriod$outboundSchema;
-}
-
-/** @internal */
-export const PayFrequency$inboundSchema: z.ZodNativeEnum<typeof PayFrequency> =
-    z.nativeEnum(PayFrequency);
-
-/** @internal */
-export const PayFrequency$outboundSchema: z.ZodNativeEnum<typeof PayFrequency> =
-    PayFrequency$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PayFrequency$ {
-    /** @deprecated use `PayFrequency$inboundSchema` instead. */
-    export const inboundSchema = PayFrequency$inboundSchema;
-    /** @deprecated use `PayFrequency$outboundSchema` instead. */
-    export const outboundSchema = PayFrequency$outboundSchema;
-}
-
-/** @internal */
-export const PayCurrency$inboundSchema: z.ZodNativeEnum<typeof PayCurrency> =
-    z.nativeEnum(PayCurrency);
-
-/** @internal */
-export const PayCurrency$outboundSchema: z.ZodNativeEnum<typeof PayCurrency> =
-    PayCurrency$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PayCurrency$ {
-    /** @deprecated use `PayCurrency$inboundSchema` instead. */
-    export const inboundSchema = PayCurrency$inboundSchema;
-    /** @deprecated use `PayCurrency$outboundSchema` instead. */
-    export const outboundSchema = PayCurrency$outboundSchema;
-}
-
-/** @internal */
-export const FlsaStatus$inboundSchema: z.ZodNativeEnum<typeof FlsaStatus> =
-    z.nativeEnum(FlsaStatus);
-
-/** @internal */
-export const FlsaStatus$outboundSchema: z.ZodNativeEnum<typeof FlsaStatus> =
-    FlsaStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FlsaStatus$ {
-    /** @deprecated use `FlsaStatus$inboundSchema` instead. */
-    export const inboundSchema = FlsaStatus$inboundSchema;
-    /** @deprecated use `FlsaStatus$outboundSchema` instead. */
-    export const outboundSchema = FlsaStatus$outboundSchema;
-}
-
-/** @internal */
-export const EmploymentType$inboundSchema: z.ZodNativeEnum<typeof EmploymentType> =
-    z.nativeEnum(EmploymentType);
-
-/** @internal */
-export const EmploymentType$outboundSchema: z.ZodNativeEnum<typeof EmploymentType> =
-    EmploymentType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentType$ {
-    /** @deprecated use `EmploymentType$inboundSchema` instead. */
-    export const inboundSchema = EmploymentType$inboundSchema;
-    /** @deprecated use `EmploymentType$outboundSchema` instead. */
-    export const outboundSchema = EmploymentType$outboundSchema;
-}
 
 /** @internal */
 export const UnifiedHrisEmploymentOutputFieldMappings$inboundSchema: z.ZodType<
@@ -471,10 +159,10 @@ export const UnifiedHrisEmploymentOutput$inboundSchema: z.ZodType<
     .object({
         job_title: z.nullable(z.string()).optional(),
         pay_rate: z.nullable(z.number()).optional(),
-        pay_period: z.nullable(PayPeriod$inboundSchema).optional(),
-        pay_frequency: z.nullable(PayFrequency$inboundSchema).optional(),
-        pay_currency: z.nullable(PayCurrency$inboundSchema).optional(),
-        flsa_status: z.nullable(FlsaStatus$inboundSchema).optional(),
+        pay_period: z.nullable(z.string()).optional(),
+        pay_frequency: z.nullable(z.string()).optional(),
+        pay_currency: z.nullable(z.string()).optional(),
+        flsa_status: z.nullable(z.string()).optional(),
         effective_date: z
             .nullable(
                 z
@@ -483,7 +171,7 @@ export const UnifiedHrisEmploymentOutput$inboundSchema: z.ZodType<
                     .transform((v) => new Date(v))
             )
             .optional(),
-        employment_type: z.nullable(EmploymentType$inboundSchema).optional(),
+        employment_type: z.nullable(z.string()).optional(),
         pay_group_id: z.nullable(z.string()).optional(),
         employee_id: z.nullable(z.string()).optional(),
         field_mappings: z
@@ -573,12 +261,12 @@ export const UnifiedHrisEmploymentOutput$outboundSchema: z.ZodType<
     .object({
         jobTitle: z.nullable(z.string()).optional(),
         payRate: z.nullable(z.number()).optional(),
-        payPeriod: z.nullable(PayPeriod$outboundSchema).optional(),
-        payFrequency: z.nullable(PayFrequency$outboundSchema).optional(),
-        payCurrency: z.nullable(PayCurrency$outboundSchema).optional(),
-        flsaStatus: z.nullable(FlsaStatus$outboundSchema).optional(),
+        payPeriod: z.nullable(z.string()).optional(),
+        payFrequency: z.nullable(z.string()).optional(),
+        payCurrency: z.nullable(z.string()).optional(),
+        flsaStatus: z.nullable(z.string()).optional(),
         effectiveDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-        employmentType: z.nullable(EmploymentType$outboundSchema).optional(),
+        employmentType: z.nullable(z.string()).optional(),
         payGroupId: z.nullable(z.string()).optional(),
         employeeId: z.nullable(z.string()).optional(),
         fieldMappings: z

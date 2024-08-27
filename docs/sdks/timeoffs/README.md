@@ -102,11 +102,6 @@ Create Timeoffs in any supported Hris software
 
 ```typescript
 import { Panora } from "@panora/sdk";
-import {
-  UnifiedHrisTimeoffInputRequestType,
-  UnifiedHrisTimeoffInputStatus,
-  UnifiedHrisTimeoffInputUnits,
-} from "@panora/sdk/models/components";
 
 const panora = new Panora({
   apiKey: "<YOUR_API_KEY_HERE>",
@@ -118,11 +113,11 @@ async function run() {
     unifiedHrisTimeoffInput: {
       employee: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
       approver: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-      status: UnifiedHrisTimeoffInputStatus.Requested,
+      status: "REQUESTED",
       employeeNote: "Annual vacation",
-      units: UnifiedHrisTimeoffInputUnits.Days,
+      units: "DAYS",
       amount: 5,
-      requestType: UnifiedHrisTimeoffInputRequestType.Vacation,
+      requestType: "VACATION",
       startTime: new Date("2024-07-01T09:00:00Z"),
       endTime: new Date("2024-07-05T17:00:00Z"),
       fieldMappings: {},
@@ -143,11 +138,6 @@ The standalone function version of this method:
 ```typescript
 import { PanoraCore } from "@panora/sdk/core.js";
 import { hrisTimeoffsCreate } from "@panora/sdk/funcs/hrisTimeoffsCreate.js";
-import {
-  UnifiedHrisTimeoffInputRequestType,
-  UnifiedHrisTimeoffInputStatus,
-  UnifiedHrisTimeoffInputUnits,
-} from "@panora/sdk/models/components";
 
 // Use `PanoraCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -161,11 +151,11 @@ async function run() {
     unifiedHrisTimeoffInput: {
       employee: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
       approver: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-      status: UnifiedHrisTimeoffInputStatus.Requested,
+      status: "REQUESTED",
       employeeNote: "Annual vacation",
-      units: UnifiedHrisTimeoffInputUnits.Days,
+      units: "DAYS",
       amount: 5,
-      requestType: UnifiedHrisTimeoffInputRequestType.Vacation,
+      requestType: "VACATION",
       startTime: new Date("2024-07-01T09:00:00Z"),
       endTime: new Date("2024-07-05T17:00:00Z"),
       fieldMappings: {},

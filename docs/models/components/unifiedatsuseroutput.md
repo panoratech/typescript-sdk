@@ -3,14 +3,14 @@
 ## Example Usage
 
 ```typescript
-import { AccessRole, UnifiedAtsUserOutput } from "@panora/sdk/models/components";
+import { UnifiedAtsUserOutput } from "@panora/sdk/models/components";
 
 let value: UnifiedAtsUserOutput = {
     firstName: "John",
     lastName: "Doe",
     email: "john.doe@example.com",
     disabled: false,
-    accessRole: AccessRole.Admin,
+    accessRole: "ADMIN",
     remoteCreatedAt: new Date("2024-10-01T12:00:00Z"),
     remoteModifiedAt: new Date("2024-10-01T12:00:00Z"),
     fieldMappings: {
@@ -36,7 +36,7 @@ let value: UnifiedAtsUserOutput = {
 | `lastName`                                                                                    | *string*                                                                                      | :heavy_minus_sign:                                                                            | The last name of the user                                                                     | Doe                                                                                           |
 | `email`                                                                                       | *string*                                                                                      | :heavy_minus_sign:                                                                            | The email of the user                                                                         | john.doe@example.com                                                                          |
 | `disabled`                                                                                    | *boolean*                                                                                     | :heavy_minus_sign:                                                                            | Whether the user is disabled                                                                  | false                                                                                         |
-| `accessRole`                                                                                  | [components.AccessRole](../../models/components/accessrole.md)                                | :heavy_minus_sign:                                                                            | The access role of the user                                                                   | ADMIN                                                                                         |
+| `accessRole`                                                                                  | *string*                                                                                      | :heavy_minus_sign:                                                                            | The access role of the user                                                                   | ADMIN                                                                                         |
 | `remoteCreatedAt`                                                                             | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | The remote creation date of the user                                                          | 2024-10-01T12:00:00Z                                                                          |
 | `remoteModifiedAt`                                                                            | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | The remote modification date of the user                                                      | 2024-10-01T12:00:00Z                                                                          |
 | `fieldMappings`                                                                               | Record<string, *any*>                                                                         | :heavy_minus_sign:                                                                            | The custom field mappings of the object between the remote 3rd party & Panora                 | {<br/>"fav_dish": "broccoli",<br/>"fav_color": "red"<br/>}                                    |

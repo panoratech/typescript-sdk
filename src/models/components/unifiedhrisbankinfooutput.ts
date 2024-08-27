@@ -6,14 +6,6 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
 /**
- * The type of the bank account
- */
-export enum AccountType {
-    Savings = "SAVINGS",
-    Checking = "CHECKING",
-}
-
-/**
  * The custom field mappings of the object between the remote 3rd party & Panora
  */
 export type FieldMappings = {};
@@ -27,7 +19,7 @@ export type UnifiedHrisBankinfoOutput = {
     /**
      * The type of the bank account
      */
-    accountType?: AccountType | null | undefined;
+    accountType?: string | null | undefined;
     /**
      * The name of the bank
      */
@@ -77,25 +69,6 @@ export type UnifiedHrisBankinfoOutput = {
      */
     remoteWasDeleted: boolean | null;
 };
-
-/** @internal */
-export const AccountType$inboundSchema: z.ZodNativeEnum<typeof AccountType> =
-    z.nativeEnum(AccountType);
-
-/** @internal */
-export const AccountType$outboundSchema: z.ZodNativeEnum<typeof AccountType> =
-    AccountType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccountType$ {
-    /** @deprecated use `AccountType$inboundSchema` instead. */
-    export const inboundSchema = AccountType$inboundSchema;
-    /** @deprecated use `AccountType$outboundSchema` instead. */
-    export const outboundSchema = AccountType$outboundSchema;
-}
 
 /** @internal */
 export const FieldMappings$inboundSchema: z.ZodType<FieldMappings, z.ZodTypeDef, unknown> =
@@ -154,7 +127,7 @@ export const UnifiedHrisBankinfoOutput$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        account_type: z.nullable(AccountType$inboundSchema).optional(),
+        account_type: z.nullable(z.string()).optional(),
         bank_name: z.nullable(z.string()).optional(),
         account_number: z.nullable(z.string()).optional(),
         routing_number: z.nullable(z.string()).optional(),
@@ -226,7 +199,7 @@ export const UnifiedHrisBankinfoOutput$outboundSchema: z.ZodType<
     UnifiedHrisBankinfoOutput
 > = z
     .object({
-        accountType: z.nullable(AccountType$outboundSchema).optional(),
+        accountType: z.nullable(z.string()).optional(),
         bankName: z.nullable(z.string()).optional(),
         accountNumber: z.nullable(z.string()).optional(),
         routingNumber: z.nullable(z.string()).optional(),

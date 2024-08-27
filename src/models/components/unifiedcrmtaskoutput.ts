@@ -5,14 +5,6 @@
 import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
-/**
- * The status of the task. Authorized values are PENDING, COMPLETED.
- */
-export enum UnifiedCrmTaskOutputStatus {
-    Pending = "PENDING",
-    Completed = "COMPLETED",
-}
-
 export type UnifiedCrmTaskOutput = {
     /**
      * The subject of the task
@@ -25,7 +17,7 @@ export type UnifiedCrmTaskOutput = {
     /**
      * The status of the task. Authorized values are PENDING, COMPLETED.
      */
-    status: UnifiedCrmTaskOutputStatus | null;
+    status: string | null;
     /**
      * The due date of the task
      */
@@ -73,27 +65,6 @@ export type UnifiedCrmTaskOutput = {
 };
 
 /** @internal */
-export const UnifiedCrmTaskOutputStatus$inboundSchema: z.ZodNativeEnum<
-    typeof UnifiedCrmTaskOutputStatus
-> = z.nativeEnum(UnifiedCrmTaskOutputStatus);
-
-/** @internal */
-export const UnifiedCrmTaskOutputStatus$outboundSchema: z.ZodNativeEnum<
-    typeof UnifiedCrmTaskOutputStatus
-> = UnifiedCrmTaskOutputStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedCrmTaskOutputStatus$ {
-    /** @deprecated use `UnifiedCrmTaskOutputStatus$inboundSchema` instead. */
-    export const inboundSchema = UnifiedCrmTaskOutputStatus$inboundSchema;
-    /** @deprecated use `UnifiedCrmTaskOutputStatus$outboundSchema` instead. */
-    export const outboundSchema = UnifiedCrmTaskOutputStatus$outboundSchema;
-}
-
-/** @internal */
 export const UnifiedCrmTaskOutput$inboundSchema: z.ZodType<
     UnifiedCrmTaskOutput,
     z.ZodTypeDef,
@@ -102,7 +73,7 @@ export const UnifiedCrmTaskOutput$inboundSchema: z.ZodType<
     .object({
         subject: z.nullable(z.string()),
         content: z.nullable(z.string()),
-        status: z.nullable(UnifiedCrmTaskOutputStatus$inboundSchema),
+        status: z.nullable(z.string()),
         due_date: z.nullable(z.string()).optional(),
         finished_date: z.nullable(z.string()).optional(),
         user_id: z.nullable(z.string()).optional(),
@@ -171,7 +142,7 @@ export const UnifiedCrmTaskOutput$outboundSchema: z.ZodType<
     .object({
         subject: z.nullable(z.string()),
         content: z.nullable(z.string()),
-        status: z.nullable(UnifiedCrmTaskOutputStatus$outboundSchema),
+        status: z.nullable(z.string()),
         dueDate: z.nullable(z.string()).optional(),
         finishedDate: z.nullable(z.string()).optional(),
         userId: z.nullable(z.string()).optional(),

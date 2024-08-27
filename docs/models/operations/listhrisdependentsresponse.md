@@ -3,7 +3,6 @@
 ## Example Usage
 
 ```typescript
-import { Gender, Relationship } from "@panora/sdk/models/components";
 import { ListHrisDependentsResponse } from "@panora/sdk/models/operations";
 
 let value: ListHrisDependentsResponse = {
@@ -15,9 +14,9 @@ let value: ListHrisDependentsResponse = {
                 firstName: "John",
                 lastName: "Doe",
                 middleName: "Michael",
-                relationship: Relationship.Child,
+                relationship: "CHILD",
                 dateOfBirth: new Date("2020-01-01"),
-                gender: Gender.Male,
+                gender: "MALE",
                 phoneNumber: "+1234567890",
                 homeLocation: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
                 isStudent: true,

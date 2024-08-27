@@ -3,12 +3,12 @@
 ## Example Usage
 
 ```typescript
-import { CollectionType, UnifiedTicketingCollectionOutput } from "@panora/sdk/models/components";
+import { UnifiedTicketingCollectionOutput } from "@panora/sdk/models/components";
 
 let value: UnifiedTicketingCollectionOutput = {
     name: "My Personal Collection",
     description: "Collect issues",
-    collectionType: CollectionType.Project,
+    collectionType: "PROJECT",
     id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
     remoteId: "id_1",
     remoteData: {
@@ -26,7 +26,7 @@ let value: UnifiedTicketingCollectionOutput = {
 | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
 | `name`                                                                                        | *string*                                                                                      | :heavy_check_mark:                                                                            | The name of the collection                                                                    | My Personal Collection                                                                        |
 | `description`                                                                                 | *string*                                                                                      | :heavy_minus_sign:                                                                            | The description of the collection                                                             | Collect issues                                                                                |
-| `collectionType`                                                                              | [components.CollectionType](../../models/components/collectiontype.md)                        | :heavy_minus_sign:                                                                            | The type of the collection. Authorized values are either PROJECT or LIST                      | PROJECT                                                                                       |
+| `collectionType`                                                                              | *string*                                                                                      | :heavy_minus_sign:                                                                            | The type of the collection. Authorized values are either PROJECT or LIST                      | PROJECT                                                                                       |
 | `id`                                                                                          | *string*                                                                                      | :heavy_minus_sign:                                                                            | The UUID of the collection                                                                    | 801f9ede-c698-4e66-a7fc-48d19eebaa4f                                                          |
 | `remoteId`                                                                                    | *string*                                                                                      | :heavy_minus_sign:                                                                            | The id of the collection in the context of the 3rd Party                                      | id_1                                                                                          |
 | `remoteData`                                                                                  | Record<string, *any*>                                                                         | :heavy_minus_sign:                                                                            | The remote data of the collection in the context of the 3rd Party                             | {<br/>"fav_dish": "broccoli",<br/>"fav_color": "red"<br/>}                                    |

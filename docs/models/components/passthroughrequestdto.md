@@ -7,7 +7,7 @@ import { PassThroughRequestDto, PassThroughRequestDtoMethod } from "@panora/sdk/
 
 let value: PassThroughRequestDto = {
     method: PassThroughRequestDtoMethod.Post,
-    path: "/private",
+    path: "/etc/namedb",
 };
 ```
 

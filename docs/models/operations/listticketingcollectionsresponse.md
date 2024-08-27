@@ -3,7 +3,6 @@
 ## Example Usage
 
 ```typescript
-import { CollectionType } from "@panora/sdk/models/components";
 import { ListTicketingCollectionsResponse } from "@panora/sdk/models/operations";
 
 let value: ListTicketingCollectionsResponse = {
@@ -14,7 +13,7 @@ let value: ListTicketingCollectionsResponse = {
             {
                 name: "My Personal Collection",
                 description: "Collect issues",
-                collectionType: CollectionType.Project,
+                collectionType: "PROJECT",
                 id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
                 remoteId: "id_1",
                 remoteData: {

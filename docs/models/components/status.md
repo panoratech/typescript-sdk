@@ -1,18 +1,16 @@
 # Status
 
-The status of the ticket. Authorized values are OPEN or CLOSED.
-
 ## Example Usage
 
 ```typescript
 import { Status } from "@panora/sdk/models/components";
 
-let value: Status = Status.Open;
+let value: Status = Status.Success;
 ```
 
 ## Values
 
-| Name     | Value    |
-| -------- | -------- |
-| `Open`   | OPEN     |
-| `Closed` | CLOSED   |
+| Name      | Value     |
+| --------- | --------- |
+| `Success` | success   |
+| `Fail`    | fail      |

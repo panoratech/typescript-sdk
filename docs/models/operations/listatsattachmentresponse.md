@@ -3,7 +3,6 @@
 ## Example Usage
 
 ```typescript
-import { AttachmentType } from "@panora/sdk/models/components";
 import { ListAtsAttachmentResponse } from "@panora/sdk/models/operations";
 
 let value: ListAtsAttachmentResponse = {
@@ -14,7 +13,7 @@ let value: ListAtsAttachmentResponse = {
             {
                 fileUrl: "https://example.com/file.pdf",
                 fileName: "file.pdf",
-                attachmentType: AttachmentType.Resume,
+                attachmentType: "RESUME",
                 remoteCreatedAt: new Date("2024-10-01T12:00:00Z"),
                 remoteModifiedAt: new Date("2024-10-01T12:00:00Z"),
                 candidateId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",

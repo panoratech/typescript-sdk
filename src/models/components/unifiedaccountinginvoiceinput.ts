@@ -12,174 +12,6 @@ import {
 import * as z from "zod";
 
 /**
- * The currency of the invoice
- */
-export enum UnifiedAccountingInvoiceInputCurrency {
-    Aed = "AED",
-    Afn = "AFN",
-    All = "ALL",
-    Amd = "AMD",
-    Ang = "ANG",
-    Aoa = "AOA",
-    Ars = "ARS",
-    Aud = "AUD",
-    Awg = "AWG",
-    Azn = "AZN",
-    Bam = "BAM",
-    Bbd = "BBD",
-    Bdt = "BDT",
-    Bgn = "BGN",
-    Bhd = "BHD",
-    Bif = "BIF",
-    Bmd = "BMD",
-    Bnd = "BND",
-    Bob = "BOB",
-    Brl = "BRL",
-    Bsd = "BSD",
-    Btn = "BTN",
-    Bwp = "BWP",
-    Byn = "BYN",
-    Bzd = "BZD",
-    Cad = "CAD",
-    Cdf = "CDF",
-    Chf = "CHF",
-    Clp = "CLP",
-    Cny = "CNY",
-    Cop = "COP",
-    Crc = "CRC",
-    Cup = "CUP",
-    Cve = "CVE",
-    Czk = "CZK",
-    Djf = "DJF",
-    Dkk = "DKK",
-    Dop = "DOP",
-    Dzd = "DZD",
-    Egp = "EGP",
-    Ern = "ERN",
-    Etb = "ETB",
-    Eur = "EUR",
-    Fjd = "FJD",
-    Fkp = "FKP",
-    Fok = "FOK",
-    Gbp = "GBP",
-    Gel = "GEL",
-    Ggp = "GGP",
-    Ghs = "GHS",
-    Gip = "GIP",
-    Gmd = "GMD",
-    Gnf = "GNF",
-    Gtq = "GTQ",
-    Gyd = "GYD",
-    Hkd = "HKD",
-    Hnl = "HNL",
-    Hrk = "HRK",
-    Htg = "HTG",
-    Huf = "HUF",
-    Idr = "IDR",
-    Ils = "ILS",
-    Imp = "IMP",
-    Inr = "INR",
-    Iqd = "IQD",
-    Irr = "IRR",
-    Isk = "ISK",
-    Jep = "JEP",
-    Jmd = "JMD",
-    Jod = "JOD",
-    Jpy = "JPY",
-    Kes = "KES",
-    Kgs = "KGS",
-    Khr = "KHR",
-    Kid = "KID",
-    Kmf = "KMF",
-    Krw = "KRW",
-    Kwd = "KWD",
-    Kyd = "KYD",
-    Kzt = "KZT",
-    Lak = "LAK",
-    Lbp = "LBP",
-    Lkr = "LKR",
-    Lrd = "LRD",
-    Lsl = "LSL",
-    Lyd = "LYD",
-    Mad = "MAD",
-    Mdl = "MDL",
-    Mga = "MGA",
-    Mkd = "MKD",
-    Mmk = "MMK",
-    Mnt = "MNT",
-    Mop = "MOP",
-    Mru = "MRU",
-    Mur = "MUR",
-    Mvr = "MVR",
-    Mwk = "MWK",
-    Mxn = "MXN",
-    Myr = "MYR",
-    Mzn = "MZN",
-    Nad = "NAD",
-    Ngn = "NGN",
-    Nio = "NIO",
-    Nok = "NOK",
-    Npr = "NPR",
-    Nzd = "NZD",
-    Omr = "OMR",
-    Pab = "PAB",
-    Pen = "PEN",
-    Pgk = "PGK",
-    Php = "PHP",
-    Pkr = "PKR",
-    Pln = "PLN",
-    Pyg = "PYG",
-    Qar = "QAR",
-    Ron = "RON",
-    Rsd = "RSD",
-    Rub = "RUB",
-    Rwf = "RWF",
-    Sar = "SAR",
-    Sbd = "SBD",
-    Scr = "SCR",
-    Sdg = "SDG",
-    Sek = "SEK",
-    Sgd = "SGD",
-    Shp = "SHP",
-    Sle = "SLE",
-    Sll = "SLL",
-    Sos = "SOS",
-    Srd = "SRD",
-    Ssp = "SSP",
-    Stn = "STN",
-    Syp = "SYP",
-    Szl = "SZL",
-    Thb = "THB",
-    Tjs = "TJS",
-    Tmt = "TMT",
-    Tnd = "TND",
-    Top = "TOP",
-    Try = "TRY",
-    Ttd = "TTD",
-    Tvd = "TVD",
-    Twd = "TWD",
-    Tzs = "TZS",
-    Uah = "UAH",
-    Ugx = "UGX",
-    Usd = "USD",
-    Uyu = "UYU",
-    Uzs = "UZS",
-    Ves = "VES",
-    Vnd = "VND",
-    Vuv = "VUV",
-    Wst = "WST",
-    Xaf = "XAF",
-    Xcd = "XCD",
-    Xdr = "XDR",
-    Xof = "XOF",
-    Xpf = "XPF",
-    Yer = "YER",
-    Zar = "ZAR",
-    Zmw = "ZMW",
-    Zwl = "ZWL",
-}
-
-/**
  * The custom field mappings of the object between the remote 3rd party & Panora
  */
 export type UnifiedAccountingInvoiceInputFieldMappings = {};
@@ -212,7 +44,7 @@ export type UnifiedAccountingInvoiceInput = {
     /**
      * The currency of the invoice
      */
-    currency?: UnifiedAccountingInvoiceInputCurrency | null | undefined;
+    currency?: string | null | undefined;
     /**
      * The exchange rate applied to the invoice
      */
@@ -262,27 +94,6 @@ export type UnifiedAccountingInvoiceInput = {
      */
     fieldMappings?: UnifiedAccountingInvoiceInputFieldMappings | null | undefined;
 };
-
-/** @internal */
-export const UnifiedAccountingInvoiceInputCurrency$inboundSchema: z.ZodNativeEnum<
-    typeof UnifiedAccountingInvoiceInputCurrency
-> = z.nativeEnum(UnifiedAccountingInvoiceInputCurrency);
-
-/** @internal */
-export const UnifiedAccountingInvoiceInputCurrency$outboundSchema: z.ZodNativeEnum<
-    typeof UnifiedAccountingInvoiceInputCurrency
-> = UnifiedAccountingInvoiceInputCurrency$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedAccountingInvoiceInputCurrency$ {
-    /** @deprecated use `UnifiedAccountingInvoiceInputCurrency$inboundSchema` instead. */
-    export const inboundSchema = UnifiedAccountingInvoiceInputCurrency$inboundSchema;
-    /** @deprecated use `UnifiedAccountingInvoiceInputCurrency$outboundSchema` instead. */
-    export const outboundSchema = UnifiedAccountingInvoiceInputCurrency$outboundSchema;
-}
 
 /** @internal */
 export const UnifiedAccountingInvoiceInputFieldMappings$inboundSchema: z.ZodType<
@@ -348,7 +159,7 @@ export const UnifiedAccountingInvoiceInput$inboundSchema: z.ZodType<
             )
             .optional(),
         memo: z.nullable(z.string()).optional(),
-        currency: z.nullable(UnifiedAccountingInvoiceInputCurrency$inboundSchema).optional(),
+        currency: z.nullable(z.string()).optional(),
         exchange_rate: z.nullable(z.string()).optional(),
         total_discount: z.nullable(z.number()).optional(),
         sub_total: z.nullable(z.number()).optional(),
@@ -418,7 +229,7 @@ export const UnifiedAccountingInvoiceInput$outboundSchema: z.ZodType<
         dueDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         paidOnDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         memo: z.nullable(z.string()).optional(),
-        currency: z.nullable(UnifiedAccountingInvoiceInputCurrency$outboundSchema).optional(),
+        currency: z.nullable(z.string()).optional(),
         exchangeRate: z.nullable(z.string()).optional(),
         totalDiscount: z.nullable(z.number()).optional(),
         subTotal: z.nullable(z.number()).optional(),

@@ -3,17 +3,17 @@
 ## Example Usage
 
 ```typescript
-import { AddressType, EmailAddressType, Industry, PhoneType, UnifiedCrmCompanyOutput } from "@panora/sdk/models/components";
+import { UnifiedCrmCompanyOutput } from "@panora/sdk/models/components";
 
 let value: UnifiedCrmCompanyOutput = {
     name: "Acme",
-    industry: Industry.Accounting,
+    industry: "ACCOUNTING",
     numberOfEmployees: 10,
     userId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
     emailAddresses: [
         {
             emailAddress: "acme@gmail.com",
-            emailAddressType: EmailAddressType.Work,
+            emailAddressType: "WORK",
         },
     ],
     addresses: [
@@ -24,14 +24,14 @@ let value: UnifiedCrmCompanyOutput = {
             state: "NY",
             postalCode: "10001",
             country: "USA",
-            addressType: AddressType.Work,
+            addressType: "WORK",
             ownerType: "<value>",
         },
     ],
     phoneNumbers: [
         {
             phoneNumber: "+33660606067",
-            phoneType: PhoneType.Work,
+            phoneType: "WORK",
         },
     ],
     fieldMappings: {
@@ -54,7 +54,7 @@ let value: UnifiedCrmCompanyOutput = {
 | Field                                                                                                         | Type                                                                                                          | Required                                                                                                      | Description                                                                                                   | Example                                                                                                       |
 | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
 | `name`                                                                                                        | *string*                                                                                                      | :heavy_check_mark:                                                                                            | The name of the company                                                                                       | Acme                                                                                                          |
-| `industry`                                                                                                    | [components.Industry](../../models/components/industry.md)                                                    | :heavy_minus_sign:                                                                                            | The industry of the company. Authorized values can be found in the Industry enum.                             | ACCOUNTING                                                                                                    |
+| `industry`                                                                                                    | *string*                                                                                                      | :heavy_minus_sign:                                                                                            | The industry of the company. Authorized values can be found in the Industry enum.                             | ACCOUNTING                                                                                                    |
 | `numberOfEmployees`                                                                                           | *number*                                                                                                      | :heavy_minus_sign:                                                                                            | The number of employees of the company                                                                        | 10                                                                                                            |
 | `userId`                                                                                                      | *string*                                                                                                      | :heavy_minus_sign:                                                                                            | The UUID of the user who owns the company                                                                     | 801f9ede-c698-4e66-a7fc-48d19eebaa4f                                                                          |
 | `emailAddresses`                                                                                              | [components.Email](../../models/components/email.md)[]                                                        | :heavy_minus_sign:                                                                                            | The email addresses of the company                                                                            | [<br/>{<br/>"email_address": "acme@gmail.com",<br/>"email_address_type": "WORK"<br/>}<br/>]                   |

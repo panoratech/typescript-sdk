@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { EmailAddressType, PhoneType, UnifiedAtsCandidateOutput } from "@panora/sdk/models/components";
+import { UnifiedAtsCandidateOutput } from "@panora/sdk/models/components";
 
 let value: UnifiedAtsCandidateOutput = {
     firstName: "Joe",
@@ -28,13 +28,13 @@ let value: UnifiedAtsCandidateOutput = {
     phoneNumbers: [
         {
             phoneNumber: "+33660688899",
-            phoneType: PhoneType.Work,
+            phoneType: "WORK",
         },
     ],
     emailAddresses: [
         {
             emailAddress: "joedoe@gmail.com",
-            emailAddressType: EmailAddressType.Work,
+            emailAddressType: "WORK",
         },
     ],
     fieldMappings: {

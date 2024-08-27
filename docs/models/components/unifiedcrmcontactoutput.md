@@ -3,21 +3,21 @@
 ## Example Usage
 
 ```typescript
-import { AddressType, EmailAddressType, PhoneType, UnifiedCrmContactOutput } from "@panora/sdk/models/components";
+import { UnifiedCrmContactOutput } from "@panora/sdk/models/components";
 
 let value: UnifiedCrmContactOutput = {
     firstName: "John",
     lastName: "Doe",
     emailAddresses: [
         {
-            emailAddress: "Rocky.Bernier@hotmail.com",
-            emailAddressType: EmailAddressType.Work,
+            emailAddress: "Kenyon_Huel7@yahoo.com",
+            emailAddressType: "<value>",
         },
     ],
     phoneNumbers: [
         {
             phoneNumber: "<value>",
-            phoneType: PhoneType.Mobile,
+            phoneType: "<value>",
         },
     ],
     addresses: [
@@ -28,7 +28,7 @@ let value: UnifiedCrmContactOutput = {
             state: "CA",
             postalCode: "10001",
             country: "USA",
-            addressType: AddressType.Personal,
+            addressType: "PERSONAL",
             ownerType: "<value>",
         },
     ],

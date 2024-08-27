@@ -3,7 +3,6 @@
 ## Example Usage
 
 ```typescript
-import { Priority, Status, Type, UnifiedTicketingTicketOutputCreatorType } from "@panora/sdk/models/components";
 import { ListTicketingTicketResponseBody } from "@panora/sdk/models/operations";
 
 let value: ListTicketingTicketResponseBody = {
@@ -12,21 +11,21 @@ let value: ListTicketingTicketResponseBody = {
     data: [
         {
             name: "Customer Service Inquiry",
-            status: Status.Open,
+            status: "OPEN",
             description: "Help customer",
             dueDate: new Date("2024-10-01T12:00:00Z"),
-            type: Type.Bug,
+            type: "BUG",
             parentTicket: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
             collections: ["801f9ede-c698-4e66-a7fc-48d19eebaa4f"],
             tags: ["my_tag", "urgent_tag"],
             completedAt: new Date("2024-10-01T12:00:00Z"),
-            priority: Priority.High,
+            priority: "HIGH",
             assignedTo: ["801f9ede-c698-4e66-a7fc-48d19eebaa4f"],
             comment: {
                 body: "Assigned to Eric !",
                 htmlBody: "<p>Assigned to Eric !</p>",
                 isPrivate: false,
-                creatorType: UnifiedTicketingTicketOutputCreatorType.User,
+                creatorType: "USER",
                 ticketId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
                 contactId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
                 userId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",

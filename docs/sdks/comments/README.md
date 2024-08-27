@@ -102,7 +102,6 @@ Create Comments in any supported Ticketing software
 
 ```typescript
 import { Panora } from "@panora/sdk";
-import { UnifiedTicketingCommentInputCreatorType } from "@panora/sdk/models/components";
 
 const panora = new Panora({
   apiKey: "<YOUR_API_KEY_HERE>",
@@ -115,7 +114,7 @@ async function run() {
       body: "Assigned to Eric !",
       htmlBody: "<p>Assigned to Eric !</p>",
       isPrivate: false,
-      creatorType: UnifiedTicketingCommentInputCreatorType.User,
+      creatorType: "USER",
       ticketId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
       contactId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
       userId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
@@ -139,7 +138,6 @@ The standalone function version of this method:
 ```typescript
 import { PanoraCore } from "@panora/sdk/core.js";
 import { ticketingCommentsCreate } from "@panora/sdk/funcs/ticketingCommentsCreate.js";
-import { UnifiedTicketingCommentInputCreatorType } from "@panora/sdk/models/components";
 
 // Use `PanoraCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -154,7 +152,7 @@ async function run() {
       body: "Assigned to Eric !",
       htmlBody: "<p>Assigned to Eric !</p>",
       isPrivate: false,
-      creatorType: UnifiedTicketingCommentInputCreatorType.User,
+      creatorType: "USER",
       ticketId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
       contactId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
       userId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",

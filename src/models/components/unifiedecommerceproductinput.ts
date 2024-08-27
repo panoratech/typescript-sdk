@@ -12,15 +12,6 @@ import {
 import * as z from "zod";
 
 /**
- * The status of the product. Either ACTIVE, DRAFT OR ARCHIVED.
- */
-export enum UnifiedEcommerceProductInputProductStatus {
-    Archived = "ARCHIVED",
-    Active = "ACTIVE",
-    Draft = "DRAFT",
-}
-
-/**
  * The custom field mappings of the object between the remote 3rd party & Panora
  */
 export type UnifiedEcommerceProductInputFieldMappings = {};
@@ -37,7 +28,7 @@ export type UnifiedEcommerceProductInput = {
     /**
      * The status of the product. Either ACTIVE, DRAFT OR ARCHIVED.
      */
-    productStatus?: UnifiedEcommerceProductInputProductStatus | null | undefined;
+    productStatus?: string | null | undefined;
     /**
      * The URLs of the product images
      */
@@ -63,27 +54,6 @@ export type UnifiedEcommerceProductInput = {
      */
     fieldMappings?: UnifiedEcommerceProductInputFieldMappings | null | undefined;
 };
-
-/** @internal */
-export const UnifiedEcommerceProductInputProductStatus$inboundSchema: z.ZodNativeEnum<
-    typeof UnifiedEcommerceProductInputProductStatus
-> = z.nativeEnum(UnifiedEcommerceProductInputProductStatus);
-
-/** @internal */
-export const UnifiedEcommerceProductInputProductStatus$outboundSchema: z.ZodNativeEnum<
-    typeof UnifiedEcommerceProductInputProductStatus
-> = UnifiedEcommerceProductInputProductStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedEcommerceProductInputProductStatus$ {
-    /** @deprecated use `UnifiedEcommerceProductInputProductStatus$inboundSchema` instead. */
-    export const inboundSchema = UnifiedEcommerceProductInputProductStatus$inboundSchema;
-    /** @deprecated use `UnifiedEcommerceProductInputProductStatus$outboundSchema` instead. */
-    export const outboundSchema = UnifiedEcommerceProductInputProductStatus$outboundSchema;
-}
 
 /** @internal */
 export const UnifiedEcommerceProductInputFieldMappings$inboundSchema: z.ZodType<
@@ -124,9 +94,7 @@ export const UnifiedEcommerceProductInput$inboundSchema: z.ZodType<
     .object({
         product_url: z.nullable(z.string()).optional(),
         product_type: z.nullable(z.string()).optional(),
-        product_status: z
-            .nullable(UnifiedEcommerceProductInputProductStatus$inboundSchema)
-            .optional(),
+        product_status: z.nullable(z.string()).optional(),
         images_urls: z.nullable(z.array(z.string())).optional(),
         description: z.nullable(z.string()).optional(),
         vendor: z.nullable(z.string()).optional(),
@@ -168,9 +136,7 @@ export const UnifiedEcommerceProductInput$outboundSchema: z.ZodType<
     .object({
         productUrl: z.nullable(z.string()).optional(),
         productType: z.nullable(z.string()).optional(),
-        productStatus: z
-            .nullable(UnifiedEcommerceProductInputProductStatus$outboundSchema)
-            .optional(),
+        productStatus: z.nullable(z.string()).optional(),
         imagesUrls: z.nullable(z.array(z.string())).optional(),
         description: z.nullable(z.string()).optional(),
         vendor: z.nullable(z.string()).optional(),

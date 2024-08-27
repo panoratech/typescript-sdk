@@ -5,20 +5,11 @@
 import { remap as remap$ } from "../../lib/primitives.js";
 import * as z from "zod";
 
-/**
- * The status of the interview
- */
-export enum UnifiedAtsInterviewOutputStatus {
-    Scheduled = "SCHEDULED",
-    AwaitingFeedback = "AWAITING_FEEDBACK",
-    Completed = "COMPLETED",
-}
-
 export type UnifiedAtsInterviewOutput = {
     /**
      * The status of the interview
      */
-    status?: UnifiedAtsInterviewOutputStatus | null | undefined;
+    status?: string | null | undefined;
     /**
      * The UUID of the application
      */
@@ -82,34 +73,13 @@ export type UnifiedAtsInterviewOutput = {
 };
 
 /** @internal */
-export const UnifiedAtsInterviewOutputStatus$inboundSchema: z.ZodNativeEnum<
-    typeof UnifiedAtsInterviewOutputStatus
-> = z.nativeEnum(UnifiedAtsInterviewOutputStatus);
-
-/** @internal */
-export const UnifiedAtsInterviewOutputStatus$outboundSchema: z.ZodNativeEnum<
-    typeof UnifiedAtsInterviewOutputStatus
-> = UnifiedAtsInterviewOutputStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedAtsInterviewOutputStatus$ {
-    /** @deprecated use `UnifiedAtsInterviewOutputStatus$inboundSchema` instead. */
-    export const inboundSchema = UnifiedAtsInterviewOutputStatus$inboundSchema;
-    /** @deprecated use `UnifiedAtsInterviewOutputStatus$outboundSchema` instead. */
-    export const outboundSchema = UnifiedAtsInterviewOutputStatus$outboundSchema;
-}
-
-/** @internal */
 export const UnifiedAtsInterviewOutput$inboundSchema: z.ZodType<
     UnifiedAtsInterviewOutput,
     z.ZodTypeDef,
     unknown
 > = z
     .object({
-        status: z.nullable(UnifiedAtsInterviewOutputStatus$inboundSchema).optional(),
+        status: z.nullable(z.string()).optional(),
         application_id: z.nullable(z.string()).optional(),
         job_interview_stage_id: z.nullable(z.string()).optional(),
         organized_by: z.nullable(z.string()).optional(),
@@ -212,7 +182,7 @@ export const UnifiedAtsInterviewOutput$outboundSchema: z.ZodType<
     UnifiedAtsInterviewOutput
 > = z
     .object({
-        status: z.nullable(UnifiedAtsInterviewOutputStatus$outboundSchema).optional(),
+        status: z.nullable(z.string()).optional(),
         applicationId: z.nullable(z.string()).optional(),
         jobInterviewStageId: z.nullable(z.string()).optional(),
         organizedBy: z.nullable(z.string()).optional(),
