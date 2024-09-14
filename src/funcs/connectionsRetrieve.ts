@@ -23,7 +23,7 @@ import { Result } from "../types/fp.js";
 /**
  * List Connections
  */
-export async function connectionsGetConnections(
+export async function connectionsRetrieve(
   client$: PanoraCore,
   options?: RequestOptions,
 ): Promise<
@@ -47,7 +47,7 @@ export async function connectionsGetConnections(
   const apiKey$ = await extractSecurity(client$.options$.apiKey);
   const security$ = apiKey$ == null ? {} : { apiKey: apiKey$ };
   const context = {
-    operationID: "getConnections",
+    operationID: "retrieveConnections",
     oAuth2Scopes: [],
     securitySource: client$.options$.apiKey,
   };

@@ -531,8 +531,8 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: getConnections
-          source: "import { Panora } from \"@panora/sdk\";\n\nconst panora = new Panora({\n  apiKey: \"<YOUR_API_KEY_HERE>\",\n});\n\nasync function run() {\n  const result = await panora.connections.getConnections();\n  \n  // Handle the result\n  console.log(result)\n}\n\nrun();"
+          label: retrieveConnections
+          source: "import { Panora } from \"@panora/sdk\";\n\nconst panora = new Panora({\n  apiKey: \"<YOUR_API_KEY_HERE>\",\n});\n\nasync function run() {\n  const result = await panora.connections.retrieve();\n  \n  // Handle the result\n  console.log(result)\n}\n\nrun();"
   - target: $["paths"]["/crm/companies"]["get"]
     update:
       x-codeSamples:

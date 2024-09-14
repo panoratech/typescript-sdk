@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: caaaa8c3-6dd7-43a5-841e-c3193e68cc73
 management:
-  docChecksum: 490d5a6e807f06c7644ea7f1a7dd8133
+  docChecksum: 4451647c3fecd12e75576c88d6e46844
   docVersion: "1.0"
   speakeasyVersion: 1.396.9
   generationVersion: 2.415.7
-  releaseVersion: 0.13.0
-  configChecksum: 727bf522e8ef5bcc7403ad7762763e41
+  releaseVersion: 0.13.1
+  configChecksum: 5881ae6eaf79ded36c0abecd2d47bd0c
   repoURL: https://github.com/panoratech/typescript-sdk.git
   installationURL: https://github.com/panoratech/typescript-sdk
   published: true
@@ -905,7 +905,7 @@ generatedFiles:
   - src/funcs/atsUsersList.ts
   - src/funcs/atsUsersRetrieve.ts
   - src/funcs/authLoginSignIn.ts
-  - src/funcs/connectionsGetConnections.ts
+  - src/funcs/connectionsRetrieve.ts
   - src/funcs/crmCompaniesCreate.ts
   - src/funcs/crmCompaniesList.ts
   - src/funcs/crmCompaniesRetrieve.ts
@@ -1883,6 +1883,7 @@ examples:
   createTicketingComment:
     speakeasy-default-create-ticketing-comment:
       parameters:
+        query: {}
         header:
           x-connection-token: "<value>"
       requestBody:
@@ -1964,6 +1965,7 @@ examples:
   createTicketingAttachment:
     speakeasy-default-create-ticketing-attachment:
       parameters:
+        query: {}
         header:
           x-connection-token: "<value>"
       requestBody:
@@ -2089,6 +2091,7 @@ examples:
   createCrmDeal:
     speakeasy-default-create-crm-deal:
       parameters:
+        query: {}
         header:
           x-connection-token: "<value>"
       requestBody:
@@ -2219,6 +2222,7 @@ examples:
   createCrmTask:
     speakeasy-default-create-crm-task:
       parameters:
+        query: {}
         header:
           x-connection-token: "<value>"
       requestBody:
@@ -2488,6 +2492,7 @@ examples:
   createHrisEmployee:
     speakeasy-default-create-hris-employee:
       parameters:
+        query: {}
         header:
           x-connection-token: "<value>"
       requestBody:
@@ -2666,6 +2671,7 @@ examples:
   createHrisTimeoff:
     speakeasy-default-create-hris-timeoff:
       parameters:
+        query: {}
         header:
           x-connection-token: "<value>"
       requestBody:
@@ -2724,6 +2730,7 @@ examples:
   createHrisTimesheetentry:
     speakeasy-default-create-hris-timesheetentry:
       parameters:
+        query: {}
         header:
           x-connection-token: "<value>"
       requestBody:
@@ -2912,6 +2919,7 @@ examples:
   createMarketingautomationList:
     speakeasy-default-create-marketingautomation-list:
       parameters:
+        query: {}
         header:
           x-connection-token: "<value>"
   retrieveMarketingautomationList:
@@ -2959,6 +2967,7 @@ examples:
   createMarketingautomationTemplate:
     speakeasy-default-create-marketingautomation-template:
       parameters:
+        query: {}
         header:
           x-connection-token: "<value>"
   retrieveMarketingautomationTemplate:
@@ -4102,3 +4111,8 @@ examples:
       responses:
         "200":
           application/json: {"carrier": "DHL", "tracking_urls": ["https://tracing-url.sf.com"], "tracking_numbers": ["track_1029_191919"], "items": {}, "order_id": "801f9ede-c698-4e66-a7fc-48d19eebaa4f", "id": "801f9ede-c698-4e66-a7fc-48d19eebaa4f", "remote_id": "id_1", "created_at": "2024-10-01T12:00:00Z", "modified_at": "2024-10-01T12:00:00Z"}
+  retrieveConnections:
+    speakeasy-default-retrieve-connections:
+      responses:
+        "200":
+          application/json: []
