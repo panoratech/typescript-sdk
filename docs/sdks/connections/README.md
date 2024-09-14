@@ -5,9 +5,9 @@
 
 ### Available Operations
 
-* [getConnections](#getconnections) - List Connections
+* [retrieve](#retrieve) - List Connections
 
-## getConnections
+## retrieve
 
 List Connections
 
@@ -21,7 +21,7 @@ const panora = new Panora({
 });
 
 async function run() {
-  const result = await panora.connections.getConnections();
+  const result = await panora.connections.retrieve();
   
   // Handle the result
   console.log(result)
@@ -36,7 +36,7 @@ The standalone function version of this method:
 
 ```typescript
 import { PanoraCore } from "@panora/sdk/core.js";
-import { connectionsGetConnections } from "@panora/sdk/funcs/connectionsGetConnections.js";
+import { connectionsRetrieve } from "@panora/sdk/funcs/connectionsRetrieve.js";
 
 // Use `PanoraCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -45,7 +45,7 @@ const panora = new PanoraCore({
 });
 
 async function run() {
-  const res = await connectionsGetConnections(panora);
+  const res = await connectionsRetrieve(panora);
 
   if (!res.ok) {
     throw res.error;

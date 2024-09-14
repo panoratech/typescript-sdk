@@ -311,7 +311,7 @@ run();
 
 ### [connections](docs/sdks/connections/README.md)
 
-* [getConnections](docs/sdks/connections/README.md#getconnections) - List Connections
+* [retrieve](docs/sdks/connections/README.md#retrieve) - List Connections
 
 ### [crm](docs/sdks/crm/README.md)
 
@@ -1054,7 +1054,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [atsUsersList](docs/sdks/panoraatsusers/README.md#list)
 - [atsUsersRetrieve](docs/sdks/panoraatsusers/README.md#retrieve)
 - [authLoginSignIn](docs/sdks/login/README.md#signin)
-- [connectionsGetConnections](docs/sdks/connections/README.md#getconnections)
+- [connectionsRetrieve](docs/sdks/connections/README.md#retrieve)
 - [crmCompaniesCreate](docs/sdks/companies/README.md#create)
 - [crmCompaniesList](docs/sdks/companies/README.md#list)
 - [crmCompaniesRetrieve](docs/sdks/companies/README.md#retrieve)
