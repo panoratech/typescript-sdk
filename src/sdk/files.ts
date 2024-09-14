@@ -12,39 +12,51 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Files extends ClientSDK {
-    /**
-     * List  Files
-     */
-    async list(
-        request: operations.ListFilestorageFileRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListFilestorageFileResponse>> {
-        return unwrapResultIterator(filestorageFilesList(this, request, options));
-    }
+  /**
+   * List  Files
+   */
+  async list(
+    request: operations.ListFilestorageFileRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListFilestorageFileResponse>> {
+    return unwrapResultIterator(filestorageFilesList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Create Files
-     *
-     * @remarks
-     * Create Files in any supported Filestorage software
-     */
-    async create(
-        request: operations.CreateFilestorageFileRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedFilestorageFileOutput> {
-        return unwrapAsync(filestorageFilesCreate(this, request, options));
-    }
+  /**
+   * Create Files
+   *
+   * @remarks
+   * Create Files in any supported Filestorage software
+   */
+  async create(
+    request: operations.CreateFilestorageFileRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedFilestorageFileOutput> {
+    return unwrapAsync(filestorageFilesCreate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Files
-     *
-     * @remarks
-     * Retrieve Files from any connected Filestorage software
-     */
-    async retrieve(
-        request: operations.RetrieveFilestorageFileRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedFilestorageFileOutput> {
-        return unwrapAsync(filestorageFilesRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Files
+   *
+   * @remarks
+   * Retrieve Files from any connected Filestorage software
+   */
+  async retrieve(
+    request: operations.RetrieveFilestorageFileRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedFilestorageFileOutput> {
+    return unwrapAsync(filestorageFilesRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

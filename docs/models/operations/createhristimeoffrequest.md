@@ -6,19 +6,19 @@
 import { CreateHrisTimeoffRequest } from "@panora/sdk/models/operations";
 
 let value: CreateHrisTimeoffRequest = {
-    xConnectionToken: "<value>",
-    unifiedHrisTimeoffInput: {
-        employee: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-        approver: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-        status: "REQUESTED",
-        employeeNote: "Annual vacation",
-        units: "DAYS",
-        amount: 5,
-        requestType: "VACATION",
-        startTime: new Date("2024-07-01T09:00:00Z"),
-        endTime: new Date("2024-07-05T17:00:00Z"),
-        fieldMappings: {},
-    },
+  xConnectionToken: "<value>",
+  unifiedHrisTimeoffInput: {
+    employee: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    approver: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    status: "REQUESTED",
+    employeeNote: "Annual vacation",
+    units: "DAYS",
+    amount: 5,
+    requestType: "VACATION",
+    startTime: new Date("2024-07-01T09:00:00Z"),
+    endTime: new Date("2024-07-05T17:00:00Z"),
+    fieldMappings: {},
+  },
 };
 ```
 

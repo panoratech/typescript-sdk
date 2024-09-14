@@ -6,9 +6,9 @@
 import { CreateProjectDto } from "@panora/sdk/models/components";
 
 let value: CreateProjectDto = {
-    name: "Project Name",
-    idOrganization: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-    idUser: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+  name: "Project Name",
+  idOrganization: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+  idUser: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
 };
 ```
 

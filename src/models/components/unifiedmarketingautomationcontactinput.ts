@@ -8,9 +8,9 @@ export type UnifiedMarketingautomationContactInput = {};
 
 /** @internal */
 export const UnifiedMarketingautomationContactInput$inboundSchema: z.ZodType<
-    UnifiedMarketingautomationContactInput,
-    z.ZodTypeDef,
-    unknown
+  UnifiedMarketingautomationContactInput,
+  z.ZodTypeDef,
+  unknown
 > = z.object({});
 
 /** @internal */
@@ -18,9 +18,9 @@ export type UnifiedMarketingautomationContactInput$Outbound = {};
 
 /** @internal */
 export const UnifiedMarketingautomationContactInput$outboundSchema: z.ZodType<
-    UnifiedMarketingautomationContactInput$Outbound,
-    z.ZodTypeDef,
-    UnifiedMarketingautomationContactInput
+  UnifiedMarketingautomationContactInput$Outbound,
+  z.ZodTypeDef,
+  UnifiedMarketingautomationContactInput
 > = z.object({});
 
 /**
@@ -28,10 +28,12 @@ export const UnifiedMarketingautomationContactInput$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace UnifiedMarketingautomationContactInput$ {
-    /** @deprecated use `UnifiedMarketingautomationContactInput$inboundSchema` instead. */
-    export const inboundSchema = UnifiedMarketingautomationContactInput$inboundSchema;
-    /** @deprecated use `UnifiedMarketingautomationContactInput$outboundSchema` instead. */
-    export const outboundSchema = UnifiedMarketingautomationContactInput$outboundSchema;
-    /** @deprecated use `UnifiedMarketingautomationContactInput$Outbound` instead. */
-    export type Outbound = UnifiedMarketingautomationContactInput$Outbound;
+  /** @deprecated use `UnifiedMarketingautomationContactInput$inboundSchema` instead. */
+  export const inboundSchema =
+    UnifiedMarketingautomationContactInput$inboundSchema;
+  /** @deprecated use `UnifiedMarketingautomationContactInput$outboundSchema` instead. */
+  export const outboundSchema =
+    UnifiedMarketingautomationContactInput$outboundSchema;
+  /** @deprecated use `UnifiedMarketingautomationContactInput$Outbound` instead. */
+  export type Outbound = UnifiedMarketingautomationContactInput$Outbound;
 }

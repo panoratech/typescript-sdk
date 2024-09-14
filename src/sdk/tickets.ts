@@ -12,39 +12,51 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Tickets extends ClientSDK {
-    /**
-     * List  Tickets
-     */
-    async list(
-        request: operations.ListTicketingTicketRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListTicketingTicketResponse>> {
-        return unwrapResultIterator(ticketingTicketsList(this, request, options));
-    }
+  /**
+   * List  Tickets
+   */
+  async list(
+    request: operations.ListTicketingTicketRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListTicketingTicketResponse>> {
+    return unwrapResultIterator(ticketingTicketsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Create Tickets
-     *
-     * @remarks
-     * Create Tickets in any supported Ticketing software
-     */
-    async create(
-        request: operations.CreateTicketingTicketRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedTicketingTicketOutput> {
-        return unwrapAsync(ticketingTicketsCreate(this, request, options));
-    }
+  /**
+   * Create Tickets
+   *
+   * @remarks
+   * Create Tickets in any supported Ticketing software
+   */
+  async create(
+    request: operations.CreateTicketingTicketRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedTicketingTicketOutput> {
+    return unwrapAsync(ticketingTicketsCreate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Tickets
-     *
-     * @remarks
-     * Retrieve Tickets from any connected Ticketing software
-     */
-    async retrieve(
-        request: operations.RetrieveTicketingTicketRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedTicketingTicketOutput> {
-        return unwrapAsync(ticketingTicketsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Tickets
+   *
+   * @remarks
+   * Retrieve Tickets from any connected Ticketing software
+   */
+  async retrieve(
+    request: operations.RetrieveTicketingTicketRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedTicketingTicketOutput> {
+    return unwrapAsync(ticketingTicketsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

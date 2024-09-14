@@ -6,15 +6,21 @@
 import { UnifiedEcommerceProductInput } from "@panora/sdk/models/components";
 
 let value: UnifiedEcommerceProductInput = {
-    productUrl: "https://product_url/tee",
-    productType: "teeshirt",
-    productStatus: "ACTIVE",
-    imagesUrls: ["https://myproduct/image"],
-    description: "best tee ever",
-    vendor: "vendor_extern",
-    variants: [{}],
-    tags: ["tag_1"],
-    fieldMappings: {},
+  productUrl: "https://product_url/tee",
+  productType: "teeshirt",
+  productStatus: "ACTIVE",
+  imagesUrls: [
+    "https://myproduct/image",
+  ],
+  description: "best tee ever",
+  vendor: "vendor_extern",
+  variants: [
+    {},
+  ],
+  tags: [
+    "tag_1",
+  ],
+  fieldMappings: {},
 };
 ```
 

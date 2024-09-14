@@ -11,26 +11,34 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Employeepayrollruns extends ClientSDK {
-    /**
-     * List Employee Payroll Runs
-     */
-    async list(
-        request: operations.ListHrisEmployeePayrollRunRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListHrisEmployeePayrollRunResponse>> {
-        return unwrapResultIterator(hrisEmployeepayrollrunsList(this, request, options));
-    }
+  /**
+   * List Employee Payroll Runs
+   */
+  async list(
+    request: operations.ListHrisEmployeePayrollRunRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListHrisEmployeePayrollRunResponse>> {
+    return unwrapResultIterator(hrisEmployeepayrollrunsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Employee Payroll Run
-     *
-     * @remarks
-     * Retrieve Employee Payroll Run from any connected Hris software
-     */
-    async retrieve(
-        request: operations.RetrieveHrisEmployeePayrollRunRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedHrisEmployeepayrollrunOutput> {
-        return unwrapAsync(hrisEmployeepayrollrunsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Employee Payroll Run
+   *
+   * @remarks
+   * Retrieve Employee Payroll Run from any connected Hris software
+   */
+  async retrieve(
+    request: operations.RetrieveHrisEmployeePayrollRunRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedHrisEmployeepayrollrunOutput> {
+    return unwrapAsync(hrisEmployeepayrollrunsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

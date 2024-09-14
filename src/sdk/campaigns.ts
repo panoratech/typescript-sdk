@@ -12,39 +12,53 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Campaigns extends ClientSDK {
-    /**
-     * List Campaigns
-     */
-    async list(
-        request: operations.ListMarketingautomationCampaignsRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListMarketingautomationCampaignsResponse>> {
-        return unwrapResultIterator(marketingautomationCampaignsList(this, request, options));
-    }
+  /**
+   * List Campaigns
+   */
+  async list(
+    request: operations.ListMarketingautomationCampaignsRequest,
+    options?: RequestOptions,
+  ): Promise<
+    PageIterator<operations.ListMarketingautomationCampaignsResponse>
+  > {
+    return unwrapResultIterator(marketingautomationCampaignsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Create Campaign
-     *
-     * @remarks
-     * Create a campaign in any supported Marketingautomation software
-     */
-    async create(
-        request: operations.CreateMarketingautomationCampaignRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedMarketingautomationCampaignOutput> {
-        return unwrapAsync(marketingautomationCampaignsCreate(this, request, options));
-    }
+  /**
+   * Create Campaign
+   *
+   * @remarks
+   * Create a campaign in any supported Marketingautomation software
+   */
+  async create(
+    request: operations.CreateMarketingautomationCampaignRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedMarketingautomationCampaignOutput> {
+    return unwrapAsync(marketingautomationCampaignsCreate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Campaign
-     *
-     * @remarks
-     * Retrieve a Campaign from any connected Marketingautomation software
-     */
-    async retrieve(
-        request: operations.RetrieveMarketingautomationCampaignRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedMarketingautomationCampaignOutput> {
-        return unwrapAsync(marketingautomationCampaignsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Campaign
+   *
+   * @remarks
+   * Retrieve a Campaign from any connected Marketingautomation software
+   */
+  async retrieve(
+    request: operations.RetrieveMarketingautomationCampaignRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedMarketingautomationCampaignOutput> {
+    return unwrapAsync(marketingautomationCampaignsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

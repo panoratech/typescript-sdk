@@ -12,39 +12,51 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Interviews extends ClientSDK {
-    /**
-     * List  Interviews
-     */
-    async list(
-        request: operations.ListAtsInterviewRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListAtsInterviewResponse>> {
-        return unwrapResultIterator(atsInterviewsList(this, request, options));
-    }
+  /**
+   * List  Interviews
+   */
+  async list(
+    request: operations.ListAtsInterviewRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListAtsInterviewResponse>> {
+    return unwrapResultIterator(atsInterviewsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Create Interviews
-     *
-     * @remarks
-     * Create Interviews in any supported Ats software
-     */
-    async create(
-        request: operations.CreateAtsInterviewRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedAtsInterviewOutput> {
-        return unwrapAsync(atsInterviewsCreate(this, request, options));
-    }
+  /**
+   * Create Interviews
+   *
+   * @remarks
+   * Create Interviews in any supported Ats software
+   */
+  async create(
+    request: operations.CreateAtsInterviewRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedAtsInterviewOutput> {
+    return unwrapAsync(atsInterviewsCreate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Interviews
-     *
-     * @remarks
-     * Retrieve Interviews from any connected Ats software
-     */
-    async retrieve(
-        request: operations.RetrieveAtsInterviewRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedAtsInterviewOutput> {
-        return unwrapAsync(atsInterviewsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Interviews
+   *
+   * @remarks
+   * Retrieve Interviews from any connected Ats software
+   */
+  async retrieve(
+    request: operations.RetrieveAtsInterviewRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedAtsInterviewOutput> {
+    return unwrapAsync(atsInterviewsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

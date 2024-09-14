@@ -6,9 +6,9 @@
 import { RequestFormat } from "@panora/sdk/models/components";
 
 let value: RequestFormat = [
-    {
-        key: "<value>",
-    },
+  {
+    "key": "<value>",
+  },
 ];
 ```
 

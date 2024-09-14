@@ -24,8 +24,6 @@ async function run() {
   await panora.passthrough.retryid.getRetriedRequestResponse({
     retryId: "<value>",
   });
-
-  
 }
 
 run();

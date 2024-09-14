@@ -11,26 +11,34 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Users extends ClientSDK {
-    /**
-     * List Users
-     */
-    async list(
-        request: operations.ListTicketingUsersRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListTicketingUsersResponse>> {
-        return unwrapResultIterator(ticketingUsersList(this, request, options));
-    }
+  /**
+   * List Users
+   */
+  async list(
+    request: operations.ListTicketingUsersRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListTicketingUsersResponse>> {
+    return unwrapResultIterator(ticketingUsersList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve User
-     *
-     * @remarks
-     * Retrieve a User from any connected Ticketing software
-     */
-    async retrieve(
-        request: operations.RetrieveTicketingUserRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedTicketingUserOutput> {
-        return unwrapAsync(ticketingUsersRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve User
+   *
+   * @remarks
+   * Retrieve a User from any connected Ticketing software
+   */
+  async retrieve(
+    request: operations.RetrieveTicketingUserRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedTicketingUserOutput> {
+    return unwrapAsync(ticketingUsersRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

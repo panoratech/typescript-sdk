@@ -6,8 +6,8 @@
 import { CreateLinkedUserDto } from "@panora/sdk/models/components";
 
 let value: CreateLinkedUserDto = {
-    linkedUserOriginId: "id_1",
-    alias: "acme",
+  linkedUserOriginId: "id_1",
+  alias: "acme",
 };
 ```
 

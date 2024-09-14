@@ -12,39 +12,51 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class PanoraTicketingAttachments extends ClientSDK {
-    /**
-     * List  Attachments
-     */
-    async list(
-        request: operations.ListTicketingAttachmentsRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListTicketingAttachmentsResponse>> {
-        return unwrapResultIterator(ticketingAttachmentsList(this, request, options));
-    }
+  /**
+   * List  Attachments
+   */
+  async list(
+    request: operations.ListTicketingAttachmentsRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListTicketingAttachmentsResponse>> {
+    return unwrapResultIterator(ticketingAttachmentsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Create Attachments
-     *
-     * @remarks
-     * Create Attachments in any supported Ticketing software
-     */
-    async create(
-        request: operations.CreateTicketingAttachmentRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedTicketingAttachmentOutput> {
-        return unwrapAsync(ticketingAttachmentsCreate(this, request, options));
-    }
+  /**
+   * Create Attachments
+   *
+   * @remarks
+   * Create Attachments in any supported Ticketing software
+   */
+  async create(
+    request: operations.CreateTicketingAttachmentRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedTicketingAttachmentOutput> {
+    return unwrapAsync(ticketingAttachmentsCreate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Attachments
-     *
-     * @remarks
-     * Retrieve Attachments from any connected Ticketing software
-     */
-    async retrieve(
-        request: operations.RetrieveTicketingAttachmentRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedTicketingAttachmentOutput> {
-        return unwrapAsync(ticketingAttachmentsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Attachments
+   *
+   * @remarks
+   * Retrieve Attachments from any connected Ticketing software
+   */
+  async retrieve(
+    request: operations.RetrieveTicketingAttachmentRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedTicketingAttachmentOutput> {
+    return unwrapAsync(ticketingAttachmentsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

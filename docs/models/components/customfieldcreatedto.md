@@ -10,13 +10,13 @@ import {
 } from "@panora/sdk/models/components";
 
 let value: CustomFieldCreateDto = {
-    objectTypeOwner: CustomFieldCreateDtoObjectTypeOwner.Company,
-    name: "my_favorite_dish",
-    description: "Favorite Dish",
-    dataType: CustomFieldCreateDtoDataType.String,
-    sourceCustomFieldId: "id_1",
-    sourceProvider: "hubspot",
-    linkedUserId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+  objectTypeOwner: CustomFieldCreateDtoObjectTypeOwner.Company,
+  name: "my_favorite_dish",
+  description: "Favorite Dish",
+  dataType: CustomFieldCreateDtoDataType.String,
+  sourceCustomFieldId: "id_1",
+  sourceProvider: "hubspot",
+  linkedUserId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
 };
 ```
 

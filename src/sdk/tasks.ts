@@ -12,39 +12,51 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Tasks extends ClientSDK {
-    /**
-     * List Tasks
-     */
-    async list(
-        request: operations.ListCrmTaskRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListCrmTaskResponse>> {
-        return unwrapResultIterator(crmTasksList(this, request, options));
-    }
+  /**
+   * List Tasks
+   */
+  async list(
+    request: operations.ListCrmTaskRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListCrmTaskResponse>> {
+    return unwrapResultIterator(crmTasksList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Create Tasks
-     *
-     * @remarks
-     * Create Tasks in any supported Crm software
-     */
-    async create(
-        request: operations.CreateCrmTaskRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedCrmTaskOutput> {
-        return unwrapAsync(crmTasksCreate(this, request, options));
-    }
+  /**
+   * Create Tasks
+   *
+   * @remarks
+   * Create Tasks in any supported Crm software
+   */
+  async create(
+    request: operations.CreateCrmTaskRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedCrmTaskOutput> {
+    return unwrapAsync(crmTasksCreate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Tasks
-     *
-     * @remarks
-     * Retrieve Tasks from any connected Crm software
-     */
-    async retrieve(
-        request: operations.RetrieveCrmTaskRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedCrmTaskOutput> {
-        return unwrapAsync(crmTasksRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Tasks
+   *
+   * @remarks
+   * Retrieve Tasks from any connected Crm software
+   */
+  async retrieve(
+    request: operations.RetrieveCrmTaskRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedCrmTaskOutput> {
+    return unwrapAsync(crmTasksRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

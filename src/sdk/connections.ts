@@ -8,10 +8,15 @@ import * as components from "../models/components/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Connections extends ClientSDK {
-    /**
-     * List Connections
-     */
-    async getConnections(options?: RequestOptions): Promise<Array<components.Connection>> {
-        return unwrapAsync(connectionsGetConnections(this, options));
-    }
+  /**
+   * List Connections
+   */
+  async getConnections(
+    options?: RequestOptions,
+  ): Promise<Array<components.Connection>> {
+    return unwrapAsync(connectionsGetConnections(
+      this,
+      options,
+    ));
+  }
 }

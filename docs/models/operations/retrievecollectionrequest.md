@@ -6,9 +6,9 @@
 import { RetrieveCollectionRequest } from "@panora/sdk/models/operations";
 
 let value: RetrieveCollectionRequest = {
-    xConnectionToken: "<value>",
-    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-    remoteData: false,
+  xConnectionToken: "<value>",
+  id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+  remoteData: false,
 };
 ```
 

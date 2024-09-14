@@ -11,26 +11,34 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Messages extends ClientSDK {
-    /**
-     * List Messages
-     */
-    async list(
-        request: operations.ListMarketingautomationMessagesRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListMarketingautomationMessagesResponse>> {
-        return unwrapResultIterator(marketingautomationMessagesList(this, request, options));
-    }
+  /**
+   * List Messages
+   */
+  async list(
+    request: operations.ListMarketingautomationMessagesRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListMarketingautomationMessagesResponse>> {
+    return unwrapResultIterator(marketingautomationMessagesList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Messages
-     *
-     * @remarks
-     * Retrieve Messages from any connected Marketingautomation software
-     */
-    async retrieve(
-        request: operations.RetrieveMarketingautomationMessageRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedMarketingautomationMessageOutput> {
-        return unwrapAsync(marketingautomationMessagesRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Messages
+   *
+   * @remarks
+   * Retrieve Messages from any connected Marketingautomation software
+   */
+  async retrieve(
+    request: operations.RetrieveMarketingautomationMessageRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedMarketingautomationMessageOutput> {
+    return unwrapAsync(marketingautomationMessagesRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

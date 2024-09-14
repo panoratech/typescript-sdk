@@ -11,26 +11,34 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Companyinfos extends ClientSDK {
-    /**
-     * List  CompanyInfos
-     */
-    async list(
-        request: operations.ListAccountingCompanyInfosRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListAccountingCompanyInfosResponse>> {
-        return unwrapResultIterator(accountingCompanyinfosList(this, request, options));
-    }
+  /**
+   * List  CompanyInfos
+   */
+  async list(
+    request: operations.ListAccountingCompanyInfosRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListAccountingCompanyInfosResponse>> {
+    return unwrapResultIterator(accountingCompanyinfosList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Company Infos
-     *
-     * @remarks
-     * Retrieve Company Infos from any connected Accounting software
-     */
-    async retrieve(
-        request: operations.RetrieveAccountingCompanyInfoRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedAccountingCompanyinfoOutput> {
-        return unwrapAsync(accountingCompanyinfosRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Company Infos
+   *
+   * @remarks
+   * Retrieve Company Infos from any connected Accounting software
+   */
+  async retrieve(
+    request: operations.RetrieveAccountingCompanyInfoRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedAccountingCompanyinfoOutput> {
+    return unwrapAsync(accountingCompanyinfosRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

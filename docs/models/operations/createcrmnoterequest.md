@@ -6,19 +6,19 @@
 import { CreateCrmNoteRequest } from "@panora/sdk/models/operations";
 
 let value: CreateCrmNoteRequest = {
-    xConnectionToken: "<value>",
-    remoteData: false,
-    unifiedCrmNoteInput: {
-        content: "My notes taken during the meeting",
-        userId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-        companyId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-        contactId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-        dealId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-        fieldMappings: {
-            fav_dish: "broccoli",
-            fav_color: "red",
-        },
+  xConnectionToken: "<value>",
+  remoteData: false,
+  unifiedCrmNoteInput: {
+    content: "My notes taken during the meeting",
+    userId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    companyId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    contactId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    dealId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    fieldMappings: {
+      "fav_dish": "broccoli",
+      "fav_color": "red",
     },
+  },
 };
 ```
 

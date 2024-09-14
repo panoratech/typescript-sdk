@@ -8,9 +8,9 @@ export type UnifiedMarketingautomationCampaignOutput = {};
 
 /** @internal */
 export const UnifiedMarketingautomationCampaignOutput$inboundSchema: z.ZodType<
-    UnifiedMarketingautomationCampaignOutput,
-    z.ZodTypeDef,
-    unknown
+  UnifiedMarketingautomationCampaignOutput,
+  z.ZodTypeDef,
+  unknown
 > = z.object({});
 
 /** @internal */
@@ -18,9 +18,9 @@ export type UnifiedMarketingautomationCampaignOutput$Outbound = {};
 
 /** @internal */
 export const UnifiedMarketingautomationCampaignOutput$outboundSchema: z.ZodType<
-    UnifiedMarketingautomationCampaignOutput$Outbound,
-    z.ZodTypeDef,
-    UnifiedMarketingautomationCampaignOutput
+  UnifiedMarketingautomationCampaignOutput$Outbound,
+  z.ZodTypeDef,
+  UnifiedMarketingautomationCampaignOutput
 > = z.object({});
 
 /**
@@ -28,10 +28,12 @@ export const UnifiedMarketingautomationCampaignOutput$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace UnifiedMarketingautomationCampaignOutput$ {
-    /** @deprecated use `UnifiedMarketingautomationCampaignOutput$inboundSchema` instead. */
-    export const inboundSchema = UnifiedMarketingautomationCampaignOutput$inboundSchema;
-    /** @deprecated use `UnifiedMarketingautomationCampaignOutput$outboundSchema` instead. */
-    export const outboundSchema = UnifiedMarketingautomationCampaignOutput$outboundSchema;
-    /** @deprecated use `UnifiedMarketingautomationCampaignOutput$Outbound` instead. */
-    export type Outbound = UnifiedMarketingautomationCampaignOutput$Outbound;
+  /** @deprecated use `UnifiedMarketingautomationCampaignOutput$inboundSchema` instead. */
+  export const inboundSchema =
+    UnifiedMarketingautomationCampaignOutput$inboundSchema;
+  /** @deprecated use `UnifiedMarketingautomationCampaignOutput$outboundSchema` instead. */
+  export const outboundSchema =
+    UnifiedMarketingautomationCampaignOutput$outboundSchema;
+  /** @deprecated use `UnifiedMarketingautomationCampaignOutput$Outbound` instead. */
+  export type Outbound = UnifiedMarketingautomationCampaignOutput$Outbound;
 }

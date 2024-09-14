@@ -12,39 +12,51 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Journalentries extends ClientSDK {
-    /**
-     * List  JournalEntrys
-     */
-    async list(
-        request: operations.ListAccountingJournalEntryRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListAccountingJournalEntryResponse>> {
-        return unwrapResultIterator(accountingJournalentriesList(this, request, options));
-    }
+  /**
+   * List  JournalEntrys
+   */
+  async list(
+    request: operations.ListAccountingJournalEntryRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListAccountingJournalEntryResponse>> {
+    return unwrapResultIterator(accountingJournalentriesList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Create Journal Entries
-     *
-     * @remarks
-     * Create Journal Entries in any supported Accounting software
-     */
-    async create(
-        request: operations.CreateAccountingJournalEntryRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedAccountingJournalentryOutput> {
-        return unwrapAsync(accountingJournalentriesCreate(this, request, options));
-    }
+  /**
+   * Create Journal Entries
+   *
+   * @remarks
+   * Create Journal Entries in any supported Accounting software
+   */
+  async create(
+    request: operations.CreateAccountingJournalEntryRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedAccountingJournalentryOutput> {
+    return unwrapAsync(accountingJournalentriesCreate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Journal Entries
-     *
-     * @remarks
-     * Retrieve Journal Entries from any connected Accounting software
-     */
-    async retrieve(
-        request: operations.RetrieveAccountingJournalEntryRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedAccountingJournalentryOutput> {
-        return unwrapAsync(accountingJournalentriesRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Journal Entries
+   *
+   * @remarks
+   * Retrieve Journal Entries from any connected Accounting software
+   */
+  async retrieve(
+    request: operations.RetrieveAccountingJournalEntryRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedAccountingJournalentryOutput> {
+    return unwrapAsync(accountingJournalentriesRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

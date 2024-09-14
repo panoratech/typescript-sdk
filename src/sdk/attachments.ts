@@ -12,39 +12,51 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Attachments extends ClientSDK {
-    /**
-     * List  Attachments
-     */
-    async list(
-        request: operations.ListAtsAttachmentRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListAtsAttachmentResponse>> {
-        return unwrapResultIterator(atsAttachmentsList(this, request, options));
-    }
+  /**
+   * List  Attachments
+   */
+  async list(
+    request: operations.ListAtsAttachmentRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListAtsAttachmentResponse>> {
+    return unwrapResultIterator(atsAttachmentsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Create Attachments
-     *
-     * @remarks
-     * Create Attachments in any supported ATS software
-     */
-    async create(
-        request: operations.CreateAtsAttachmentRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedAtsAttachmentOutput> {
-        return unwrapAsync(atsAttachmentsCreate(this, request, options));
-    }
+  /**
+   * Create Attachments
+   *
+   * @remarks
+   * Create Attachments in any supported ATS software
+   */
+  async create(
+    request: operations.CreateAtsAttachmentRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedAtsAttachmentOutput> {
+    return unwrapAsync(atsAttachmentsCreate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Attachments
-     *
-     * @remarks
-     * Retrieve Attachments from any connected Ats software
-     */
-    async retrieve(
-        request: operations.RetrieveAtsAttachmentRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedAtsAttachmentOutput> {
-        return unwrapAsync(atsAttachmentsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Attachments
+   *
+   * @remarks
+   * Retrieve Attachments from any connected Ats software
+   */
+  async retrieve(
+    request: operations.RetrieveAtsAttachmentRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedAtsAttachmentOutput> {
+    return unwrapAsync(atsAttachmentsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

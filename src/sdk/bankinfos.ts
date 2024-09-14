@@ -11,26 +11,34 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Bankinfos extends ClientSDK {
-    /**
-     * List Bank Info
-     */
-    async list(
-        request: operations.ListHrisBankInfoRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListHrisBankInfoResponse>> {
-        return unwrapResultIterator(hrisBankinfosList(this, request, options));
-    }
+  /**
+   * List Bank Info
+   */
+  async list(
+    request: operations.ListHrisBankInfoRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListHrisBankInfoResponse>> {
+    return unwrapResultIterator(hrisBankinfosList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Bank Info
-     *
-     * @remarks
-     * Retrieve Bank Info from any connected Hris software
-     */
-    async retrieve(
-        request: operations.RetrieveHrisBankInfoRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedHrisBankinfoOutput> {
-        return unwrapAsync(hrisBankinfosRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Bank Info
+   *
+   * @remarks
+   * Retrieve Bank Info from any connected Hris software
+   */
+  async retrieve(
+    request: operations.RetrieveHrisBankInfoRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedHrisBankinfoOutput> {
+    return unwrapAsync(hrisBankinfosRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

@@ -12,39 +12,51 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Timeoffs extends ClientSDK {
-    /**
-     * List Time Offs
-     */
-    async list(
-        request: operations.ListHrisTimeoffsRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListHrisTimeoffsResponse>> {
-        return unwrapResultIterator(hrisTimeoffsList(this, request, options));
-    }
+  /**
+   * List Time Offs
+   */
+  async list(
+    request: operations.ListHrisTimeoffsRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListHrisTimeoffsResponse>> {
+    return unwrapResultIterator(hrisTimeoffsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Create Timeoffs
-     *
-     * @remarks
-     * Create Timeoffs in any supported Hris software
-     */
-    async create(
-        request: operations.CreateHrisTimeoffRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedHrisTimeoffOutput> {
-        return unwrapAsync(hrisTimeoffsCreate(this, request, options));
-    }
+  /**
+   * Create Timeoffs
+   *
+   * @remarks
+   * Create Timeoffs in any supported Hris software
+   */
+  async create(
+    request: operations.CreateHrisTimeoffRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedHrisTimeoffOutput> {
+    return unwrapAsync(hrisTimeoffsCreate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Time Off
-     *
-     * @remarks
-     * Retrieve a Time Off from any connected Hris software
-     */
-    async retrieve(
-        request: operations.RetrieveHrisTimeoffRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedHrisTimeoffOutput> {
-        return unwrapAsync(hrisTimeoffsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Time Off
+   *
+   * @remarks
+   * Retrieve a Time Off from any connected Hris software
+   */
+  async retrieve(
+    request: operations.RetrieveHrisTimeoffRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedHrisTimeoffOutput> {
+    return unwrapAsync(hrisTimeoffsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

@@ -9,20 +9,29 @@ import * as components from "../models/components/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Projects extends ClientSDK {
-    /**
-     * Retrieve projects
-     */
-    async getProjects(options?: RequestOptions): Promise<Array<components.ProjectResponse>> {
-        return unwrapAsync(projectsGetProjects(this, options));
-    }
+  /**
+   * Retrieve projects
+   */
+  async getProjects(
+    options?: RequestOptions,
+  ): Promise<Array<components.ProjectResponse>> {
+    return unwrapAsync(projectsGetProjects(
+      this,
+      options,
+    ));
+  }
 
-    /**
-     * Create a project
-     */
-    async create(
-        request: components.CreateProjectDto,
-        options?: RequestOptions
-    ): Promise<components.ProjectResponse> {
-        return unwrapAsync(projectsCreate(this, request, options));
-    }
+  /**
+   * Create a project
+   */
+  async create(
+    request: components.CreateProjectDto,
+    options?: RequestOptions,
+  ): Promise<components.ProjectResponse> {
+    return unwrapAsync(projectsCreate(
+      this,
+      request,
+      options,
+    ));
+  }
 }

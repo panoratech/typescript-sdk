@@ -11,26 +11,34 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Stages extends ClientSDK {
-    /**
-     * List  Stages
-     */
-    async list(
-        request: operations.ListCrmStagesRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListCrmStagesResponse>> {
-        return unwrapResultIterator(crmStagesList(this, request, options));
-    }
+  /**
+   * List  Stages
+   */
+  async list(
+    request: operations.ListCrmStagesRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListCrmStagesResponse>> {
+    return unwrapResultIterator(crmStagesList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Stages
-     *
-     * @remarks
-     * Retrieve Stages from any connected Crm software
-     */
-    async retrieve(
-        request: operations.RetrieveCrmStageRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedCrmStageOutput> {
-        return unwrapAsync(crmStagesRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Stages
+   *
+   * @remarks
+   * Retrieve Stages from any connected Crm software
+   */
+  async retrieve(
+    request: operations.RetrieveCrmStageRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedCrmStageOutput> {
+    return unwrapAsync(crmStagesRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

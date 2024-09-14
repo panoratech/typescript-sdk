@@ -11,26 +11,34 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Collections extends ClientSDK {
-    /**
-     * List Collections
-     */
-    async list(
-        request: operations.ListTicketingCollectionsRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListTicketingCollectionsResponse>> {
-        return unwrapResultIterator(ticketingCollectionsList(this, request, options));
-    }
+  /**
+   * List Collections
+   */
+  async list(
+    request: operations.ListTicketingCollectionsRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListTicketingCollectionsResponse>> {
+    return unwrapResultIterator(ticketingCollectionsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Collections
-     *
-     * @remarks
-     * Retrieve Collections from any connected Ticketing software
-     */
-    async retrieve(
-        request: operations.RetrieveCollectionRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedTicketingCollectionOutput> {
-        return unwrapAsync(ticketingCollectionsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Collections
+   *
+   * @remarks
+   * Retrieve Collections from any connected Ticketing software
+   */
+  async retrieve(
+    request: operations.RetrieveCollectionRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedTicketingCollectionOutput> {
+    return unwrapAsync(ticketingCollectionsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

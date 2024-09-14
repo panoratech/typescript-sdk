@@ -6,9 +6,11 @@
 import { WebhookDto } from "@panora/sdk/models/components";
 
 let value: WebhookDto = {
-    url: "https://acme.com/webhook_receiver",
-    description: "Webhook to receive connection events",
-    scope: ["connection.created"],
+  url: "https://acme.com/webhook_receiver",
+  description: "Webhook to receive connection events",
+  scope: [
+    "connection.created",
+  ],
 };
 ```
 

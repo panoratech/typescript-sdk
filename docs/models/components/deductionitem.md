@@ -6,9 +6,9 @@
 import { DeductionItem } from "@panora/sdk/models/components";
 
 let value: DeductionItem = {
-    name: "Health Insurance",
-    employeeDeduction: 100,
-    companyDeduction: 200,
+  name: "Health Insurance",
+  employeeDeduction: 100,
+  companyDeduction: 200,
 };
 ```
 

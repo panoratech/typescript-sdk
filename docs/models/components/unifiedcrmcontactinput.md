@@ -6,37 +6,37 @@
 import { UnifiedCrmContactInput } from "@panora/sdk/models/components";
 
 let value: UnifiedCrmContactInput = {
-    firstName: "John",
-    lastName: "Doe",
-    emailAddresses: [
-        {
-            emailAddress: "Ashlee36@yahoo.com",
-            emailAddressType: "<value>",
-        },
-    ],
-    phoneNumbers: [
-        {
-            phoneNumber: "<value>",
-            phoneType: "<value>",
-        },
-    ],
-    addresses: [
-        {
-            street1: "5th Avenue",
-            street2: "Street 2",
-            city: "Anytown",
-            state: "CA",
-            postalCode: "10001",
-            country: "USA",
-            addressType: "PERSONAL",
-            ownerType: "<value>",
-        },
-    ],
-    userId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-    fieldMappings: {
-        fav_dish: "broccoli",
-        fav_color: "red",
+  firstName: "John",
+  lastName: "Doe",
+  emailAddresses: [
+    {
+      emailAddress: "Carmelo67@yahoo.com",
+      emailAddressType: "<value>",
     },
+  ],
+  phoneNumbers: [
+    {
+      phoneNumber: "1-417-393-6800 x6860",
+      phoneType: "<value>",
+    },
+  ],
+  addresses: [
+    {
+      street1: "5th Avenue",
+      street2: "Street 2",
+      city: "Anytown",
+      state: "CA",
+      postalCode: "10001",
+      country: "USA",
+      addressType: "PERSONAL",
+      ownerType: "<value>",
+    },
+  ],
+  userId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+  fieldMappings: {
+    "fav_dish": "broccoli",
+    "fav_color": "red",
+  },
 };
 ```
 

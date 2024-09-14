@@ -9,23 +9,23 @@ import { Orders } from "./orders.js";
 import { Products } from "./products.js";
 
 export class Ecommerce extends ClientSDK {
-    private _products?: Products;
-    get products(): Products {
-        return (this._products ??= new Products(this.options$));
-    }
+  private _products?: Products;
+  get products(): Products {
+    return (this._products ??= new Products(this.options$));
+  }
 
-    private _orders?: Orders;
-    get orders(): Orders {
-        return (this._orders ??= new Orders(this.options$));
-    }
+  private _orders?: Orders;
+  get orders(): Orders {
+    return (this._orders ??= new Orders(this.options$));
+  }
 
-    private _customers?: Customers;
-    get customers(): Customers {
-        return (this._customers ??= new Customers(this.options$));
-    }
+  private _customers?: Customers;
+  get customers(): Customers {
+    return (this._customers ??= new Customers(this.options$));
+  }
 
-    private _fulfillments?: Fulfillments;
-    get fulfillments(): Fulfillments {
-        return (this._fulfillments ??= new Fulfillments(this.options$));
-    }
+  private _fulfillments?: Fulfillments;
+  get fulfillments(): Fulfillments {
+    return (this._fulfillments ??= new Fulfillments(this.options$));
+  }
 }

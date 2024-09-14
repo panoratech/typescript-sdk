@@ -9,18 +9,22 @@ import { unwrapAsync } from "../types/fp.js";
 import { Retryid } from "./retryid.js";
 
 export class Passthrough extends ClientSDK {
-    private _retryid?: Retryid;
-    get retryid(): Retryid {
-        return (this._retryid ??= new Retryid(this.options$));
-    }
+  private _retryid?: Retryid;
+  get retryid(): Retryid {
+    return (this._retryid ??= new Retryid(this.options$));
+  }
 
-    /**
-     * Make a passthrough request
-     */
-    async request(
-        request: operations.RequestRequest,
-        options?: RequestOptions
-    ): Promise<operations.RequestResponse> {
-        return unwrapAsync(passthroughRequest(this, request, options));
-    }
+  /**
+   * Make a passthrough request
+   */
+  async request(
+    request: operations.RequestRequest,
+    options?: RequestOptions,
+  ): Promise<operations.RequestResponse> {
+    return unwrapAsync(passthroughRequest(
+      this,
+      request,
+      options,
+    ));
+  }
 }

@@ -12,39 +12,51 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class PanoraMarketingautomationContacts extends ClientSDK {
-    /**
-     * List  Contacts
-     */
-    async list(
-        request: operations.ListMarketingAutomationContactsRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListMarketingAutomationContactsResponse>> {
-        return unwrapResultIterator(marketingautomationContactsList(this, request, options));
-    }
+  /**
+   * List  Contacts
+   */
+  async list(
+    request: operations.ListMarketingAutomationContactsRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListMarketingAutomationContactsResponse>> {
+    return unwrapResultIterator(marketingautomationContactsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Create Contact
-     *
-     * @remarks
-     * Create a contact in any supported Marketingautomation software
-     */
-    async create(
-        request: operations.CreateMarketingAutomationContactRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedMarketingautomationContactOutput> {
-        return unwrapAsync(marketingautomationContactsCreate(this, request, options));
-    }
+  /**
+   * Create Contact
+   *
+   * @remarks
+   * Create a contact in any supported Marketingautomation software
+   */
+  async create(
+    request: operations.CreateMarketingAutomationContactRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedMarketingautomationContactOutput> {
+    return unwrapAsync(marketingautomationContactsCreate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Contacts
-     *
-     * @remarks
-     * Retrieve Contacts from any connected Marketingautomation software
-     */
-    async retrieve(
-        request: operations.RetrieveMarketingAutomationContactRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedMarketingautomationContactOutput> {
-        return unwrapAsync(marketingautomationContactsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Contacts
+   *
+   * @remarks
+   * Retrieve Contacts from any connected Marketingautomation software
+   */
+  async retrieve(
+    request: operations.RetrieveMarketingAutomationContactRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedMarketingautomationContactOutput> {
+    return unwrapAsync(marketingautomationContactsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

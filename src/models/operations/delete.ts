@@ -5,30 +5,33 @@
 import * as z from "zod";
 
 export type DeleteRequest = {
-    /**
-     * id of the webhook to delete.
-     */
-    id: string;
+  /**
+   * id of the webhook to delete.
+   */
+  id: string;
 };
 
 /** @internal */
-export const DeleteRequest$inboundSchema: z.ZodType<DeleteRequest, z.ZodTypeDef, unknown> =
-    z.object({
-        id: z.string(),
-    });
+export const DeleteRequest$inboundSchema: z.ZodType<
+  DeleteRequest,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+});
 
 /** @internal */
 export type DeleteRequest$Outbound = {
-    id: string;
+  id: string;
 };
 
 /** @internal */
 export const DeleteRequest$outboundSchema: z.ZodType<
-    DeleteRequest$Outbound,
-    z.ZodTypeDef,
-    DeleteRequest
+  DeleteRequest$Outbound,
+  z.ZodTypeDef,
+  DeleteRequest
 > = z.object({
-    id: z.string(),
+  id: z.string(),
 });
 
 /**
@@ -36,10 +39,10 @@ export const DeleteRequest$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace DeleteRequest$ {
-    /** @deprecated use `DeleteRequest$inboundSchema` instead. */
-    export const inboundSchema = DeleteRequest$inboundSchema;
-    /** @deprecated use `DeleteRequest$outboundSchema` instead. */
-    export const outboundSchema = DeleteRequest$outboundSchema;
-    /** @deprecated use `DeleteRequest$Outbound` instead. */
-    export type Outbound = DeleteRequest$Outbound;
+  /** @deprecated use `DeleteRequest$inboundSchema` instead. */
+  export const inboundSchema = DeleteRequest$inboundSchema;
+  /** @deprecated use `DeleteRequest$outboundSchema` instead. */
+  export const outboundSchema = DeleteRequest$outboundSchema;
+  /** @deprecated use `DeleteRequest$Outbound` instead. */
+  export type Outbound = DeleteRequest$Outbound;
 }

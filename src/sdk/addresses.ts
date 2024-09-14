@@ -11,26 +11,34 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Addresses extends ClientSDK {
-    /**
-     * List  Addresss
-     */
-    async list(
-        request: operations.ListAccountingAddressRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListAccountingAddressResponse>> {
-        return unwrapResultIterator(accountingAddressesList(this, request, options));
-    }
+  /**
+   * List  Addresss
+   */
+  async list(
+    request: operations.ListAccountingAddressRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListAccountingAddressResponse>> {
+    return unwrapResultIterator(accountingAddressesList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Addresses
-     *
-     * @remarks
-     * Retrieve Addresses from any connected Accounting software
-     */
-    async retrieve(
-        request: operations.RetrieveAccountingAddressRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedAccountingAddressOutput> {
-        return unwrapAsync(accountingAddressesRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Addresses
+   *
+   * @remarks
+   * Retrieve Addresses from any connected Accounting software
+   */
+  async retrieve(
+    request: operations.RetrieveAccountingAddressRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedAccountingAddressOutput> {
+    return unwrapAsync(accountingAddressesRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

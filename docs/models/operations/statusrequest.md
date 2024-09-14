@@ -6,7 +6,7 @@
 import { StatusRequest, Vertical } from "@panora/sdk/models/operations";
 
 let value: StatusRequest = {
-    vertical: Vertical.Ticketing,
+  vertical: Vertical.Ticketing,
 };
 ```
 

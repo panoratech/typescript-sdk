@@ -6,10 +6,10 @@
 import { ResyncStatusDto, Status, Vertical } from "@panora/sdk/models/components";
 
 let value: ResyncStatusDto = {
-    timestamp: new Date(""),
-    vertical: Vertical.Ticketing,
-    provider: "gitlab",
-    status: Status.Success,
+  timestamp: new Date(""),
+  vertical: Vertical.Ticketing,
+  provider: "gitlab",
+  status: Status.Success,
 };
 ```
 

@@ -12,39 +12,51 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Employees extends ClientSDK {
-    /**
-     * List Employees
-     */
-    async list(
-        request: operations.ListHrisEmployeesRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListHrisEmployeesResponse>> {
-        return unwrapResultIterator(hrisEmployeesList(this, request, options));
-    }
+  /**
+   * List Employees
+   */
+  async list(
+    request: operations.ListHrisEmployeesRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListHrisEmployeesResponse>> {
+    return unwrapResultIterator(hrisEmployeesList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Create Employees
-     *
-     * @remarks
-     * Create Employees in any supported Hris software
-     */
-    async create(
-        request: operations.CreateHrisEmployeeRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedHrisEmployeeOutput> {
-        return unwrapAsync(hrisEmployeesCreate(this, request, options));
-    }
+  /**
+   * Create Employees
+   *
+   * @remarks
+   * Create Employees in any supported Hris software
+   */
+  async create(
+    request: operations.CreateHrisEmployeeRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedHrisEmployeeOutput> {
+    return unwrapAsync(hrisEmployeesCreate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Employee
-     *
-     * @remarks
-     * Retrieve an Employee from any connected Hris software
-     */
-    async retrieve(
-        request: operations.RetrieveHrisEmployeeRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedHrisEmployeeOutput> {
-        return unwrapAsync(hrisEmployeesRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Employee
+   *
+   * @remarks
+   * Retrieve an Employee from any connected Hris software
+   */
+  async retrieve(
+    request: operations.RetrieveHrisEmployeeRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedHrisEmployeeOutput> {
+    return unwrapAsync(hrisEmployeesRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

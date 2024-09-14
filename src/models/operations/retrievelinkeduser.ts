@@ -5,30 +5,30 @@
 import * as z from "zod";
 
 export type RetrieveLinkedUserRequest = {
-    id: string;
+  id: string;
 };
 
 /** @internal */
 export const RetrieveLinkedUserRequest$inboundSchema: z.ZodType<
-    RetrieveLinkedUserRequest,
-    z.ZodTypeDef,
-    unknown
+  RetrieveLinkedUserRequest,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    id: z.string(),
+  id: z.string(),
 });
 
 /** @internal */
 export type RetrieveLinkedUserRequest$Outbound = {
-    id: string;
+  id: string;
 };
 
 /** @internal */
 export const RetrieveLinkedUserRequest$outboundSchema: z.ZodType<
-    RetrieveLinkedUserRequest$Outbound,
-    z.ZodTypeDef,
-    RetrieveLinkedUserRequest
+  RetrieveLinkedUserRequest$Outbound,
+  z.ZodTypeDef,
+  RetrieveLinkedUserRequest
 > = z.object({
-    id: z.string(),
+  id: z.string(),
 });
 
 /**
@@ -36,10 +36,10 @@ export const RetrieveLinkedUserRequest$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace RetrieveLinkedUserRequest$ {
-    /** @deprecated use `RetrieveLinkedUserRequest$inboundSchema` instead. */
-    export const inboundSchema = RetrieveLinkedUserRequest$inboundSchema;
-    /** @deprecated use `RetrieveLinkedUserRequest$outboundSchema` instead. */
-    export const outboundSchema = RetrieveLinkedUserRequest$outboundSchema;
-    /** @deprecated use `RetrieveLinkedUserRequest$Outbound` instead. */
-    export type Outbound = RetrieveLinkedUserRequest$Outbound;
+  /** @deprecated use `RetrieveLinkedUserRequest$inboundSchema` instead. */
+  export const inboundSchema = RetrieveLinkedUserRequest$inboundSchema;
+  /** @deprecated use `RetrieveLinkedUserRequest$outboundSchema` instead. */
+  export const outboundSchema = RetrieveLinkedUserRequest$outboundSchema;
+  /** @deprecated use `RetrieveLinkedUserRequest$Outbound` instead. */
+  export type Outbound = RetrieveLinkedUserRequest$Outbound;
 }

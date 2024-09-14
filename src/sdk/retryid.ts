@@ -8,13 +8,17 @@ import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Retryid extends ClientSDK {
-    /**
-     * Retrieve response of a failed passthrough request due to rate limits
-     */
-    async getRetriedRequestResponse(
-        request: operations.GetRetriedRequestResponseRequest,
-        options?: RequestOptions
-    ): Promise<void> {
-        return unwrapAsync(passthroughRetryidGetRetriedRequestResponse(this, request, options));
-    }
+  /**
+   * Retrieve response of a failed passthrough request due to rate limits
+   */
+  async getRetriedRequestResponse(
+    request: operations.GetRetriedRequestResponseRequest,
+    options?: RequestOptions,
+  ): Promise<void> {
+    return unwrapAsync(passthroughRetryidGetRetriedRequestResponse(
+      this,
+      request,
+      options,
+    ));
+  }
 }

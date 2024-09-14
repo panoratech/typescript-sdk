@@ -11,26 +11,34 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Employerbenefits extends ClientSDK {
-    /**
-     * List Employer Benefits
-     */
-    async list(
-        request: operations.ListHrisEmployerBenefitsRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListHrisEmployerBenefitsResponse>> {
-        return unwrapResultIterator(hrisEmployerbenefitsList(this, request, options));
-    }
+  /**
+   * List Employer Benefits
+   */
+  async list(
+    request: operations.ListHrisEmployerBenefitsRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListHrisEmployerBenefitsResponse>> {
+    return unwrapResultIterator(hrisEmployerbenefitsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Employer Benefit
-     *
-     * @remarks
-     * Retrieve an Employer Benefit from any connected Hris software
-     */
-    async retrieve(
-        request: operations.RetrieveHrisEmployerBenefitRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedHrisEmployerbenefitOutput> {
-        return unwrapAsync(hrisEmployerbenefitsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Employer Benefit
+   *
+   * @remarks
+   * Retrieve an Employer Benefit from any connected Hris software
+   */
+  async retrieve(
+    request: operations.RetrieveHrisEmployerBenefitRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedHrisEmployerbenefitOutput> {
+    return unwrapAsync(hrisEmployerbenefitsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

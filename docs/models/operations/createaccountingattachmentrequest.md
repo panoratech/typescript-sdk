@@ -6,14 +6,14 @@
 import { CreateAccountingAttachmentRequest } from "@panora/sdk/models/operations";
 
 let value: CreateAccountingAttachmentRequest = {
-    xConnectionToken: "<value>",
-    remoteData: false,
-    unifiedAccountingAttachmentInput: {
-        fileName: "invoice.pdf",
-        fileUrl: "https://example.com/files/invoice.pdf",
-        accountId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-        fieldMappings: {},
-    },
+  xConnectionToken: "<value>",
+  remoteData: false,
+  unifiedAccountingAttachmentInput: {
+    fileName: "invoice.pdf",
+    fileUrl: "https://example.com/files/invoice.pdf",
+    accountId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    fieldMappings: {},
+  },
 };
 ```
 

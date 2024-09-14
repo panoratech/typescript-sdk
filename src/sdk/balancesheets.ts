@@ -11,26 +11,34 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Balancesheets extends ClientSDK {
-    /**
-     * List  BalanceSheets
-     */
-    async list(
-        request: operations.ListAccountingBalanceSheetsRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListAccountingBalanceSheetsResponse>> {
-        return unwrapResultIterator(accountingBalancesheetsList(this, request, options));
-    }
+  /**
+   * List  BalanceSheets
+   */
+  async list(
+    request: operations.ListAccountingBalanceSheetsRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListAccountingBalanceSheetsResponse>> {
+    return unwrapResultIterator(accountingBalancesheetsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve BalanceSheets
-     *
-     * @remarks
-     * Retrieve BalanceSheets from any connected Accounting software
-     */
-    async retrieve(
-        request: operations.RetrieveAccountingBalanceSheetRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedAccountingBalancesheetOutput> {
-        return unwrapAsync(accountingBalancesheetsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve BalanceSheets
+   *
+   * @remarks
+   * Retrieve BalanceSheets from any connected Accounting software
+   */
+  async retrieve(
+    request: operations.RetrieveAccountingBalanceSheetRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedAccountingBalancesheetOutput> {
+    return unwrapAsync(accountingBalancesheetsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

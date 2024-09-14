@@ -6,17 +6,17 @@
 import { EventResponse, EventResponseStatus, Method, Type } from "@panora/sdk/models/components";
 
 let value: EventResponse = {
-    idEvent: "123e4567-e89b-12d3-a456-426614174000",
-    idConnection: "123e4567-e89b-12d3-a456-426614174001",
-    idProject: "123e4567-e89b-12d3-a456-426614174002",
-    type: Type.ConnectionCreated,
-    status: EventResponseStatus.Success,
-    direction: "0",
-    method: Method.Post,
-    url: "/crm/companies",
-    provider: "hubspot",
-    timestamp: new Date("2024-10-01T12:00:00Z"),
-    idLinkedUser: "123e4567-e89b-12d3-a456-426614174003",
+  idEvent: "123e4567-e89b-12d3-a456-426614174000",
+  idConnection: "123e4567-e89b-12d3-a456-426614174001",
+  idProject: "123e4567-e89b-12d3-a456-426614174002",
+  type: Type.ConnectionCreated,
+  status: EventResponseStatus.Success,
+  direction: "0",
+  method: Method.Post,
+  url: "/crm/companies",
+  provider: "hubspot",
+  timestamp: new Date("2024-10-01T12:00:00Z"),
+  idLinkedUser: "123e4567-e89b-12d3-a456-426614174003",
 };
 ```
 

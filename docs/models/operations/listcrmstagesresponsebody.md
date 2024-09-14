@@ -6,25 +6,25 @@
 import { ListCrmStagesResponseBody } from "@panora/sdk/models/operations";
 
 let value: ListCrmStagesResponseBody = {
-    prevCursor: "<value>",
-    nextCursor: "<value>",
-    data: [
-        {
-            stageName: "Qualified",
-            fieldMappings: {
-                fav_dish: "broccoli",
-                fav_color: "red",
-            },
-            id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-            remoteId: "id_1",
-            remoteData: {
-                fav_dish: "broccoli",
-                fav_color: "red",
-            },
-            createdAt: {},
-            modifiedAt: {},
-        },
-    ],
+  prevCursor: "<value>",
+  nextCursor: "<value>",
+  data: [
+    {
+      stageName: "Qualified",
+      fieldMappings: {
+        "fav_dish": "broccoli",
+        "fav_color": "red",
+      },
+      id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      remoteId: "id_1",
+      remoteData: {
+        "fav_dish": "broccoli",
+        "fav_color": "red",
+      },
+      createdAt: {},
+      modifiedAt: {},
+    },
+  ],
 };
 ```
 

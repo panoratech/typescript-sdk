@@ -11,26 +11,34 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Scorecards extends ClientSDK {
-    /**
-     * List  ScoreCards
-     */
-    async list(
-        request: operations.ListAtsScorecardRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListAtsScorecardResponse>> {
-        return unwrapResultIterator(atsScorecardsList(this, request, options));
-    }
+  /**
+   * List  ScoreCards
+   */
+  async list(
+    request: operations.ListAtsScorecardRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListAtsScorecardResponse>> {
+    return unwrapResultIterator(atsScorecardsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Score Cards
-     *
-     * @remarks
-     * Retrieve Score Cards from any connected Ats software
-     */
-    async retrieve(
-        request: operations.RetrieveAtsScorecardRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedAtsScorecardOutput> {
-        return unwrapAsync(atsScorecardsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Score Cards
+   *
+   * @remarks
+   * Retrieve Score Cards from any connected Ats software
+   */
+  async retrieve(
+    request: operations.RetrieveAtsScorecardRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedAtsScorecardOutput> {
+    return unwrapAsync(atsScorecardsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

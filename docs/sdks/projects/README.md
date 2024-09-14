@@ -23,7 +23,7 @@ const panora = new Panora({
 
 async function run() {
   const result = await panora.projects.getProjects();
-
+  
   // Handle the result
   console.log(result)
 }
@@ -99,7 +99,7 @@ async function run() {
     idOrganization: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
     idUser: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
   });
-
+  
   // Handle the result
   console.log(result)
 }

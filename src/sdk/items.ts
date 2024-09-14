@@ -11,26 +11,34 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Items extends ClientSDK {
-    /**
-     * List  Items
-     */
-    async list(
-        request: operations.ListAccountingItemRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListAccountingItemResponse>> {
-        return unwrapResultIterator(accountingItemsList(this, request, options));
-    }
+  /**
+   * List  Items
+   */
+  async list(
+    request: operations.ListAccountingItemRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListAccountingItemResponse>> {
+    return unwrapResultIterator(accountingItemsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Items
-     *
-     * @remarks
-     * Retrieve Items from any connected Accounting software
-     */
-    async retrieve(
-        request: operations.RetrieveAccountingItemRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedAccountingItemOutput> {
-        return unwrapAsync(accountingItemsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Items
+   *
+   * @remarks
+   * Retrieve Items from any connected Accounting software
+   */
+  async retrieve(
+    request: operations.RetrieveAccountingItemRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedAccountingItemOutput> {
+    return unwrapAsync(accountingItemsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

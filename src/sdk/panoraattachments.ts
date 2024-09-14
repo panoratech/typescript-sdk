@@ -12,39 +12,51 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class PanoraAttachments extends ClientSDK {
-    /**
-     * List  Attachments
-     */
-    async list(
-        request: operations.ListAccountingAttachmentsRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListAccountingAttachmentsResponse>> {
-        return unwrapResultIterator(accountingAttachmentsList(this, request, options));
-    }
+  /**
+   * List  Attachments
+   */
+  async list(
+    request: operations.ListAccountingAttachmentsRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListAccountingAttachmentsResponse>> {
+    return unwrapResultIterator(accountingAttachmentsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Create Attachments
-     *
-     * @remarks
-     * Create attachments in any supported Accounting software
-     */
-    async create(
-        request: operations.CreateAccountingAttachmentRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedAccountingAttachmentOutput> {
-        return unwrapAsync(accountingAttachmentsCreate(this, request, options));
-    }
+  /**
+   * Create Attachments
+   *
+   * @remarks
+   * Create attachments in any supported Accounting software
+   */
+  async create(
+    request: operations.CreateAccountingAttachmentRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedAccountingAttachmentOutput> {
+    return unwrapAsync(accountingAttachmentsCreate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Attachments
-     *
-     * @remarks
-     * Retrieve attachments from any connected Accounting software
-     */
-    async retrieve(
-        request: operations.RetrieveAccountingAttachmentRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedAccountingAttachmentOutput> {
-        return unwrapAsync(accountingAttachmentsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Attachments
+   *
+   * @remarks
+   * Retrieve attachments from any connected Accounting software
+   */
+  async retrieve(
+    request: operations.RetrieveAccountingAttachmentRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedAccountingAttachmentOutput> {
+    return unwrapAsync(accountingAttachmentsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

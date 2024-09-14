@@ -11,26 +11,34 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Locations extends ClientSDK {
-    /**
-     * List Locations
-     */
-    async list(
-        request: operations.ListHrisLocationsRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListHrisLocationsResponse>> {
-        return unwrapResultIterator(hrisLocationsList(this, request, options));
-    }
+  /**
+   * List Locations
+   */
+  async list(
+    request: operations.ListHrisLocationsRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListHrisLocationsResponse>> {
+    return unwrapResultIterator(hrisLocationsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Location
-     *
-     * @remarks
-     * Retrieve a Location from any connected Hris software
-     */
-    async retrieve(
-        request: operations.RetrieveHrisLocationRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedHrisLocationOutput> {
-        return unwrapAsync(hrisLocationsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Location
+   *
+   * @remarks
+   * Retrieve a Location from any connected Hris software
+   */
+  async retrieve(
+    request: operations.RetrieveHrisLocationRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedHrisLocationOutput> {
+    return unwrapAsync(hrisLocationsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

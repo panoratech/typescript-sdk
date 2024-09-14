@@ -11,26 +11,34 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class PanoraMarketingautomationUsers extends ClientSDK {
-    /**
-     * List  Users
-     */
-    async list(
-        request: operations.ListMarketingAutomationUsersRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListMarketingAutomationUsersResponse>> {
-        return unwrapResultIterator(marketingautomationUsersList(this, request, options));
-    }
+  /**
+   * List  Users
+   */
+  async list(
+    request: operations.ListMarketingAutomationUsersRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListMarketingAutomationUsersResponse>> {
+    return unwrapResultIterator(marketingautomationUsersList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Users
-     *
-     * @remarks
-     * Retrieve Users from any connected Marketingautomation software
-     */
-    async retrieve(
-        request: operations.RetrieveMarketingAutomationUserRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedMarketingautomationUserOutput> {
-        return unwrapAsync(marketingautomationUsersRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Users
+   *
+   * @remarks
+   * Retrieve Users from any connected Marketingautomation software
+   */
+  async retrieve(
+    request: operations.RetrieveMarketingAutomationUserRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedMarketingautomationUserOutput> {
+    return unwrapAsync(marketingautomationUsersRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

@@ -11,26 +11,34 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Creditnotes extends ClientSDK {
-    /**
-     * List  CreditNotes
-     */
-    async list(
-        request: operations.ListAccountingCreditNoteRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListAccountingCreditNoteResponse>> {
-        return unwrapResultIterator(accountingCreditnotesList(this, request, options));
-    }
+  /**
+   * List  CreditNotes
+   */
+  async list(
+    request: operations.ListAccountingCreditNoteRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListAccountingCreditNoteResponse>> {
+    return unwrapResultIterator(accountingCreditnotesList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Credit Notes
-     *
-     * @remarks
-     * Retrieve Credit Notes from any connected Accounting software
-     */
-    async retrieve(
-        request: operations.RetrieveAccountingCreditNoteRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedAccountingCreditnoteOutput> {
-        return unwrapAsync(accountingCreditnotesRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Credit Notes
+   *
+   * @remarks
+   * Retrieve Credit Notes from any connected Accounting software
+   */
+  async retrieve(
+    request: operations.RetrieveAccountingCreditNoteRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedAccountingCreditnoteOutput> {
+    return unwrapAsync(accountingCreditnotesRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

@@ -26,7 +26,7 @@ const panora = new Panora({
 
 async function run() {
   const result = await panora.webhooks.list();
-
+  
   // Handle the result
   console.log(result)
 }
@@ -104,7 +104,7 @@ async function run() {
       "connection.created",
     ],
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -185,7 +185,7 @@ async function run() {
   const result = await panora.webhooks.delete({
     id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -262,7 +262,7 @@ async function run() {
   const result = await panora.webhooks.updateStatus({
     id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -338,12 +338,12 @@ const panora = new Panora({
 async function run() {
   const result = await panora.webhooks.verifyEvent({
     payload: {
-      "key": "<value>",
+  
     },
     signature: "<value>",
     secret: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -368,7 +368,7 @@ const panora = new PanoraCore({
 async function run() {
   const res = await webhooksVerifyEvent(panora, {
     payload: {
-      "key": "<value>",
+  
     },
     signature: "<value>",
     secret: "<value>",

@@ -12,39 +12,51 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Engagements extends ClientSDK {
-    /**
-     * List Engagements
-     */
-    async list(
-        request: operations.ListCrmEngagementsRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListCrmEngagementsResponse>> {
-        return unwrapResultIterator(crmEngagementsList(this, request, options));
-    }
+  /**
+   * List Engagements
+   */
+  async list(
+    request: operations.ListCrmEngagementsRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListCrmEngagementsResponse>> {
+    return unwrapResultIterator(crmEngagementsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Create Engagements
-     *
-     * @remarks
-     * Create Engagements in any supported Crm software
-     */
-    async create(
-        request: operations.CreateCrmEngagementRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedCrmEngagementOutput> {
-        return unwrapAsync(crmEngagementsCreate(this, request, options));
-    }
+  /**
+   * Create Engagements
+   *
+   * @remarks
+   * Create Engagements in any supported Crm software
+   */
+  async create(
+    request: operations.CreateCrmEngagementRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedCrmEngagementOutput> {
+    return unwrapAsync(crmEngagementsCreate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Engagements
-     *
-     * @remarks
-     * Retrieve Engagements from any connected Crm software
-     */
-    async retrieve(
-        request: operations.RetrieveCrmEngagementRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedCrmEngagementOutput> {
-        return unwrapAsync(crmEngagementsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Engagements
+   *
+   * @remarks
+   * Retrieve Engagements from any connected Crm software
+   */
+  async retrieve(
+    request: operations.RetrieveCrmEngagementRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedCrmEngagementOutput> {
+    return unwrapAsync(crmEngagementsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

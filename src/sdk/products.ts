@@ -12,39 +12,51 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Products extends ClientSDK {
-    /**
-     * List Products
-     */
-    async list(
-        request: operations.ListEcommerceProductsRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListEcommerceProductsResponse>> {
-        return unwrapResultIterator(ecommerceProductsList(this, request, options));
-    }
+  /**
+   * List Products
+   */
+  async list(
+    request: operations.ListEcommerceProductsRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListEcommerceProductsResponse>> {
+    return unwrapResultIterator(ecommerceProductsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Create Products
-     *
-     * @remarks
-     * Create Products in any supported Ecommerce software
-     */
-    async create(
-        request: operations.CreateEcommerceProductRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedEcommerceProductOutput> {
-        return unwrapAsync(ecommerceProductsCreate(this, request, options));
-    }
+  /**
+   * Create Products
+   *
+   * @remarks
+   * Create Products in any supported Ecommerce software
+   */
+  async create(
+    request: operations.CreateEcommerceProductRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedEcommerceProductOutput> {
+    return unwrapAsync(ecommerceProductsCreate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Products
-     *
-     * @remarks
-     * Retrieve products from any connected Ats software
-     */
-    async retrieve(
-        request: operations.RetrieveEcommerceProductRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedEcommerceProductOutput> {
-        return unwrapAsync(ecommerceProductsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Products
+   *
+   * @remarks
+   * Retrieve products from any connected Ats software
+   */
+  async retrieve(
+    request: operations.RetrieveEcommerceProductRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedEcommerceProductOutput> {
+    return unwrapAsync(ecommerceProductsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

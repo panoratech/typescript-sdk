@@ -6,8 +6,8 @@
 import { EarningItem } from "@panora/sdk/models/components";
 
 let value: EarningItem = {
-    amount: 1000,
-    type: "Salary",
+  amount: 1000,
+  type: "Salary",
 };
 ```
 

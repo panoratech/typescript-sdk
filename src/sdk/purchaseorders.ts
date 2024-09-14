@@ -12,39 +12,51 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Purchaseorders extends ClientSDK {
-    /**
-     * List  PurchaseOrders
-     */
-    async list(
-        request: operations.ListAccountingPurchaseOrderRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListAccountingPurchaseOrderResponse>> {
-        return unwrapResultIterator(accountingPurchaseordersList(this, request, options));
-    }
+  /**
+   * List  PurchaseOrders
+   */
+  async list(
+    request: operations.ListAccountingPurchaseOrderRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListAccountingPurchaseOrderResponse>> {
+    return unwrapResultIterator(accountingPurchaseordersList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Create Purchase Orders
-     *
-     * @remarks
-     * Create Purchase Orders in any supported Accounting software
-     */
-    async create(
-        request: operations.CreateAccountingPurchaseOrderRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedAccountingPurchaseorderOutput> {
-        return unwrapAsync(accountingPurchaseordersCreate(this, request, options));
-    }
+  /**
+   * Create Purchase Orders
+   *
+   * @remarks
+   * Create Purchase Orders in any supported Accounting software
+   */
+  async create(
+    request: operations.CreateAccountingPurchaseOrderRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedAccountingPurchaseorderOutput> {
+    return unwrapAsync(accountingPurchaseordersCreate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Purchase Orders
-     *
-     * @remarks
-     * Retrieve Purchase Orders from any connected Accounting software
-     */
-    async retrieve(
-        request: operations.RetrieveAccountingPurchaseOrderRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedAccountingPurchaseorderOutput> {
-        return unwrapAsync(accountingPurchaseordersRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Purchase Orders
+   *
+   * @remarks
+   * Retrieve Purchase Orders from any connected Accounting software
+   */
+  async retrieve(
+    request: operations.RetrieveAccountingPurchaseOrderRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedAccountingPurchaseorderOutput> {
+    return unwrapAsync(accountingPurchaseordersRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

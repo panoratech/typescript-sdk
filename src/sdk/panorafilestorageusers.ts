@@ -11,26 +11,34 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class PanoraFilestorageUsers extends ClientSDK {
-    /**
-     * List Users
-     */
-    async list(
-        request: operations.ListFilestorageUsersRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListFilestorageUsersResponse>> {
-        return unwrapResultIterator(filestorageUsersList(this, request, options));
-    }
+  /**
+   * List Users
+   */
+  async list(
+    request: operations.ListFilestorageUsersRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListFilestorageUsersResponse>> {
+    return unwrapResultIterator(filestorageUsersList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Users
-     *
-     * @remarks
-     * Retrieve Users from any connected Filestorage software
-     */
-    async retrieve(
-        request: operations.RetrieveFilestorageUserRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedFilestorageUserOutput> {
-        return unwrapAsync(filestorageUsersRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Users
+   *
+   * @remarks
+   * Retrieve Users from any connected Filestorage software
+   */
+  async retrieve(
+    request: operations.RetrieveFilestorageUserRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedFilestorageUserOutput> {
+    return unwrapAsync(filestorageUsersRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

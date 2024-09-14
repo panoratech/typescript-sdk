@@ -11,26 +11,34 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Phonenumbers extends ClientSDK {
-    /**
-     * List  PhoneNumbers
-     */
-    async list(
-        request: operations.ListAccountingPhonenumberRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListAccountingPhonenumberResponse>> {
-        return unwrapResultIterator(accountingPhonenumbersList(this, request, options));
-    }
+  /**
+   * List  PhoneNumbers
+   */
+  async list(
+    request: operations.ListAccountingPhonenumberRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListAccountingPhonenumberResponse>> {
+    return unwrapResultIterator(accountingPhonenumbersList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Phone Numbers
-     *
-     * @remarks
-     * Retrieve Phone Numbers from any connected Accounting software
-     */
-    async retrieve(
-        request: operations.RetrieveAccountingPhonenumberRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedAccountingPhonenumberOutput> {
-        return unwrapAsync(accountingPhonenumbersRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Phone Numbers
+   *
+   * @remarks
+   * Retrieve Phone Numbers from any connected Accounting software
+   */
+  async retrieve(
+    request: operations.RetrieveAccountingPhonenumberRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedAccountingPhonenumberOutput> {
+    return unwrapAsync(accountingPhonenumbersRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

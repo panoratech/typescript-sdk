@@ -12,39 +12,51 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class PanoraAccountingContacts extends ClientSDK {
-    /**
-     * List  Contacts
-     */
-    async list(
-        request: operations.ListAccountingContactsRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListAccountingContactsResponse>> {
-        return unwrapResultIterator(accountingContactsList(this, request, options));
-    }
+  /**
+   * List  Contacts
+   */
+  async list(
+    request: operations.ListAccountingContactsRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListAccountingContactsResponse>> {
+    return unwrapResultIterator(accountingContactsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Create Contacts
-     *
-     * @remarks
-     * Create contacts in any supported Accounting software
-     */
-    async create(
-        request: operations.CreateAccountingContactRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedAccountingContactOutput> {
-        return unwrapAsync(accountingContactsCreate(this, request, options));
-    }
+  /**
+   * Create Contacts
+   *
+   * @remarks
+   * Create contacts in any supported Accounting software
+   */
+  async create(
+    request: operations.CreateAccountingContactRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedAccountingContactOutput> {
+    return unwrapAsync(accountingContactsCreate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Contacts
-     *
-     * @remarks
-     * Retrieve Contacts from any connected Accounting software
-     */
-    async retrieve(
-        request: operations.RetrieveAccountingContactRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedAccountingContactOutput> {
-        return unwrapAsync(accountingContactsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Contacts
+   *
+   * @remarks
+   * Retrieve Contacts from any connected Accounting software
+   */
+  async retrieve(
+    request: operations.RetrieveAccountingContactRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedAccountingContactOutput> {
+    return unwrapAsync(accountingContactsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

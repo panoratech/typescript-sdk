@@ -11,26 +11,34 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Payrollruns extends ClientSDK {
-    /**
-     * List Payroll Runs
-     */
-    async list(
-        request: operations.ListHrisPayrollRunsRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListHrisPayrollRunsResponse>> {
-        return unwrapResultIterator(hrisPayrollrunsList(this, request, options));
-    }
+  /**
+   * List Payroll Runs
+   */
+  async list(
+    request: operations.ListHrisPayrollRunsRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListHrisPayrollRunsResponse>> {
+    return unwrapResultIterator(hrisPayrollrunsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Payroll Run
-     *
-     * @remarks
-     * Retrieve a Payroll Run from any connected Hris software
-     */
-    async retrieve(
-        request: operations.RetrieveHrisPayrollRunRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedHrisPayrollrunOutput> {
-        return unwrapAsync(hrisPayrollrunsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Payroll Run
+   *
+   * @remarks
+   * Retrieve a Payroll Run from any connected Hris software
+   */
+  async retrieve(
+    request: operations.RetrieveHrisPayrollRunRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedHrisPayrollrunOutput> {
+    return unwrapAsync(hrisPayrollrunsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

@@ -12,39 +12,51 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Deals extends ClientSDK {
-    /**
-     * List Deals
-     */
-    async list(
-        request: operations.ListCrmDealsRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListCrmDealsResponse>> {
-        return unwrapResultIterator(crmDealsList(this, request, options));
-    }
+  /**
+   * List Deals
+   */
+  async list(
+    request: operations.ListCrmDealsRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListCrmDealsResponse>> {
+    return unwrapResultIterator(crmDealsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Create Deals
-     *
-     * @remarks
-     * Create Deals in any supported Crm software
-     */
-    async create(
-        request: operations.CreateCrmDealRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedCrmDealOutput> {
-        return unwrapAsync(crmDealsCreate(this, request, options));
-    }
+  /**
+   * Create Deals
+   *
+   * @remarks
+   * Create Deals in any supported Crm software
+   */
+  async create(
+    request: operations.CreateCrmDealRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedCrmDealOutput> {
+    return unwrapAsync(crmDealsCreate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Deals
-     *
-     * @remarks
-     * Retrieve Deals from any connected Crm software
-     */
-    async retrieve(
-        request: operations.RetrieveCrmDealRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedCrmDealOutput> {
-        return unwrapAsync(crmDealsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Deals
+   *
+   * @remarks
+   * Retrieve Deals from any connected Crm software
+   */
+  async retrieve(
+    request: operations.RetrieveCrmDealRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedCrmDealOutput> {
+    return unwrapAsync(crmDealsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

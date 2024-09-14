@@ -12,39 +12,51 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Orders extends ClientSDK {
-    /**
-     * List Orders
-     */
-    async list(
-        request: operations.ListEcommerceOrdersRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListEcommerceOrdersResponse>> {
-        return unwrapResultIterator(ecommerceOrdersList(this, request, options));
-    }
+  /**
+   * List Orders
+   */
+  async list(
+    request: operations.ListEcommerceOrdersRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListEcommerceOrdersResponse>> {
+    return unwrapResultIterator(ecommerceOrdersList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Create Orders
-     *
-     * @remarks
-     * Create Orders in any supported Ecommerce software
-     */
-    async create(
-        request: operations.CreateEcommerceOrderRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedEcommerceOrderOutput> {
-        return unwrapAsync(ecommerceOrdersCreate(this, request, options));
-    }
+  /**
+   * Create Orders
+   *
+   * @remarks
+   * Create Orders in any supported Ecommerce software
+   */
+  async create(
+    request: operations.CreateEcommerceOrderRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedEcommerceOrderOutput> {
+    return unwrapAsync(ecommerceOrdersCreate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Orders
-     *
-     * @remarks
-     * Retrieve orders from any connected Ats software
-     */
-    async retrieve(
-        request: operations.RetrieveEcommerceOrderRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedEcommerceOrderOutput> {
-        return unwrapAsync(ecommerceOrdersRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Orders
+   *
+   * @remarks
+   * Retrieve orders from any connected Ats software
+   */
+  async retrieve(
+    request: operations.RetrieveEcommerceOrderRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedEcommerceOrderOutput> {
+    return unwrapAsync(ecommerceOrdersRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

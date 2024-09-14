@@ -11,26 +11,34 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Offers extends ClientSDK {
-    /**
-     * List  Offers
-     */
-    async list(
-        request: operations.ListAtsOfferRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListAtsOfferResponse>> {
-        return unwrapResultIterator(atsOffersList(this, request, options));
-    }
+  /**
+   * List  Offers
+   */
+  async list(
+    request: operations.ListAtsOfferRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListAtsOfferResponse>> {
+    return unwrapResultIterator(atsOffersList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Offers
-     *
-     * @remarks
-     * Retrieve Offers from any connected Ats software
-     */
-    async retrieve(
-        request: operations.RetrieveAtsOfferRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedAtsOfferOutput> {
-        return unwrapAsync(atsOffersRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Offers
+   *
+   * @remarks
+   * Retrieve Offers from any connected Ats software
+   */
+  async retrieve(
+    request: operations.RetrieveAtsOfferRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedAtsOfferOutput> {
+    return unwrapAsync(atsOffersRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

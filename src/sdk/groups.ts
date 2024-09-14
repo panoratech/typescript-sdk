@@ -11,26 +11,34 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Groups extends ClientSDK {
-    /**
-     * List Groups
-     */
-    async list(
-        request: operations.ListHrisGroupsRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListHrisGroupsResponse>> {
-        return unwrapResultIterator(hrisGroupsList(this, request, options));
-    }
+  /**
+   * List Groups
+   */
+  async list(
+    request: operations.ListHrisGroupsRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListHrisGroupsResponse>> {
+    return unwrapResultIterator(hrisGroupsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Group
-     *
-     * @remarks
-     * Retrieve a Group from any connected Hris software
-     */
-    async retrieve(
-        request: operations.RetrieveHrisGroupRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedHrisGroupOutput> {
-        return unwrapAsync(hrisGroupsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Group
+   *
+   * @remarks
+   * Retrieve a Group from any connected Hris software
+   */
+  async retrieve(
+    request: operations.RetrieveHrisGroupRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedHrisGroupOutput> {
+    return unwrapAsync(hrisGroupsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

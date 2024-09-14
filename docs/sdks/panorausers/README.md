@@ -28,9 +28,10 @@ async function run() {
     limit: 10,
     cursor: "1b8b05bb-5273-4012-b520-8657b0b90874",
   });
-
+  
   for await (const page of result) {
-    // handle page
+    // Handle the page
+    console.log(page);
   }
 }
 
@@ -66,7 +67,8 @@ async function run() {
   const { value: result } = res;
 
   for await (const page of result) {
-    // handle page
+    // Handle the page
+    console.log(page);
   }
 }
 
@@ -112,7 +114,7 @@ async function run() {
     id: "b008e199-eda9-4629-bd41-a01b6195864a",
     remoteData: true,
   });
-
+  
   // Handle the result
   console.log(result)
 }

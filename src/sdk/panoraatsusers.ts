@@ -11,26 +11,34 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class PanoraAtsUsers extends ClientSDK {
-    /**
-     * List  Users
-     */
-    async list(
-        request: operations.ListAtsUsersRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListAtsUsersResponse>> {
-        return unwrapResultIterator(atsUsersList(this, request, options));
-    }
+  /**
+   * List  Users
+   */
+  async list(
+    request: operations.ListAtsUsersRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListAtsUsersResponse>> {
+    return unwrapResultIterator(atsUsersList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Users
-     *
-     * @remarks
-     * Retrieve Users from any connected Ats software
-     */
-    async retrieve(
-        request: operations.RetrieveAtsUserRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedAtsUserOutput> {
-        return unwrapAsync(atsUsersRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Users
+   *
+   * @remarks
+   * Retrieve Users from any connected Ats software
+   */
+  async retrieve(
+    request: operations.RetrieveAtsUserRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedAtsUserOutput> {
+    return unwrapAsync(atsUsersRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

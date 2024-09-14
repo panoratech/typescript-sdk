@@ -6,17 +6,17 @@
 import { UnifiedAccountingAccountInput } from "@panora/sdk/models/components";
 
 let value: UnifiedAccountingAccountInput = {
-    name: "Cash",
-    description: "Main cash account for daily operations",
-    classification: "Asset",
-    type: "Current Asset",
-    status: "Active",
-    currentBalance: 10000,
-    currency: "USD",
-    accountNumber: "1000",
-    parentAccount: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-    companyInfoId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-    fieldMappings: {},
+  name: "Cash",
+  description: "Main cash account for daily operations",
+  classification: "Asset",
+  type: "Current Asset",
+  status: "Active",
+  currentBalance: 10000,
+  currency: "USD",
+  accountNumber: "1000",
+  parentAccount: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+  companyInfoId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+  fieldMappings: {},
 };
 ```
 

@@ -6,18 +6,18 @@
 import { UnifiedHrisEmployerbenefitOutput } from "@panora/sdk/models/components";
 
 let value: UnifiedHrisEmployerbenefitOutput = {
-    benefitPlanType: "Health Insurance",
-    name: "Company Health Plan",
-    description: "Comprehensive health insurance coverage for employees",
-    deductionCode: "HEALTH-001",
-    fieldMappings: {},
-    id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-    remoteId: "benefit_1234",
-    remoteData: {},
-    remoteCreatedAt: new Date("2024-10-01T12:00:00Z"),
-    createdAt: new Date("2024-10-01T12:00:00Z"),
-    modifiedAt: new Date("2024-10-01T12:00:00Z"),
-    remoteWasDeleted: false,
+  benefitPlanType: "Health Insurance",
+  name: "Company Health Plan",
+  description: "Comprehensive health insurance coverage for employees",
+  deductionCode: "HEALTH-001",
+  fieldMappings: {},
+  id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+  remoteId: "benefit_1234",
+  remoteData: {},
+  remoteCreatedAt: new Date("2024-10-01T12:00:00Z"),
+  createdAt: new Date("2024-10-01T12:00:00Z"),
+  modifiedAt: new Date("2024-10-01T12:00:00Z"),
+  remoteWasDeleted: false,
 };
 ```
 

@@ -6,10 +6,10 @@
 import { LinkedUserResponse } from "@panora/sdk/models/components";
 
 let value: LinkedUserResponse = {
-    idLinkedUser: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-    linkedUserOriginId: "id_1",
-    alias: "acme",
-    idProject: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+  idLinkedUser: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+  linkedUserOriginId: "id_1",
+  alias: "acme",
+  idProject: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
 };
 ```
 

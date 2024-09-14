@@ -12,39 +12,51 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Timesheetentries extends ClientSDK {
-    /**
-     * List Timesheetentries
-     */
-    async list(
-        request: operations.ListHrisTimesheetentriesRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListHrisTimesheetentriesResponse>> {
-        return unwrapResultIterator(hrisTimesheetentriesList(this, request, options));
-    }
+  /**
+   * List Timesheetentries
+   */
+  async list(
+    request: operations.ListHrisTimesheetentriesRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListHrisTimesheetentriesResponse>> {
+    return unwrapResultIterator(hrisTimesheetentriesList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Create Timesheetentrys
-     *
-     * @remarks
-     * Create Timesheetentrys in any supported Hris software
-     */
-    async create(
-        request: operations.CreateHrisTimesheetentryRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedHrisTimesheetEntryOutput> {
-        return unwrapAsync(hrisTimesheetentriesCreate(this, request, options));
-    }
+  /**
+   * Create Timesheetentrys
+   *
+   * @remarks
+   * Create Timesheetentrys in any supported Hris software
+   */
+  async create(
+    request: operations.CreateHrisTimesheetentryRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedHrisTimesheetEntryOutput> {
+    return unwrapAsync(hrisTimesheetentriesCreate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Timesheetentry
-     *
-     * @remarks
-     * Retrieve an Timesheetentry from any connected Hris software
-     */
-    async retrieve(
-        request: operations.RetrieveHrisTimesheetentryRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedHrisTimesheetEntryOutput> {
-        return unwrapAsync(hrisTimesheetentriesRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Timesheetentry
+   *
+   * @remarks
+   * Retrieve an Timesheetentry from any connected Hris software
+   */
+  async retrieve(
+    request: operations.RetrieveHrisTimesheetentryRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedHrisTimesheetEntryOutput> {
+    return unwrapAsync(hrisTimesheetentriesRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

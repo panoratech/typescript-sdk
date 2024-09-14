@@ -11,26 +11,34 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Vendorcredits extends ClientSDK {
-    /**
-     * List  VendorCredits
-     */
-    async list(
-        request: operations.ListAccountingVendorCreditRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListAccountingVendorCreditResponse>> {
-        return unwrapResultIterator(accountingVendorcreditsList(this, request, options));
-    }
+  /**
+   * List  VendorCredits
+   */
+  async list(
+    request: operations.ListAccountingVendorCreditRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListAccountingVendorCreditResponse>> {
+    return unwrapResultIterator(accountingVendorcreditsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Vendor Credits
-     *
-     * @remarks
-     * Retrieve Vendor Credits from any connected Accounting software
-     */
-    async retrieve(
-        request: operations.RetrieveAccountingVendorCreditRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedAccountingVendorcreditOutput> {
-        return unwrapAsync(accountingVendorcreditsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Vendor Credits
+   *
+   * @remarks
+   * Retrieve Vendor Credits from any connected Accounting software
+   */
+  async retrieve(
+    request: operations.RetrieveAccountingVendorCreditRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedAccountingVendorcreditOutput> {
+    return unwrapAsync(accountingVendorcreditsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }
