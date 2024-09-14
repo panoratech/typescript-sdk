@@ -6,8 +6,8 @@
 import { RetrieveTicketingAccountRequest } from "@panora/sdk/models/operations";
 
 let value: RetrieveTicketingAccountRequest = {
-    xConnectionToken: "<value>",
-    id: "<id>",
+  xConnectionToken: "<value>",
+  id: "<id>",
 };
 ```
 

@@ -11,26 +11,34 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Cashflowstatements extends ClientSDK {
-    /**
-     * List  CashflowStatements
-     */
-    async list(
-        request: operations.ListAccountingCashflowStatementRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListAccountingCashflowStatementResponse>> {
-        return unwrapResultIterator(accountingCashflowstatementsList(this, request, options));
-    }
+  /**
+   * List  CashflowStatements
+   */
+  async list(
+    request: operations.ListAccountingCashflowStatementRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListAccountingCashflowStatementResponse>> {
+    return unwrapResultIterator(accountingCashflowstatementsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Cashflow Statements
-     *
-     * @remarks
-     * Retrieve Cashflow Statements from any connected Accounting software
-     */
-    async retrieve(
-        request: operations.RetrieveAccountingCashflowStatementRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedAccountingCashflowstatementOutput> {
-        return unwrapAsync(accountingCashflowstatementsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Cashflow Statements
+   *
+   * @remarks
+   * Retrieve Cashflow Statements from any connected Accounting software
+   */
+  async retrieve(
+    request: operations.RetrieveAccountingCashflowStatementRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedAccountingCashflowstatementOutput> {
+    return unwrapAsync(accountingCashflowstatementsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

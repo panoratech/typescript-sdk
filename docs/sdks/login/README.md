@@ -25,8 +25,6 @@ async function run() {
     email: "Oda.Treutel97@hotmail.com",
     passwordHash: "<value>",
   });
-
-  
 }
 
 run();
@@ -48,7 +46,7 @@ const panora = new PanoraCore({
 
 async function run() {
   const res = await authLoginSignIn(panora, {
-    email: "Kennedi_Olson40@hotmail.com",
+    email: "Oda.Treutel97@hotmail.com",
     passwordHash: "<value>",
   });
 

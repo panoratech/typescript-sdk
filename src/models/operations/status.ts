@@ -5,55 +5,60 @@
 import * as z from "zod";
 
 export enum Vertical {
-    Ticketing = "ticketing",
-    Marketingautomation = "marketingautomation",
-    Crm = "crm",
-    Filestorage = "filestorage",
-    Ats = "ats",
-    Hris = "hris",
-    Accounting = "accounting",
-    Ecommerce = "ecommerce",
+  Ticketing = "ticketing",
+  Marketingautomation = "marketingautomation",
+  Crm = "crm",
+  Filestorage = "filestorage",
+  Ats = "ats",
+  Hris = "hris",
+  Accounting = "accounting",
+  Ecommerce = "ecommerce",
 }
 
 export type StatusRequest = {
-    vertical: Vertical;
+  vertical: Vertical;
 };
 
 /** @internal */
-export const Vertical$inboundSchema: z.ZodNativeEnum<typeof Vertical> = z.nativeEnum(Vertical);
+export const Vertical$inboundSchema: z.ZodNativeEnum<typeof Vertical> = z
+  .nativeEnum(Vertical);
 
 /** @internal */
-export const Vertical$outboundSchema: z.ZodNativeEnum<typeof Vertical> = Vertical$inboundSchema;
+export const Vertical$outboundSchema: z.ZodNativeEnum<typeof Vertical> =
+  Vertical$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace Vertical$ {
-    /** @deprecated use `Vertical$inboundSchema` instead. */
-    export const inboundSchema = Vertical$inboundSchema;
-    /** @deprecated use `Vertical$outboundSchema` instead. */
-    export const outboundSchema = Vertical$outboundSchema;
+  /** @deprecated use `Vertical$inboundSchema` instead. */
+  export const inboundSchema = Vertical$inboundSchema;
+  /** @deprecated use `Vertical$outboundSchema` instead. */
+  export const outboundSchema = Vertical$outboundSchema;
 }
 
 /** @internal */
-export const StatusRequest$inboundSchema: z.ZodType<StatusRequest, z.ZodTypeDef, unknown> =
-    z.object({
-        vertical: Vertical$inboundSchema,
-    });
+export const StatusRequest$inboundSchema: z.ZodType<
+  StatusRequest,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  vertical: Vertical$inboundSchema,
+});
 
 /** @internal */
 export type StatusRequest$Outbound = {
-    vertical: string;
+  vertical: string;
 };
 
 /** @internal */
 export const StatusRequest$outboundSchema: z.ZodType<
-    StatusRequest$Outbound,
-    z.ZodTypeDef,
-    StatusRequest
+  StatusRequest$Outbound,
+  z.ZodTypeDef,
+  StatusRequest
 > = z.object({
-    vertical: Vertical$outboundSchema,
+  vertical: Vertical$outboundSchema,
 });
 
 /**
@@ -61,10 +66,10 @@ export const StatusRequest$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace StatusRequest$ {
-    /** @deprecated use `StatusRequest$inboundSchema` instead. */
-    export const inboundSchema = StatusRequest$inboundSchema;
-    /** @deprecated use `StatusRequest$outboundSchema` instead. */
-    export const outboundSchema = StatusRequest$outboundSchema;
-    /** @deprecated use `StatusRequest$Outbound` instead. */
-    export type Outbound = StatusRequest$Outbound;
+  /** @deprecated use `StatusRequest$inboundSchema` instead. */
+  export const inboundSchema = StatusRequest$inboundSchema;
+  /** @deprecated use `StatusRequest$outboundSchema` instead. */
+  export const outboundSchema = StatusRequest$outboundSchema;
+  /** @deprecated use `StatusRequest$Outbound` instead. */
+  export type Outbound = StatusRequest$Outbound;
 }

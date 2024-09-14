@@ -12,39 +12,51 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Payments extends ClientSDK {
-    /**
-     * List  Payments
-     */
-    async list(
-        request: operations.ListAccountingPaymentRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListAccountingPaymentResponse>> {
-        return unwrapResultIterator(accountingPaymentsList(this, request, options));
-    }
+  /**
+   * List  Payments
+   */
+  async list(
+    request: operations.ListAccountingPaymentRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListAccountingPaymentResponse>> {
+    return unwrapResultIterator(accountingPaymentsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Create Payments
-     *
-     * @remarks
-     * Create Payments in any supported Accounting software
-     */
-    async create(
-        request: operations.CreateAccountingPaymentRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedAccountingPaymentOutput> {
-        return unwrapAsync(accountingPaymentsCreate(this, request, options));
-    }
+  /**
+   * Create Payments
+   *
+   * @remarks
+   * Create Payments in any supported Accounting software
+   */
+  async create(
+    request: operations.CreateAccountingPaymentRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedAccountingPaymentOutput> {
+    return unwrapAsync(accountingPaymentsCreate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Payments
-     *
-     * @remarks
-     * Retrieve Payments from any connected Accounting software
-     */
-    async retrieve(
-        request: operations.RetrieveAccountingPaymentRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedAccountingPaymentOutput> {
-        return unwrapAsync(accountingPaymentsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Payments
+   *
+   * @remarks
+   * Retrieve Payments from any connected Accounting software
+   */
+  async retrieve(
+    request: operations.RetrieveAccountingPaymentRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedAccountingPaymentOutput> {
+    return unwrapAsync(accountingPaymentsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

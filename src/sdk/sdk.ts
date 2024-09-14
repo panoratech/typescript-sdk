@@ -20,101 +20,119 @@ import { LinkedUsers } from "./linkedusers.js";
 import { Marketingautomation } from "./marketingautomation.js";
 import { Passthrough } from "./passthrough.js";
 import { Projects } from "./projects.js";
+import { Rag } from "./rag.js";
 import { Sync } from "./sync.js";
 import { Ticketing } from "./ticketing.js";
 import { Webhooks } from "./webhooks.js";
 
 export class Panora extends ClientSDK {
-    private _auth?: Auth;
-    get auth(): Auth {
-        return (this._auth ??= new Auth(this.options$));
-    }
+  private _rag?: Rag;
+  get rag(): Rag {
+    return (this._rag ??= new Rag(this.options$));
+  }
 
-    private _connections?: Connections;
-    get connections(): Connections {
-        return (this._connections ??= new Connections(this.options$));
-    }
+  private _filestorage?: Filestorage;
+  get filestorage(): Filestorage {
+    return (this._filestorage ??= new Filestorage(this.options$));
+  }
 
-    private _webhooks?: Webhooks;
-    get webhooks(): Webhooks {
-        return (this._webhooks ??= new Webhooks(this.options$));
-    }
+  private _auth?: Auth;
+  get auth(): Auth {
+    return (this._auth ??= new Auth(this.options$));
+  }
 
-    private _ticketing?: Ticketing;
-    get ticketing(): Ticketing {
-        return (this._ticketing ??= new Ticketing(this.options$));
-    }
+  private _connections?: Connections;
+  get connections(): Connections {
+    return (this._connections ??= new Connections(this.options$));
+  }
 
-    private _sync?: Sync;
-    get sync(): Sync {
-        return (this._sync ??= new Sync(this.options$));
-    }
+  private _webhooks?: Webhooks;
+  get webhooks(): Webhooks {
+    return (this._webhooks ??= new Webhooks(this.options$));
+  }
 
-    private _crm?: Crm;
-    get crm(): Crm {
-        return (this._crm ??= new Crm(this.options$));
-    }
+  private _ticketing?: Ticketing;
+  get ticketing(): Ticketing {
+    return (this._ticketing ??= new Ticketing(this.options$));
+  }
 
-    private _linkedUsers?: LinkedUsers;
-    get linkedUsers(): LinkedUsers {
-        return (this._linkedUsers ??= new LinkedUsers(this.options$));
-    }
+  private _sync?: Sync;
+  get sync(): Sync {
+    return (this._sync ??= new Sync(this.options$));
+  }
 
-    private _projects?: Projects;
-    get projects(): Projects {
-        return (this._projects ??= new Projects(this.options$));
-    }
+  private _crm?: Crm;
+  get crm(): Crm {
+    return (this._crm ??= new Crm(this.options$));
+  }
 
-    private _fieldMappings?: FieldMappings;
-    get fieldMappings(): FieldMappings {
-        return (this._fieldMappings ??= new FieldMappings(this.options$));
-    }
+  private _linkedUsers?: LinkedUsers;
+  get linkedUsers(): LinkedUsers {
+    return (this._linkedUsers ??= new LinkedUsers(this.options$));
+  }
 
-    private _events?: Events;
-    get events(): Events {
-        return (this._events ??= new Events(this.options$));
-    }
+  private _projects?: Projects;
+  get projects(): Projects {
+    return (this._projects ??= new Projects(this.options$));
+  }
 
-    private _passthrough?: Passthrough;
-    get passthrough(): Passthrough {
-        return (this._passthrough ??= new Passthrough(this.options$));
-    }
+  private _fieldMappings?: FieldMappings;
+  get fieldMappings(): FieldMappings {
+    return (this._fieldMappings ??= new FieldMappings(this.options$));
+  }
 
-    private _hris?: Hris;
-    get hris(): Hris {
-        return (this._hris ??= new Hris(this.options$));
-    }
+  private _events?: Events;
+  get events(): Events {
+    return (this._events ??= new Events(this.options$));
+  }
 
-    private _marketingautomation?: Marketingautomation;
-    get marketingautomation(): Marketingautomation {
-        return (this._marketingautomation ??= new Marketingautomation(this.options$));
-    }
+  private _passthrough?: Passthrough;
+  get passthrough(): Passthrough {
+    return (this._passthrough ??= new Passthrough(this.options$));
+  }
 
-    private _ats?: Ats;
-    get ats(): Ats {
-        return (this._ats ??= new Ats(this.options$));
-    }
+  private _hris?: Hris;
+  get hris(): Hris {
+    return (this._hris ??= new Hris(this.options$));
+  }
 
-    private _accounting?: Accounting;
-    get accounting(): Accounting {
-        return (this._accounting ??= new Accounting(this.options$));
-    }
+  private _marketingautomation?: Marketingautomation;
+  get marketingautomation(): Marketingautomation {
+    return (this._marketingautomation ??= new Marketingautomation(
+      this.options$,
+    ));
+  }
 
-    private _filestorage?: Filestorage;
-    get filestorage(): Filestorage {
-        return (this._filestorage ??= new Filestorage(this.options$));
-    }
+  private _ats?: Ats;
+  get ats(): Ats {
+    return (this._ats ??= new Ats(this.options$));
+  }
 
-    private _ecommerce?: Ecommerce;
-    get ecommerce(): Ecommerce {
-        return (this._ecommerce ??= new Ecommerce(this.options$));
-    }
+  private _accounting?: Accounting;
+  get accounting(): Accounting {
+    return (this._accounting ??= new Accounting(this.options$));
+  }
 
-    async hello(options?: RequestOptions): Promise<string> {
-        return unwrapAsync(hello(this, options));
-    }
+  private _ecommerce?: Ecommerce;
+  get ecommerce(): Ecommerce {
+    return (this._ecommerce ??= new Ecommerce(this.options$));
+  }
 
-    async health(options?: RequestOptions): Promise<number> {
-        return unwrapAsync(health(this, options));
-    }
+  async hello(
+    options?: RequestOptions,
+  ): Promise<string> {
+    return unwrapAsync(hello(
+      this,
+      options,
+    ));
+  }
+
+  async health(
+    options?: RequestOptions,
+  ): Promise<number> {
+    return unwrapAsync(health(
+      this,
+      options,
+    ));
+  }
 }

@@ -12,39 +12,51 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class PanoraAccounts extends ClientSDK {
-    /**
-     * List  Accounts
-     */
-    async list(
-        request: operations.ListAccountingAccountsRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListAccountingAccountsResponse>> {
-        return unwrapResultIterator(accountingAccountsList(this, request, options));
-    }
+  /**
+   * List  Accounts
+   */
+  async list(
+    request: operations.ListAccountingAccountsRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListAccountingAccountsResponse>> {
+    return unwrapResultIterator(accountingAccountsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Create Accounts
-     *
-     * @remarks
-     * Create accounts in any supported Accounting software
-     */
-    async create(
-        request: operations.CreateAccountingAccountRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedAccountingAccountOutput> {
-        return unwrapAsync(accountingAccountsCreate(this, request, options));
-    }
+  /**
+   * Create Accounts
+   *
+   * @remarks
+   * Create accounts in any supported Accounting software
+   */
+  async create(
+    request: operations.CreateAccountingAccountRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedAccountingAccountOutput> {
+    return unwrapAsync(accountingAccountsCreate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Accounts
-     *
-     * @remarks
-     * Retrieve Accounts from any connected Accounting software
-     */
-    async retrieve(
-        request: operations.RetrieveAccountingAccountRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedAccountingAccountOutput> {
-        return unwrapAsync(accountingAccountsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Accounts
+   *
+   * @remarks
+   * Retrieve Accounts from any connected Accounting software
+   */
+  async retrieve(
+    request: operations.RetrieveAccountingAccountRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedAccountingAccountOutput> {
+    return unwrapAsync(accountingAccountsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

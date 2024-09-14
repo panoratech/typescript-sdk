@@ -8,10 +8,17 @@ import * as components from "../models/components/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Login extends ClientSDK {
-    /**
-     * Log In
-     */
-    async signIn(request: components.LoginDto, options?: RequestOptions): Promise<void> {
-        return unwrapAsync(authLoginSignIn(this, request, options));
-    }
+  /**
+   * Log In
+   */
+  async signIn(
+    request: components.LoginDto,
+    options?: RequestOptions,
+  ): Promise<void> {
+    return unwrapAsync(authLoginSignIn(
+      this,
+      request,
+      options,
+    ));
+  }
 }

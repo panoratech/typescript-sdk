@@ -3,35 +3,29 @@
  */
 
 import { ClientSDK } from "../lib/sdks.js";
-import { Drives } from "./drives.js";
 import { Files } from "./files.js";
 import { Folders } from "./folders.js";
 import { PanoraFilestorageUsers } from "./panorafilestorageusers.js";
 import { PanoraGroups } from "./panoragroups.js";
 
 export class Filestorage extends ClientSDK {
-    private _drives?: Drives;
-    get drives(): Drives {
-        return (this._drives ??= new Drives(this.options$));
-    }
+  private _files?: Files;
+  get files(): Files {
+    return (this._files ??= new Files(this.options$));
+  }
 
-    private _files?: Files;
-    get files(): Files {
-        return (this._files ??= new Files(this.options$));
-    }
+  private _folders?: Folders;
+  get folders(): Folders {
+    return (this._folders ??= new Folders(this.options$));
+  }
 
-    private _folders?: Folders;
-    get folders(): Folders {
-        return (this._folders ??= new Folders(this.options$));
-    }
+  private _groups?: PanoraGroups;
+  get groups(): PanoraGroups {
+    return (this._groups ??= new PanoraGroups(this.options$));
+  }
 
-    private _groups?: PanoraGroups;
-    get groups(): PanoraGroups {
-        return (this._groups ??= new PanoraGroups(this.options$));
-    }
-
-    private _users?: PanoraFilestorageUsers;
-    get users(): PanoraFilestorageUsers {
-        return (this._users ??= new PanoraFilestorageUsers(this.options$));
-    }
+  private _users?: PanoraFilestorageUsers;
+  get users(): PanoraFilestorageUsers {
+    return (this._users ??= new PanoraFilestorageUsers(this.options$));
+  }
 }

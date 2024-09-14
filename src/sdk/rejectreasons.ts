@@ -11,26 +11,34 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Rejectreasons extends ClientSDK {
-    /**
-     * List  RejectReasons
-     */
-    async list(
-        request: operations.ListAtsRejectReasonsRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListAtsRejectReasonsResponse>> {
-        return unwrapResultIterator(atsRejectreasonsList(this, request, options));
-    }
+  /**
+   * List  RejectReasons
+   */
+  async list(
+    request: operations.ListAtsRejectReasonsRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListAtsRejectReasonsResponse>> {
+    return unwrapResultIterator(atsRejectreasonsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Reject Reasons
-     *
-     * @remarks
-     * Retrieve Reject Reasons from any connected Ats software
-     */
-    async retrieve(
-        request: operations.RetrieveAtsRejectReasonRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedAtsRejectreasonOutput> {
-        return unwrapAsync(atsRejectreasonsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Reject Reasons
+   *
+   * @remarks
+   * Retrieve Reject Reasons from any connected Ats software
+   */
+  async retrieve(
+    request: operations.RetrieveAtsRejectReasonRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedAtsRejectreasonOutput> {
+    return unwrapAsync(atsRejectreasonsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

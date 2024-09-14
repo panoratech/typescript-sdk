@@ -6,16 +6,16 @@
 import { UnifiedAtsActivityInput } from "@panora/sdk/models/components";
 
 let value: UnifiedAtsActivityInput = {
-    activityType: "NOTE",
-    subject: "Email subject",
-    body: "Dear Diana, I love you",
-    visibility: "PUBLIC",
-    candidateId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-    remoteCreatedAt: new Date("2024-10-01T12:00:00Z"),
-    fieldMappings: {
-        fav_dish: "broccoli",
-        fav_color: "red",
-    },
+  activityType: "NOTE",
+  subject: "Email subject",
+  body: "Dear Diana, I love you",
+  visibility: "PUBLIC",
+  candidateId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+  remoteCreatedAt: new Date("2024-10-01T12:00:00Z"),
+  fieldMappings: {
+    "fav_dish": "broccoli",
+    "fav_color": "red",
+  },
 };
 ```
 

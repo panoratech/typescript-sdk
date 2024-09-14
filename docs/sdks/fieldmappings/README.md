@@ -27,8 +27,6 @@ const panora = new Panora({
 
 async function run() {
   await panora.fieldMappings.getFieldMappingValues();
-
-  
 }
 
 run();
@@ -97,8 +95,6 @@ const panora = new Panora({
 
 async function run() {
   await panora.fieldMappings.getFieldMappingsEntities();
-
-  
 }
 
 run();
@@ -167,8 +163,6 @@ const panora = new Panora({
 
 async function run() {
   await panora.fieldMappings.getFieldMappings();
-
-  
 }
 
 run();
@@ -243,7 +237,7 @@ async function run() {
     description: "My favorite dish",
     dataType: DataType.String,
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -331,7 +325,7 @@ async function run() {
     sourceProvider: "hubspot",
     linkedUserId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -418,7 +412,7 @@ async function run() {
     sourceProvider: "hubspot",
     linkedUserId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
   });
-
+  
   // Handle the result
   console.log(result)
 }

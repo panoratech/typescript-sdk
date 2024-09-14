@@ -12,39 +12,51 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Folders extends ClientSDK {
-    /**
-     * List  Folders
-     */
-    async list(
-        request: operations.ListFilestorageFolderRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListFilestorageFolderResponse>> {
-        return unwrapResultIterator(filestorageFoldersList(this, request, options));
-    }
+  /**
+   * List  Folders
+   */
+  async list(
+    request: operations.ListFilestorageFolderRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListFilestorageFolderResponse>> {
+    return unwrapResultIterator(filestorageFoldersList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Create Folders
-     *
-     * @remarks
-     * Create Folders in any supported Filestorage software
-     */
-    async create(
-        request: operations.CreateFilestorageFolderRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedFilestorageFolderOutput> {
-        return unwrapAsync(filestorageFoldersCreate(this, request, options));
-    }
+  /**
+   * Create Folders
+   *
+   * @remarks
+   * Create Folders in any supported Filestorage software
+   */
+  async create(
+    request: operations.CreateFilestorageFolderRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedFilestorageFolderOutput> {
+    return unwrapAsync(filestorageFoldersCreate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Folders
-     *
-     * @remarks
-     * Retrieve Folders from any connected Filestorage software
-     */
-    async retrieve(
-        request: operations.RetrieveFilestorageFolderRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedFilestorageFolderOutput> {
-        return unwrapAsync(filestorageFoldersRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Folders
+   *
+   * @remarks
+   * Retrieve Folders from any connected Filestorage software
+   */
+  async retrieve(
+    request: operations.RetrieveFilestorageFolderRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedFilestorageFolderOutput> {
+    return unwrapAsync(filestorageFoldersRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

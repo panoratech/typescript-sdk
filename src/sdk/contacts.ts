@@ -10,26 +10,34 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Contacts extends ClientSDK {
-    /**
-     * List Contacts
-     */
-    async list(
-        request: operations.ListTicketingContactsRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListTicketingContactsResponse>> {
-        return unwrapResultIterator(ticketingContactsList(this, request, options));
-    }
+  /**
+   * List Contacts
+   */
+  async list(
+    request: operations.ListTicketingContactsRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListTicketingContactsResponse>> {
+    return unwrapResultIterator(ticketingContactsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Contact
-     *
-     * @remarks
-     * Retrieve a Contact from any connected Ticketing software
-     */
-    async retrieve(
-        request: operations.RetrieveTicketingContactRequest,
-        options?: RequestOptions
-    ): Promise<operations.RetrieveTicketingContactResponseBody> {
-        return unwrapAsync(ticketingContactsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Contact
+   *
+   * @remarks
+   * Retrieve a Contact from any connected Ticketing software
+   */
+  async retrieve(
+    request: operations.RetrieveTicketingContactRequest,
+    options?: RequestOptions,
+  ): Promise<operations.RetrieveTicketingContactResponseBody> {
+    return unwrapAsync(ticketingContactsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

@@ -6,9 +6,9 @@
 import { TaxItem } from "@panora/sdk/models/components";
 
 let value: TaxItem = {
-    name: "Federal Income Tax",
-    amount: 250,
-    employerTax: true,
+  name: "Federal Income Tax",
+  amount: 250,
+  employerTax: true,
 };
 ```
 

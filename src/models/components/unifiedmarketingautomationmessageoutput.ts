@@ -8,9 +8,9 @@ export type UnifiedMarketingautomationMessageOutput = {};
 
 /** @internal */
 export const UnifiedMarketingautomationMessageOutput$inboundSchema: z.ZodType<
-    UnifiedMarketingautomationMessageOutput,
-    z.ZodTypeDef,
-    unknown
+  UnifiedMarketingautomationMessageOutput,
+  z.ZodTypeDef,
+  unknown
 > = z.object({});
 
 /** @internal */
@@ -18,9 +18,9 @@ export type UnifiedMarketingautomationMessageOutput$Outbound = {};
 
 /** @internal */
 export const UnifiedMarketingautomationMessageOutput$outboundSchema: z.ZodType<
-    UnifiedMarketingautomationMessageOutput$Outbound,
-    z.ZodTypeDef,
-    UnifiedMarketingautomationMessageOutput
+  UnifiedMarketingautomationMessageOutput$Outbound,
+  z.ZodTypeDef,
+  UnifiedMarketingautomationMessageOutput
 > = z.object({});
 
 /**
@@ -28,10 +28,12 @@ export const UnifiedMarketingautomationMessageOutput$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace UnifiedMarketingautomationMessageOutput$ {
-    /** @deprecated use `UnifiedMarketingautomationMessageOutput$inboundSchema` instead. */
-    export const inboundSchema = UnifiedMarketingautomationMessageOutput$inboundSchema;
-    /** @deprecated use `UnifiedMarketingautomationMessageOutput$outboundSchema` instead. */
-    export const outboundSchema = UnifiedMarketingautomationMessageOutput$outboundSchema;
-    /** @deprecated use `UnifiedMarketingautomationMessageOutput$Outbound` instead. */
-    export type Outbound = UnifiedMarketingautomationMessageOutput$Outbound;
+  /** @deprecated use `UnifiedMarketingautomationMessageOutput$inboundSchema` instead. */
+  export const inboundSchema =
+    UnifiedMarketingautomationMessageOutput$inboundSchema;
+  /** @deprecated use `UnifiedMarketingautomationMessageOutput$outboundSchema` instead. */
+  export const outboundSchema =
+    UnifiedMarketingautomationMessageOutput$outboundSchema;
+  /** @deprecated use `UnifiedMarketingautomationMessageOutput$Outbound` instead. */
+  export type Outbound = UnifiedMarketingautomationMessageOutput$Outbound;
 }

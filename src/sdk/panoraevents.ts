@@ -11,26 +11,34 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class PanoraEvents extends ClientSDK {
-    /**
-     * List Events
-     */
-    async list(
-        request: operations.ListMarketingAutomationEventsRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListMarketingAutomationEventsResponse>> {
-        return unwrapResultIterator(marketingautomationEventsList(this, request, options));
-    }
+  /**
+   * List Events
+   */
+  async list(
+    request: operations.ListMarketingAutomationEventsRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListMarketingAutomationEventsResponse>> {
+    return unwrapResultIterator(marketingautomationEventsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Event
-     *
-     * @remarks
-     * Retrieve an Event from any connected Marketingautomation software
-     */
-    async retrieve(
-        request: operations.RetrieveMarketingautomationEventRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedMarketingautomationEventOutput> {
-        return unwrapAsync(marketingautomationEventsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Event
+   *
+   * @remarks
+   * Retrieve an Event from any connected Marketingautomation software
+   */
+  async retrieve(
+    request: operations.RetrieveMarketingautomationEventRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedMarketingautomationEventOutput> {
+    return unwrapAsync(marketingautomationEventsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

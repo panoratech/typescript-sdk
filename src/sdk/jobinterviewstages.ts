@@ -11,26 +11,34 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Jobinterviewstages extends ClientSDK {
-    /**
-     * List  JobInterviewStages
-     */
-    async list(
-        request: operations.ListAtsJobInterviewStageRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListAtsJobInterviewStageResponse>> {
-        return unwrapResultIterator(atsJobinterviewstagesList(this, request, options));
-    }
+  /**
+   * List  JobInterviewStages
+   */
+  async list(
+    request: operations.ListAtsJobInterviewStageRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListAtsJobInterviewStageResponse>> {
+    return unwrapResultIterator(atsJobinterviewstagesList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Job Interview Stages
-     *
-     * @remarks
-     * Retrieve Job Interview Stages from any connected Ats software
-     */
-    async retrieve(
-        request: operations.RetrieveAtsJobInterviewStageRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedAtsJobinterviewstageOutput> {
-        return unwrapAsync(atsJobinterviewstagesRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Job Interview Stages
+   *
+   * @remarks
+   * Retrieve Job Interview Stages from any connected Ats software
+   */
+  async retrieve(
+    request: operations.RetrieveAtsJobInterviewStageRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedAtsJobinterviewstageOutput> {
+    return unwrapAsync(atsJobinterviewstagesRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

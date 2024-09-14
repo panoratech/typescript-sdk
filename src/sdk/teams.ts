@@ -11,26 +11,34 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Teams extends ClientSDK {
-    /**
-     * List  Teams
-     */
-    async list(
-        request: operations.ListTicketingTeamsRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListTicketingTeamsResponse>> {
-        return unwrapResultIterator(ticketingTeamsList(this, request, options));
-    }
+  /**
+   * List  Teams
+   */
+  async list(
+    request: operations.ListTicketingTeamsRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListTicketingTeamsResponse>> {
+    return unwrapResultIterator(ticketingTeamsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Teams
-     *
-     * @remarks
-     * Retrieve Teams from any connected Ticketing software
-     */
-    async retrieve(
-        request: operations.RetrieveTicketingTeamRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedTicketingTeamOutput> {
-        return unwrapAsync(ticketingTeamsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Teams
+   *
+   * @remarks
+   * Retrieve Teams from any connected Ticketing software
+   */
+  async retrieve(
+    request: operations.RetrieveTicketingTeamRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedTicketingTeamOutput> {
+    return unwrapAsync(ticketingTeamsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

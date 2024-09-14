@@ -5,33 +5,33 @@
 import * as z from "zod";
 
 export type UpdateStatusRequest = {
-    /**
-     * id of the webhook to update.
-     */
-    id: string;
+  /**
+   * id of the webhook to update.
+   */
+  id: string;
 };
 
 /** @internal */
 export const UpdateStatusRequest$inboundSchema: z.ZodType<
-    UpdateStatusRequest,
-    z.ZodTypeDef,
-    unknown
+  UpdateStatusRequest,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    id: z.string(),
+  id: z.string(),
 });
 
 /** @internal */
 export type UpdateStatusRequest$Outbound = {
-    id: string;
+  id: string;
 };
 
 /** @internal */
 export const UpdateStatusRequest$outboundSchema: z.ZodType<
-    UpdateStatusRequest$Outbound,
-    z.ZodTypeDef,
-    UpdateStatusRequest
+  UpdateStatusRequest$Outbound,
+  z.ZodTypeDef,
+  UpdateStatusRequest
 > = z.object({
-    id: z.string(),
+  id: z.string(),
 });
 
 /**
@@ -39,10 +39,10 @@ export const UpdateStatusRequest$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace UpdateStatusRequest$ {
-    /** @deprecated use `UpdateStatusRequest$inboundSchema` instead. */
-    export const inboundSchema = UpdateStatusRequest$inboundSchema;
-    /** @deprecated use `UpdateStatusRequest$outboundSchema` instead. */
-    export const outboundSchema = UpdateStatusRequest$outboundSchema;
-    /** @deprecated use `UpdateStatusRequest$Outbound` instead. */
-    export type Outbound = UpdateStatusRequest$Outbound;
+  /** @deprecated use `UpdateStatusRequest$inboundSchema` instead. */
+  export const inboundSchema = UpdateStatusRequest$inboundSchema;
+  /** @deprecated use `UpdateStatusRequest$outboundSchema` instead. */
+  export const outboundSchema = UpdateStatusRequest$outboundSchema;
+  /** @deprecated use `UpdateStatusRequest$Outbound` instead. */
+  export type Outbound = UpdateStatusRequest$Outbound;
 }

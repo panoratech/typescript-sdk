@@ -6,11 +6,11 @@
 import { SignatureVerificationDto } from "@panora/sdk/models/components";
 
 let value: SignatureVerificationDto = {
-    payload: {
-        key: "<value>",
-    },
-    signature: "<value>",
-    secret: "<value>",
+  payload: {
+    "key": "<value>",
+  },
+  signature: "<value>",
+  secret: "<value>",
 };
 ```
 

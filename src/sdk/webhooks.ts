@@ -13,50 +13,71 @@ import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Webhooks extends ClientSDK {
-    /**
-     * List webhooks
-     */
-    async list(options?: RequestOptions): Promise<Array<components.WebhookResponse>> {
-        return unwrapAsync(webhooksList(this, options));
-    }
+  /**
+   * List webhooks
+   */
+  async list(
+    options?: RequestOptions,
+  ): Promise<Array<components.WebhookResponse>> {
+    return unwrapAsync(webhooksList(
+      this,
+      options,
+    ));
+  }
 
-    /**
-     * Create webhook
-     */
-    async create(
-        request: components.WebhookDto,
-        options?: RequestOptions
-    ): Promise<components.WebhookResponse> {
-        return unwrapAsync(webhooksCreate(this, request, options));
-    }
+  /**
+   * Create webhook
+   */
+  async create(
+    request: components.WebhookDto,
+    options?: RequestOptions,
+  ): Promise<components.WebhookResponse> {
+    return unwrapAsync(webhooksCreate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Delete Webhook
-     */
-    async delete(
-        request: operations.DeleteRequest,
-        options?: RequestOptions
-    ): Promise<components.WebhookResponse | undefined> {
-        return unwrapAsync(webhooksDelete(this, request, options));
-    }
+  /**
+   * Delete Webhook
+   */
+  async delete(
+    request: operations.DeleteRequest,
+    options?: RequestOptions,
+  ): Promise<components.WebhookResponse | undefined> {
+    return unwrapAsync(webhooksDelete(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Update webhook status
-     */
-    async updateStatus(
-        request: operations.UpdateStatusRequest,
-        options?: RequestOptions
-    ): Promise<components.WebhookResponse | undefined> {
-        return unwrapAsync(webhooksUpdateStatus(this, request, options));
-    }
+  /**
+   * Update webhook status
+   */
+  async updateStatus(
+    request: operations.UpdateStatusRequest,
+    options?: RequestOptions,
+  ): Promise<components.WebhookResponse | undefined> {
+    return unwrapAsync(webhooksUpdateStatus(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Verify payload signature of the webhook
-     */
-    async verifyEvent(
-        request: components.SignatureVerificationDto,
-        options?: RequestOptions
-    ): Promise<{ [k: string]: any }> {
-        return unwrapAsync(webhooksVerifyEvent(this, request, options));
-    }
+  /**
+   * Verify payload signature of the webhook
+   */
+  async verifyEvent(
+    request: components.SignatureVerificationDto,
+    options?: RequestOptions,
+  ): Promise<{ [k: string]: any }> {
+    return unwrapAsync(webhooksVerifyEvent(
+      this,
+      request,
+      options,
+    ));
+  }
 }

@@ -11,26 +11,34 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Jobs extends ClientSDK {
-    /**
-     * List  Jobs
-     */
-    async list(
-        request: operations.ListAtsJobRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListAtsJobResponse>> {
-        return unwrapResultIterator(atsJobsList(this, request, options));
-    }
+  /**
+   * List  Jobs
+   */
+  async list(
+    request: operations.ListAtsJobRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListAtsJobResponse>> {
+    return unwrapResultIterator(atsJobsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Jobs
-     *
-     * @remarks
-     * Retrieve Jobs from any connected Ats software
-     */
-    async retrieve(
-        request: operations.RetrieveAtsJobRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedAtsJobOutput> {
-        return unwrapAsync(atsJobsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Jobs
+   *
+   * @remarks
+   * Retrieve Jobs from any connected Ats software
+   */
+  async retrieve(
+    request: operations.RetrieveAtsJobRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedAtsJobOutput> {
+    return unwrapAsync(atsJobsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

@@ -11,26 +11,34 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class PanoraGroups extends ClientSDK {
-    /**
-     * List  Groups
-     */
-    async list(
-        request: operations.ListFilestorageGroupRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListFilestorageGroupResponse>> {
-        return unwrapResultIterator(filestorageGroupsList(this, request, options));
-    }
+  /**
+   * List  Groups
+   */
+  async list(
+    request: operations.ListFilestorageGroupRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListFilestorageGroupResponse>> {
+    return unwrapResultIterator(filestorageGroupsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Groups
-     *
-     * @remarks
-     * Retrieve Groups from any connected Filestorage software
-     */
-    async retrieve(
-        request: operations.RetrieveFilestorageGroupRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedFilestorageGroupOutput> {
-        return unwrapAsync(filestorageGroupsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Groups
+   *
+   * @remarks
+   * Retrieve Groups from any connected Filestorage software
+   */
+  async retrieve(
+    request: operations.RetrieveFilestorageGroupRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedFilestorageGroupOutput> {
+    return unwrapAsync(filestorageGroupsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

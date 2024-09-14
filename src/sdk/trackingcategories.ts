@@ -11,26 +11,34 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Trackingcategories extends ClientSDK {
-    /**
-     * List  TrackingCategorys
-     */
-    async list(
-        request: operations.ListAccountingTrackingCategorysRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListAccountingTrackingCategorysResponse>> {
-        return unwrapResultIterator(accountingTrackingcategoriesList(this, request, options));
-    }
+  /**
+   * List  TrackingCategorys
+   */
+  async list(
+    request: operations.ListAccountingTrackingCategorysRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListAccountingTrackingCategorysResponse>> {
+    return unwrapResultIterator(accountingTrackingcategoriesList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Tracking Categories
-     *
-     * @remarks
-     * Retrieve Tracking Categories from any connected Accounting software
-     */
-    async retrieve(
-        request: operations.RetrieveAccountingTrackingCategoryRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedAccountingTrackingcategoryOutput> {
-        return unwrapAsync(accountingTrackingcategoriesRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Tracking Categories
+   *
+   * @remarks
+   * Retrieve Tracking Categories from any connected Accounting software
+   */
+  async retrieve(
+    request: operations.RetrieveAccountingTrackingCategoryRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedAccountingTrackingcategoryOutput> {
+    return unwrapAsync(accountingTrackingcategoriesRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

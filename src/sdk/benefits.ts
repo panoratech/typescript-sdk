@@ -11,26 +11,34 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Benefits extends ClientSDK {
-    /**
-     * List Benefits
-     */
-    async list(
-        request: operations.ListHrisBenefitsRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListHrisBenefitsResponse>> {
-        return unwrapResultIterator(hrisBenefitsList(this, request, options));
-    }
+  /**
+   * List Benefits
+   */
+  async list(
+    request: operations.ListHrisBenefitsRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListHrisBenefitsResponse>> {
+    return unwrapResultIterator(hrisBenefitsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Benefit
-     *
-     * @remarks
-     * Retrieve a Benefit from any connected Hris software
-     */
-    async retrieve(
-        request: operations.RetrieveHrisBenefitRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedHrisBenefitOutput> {
-        return unwrapAsync(hrisBenefitsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Benefit
+   *
+   * @remarks
+   * Retrieve a Benefit from any connected Hris software
+   */
+  async retrieve(
+    request: operations.RetrieveHrisBenefitRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedHrisBenefitOutput> {
+    return unwrapAsync(hrisBenefitsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

@@ -11,26 +11,34 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Fulfillments extends ClientSDK {
-    /**
-     * List Fulfillments
-     */
-    async list(
-        request: operations.ListEcommerceFulfillmentsRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListEcommerceFulfillmentsResponse>> {
-        return unwrapResultIterator(ecommerceFulfillmentsList(this, request, options));
-    }
+  /**
+   * List Fulfillments
+   */
+  async list(
+    request: operations.ListEcommerceFulfillmentsRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListEcommerceFulfillmentsResponse>> {
+    return unwrapResultIterator(ecommerceFulfillmentsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Fulfillments
-     *
-     * @remarks
-     * Retrieve fulfillments from any connected Ats software
-     */
-    async retrieve(
-        request: operations.RetrieveEcommerceFulfillmentRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedEcommerceFulfillmentOutput> {
-        return unwrapAsync(ecommerceFulfillmentsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Fulfillments
+   *
+   * @remarks
+   * Retrieve fulfillments from any connected Ats software
+   */
+  async retrieve(
+    request: operations.RetrieveEcommerceFulfillmentRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedEcommerceFulfillmentOutput> {
+    return unwrapAsync(ecommerceFulfillmentsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

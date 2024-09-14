@@ -8,14 +8,16 @@ The comment of the ticket
 import { UnifiedTicketingTicketInputComment } from "@panora/sdk/models/components";
 
 let value: UnifiedTicketingTicketInputComment = {
-    body: "Assigned to Eric !",
-    htmlBody: "<p>Assigned to Eric !</p>",
-    isPrivate: false,
-    creatorType: "USER",
-    ticketId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-    contactId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-    userId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-    attachments: ["801f9ede-c698-4e66-a7fc-48d19eebaa4f"],
+  body: "Assigned to Eric !",
+  htmlBody: "<p>Assigned to Eric !</p>",
+  isPrivate: false,
+  creatorType: "USER",
+  ticketId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+  contactId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+  userId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+  attachments: [
+    "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+  ],
 };
 ```
 

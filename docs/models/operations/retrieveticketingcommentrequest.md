@@ -6,8 +6,8 @@
 import { RetrieveTicketingCommentRequest } from "@panora/sdk/models/operations";
 
 let value: RetrieveTicketingCommentRequest = {
-    xConnectionToken: "<value>",
-    id: "<id>",
+  xConnectionToken: "<value>",
+  id: "<id>",
 };
 ```
 

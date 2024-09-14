@@ -12,39 +12,53 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Automations extends ClientSDK {
-    /**
-     * List Automations
-     */
-    async list(
-        request: operations.ListMarketingautomationAutomationsRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListMarketingautomationAutomationsResponse>> {
-        return unwrapResultIterator(marketingautomationAutomationsList(this, request, options));
-    }
+  /**
+   * List Automations
+   */
+  async list(
+    request: operations.ListMarketingautomationAutomationsRequest,
+    options?: RequestOptions,
+  ): Promise<
+    PageIterator<operations.ListMarketingautomationAutomationsResponse>
+  > {
+    return unwrapResultIterator(marketingautomationAutomationsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Create Automation
-     *
-     * @remarks
-     * Create a automation in any supported Marketingautomation software
-     */
-    async create(
-        request: operations.CreateMarketingautomationAutomationRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedMarketingautomationAutomationOutput> {
-        return unwrapAsync(marketingautomationAutomationsCreate(this, request, options));
-    }
+  /**
+   * Create Automation
+   *
+   * @remarks
+   * Create a automation in any supported Marketingautomation software
+   */
+  async create(
+    request: operations.CreateMarketingautomationAutomationRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedMarketingautomationAutomationOutput> {
+    return unwrapAsync(marketingautomationAutomationsCreate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Automation
-     *
-     * @remarks
-     * Retrieve an Automation from any connected Marketingautomation software
-     */
-    async retrieve(
-        request: operations.RetrieveMarketingautomationAutomationRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedMarketingautomationAutomationOutput> {
-        return unwrapAsync(marketingautomationAutomationsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Automation
+   *
+   * @remarks
+   * Retrieve an Automation from any connected Marketingautomation software
+   */
+  async retrieve(
+    request: operations.RetrieveMarketingautomationAutomationRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedMarketingautomationAutomationOutput> {
+    return unwrapAsync(marketingautomationAutomationsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

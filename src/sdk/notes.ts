@@ -12,39 +12,51 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Notes extends ClientSDK {
-    /**
-     * List Notes
-     */
-    async list(
-        request: operations.ListCrmNoteRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListCrmNoteResponse>> {
-        return unwrapResultIterator(crmNotesList(this, request, options));
-    }
+  /**
+   * List Notes
+   */
+  async list(
+    request: operations.ListCrmNoteRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListCrmNoteResponse>> {
+    return unwrapResultIterator(crmNotesList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Create Notes
-     *
-     * @remarks
-     * Create Notes in any supported Crm software
-     */
-    async create(
-        request: operations.CreateCrmNoteRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedCrmNoteOutput> {
-        return unwrapAsync(crmNotesCreate(this, request, options));
-    }
+  /**
+   * Create Notes
+   *
+   * @remarks
+   * Create Notes in any supported Crm software
+   */
+  async create(
+    request: operations.CreateCrmNoteRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedCrmNoteOutput> {
+    return unwrapAsync(crmNotesCreate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Notes
-     *
-     * @remarks
-     * Retrieve Notes from any connected Crm software
-     */
-    async retrieve(
-        request: operations.RetrieveCrmNoteRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedCrmNoteOutput> {
-        return unwrapAsync(crmNotesRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Notes
+   *
+   * @remarks
+   * Retrieve Notes from any connected Crm software
+   */
+  async retrieve(
+    request: operations.RetrieveCrmNoteRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedCrmNoteOutput> {
+    return unwrapAsync(crmNotesRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

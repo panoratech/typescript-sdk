@@ -8,9 +8,9 @@ export type UnifiedMarketingautomationTemplateInput = {};
 
 /** @internal */
 export const UnifiedMarketingautomationTemplateInput$inboundSchema: z.ZodType<
-    UnifiedMarketingautomationTemplateInput,
-    z.ZodTypeDef,
-    unknown
+  UnifiedMarketingautomationTemplateInput,
+  z.ZodTypeDef,
+  unknown
 > = z.object({});
 
 /** @internal */
@@ -18,9 +18,9 @@ export type UnifiedMarketingautomationTemplateInput$Outbound = {};
 
 /** @internal */
 export const UnifiedMarketingautomationTemplateInput$outboundSchema: z.ZodType<
-    UnifiedMarketingautomationTemplateInput$Outbound,
-    z.ZodTypeDef,
-    UnifiedMarketingautomationTemplateInput
+  UnifiedMarketingautomationTemplateInput$Outbound,
+  z.ZodTypeDef,
+  UnifiedMarketingautomationTemplateInput
 > = z.object({});
 
 /**
@@ -28,10 +28,12 @@ export const UnifiedMarketingautomationTemplateInput$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace UnifiedMarketingautomationTemplateInput$ {
-    /** @deprecated use `UnifiedMarketingautomationTemplateInput$inboundSchema` instead. */
-    export const inboundSchema = UnifiedMarketingautomationTemplateInput$inboundSchema;
-    /** @deprecated use `UnifiedMarketingautomationTemplateInput$outboundSchema` instead. */
-    export const outboundSchema = UnifiedMarketingautomationTemplateInput$outboundSchema;
-    /** @deprecated use `UnifiedMarketingautomationTemplateInput$Outbound` instead. */
-    export type Outbound = UnifiedMarketingautomationTemplateInput$Outbound;
+  /** @deprecated use `UnifiedMarketingautomationTemplateInput$inboundSchema` instead. */
+  export const inboundSchema =
+    UnifiedMarketingautomationTemplateInput$inboundSchema;
+  /** @deprecated use `UnifiedMarketingautomationTemplateInput$outboundSchema` instead. */
+  export const outboundSchema =
+    UnifiedMarketingautomationTemplateInput$outboundSchema;
+  /** @deprecated use `UnifiedMarketingautomationTemplateInput$Outbound` instead. */
+  export type Outbound = UnifiedMarketingautomationTemplateInput$Outbound;
 }

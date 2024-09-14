@@ -29,7 +29,7 @@ async function run() {
     linkedUserOriginId: "id_1",
     alias: "acme",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -105,7 +105,7 @@ const panora = new Panora({
 
 async function run() {
   const result = await panora.linkedUsers.list();
-
+  
   // Handle the result
   console.log(result)
 }
@@ -182,7 +182,7 @@ async function run() {
     ],
     alias: "acme",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -262,7 +262,7 @@ async function run() {
   const result = await panora.linkedUsers.retrieve({
     id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -339,7 +339,7 @@ async function run() {
   const result = await panora.linkedUsers.remoteId({
     remoteId: "id_1",
   });
-
+  
   // Handle the result
   console.log(result)
 }

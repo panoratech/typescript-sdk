@@ -20,78 +20,80 @@ import { Timeoffs } from "./timeoffs.js";
 import { Timesheetentries } from "./timesheetentries.js";
 
 export class Hris extends ClientSDK {
-    private _bankinfos?: Bankinfos;
-    get bankinfos(): Bankinfos {
-        return (this._bankinfos ??= new Bankinfos(this.options$));
-    }
+  private _bankinfos?: Bankinfos;
+  get bankinfos(): Bankinfos {
+    return (this._bankinfos ??= new Bankinfos(this.options$));
+  }
 
-    private _benefits?: Benefits;
-    get benefits(): Benefits {
-        return (this._benefits ??= new Benefits(this.options$));
-    }
+  private _benefits?: Benefits;
+  get benefits(): Benefits {
+    return (this._benefits ??= new Benefits(this.options$));
+  }
 
-    private _companies?: PanoraCompanies;
-    get companies(): PanoraCompanies {
-        return (this._companies ??= new PanoraCompanies(this.options$));
-    }
+  private _companies?: PanoraCompanies;
+  get companies(): PanoraCompanies {
+    return (this._companies ??= new PanoraCompanies(this.options$));
+  }
 
-    private _dependents?: Dependents;
-    get dependents(): Dependents {
-        return (this._dependents ??= new Dependents(this.options$));
-    }
+  private _dependents?: Dependents;
+  get dependents(): Dependents {
+    return (this._dependents ??= new Dependents(this.options$));
+  }
 
-    private _employeepayrollruns?: Employeepayrollruns;
-    get employeepayrollruns(): Employeepayrollruns {
-        return (this._employeepayrollruns ??= new Employeepayrollruns(this.options$));
-    }
+  private _employeepayrollruns?: Employeepayrollruns;
+  get employeepayrollruns(): Employeepayrollruns {
+    return (this._employeepayrollruns ??= new Employeepayrollruns(
+      this.options$,
+    ));
+  }
 
-    private _employees?: Employees;
-    get employees(): Employees {
-        return (this._employees ??= new Employees(this.options$));
-    }
+  private _employees?: Employees;
+  get employees(): Employees {
+    return (this._employees ??= new Employees(this.options$));
+  }
 
-    private _employerbenefits?: Employerbenefits;
-    get employerbenefits(): Employerbenefits {
-        return (this._employerbenefits ??= new Employerbenefits(this.options$));
-    }
+  private _employerbenefits?: Employerbenefits;
+  get employerbenefits(): Employerbenefits {
+    return (this._employerbenefits ??= new Employerbenefits(this.options$));
+  }
 
-    private _employments?: Employments;
-    get employments(): Employments {
-        return (this._employments ??= new Employments(this.options$));
-    }
+  private _employments?: Employments;
+  get employments(): Employments {
+    return (this._employments ??= new Employments(this.options$));
+  }
 
-    private _groups?: Groups;
-    get groups(): Groups {
-        return (this._groups ??= new Groups(this.options$));
-    }
+  private _groups?: Groups;
+  get groups(): Groups {
+    return (this._groups ??= new Groups(this.options$));
+  }
 
-    private _locations?: Locations;
-    get locations(): Locations {
-        return (this._locations ??= new Locations(this.options$));
-    }
+  private _locations?: Locations;
+  get locations(): Locations {
+    return (this._locations ??= new Locations(this.options$));
+  }
 
-    private _paygroups?: Paygroups;
-    get paygroups(): Paygroups {
-        return (this._paygroups ??= new Paygroups(this.options$));
-    }
+  private _paygroups?: Paygroups;
+  get paygroups(): Paygroups {
+    return (this._paygroups ??= new Paygroups(this.options$));
+  }
 
-    private _payrollruns?: Payrollruns;
-    get payrollruns(): Payrollruns {
-        return (this._payrollruns ??= new Payrollruns(this.options$));
-    }
+  private _payrollruns?: Payrollruns;
+  get payrollruns(): Payrollruns {
+    return (this._payrollruns ??= new Payrollruns(this.options$));
+  }
 
-    private _timeoffs?: Timeoffs;
-    get timeoffs(): Timeoffs {
-        return (this._timeoffs ??= new Timeoffs(this.options$));
-    }
+  private _timeoffs?: Timeoffs;
+  get timeoffs(): Timeoffs {
+    return (this._timeoffs ??= new Timeoffs(this.options$));
+  }
 
-    private _timeoffbalances?: Timeoffbalances;
-    get timeoffbalances(): Timeoffbalances {
-        return (this._timeoffbalances ??= new Timeoffbalances(this.options$));
-    }
+  private _timeoffbalances?: Timeoffbalances;
+  get timeoffbalances(): Timeoffbalances {
+    return (this._timeoffbalances ??= new Timeoffbalances(this.options$));
+  }
 
-    private _timesheetentries?: Timesheetentries;
-    get timesheetentries(): Timesheetentries {
-        return (this._timesheetentries ??= new Timesheetentries(this.options$));
-    }
+  private _timesheetentries?: Timesheetentries;
+  get timesheetentries(): Timesheetentries {
+    return (this._timesheetentries ??= new Timesheetentries(this.options$));
+  }
 }

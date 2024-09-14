@@ -6,10 +6,10 @@
 import { DataType, DefineTargetFieldDto, ObjectTypeOwner } from "@panora/sdk/models/components";
 
 let value: DefineTargetFieldDto = {
-    objectTypeOwner: ObjectTypeOwner.Company,
-    name: "fav_dish",
-    description: "My favorite dish",
-    dataType: DataType.String,
+  objectTypeOwner: ObjectTypeOwner.Company,
+  name: "fav_dish",
+  description: "My favorite dish",
+  dataType: DataType.String,
 };
 ```
 

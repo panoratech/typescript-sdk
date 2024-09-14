@@ -11,26 +11,34 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Tags extends ClientSDK {
-    /**
-     * List Tags
-     */
-    async list(
-        request: operations.ListTicketingTagsRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListTicketingTagsResponse>> {
-        return unwrapResultIterator(ticketingTagsList(this, request, options));
-    }
+  /**
+   * List Tags
+   */
+  async list(
+    request: operations.ListTicketingTagsRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListTicketingTagsResponse>> {
+    return unwrapResultIterator(ticketingTagsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Tag
-     *
-     * @remarks
-     * Retrieve a Tag from any connected Ticketing software
-     */
-    async retrieve(
-        request: operations.RetrieveTicketingTagRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedTicketingTagOutput> {
-        return unwrapAsync(ticketingTagsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Tag
+   *
+   * @remarks
+   * Retrieve a Tag from any connected Ticketing software
+   */
+  async retrieve(
+    request: operations.RetrieveTicketingTagRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedTicketingTagOutput> {
+    return unwrapAsync(ticketingTagsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

@@ -13,50 +13,71 @@ import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class LinkedUsers extends ClientSDK {
-    /**
-     * Create Linked Users
-     */
-    async create(
-        request: components.CreateLinkedUserDto,
-        options?: RequestOptions
-    ): Promise<components.LinkedUserResponse> {
-        return unwrapAsync(linkedUsersCreate(this, request, options));
-    }
+  /**
+   * Create Linked Users
+   */
+  async create(
+    request: components.CreateLinkedUserDto,
+    options?: RequestOptions,
+  ): Promise<components.LinkedUserResponse> {
+    return unwrapAsync(linkedUsersCreate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List Linked Users
-     */
-    async list(options?: RequestOptions): Promise<Array<components.LinkedUserResponse>> {
-        return unwrapAsync(linkedUsersList(this, options));
-    }
+  /**
+   * List Linked Users
+   */
+  async list(
+    options?: RequestOptions,
+  ): Promise<Array<components.LinkedUserResponse>> {
+    return unwrapAsync(linkedUsersList(
+      this,
+      options,
+    ));
+  }
 
-    /**
-     * Add Batch Linked Users
-     */
-    async importBatch(
-        request: components.CreateBatchLinkedUserDto,
-        options?: RequestOptions
-    ): Promise<Array<components.LinkedUserResponse>> {
-        return unwrapAsync(linkedUsersImportBatch(this, request, options));
-    }
+  /**
+   * Add Batch Linked Users
+   */
+  async importBatch(
+    request: components.CreateBatchLinkedUserDto,
+    options?: RequestOptions,
+  ): Promise<Array<components.LinkedUserResponse>> {
+    return unwrapAsync(linkedUsersImportBatch(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Linked Users
-     */
-    async retrieve(
-        request: operations.RetrieveLinkedUserRequest,
-        options?: RequestOptions
-    ): Promise<components.LinkedUserResponse> {
-        return unwrapAsync(linkedUsersRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Linked Users
+   */
+  async retrieve(
+    request: operations.RetrieveLinkedUserRequest,
+    options?: RequestOptions,
+  ): Promise<components.LinkedUserResponse> {
+    return unwrapAsync(linkedUsersRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve a Linked User From A Remote Id
-     */
-    async remoteId(
-        request: operations.RemoteIdRequest,
-        options?: RequestOptions
-    ): Promise<components.LinkedUserResponse> {
-        return unwrapAsync(linkedUsersRemoteId(this, request, options));
-    }
+  /**
+   * Retrieve a Linked User From A Remote Id
+   */
+  async remoteId(
+    request: operations.RemoteIdRequest,
+    options?: RequestOptions,
+  ): Promise<components.LinkedUserResponse> {
+    return unwrapAsync(linkedUsersRemoteId(
+      this,
+      request,
+      options,
+    ));
+  }
 }

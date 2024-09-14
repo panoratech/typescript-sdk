@@ -6,15 +6,15 @@
 import { CreateHrisTimesheetentryRequest } from "@panora/sdk/models/operations";
 
 let value: CreateHrisTimesheetentryRequest = {
-    xConnectionToken: "<value>",
-    unifiedHrisTimesheetEntryInput: {
-        hoursWorked: 40,
-        startTime: new Date("2024-10-01T08:00:00Z"),
-        endTime: new Date("2024-10-01T16:00:00Z"),
-        employeeId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-        remoteWasDeleted: false,
-        fieldMappings: {},
-    },
+  xConnectionToken: "<value>",
+  unifiedHrisTimesheetEntryInput: {
+    hoursWorked: 40,
+    startTime: new Date("2024-10-01T08:00:00Z"),
+    endTime: new Date("2024-10-01T16:00:00Z"),
+    employeeId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    remoteWasDeleted: false,
+    fieldMappings: {},
+  },
 };
 ```
 

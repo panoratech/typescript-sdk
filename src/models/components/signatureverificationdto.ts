@@ -5,47 +5,47 @@
 import * as z from "zod";
 
 export type SignatureVerificationDto = {
-    /**
-     * The payload event of the webhook.
-     */
-    payload: { [k: string]: any } | null;
-    /**
-     * The signature of the webhook.
-     */
-    signature: string | null;
-    /**
-     * The secret of the webhook.
-     */
-    secret: string | null;
+  /**
+   * The payload event of the webhook.
+   */
+  payload: { [k: string]: any } | null;
+  /**
+   * The signature of the webhook.
+   */
+  signature: string | null;
+  /**
+   * The secret of the webhook.
+   */
+  secret: string | null;
 };
 
 /** @internal */
 export const SignatureVerificationDto$inboundSchema: z.ZodType<
-    SignatureVerificationDto,
-    z.ZodTypeDef,
-    unknown
+  SignatureVerificationDto,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    payload: z.nullable(z.record(z.any())),
-    signature: z.nullable(z.string()),
-    secret: z.nullable(z.string()),
+  payload: z.nullable(z.record(z.any())),
+  signature: z.nullable(z.string()),
+  secret: z.nullable(z.string()),
 });
 
 /** @internal */
 export type SignatureVerificationDto$Outbound = {
-    payload: { [k: string]: any } | null;
-    signature: string | null;
-    secret: string | null;
+  payload: { [k: string]: any } | null;
+  signature: string | null;
+  secret: string | null;
 };
 
 /** @internal */
 export const SignatureVerificationDto$outboundSchema: z.ZodType<
-    SignatureVerificationDto$Outbound,
-    z.ZodTypeDef,
-    SignatureVerificationDto
+  SignatureVerificationDto$Outbound,
+  z.ZodTypeDef,
+  SignatureVerificationDto
 > = z.object({
-    payload: z.nullable(z.record(z.any())),
-    signature: z.nullable(z.string()),
-    secret: z.nullable(z.string()),
+  payload: z.nullable(z.record(z.any())),
+  signature: z.nullable(z.string()),
+  secret: z.nullable(z.string()),
 });
 
 /**
@@ -53,10 +53,10 @@ export const SignatureVerificationDto$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace SignatureVerificationDto$ {
-    /** @deprecated use `SignatureVerificationDto$inboundSchema` instead. */
-    export const inboundSchema = SignatureVerificationDto$inboundSchema;
-    /** @deprecated use `SignatureVerificationDto$outboundSchema` instead. */
-    export const outboundSchema = SignatureVerificationDto$outboundSchema;
-    /** @deprecated use `SignatureVerificationDto$Outbound` instead. */
-    export type Outbound = SignatureVerificationDto$Outbound;
+  /** @deprecated use `SignatureVerificationDto$inboundSchema` instead. */
+  export const inboundSchema = SignatureVerificationDto$inboundSchema;
+  /** @deprecated use `SignatureVerificationDto$outboundSchema` instead. */
+  export const outboundSchema = SignatureVerificationDto$outboundSchema;
+  /** @deprecated use `SignatureVerificationDto$Outbound` instead. */
+  export type Outbound = SignatureVerificationDto$Outbound;
 }

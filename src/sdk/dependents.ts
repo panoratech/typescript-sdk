@@ -11,26 +11,34 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Dependents extends ClientSDK {
-    /**
-     * List Dependents
-     */
-    async list(
-        request: operations.ListHrisDependentsRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListHrisDependentsResponse>> {
-        return unwrapResultIterator(hrisDependentsList(this, request, options));
-    }
+  /**
+   * List Dependents
+   */
+  async list(
+    request: operations.ListHrisDependentsRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListHrisDependentsResponse>> {
+    return unwrapResultIterator(hrisDependentsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Dependent
-     *
-     * @remarks
-     * Retrieve a Dependent from any connected Hris software
-     */
-    async retrieve(
-        request: operations.RetrieveHrisDependentRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedHrisDependentOutput> {
-        return unwrapAsync(hrisDependentsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Dependent
+   *
+   * @remarks
+   * Retrieve a Dependent from any connected Hris software
+   */
+  async retrieve(
+    request: operations.RetrieveHrisDependentRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedHrisDependentOutput> {
+    return unwrapAsync(hrisDependentsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

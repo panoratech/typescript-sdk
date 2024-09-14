@@ -13,43 +13,43 @@ import { Stages } from "./stages.js";
 import { Tasks } from "./tasks.js";
 
 export class Crm extends ClientSDK {
-    private _companies?: Companies;
-    get companies(): Companies {
-        return (this._companies ??= new Companies(this.options$));
-    }
+  private _companies?: Companies;
+  get companies(): Companies {
+    return (this._companies ??= new Companies(this.options$));
+  }
 
-    private _contacts?: PanoraContacts;
-    get contacts(): PanoraContacts {
-        return (this._contacts ??= new PanoraContacts(this.options$));
-    }
+  private _contacts?: PanoraContacts;
+  get contacts(): PanoraContacts {
+    return (this._contacts ??= new PanoraContacts(this.options$));
+  }
 
-    private _deals?: Deals;
-    get deals(): Deals {
-        return (this._deals ??= new Deals(this.options$));
-    }
+  private _deals?: Deals;
+  get deals(): Deals {
+    return (this._deals ??= new Deals(this.options$));
+  }
 
-    private _engagements?: Engagements;
-    get engagements(): Engagements {
-        return (this._engagements ??= new Engagements(this.options$));
-    }
+  private _engagements?: Engagements;
+  get engagements(): Engagements {
+    return (this._engagements ??= new Engagements(this.options$));
+  }
 
-    private _notes?: Notes;
-    get notes(): Notes {
-        return (this._notes ??= new Notes(this.options$));
-    }
+  private _notes?: Notes;
+  get notes(): Notes {
+    return (this._notes ??= new Notes(this.options$));
+  }
 
-    private _stages?: Stages;
-    get stages(): Stages {
-        return (this._stages ??= new Stages(this.options$));
-    }
+  private _stages?: Stages;
+  get stages(): Stages {
+    return (this._stages ??= new Stages(this.options$));
+  }
 
-    private _tasks?: Tasks;
-    get tasks(): Tasks {
-        return (this._tasks ??= new Tasks(this.options$));
-    }
+  private _tasks?: Tasks;
+  get tasks(): Tasks {
+    return (this._tasks ??= new Tasks(this.options$));
+  }
 
-    private _users?: PanoraUsers;
-    get users(): PanoraUsers {
-        return (this._users ??= new PanoraUsers(this.options$));
-    }
+  private _users?: PanoraUsers;
+  get users(): PanoraUsers {
+    return (this._users ??= new PanoraUsers(this.options$));
+  }
 }

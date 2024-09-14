@@ -9,13 +9,17 @@ import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Events extends ClientSDK {
-    /**
-     * List Events
-     */
-    async getPanoraCoreEvents(
-        request: operations.GetPanoraCoreEventsRequest,
-        options?: RequestOptions
-    ): Promise<Array<components.EventResponse>> {
-        return unwrapAsync(eventsGetPanoraCoreEvents(this, request, options));
-    }
+  /**
+   * List Events
+   */
+  async getPanoraCoreEvents(
+    request: operations.GetPanoraCoreEventsRequest,
+    options?: RequestOptions,
+  ): Promise<Array<components.EventResponse>> {
+    return unwrapAsync(eventsGetPanoraCoreEvents(
+      this,
+      request,
+      options,
+    ));
+  }
 }

@@ -12,39 +12,51 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Lists extends ClientSDK {
-    /**
-     * List Lists
-     */
-    async list(
-        request: operations.ListMarketingautomationListsRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListMarketingautomationListsResponse>> {
-        return unwrapResultIterator(marketingautomationListsList(this, request, options));
-    }
+  /**
+   * List Lists
+   */
+  async list(
+    request: operations.ListMarketingautomationListsRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListMarketingautomationListsResponse>> {
+    return unwrapResultIterator(marketingautomationListsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Create Lists
-     *
-     * @remarks
-     * Create Lists in any supported Marketingautomation software
-     */
-    async create(
-        request: operations.CreateMarketingautomationListRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedMarketingautomationListOutput> {
-        return unwrapAsync(marketingautomationListsCreate(this, request, options));
-    }
+  /**
+   * Create Lists
+   *
+   * @remarks
+   * Create Lists in any supported Marketingautomation software
+   */
+  async create(
+    request: operations.CreateMarketingautomationListRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedMarketingautomationListOutput> {
+    return unwrapAsync(marketingautomationListsCreate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve List
-     *
-     * @remarks
-     * Retrieve a List from any connected Marketingautomation software
-     */
-    async retrieve(
-        request: operations.RetrieveMarketingautomationListRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedMarketingautomationListOutput> {
-        return unwrapAsync(marketingautomationListsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve List
+   *
+   * @remarks
+   * Retrieve a List from any connected Marketingautomation software
+   */
+  async retrieve(
+    request: operations.RetrieveMarketingautomationListRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedMarketingautomationListOutput> {
+    return unwrapAsync(marketingautomationListsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

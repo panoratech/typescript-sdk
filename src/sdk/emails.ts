@@ -11,26 +11,34 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Emails extends ClientSDK {
-    /**
-     * List Emails
-     */
-    async list(
-        request: operations.ListMarketingautomationEmailsRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListMarketingautomationEmailsResponse>> {
-        return unwrapResultIterator(marketingautomationEmailsList(this, request, options));
-    }
+  /**
+   * List Emails
+   */
+  async list(
+    request: operations.ListMarketingautomationEmailsRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListMarketingautomationEmailsResponse>> {
+    return unwrapResultIterator(marketingautomationEmailsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Email
-     *
-     * @remarks
-     * Retrieve an Email from any connected Marketingautomation software
-     */
-    async retrieve(
-        request: operations.RetrieveMarketingautomationEmailRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedMarketingautomationEmailOutput> {
-        return unwrapAsync(marketingautomationEmailsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Email
+   *
+   * @remarks
+   * Retrieve an Email from any connected Marketingautomation software
+   */
+  async retrieve(
+    request: operations.RetrieveMarketingautomationEmailRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedMarketingautomationEmailOutput> {
+    return unwrapAsync(marketingautomationEmailsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

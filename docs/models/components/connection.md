@@ -6,19 +6,19 @@
 import { Connection, TokenType } from "@panora/sdk/models/components";
 
 let value: Connection = {
-    idConnection: "123e4567-e89b-12d3-a456-426614174000",
-    status: "active",
-    providerSlug: "hubspot",
-    vertical: "crm",
-    accountUrl: "https://example.com/account",
-    tokenType: TokenType.Oauth2,
-    accessToken: "access_token_example",
-    refreshToken: "refresh_token_example",
-    expirationTimestamp: new Date("2024-10-01T12:00:00Z"),
-    createdAt: new Date("2024-10-01T12:00:00Z"),
-    connectionToken: "123e4567-e89b-12d3-a456-426614174000",
-    idProject: "123e4567-e89b-12d3-a456-426614174001",
-    idLinkedUser: "123e4567-e89b-12d3-a456-426614174002",
+  idConnection: "123e4567-e89b-12d3-a456-426614174000",
+  status: "active",
+  providerSlug: "hubspot",
+  vertical: "crm",
+  accountUrl: "https://example.com/account",
+  tokenType: TokenType.Oauth2,
+  accessToken: "access_token_example",
+  refreshToken: "refresh_token_example",
+  expirationTimestamp: new Date("2024-10-01T12:00:00Z"),
+  createdAt: new Date("2024-10-01T12:00:00Z"),
+  connectionToken: "123e4567-e89b-12d3-a456-426614174000",
+  idProject: "123e4567-e89b-12d3-a456-426614174001",
+  idLinkedUser: "123e4567-e89b-12d3-a456-426614174002",
 };
 ```
 

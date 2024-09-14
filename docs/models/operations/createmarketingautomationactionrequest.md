@@ -6,9 +6,9 @@
 import { CreateMarketingautomationActionRequest } from "@panora/sdk/models/operations";
 
 let value: CreateMarketingautomationActionRequest = {
-    xConnectionToken: "<value>",
-    remoteData: false,
-    unifiedMarketingautomationActionInput: {},
+  xConnectionToken: "<value>",
+  remoteData: false,
+  unifiedMarketingautomationActionInput: {},
 };
 ```
 

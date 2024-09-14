@@ -7,11 +7,11 @@ import { PassThroughRequestDtoMethod } from "@panora/sdk/models/components";
 import { RequestRequest } from "@panora/sdk/models/operations";
 
 let value: RequestRequest = {
-    xConnectionToken: "<value>",
-    passThroughRequestDto: {
-        method: PassThroughRequestDtoMethod.Get,
-        path: "/selinux",
-    },
+  xConnectionToken: "<value>",
+  passThroughRequestDto: {
+    method: PassThroughRequestDtoMethod.Post,
+    path: "/usr/lib",
+  },
 };
 ```
 

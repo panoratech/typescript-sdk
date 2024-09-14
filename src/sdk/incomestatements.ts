@@ -11,26 +11,34 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Incomestatements extends ClientSDK {
-    /**
-     * List  IncomeStatements
-     */
-    async list(
-        request: operations.ListAccountingIncomeStatementRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListAccountingIncomeStatementResponse>> {
-        return unwrapResultIterator(accountingIncomestatementsList(this, request, options));
-    }
+  /**
+   * List  IncomeStatements
+   */
+  async list(
+    request: operations.ListAccountingIncomeStatementRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListAccountingIncomeStatementResponse>> {
+    return unwrapResultIterator(accountingIncomestatementsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Income Statements
-     *
-     * @remarks
-     * Retrieve Income Statements from any connected Accounting software
-     */
-    async retrieve(
-        request: operations.RetrieveAccountingIncomeStatementRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedAccountingIncomestatementOutput> {
-        return unwrapAsync(accountingIncomestatementsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Income Statements
+   *
+   * @remarks
+   * Retrieve Income Statements from any connected Accounting software
+   */
+  async retrieve(
+    request: operations.RetrieveAccountingIncomeStatementRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedAccountingIncomestatementOutput> {
+    return unwrapAsync(accountingIncomestatementsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

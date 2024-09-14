@@ -8,9 +8,9 @@ export type UnifiedMarketingautomationUserOutput = {};
 
 /** @internal */
 export const UnifiedMarketingautomationUserOutput$inboundSchema: z.ZodType<
-    UnifiedMarketingautomationUserOutput,
-    z.ZodTypeDef,
-    unknown
+  UnifiedMarketingautomationUserOutput,
+  z.ZodTypeDef,
+  unknown
 > = z.object({});
 
 /** @internal */
@@ -18,9 +18,9 @@ export type UnifiedMarketingautomationUserOutput$Outbound = {};
 
 /** @internal */
 export const UnifiedMarketingautomationUserOutput$outboundSchema: z.ZodType<
-    UnifiedMarketingautomationUserOutput$Outbound,
-    z.ZodTypeDef,
-    UnifiedMarketingautomationUserOutput
+  UnifiedMarketingautomationUserOutput$Outbound,
+  z.ZodTypeDef,
+  UnifiedMarketingautomationUserOutput
 > = z.object({});
 
 /**
@@ -28,10 +28,12 @@ export const UnifiedMarketingautomationUserOutput$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace UnifiedMarketingautomationUserOutput$ {
-    /** @deprecated use `UnifiedMarketingautomationUserOutput$inboundSchema` instead. */
-    export const inboundSchema = UnifiedMarketingautomationUserOutput$inboundSchema;
-    /** @deprecated use `UnifiedMarketingautomationUserOutput$outboundSchema` instead. */
-    export const outboundSchema = UnifiedMarketingautomationUserOutput$outboundSchema;
-    /** @deprecated use `UnifiedMarketingautomationUserOutput$Outbound` instead. */
-    export type Outbound = UnifiedMarketingautomationUserOutput$Outbound;
+  /** @deprecated use `UnifiedMarketingautomationUserOutput$inboundSchema` instead. */
+  export const inboundSchema =
+    UnifiedMarketingautomationUserOutput$inboundSchema;
+  /** @deprecated use `UnifiedMarketingautomationUserOutput$outboundSchema` instead. */
+  export const outboundSchema =
+    UnifiedMarketingautomationUserOutput$outboundSchema;
+  /** @deprecated use `UnifiedMarketingautomationUserOutput$Outbound` instead. */
+  export type Outbound = UnifiedMarketingautomationUserOutput$Outbound;
 }

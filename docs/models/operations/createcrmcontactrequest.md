@@ -6,41 +6,41 @@
 import { CreateCrmContactRequest } from "@panora/sdk/models/operations";
 
 let value: CreateCrmContactRequest = {
-    xConnectionToken: "<value>",
-    remoteData: false,
-    unifiedCrmContactInput: {
-        firstName: "John",
-        lastName: "Doe",
-        emailAddresses: [
-            {
-                emailAddress: "Diego_Dibbert45@yahoo.com",
-                emailAddressType: "<value>",
-            },
-        ],
-        phoneNumbers: [
-            {
-                phoneNumber: "<value>",
-                phoneType: "<value>",
-            },
-        ],
-        addresses: [
-            {
-                street1: "5th Avenue",
-                street2: "Street 2",
-                city: "Anytown",
-                state: "CA",
-                postalCode: "10001",
-                country: "USA",
-                addressType: "PERSONAL",
-                ownerType: "<value>",
-            },
-        ],
-        userId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-        fieldMappings: {
-            fav_dish: "broccoli",
-            fav_color: "red",
-        },
+  xConnectionToken: "<value>",
+  remoteData: false,
+  unifiedCrmContactInput: {
+    firstName: "John",
+    lastName: "Doe",
+    emailAddresses: [
+      {
+        emailAddress: "Presley_Koepp@hotmail.com",
+        emailAddressType: "<value>",
+      },
+    ],
+    phoneNumbers: [
+      {
+        phoneNumber: "1-276-615-9751 x4421",
+        phoneType: "<value>",
+      },
+    ],
+    addresses: [
+      {
+        street1: "5th Avenue",
+        street2: "Street 2",
+        city: "Anytown",
+        state: "CA",
+        postalCode: "10001",
+        country: "USA",
+        addressType: "PERSONAL",
+        ownerType: "<value>",
+      },
+    ],
+    userId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+    fieldMappings: {
+      "fav_dish": "broccoli",
+      "fav_color": "red",
     },
+  },
 };
 ```
 

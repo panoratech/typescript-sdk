@@ -11,26 +11,34 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Taxrates extends ClientSDK {
-    /**
-     * List  TaxRates
-     */
-    async list(
-        request: operations.ListAccountingTaxRateRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListAccountingTaxRateResponse>> {
-        return unwrapResultIterator(accountingTaxratesList(this, request, options));
-    }
+  /**
+   * List  TaxRates
+   */
+  async list(
+    request: operations.ListAccountingTaxRateRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListAccountingTaxRateResponse>> {
+    return unwrapResultIterator(accountingTaxratesList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Tax Rates
-     *
-     * @remarks
-     * Retrieve Tax Rates from any connected Accounting software
-     */
-    async retrieve(
-        request: operations.RetrieveAccountingTaxRateRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedAccountingTaxrateOutput> {
-        return unwrapAsync(accountingTaxratesRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Tax Rates
+   *
+   * @remarks
+   * Retrieve Tax Rates from any connected Accounting software
+   */
+  async retrieve(
+    request: operations.RetrieveAccountingTaxRateRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedAccountingTaxrateOutput> {
+    return unwrapAsync(accountingTaxratesRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

@@ -11,26 +11,34 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class PanoraTags extends ClientSDK {
-    /**
-     * List  Tags
-     */
-    async list(
-        request: operations.ListAtsTagsRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListAtsTagsResponse>> {
-        return unwrapResultIterator(atsTagsList(this, request, options));
-    }
+  /**
+   * List  Tags
+   */
+  async list(
+    request: operations.ListAtsTagsRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListAtsTagsResponse>> {
+    return unwrapResultIterator(atsTagsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Tags
-     *
-     * @remarks
-     * Retrieve Tags from any connected Ats software
-     */
-    async retrieve(
-        request: operations.RetrieveAtsTagRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedAtsTagOutput> {
-        return unwrapAsync(atsTagsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Tags
+   *
+   * @remarks
+   * Retrieve Tags from any connected Ats software
+   */
+  async retrieve(
+    request: operations.RetrieveAtsTagRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedAtsTagOutput> {
+    return unwrapAsync(atsTagsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

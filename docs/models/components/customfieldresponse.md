@@ -6,20 +6,20 @@
 import { CustomFieldResponse, CustomFieldResponseDataType } from "@panora/sdk/models/components";
 
 let value: CustomFieldResponse = {
-    idAttribute: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-    status: "",
-    ressourceOwnerType: "",
-    slug: "fav_dish",
-    description: "My favorite dish",
-    dataType: CustomFieldResponseDataType.String,
-    remoteId: "id_1",
-    source: "hubspot",
-    idEntity: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-    idProject: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-    scope: "",
-    idConsumer: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-    createdAt: new Date("2024-10-01T12:00:00Z"),
-    modifiedAt: new Date("2024-10-01T12:00:00Z"),
+  idAttribute: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+  status: "",
+  ressourceOwnerType: "",
+  slug: "fav_dish",
+  description: "My favorite dish",
+  dataType: CustomFieldResponseDataType.String,
+  remoteId: "id_1",
+  source: "hubspot",
+  idEntity: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+  idProject: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+  scope: "",
+  idConsumer: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+  createdAt: new Date("2024-10-01T12:00:00Z"),
+  modifiedAt: new Date("2024-10-01T12:00:00Z"),
 };
 ```
 

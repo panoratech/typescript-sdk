@@ -6,8 +6,8 @@
 import { RetrieveEcommerceCustomerRequest } from "@panora/sdk/models/operations";
 
 let value: RetrieveEcommerceCustomerRequest = {
-    xConnectionToken: "<value>",
-    id: "<id>",
+  xConnectionToken: "<value>",
+  id: "<id>",
 };
 ```
 

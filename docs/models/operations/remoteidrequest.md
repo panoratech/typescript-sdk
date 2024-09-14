@@ -6,7 +6,7 @@
 import { RemoteIdRequest } from "@panora/sdk/models/operations";
 
 let value: RemoteIdRequest = {
-    remoteId: "id_1",
+  remoteId: "id_1",
 };
 ```
 

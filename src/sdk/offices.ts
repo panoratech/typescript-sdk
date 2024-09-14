@@ -11,26 +11,34 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Offices extends ClientSDK {
-    /**
-     * List Offices
-     */
-    async list(
-        request: operations.ListAtsOfficeRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListAtsOfficeResponse>> {
-        return unwrapResultIterator(atsOfficesList(this, request, options));
-    }
+  /**
+   * List Offices
+   */
+  async list(
+    request: operations.ListAtsOfficeRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListAtsOfficeResponse>> {
+    return unwrapResultIterator(atsOfficesList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Offices
-     *
-     * @remarks
-     * Retrieve Offices from any connected Ats software
-     */
-    async retrieve(
-        request: operations.RetrieveAtsOfficeRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedAtsOfficeOutput> {
-        return unwrapAsync(atsOfficesRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Offices
+   *
+   * @remarks
+   * Retrieve Offices from any connected Ats software
+   */
+  async retrieve(
+    request: operations.RetrieveAtsOfficeRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedAtsOfficeOutput> {
+    return unwrapAsync(atsOfficesRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

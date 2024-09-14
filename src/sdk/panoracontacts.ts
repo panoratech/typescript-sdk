@@ -12,39 +12,51 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class PanoraContacts extends ClientSDK {
-    /**
-     * List CRM Contacts
-     */
-    async list(
-        request: operations.ListCrmContactsRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListCrmContactsResponse>> {
-        return unwrapResultIterator(crmContactsList(this, request, options));
-    }
+  /**
+   * List CRM Contacts
+   */
+  async list(
+    request: operations.ListCrmContactsRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListCrmContactsResponse>> {
+    return unwrapResultIterator(crmContactsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Create Contacts
-     *
-     * @remarks
-     * Create Contacts in any supported CRM
-     */
-    async create(
-        request: operations.CreateCrmContactRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedCrmContactOutput> {
-        return unwrapAsync(crmContactsCreate(this, request, options));
-    }
+  /**
+   * Create Contacts
+   *
+   * @remarks
+   * Create Contacts in any supported CRM
+   */
+  async create(
+    request: operations.CreateCrmContactRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedCrmContactOutput> {
+    return unwrapAsync(crmContactsCreate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Contacts
-     *
-     * @remarks
-     * Retrieve Contacts from any connected CRM
-     */
-    async retrieve(
-        request: operations.RetrieveCrmContactRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedCrmContactOutput> {
-        return unwrapAsync(crmContactsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Contacts
+   *
+   * @remarks
+   * Retrieve Contacts from any connected CRM
+   */
+  async retrieve(
+    request: operations.RetrieveCrmContactRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedCrmContactOutput> {
+    return unwrapAsync(crmContactsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

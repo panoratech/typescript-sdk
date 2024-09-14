@@ -22,7 +22,7 @@ const panora = new Panora({
 
 async function run() {
   const result = await panora.events.getPanoraCoreEvents({});
-
+  
   // Handle the result
   console.log(result)
 }

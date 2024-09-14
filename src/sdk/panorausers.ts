@@ -11,26 +11,34 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class PanoraUsers extends ClientSDK {
-    /**
-     * List  Users
-     */
-    async list(
-        request: operations.ListCrmUsersRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListCrmUsersResponse>> {
-        return unwrapResultIterator(crmUsersList(this, request, options));
-    }
+  /**
+   * List  Users
+   */
+  async list(
+    request: operations.ListCrmUsersRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListCrmUsersResponse>> {
+    return unwrapResultIterator(crmUsersList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Users
-     *
-     * @remarks
-     * Retrieve Users from any connected Crm software
-     */
-    async retrieve(
-        request: operations.RetrieveCrmUserRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedCrmUserOutput> {
-        return unwrapAsync(crmUsersRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Users
+   *
+   * @remarks
+   * Retrieve Users from any connected Crm software
+   */
+  async retrieve(
+    request: operations.RetrieveCrmUserRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedCrmUserOutput> {
+    return unwrapAsync(crmUsersRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

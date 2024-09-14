@@ -6,19 +6,25 @@
 import { CreateEcommerceProductRequest } from "@panora/sdk/models/operations";
 
 let value: CreateEcommerceProductRequest = {
-    xConnectionToken: "<value>",
-    remoteData: false,
-    unifiedEcommerceProductInput: {
-        productUrl: "https://product_url/tee",
-        productType: "teeshirt",
-        productStatus: "ACTIVE",
-        imagesUrls: ["https://myproduct/image"],
-        description: "best tee ever",
-        vendor: "vendor_extern",
-        variants: [{}],
-        tags: ["tag_1"],
-        fieldMappings: {},
-    },
+  xConnectionToken: "<value>",
+  remoteData: false,
+  unifiedEcommerceProductInput: {
+    productUrl: "https://product_url/tee",
+    productType: "teeshirt",
+    productStatus: "ACTIVE",
+    imagesUrls: [
+      "https://myproduct/image",
+    ],
+    description: "best tee ever",
+    vendor: "vendor_extern",
+    variants: [
+      {},
+    ],
+    tags: [
+      "tag_1",
+    ],
+    fieldMappings: {},
+  },
 };
 ```
 

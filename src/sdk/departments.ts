@@ -11,26 +11,34 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Departments extends ClientSDK {
-    /**
-     * List  Departments
-     */
-    async list(
-        request: operations.ListAtsDepartmentsRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListAtsDepartmentsResponse>> {
-        return unwrapResultIterator(atsDepartmentsList(this, request, options));
-    }
+  /**
+   * List  Departments
+   */
+  async list(
+    request: operations.ListAtsDepartmentsRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListAtsDepartmentsResponse>> {
+    return unwrapResultIterator(atsDepartmentsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Departments
-     *
-     * @remarks
-     * Retrieve Departments from any connected Ats software
-     */
-    async retrieve(
-        request: operations.RetrieveAtsDepartmentRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedAtsDepartmentOutput> {
-        return unwrapAsync(atsDepartmentsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Departments
+   *
+   * @remarks
+   * Retrieve Departments from any connected Ats software
+   */
+  async retrieve(
+    request: operations.RetrieveAtsDepartmentRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedAtsDepartmentOutput> {
+    return unwrapAsync(atsDepartmentsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

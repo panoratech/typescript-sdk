@@ -6,9 +6,11 @@
 import { ListMarketingAutomationEventsResponseBody } from "@panora/sdk/models/operations";
 
 let value: ListMarketingAutomationEventsResponseBody = {
-    prevCursor: "<value>",
-    nextCursor: "<value>",
-    data: [{}],
+  prevCursor: "<value>",
+  nextCursor: "<value>",
+  data: [
+    {},
+  ],
 };
 ```
 

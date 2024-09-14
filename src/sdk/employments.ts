@@ -11,26 +11,34 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Employments extends ClientSDK {
-    /**
-     * List Employments
-     */
-    async list(
-        request: operations.ListHrisEmploymentsRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListHrisEmploymentsResponse>> {
-        return unwrapResultIterator(hrisEmploymentsList(this, request, options));
-    }
+  /**
+   * List Employments
+   */
+  async list(
+    request: operations.ListHrisEmploymentsRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListHrisEmploymentsResponse>> {
+    return unwrapResultIterator(hrisEmploymentsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Employment
-     *
-     * @remarks
-     * Retrieve an Employment from any connected Hris software
-     */
-    async retrieve(
-        request: operations.RetrieveHrisEmploymentRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedHrisEmploymentOutput> {
-        return unwrapAsync(hrisEmploymentsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Employment
+   *
+   * @remarks
+   * Retrieve an Employment from any connected Hris software
+   */
+  async retrieve(
+    request: operations.RetrieveHrisEmploymentRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedHrisEmploymentOutput> {
+    return unwrapAsync(hrisEmploymentsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

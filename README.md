@@ -16,8 +16,33 @@ It has been generated successfully based on your OpenAPI spec. However, it is no
 - [ ] 🎁 Publish your SDK to package managers by [configuring automatic publishing](https://www.speakeasyapi.dev/docs/advanced-setup/publish-sdks)
 - [ ] ✨ When ready to productionize, delete this section from the README
 
+<!-- Start Summary [summary] -->
+## Summary
+
+Panora API: A unified API to ship integrations
+<!-- End Summary [summary] -->
+
+<!-- Start Table of Contents [toc] -->
+## Table of Contents
+
+* [SDK Installation](#sdk-installation)
+* [Requirements](#requirements)
+* [SDK Example Usage](#sdk-example-usage)
+* [Available Resources and Operations](#available-resources-and-operations)
+* [Standalone functions](#standalone-functions)
+* [Pagination](#pagination)
+* [Retries](#retries)
+* [Error Handling](#error-handling)
+* [Server Selection](#server-selection)
+* [Custom HTTP Client](#custom-http-client)
+* [Authentication](#authentication)
+* [Debugging](#debugging)
+<!-- End Table of Contents [toc] -->
+
 <!-- Start SDK Installation [installation] -->
 ## SDK Installation
+
+The SDK can be installed with either [npm](https://www.npmjs.com/), [pnpm](https://pnpm.io/), [bun](https://bun.sh/) or [yarn](https://classic.yarnpkg.com/en/) package managers.
 
 ### NPM
 
@@ -62,14 +87,14 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-    apiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-    const result = await panora.hello();
+  const result = await panora.hello();
 
-    // Handle the result
-    console.log(result);
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -80,13 +105,207 @@ run();
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
-### [Panora SDK](docs/sdks/panora/README.md)
+<details open>
+<summary>Available methods</summary>
 
-* [hello](docs/sdks/panora/README.md#hello)
-* [health](docs/sdks/panora/README.md#health)
+### [accounting](docs/sdks/accounting/README.md)
 
 
-### [auth.login](docs/sdks/login/README.md)
+#### [accounting.accounts](docs/sdks/panoraaccounts/README.md)
+
+* [list](docs/sdks/panoraaccounts/README.md#list) - List  Accounts
+* [create](docs/sdks/panoraaccounts/README.md#create) - Create Accounts
+* [retrieve](docs/sdks/panoraaccounts/README.md#retrieve) - Retrieve Accounts
+
+#### [accounting.addresses](docs/sdks/addresses/README.md)
+
+* [list](docs/sdks/addresses/README.md#list) - List  Addresss
+* [retrieve](docs/sdks/addresses/README.md#retrieve) - Retrieve Addresses
+
+#### [accounting.attachments](docs/sdks/panoraattachments/README.md)
+
+* [list](docs/sdks/panoraattachments/README.md#list) - List  Attachments
+* [create](docs/sdks/panoraattachments/README.md#create) - Create Attachments
+* [retrieve](docs/sdks/panoraattachments/README.md#retrieve) - Retrieve Attachments
+
+#### [accounting.balancesheets](docs/sdks/balancesheets/README.md)
+
+* [list](docs/sdks/balancesheets/README.md#list) - List  BalanceSheets
+* [retrieve](docs/sdks/balancesheets/README.md#retrieve) - Retrieve BalanceSheets
+
+#### [accounting.cashflowstatements](docs/sdks/cashflowstatements/README.md)
+
+* [list](docs/sdks/cashflowstatements/README.md#list) - List  CashflowStatements
+* [retrieve](docs/sdks/cashflowstatements/README.md#retrieve) - Retrieve Cashflow Statements
+
+#### [accounting.companyinfos](docs/sdks/companyinfos/README.md)
+
+* [list](docs/sdks/companyinfos/README.md#list) - List  CompanyInfos
+* [retrieve](docs/sdks/companyinfos/README.md#retrieve) - Retrieve Company Infos
+
+#### [accounting.contacts](docs/sdks/panoraaccountingcontacts/README.md)
+
+* [list](docs/sdks/panoraaccountingcontacts/README.md#list) - List  Contacts
+* [create](docs/sdks/panoraaccountingcontacts/README.md#create) - Create Contacts
+* [retrieve](docs/sdks/panoraaccountingcontacts/README.md#retrieve) - Retrieve Contacts
+
+#### [accounting.creditnotes](docs/sdks/creditnotes/README.md)
+
+* [list](docs/sdks/creditnotes/README.md#list) - List  CreditNotes
+* [retrieve](docs/sdks/creditnotes/README.md#retrieve) - Retrieve Credit Notes
+
+#### [accounting.expenses](docs/sdks/expenses/README.md)
+
+* [list](docs/sdks/expenses/README.md#list) - List  Expenses
+* [create](docs/sdks/expenses/README.md#create) - Create Expenses
+* [retrieve](docs/sdks/expenses/README.md#retrieve) - Retrieve Expenses
+
+#### [accounting.incomestatements](docs/sdks/incomestatements/README.md)
+
+* [list](docs/sdks/incomestatements/README.md#list) - List  IncomeStatements
+* [retrieve](docs/sdks/incomestatements/README.md#retrieve) - Retrieve Income Statements
+
+#### [accounting.invoices](docs/sdks/invoices/README.md)
+
+* [list](docs/sdks/invoices/README.md#list) - List  Invoices
+* [create](docs/sdks/invoices/README.md#create) - Create Invoices
+* [retrieve](docs/sdks/invoices/README.md#retrieve) - Retrieve Invoices
+
+#### [accounting.items](docs/sdks/items/README.md)
+
+* [list](docs/sdks/items/README.md#list) - List  Items
+* [retrieve](docs/sdks/items/README.md#retrieve) - Retrieve Items
+
+#### [accounting.journalentries](docs/sdks/journalentries/README.md)
+
+* [list](docs/sdks/journalentries/README.md#list) - List  JournalEntrys
+* [create](docs/sdks/journalentries/README.md#create) - Create Journal Entries
+* [retrieve](docs/sdks/journalentries/README.md#retrieve) - Retrieve Journal Entries
+
+#### [accounting.payments](docs/sdks/payments/README.md)
+
+* [list](docs/sdks/payments/README.md#list) - List  Payments
+* [create](docs/sdks/payments/README.md#create) - Create Payments
+* [retrieve](docs/sdks/payments/README.md#retrieve) - Retrieve Payments
+
+#### [accounting.phonenumbers](docs/sdks/phonenumbers/README.md)
+
+* [list](docs/sdks/phonenumbers/README.md#list) - List  PhoneNumbers
+* [retrieve](docs/sdks/phonenumbers/README.md#retrieve) - Retrieve Phone Numbers
+
+#### [accounting.purchaseorders](docs/sdks/purchaseorders/README.md)
+
+* [list](docs/sdks/purchaseorders/README.md#list) - List  PurchaseOrders
+* [create](docs/sdks/purchaseorders/README.md#create) - Create Purchase Orders
+* [retrieve](docs/sdks/purchaseorders/README.md#retrieve) - Retrieve Purchase Orders
+
+#### [accounting.taxrates](docs/sdks/taxrates/README.md)
+
+* [list](docs/sdks/taxrates/README.md#list) - List  TaxRates
+* [retrieve](docs/sdks/taxrates/README.md#retrieve) - Retrieve Tax Rates
+
+#### [accounting.trackingcategories](docs/sdks/trackingcategories/README.md)
+
+* [list](docs/sdks/trackingcategories/README.md#list) - List  TrackingCategorys
+* [retrieve](docs/sdks/trackingcategories/README.md#retrieve) - Retrieve Tracking Categories
+
+#### [accounting.transactions](docs/sdks/transactions/README.md)
+
+* [list](docs/sdks/transactions/README.md#list) - List  Transactions
+* [retrieve](docs/sdks/transactions/README.md#retrieve) - Retrieve Transactions
+
+#### [accounting.vendorcredits](docs/sdks/vendorcredits/README.md)
+
+* [list](docs/sdks/vendorcredits/README.md#list) - List  VendorCredits
+* [retrieve](docs/sdks/vendorcredits/README.md#retrieve) - Retrieve Vendor Credits
+
+### [ats](docs/sdks/ats/README.md)
+
+
+#### [ats.activities](docs/sdks/activities/README.md)
+
+* [list](docs/sdks/activities/README.md#list) - List  Activities
+* [create](docs/sdks/activities/README.md#create) - Create Activities
+* [retrieve](docs/sdks/activities/README.md#retrieve) - Retrieve Activities
+
+#### [ats.applications](docs/sdks/applications/README.md)
+
+* [list](docs/sdks/applications/README.md#list) - List  Applications
+* [create](docs/sdks/applications/README.md#create) - Create Applications
+* [retrieve](docs/sdks/applications/README.md#retrieve) - Retrieve Applications
+
+#### [ats.attachments](docs/sdks/attachments/README.md)
+
+* [list](docs/sdks/attachments/README.md#list) - List  Attachments
+* [create](docs/sdks/attachments/README.md#create) - Create Attachments
+* [retrieve](docs/sdks/attachments/README.md#retrieve) - Retrieve Attachments
+
+#### [ats.candidates](docs/sdks/candidates/README.md)
+
+* [list](docs/sdks/candidates/README.md#list) - List  Candidates
+* [create](docs/sdks/candidates/README.md#create) - Create Candidates
+* [retrieve](docs/sdks/candidates/README.md#retrieve) - Retrieve Candidates
+
+#### [ats.departments](docs/sdks/departments/README.md)
+
+* [list](docs/sdks/departments/README.md#list) - List  Departments
+* [retrieve](docs/sdks/departments/README.md#retrieve) - Retrieve Departments
+
+#### [ats.eeocs](docs/sdks/eeocs/README.md)
+
+* [list](docs/sdks/eeocs/README.md#list) - List  Eeocss
+* [retrieve](docs/sdks/eeocs/README.md#retrieve) - Retrieve Eeocs
+
+#### [ats.interviews](docs/sdks/interviews/README.md)
+
+* [list](docs/sdks/interviews/README.md#list) - List  Interviews
+* [create](docs/sdks/interviews/README.md#create) - Create Interviews
+* [retrieve](docs/sdks/interviews/README.md#retrieve) - Retrieve Interviews
+
+#### [ats.jobinterviewstages](docs/sdks/jobinterviewstages/README.md)
+
+* [list](docs/sdks/jobinterviewstages/README.md#list) - List  JobInterviewStages
+* [retrieve](docs/sdks/jobinterviewstages/README.md#retrieve) - Retrieve Job Interview Stages
+
+#### [ats.jobs](docs/sdks/jobs/README.md)
+
+* [list](docs/sdks/jobs/README.md#list) - List  Jobs
+* [retrieve](docs/sdks/jobs/README.md#retrieve) - Retrieve Jobs
+
+#### [ats.offers](docs/sdks/offers/README.md)
+
+* [list](docs/sdks/offers/README.md#list) - List  Offers
+* [retrieve](docs/sdks/offers/README.md#retrieve) - Retrieve Offers
+
+#### [ats.offices](docs/sdks/offices/README.md)
+
+* [list](docs/sdks/offices/README.md#list) - List Offices
+* [retrieve](docs/sdks/offices/README.md#retrieve) - Retrieve Offices
+
+#### [ats.rejectreasons](docs/sdks/rejectreasons/README.md)
+
+* [list](docs/sdks/rejectreasons/README.md#list) - List  RejectReasons
+* [retrieve](docs/sdks/rejectreasons/README.md#retrieve) - Retrieve Reject Reasons
+
+#### [ats.scorecards](docs/sdks/scorecards/README.md)
+
+* [list](docs/sdks/scorecards/README.md#list) - List  ScoreCards
+* [retrieve](docs/sdks/scorecards/README.md#retrieve) - Retrieve Score Cards
+
+#### [ats.tags](docs/sdks/panoratags/README.md)
+
+* [list](docs/sdks/panoratags/README.md#list) - List  Tags
+* [retrieve](docs/sdks/panoratags/README.md#retrieve) - Retrieve Tags
+
+#### [ats.users](docs/sdks/panoraatsusers/README.md)
+
+* [list](docs/sdks/panoraatsusers/README.md#list) - List  Users
+* [retrieve](docs/sdks/panoraatsusers/README.md#retrieve) - Retrieve Users
+
+### [auth](docs/sdks/auth/README.md)
+
+
+#### [auth.login](docs/sdks/login/README.md)
 
 * [signIn](docs/sdks/login/README.md#signin) - Log In
 
@@ -94,127 +313,83 @@ run();
 
 * [getConnections](docs/sdks/connections/README.md#getconnections) - List Connections
 
-### [webhooks](docs/sdks/webhooks/README.md)
-
-* [list](docs/sdks/webhooks/README.md#list) - List webhooks
-* [create](docs/sdks/webhooks/README.md#create) - Create webhook
-* [delete](docs/sdks/webhooks/README.md#delete) - Delete Webhook
-* [updateStatus](docs/sdks/webhooks/README.md#updatestatus) - Update webhook status
-* [verifyEvent](docs/sdks/webhooks/README.md#verifyevent) - Verify payload signature of the webhook
+### [crm](docs/sdks/crm/README.md)
 
 
-### [ticketing.tickets](docs/sdks/tickets/README.md)
-
-* [list](docs/sdks/tickets/README.md#list) - List  Tickets
-* [create](docs/sdks/tickets/README.md#create) - Create Tickets
-* [retrieve](docs/sdks/tickets/README.md#retrieve) - Retrieve Tickets
-
-### [ticketing.users](docs/sdks/users/README.md)
-
-* [list](docs/sdks/users/README.md#list) - List Users
-* [retrieve](docs/sdks/users/README.md#retrieve) - Retrieve User
-
-### [ticketing.accounts](docs/sdks/accounts/README.md)
-
-* [list](docs/sdks/accounts/README.md#list) - List  Accounts
-* [retrieve](docs/sdks/accounts/README.md#retrieve) - Retrieve Accounts
-
-### [ticketing.contacts](docs/sdks/contacts/README.md)
-
-* [list](docs/sdks/contacts/README.md#list) - List Contacts
-* [retrieve](docs/sdks/contacts/README.md#retrieve) - Retrieve Contact
-
-### [ticketing.collections](docs/sdks/collections/README.md)
-
-* [list](docs/sdks/collections/README.md#list) - List Collections
-* [retrieve](docs/sdks/collections/README.md#retrieve) - Retrieve Collections
-
-### [ticketing.comments](docs/sdks/comments/README.md)
-
-* [list](docs/sdks/comments/README.md#list) - List Comments
-* [create](docs/sdks/comments/README.md#create) - Create Comments
-* [retrieve](docs/sdks/comments/README.md#retrieve) - Retrieve Comment
-
-### [ticketing.tags](docs/sdks/tags/README.md)
-
-* [list](docs/sdks/tags/README.md#list) - List Tags
-* [retrieve](docs/sdks/tags/README.md#retrieve) - Retrieve Tag
-
-### [ticketing.teams](docs/sdks/teams/README.md)
-
-* [list](docs/sdks/teams/README.md#list) - List  Teams
-* [retrieve](docs/sdks/teams/README.md#retrieve) - Retrieve Teams
-
-### [ticketing.attachments](docs/sdks/panoraticketingattachments/README.md)
-
-* [list](docs/sdks/panoraticketingattachments/README.md#list) - List  Attachments
-* [create](docs/sdks/panoraticketingattachments/README.md#create) - Create Attachments
-* [retrieve](docs/sdks/panoraticketingattachments/README.md#retrieve) - Retrieve Attachments
-
-### [sync](docs/sdks/sync/README.md)
-
-* [status](docs/sdks/sync/README.md#status) - Retrieve sync status of a certain vertical
-* [resync](docs/sdks/sync/README.md#resync) - Resync common objects across a vertical
-
-
-### [crm.companies](docs/sdks/companies/README.md)
+#### [crm.companies](docs/sdks/companies/README.md)
 
 * [list](docs/sdks/companies/README.md#list) - List Companies
 * [create](docs/sdks/companies/README.md#create) - Create Companies
 * [retrieve](docs/sdks/companies/README.md#retrieve) - Retrieve Companies
 
-### [crm.contacts](docs/sdks/panoracontacts/README.md)
+#### [crm.contacts](docs/sdks/panoracontacts/README.md)
 
 * [list](docs/sdks/panoracontacts/README.md#list) - List CRM Contacts
 * [create](docs/sdks/panoracontacts/README.md#create) - Create Contacts
 * [retrieve](docs/sdks/panoracontacts/README.md#retrieve) - Retrieve Contacts
 
-### [crm.deals](docs/sdks/deals/README.md)
+#### [crm.deals](docs/sdks/deals/README.md)
 
 * [list](docs/sdks/deals/README.md#list) - List Deals
 * [create](docs/sdks/deals/README.md#create) - Create Deals
 * [retrieve](docs/sdks/deals/README.md#retrieve) - Retrieve Deals
 
-### [crm.engagements](docs/sdks/engagements/README.md)
+#### [crm.engagements](docs/sdks/engagements/README.md)
 
 * [list](docs/sdks/engagements/README.md#list) - List Engagements
 * [create](docs/sdks/engagements/README.md#create) - Create Engagements
 * [retrieve](docs/sdks/engagements/README.md#retrieve) - Retrieve Engagements
 
-### [crm.notes](docs/sdks/notes/README.md)
+#### [crm.notes](docs/sdks/notes/README.md)
 
 * [list](docs/sdks/notes/README.md#list) - List Notes
 * [create](docs/sdks/notes/README.md#create) - Create Notes
 * [retrieve](docs/sdks/notes/README.md#retrieve) - Retrieve Notes
 
-### [crm.stages](docs/sdks/stages/README.md)
+#### [crm.stages](docs/sdks/stages/README.md)
 
 * [list](docs/sdks/stages/README.md#list) - List  Stages
 * [retrieve](docs/sdks/stages/README.md#retrieve) - Retrieve Stages
 
-### [crm.tasks](docs/sdks/tasks/README.md)
+#### [crm.tasks](docs/sdks/tasks/README.md)
 
 * [list](docs/sdks/tasks/README.md#list) - List Tasks
 * [create](docs/sdks/tasks/README.md#create) - Create Tasks
 * [retrieve](docs/sdks/tasks/README.md#retrieve) - Retrieve Tasks
 
-### [crm.users](docs/sdks/panorausers/README.md)
+#### [crm.users](docs/sdks/panorausers/README.md)
 
 * [list](docs/sdks/panorausers/README.md#list) - List  Users
 * [retrieve](docs/sdks/panorausers/README.md#retrieve) - Retrieve Users
 
-### [linkedUsers](docs/sdks/linkedusers/README.md)
+### [ecommerce](docs/sdks/ecommerce/README.md)
 
-* [create](docs/sdks/linkedusers/README.md#create) - Create Linked Users
-* [list](docs/sdks/linkedusers/README.md#list) - List Linked Users
-* [importBatch](docs/sdks/linkedusers/README.md#importbatch) - Add Batch Linked Users
-* [retrieve](docs/sdks/linkedusers/README.md#retrieve) - Retrieve Linked Users
-* [remoteId](docs/sdks/linkedusers/README.md#remoteid) - Retrieve a Linked User From A Remote Id
 
-### [projects](docs/sdks/projects/README.md)
+#### [ecommerce.customers](docs/sdks/customers/README.md)
 
-* [getProjects](docs/sdks/projects/README.md#getprojects) - Retrieve projects
-* [create](docs/sdks/projects/README.md#create) - Create a project
+* [list](docs/sdks/customers/README.md#list) - List Customers
+* [retrieve](docs/sdks/customers/README.md#retrieve) - Retrieve Customers
+
+#### [ecommerce.fulfillments](docs/sdks/fulfillments/README.md)
+
+* [list](docs/sdks/fulfillments/README.md#list) - List Fulfillments
+* [retrieve](docs/sdks/fulfillments/README.md#retrieve) - Retrieve Fulfillments
+
+#### [ecommerce.orders](docs/sdks/orders/README.md)
+
+* [list](docs/sdks/orders/README.md#list) - List Orders
+* [create](docs/sdks/orders/README.md#create) - Create Orders
+* [retrieve](docs/sdks/orders/README.md#retrieve) - Retrieve Orders
+
+#### [ecommerce.products](docs/sdks/products/README.md)
+
+* [list](docs/sdks/products/README.md#list) - List Products
+* [create](docs/sdks/products/README.md#create) - Create Products
+* [retrieve](docs/sdks/products/README.md#retrieve) - Retrieve Products
+
+### [events](docs/sdks/events/README.md)
+
+* [getPanoraCoreEvents](docs/sdks/events/README.md#getpanoracoreevents) - List Events
 
 ### [fieldMappings](docs/sdks/fieldmappings/README.md)
 
@@ -225,394 +400,271 @@ run();
 * [defineCustomField](docs/sdks/fieldmappings/README.md#definecustomfield) - Create Custom Field
 * [map](docs/sdks/fieldmappings/README.md#map) - Map Custom Field
 
-### [events](docs/sdks/events/README.md)
+### [filestorage](docs/sdks/filestorage/README.md)
 
-* [getPanoraCoreEvents](docs/sdks/events/README.md#getpanoracoreevents) - List Events
 
-### [passthrough](docs/sdks/passthrough/README.md)
-
-* [request](docs/sdks/passthrough/README.md#request) - Make a passthrough request
-
-### [passthrough.retryid](docs/sdks/retryid/README.md)
-
-* [getRetriedRequestResponse](docs/sdks/retryid/README.md#getretriedrequestresponse) - Retrieve response of a failed passthrough request due to rate limits
-
-
-### [hris.bankinfos](docs/sdks/bankinfos/README.md)
-
-* [list](docs/sdks/bankinfos/README.md#list) - List Bank Info
-* [retrieve](docs/sdks/bankinfos/README.md#retrieve) - Retrieve Bank Info
-
-### [hris.benefits](docs/sdks/benefits/README.md)
-
-* [list](docs/sdks/benefits/README.md#list) - List Benefits
-* [retrieve](docs/sdks/benefits/README.md#retrieve) - Retrieve Benefit
-
-### [hris.companies](docs/sdks/panoracompanies/README.md)
-
-* [list](docs/sdks/panoracompanies/README.md#list) - List Companies
-* [retrieve](docs/sdks/panoracompanies/README.md#retrieve) - Retrieve Company
-
-### [hris.dependents](docs/sdks/dependents/README.md)
-
-* [list](docs/sdks/dependents/README.md#list) - List Dependents
-* [retrieve](docs/sdks/dependents/README.md#retrieve) - Retrieve Dependent
-
-### [hris.employeepayrollruns](docs/sdks/employeepayrollruns/README.md)
-
-* [list](docs/sdks/employeepayrollruns/README.md#list) - List Employee Payroll Runs
-* [retrieve](docs/sdks/employeepayrollruns/README.md#retrieve) - Retrieve Employee Payroll Run
-
-### [hris.employees](docs/sdks/employees/README.md)
-
-* [list](docs/sdks/employees/README.md#list) - List Employees
-* [create](docs/sdks/employees/README.md#create) - Create Employees
-* [retrieve](docs/sdks/employees/README.md#retrieve) - Retrieve Employee
-
-### [hris.employerbenefits](docs/sdks/employerbenefits/README.md)
-
-* [list](docs/sdks/employerbenefits/README.md#list) - List Employer Benefits
-* [retrieve](docs/sdks/employerbenefits/README.md#retrieve) - Retrieve Employer Benefit
-
-### [hris.employments](docs/sdks/employments/README.md)
-
-* [list](docs/sdks/employments/README.md#list) - List Employments
-* [retrieve](docs/sdks/employments/README.md#retrieve) - Retrieve Employment
-
-### [hris.groups](docs/sdks/groups/README.md)
-
-* [list](docs/sdks/groups/README.md#list) - List Groups
-* [retrieve](docs/sdks/groups/README.md#retrieve) - Retrieve Group
-
-### [hris.locations](docs/sdks/locations/README.md)
-
-* [list](docs/sdks/locations/README.md#list) - List Locations
-* [retrieve](docs/sdks/locations/README.md#retrieve) - Retrieve Location
-
-### [hris.paygroups](docs/sdks/paygroups/README.md)
-
-* [list](docs/sdks/paygroups/README.md#list) - List Pay Groups
-* [retrieve](docs/sdks/paygroups/README.md#retrieve) - Retrieve Pay Group
-
-### [hris.payrollruns](docs/sdks/payrollruns/README.md)
-
-* [list](docs/sdks/payrollruns/README.md#list) - List Payroll Runs
-* [retrieve](docs/sdks/payrollruns/README.md#retrieve) - Retrieve Payroll Run
-
-### [hris.timeoffs](docs/sdks/timeoffs/README.md)
-
-* [list](docs/sdks/timeoffs/README.md#list) - List Time Offs
-* [create](docs/sdks/timeoffs/README.md#create) - Create Timeoffs
-* [retrieve](docs/sdks/timeoffs/README.md#retrieve) - Retrieve Time Off
-
-### [hris.timeoffbalances](docs/sdks/timeoffbalances/README.md)
-
-* [list](docs/sdks/timeoffbalances/README.md#list) - List  TimeoffBalances
-* [retrieve](docs/sdks/timeoffbalances/README.md#retrieve) - Retrieve Time off Balances
-
-### [hris.timesheetentries](docs/sdks/timesheetentries/README.md)
-
-* [list](docs/sdks/timesheetentries/README.md#list) - List Timesheetentries
-* [create](docs/sdks/timesheetentries/README.md#create) - Create Timesheetentrys
-* [retrieve](docs/sdks/timesheetentries/README.md#retrieve) - Retrieve Timesheetentry
-
-
-### [marketingautomation.actions](docs/sdks/actions/README.md)
-
-* [list](docs/sdks/actions/README.md#list) - List Actions
-* [create](docs/sdks/actions/README.md#create) - Create Action
-* [retrieve](docs/sdks/actions/README.md#retrieve) - Retrieve Actions
-
-### [marketingautomation.automations](docs/sdks/automations/README.md)
-
-* [list](docs/sdks/automations/README.md#list) - List Automations
-* [create](docs/sdks/automations/README.md#create) - Create Automation
-* [retrieve](docs/sdks/automations/README.md#retrieve) - Retrieve Automation
-
-### [marketingautomation.campaigns](docs/sdks/campaigns/README.md)
-
-* [list](docs/sdks/campaigns/README.md#list) - List Campaigns
-* [create](docs/sdks/campaigns/README.md#create) - Create Campaign
-* [retrieve](docs/sdks/campaigns/README.md#retrieve) - Retrieve Campaign
-
-### [marketingautomation.contacts](docs/sdks/panoramarketingautomationcontacts/README.md)
-
-* [list](docs/sdks/panoramarketingautomationcontacts/README.md#list) - List  Contacts
-* [create](docs/sdks/panoramarketingautomationcontacts/README.md#create) - Create Contact
-* [retrieve](docs/sdks/panoramarketingautomationcontacts/README.md#retrieve) - Retrieve Contacts
-
-### [marketingautomation.emails](docs/sdks/emails/README.md)
-
-* [list](docs/sdks/emails/README.md#list) - List Emails
-* [retrieve](docs/sdks/emails/README.md#retrieve) - Retrieve Email
-
-### [marketingautomation.events](docs/sdks/panoraevents/README.md)
-
-* [list](docs/sdks/panoraevents/README.md#list) - List Events
-* [retrieve](docs/sdks/panoraevents/README.md#retrieve) - Retrieve Event
-
-### [marketingautomation.lists](docs/sdks/lists/README.md)
-
-* [list](docs/sdks/lists/README.md#list) - List Lists
-* [create](docs/sdks/lists/README.md#create) - Create Lists
-* [retrieve](docs/sdks/lists/README.md#retrieve) - Retrieve List
-
-### [marketingautomation.messages](docs/sdks/messages/README.md)
-
-* [list](docs/sdks/messages/README.md#list) - List Messages
-* [retrieve](docs/sdks/messages/README.md#retrieve) - Retrieve Messages
-
-### [marketingautomation.templates](docs/sdks/templates/README.md)
-
-* [list](docs/sdks/templates/README.md#list) - List Templates
-* [create](docs/sdks/templates/README.md#create) - Create Template
-* [retrieve](docs/sdks/templates/README.md#retrieve) - Retrieve Template
-
-### [marketingautomation.users](docs/sdks/panoramarketingautomationusers/README.md)
-
-* [list](docs/sdks/panoramarketingautomationusers/README.md#list) - List  Users
-* [retrieve](docs/sdks/panoramarketingautomationusers/README.md#retrieve) - Retrieve Users
-
-
-### [ats.activities](docs/sdks/activities/README.md)
-
-* [list](docs/sdks/activities/README.md#list) - List  Activities
-* [create](docs/sdks/activities/README.md#create) - Create Activities
-* [retrieve](docs/sdks/activities/README.md#retrieve) - Retrieve Activities
-
-### [ats.applications](docs/sdks/applications/README.md)
-
-* [list](docs/sdks/applications/README.md#list) - List  Applications
-* [create](docs/sdks/applications/README.md#create) - Create Applications
-* [retrieve](docs/sdks/applications/README.md#retrieve) - Retrieve Applications
-
-### [ats.attachments](docs/sdks/attachments/README.md)
-
-* [list](docs/sdks/attachments/README.md#list) - List  Attachments
-* [create](docs/sdks/attachments/README.md#create) - Create Attachments
-* [retrieve](docs/sdks/attachments/README.md#retrieve) - Retrieve Attachments
-
-### [ats.candidates](docs/sdks/candidates/README.md)
-
-* [list](docs/sdks/candidates/README.md#list) - List  Candidates
-* [create](docs/sdks/candidates/README.md#create) - Create Candidates
-* [retrieve](docs/sdks/candidates/README.md#retrieve) - Retrieve Candidates
-
-### [ats.departments](docs/sdks/departments/README.md)
-
-* [list](docs/sdks/departments/README.md#list) - List  Departments
-* [retrieve](docs/sdks/departments/README.md#retrieve) - Retrieve Departments
-
-### [ats.interviews](docs/sdks/interviews/README.md)
-
-* [list](docs/sdks/interviews/README.md#list) - List  Interviews
-* [create](docs/sdks/interviews/README.md#create) - Create Interviews
-* [retrieve](docs/sdks/interviews/README.md#retrieve) - Retrieve Interviews
-
-### [ats.jobinterviewstages](docs/sdks/jobinterviewstages/README.md)
-
-* [list](docs/sdks/jobinterviewstages/README.md#list) - List  JobInterviewStages
-* [retrieve](docs/sdks/jobinterviewstages/README.md#retrieve) - Retrieve Job Interview Stages
-
-### [ats.jobs](docs/sdks/jobs/README.md)
-
-* [list](docs/sdks/jobs/README.md#list) - List  Jobs
-* [retrieve](docs/sdks/jobs/README.md#retrieve) - Retrieve Jobs
-
-### [ats.offers](docs/sdks/offers/README.md)
-
-* [list](docs/sdks/offers/README.md#list) - List  Offers
-* [retrieve](docs/sdks/offers/README.md#retrieve) - Retrieve Offers
-
-### [ats.offices](docs/sdks/offices/README.md)
-
-* [list](docs/sdks/offices/README.md#list) - List Offices
-* [retrieve](docs/sdks/offices/README.md#retrieve) - Retrieve Offices
-
-### [ats.rejectreasons](docs/sdks/rejectreasons/README.md)
-
-* [list](docs/sdks/rejectreasons/README.md#list) - List  RejectReasons
-* [retrieve](docs/sdks/rejectreasons/README.md#retrieve) - Retrieve Reject Reasons
-
-### [ats.scorecards](docs/sdks/scorecards/README.md)
-
-* [list](docs/sdks/scorecards/README.md#list) - List  ScoreCards
-* [retrieve](docs/sdks/scorecards/README.md#retrieve) - Retrieve Score Cards
-
-### [ats.tags](docs/sdks/panoratags/README.md)
-
-* [list](docs/sdks/panoratags/README.md#list) - List  Tags
-* [retrieve](docs/sdks/panoratags/README.md#retrieve) - Retrieve Tags
-
-### [ats.users](docs/sdks/panoraatsusers/README.md)
-
-* [list](docs/sdks/panoraatsusers/README.md#list) - List  Users
-* [retrieve](docs/sdks/panoraatsusers/README.md#retrieve) - Retrieve Users
-
-### [ats.eeocs](docs/sdks/eeocs/README.md)
-
-* [list](docs/sdks/eeocs/README.md#list) - List  Eeocss
-* [retrieve](docs/sdks/eeocs/README.md#retrieve) - Retrieve Eeocs
-
-
-### [accounting.accounts](docs/sdks/panoraaccounts/README.md)
-
-* [list](docs/sdks/panoraaccounts/README.md#list) - List  Accounts
-* [create](docs/sdks/panoraaccounts/README.md#create) - Create Accounts
-* [retrieve](docs/sdks/panoraaccounts/README.md#retrieve) - Retrieve Accounts
-
-### [accounting.addresses](docs/sdks/addresses/README.md)
-
-* [list](docs/sdks/addresses/README.md#list) - List  Addresss
-* [retrieve](docs/sdks/addresses/README.md#retrieve) - Retrieve Addresses
-
-### [accounting.attachments](docs/sdks/panoraattachments/README.md)
-
-* [list](docs/sdks/panoraattachments/README.md#list) - List  Attachments
-* [create](docs/sdks/panoraattachments/README.md#create) - Create Attachments
-* [retrieve](docs/sdks/panoraattachments/README.md#retrieve) - Retrieve Attachments
-
-### [accounting.balancesheets](docs/sdks/balancesheets/README.md)
-
-* [list](docs/sdks/balancesheets/README.md#list) - List  BalanceSheets
-* [retrieve](docs/sdks/balancesheets/README.md#retrieve) - Retrieve BalanceSheets
-
-### [accounting.cashflowstatements](docs/sdks/cashflowstatements/README.md)
-
-* [list](docs/sdks/cashflowstatements/README.md#list) - List  CashflowStatements
-* [retrieve](docs/sdks/cashflowstatements/README.md#retrieve) - Retrieve Cashflow Statements
-
-### [accounting.companyinfos](docs/sdks/companyinfos/README.md)
-
-* [list](docs/sdks/companyinfos/README.md#list) - List  CompanyInfos
-* [retrieve](docs/sdks/companyinfos/README.md#retrieve) - Retrieve Company Infos
-
-### [accounting.contacts](docs/sdks/panoraaccountingcontacts/README.md)
-
-* [list](docs/sdks/panoraaccountingcontacts/README.md#list) - List  Contacts
-* [create](docs/sdks/panoraaccountingcontacts/README.md#create) - Create Contacts
-* [retrieve](docs/sdks/panoraaccountingcontacts/README.md#retrieve) - Retrieve Contacts
-
-### [accounting.creditnotes](docs/sdks/creditnotes/README.md)
-
-* [list](docs/sdks/creditnotes/README.md#list) - List  CreditNotes
-* [retrieve](docs/sdks/creditnotes/README.md#retrieve) - Retrieve Credit Notes
-
-### [accounting.expenses](docs/sdks/expenses/README.md)
-
-* [list](docs/sdks/expenses/README.md#list) - List  Expenses
-* [create](docs/sdks/expenses/README.md#create) - Create Expenses
-* [retrieve](docs/sdks/expenses/README.md#retrieve) - Retrieve Expenses
-
-### [accounting.incomestatements](docs/sdks/incomestatements/README.md)
-
-* [list](docs/sdks/incomestatements/README.md#list) - List  IncomeStatements
-* [retrieve](docs/sdks/incomestatements/README.md#retrieve) - Retrieve Income Statements
-
-### [accounting.invoices](docs/sdks/invoices/README.md)
-
-* [list](docs/sdks/invoices/README.md#list) - List  Invoices
-* [create](docs/sdks/invoices/README.md#create) - Create Invoices
-* [retrieve](docs/sdks/invoices/README.md#retrieve) - Retrieve Invoices
-
-### [accounting.items](docs/sdks/items/README.md)
-
-* [list](docs/sdks/items/README.md#list) - List  Items
-* [retrieve](docs/sdks/items/README.md#retrieve) - Retrieve Items
-
-### [accounting.journalentries](docs/sdks/journalentries/README.md)
-
-* [list](docs/sdks/journalentries/README.md#list) - List  JournalEntrys
-* [create](docs/sdks/journalentries/README.md#create) - Create Journal Entries
-* [retrieve](docs/sdks/journalentries/README.md#retrieve) - Retrieve Journal Entries
-
-### [accounting.payments](docs/sdks/payments/README.md)
-
-* [list](docs/sdks/payments/README.md#list) - List  Payments
-* [create](docs/sdks/payments/README.md#create) - Create Payments
-* [retrieve](docs/sdks/payments/README.md#retrieve) - Retrieve Payments
-
-### [accounting.phonenumbers](docs/sdks/phonenumbers/README.md)
-
-* [list](docs/sdks/phonenumbers/README.md#list) - List  PhoneNumbers
-* [retrieve](docs/sdks/phonenumbers/README.md#retrieve) - Retrieve Phone Numbers
-
-### [accounting.purchaseorders](docs/sdks/purchaseorders/README.md)
-
-* [list](docs/sdks/purchaseorders/README.md#list) - List  PurchaseOrders
-* [create](docs/sdks/purchaseorders/README.md#create) - Create Purchase Orders
-* [retrieve](docs/sdks/purchaseorders/README.md#retrieve) - Retrieve Purchase Orders
-
-### [accounting.taxrates](docs/sdks/taxrates/README.md)
-
-* [list](docs/sdks/taxrates/README.md#list) - List  TaxRates
-* [retrieve](docs/sdks/taxrates/README.md#retrieve) - Retrieve Tax Rates
-
-### [accounting.trackingcategories](docs/sdks/trackingcategories/README.md)
-
-* [list](docs/sdks/trackingcategories/README.md#list) - List  TrackingCategorys
-* [retrieve](docs/sdks/trackingcategories/README.md#retrieve) - Retrieve Tracking Categories
-
-### [accounting.transactions](docs/sdks/transactions/README.md)
-
-* [list](docs/sdks/transactions/README.md#list) - List  Transactions
-* [retrieve](docs/sdks/transactions/README.md#retrieve) - Retrieve Transactions
-
-### [accounting.vendorcredits](docs/sdks/vendorcredits/README.md)
-
-* [list](docs/sdks/vendorcredits/README.md#list) - List  VendorCredits
-* [retrieve](docs/sdks/vendorcredits/README.md#retrieve) - Retrieve Vendor Credits
-
-
-### [filestorage.drives](docs/sdks/drives/README.md)
-
-* [list](docs/sdks/drives/README.md#list) - List Drives
-* [retrieve](docs/sdks/drives/README.md#retrieve) - Retrieve Drive
-
-### [filestorage.files](docs/sdks/files/README.md)
+#### [filestorage.files](docs/sdks/files/README.md)
 
 * [list](docs/sdks/files/README.md#list) - List  Files
 * [create](docs/sdks/files/README.md#create) - Create Files
 * [retrieve](docs/sdks/files/README.md#retrieve) - Retrieve Files
 
-### [filestorage.folders](docs/sdks/folders/README.md)
+#### [filestorage.folders](docs/sdks/folders/README.md)
 
 * [list](docs/sdks/folders/README.md#list) - List  Folders
 * [create](docs/sdks/folders/README.md#create) - Create Folders
 * [retrieve](docs/sdks/folders/README.md#retrieve) - Retrieve Folders
 
-### [filestorage.groups](docs/sdks/panoragroups/README.md)
+#### [filestorage.groups](docs/sdks/panoragroups/README.md)
 
 * [list](docs/sdks/panoragroups/README.md#list) - List  Groups
 * [retrieve](docs/sdks/panoragroups/README.md#retrieve) - Retrieve Groups
 
-### [filestorage.users](docs/sdks/panorafilestorageusers/README.md)
+#### [filestorage.users](docs/sdks/panorafilestorageusers/README.md)
 
 * [list](docs/sdks/panorafilestorageusers/README.md#list) - List Users
 * [retrieve](docs/sdks/panorafilestorageusers/README.md#retrieve) - Retrieve Users
 
+### [hris](docs/sdks/hris/README.md)
 
-### [ecommerce.products](docs/sdks/products/README.md)
 
-* [list](docs/sdks/products/README.md#list) - List Products
-* [create](docs/sdks/products/README.md#create) - Create Products
-* [retrieve](docs/sdks/products/README.md#retrieve) - Retrieve Products
+#### [hris.bankinfos](docs/sdks/bankinfos/README.md)
 
-### [ecommerce.orders](docs/sdks/orders/README.md)
+* [list](docs/sdks/bankinfos/README.md#list) - List Bank Info
+* [retrieve](docs/sdks/bankinfos/README.md#retrieve) - Retrieve Bank Info
 
-* [list](docs/sdks/orders/README.md#list) - List Orders
-* [create](docs/sdks/orders/README.md#create) - Create Orders
-* [retrieve](docs/sdks/orders/README.md#retrieve) - Retrieve Orders
+#### [hris.benefits](docs/sdks/benefits/README.md)
 
-### [ecommerce.customers](docs/sdks/customers/README.md)
+* [list](docs/sdks/benefits/README.md#list) - List Benefits
+* [retrieve](docs/sdks/benefits/README.md#retrieve) - Retrieve Benefit
 
-* [list](docs/sdks/customers/README.md#list) - List Customers
-* [retrieve](docs/sdks/customers/README.md#retrieve) - Retrieve Customers
+#### [hris.companies](docs/sdks/panoracompanies/README.md)
 
-### [ecommerce.fulfillments](docs/sdks/fulfillments/README.md)
+* [list](docs/sdks/panoracompanies/README.md#list) - List Companies
+* [retrieve](docs/sdks/panoracompanies/README.md#retrieve) - Retrieve Company
 
-* [list](docs/sdks/fulfillments/README.md#list) - List Fulfillments
-* [retrieve](docs/sdks/fulfillments/README.md#retrieve) - Retrieve Fulfillments
+#### [hris.dependents](docs/sdks/dependents/README.md)
+
+* [list](docs/sdks/dependents/README.md#list) - List Dependents
+* [retrieve](docs/sdks/dependents/README.md#retrieve) - Retrieve Dependent
+
+#### [hris.employeepayrollruns](docs/sdks/employeepayrollruns/README.md)
+
+* [list](docs/sdks/employeepayrollruns/README.md#list) - List Employee Payroll Runs
+* [retrieve](docs/sdks/employeepayrollruns/README.md#retrieve) - Retrieve Employee Payroll Run
+
+#### [hris.employees](docs/sdks/employees/README.md)
+
+* [list](docs/sdks/employees/README.md#list) - List Employees
+* [create](docs/sdks/employees/README.md#create) - Create Employees
+* [retrieve](docs/sdks/employees/README.md#retrieve) - Retrieve Employee
+
+#### [hris.employerbenefits](docs/sdks/employerbenefits/README.md)
+
+* [list](docs/sdks/employerbenefits/README.md#list) - List Employer Benefits
+* [retrieve](docs/sdks/employerbenefits/README.md#retrieve) - Retrieve Employer Benefit
+
+#### [hris.employments](docs/sdks/employments/README.md)
+
+* [list](docs/sdks/employments/README.md#list) - List Employments
+* [retrieve](docs/sdks/employments/README.md#retrieve) - Retrieve Employment
+
+#### [hris.groups](docs/sdks/groups/README.md)
+
+* [list](docs/sdks/groups/README.md#list) - List Groups
+* [retrieve](docs/sdks/groups/README.md#retrieve) - Retrieve Group
+
+#### [hris.locations](docs/sdks/locations/README.md)
+
+* [list](docs/sdks/locations/README.md#list) - List Locations
+* [retrieve](docs/sdks/locations/README.md#retrieve) - Retrieve Location
+
+#### [hris.paygroups](docs/sdks/paygroups/README.md)
+
+* [list](docs/sdks/paygroups/README.md#list) - List Pay Groups
+* [retrieve](docs/sdks/paygroups/README.md#retrieve) - Retrieve Pay Group
+
+#### [hris.payrollruns](docs/sdks/payrollruns/README.md)
+
+* [list](docs/sdks/payrollruns/README.md#list) - List Payroll Runs
+* [retrieve](docs/sdks/payrollruns/README.md#retrieve) - Retrieve Payroll Run
+
+#### [hris.timeoffbalances](docs/sdks/timeoffbalances/README.md)
+
+* [list](docs/sdks/timeoffbalances/README.md#list) - List  TimeoffBalances
+* [retrieve](docs/sdks/timeoffbalances/README.md#retrieve) - Retrieve Time off Balances
+
+#### [hris.timeoffs](docs/sdks/timeoffs/README.md)
+
+* [list](docs/sdks/timeoffs/README.md#list) - List Time Offs
+* [create](docs/sdks/timeoffs/README.md#create) - Create Timeoffs
+* [retrieve](docs/sdks/timeoffs/README.md#retrieve) - Retrieve Time Off
+
+#### [hris.timesheetentries](docs/sdks/timesheetentries/README.md)
+
+* [list](docs/sdks/timesheetentries/README.md#list) - List Timesheetentries
+* [create](docs/sdks/timesheetentries/README.md#create) - Create Timesheetentrys
+* [retrieve](docs/sdks/timesheetentries/README.md#retrieve) - Retrieve Timesheetentry
+
+### [linkedUsers](docs/sdks/linkedusers/README.md)
+
+* [create](docs/sdks/linkedusers/README.md#create) - Create Linked Users
+* [list](docs/sdks/linkedusers/README.md#list) - List Linked Users
+* [importBatch](docs/sdks/linkedusers/README.md#importbatch) - Add Batch Linked Users
+* [retrieve](docs/sdks/linkedusers/README.md#retrieve) - Retrieve Linked Users
+* [remoteId](docs/sdks/linkedusers/README.md#remoteid) - Retrieve a Linked User From A Remote Id
+
+### [marketingautomation](docs/sdks/marketingautomation/README.md)
+
+
+#### [marketingautomation.actions](docs/sdks/actions/README.md)
+
+* [list](docs/sdks/actions/README.md#list) - List Actions
+* [create](docs/sdks/actions/README.md#create) - Create Action
+* [retrieve](docs/sdks/actions/README.md#retrieve) - Retrieve Actions
+
+#### [marketingautomation.automations](docs/sdks/automations/README.md)
+
+* [list](docs/sdks/automations/README.md#list) - List Automations
+* [create](docs/sdks/automations/README.md#create) - Create Automation
+* [retrieve](docs/sdks/automations/README.md#retrieve) - Retrieve Automation
+
+#### [marketingautomation.campaigns](docs/sdks/campaigns/README.md)
+
+* [list](docs/sdks/campaigns/README.md#list) - List Campaigns
+* [create](docs/sdks/campaigns/README.md#create) - Create Campaign
+* [retrieve](docs/sdks/campaigns/README.md#retrieve) - Retrieve Campaign
+
+#### [marketingautomation.contacts](docs/sdks/panoramarketingautomationcontacts/README.md)
+
+* [list](docs/sdks/panoramarketingautomationcontacts/README.md#list) - List  Contacts
+* [create](docs/sdks/panoramarketingautomationcontacts/README.md#create) - Create Contact
+* [retrieve](docs/sdks/panoramarketingautomationcontacts/README.md#retrieve) - Retrieve Contacts
+
+#### [marketingautomation.emails](docs/sdks/emails/README.md)
+
+* [list](docs/sdks/emails/README.md#list) - List Emails
+* [retrieve](docs/sdks/emails/README.md#retrieve) - Retrieve Email
+
+#### [marketingautomation.events](docs/sdks/panoraevents/README.md)
+
+* [list](docs/sdks/panoraevents/README.md#list) - List Events
+* [retrieve](docs/sdks/panoraevents/README.md#retrieve) - Retrieve Event
+
+#### [marketingautomation.lists](docs/sdks/lists/README.md)
+
+* [list](docs/sdks/lists/README.md#list) - List Lists
+* [create](docs/sdks/lists/README.md#create) - Create Lists
+* [retrieve](docs/sdks/lists/README.md#retrieve) - Retrieve List
+
+#### [marketingautomation.messages](docs/sdks/messages/README.md)
+
+* [list](docs/sdks/messages/README.md#list) - List Messages
+* [retrieve](docs/sdks/messages/README.md#retrieve) - Retrieve Messages
+
+#### [marketingautomation.templates](docs/sdks/templates/README.md)
+
+* [list](docs/sdks/templates/README.md#list) - List Templates
+* [create](docs/sdks/templates/README.md#create) - Create Template
+* [retrieve](docs/sdks/templates/README.md#retrieve) - Retrieve Template
+
+#### [marketingautomation.users](docs/sdks/panoramarketingautomationusers/README.md)
+
+* [list](docs/sdks/panoramarketingautomationusers/README.md#list) - List  Users
+* [retrieve](docs/sdks/panoramarketingautomationusers/README.md#retrieve) - Retrieve Users
+
+### [Panora SDK](docs/sdks/panora/README.md)
+
+* [hello](docs/sdks/panora/README.md#hello)
+* [health](docs/sdks/panora/README.md#health)
+
+### [passthrough](docs/sdks/passthrough/README.md)
+
+* [request](docs/sdks/passthrough/README.md#request) - Make a passthrough request
+
+#### [passthrough.retryid](docs/sdks/retryid/README.md)
+
+* [getRetriedRequestResponse](docs/sdks/retryid/README.md#getretriedrequestresponse) - Retrieve response of a failed passthrough request due to rate limits
+
+### [projects](docs/sdks/projects/README.md)
+
+* [getProjects](docs/sdks/projects/README.md#getprojects) - Retrieve projects
+* [create](docs/sdks/projects/README.md#create) - Create a project
+
+### [rag](docs/sdks/rag/README.md)
+
+
+#### [rag.query](docs/sdks/query/README.md)
+
+* [ragControllerQueryEmbeddings](docs/sdks/query/README.md#ragcontrollerqueryembeddings)
+
+### [sync](docs/sdks/sync/README.md)
+
+* [status](docs/sdks/sync/README.md#status) - Retrieve sync status of a certain vertical
+* [resync](docs/sdks/sync/README.md#resync) - Resync common objects across a vertical
+* [updatePullFrequency](docs/sdks/sync/README.md#updatepullfrequency) - Update pull frequency for verticals
+* [getPullFrequency](docs/sdks/sync/README.md#getpullfrequency) - Get pull frequency for verticals
+
+### [ticketing](docs/sdks/ticketing/README.md)
+
+
+#### [ticketing.accounts](docs/sdks/accounts/README.md)
+
+* [list](docs/sdks/accounts/README.md#list) - List  Accounts
+* [retrieve](docs/sdks/accounts/README.md#retrieve) - Retrieve Accounts
+
+#### [ticketing.attachments](docs/sdks/panoraticketingattachments/README.md)
+
+* [list](docs/sdks/panoraticketingattachments/README.md#list) - List  Attachments
+* [create](docs/sdks/panoraticketingattachments/README.md#create) - Create Attachments
+* [retrieve](docs/sdks/panoraticketingattachments/README.md#retrieve) - Retrieve Attachments
+
+#### [ticketing.collections](docs/sdks/collections/README.md)
+
+* [list](docs/sdks/collections/README.md#list) - List Collections
+* [retrieve](docs/sdks/collections/README.md#retrieve) - Retrieve Collections
+
+#### [ticketing.comments](docs/sdks/comments/README.md)
+
+* [list](docs/sdks/comments/README.md#list) - List Comments
+* [create](docs/sdks/comments/README.md#create) - Create Comments
+* [retrieve](docs/sdks/comments/README.md#retrieve) - Retrieve Comment
+
+#### [ticketing.contacts](docs/sdks/contacts/README.md)
+
+* [list](docs/sdks/contacts/README.md#list) - List Contacts
+* [retrieve](docs/sdks/contacts/README.md#retrieve) - Retrieve Contact
+
+#### [ticketing.tags](docs/sdks/tags/README.md)
+
+* [list](docs/sdks/tags/README.md#list) - List Tags
+* [retrieve](docs/sdks/tags/README.md#retrieve) - Retrieve Tag
+
+#### [ticketing.teams](docs/sdks/teams/README.md)
+
+* [list](docs/sdks/teams/README.md#list) - List  Teams
+* [retrieve](docs/sdks/teams/README.md#retrieve) - Retrieve Teams
+
+#### [ticketing.tickets](docs/sdks/tickets/README.md)
+
+* [list](docs/sdks/tickets/README.md#list) - List  Tickets
+* [create](docs/sdks/tickets/README.md#create) - Create Tickets
+* [retrieve](docs/sdks/tickets/README.md#retrieve) - Retrieve Tickets
+
+#### [ticketing.users](docs/sdks/users/README.md)
+
+* [list](docs/sdks/users/README.md#list) - List Users
+* [retrieve](docs/sdks/users/README.md#retrieve) - Retrieve User
+
+### [webhooks](docs/sdks/webhooks/README.md)
+
+* [list](docs/sdks/webhooks/README.md#list) - List webhooks
+* [create](docs/sdks/webhooks/README.md#create) - Create webhook
+* [delete](docs/sdks/webhooks/README.md#delete) - Delete Webhook
+* [updateStatus](docs/sdks/webhooks/README.md#updatestatus) - Update webhook status
+* [verifyEvent](docs/sdks/webhooks/README.md#verifyevent) - Verify payload signature of the webhook
+
+</details>
 <!-- End Available Resources and Operations [operations] -->
 
 <!-- Start Error Handling [errors] -->
@@ -632,30 +684,30 @@ import { Panora } from "@panora/sdk";
 import { SDKValidationError } from "@panora/sdk/models/errors";
 
 const panora = new Panora({
-    apiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-    let result;
-    try {
-        result = await panora.hello();
-    } catch (err) {
-        switch (true) {
-            case err instanceof SDKValidationError: {
-                // Validation errors can be pretty-printed
-                console.error(err.pretty());
-                // Raw value may also be inspected
-                console.error(err.rawValue);
-                return;
-            }
-            default: {
-                throw err;
-            }
-        }
-    }
+  let result;
+  try {
+    result = await panora.hello();
 
     // Handle the result
     console.log(result);
+  } catch (err) {
+    switch (true) {
+      case (err instanceof SDKValidationError): {
+        // Validation errors can be pretty-printed
+        console.error(err.pretty());
+        // Raw value may also be inspected
+        console.error(err.rawValue);
+        return;
+      }
+      default: {
+        throw err;
+      }
+    }
+  }
 }
 
 run();
@@ -680,15 +732,15 @@ You can override the default server globally by passing a server index to the `s
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-    serverIdx: 2,
-    apiKey: "<YOUR_API_KEY_HERE>",
+  serverIdx: 2,
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-    const result = await panora.hello();
+  const result = await panora.hello();
 
-    // Handle the result
-    console.log(result);
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -704,15 +756,15 @@ The default server can also be overridden globally by passing a URL to the `serv
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-    serverURL: "https://api.panora.dev",
-    apiKey: "<YOUR_API_KEY_HERE>",
+  serverURL: "https://api.panora.dev",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-    const result = await panora.hello();
+  const result = await panora.hello();
 
-    // Handle the result
-    console.log(result);
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -779,25 +831,25 @@ To change the default retry strategy for a single API call, simply provide a ret
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-    apiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-    const result = await panora.hello({
-        retries: {
-            strategy: "backoff",
-            backoff: {
-                initialInterval: 1,
-                maxInterval: 50,
-                exponent: 1.1,
-                maxElapsedTime: 100,
-            },
-            retryConnectionErrors: false,
-        },
-    });
+  const result = await panora.hello({
+    retries: {
+      strategy: "backoff",
+      backoff: {
+        initialInterval: 1,
+        maxInterval: 50,
+        exponent: 1.1,
+        maxElapsedTime: 100,
+      },
+      retryConnectionErrors: false,
+    },
+  });
 
-    // Handle the result
-    console.log(result);
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -809,24 +861,24 @@ If you'd like to override the default retry strategy for all operations that sup
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-    retryConfig: {
-        strategy: "backoff",
-        backoff: {
-            initialInterval: 1,
-            maxInterval: 50,
-            exponent: 1.1,
-            maxElapsedTime: 100,
-        },
-        retryConnectionErrors: false,
+  retryConfig: {
+    strategy: "backoff",
+    backoff: {
+      initialInterval: 1,
+      maxInterval: 50,
+      exponent: 1.1,
+      maxElapsedTime: 100,
     },
-    apiKey: "<YOUR_API_KEY_HERE>",
+    retryConnectionErrors: false,
+  },
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-    const result = await panora.hello();
+  const result = await panora.hello();
 
-    // Handle the result
-    console.log(result);
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -850,14 +902,14 @@ To authenticate with the API the `apiKey` parameter must be set when initializin
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-    apiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-    const result = await panora.hello();
+  const result = await panora.hello();
 
-    // Handle the result
-    console.log(result);
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -881,20 +933,21 @@ Here's an example of one such pagination call:
 import { Panora } from "@panora/sdk";
 
 const panora = new Panora({
-    apiKey: "<YOUR_API_KEY_HERE>",
+  apiKey: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-    const result = await panora.ticketing.tickets.list({
-        xConnectionToken: "<value>",
-        remoteData: true,
-        limit: 10,
-        cursor: "1b8b05bb-5273-4012-b520-8657b0b90874",
-    });
+  const result = await panora.filestorage.files.list({
+    xConnectionToken: "<value>",
+    remoteData: true,
+    limit: 10,
+    cursor: "1b8b05bb-5273-4012-b520-8657b0b90874",
+  });
 
-    for await (const page of result) {
-        // handle page
-    }
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -1041,8 +1094,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [fieldMappingsGetFieldMappingsEntities](docs/sdks/fieldmappings/README.md#getfieldmappingsentities)
 - [fieldMappingsGetFieldMappings](docs/sdks/fieldmappings/README.md#getfieldmappings)
 - [fieldMappingsMap](docs/sdks/fieldmappings/README.md#map)
-- [filestorageDrivesList](docs/sdks/drives/README.md#list)
-- [filestorageDrivesRetrieve](docs/sdks/drives/README.md#retrieve)
 - [filestorageFilesCreate](docs/sdks/files/README.md#create)
 - [filestorageFilesList](docs/sdks/files/README.md#list)
 - [filestorageFilesRetrieve](docs/sdks/files/README.md#retrieve)
@@ -1123,8 +1174,11 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [passthroughRetryidGetRetriedRequestResponse](docs/sdks/retryid/README.md#getretriedrequestresponse)
 - [projectsCreate](docs/sdks/projects/README.md#create)
 - [projectsGetProjects](docs/sdks/projects/README.md#getprojects)
+- [ragQueryRagControllerQueryEmbeddings](docs/sdks/query/README.md#ragcontrollerqueryembeddings)
+- [syncGetPullFrequency](docs/sdks/sync/README.md#getpullfrequency)
 - [syncResync](docs/sdks/sync/README.md#resync)
 - [syncStatus](docs/sdks/sync/README.md#status)
+- [syncUpdatePullFrequency](docs/sdks/sync/README.md#updatepullfrequency)
 - [ticketingAccountsList](docs/sdks/accounts/README.md#list)
 - [ticketingAccountsRetrieve](docs/sdks/accounts/README.md#retrieve)
 - [ticketingAttachmentsCreate](docs/sdks/panoraticketingattachments/README.md#create)

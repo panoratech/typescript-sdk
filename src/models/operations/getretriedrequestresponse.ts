@@ -5,33 +5,33 @@
 import * as z from "zod";
 
 export type GetRetriedRequestResponseRequest = {
-    /**
-     * id of the retryJob returned when you initiated a passthrough request.
-     */
-    retryId: string;
+  /**
+   * id of the retryJob returned when you initiated a passthrough request.
+   */
+  retryId: string;
 };
 
 /** @internal */
 export const GetRetriedRequestResponseRequest$inboundSchema: z.ZodType<
-    GetRetriedRequestResponseRequest,
-    z.ZodTypeDef,
-    unknown
+  GetRetriedRequestResponseRequest,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    retryId: z.string(),
+  retryId: z.string(),
 });
 
 /** @internal */
 export type GetRetriedRequestResponseRequest$Outbound = {
-    retryId: string;
+  retryId: string;
 };
 
 /** @internal */
 export const GetRetriedRequestResponseRequest$outboundSchema: z.ZodType<
-    GetRetriedRequestResponseRequest$Outbound,
-    z.ZodTypeDef,
-    GetRetriedRequestResponseRequest
+  GetRetriedRequestResponseRequest$Outbound,
+  z.ZodTypeDef,
+  GetRetriedRequestResponseRequest
 > = z.object({
-    retryId: z.string(),
+  retryId: z.string(),
 });
 
 /**
@@ -39,10 +39,10 @@ export const GetRetriedRequestResponseRequest$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace GetRetriedRequestResponseRequest$ {
-    /** @deprecated use `GetRetriedRequestResponseRequest$inboundSchema` instead. */
-    export const inboundSchema = GetRetriedRequestResponseRequest$inboundSchema;
-    /** @deprecated use `GetRetriedRequestResponseRequest$outboundSchema` instead. */
-    export const outboundSchema = GetRetriedRequestResponseRequest$outboundSchema;
-    /** @deprecated use `GetRetriedRequestResponseRequest$Outbound` instead. */
-    export type Outbound = GetRetriedRequestResponseRequest$Outbound;
+  /** @deprecated use `GetRetriedRequestResponseRequest$inboundSchema` instead. */
+  export const inboundSchema = GetRetriedRequestResponseRequest$inboundSchema;
+  /** @deprecated use `GetRetriedRequestResponseRequest$outboundSchema` instead. */
+  export const outboundSchema = GetRetriedRequestResponseRequest$outboundSchema;
+  /** @deprecated use `GetRetriedRequestResponseRequest$Outbound` instead. */
+  export type Outbound = GetRetriedRequestResponseRequest$Outbound;
 }

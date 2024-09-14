@@ -29,7 +29,7 @@ async function run() {
       path: "/dev",
     },
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -57,7 +57,7 @@ async function run() {
     xConnectionToken: "<value>",
     passThroughRequestDto: {
       method: PassThroughRequestDtoMethod.Get,
-      path: "/usr/src",
+      path: "/dev",
     },
   });
 

@@ -12,39 +12,51 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Applications extends ClientSDK {
-    /**
-     * List  Applications
-     */
-    async list(
-        request: operations.ListAtsApplicationRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListAtsApplicationResponse>> {
-        return unwrapResultIterator(atsApplicationsList(this, request, options));
-    }
+  /**
+   * List  Applications
+   */
+  async list(
+    request: operations.ListAtsApplicationRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListAtsApplicationResponse>> {
+    return unwrapResultIterator(atsApplicationsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Create Applications
-     *
-     * @remarks
-     * Create Applications in any supported Ats software
-     */
-    async create(
-        request: operations.CreateAtsApplicationRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedAtsApplicationOutput> {
-        return unwrapAsync(atsApplicationsCreate(this, request, options));
-    }
+  /**
+   * Create Applications
+   *
+   * @remarks
+   * Create Applications in any supported Ats software
+   */
+  async create(
+    request: operations.CreateAtsApplicationRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedAtsApplicationOutput> {
+    return unwrapAsync(atsApplicationsCreate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Applications
-     *
-     * @remarks
-     * Retrieve Applications from any connected Ats software
-     */
-    async retrieve(
-        request: operations.RetrieveAtsApplicationRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedAtsApplicationOutput> {
-        return unwrapAsync(atsApplicationsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Applications
+   *
+   * @remarks
+   * Retrieve Applications from any connected Ats software
+   */
+  async retrieve(
+    request: operations.RetrieveAtsApplicationRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedAtsApplicationOutput> {
+    return unwrapAsync(atsApplicationsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

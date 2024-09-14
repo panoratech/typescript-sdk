@@ -12,39 +12,53 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Templates extends ClientSDK {
-    /**
-     * List Templates
-     */
-    async list(
-        request: operations.ListMarketingautomationTemplatesRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListMarketingautomationTemplatesResponse>> {
-        return unwrapResultIterator(marketingautomationTemplatesList(this, request, options));
-    }
+  /**
+   * List Templates
+   */
+  async list(
+    request: operations.ListMarketingautomationTemplatesRequest,
+    options?: RequestOptions,
+  ): Promise<
+    PageIterator<operations.ListMarketingautomationTemplatesResponse>
+  > {
+    return unwrapResultIterator(marketingautomationTemplatesList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Create Template
-     *
-     * @remarks
-     * Create a template in any supported Marketingautomation software
-     */
-    async create(
-        request: operations.CreateMarketingautomationTemplateRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedMarketingautomationTemplateOutput> {
-        return unwrapAsync(marketingautomationTemplatesCreate(this, request, options));
-    }
+  /**
+   * Create Template
+   *
+   * @remarks
+   * Create a template in any supported Marketingautomation software
+   */
+  async create(
+    request: operations.CreateMarketingautomationTemplateRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedMarketingautomationTemplateOutput> {
+    return unwrapAsync(marketingautomationTemplatesCreate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Template
-     *
-     * @remarks
-     * Retrieve a Template from any connected Marketingautomation software
-     */
-    async retrieve(
-        request: operations.RetrieveMarketingautomationTemplateRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedMarketingautomationTemplateOutput> {
-        return unwrapAsync(marketingautomationTemplatesRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Template
+   *
+   * @remarks
+   * Retrieve a Template from any connected Marketingautomation software
+   */
+  async retrieve(
+    request: operations.RetrieveMarketingautomationTemplateRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedMarketingautomationTemplateOutput> {
+    return unwrapAsync(marketingautomationTemplatesRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

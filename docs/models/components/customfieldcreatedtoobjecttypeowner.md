@@ -5,7 +5,8 @@
 ```typescript
 import { CustomFieldCreateDtoObjectTypeOwner } from "@panora/sdk/models/components";
 
-let value: CustomFieldCreateDtoObjectTypeOwner = CustomFieldCreateDtoObjectTypeOwner.Company;
+let value: CustomFieldCreateDtoObjectTypeOwner =
+  CustomFieldCreateDtoObjectTypeOwner.Company;
 ```
 
 ## Values

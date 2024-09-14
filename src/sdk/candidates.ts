@@ -12,39 +12,51 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Candidates extends ClientSDK {
-    /**
-     * List  Candidates
-     */
-    async list(
-        request: operations.ListAtsCandidateRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListAtsCandidateResponse>> {
-        return unwrapResultIterator(atsCandidatesList(this, request, options));
-    }
+  /**
+   * List  Candidates
+   */
+  async list(
+    request: operations.ListAtsCandidateRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListAtsCandidateResponse>> {
+    return unwrapResultIterator(atsCandidatesList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Create Candidates
-     *
-     * @remarks
-     * Create Candidates in any supported Ats software
-     */
-    async create(
-        request: operations.CreateAtsCandidateRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedAtsCandidateOutput> {
-        return unwrapAsync(atsCandidatesCreate(this, request, options));
-    }
+  /**
+   * Create Candidates
+   *
+   * @remarks
+   * Create Candidates in any supported Ats software
+   */
+  async create(
+    request: operations.CreateAtsCandidateRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedAtsCandidateOutput> {
+    return unwrapAsync(atsCandidatesCreate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Candidates
-     *
-     * @remarks
-     * Retrieve Candidates from any connected Ats software
-     */
-    async retrieve(
-        request: operations.RetrieveAtsCandidateRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedAtsCandidateOutput> {
-        return unwrapAsync(atsCandidatesRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Candidates
+   *
+   * @remarks
+   * Retrieve Candidates from any connected Ats software
+   */
+  async retrieve(
+    request: operations.RetrieveAtsCandidateRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedAtsCandidateOutput> {
+    return unwrapAsync(atsCandidatesRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

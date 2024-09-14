@@ -11,26 +11,34 @@ import { unwrapAsync } from "../types/fp.js";
 import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Paygroups extends ClientSDK {
-    /**
-     * List Pay Groups
-     */
-    async list(
-        request: operations.ListHrisPaygroupsRequest,
-        options?: RequestOptions
-    ): Promise<PageIterator<operations.ListHrisPaygroupsResponse>> {
-        return unwrapResultIterator(hrisPaygroupsList(this, request, options));
-    }
+  /**
+   * List Pay Groups
+   */
+  async list(
+    request: operations.ListHrisPaygroupsRequest,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.ListHrisPaygroupsResponse>> {
+    return unwrapResultIterator(hrisPaygroupsList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve Pay Group
-     *
-     * @remarks
-     * Retrieve a Pay Group from any connected Hris software
-     */
-    async retrieve(
-        request: operations.RetrieveHrisPaygroupRequest,
-        options?: RequestOptions
-    ): Promise<components.UnifiedHrisPaygroupOutput> {
-        return unwrapAsync(hrisPaygroupsRetrieve(this, request, options));
-    }
+  /**
+   * Retrieve Pay Group
+   *
+   * @remarks
+   * Retrieve a Pay Group from any connected Hris software
+   */
+  async retrieve(
+    request: operations.RetrieveHrisPaygroupRequest,
+    options?: RequestOptions,
+  ): Promise<components.UnifiedHrisPaygroupOutput> {
+    return unwrapAsync(hrisPaygroupsRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
 }

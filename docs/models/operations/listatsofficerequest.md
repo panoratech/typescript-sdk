@@ -6,10 +6,10 @@
 import { ListAtsOfficeRequest } from "@panora/sdk/models/operations";
 
 let value: ListAtsOfficeRequest = {
-    xConnectionToken: "<value>",
-    remoteData: true,
-    limit: 10,
-    cursor: "1b8b05bb-5273-4012-b520-8657b0b90874",
+  xConnectionToken: "<value>",
+  remoteData: true,
+  limit: 10,
+  cursor: "1b8b05bb-5273-4012-b520-8657b0b90874",
 };
 ```
 
