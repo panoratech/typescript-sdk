@@ -311,7 +311,7 @@ run();
 
 ### [connections](docs/sdks/connections/README.md)
 
-* [retrieve](docs/sdks/connections/README.md#retrieve) - List Connections
+* [list](docs/sdks/connections/README.md#list) - List Connections
 
 ### [crm](docs/sdks/crm/README.md)
 
@@ -596,7 +596,7 @@ run();
 
 #### [rag.query](docs/sdks/query/README.md)
 
-* [ragControllerQueryEmbeddings](docs/sdks/query/README.md#ragcontrollerqueryembeddings)
+* [query](docs/sdks/query/README.md#query) - Query using RAG Search
 
 ### [sync](docs/sdks/sync/README.md)
 
@@ -1054,7 +1054,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [atsUsersList](docs/sdks/panoraatsusers/README.md#list)
 - [atsUsersRetrieve](docs/sdks/panoraatsusers/README.md#retrieve)
 - [authLoginSignIn](docs/sdks/login/README.md#signin)
-- [connectionsRetrieve](docs/sdks/connections/README.md#retrieve)
+- [connectionsList](docs/sdks/connections/README.md#list)
 - [crmCompaniesCreate](docs/sdks/companies/README.md#create)
 - [crmCompaniesList](docs/sdks/companies/README.md#list)
 - [crmCompaniesRetrieve](docs/sdks/companies/README.md#retrieve)
@@ -1174,7 +1174,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [passthroughRetryidGetRetriedRequestResponse](docs/sdks/retryid/README.md#getretriedrequestresponse)
 - [projectsCreate](docs/sdks/projects/README.md#create)
 - [projectsGetProjects](docs/sdks/projects/README.md#getprojects)
-- [ragQueryRagControllerQueryEmbeddings](docs/sdks/query/README.md#ragcontrollerqueryembeddings)
+- [ragQueryQuery](docs/sdks/query/README.md#query)
 - [syncGetPullFrequency](docs/sdks/sync/README.md#getpullfrequency)
 - [syncResync](docs/sdks/sync/README.md#resync)
 - [syncStatus](docs/sdks/sync/README.md#status)

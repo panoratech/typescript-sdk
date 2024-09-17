@@ -531,8 +531,8 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: retrieveConnections
-          source: "import { Panora } from \"@panora/sdk\";\n\nconst panora = new Panora({\n  apiKey: \"<YOUR_API_KEY_HERE>\",\n});\n\nasync function run() {\n  const result = await panora.connections.retrieve();\n  \n  // Handle the result\n  console.log(result)\n}\n\nrun();"
+          label: listConnections
+          source: "import { Panora } from \"@panora/sdk\";\n\nconst panora = new Panora({\n  apiKey: \"<YOUR_API_KEY_HERE>\",\n});\n\nasync function run() {\n  const result = await panora.connections.list();\n  \n  // Handle the result\n  console.log(result)\n}\n\nrun();"
   - target: $["paths"]["/crm/companies"]["get"]
     update:
       x-codeSamples:
@@ -1291,8 +1291,8 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: RagController_queryEmbeddings
-          source: "import { Panora } from \"@panora/sdk\";\n\nconst panora = new Panora({\n  apiKey: \"<YOUR_API_KEY_HERE>\",\n});\n\nasync function run() {\n  const result = await panora.rag.query.ragControllerQueryEmbeddings();\n  \n  // Handle the result\n  console.log(result)\n}\n\nrun();"
+          label: query
+          source: "import { Panora } from \"@panora/sdk\";\n\nconst panora = new Panora({\n  apiKey: \"<YOUR_API_KEY_HERE>\",\n});\n\nasync function run() {\n  const result = await panora.rag.query.query({\n    xConnectionToken: \"<value>\",\n    queryBody: {\n      query: \"When does Panora incorporated?\",\n      topK: 3,\n    },\n  });\n  \n  // Handle the result\n  console.log(result)\n}\n\nrun();"
   - target: $["paths"]["/sync/pull-frequencies"]["get"]
     update:
       x-codeSamples:

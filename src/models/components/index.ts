@@ -21,6 +21,7 @@ export * from "./mapfieldtoproviderdto.js";
 export * from "./passthroughrequestdto.js";
 export * from "./phone.js";
 export * from "./projectresponse.js";
+export * from "./querybody.js";
 export * from "./resyncstatusdto.js";
 export * from "./security.js";
 export * from "./signatureverificationdto.js";

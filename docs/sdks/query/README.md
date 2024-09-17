@@ -5,9 +5,11 @@
 
 ### Available Operations
 
-* [ragControllerQueryEmbeddings](#ragcontrollerqueryembeddings)
+* [query](#query) - Query using RAG Search
 
-## ragControllerQueryEmbeddings
+## query
+
+Query across your connected data sources using RAG Search
 
 ### Example Usage
 
@@ -19,7 +21,13 @@ const panora = new Panora({
 });
 
 async function run() {
-  const result = await panora.rag.query.ragControllerQueryEmbeddings();
+  const result = await panora.rag.query.query({
+    xConnectionToken: "<value>",
+    queryBody: {
+      query: "When does Panora incorporated?",
+      topK: 3,
+    },
+  });
   
   // Handle the result
   console.log(result)
@@ -34,7 +42,7 @@ The standalone function version of this method:
 
 ```typescript
 import { PanoraCore } from "@panora/sdk/core.js";
-import { ragQueryRagControllerQueryEmbeddings } from "@panora/sdk/funcs/ragQueryRagControllerQueryEmbeddings.js";
+import { ragQueryQuery } from "@panora/sdk/funcs/ragQueryQuery.js";
 
 // Use `PanoraCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -43,7 +51,13 @@ const panora = new PanoraCore({
 });
 
 async function run() {
-  const res = await ragQueryRagControllerQueryEmbeddings(panora);
+  const res = await ragQueryQuery(panora, {
+    xConnectionToken: "<value>",
+    queryBody: {
+      query: "When does Panora incorporated?",
+      topK: 3,
+    },
+  });
 
   if (!res.ok) {
     throw res.error;
@@ -62,13 +76,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.QueryRequest](../../models/operations/queryrequest.md)                                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[operations.RagControllerQueryEmbeddingsResponseBody](../../models/operations/ragcontrollerqueryembeddingsresponsebody.md)\>**
+**Promise\<[operations.QueryResponseBody](../../models/operations/queryresponsebody.md)\>**
 
 ### Errors
 
