@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: caaaa8c3-6dd7-43a5-841e-c3193e68cc73
 management:
-  docChecksum: 4451647c3fecd12e75576c88d6e46844
+  docChecksum: ef657b2aadcc7b6b8d116b9b11322b80
   docVersion: "1.0"
-  speakeasyVersion: 1.396.9
-  generationVersion: 2.415.7
-  releaseVersion: 0.13.1
-  configChecksum: 5881ae6eaf79ded36c0abecd2d47bd0c
+  speakeasyVersion: 1.398.1
+  generationVersion: 2.415.8
+  releaseVersion: 0.13.2
+  configChecksum: 594e8b0951a87c6de2ba2291352d7ff3
   repoURL: https://github.com/panoratech/typescript-sdk.git
   installationURL: https://github.com/panoratech/typescript-sdk
   published: true
@@ -77,6 +77,7 @@ generatedFiles:
   - docs/models/components/passthroughrequestdtomethod.md
   - docs/models/components/phone.md
   - docs/models/components/projectresponse.md
+  - docs/models/components/querybody.md
   - docs/models/components/remotedata.md
   - docs/models/components/requestformat.md
   - docs/models/components/resyncstatusdto.md
@@ -613,7 +614,8 @@ generatedFiles:
   - docs/models/operations/listticketingusersrequest.md
   - docs/models/operations/listticketingusersresponse.md
   - docs/models/operations/listticketingusersresponsebody.md
-  - docs/models/operations/ragcontrollerqueryembeddingsresponsebody.md
+  - docs/models/operations/queryrequest.md
+  - docs/models/operations/queryresponsebody.md
   - docs/models/operations/remoteidrequest.md
   - docs/models/operations/requestpassthroughresponsebody.md
   - docs/models/operations/requestrequest.md
@@ -905,7 +907,7 @@ generatedFiles:
   - src/funcs/atsUsersList.ts
   - src/funcs/atsUsersRetrieve.ts
   - src/funcs/authLoginSignIn.ts
-  - src/funcs/connectionsRetrieve.ts
+  - src/funcs/connectionsList.ts
   - src/funcs/crmCompaniesCreate.ts
   - src/funcs/crmCompaniesList.ts
   - src/funcs/crmCompaniesRetrieve.ts
@@ -1025,7 +1027,7 @@ generatedFiles:
   - src/funcs/passthroughRetryidGetRetriedRequestResponse.ts
   - src/funcs/projectsCreate.ts
   - src/funcs/projectsGetProjects.ts
-  - src/funcs/ragQueryRagControllerQueryEmbeddings.ts
+  - src/funcs/ragQueryQuery.ts
   - src/funcs/syncGetPullFrequency.ts
   - src/funcs/syncResync.ts
   - src/funcs/syncStatus.ts
@@ -1095,6 +1097,7 @@ generatedFiles:
   - src/models/components/passthroughrequestdto.ts
   - src/models/components/phone.ts
   - src/models/components/projectresponse.ts
+  - src/models/components/querybody.ts
   - src/models/components/resyncstatusdto.ts
   - src/models/components/security.ts
   - src/models/components/signatureverificationdto.ts
@@ -1352,7 +1355,7 @@ generatedFiles:
   - src/models/operations/listticketingteams.ts
   - src/models/operations/listticketingticket.ts
   - src/models/operations/listticketingusers.ts
-  - src/models/operations/ragcontrollerqueryembeddings.ts
+  - src/models/operations/query.ts
   - src/models/operations/remoteid.ts
   - src/models/operations/request.ts
   - src/models/operations/retrieveaccountingaccount.ts
@@ -4113,6 +4116,18 @@ examples:
           application/json: {"carrier": "DHL", "tracking_urls": ["https://tracing-url.sf.com"], "tracking_numbers": ["track_1029_191919"], "items": {}, "order_id": "801f9ede-c698-4e66-a7fc-48d19eebaa4f", "id": "801f9ede-c698-4e66-a7fc-48d19eebaa4f", "remote_id": "id_1", "created_at": "2024-10-01T12:00:00Z", "modified_at": "2024-10-01T12:00:00Z"}
   retrieveConnections:
     speakeasy-default-retrieve-connections:
+      responses:
+        "200":
+          application/json: []
+  query:
+    speakeasy-default-query:
+      parameters:
+        header:
+          x-connection-token: "<value>"
+      requestBody:
+        application/json: {"query": "When does Panora incorporated?", "topK": "3"}
+  listConnections:
+    speakeasy-default-list-connections:
       responses:
         "200":
           application/json: []

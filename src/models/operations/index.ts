@@ -125,7 +125,7 @@ export * from "./listticketingtags.js";
 export * from "./listticketingteams.js";
 export * from "./listticketingticket.js";
 export * from "./listticketingusers.js";
-export * from "./ragcontrollerqueryembeddings.js";
+export * from "./query.js";
 export * from "./remoteid.js";
 export * from "./request.js";
 export * from "./retrieveaccountingaccount.js";
