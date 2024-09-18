@@ -1474,7 +1474,7 @@ actions:
       x-codeSamples:
         - lang: typescript
           label: verifyEvent
-          source: "import { Panora } from \"@panora/sdk\";\n\nconst panora = new Panora({\n  apiKey: \"<YOUR_API_KEY_HERE>\",\n});\n\nasync function run() {\n  const result = await panora.webhooks.verifyEvent({\n    payload: {\n  \n    },\n    signature: \"<value>\",\n    secret: \"<value>\",\n  });\n  \n  // Handle the result\n  console.log(result)\n}\n\nrun();"
+          source: "import { Panora } from \"@panora/sdk\";\n\nconst panora = new Panora({\n  apiKey: \"<YOUR_API_KEY_HERE>\",\n});\n\nasync function run() {\n  const result = await panora.webhooks.verifyEvent({\n    payload: {\n      idEvent: \"801f9ede-c698-4e66-a7fc-48d19eebaa4f\",\n      type: \"connection.created\",\n      data: {\n  \n      },\n    },\n    signature: \"<value>\",\n    secret: \"<value>\",\n  });\n  \n  // Handle the result\n  console.log(result)\n}\n\nrun();"
   - target: $["paths"]["/webhooks/{id}"]["delete"]
     update:
       x-codeSamples:
