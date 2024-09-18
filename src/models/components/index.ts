@@ -13,6 +13,7 @@ export * from "./deductionitem.js";
 export * from "./definetargetfielddto.js";
 export * from "./earningitem.js";
 export * from "./email.js";
+export * from "./eventpayload.js";
 export * from "./eventresponse.js";
 export * from "./lineitem.js";
 export * from "./linkeduserresponse.js";

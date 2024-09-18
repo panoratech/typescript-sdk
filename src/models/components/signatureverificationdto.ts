@@ -3,12 +3,31 @@
  */
 
 import * as z from "zod";
+import { remap as remap$ } from "../../lib/primitives.js";
+
+/**
+ * The payload event of the webhook.
+ */
+export type Payload = {
+  /**
+   * The id of the event.
+   */
+  idEvent: string | null;
+  /**
+   * The type of the event.
+   */
+  type: string | null;
+  /**
+   * The data payload event of the webhook.
+   */
+  data: { [k: string]: any } | null;
+};
 
 export type SignatureVerificationDto = {
   /**
    * The payload event of the webhook.
    */
-  payload: { [k: string]: any } | null;
+  payload: Payload | null;
   /**
    * The signature of the webhook.
    */
@@ -20,19 +39,66 @@ export type SignatureVerificationDto = {
 };
 
 /** @internal */
+export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
+  z.object({
+    id_event: z.nullable(z.string()),
+    type: z.nullable(z.string()),
+    data: z.nullable(z.record(z.any())),
+  }).transform((v) => {
+    return remap$(v, {
+      "id_event": "idEvent",
+    });
+  });
+
+/** @internal */
+export type Payload$Outbound = {
+  id_event: string | null;
+  type: string | null;
+  data: { [k: string]: any } | null;
+};
+
+/** @internal */
+export const Payload$outboundSchema: z.ZodType<
+  Payload$Outbound,
+  z.ZodTypeDef,
+  Payload
+> = z.object({
+  idEvent: z.nullable(z.string()),
+  type: z.nullable(z.string()),
+  data: z.nullable(z.record(z.any())),
+}).transform((v) => {
+  return remap$(v, {
+    idEvent: "id_event",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Payload$ {
+  /** @deprecated use `Payload$inboundSchema` instead. */
+  export const inboundSchema = Payload$inboundSchema;
+  /** @deprecated use `Payload$outboundSchema` instead. */
+  export const outboundSchema = Payload$outboundSchema;
+  /** @deprecated use `Payload$Outbound` instead. */
+  export type Outbound = Payload$Outbound;
+}
+
+/** @internal */
 export const SignatureVerificationDto$inboundSchema: z.ZodType<
   SignatureVerificationDto,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  payload: z.nullable(z.record(z.any())),
+  payload: z.nullable(z.lazy(() => Payload$inboundSchema)),
   signature: z.nullable(z.string()),
   secret: z.nullable(z.string()),
 });
 
 /** @internal */
 export type SignatureVerificationDto$Outbound = {
-  payload: { [k: string]: any } | null;
+  payload: Payload$Outbound | null;
   signature: string | null;
   secret: string | null;
 };
@@ -43,7 +109,7 @@ export const SignatureVerificationDto$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   SignatureVerificationDto
 > = z.object({
-  payload: z.nullable(z.record(z.any())),
+  payload: z.nullable(z.lazy(() => Payload$outboundSchema)),
   signature: z.nullable(z.string()),
   secret: z.nullable(z.string()),
 });

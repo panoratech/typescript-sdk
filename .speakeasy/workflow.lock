@@ -1,9 +1,9 @@
-speakeasyVersion: 1.399.0
+speakeasyVersion: 1.399.2
 sources:
     panora-open-api-swagger:
         sourceNamespace: panora-open-api-swagger
-        sourceRevisionDigest: sha256:d162ff2f806977d6de93e15ab35872ebc4b37c90bc97cf4dfbf3b63f1f466ee5
-        sourceBlobDigest: sha256:8552b0893045d00a287d1d8c677e993e49c028745cef6b837680cd2d6f7551b8
+        sourceRevisionDigest: sha256:47d95f18b4aa2f8a3910cb43e330ad353b26d20912a5a51e84000a99078d7262
+        sourceBlobDigest: sha256:76873ae939bd278ea3e181d2b69220bbb40eaed8a071e8305c7532b873665bab
         tags:
             - latest
             - main
@@ -11,10 +11,10 @@ targets:
     my-first-target:
         source: panora-open-api-swagger
         sourceNamespace: panora-open-api-swagger
-        sourceRevisionDigest: sha256:d162ff2f806977d6de93e15ab35872ebc4b37c90bc97cf4dfbf3b63f1f466ee5
-        sourceBlobDigest: sha256:8552b0893045d00a287d1d8c677e993e49c028745cef6b837680cd2d6f7551b8
+        sourceRevisionDigest: sha256:47d95f18b4aa2f8a3910cb43e330ad353b26d20912a5a51e84000a99078d7262
+        sourceBlobDigest: sha256:76873ae939bd278ea3e181d2b69220bbb40eaed8a071e8305c7532b873665bab
         codeSamplesNamespace: code-samples-typescript-my-first-target
-        codeSamplesRevisionDigest: sha256:a539ee82da31427f0f9b1413d13e62f7e219159d49298257f3220e53521e40e3
+        codeSamplesRevisionDigest: sha256:c7b96f22d0c53ac315b208aafbc837b1059e2eb802f24251d1a8695e545d1cc9
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

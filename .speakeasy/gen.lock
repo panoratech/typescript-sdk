@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: caaaa8c3-6dd7-43a5-841e-c3193e68cc73
 management:
-  docChecksum: a4760f0365a3f82bc52e78253bfc9346
+  docChecksum: 4d63072803072e860460c96602d7e927
   docVersion: "1.0"
-  speakeasyVersion: 1.399.0
-  generationVersion: 2.415.8
-  releaseVersion: 0.13.4
-  configChecksum: c2eaee8f96e5d76e04f7ad519add9e78
+  speakeasyVersion: 1.399.2
+  generationVersion: 2.416.6
+  releaseVersion: 0.13.5
+  configChecksum: aca2b54ea3bb43e5992136a58d772077
   repoURL: https://github.com/panoratech/typescript-sdk.git
   installationURL: https://github.com/panoratech/typescript-sdk
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.17.3
+    core: 3.17.4
     defaultEnabledRetries: 0.1.0
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.1.1
@@ -60,6 +60,7 @@ generatedFiles:
   - docs/models/components/definetargetfielddto.md
   - docs/models/components/earningitem.md
   - docs/models/components/email.md
+  - docs/models/components/eventpayload.md
   - docs/models/components/eventresponse.md
   - docs/models/components/eventresponsestatus.md
   - docs/models/components/fieldmappings.md
@@ -75,6 +76,7 @@ generatedFiles:
   - docs/models/components/ownertype.md
   - docs/models/components/passthroughrequestdto.md
   - docs/models/components/passthroughrequestdtomethod.md
+  - docs/models/components/payload.md
   - docs/models/components/phone.md
   - docs/models/components/projectresponse.md
   - docs/models/components/querybody.md
@@ -1087,6 +1089,7 @@ generatedFiles:
   - src/models/components/definetargetfielddto.ts
   - src/models/components/earningitem.ts
   - src/models/components/email.ts
+  - src/models/components/eventpayload.ts
   - src/models/components/eventresponse.ts
   - src/models/components/index.ts
   - src/models/components/lineitem.ts
@@ -1739,7 +1742,7 @@ examples:
         application/json: {"payload": {}, "signature": "<value>", "secret": "<value>"}
       responses:
         "201":
-          application/json: {"key": "<value>"}
+          application/json: {"id_event": "801f9ede-c698-4e66-a7fc-48d19eebaa4f", "type": "connection.created", "data": {}}
   listTicketingTicket:
     "":
       parameters:

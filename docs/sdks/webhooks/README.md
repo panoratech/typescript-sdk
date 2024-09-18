@@ -338,7 +338,11 @@ const panora = new Panora({
 async function run() {
   const result = await panora.webhooks.verifyEvent({
     payload: {
-  
+      idEvent: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      type: "connection.created",
+      data: {
+        "key": "<value>",
+      },
     },
     signature: "<value>",
     secret: "<value>",
@@ -368,7 +372,11 @@ const panora = new PanoraCore({
 async function run() {
   const res = await webhooksVerifyEvent(panora, {
     payload: {
-  
+      idEvent: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      type: "connection.created",
+      data: {
+        "key": "<value>",
+      },
     },
     signature: "<value>",
     secret: "<value>",
@@ -398,7 +406,7 @@ run();
 
 ### Response
 
-**Promise\<[{ [k: string]: any }](../../models/.md)\>**
+**Promise\<[components.EventPayload](../../models/components/eventpayload.md)\>**
 
 ### Errors
 
