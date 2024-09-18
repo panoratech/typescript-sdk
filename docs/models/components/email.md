@@ -6,7 +6,7 @@
 import { Email } from "@panora/sdk/models/components";
 
 let value: Email = {
-  emailAddress: "Franco.Hane@yahoo.com",
+  emailAddress: "Rita.Will87@yahoo.com",
   emailAddressType: "<value>",
 };
 ```

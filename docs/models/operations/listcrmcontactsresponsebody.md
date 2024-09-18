@@ -14,13 +14,13 @@ let value: ListCrmContactsResponseBody = {
       lastName: "Doe",
       emailAddresses: [
         {
-          emailAddress: "Larue_Rau85@yahoo.com",
+          emailAddress: "Emerald.Mohr@hotmail.com",
           emailAddressType: "<value>",
         },
       ],
       phoneNumbers: [
         {
-          phoneNumber: "846-734-2809 x2347",
+          phoneNumber: "(246) 991-6261 x9652",
           phoneType: "<value>",
         },
       ],

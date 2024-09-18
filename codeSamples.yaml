@@ -1292,7 +1292,7 @@ actions:
       x-codeSamples:
         - lang: typescript
           label: query
-          source: "import { Panora } from \"@panora/sdk\";\n\nconst panora = new Panora({\n  apiKey: \"<YOUR_API_KEY_HERE>\",\n});\n\nasync function run() {\n  const result = await panora.rag.query.query({\n    xConnectionToken: \"<value>\",\n    queryBody: {\n      query: \"When does Panora incorporated?\",\n      topK: 3,\n    },\n  });\n  \n  // Handle the result\n  console.log(result)\n}\n\nrun();"
+          source: "import { Panora } from \"@panora/sdk\";\n\nconst panora = new Panora({\n  apiKey: \"<YOUR_API_KEY_HERE>\",\n});\n\nasync function run() {\n  const result = await panora.rag.query({\n    xConnectionToken: \"<value>\",\n    queryBody: {\n      query: \"When does Panora incorporated?\",\n      topK: 3,\n    },\n  });\n  \n  // Handle the result\n  console.log(result)\n}\n\nrun();"
   - target: $["paths"]["/sync/pull-frequencies"]["get"]
     update:
       x-codeSamples:

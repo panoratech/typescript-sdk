@@ -10,13 +10,13 @@ let value: UnifiedCrmContactOutput = {
   lastName: "Doe",
   emailAddresses: [
     {
-      emailAddress: "Lorenza.Yundt65@yahoo.com",
+      emailAddress: "Wilford_Krajcik46@hotmail.com",
       emailAddressType: "<value>",
     },
   ],
   phoneNumbers: [
     {
-      phoneNumber: "719.752.4442",
+      phoneNumber: "861-765-1597 x5144",
       phoneType: "<value>",
     },
   ],

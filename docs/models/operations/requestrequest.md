@@ -9,8 +9,8 @@ import { RequestRequest } from "@panora/sdk/models/operations";
 let value: RequestRequest = {
   xConnectionToken: "<value>",
   passThroughRequestDto: {
-    method: PassThroughRequestDtoMethod.Post,
-    path: "/usr/lib",
+    method: PassThroughRequestDtoMethod.Get,
+    path: "/var/tmp",
   },
 };
 ```

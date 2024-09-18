@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: caaaa8c3-6dd7-43a5-841e-c3193e68cc73
 management:
-  docChecksum: ef657b2aadcc7b6b8d116b9b11322b80
+  docChecksum: a4760f0365a3f82bc52e78253bfc9346
   docVersion: "1.0"
-  speakeasyVersion: 1.398.1
+  speakeasyVersion: 1.399.0
   generationVersion: 2.415.8
-  releaseVersion: 0.13.2
-  configChecksum: 594e8b0951a87c6de2ba2291352d7ff3
+  releaseVersion: 0.13.3
+  configChecksum: 330e4f6d65f1268c463f6cb6cb5258db
   repoURL: https://github.com/panoratech/typescript-sdk.git
   installationURL: https://github.com/panoratech/typescript-sdk
   published: true
@@ -78,6 +78,7 @@ generatedFiles:
   - docs/models/components/phone.md
   - docs/models/components/projectresponse.md
   - docs/models/components/querybody.md
+  - docs/models/components/ragqueryoutput.md
   - docs/models/components/remotedata.md
   - docs/models/components/requestformat.md
   - docs/models/components/resyncstatusdto.md
@@ -615,7 +616,6 @@ generatedFiles:
   - docs/models/operations/listticketingusersresponse.md
   - docs/models/operations/listticketingusersresponsebody.md
   - docs/models/operations/queryrequest.md
-  - docs/models/operations/queryresponsebody.md
   - docs/models/operations/remoteidrequest.md
   - docs/models/operations/requestpassthroughresponsebody.md
   - docs/models/operations/requestrequest.md
@@ -798,7 +798,6 @@ generatedFiles:
   - docs/sdks/products/README.md
   - docs/sdks/projects/README.md
   - docs/sdks/purchaseorders/README.md
-  - docs/sdks/query/README.md
   - docs/sdks/rag/README.md
   - docs/sdks/rejectreasons/README.md
   - docs/sdks/retryid/README.md
@@ -1027,7 +1026,7 @@ generatedFiles:
   - src/funcs/passthroughRetryidGetRetriedRequestResponse.ts
   - src/funcs/projectsCreate.ts
   - src/funcs/projectsGetProjects.ts
-  - src/funcs/ragQueryQuery.ts
+  - src/funcs/ragQuery.ts
   - src/funcs/syncGetPullFrequency.ts
   - src/funcs/syncResync.ts
   - src/funcs/syncStatus.ts
@@ -1098,6 +1097,7 @@ generatedFiles:
   - src/models/components/phone.ts
   - src/models/components/projectresponse.ts
   - src/models/components/querybody.ts
+  - src/models/components/ragqueryoutput.ts
   - src/models/components/resyncstatusdto.ts
   - src/models/components/security.ts
   - src/models/components/signatureverificationdto.ts
@@ -1532,7 +1532,6 @@ generatedFiles:
   - src/sdk/products.ts
   - src/sdk/projects.ts
   - src/sdk/purchaseorders.ts
-  - src/sdk/query.ts
   - src/sdk/rag.ts
   - src/sdk/rejectreasons.ts
   - src/sdk/retryid.ts
@@ -4126,6 +4125,9 @@ examples:
           x-connection-token: "<value>"
       requestBody:
         application/json: {"query": "When does Panora incorporated?", "topK": "3"}
+      responses:
+        "201":
+          application/json: []
   listConnections:
     speakeasy-default-list-connections:
       responses:

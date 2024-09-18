@@ -593,10 +593,7 @@ run();
 
 ### [rag](docs/sdks/rag/README.md)
 
-
-#### [rag.query](docs/sdks/query/README.md)
-
-* [query](docs/sdks/query/README.md#query) - Query using RAG Search
+* [query](docs/sdks/rag/README.md#query) - Query using RAG Search
 
 ### [sync](docs/sdks/sync/README.md)
 
@@ -1174,7 +1171,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [passthroughRetryidGetRetriedRequestResponse](docs/sdks/retryid/README.md#getretriedrequestresponse)
 - [projectsCreate](docs/sdks/projects/README.md#create)
 - [projectsGetProjects](docs/sdks/projects/README.md#getprojects)
-- [ragQueryQuery](docs/sdks/query/README.md#query)
+- [ragQuery](docs/sdks/rag/README.md#query)
 - [syncGetPullFrequency](docs/sdks/sync/README.md#getpullfrequency)
 - [syncResync](docs/sdks/sync/README.md#resync)
 - [syncStatus](docs/sdks/sync/README.md#status)
