@@ -6,7 +6,7 @@
 import { LoginDto } from "@panora/sdk/models/components";
 
 let value: LoginDto = {
-  email: "Brianne61@yahoo.com",
+  email: "Micheal_Sporer@yahoo.com",
   passwordHash: "<value>",
 };
 ```

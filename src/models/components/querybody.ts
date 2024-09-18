@@ -6,7 +6,7 @@ import * as z from "zod";
 
 export type QueryBody = {
   /**
-   * The query you want to received embeddings adn chunks for
+   * The query you want to received embeddings and chunks for
    */
   query: string;
   /**

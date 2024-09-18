@@ -14,8 +14,6 @@ export type QueryRequest = {
   queryBody: components.QueryBody;
 };
 
-export type QueryResponseBody = {};
-
 /** @internal */
 export const QueryRequest$inboundSchema: z.ZodType<
   QueryRequest,
@@ -63,34 +61,4 @@ export namespace QueryRequest$ {
   export const outboundSchema = QueryRequest$outboundSchema;
   /** @deprecated use `QueryRequest$Outbound` instead. */
   export type Outbound = QueryRequest$Outbound;
-}
-
-/** @internal */
-export const QueryResponseBody$inboundSchema: z.ZodType<
-  QueryResponseBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type QueryResponseBody$Outbound = {};
-
-/** @internal */
-export const QueryResponseBody$outboundSchema: z.ZodType<
-  QueryResponseBody$Outbound,
-  z.ZodTypeDef,
-  QueryResponseBody
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace QueryResponseBody$ {
-  /** @deprecated use `QueryResponseBody$inboundSchema` instead. */
-  export const inboundSchema = QueryResponseBody$inboundSchema;
-  /** @deprecated use `QueryResponseBody$outboundSchema` instead. */
-  export const outboundSchema = QueryResponseBody$outboundSchema;
-  /** @deprecated use `QueryResponseBody$Outbound` instead. */
-  export type Outbound = QueryResponseBody$Outbound;
 }

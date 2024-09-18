@@ -7,7 +7,7 @@ import { PassThroughRequestDto, PassThroughRequestDtoMethod } from "@panora/sdk/
 
 let value: PassThroughRequestDto = {
   method: PassThroughRequestDtoMethod.Post,
-  path: "/private/tmp",
+  path: "/usr/X11R6",
 };
 ```
 

@@ -13,13 +13,13 @@ let value: CreateCrmContactRequest = {
     lastName: "Doe",
     emailAddresses: [
       {
-        emailAddress: "Presley_Koepp@hotmail.com",
+        emailAddress: "Reid62@yahoo.com",
         emailAddressType: "<value>",
       },
     ],
     phoneNumbers: [
       {
-        phoneNumber: "1-276-615-9751 x4421",
+        phoneNumber: "(709) 984-5906 x47004",
         phoneType: "<value>",
       },
     ],
