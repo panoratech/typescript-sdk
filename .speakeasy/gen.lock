@@ -5,8 +5,8 @@ management:
   docVersion: "1.0"
   speakeasyVersion: 1.399.0
   generationVersion: 2.415.8
-  releaseVersion: 0.13.3
-  configChecksum: 330e4f6d65f1268c463f6cb6cb5258db
+  releaseVersion: 0.13.4
+  configChecksum: c2eaee8f96e5d76e04f7ad519add9e78
   repoURL: https://github.com/panoratech/typescript-sdk.git
   installationURL: https://github.com/panoratech/typescript-sdk
   published: true
