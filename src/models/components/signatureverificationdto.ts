@@ -4,16 +4,11 @@
 
 import * as z from "zod";
 
-/**
- * The payload event of the webhook.
- */
-export type Payload = {};
-
 export type SignatureVerificationDto = {
   /**
    * The payload event of the webhook.
    */
-  payload: Payload | null;
+  payload: { [k: string]: any } | null;
   /**
    * The signature of the webhook.
    */
@@ -25,46 +20,19 @@ export type SignatureVerificationDto = {
 };
 
 /** @internal */
-export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
-  z.object({});
-
-/** @internal */
-export type Payload$Outbound = {};
-
-/** @internal */
-export const Payload$outboundSchema: z.ZodType<
-  Payload$Outbound,
-  z.ZodTypeDef,
-  Payload
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Payload$ {
-  /** @deprecated use `Payload$inboundSchema` instead. */
-  export const inboundSchema = Payload$inboundSchema;
-  /** @deprecated use `Payload$outboundSchema` instead. */
-  export const outboundSchema = Payload$outboundSchema;
-  /** @deprecated use `Payload$Outbound` instead. */
-  export type Outbound = Payload$Outbound;
-}
-
-/** @internal */
 export const SignatureVerificationDto$inboundSchema: z.ZodType<
   SignatureVerificationDto,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  payload: z.nullable(z.lazy(() => Payload$inboundSchema)),
+  payload: z.nullable(z.record(z.any())),
   signature: z.nullable(z.string()),
   secret: z.nullable(z.string()),
 });
 
 /** @internal */
 export type SignatureVerificationDto$Outbound = {
-  payload: Payload$Outbound | null;
+  payload: { [k: string]: any } | null;
   signature: string | null;
   secret: string | null;
 };
@@ -75,7 +43,7 @@ export const SignatureVerificationDto$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   SignatureVerificationDto
 > = z.object({
-  payload: z.nullable(z.lazy(() => Payload$outboundSchema)),
+  payload: z.nullable(z.record(z.any())),
   signature: z.nullable(z.string()),
   secret: z.nullable(z.string()),
 });

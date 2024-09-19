@@ -73,7 +73,7 @@ export class Webhooks extends ClientSDK {
   async verifyEvent(
     request: components.SignatureVerificationDto,
     options?: RequestOptions,
-  ): Promise<components.EventPayload> {
+  ): Promise<{ [k: string]: any }> {
     return unwrapAsync(webhooksVerifyEvent(
       this,
       request,
