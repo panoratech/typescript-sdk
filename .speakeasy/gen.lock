@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: caaaa8c3-6dd7-43a5-841e-c3193e68cc73
 management:
-  docChecksum: 85754de0244c73cbb1c69b25ea2c7b84
+  docChecksum: b37062aecf8703f01cd8ff6e28b459b8
   docVersion: "1.0"
-  speakeasyVersion: 1.399.2
-  generationVersion: 2.416.6
-  releaseVersion: 0.13.7
-  configChecksum: a67cb1918371b34fe4ecbfd50d9af6d0
+  speakeasyVersion: 1.399.5
+  generationVersion: 2.420.2
+  releaseVersion: 0.13.8
+  configChecksum: 3d4b3c179ade22eb788fba997b008dd1
   repoURL: https://github.com/panoratech/typescript-sdk.git
   installationURL: https://github.com/panoratech/typescript-sdk
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.17.4
+    core: 3.17.5
     defaultEnabledRetries: 0.1.0
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.1.1
@@ -60,7 +60,6 @@ generatedFiles:
   - docs/models/components/definetargetfielddto.md
   - docs/models/components/earningitem.md
   - docs/models/components/email.md
-  - docs/models/components/eventpayload.md
   - docs/models/components/eventresponse.md
   - docs/models/components/eventresponsestatus.md
   - docs/models/components/fieldmappings.md
@@ -76,7 +75,6 @@ generatedFiles:
   - docs/models/components/ownertype.md
   - docs/models/components/passthroughrequestdto.md
   - docs/models/components/passthroughrequestdtomethod.md
-  - docs/models/components/payload.md
   - docs/models/components/phone.md
   - docs/models/components/projectresponse.md
   - docs/models/components/querybody.md
@@ -1089,7 +1087,6 @@ generatedFiles:
   - src/models/components/definetargetfielddto.ts
   - src/models/components/earningitem.ts
   - src/models/components/email.ts
-  - src/models/components/eventpayload.ts
   - src/models/components/eventresponse.ts
   - src/models/components/index.ts
   - src/models/components/lineitem.ts
@@ -4069,7 +4066,7 @@ examples:
           x-connection-token: "<value>"
       responses:
         "200":
-          application/json: {"order_status": "UNSHIPPED", "order_number": "19823838833", "payment_status": "SUCCESS", "currency": "AUD", "total_price": 300, "total_discount": 10, "total_shipping": 120, "total_tax": 120, "fulfillment_status": "PENDING", "customer_id": "801f9ede-c698-4e66-a7fc-48d19eebaa4f", "items": [{"name": "Net Income", "value": 100000, "type": "Operating Activities", "parent_item": "801f9ede-c698-4e66-a7fc-48d19eebaa4f", "remote_id": "12345", "remote_generated_at": "2024-07-01T12:00:00Z", "company_info_id": "801f9ede-c698-4e66-a7fc-48d19eebaa4f", "created_at": "2024-06-15T12:00:00Z", "modified_at": "2024-06-15T12:00:00Z"}], "id": "801f9ede-c698-4e66-a7fc-48d19eebaa4f", "remote_id": "id_1", "created_at": "2024-10-01T12:00:00Z", "modified_at": "2024-10-01T12:00:00Z"}
+          application/json: {"order_status": "UNSHIPPED", "order_number": "19823838833", "payment_status": "SUCCESS", "currency": "AUD", "total_price": 300, "total_discount": 10, "total_shipping": 120, "total_tax": 120, "fulfillment_status": "PENDING", "customer_id": "801f9ede-c698-4e66-a7fc-48d19eebaa4f", "items": [{"name": "Net Income", "value": 100000, "type": "Operating Activities", "parent_item": "801f9ede-c698-4e66-a7fc-48d19eebaa4f", "remote_id": "report_item_1234", "remote_generated_at": "2024-07-01T12:00:00Z", "company_info_id": "801f9ede-c698-4e66-a7fc-48d19eebaa4f", "created_at": "2024-06-15T12:00:00Z", "modified_at": "2024-06-15T12:00:00Z"}], "id": "801f9ede-c698-4e66-a7fc-48d19eebaa4f", "remote_id": "id_1", "created_at": "2024-10-01T12:00:00Z", "modified_at": "2024-10-01T12:00:00Z"}
   listEcommerceCustomers:
     "":
       parameters:
