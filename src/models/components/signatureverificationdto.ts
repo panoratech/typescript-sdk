@@ -3,21 +3,11 @@
  */
 
 import * as z from "zod";
-import { remap as remap$ } from "../../lib/primitives.js";
 
 /**
  * The payload event of the webhook.
  */
-export type Payload = {
-  /**
-   * The id of the event.
-   */
-  idEvent: string | null;
-  /**
-   * The type of the event.
-   */
-  type: string | null;
-};
+export type Payload = {};
 
 export type SignatureVerificationDto = {
   /**
@@ -36,34 +26,17 @@ export type SignatureVerificationDto = {
 
 /** @internal */
 export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
-  z.object({
-    id_event: z.nullable(z.string()),
-    type: z.nullable(z.string()),
-  }).transform((v) => {
-    return remap$(v, {
-      "id_event": "idEvent",
-    });
-  });
+  z.object({});
 
 /** @internal */
-export type Payload$Outbound = {
-  id_event: string | null;
-  type: string | null;
-};
+export type Payload$Outbound = {};
 
 /** @internal */
 export const Payload$outboundSchema: z.ZodType<
   Payload$Outbound,
   z.ZodTypeDef,
   Payload
-> = z.object({
-  idEvent: z.nullable(z.string()),
-  type: z.nullable(z.string()),
-}).transform((v) => {
-  return remap$(v, {
-    idEvent: "id_event",
-  });
-});
+> = z.object({});
 
 /**
  * @internal

@@ -3,52 +3,25 @@
  */
 
 import * as z from "zod";
-import { remap as remap$ } from "../../lib/primitives.js";
 
-export type EventPayload = {
-  /**
-   * The id of the event.
-   */
-  idEvent: string | null;
-  /**
-   * The type of the event.
-   */
-  type: string | null;
-};
+export type EventPayload = {};
 
 /** @internal */
 export const EventPayload$inboundSchema: z.ZodType<
   EventPayload,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id_event: z.nullable(z.string()),
-  type: z.nullable(z.string()),
-}).transform((v) => {
-  return remap$(v, {
-    "id_event": "idEvent",
-  });
-});
+> = z.object({});
 
 /** @internal */
-export type EventPayload$Outbound = {
-  id_event: string | null;
-  type: string | null;
-};
+export type EventPayload$Outbound = {};
 
 /** @internal */
 export const EventPayload$outboundSchema: z.ZodType<
   EventPayload$Outbound,
   z.ZodTypeDef,
   EventPayload
-> = z.object({
-  idEvent: z.nullable(z.string()),
-  type: z.nullable(z.string()),
-}).transform((v) => {
-  return remap$(v, {
-    idEvent: "id_event",
-  });
-});
+> = z.object({});
 
 /**
  * @internal

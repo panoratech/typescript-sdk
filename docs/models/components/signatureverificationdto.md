@@ -6,10 +6,7 @@
 import { SignatureVerificationDto } from "@panora/sdk/models/components";
 
 let value: SignatureVerificationDto = {
-  payload: {
-    idEvent: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-    type: "connection.created",
-  },
+  payload: {},
   signature: "<value>",
   secret: "<value>",
 };
