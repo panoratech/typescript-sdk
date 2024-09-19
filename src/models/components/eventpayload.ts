@@ -14,10 +14,6 @@ export type EventPayload = {
    * The type of the event.
    */
   type: string | null;
-  /**
-   * The data payload event of the webhook.
-   */
-  data: { [k: string]: any } | null;
 };
 
 /** @internal */
@@ -28,7 +24,6 @@ export const EventPayload$inboundSchema: z.ZodType<
 > = z.object({
   id_event: z.nullable(z.string()),
   type: z.nullable(z.string()),
-  data: z.nullable(z.record(z.any())),
 }).transform((v) => {
   return remap$(v, {
     "id_event": "idEvent",
@@ -39,7 +34,6 @@ export const EventPayload$inboundSchema: z.ZodType<
 export type EventPayload$Outbound = {
   id_event: string | null;
   type: string | null;
-  data: { [k: string]: any } | null;
 };
 
 /** @internal */
@@ -50,7 +44,6 @@ export const EventPayload$outboundSchema: z.ZodType<
 > = z.object({
   idEvent: z.nullable(z.string()),
   type: z.nullable(z.string()),
-  data: z.nullable(z.record(z.any())),
 }).transform((v) => {
   return remap$(v, {
     idEvent: "id_event",

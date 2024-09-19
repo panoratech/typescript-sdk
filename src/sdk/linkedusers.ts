@@ -14,6 +14,20 @@ import { unwrapAsync } from "../types/fp.js";
 
 export class LinkedUsers extends ClientSDK {
   /**
+   * Retrieve a Linked User From A Remote Id
+   */
+  async remoteId(
+    request: operations.RemoteIdRequest,
+    options?: RequestOptions,
+  ): Promise<components.LinkedUserResponse> {
+    return unwrapAsync(linkedUsersRemoteId(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * Create Linked Users
    */
   async create(
@@ -61,20 +75,6 @@ export class LinkedUsers extends ClientSDK {
     options?: RequestOptions,
   ): Promise<components.LinkedUserResponse> {
     return unwrapAsync(linkedUsersRetrieve(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Retrieve a Linked User From A Remote Id
-   */
-  async remoteId(
-    request: operations.RemoteIdRequest,
-    options?: RequestOptions,
-  ): Promise<components.LinkedUserResponse> {
-    return unwrapAsync(linkedUsersRemoteId(
       this,
       request,
       options,
