@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: caaaa8c3-6dd7-43a5-841e-c3193e68cc73
 management:
-  docChecksum: 4d63072803072e860460c96602d7e927
+  docChecksum: df43e764b8eb28b0b843f5f4e489a795
   docVersion: "1.0"
   speakeasyVersion: 1.399.2
   generationVersion: 2.416.6
-  releaseVersion: 0.13.5
-  configChecksum: aca2b54ea3bb43e5992136a58d772077
+  releaseVersion: 0.13.6
+  configChecksum: 54dc3961974da8b857c42f2f1cd52b95
   repoURL: https://github.com/panoratech/typescript-sdk.git
   installationURL: https://github.com/panoratech/typescript-sdk
   published: true
@@ -1742,7 +1742,7 @@ examples:
         application/json: {"payload": {}, "signature": "<value>", "secret": "<value>"}
       responses:
         "201":
-          application/json: {"id_event": "801f9ede-c698-4e66-a7fc-48d19eebaa4f", "type": "connection.created", "data": {}}
+          application/json: {"id_event": "801f9ede-c698-4e66-a7fc-48d19eebaa4f", "type": "connection.created"}
   listTicketingTicket:
     "":
       parameters:

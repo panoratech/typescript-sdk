@@ -37,7 +37,7 @@ export async function syncGetPullFrequency(
     | ConnectionError
   >
 > {
-  const path$ = pathToFunc("/sync/pull-frequencies")();
+  const path$ = pathToFunc("/sync/pull_frequencies")();
 
   const headers$ = new Headers({
     Accept: "application/json",

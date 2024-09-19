@@ -17,10 +17,6 @@ export type Payload = {
    * The type of the event.
    */
   type: string | null;
-  /**
-   * The data payload event of the webhook.
-   */
-  data: { [k: string]: any } | null;
 };
 
 export type SignatureVerificationDto = {
@@ -43,7 +39,6 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
   z.object({
     id_event: z.nullable(z.string()),
     type: z.nullable(z.string()),
-    data: z.nullable(z.record(z.any())),
   }).transform((v) => {
     return remap$(v, {
       "id_event": "idEvent",
@@ -54,7 +49,6 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
 export type Payload$Outbound = {
   id_event: string | null;
   type: string | null;
-  data: { [k: string]: any } | null;
 };
 
 /** @internal */
@@ -65,7 +59,6 @@ export const Payload$outboundSchema: z.ZodType<
 > = z.object({
   idEvent: z.nullable(z.string()),
   type: z.nullable(z.string()),
-  data: z.nullable(z.record(z.any())),
 }).transform((v) => {
   return remap$(v, {
     idEvent: "id_event",

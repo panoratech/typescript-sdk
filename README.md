@@ -508,11 +508,11 @@ run();
 
 ### [linkedUsers](docs/sdks/linkedusers/README.md)
 
+* [remoteId](docs/sdks/linkedusers/README.md#remoteid) - Retrieve a Linked User From A Remote Id
 * [create](docs/sdks/linkedusers/README.md#create) - Create Linked Users
 * [list](docs/sdks/linkedusers/README.md#list) - List Linked Users
 * [importBatch](docs/sdks/linkedusers/README.md#importbatch) - Add Batch Linked Users
 * [retrieve](docs/sdks/linkedusers/README.md#retrieve) - Retrieve Linked Users
-* [remoteId](docs/sdks/linkedusers/README.md#remoteid) - Retrieve a Linked User From A Remote Id
 
 ### [marketingautomation](docs/sdks/marketingautomation/README.md)
 

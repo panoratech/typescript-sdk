@@ -54,7 +54,7 @@ export async function syncUpdatePullFrequency(
   const payload$ = parsed$.value;
   const body$ = encodeJSON$("body", payload$, { explode: true });
 
-  const path$ = pathToFunc("/sync/pull-frequencies")();
+  const path$ = pathToFunc("/sync/pull_frequencies")();
 
   const headers$ = new Headers({
     "Content-Type": "application/json",

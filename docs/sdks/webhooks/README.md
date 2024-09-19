@@ -340,9 +340,6 @@ async function run() {
     payload: {
       idEvent: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
       type: "connection.created",
-      data: {
-        "key": "<value>",
-      },
     },
     signature: "<value>",
     secret: "<value>",
@@ -374,9 +371,6 @@ async function run() {
     payload: {
       idEvent: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
       type: "connection.created",
-      data: {
-        "key": "<value>",
-      },
     },
     signature: "<value>",
     secret: "<value>",
