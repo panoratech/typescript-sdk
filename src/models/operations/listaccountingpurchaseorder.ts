@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ListAccountingPurchaseOrderRequest = {
   /**
@@ -43,7 +46,7 @@ export const ListAccountingPurchaseOrderRequest$inboundSchema: z.ZodType<
 > = z.object({
   "x-connection-token": z.string(),
   remote_data: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -56,7 +59,7 @@ export const ListAccountingPurchaseOrderRequest$inboundSchema: z.ZodType<
 export type ListAccountingPurchaseOrderRequest$Outbound = {
   "x-connection-token": string;
   remote_data?: boolean | undefined;
-  limit: number;
+  limit?: number | undefined;
   cursor?: string | undefined;
 };
 
@@ -68,7 +71,7 @@ export const ListAccountingPurchaseOrderRequest$outboundSchema: z.ZodType<
 > = z.object({
   xConnectionToken: z.string(),
   remoteData: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -89,6 +92,27 @@ export namespace ListAccountingPurchaseOrderRequest$ {
     ListAccountingPurchaseOrderRequest$outboundSchema;
   /** @deprecated use `ListAccountingPurchaseOrderRequest$Outbound` instead. */
   export type Outbound = ListAccountingPurchaseOrderRequest$Outbound;
+}
+
+export function listAccountingPurchaseOrderRequestToJSON(
+  listAccountingPurchaseOrderRequest: ListAccountingPurchaseOrderRequest,
+): string {
+  return JSON.stringify(
+    ListAccountingPurchaseOrderRequest$outboundSchema.parse(
+      listAccountingPurchaseOrderRequest,
+    ),
+  );
+}
+
+export function listAccountingPurchaseOrderRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAccountingPurchaseOrderRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListAccountingPurchaseOrderRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAccountingPurchaseOrderRequest' from JSON`,
+  );
 }
 
 /** @internal */
@@ -145,6 +169,33 @@ export namespace ListAccountingPurchaseOrderResponseBody$ {
   export type Outbound = ListAccountingPurchaseOrderResponseBody$Outbound;
 }
 
+export function listAccountingPurchaseOrderResponseBodyToJSON(
+  listAccountingPurchaseOrderResponseBody:
+    ListAccountingPurchaseOrderResponseBody,
+): string {
+  return JSON.stringify(
+    ListAccountingPurchaseOrderResponseBody$outboundSchema.parse(
+      listAccountingPurchaseOrderResponseBody,
+    ),
+  );
+}
+
+export function listAccountingPurchaseOrderResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ListAccountingPurchaseOrderResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListAccountingPurchaseOrderResponseBody$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ListAccountingPurchaseOrderResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListAccountingPurchaseOrderResponse$inboundSchema: z.ZodType<
   ListAccountingPurchaseOrderResponse,
@@ -189,4 +240,25 @@ export namespace ListAccountingPurchaseOrderResponse$ {
     ListAccountingPurchaseOrderResponse$outboundSchema;
   /** @deprecated use `ListAccountingPurchaseOrderResponse$Outbound` instead. */
   export type Outbound = ListAccountingPurchaseOrderResponse$Outbound;
+}
+
+export function listAccountingPurchaseOrderResponseToJSON(
+  listAccountingPurchaseOrderResponse: ListAccountingPurchaseOrderResponse,
+): string {
+  return JSON.stringify(
+    ListAccountingPurchaseOrderResponse$outboundSchema.parse(
+      listAccountingPurchaseOrderResponse,
+    ),
+  );
+}
+
+export function listAccountingPurchaseOrderResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAccountingPurchaseOrderResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListAccountingPurchaseOrderResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAccountingPurchaseOrderResponse' from JSON`,
+  );
 }

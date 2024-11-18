@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The owner type of an email
@@ -96,4 +99,18 @@ export namespace Email$ {
   export const outboundSchema = Email$outboundSchema;
   /** @deprecated use `Email$Outbound` instead. */
   export type Outbound = Email$Outbound;
+}
+
+export function emailToJSON(email: Email): string {
+  return JSON.stringify(Email$outboundSchema.parse(email));
+}
+
+export function emailFromJSON(
+  jsonString: string,
+): SafeParseResult<Email, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Email$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Email' from JSON`,
+  );
 }

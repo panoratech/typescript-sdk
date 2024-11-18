@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type RetrieveLinkedUserRequest = {
   id: string;
@@ -42,4 +45,22 @@ export namespace RetrieveLinkedUserRequest$ {
   export const outboundSchema = RetrieveLinkedUserRequest$outboundSchema;
   /** @deprecated use `RetrieveLinkedUserRequest$Outbound` instead. */
   export type Outbound = RetrieveLinkedUserRequest$Outbound;
+}
+
+export function retrieveLinkedUserRequestToJSON(
+  retrieveLinkedUserRequest: RetrieveLinkedUserRequest,
+): string {
+  return JSON.stringify(
+    RetrieveLinkedUserRequest$outboundSchema.parse(retrieveLinkedUserRequest),
+  );
+}
+
+export function retrieveLinkedUserRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<RetrieveLinkedUserRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RetrieveLinkedUserRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RetrieveLinkedUserRequest' from JSON`,
+  );
 }

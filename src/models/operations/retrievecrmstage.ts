@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type RetrieveCrmStageRequest = {
   /**
@@ -70,4 +73,22 @@ export namespace RetrieveCrmStageRequest$ {
   export const outboundSchema = RetrieveCrmStageRequest$outboundSchema;
   /** @deprecated use `RetrieveCrmStageRequest$Outbound` instead. */
   export type Outbound = RetrieveCrmStageRequest$Outbound;
+}
+
+export function retrieveCrmStageRequestToJSON(
+  retrieveCrmStageRequest: RetrieveCrmStageRequest,
+): string {
+  return JSON.stringify(
+    RetrieveCrmStageRequest$outboundSchema.parse(retrieveCrmStageRequest),
+  );
+}
+
+export function retrieveCrmStageRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<RetrieveCrmStageRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RetrieveCrmStageRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RetrieveCrmStageRequest' from JSON`,
+  );
 }

@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ListMarketingAutomationUsersRequest = {
   /**
@@ -43,7 +46,7 @@ export const ListMarketingAutomationUsersRequest$inboundSchema: z.ZodType<
 > = z.object({
   "x-connection-token": z.string(),
   remote_data: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -56,7 +59,7 @@ export const ListMarketingAutomationUsersRequest$inboundSchema: z.ZodType<
 export type ListMarketingAutomationUsersRequest$Outbound = {
   "x-connection-token": string;
   remote_data?: boolean | undefined;
-  limit: number;
+  limit?: number | undefined;
   cursor?: string | undefined;
 };
 
@@ -68,7 +71,7 @@ export const ListMarketingAutomationUsersRequest$outboundSchema: z.ZodType<
 > = z.object({
   xConnectionToken: z.string(),
   remoteData: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -90,6 +93,27 @@ export namespace ListMarketingAutomationUsersRequest$ {
     ListMarketingAutomationUsersRequest$outboundSchema;
   /** @deprecated use `ListMarketingAutomationUsersRequest$Outbound` instead. */
   export type Outbound = ListMarketingAutomationUsersRequest$Outbound;
+}
+
+export function listMarketingAutomationUsersRequestToJSON(
+  listMarketingAutomationUsersRequest: ListMarketingAutomationUsersRequest,
+): string {
+  return JSON.stringify(
+    ListMarketingAutomationUsersRequest$outboundSchema.parse(
+      listMarketingAutomationUsersRequest,
+    ),
+  );
+}
+
+export function listMarketingAutomationUsersRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListMarketingAutomationUsersRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListMarketingAutomationUsersRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListMarketingAutomationUsersRequest' from JSON`,
+  );
 }
 
 /** @internal */
@@ -146,6 +170,33 @@ export namespace ListMarketingAutomationUsersResponseBody$ {
   export type Outbound = ListMarketingAutomationUsersResponseBody$Outbound;
 }
 
+export function listMarketingAutomationUsersResponseBodyToJSON(
+  listMarketingAutomationUsersResponseBody:
+    ListMarketingAutomationUsersResponseBody,
+): string {
+  return JSON.stringify(
+    ListMarketingAutomationUsersResponseBody$outboundSchema.parse(
+      listMarketingAutomationUsersResponseBody,
+    ),
+  );
+}
+
+export function listMarketingAutomationUsersResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ListMarketingAutomationUsersResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListMarketingAutomationUsersResponseBody$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ListMarketingAutomationUsersResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListMarketingAutomationUsersResponse$inboundSchema: z.ZodType<
   ListMarketingAutomationUsersResponse,
@@ -190,4 +241,25 @@ export namespace ListMarketingAutomationUsersResponse$ {
     ListMarketingAutomationUsersResponse$outboundSchema;
   /** @deprecated use `ListMarketingAutomationUsersResponse$Outbound` instead. */
   export type Outbound = ListMarketingAutomationUsersResponse$Outbound;
+}
+
+export function listMarketingAutomationUsersResponseToJSON(
+  listMarketingAutomationUsersResponse: ListMarketingAutomationUsersResponse,
+): string {
+  return JSON.stringify(
+    ListMarketingAutomationUsersResponse$outboundSchema.parse(
+      listMarketingAutomationUsersResponse,
+    ),
+  );
+}
+
+export function listMarketingAutomationUsersResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListMarketingAutomationUsersResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListMarketingAutomationUsersResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListMarketingAutomationUsersResponse' from JSON`,
+  );
 }

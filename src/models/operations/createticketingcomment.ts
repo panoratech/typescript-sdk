@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateTicketingCommentRequest = {
   /**
@@ -73,4 +76,24 @@ export namespace CreateTicketingCommentRequest$ {
   export const outboundSchema = CreateTicketingCommentRequest$outboundSchema;
   /** @deprecated use `CreateTicketingCommentRequest$Outbound` instead. */
   export type Outbound = CreateTicketingCommentRequest$Outbound;
+}
+
+export function createTicketingCommentRequestToJSON(
+  createTicketingCommentRequest: CreateTicketingCommentRequest,
+): string {
+  return JSON.stringify(
+    CreateTicketingCommentRequest$outboundSchema.parse(
+      createTicketingCommentRequest,
+    ),
+  );
+}
+
+export function createTicketingCommentRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateTicketingCommentRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateTicketingCommentRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateTicketingCommentRequest' from JSON`,
+  );
 }

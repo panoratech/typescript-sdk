@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type RetrieveAccountingPurchaseOrderRequest = {
   /**
@@ -72,4 +75,26 @@ export namespace RetrieveAccountingPurchaseOrderRequest$ {
     RetrieveAccountingPurchaseOrderRequest$outboundSchema;
   /** @deprecated use `RetrieveAccountingPurchaseOrderRequest$Outbound` instead. */
   export type Outbound = RetrieveAccountingPurchaseOrderRequest$Outbound;
+}
+
+export function retrieveAccountingPurchaseOrderRequestToJSON(
+  retrieveAccountingPurchaseOrderRequest:
+    RetrieveAccountingPurchaseOrderRequest,
+): string {
+  return JSON.stringify(
+    RetrieveAccountingPurchaseOrderRequest$outboundSchema.parse(
+      retrieveAccountingPurchaseOrderRequest,
+    ),
+  );
+}
+
+export function retrieveAccountingPurchaseOrderRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<RetrieveAccountingPurchaseOrderRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RetrieveAccountingPurchaseOrderRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RetrieveAccountingPurchaseOrderRequest' from JSON`,
+  );
 }

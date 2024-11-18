@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The custom field mappings of the object between the remote 3rd party & Panora
@@ -140,6 +143,33 @@ export namespace UnifiedAccountingCreditnoteOutputFieldMappings$ {
     UnifiedAccountingCreditnoteOutputFieldMappings$Outbound;
 }
 
+export function unifiedAccountingCreditnoteOutputFieldMappingsToJSON(
+  unifiedAccountingCreditnoteOutputFieldMappings:
+    UnifiedAccountingCreditnoteOutputFieldMappings,
+): string {
+  return JSON.stringify(
+    UnifiedAccountingCreditnoteOutputFieldMappings$outboundSchema.parse(
+      unifiedAccountingCreditnoteOutputFieldMappings,
+    ),
+  );
+}
+
+export function unifiedAccountingCreditnoteOutputFieldMappingsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UnifiedAccountingCreditnoteOutputFieldMappings,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UnifiedAccountingCreditnoteOutputFieldMappings$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UnifiedAccountingCreditnoteOutputFieldMappings' from JSON`,
+  );
+}
+
 /** @internal */
 export const UnifiedAccountingCreditnoteOutputRemoteData$inboundSchema:
   z.ZodType<
@@ -172,6 +202,33 @@ export namespace UnifiedAccountingCreditnoteOutputRemoteData$ {
     UnifiedAccountingCreditnoteOutputRemoteData$outboundSchema;
   /** @deprecated use `UnifiedAccountingCreditnoteOutputRemoteData$Outbound` instead. */
   export type Outbound = UnifiedAccountingCreditnoteOutputRemoteData$Outbound;
+}
+
+export function unifiedAccountingCreditnoteOutputRemoteDataToJSON(
+  unifiedAccountingCreditnoteOutputRemoteData:
+    UnifiedAccountingCreditnoteOutputRemoteData,
+): string {
+  return JSON.stringify(
+    UnifiedAccountingCreditnoteOutputRemoteData$outboundSchema.parse(
+      unifiedAccountingCreditnoteOutputRemoteData,
+    ),
+  );
+}
+
+export function unifiedAccountingCreditnoteOutputRemoteDataFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UnifiedAccountingCreditnoteOutputRemoteData,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UnifiedAccountingCreditnoteOutputRemoteData$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UnifiedAccountingCreditnoteOutputRemoteData' from JSON`,
+  );
 }
 
 /** @internal */
@@ -334,4 +391,24 @@ export namespace UnifiedAccountingCreditnoteOutput$ {
     UnifiedAccountingCreditnoteOutput$outboundSchema;
   /** @deprecated use `UnifiedAccountingCreditnoteOutput$Outbound` instead. */
   export type Outbound = UnifiedAccountingCreditnoteOutput$Outbound;
+}
+
+export function unifiedAccountingCreditnoteOutputToJSON(
+  unifiedAccountingCreditnoteOutput: UnifiedAccountingCreditnoteOutput,
+): string {
+  return JSON.stringify(
+    UnifiedAccountingCreditnoteOutput$outboundSchema.parse(
+      unifiedAccountingCreditnoteOutput,
+    ),
+  );
+}
+
+export function unifiedAccountingCreditnoteOutputFromJSON(
+  jsonString: string,
+): SafeParseResult<UnifiedAccountingCreditnoteOutput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UnifiedAccountingCreditnoteOutput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UnifiedAccountingCreditnoteOutput' from JSON`,
+  );
 }

@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ListMarketingAutomationContactsRequest = {
   /**
@@ -43,7 +46,7 @@ export const ListMarketingAutomationContactsRequest$inboundSchema: z.ZodType<
 > = z.object({
   "x-connection-token": z.string(),
   remote_data: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -56,7 +59,7 @@ export const ListMarketingAutomationContactsRequest$inboundSchema: z.ZodType<
 export type ListMarketingAutomationContactsRequest$Outbound = {
   "x-connection-token": string;
   remote_data?: boolean | undefined;
-  limit: number;
+  limit?: number | undefined;
   cursor?: string | undefined;
 };
 
@@ -68,7 +71,7 @@ export const ListMarketingAutomationContactsRequest$outboundSchema: z.ZodType<
 > = z.object({
   xConnectionToken: z.string(),
   remoteData: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -90,6 +93,28 @@ export namespace ListMarketingAutomationContactsRequest$ {
     ListMarketingAutomationContactsRequest$outboundSchema;
   /** @deprecated use `ListMarketingAutomationContactsRequest$Outbound` instead. */
   export type Outbound = ListMarketingAutomationContactsRequest$Outbound;
+}
+
+export function listMarketingAutomationContactsRequestToJSON(
+  listMarketingAutomationContactsRequest:
+    ListMarketingAutomationContactsRequest,
+): string {
+  return JSON.stringify(
+    ListMarketingAutomationContactsRequest$outboundSchema.parse(
+      listMarketingAutomationContactsRequest,
+    ),
+  );
+}
+
+export function listMarketingAutomationContactsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListMarketingAutomationContactsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListMarketingAutomationContactsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListMarketingAutomationContactsRequest' from JSON`,
+  );
 }
 
 /** @internal */
@@ -152,6 +177,33 @@ export namespace ListMarketingAutomationContactsResponseBody$ {
   export type Outbound = ListMarketingAutomationContactsResponseBody$Outbound;
 }
 
+export function listMarketingAutomationContactsResponseBodyToJSON(
+  listMarketingAutomationContactsResponseBody:
+    ListMarketingAutomationContactsResponseBody,
+): string {
+  return JSON.stringify(
+    ListMarketingAutomationContactsResponseBody$outboundSchema.parse(
+      listMarketingAutomationContactsResponseBody,
+    ),
+  );
+}
+
+export function listMarketingAutomationContactsResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ListMarketingAutomationContactsResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListMarketingAutomationContactsResponseBody$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ListMarketingAutomationContactsResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListMarketingAutomationContactsResponse$inboundSchema: z.ZodType<
   ListMarketingAutomationContactsResponse,
@@ -200,4 +252,31 @@ export namespace ListMarketingAutomationContactsResponse$ {
     ListMarketingAutomationContactsResponse$outboundSchema;
   /** @deprecated use `ListMarketingAutomationContactsResponse$Outbound` instead. */
   export type Outbound = ListMarketingAutomationContactsResponse$Outbound;
+}
+
+export function listMarketingAutomationContactsResponseToJSON(
+  listMarketingAutomationContactsResponse:
+    ListMarketingAutomationContactsResponse,
+): string {
+  return JSON.stringify(
+    ListMarketingAutomationContactsResponse$outboundSchema.parse(
+      listMarketingAutomationContactsResponse,
+    ),
+  );
+}
+
+export function listMarketingAutomationContactsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ListMarketingAutomationContactsResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListMarketingAutomationContactsResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ListMarketingAutomationContactsResponse' from JSON`,
+  );
 }

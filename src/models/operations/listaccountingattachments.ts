@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ListAccountingAttachmentsRequest = {
   /**
@@ -43,7 +46,7 @@ export const ListAccountingAttachmentsRequest$inboundSchema: z.ZodType<
 > = z.object({
   "x-connection-token": z.string(),
   remote_data: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -56,7 +59,7 @@ export const ListAccountingAttachmentsRequest$inboundSchema: z.ZodType<
 export type ListAccountingAttachmentsRequest$Outbound = {
   "x-connection-token": string;
   remote_data?: boolean | undefined;
-  limit: number;
+  limit?: number | undefined;
   cursor?: string | undefined;
 };
 
@@ -68,7 +71,7 @@ export const ListAccountingAttachmentsRequest$outboundSchema: z.ZodType<
 > = z.object({
   xConnectionToken: z.string(),
   remoteData: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -88,6 +91,26 @@ export namespace ListAccountingAttachmentsRequest$ {
   export const outboundSchema = ListAccountingAttachmentsRequest$outboundSchema;
   /** @deprecated use `ListAccountingAttachmentsRequest$Outbound` instead. */
   export type Outbound = ListAccountingAttachmentsRequest$Outbound;
+}
+
+export function listAccountingAttachmentsRequestToJSON(
+  listAccountingAttachmentsRequest: ListAccountingAttachmentsRequest,
+): string {
+  return JSON.stringify(
+    ListAccountingAttachmentsRequest$outboundSchema.parse(
+      listAccountingAttachmentsRequest,
+    ),
+  );
+}
+
+export function listAccountingAttachmentsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAccountingAttachmentsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListAccountingAttachmentsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAccountingAttachmentsRequest' from JSON`,
+  );
 }
 
 /** @internal */
@@ -144,6 +167,27 @@ export namespace ListAccountingAttachmentsResponseBody$ {
   export type Outbound = ListAccountingAttachmentsResponseBody$Outbound;
 }
 
+export function listAccountingAttachmentsResponseBodyToJSON(
+  listAccountingAttachmentsResponseBody: ListAccountingAttachmentsResponseBody,
+): string {
+  return JSON.stringify(
+    ListAccountingAttachmentsResponseBody$outboundSchema.parse(
+      listAccountingAttachmentsResponseBody,
+    ),
+  );
+}
+
+export function listAccountingAttachmentsResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAccountingAttachmentsResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListAccountingAttachmentsResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAccountingAttachmentsResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListAccountingAttachmentsResponse$inboundSchema: z.ZodType<
   ListAccountingAttachmentsResponse,
@@ -187,4 +231,24 @@ export namespace ListAccountingAttachmentsResponse$ {
     ListAccountingAttachmentsResponse$outboundSchema;
   /** @deprecated use `ListAccountingAttachmentsResponse$Outbound` instead. */
   export type Outbound = ListAccountingAttachmentsResponse$Outbound;
+}
+
+export function listAccountingAttachmentsResponseToJSON(
+  listAccountingAttachmentsResponse: ListAccountingAttachmentsResponse,
+): string {
+  return JSON.stringify(
+    ListAccountingAttachmentsResponse$outboundSchema.parse(
+      listAccountingAttachmentsResponse,
+    ),
+  );
+}
+
+export function listAccountingAttachmentsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAccountingAttachmentsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListAccountingAttachmentsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAccountingAttachmentsResponse' from JSON`,
+  );
 }

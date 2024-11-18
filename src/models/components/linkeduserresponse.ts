@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type LinkedUserResponse = {
   idLinkedUser: string | null;
@@ -67,4 +70,22 @@ export namespace LinkedUserResponse$ {
   export const outboundSchema = LinkedUserResponse$outboundSchema;
   /** @deprecated use `LinkedUserResponse$Outbound` instead. */
   export type Outbound = LinkedUserResponse$Outbound;
+}
+
+export function linkedUserResponseToJSON(
+  linkedUserResponse: LinkedUserResponse,
+): string {
+  return JSON.stringify(
+    LinkedUserResponse$outboundSchema.parse(linkedUserResponse),
+  );
+}
+
+export function linkedUserResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<LinkedUserResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LinkedUserResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LinkedUserResponse' from JSON`,
+  );
 }

@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ListAccountingTrackingCategorysRequest = {
   /**
@@ -43,7 +46,7 @@ export const ListAccountingTrackingCategorysRequest$inboundSchema: z.ZodType<
 > = z.object({
   "x-connection-token": z.string(),
   remote_data: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -56,7 +59,7 @@ export const ListAccountingTrackingCategorysRequest$inboundSchema: z.ZodType<
 export type ListAccountingTrackingCategorysRequest$Outbound = {
   "x-connection-token": string;
   remote_data?: boolean | undefined;
-  limit: number;
+  limit?: number | undefined;
   cursor?: string | undefined;
 };
 
@@ -68,7 +71,7 @@ export const ListAccountingTrackingCategorysRequest$outboundSchema: z.ZodType<
 > = z.object({
   xConnectionToken: z.string(),
   remoteData: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -90,6 +93,28 @@ export namespace ListAccountingTrackingCategorysRequest$ {
     ListAccountingTrackingCategorysRequest$outboundSchema;
   /** @deprecated use `ListAccountingTrackingCategorysRequest$Outbound` instead. */
   export type Outbound = ListAccountingTrackingCategorysRequest$Outbound;
+}
+
+export function listAccountingTrackingCategorysRequestToJSON(
+  listAccountingTrackingCategorysRequest:
+    ListAccountingTrackingCategorysRequest,
+): string {
+  return JSON.stringify(
+    ListAccountingTrackingCategorysRequest$outboundSchema.parse(
+      listAccountingTrackingCategorysRequest,
+    ),
+  );
+}
+
+export function listAccountingTrackingCategorysRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAccountingTrackingCategorysRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListAccountingTrackingCategorysRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAccountingTrackingCategorysRequest' from JSON`,
+  );
 }
 
 /** @internal */
@@ -152,6 +177,33 @@ export namespace ListAccountingTrackingCategorysResponseBody$ {
   export type Outbound = ListAccountingTrackingCategorysResponseBody$Outbound;
 }
 
+export function listAccountingTrackingCategorysResponseBodyToJSON(
+  listAccountingTrackingCategorysResponseBody:
+    ListAccountingTrackingCategorysResponseBody,
+): string {
+  return JSON.stringify(
+    ListAccountingTrackingCategorysResponseBody$outboundSchema.parse(
+      listAccountingTrackingCategorysResponseBody,
+    ),
+  );
+}
+
+export function listAccountingTrackingCategorysResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ListAccountingTrackingCategorysResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListAccountingTrackingCategorysResponseBody$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ListAccountingTrackingCategorysResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListAccountingTrackingCategorysResponse$inboundSchema: z.ZodType<
   ListAccountingTrackingCategorysResponse,
@@ -200,4 +252,31 @@ export namespace ListAccountingTrackingCategorysResponse$ {
     ListAccountingTrackingCategorysResponse$outboundSchema;
   /** @deprecated use `ListAccountingTrackingCategorysResponse$Outbound` instead. */
   export type Outbound = ListAccountingTrackingCategorysResponse$Outbound;
+}
+
+export function listAccountingTrackingCategorysResponseToJSON(
+  listAccountingTrackingCategorysResponse:
+    ListAccountingTrackingCategorysResponse,
+): string {
+  return JSON.stringify(
+    ListAccountingTrackingCategorysResponse$outboundSchema.parse(
+      listAccountingTrackingCategorysResponse,
+    ),
+  );
+}
+
+export function listAccountingTrackingCategorysResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ListAccountingTrackingCategorysResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListAccountingTrackingCategorysResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ListAccountingTrackingCategorysResponse' from JSON`,
+  );
 }

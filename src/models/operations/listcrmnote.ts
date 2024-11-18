@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ListCrmNoteRequest = {
   /**
@@ -43,7 +46,7 @@ export const ListCrmNoteRequest$inboundSchema: z.ZodType<
 > = z.object({
   "x-connection-token": z.string(),
   remote_data: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -56,7 +59,7 @@ export const ListCrmNoteRequest$inboundSchema: z.ZodType<
 export type ListCrmNoteRequest$Outbound = {
   "x-connection-token": string;
   remote_data?: boolean | undefined;
-  limit: number;
+  limit?: number | undefined;
   cursor?: string | undefined;
 };
 
@@ -68,7 +71,7 @@ export const ListCrmNoteRequest$outboundSchema: z.ZodType<
 > = z.object({
   xConnectionToken: z.string(),
   remoteData: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -88,6 +91,24 @@ export namespace ListCrmNoteRequest$ {
   export const outboundSchema = ListCrmNoteRequest$outboundSchema;
   /** @deprecated use `ListCrmNoteRequest$Outbound` instead. */
   export type Outbound = ListCrmNoteRequest$Outbound;
+}
+
+export function listCrmNoteRequestToJSON(
+  listCrmNoteRequest: ListCrmNoteRequest,
+): string {
+  return JSON.stringify(
+    ListCrmNoteRequest$outboundSchema.parse(listCrmNoteRequest),
+  );
+}
+
+export function listCrmNoteRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListCrmNoteRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListCrmNoteRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListCrmNoteRequest' from JSON`,
+  );
 }
 
 /** @internal */
@@ -142,6 +163,24 @@ export namespace ListCrmNoteResponseBody$ {
   export type Outbound = ListCrmNoteResponseBody$Outbound;
 }
 
+export function listCrmNoteResponseBodyToJSON(
+  listCrmNoteResponseBody: ListCrmNoteResponseBody,
+): string {
+  return JSON.stringify(
+    ListCrmNoteResponseBody$outboundSchema.parse(listCrmNoteResponseBody),
+  );
+}
+
+export function listCrmNoteResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<ListCrmNoteResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListCrmNoteResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListCrmNoteResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListCrmNoteResponse$inboundSchema: z.ZodType<
   ListCrmNoteResponse,
@@ -184,4 +223,22 @@ export namespace ListCrmNoteResponse$ {
   export const outboundSchema = ListCrmNoteResponse$outboundSchema;
   /** @deprecated use `ListCrmNoteResponse$Outbound` instead. */
   export type Outbound = ListCrmNoteResponse$Outbound;
+}
+
+export function listCrmNoteResponseToJSON(
+  listCrmNoteResponse: ListCrmNoteResponse,
+): string {
+  return JSON.stringify(
+    ListCrmNoteResponse$outboundSchema.parse(listCrmNoteResponse),
+  );
+}
+
+export function listCrmNoteResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListCrmNoteResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListCrmNoteResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListCrmNoteResponse' from JSON`,
+  );
 }

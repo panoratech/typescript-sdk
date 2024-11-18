@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ListCrmTaskRequest = {
   /**
@@ -43,7 +46,7 @@ export const ListCrmTaskRequest$inboundSchema: z.ZodType<
 > = z.object({
   "x-connection-token": z.string(),
   remote_data: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -56,7 +59,7 @@ export const ListCrmTaskRequest$inboundSchema: z.ZodType<
 export type ListCrmTaskRequest$Outbound = {
   "x-connection-token": string;
   remote_data?: boolean | undefined;
-  limit: number;
+  limit?: number | undefined;
   cursor?: string | undefined;
 };
 
@@ -68,7 +71,7 @@ export const ListCrmTaskRequest$outboundSchema: z.ZodType<
 > = z.object({
   xConnectionToken: z.string(),
   remoteData: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -88,6 +91,24 @@ export namespace ListCrmTaskRequest$ {
   export const outboundSchema = ListCrmTaskRequest$outboundSchema;
   /** @deprecated use `ListCrmTaskRequest$Outbound` instead. */
   export type Outbound = ListCrmTaskRequest$Outbound;
+}
+
+export function listCrmTaskRequestToJSON(
+  listCrmTaskRequest: ListCrmTaskRequest,
+): string {
+  return JSON.stringify(
+    ListCrmTaskRequest$outboundSchema.parse(listCrmTaskRequest),
+  );
+}
+
+export function listCrmTaskRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListCrmTaskRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListCrmTaskRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListCrmTaskRequest' from JSON`,
+  );
 }
 
 /** @internal */
@@ -142,6 +163,24 @@ export namespace ListCrmTaskResponseBody$ {
   export type Outbound = ListCrmTaskResponseBody$Outbound;
 }
 
+export function listCrmTaskResponseBodyToJSON(
+  listCrmTaskResponseBody: ListCrmTaskResponseBody,
+): string {
+  return JSON.stringify(
+    ListCrmTaskResponseBody$outboundSchema.parse(listCrmTaskResponseBody),
+  );
+}
+
+export function listCrmTaskResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<ListCrmTaskResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListCrmTaskResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListCrmTaskResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListCrmTaskResponse$inboundSchema: z.ZodType<
   ListCrmTaskResponse,
@@ -184,4 +223,22 @@ export namespace ListCrmTaskResponse$ {
   export const outboundSchema = ListCrmTaskResponse$outboundSchema;
   /** @deprecated use `ListCrmTaskResponse$Outbound` instead. */
   export type Outbound = ListCrmTaskResponse$Outbound;
+}
+
+export function listCrmTaskResponseToJSON(
+  listCrmTaskResponse: ListCrmTaskResponse,
+): string {
+  return JSON.stringify(
+    ListCrmTaskResponse$outboundSchema.parse(listCrmTaskResponse),
+  );
+}
+
+export function listCrmTaskResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListCrmTaskResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListCrmTaskResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListCrmTaskResponse' from JSON`,
+  );
 }

@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateCrmEngagementRequest = {
   /**
@@ -71,4 +74,22 @@ export namespace CreateCrmEngagementRequest$ {
   export const outboundSchema = CreateCrmEngagementRequest$outboundSchema;
   /** @deprecated use `CreateCrmEngagementRequest$Outbound` instead. */
   export type Outbound = CreateCrmEngagementRequest$Outbound;
+}
+
+export function createCrmEngagementRequestToJSON(
+  createCrmEngagementRequest: CreateCrmEngagementRequest,
+): string {
+  return JSON.stringify(
+    CreateCrmEngagementRequest$outboundSchema.parse(createCrmEngagementRequest),
+  );
+}
+
+export function createCrmEngagementRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateCrmEngagementRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateCrmEngagementRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateCrmEngagementRequest' from JSON`,
+  );
 }

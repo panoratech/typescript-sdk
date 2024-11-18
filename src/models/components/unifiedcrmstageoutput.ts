@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The created date of the object
@@ -76,6 +79,26 @@ export namespace UnifiedCrmStageOutputCreatedAt$ {
   export type Outbound = UnifiedCrmStageOutputCreatedAt$Outbound;
 }
 
+export function unifiedCrmStageOutputCreatedAtToJSON(
+  unifiedCrmStageOutputCreatedAt: UnifiedCrmStageOutputCreatedAt,
+): string {
+  return JSON.stringify(
+    UnifiedCrmStageOutputCreatedAt$outboundSchema.parse(
+      unifiedCrmStageOutputCreatedAt,
+    ),
+  );
+}
+
+export function unifiedCrmStageOutputCreatedAtFromJSON(
+  jsonString: string,
+): SafeParseResult<UnifiedCrmStageOutputCreatedAt, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UnifiedCrmStageOutputCreatedAt$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UnifiedCrmStageOutputCreatedAt' from JSON`,
+  );
+}
+
 /** @internal */
 export const UnifiedCrmStageOutputModifiedAt$inboundSchema: z.ZodType<
   UnifiedCrmStageOutputModifiedAt,
@@ -104,6 +127,26 @@ export namespace UnifiedCrmStageOutputModifiedAt$ {
   export const outboundSchema = UnifiedCrmStageOutputModifiedAt$outboundSchema;
   /** @deprecated use `UnifiedCrmStageOutputModifiedAt$Outbound` instead. */
   export type Outbound = UnifiedCrmStageOutputModifiedAt$Outbound;
+}
+
+export function unifiedCrmStageOutputModifiedAtToJSON(
+  unifiedCrmStageOutputModifiedAt: UnifiedCrmStageOutputModifiedAt,
+): string {
+  return JSON.stringify(
+    UnifiedCrmStageOutputModifiedAt$outboundSchema.parse(
+      unifiedCrmStageOutputModifiedAt,
+    ),
+  );
+}
+
+export function unifiedCrmStageOutputModifiedAtFromJSON(
+  jsonString: string,
+): SafeParseResult<UnifiedCrmStageOutputModifiedAt, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UnifiedCrmStageOutputModifiedAt$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UnifiedCrmStageOutputModifiedAt' from JSON`,
+  );
 }
 
 /** @internal */
@@ -184,4 +227,22 @@ export namespace UnifiedCrmStageOutput$ {
   export const outboundSchema = UnifiedCrmStageOutput$outboundSchema;
   /** @deprecated use `UnifiedCrmStageOutput$Outbound` instead. */
   export type Outbound = UnifiedCrmStageOutput$Outbound;
+}
+
+export function unifiedCrmStageOutputToJSON(
+  unifiedCrmStageOutput: UnifiedCrmStageOutput,
+): string {
+  return JSON.stringify(
+    UnifiedCrmStageOutput$outboundSchema.parse(unifiedCrmStageOutput),
+  );
+}
+
+export function unifiedCrmStageOutputFromJSON(
+  jsonString: string,
+): SafeParseResult<UnifiedCrmStageOutput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UnifiedCrmStageOutput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UnifiedCrmStageOutput' from JSON`,
+  );
 }

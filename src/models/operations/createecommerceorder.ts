@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateEcommerceOrderRequest = {
   /**
@@ -72,4 +75,24 @@ export namespace CreateEcommerceOrderRequest$ {
   export const outboundSchema = CreateEcommerceOrderRequest$outboundSchema;
   /** @deprecated use `CreateEcommerceOrderRequest$Outbound` instead. */
   export type Outbound = CreateEcommerceOrderRequest$Outbound;
+}
+
+export function createEcommerceOrderRequestToJSON(
+  createEcommerceOrderRequest: CreateEcommerceOrderRequest,
+): string {
+  return JSON.stringify(
+    CreateEcommerceOrderRequest$outboundSchema.parse(
+      createEcommerceOrderRequest,
+    ),
+  );
+}
+
+export function createEcommerceOrderRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateEcommerceOrderRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateEcommerceOrderRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateEcommerceOrderRequest' from JSON`,
+  );
 }

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export enum ObjectTypeOwner {
   Company = "company",
@@ -134,4 +137,22 @@ export namespace DefineTargetFieldDto$ {
   export const outboundSchema = DefineTargetFieldDto$outboundSchema;
   /** @deprecated use `DefineTargetFieldDto$Outbound` instead. */
   export type Outbound = DefineTargetFieldDto$Outbound;
+}
+
+export function defineTargetFieldDtoToJSON(
+  defineTargetFieldDto: DefineTargetFieldDto,
+): string {
+  return JSON.stringify(
+    DefineTargetFieldDto$outboundSchema.parse(defineTargetFieldDto),
+  );
+}
+
+export function defineTargetFieldDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<DefineTargetFieldDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DefineTargetFieldDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DefineTargetFieldDto' from JSON`,
+  );
 }

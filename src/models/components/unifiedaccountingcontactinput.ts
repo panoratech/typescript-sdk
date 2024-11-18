@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The custom field mappings of the object between the remote 3rd party & Panora
@@ -82,6 +85,33 @@ export namespace UnifiedAccountingContactInputFieldMappings$ {
     UnifiedAccountingContactInputFieldMappings$outboundSchema;
   /** @deprecated use `UnifiedAccountingContactInputFieldMappings$Outbound` instead. */
   export type Outbound = UnifiedAccountingContactInputFieldMappings$Outbound;
+}
+
+export function unifiedAccountingContactInputFieldMappingsToJSON(
+  unifiedAccountingContactInputFieldMappings:
+    UnifiedAccountingContactInputFieldMappings,
+): string {
+  return JSON.stringify(
+    UnifiedAccountingContactInputFieldMappings$outboundSchema.parse(
+      unifiedAccountingContactInputFieldMappings,
+    ),
+  );
+}
+
+export function unifiedAccountingContactInputFieldMappingsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UnifiedAccountingContactInputFieldMappings,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UnifiedAccountingContactInputFieldMappings$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UnifiedAccountingContactInputFieldMappings' from JSON`,
+  );
 }
 
 /** @internal */
@@ -172,4 +202,24 @@ export namespace UnifiedAccountingContactInput$ {
   export const outboundSchema = UnifiedAccountingContactInput$outboundSchema;
   /** @deprecated use `UnifiedAccountingContactInput$Outbound` instead. */
   export type Outbound = UnifiedAccountingContactInput$Outbound;
+}
+
+export function unifiedAccountingContactInputToJSON(
+  unifiedAccountingContactInput: UnifiedAccountingContactInput,
+): string {
+  return JSON.stringify(
+    UnifiedAccountingContactInput$outboundSchema.parse(
+      unifiedAccountingContactInput,
+    ),
+  );
+}
+
+export function unifiedAccountingContactInputFromJSON(
+  jsonString: string,
+): SafeParseResult<UnifiedAccountingContactInput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UnifiedAccountingContactInput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UnifiedAccountingContactInput' from JSON`,
+  );
 }

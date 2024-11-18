@@ -3,12 +3,13 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export enum Vertical {
   Ticketing = "ticketing",
-  Ats = "ats",
   Accounting = "accounting",
-  Hris = "hris",
   Crm = "crm",
   Filestorage = "filestorage",
   Ecommerce = "ecommerce",
@@ -110,4 +111,20 @@ export namespace ResyncStatusDto$ {
   export const outboundSchema = ResyncStatusDto$outboundSchema;
   /** @deprecated use `ResyncStatusDto$Outbound` instead. */
   export type Outbound = ResyncStatusDto$Outbound;
+}
+
+export function resyncStatusDtoToJSON(
+  resyncStatusDto: ResyncStatusDto,
+): string {
+  return JSON.stringify(ResyncStatusDto$outboundSchema.parse(resyncStatusDto));
+}
+
+export function resyncStatusDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<ResyncStatusDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResyncStatusDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResyncStatusDto' from JSON`,
+  );
 }

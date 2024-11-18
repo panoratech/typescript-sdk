@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ListCrmCompanyRequest = {
   /**
@@ -43,7 +46,7 @@ export const ListCrmCompanyRequest$inboundSchema: z.ZodType<
 > = z.object({
   "x-connection-token": z.string(),
   remote_data: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -56,7 +59,7 @@ export const ListCrmCompanyRequest$inboundSchema: z.ZodType<
 export type ListCrmCompanyRequest$Outbound = {
   "x-connection-token": string;
   remote_data?: boolean | undefined;
-  limit: number;
+  limit?: number | undefined;
   cursor?: string | undefined;
 };
 
@@ -68,7 +71,7 @@ export const ListCrmCompanyRequest$outboundSchema: z.ZodType<
 > = z.object({
   xConnectionToken: z.string(),
   remoteData: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -88,6 +91,24 @@ export namespace ListCrmCompanyRequest$ {
   export const outboundSchema = ListCrmCompanyRequest$outboundSchema;
   /** @deprecated use `ListCrmCompanyRequest$Outbound` instead. */
   export type Outbound = ListCrmCompanyRequest$Outbound;
+}
+
+export function listCrmCompanyRequestToJSON(
+  listCrmCompanyRequest: ListCrmCompanyRequest,
+): string {
+  return JSON.stringify(
+    ListCrmCompanyRequest$outboundSchema.parse(listCrmCompanyRequest),
+  );
+}
+
+export function listCrmCompanyRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListCrmCompanyRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListCrmCompanyRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListCrmCompanyRequest' from JSON`,
+  );
 }
 
 /** @internal */
@@ -142,6 +163,24 @@ export namespace ListCrmCompanyResponseBody$ {
   export type Outbound = ListCrmCompanyResponseBody$Outbound;
 }
 
+export function listCrmCompanyResponseBodyToJSON(
+  listCrmCompanyResponseBody: ListCrmCompanyResponseBody,
+): string {
+  return JSON.stringify(
+    ListCrmCompanyResponseBody$outboundSchema.parse(listCrmCompanyResponseBody),
+  );
+}
+
+export function listCrmCompanyResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<ListCrmCompanyResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListCrmCompanyResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListCrmCompanyResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListCrmCompanyResponse$inboundSchema: z.ZodType<
   ListCrmCompanyResponse,
@@ -184,4 +223,22 @@ export namespace ListCrmCompanyResponse$ {
   export const outboundSchema = ListCrmCompanyResponse$outboundSchema;
   /** @deprecated use `ListCrmCompanyResponse$Outbound` instead. */
   export type Outbound = ListCrmCompanyResponse$Outbound;
+}
+
+export function listCrmCompanyResponseToJSON(
+  listCrmCompanyResponse: ListCrmCompanyResponse,
+): string {
+  return JSON.stringify(
+    ListCrmCompanyResponse$outboundSchema.parse(listCrmCompanyResponse),
+  );
+}
+
+export function listCrmCompanyResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListCrmCompanyResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListCrmCompanyResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListCrmCompanyResponse' from JSON`,
+  );
 }

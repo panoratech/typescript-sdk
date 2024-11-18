@@ -7,7 +7,7 @@ The owner type of an email
 ```typescript
 import { OwnerType } from "@panora/sdk/models/components";
 
-let value: OwnerType = OwnerType.Company;
+let value: OwnerType = OwnerType.Contact;
 ```
 
 ## Values

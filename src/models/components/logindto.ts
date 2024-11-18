@@ -4,9 +4,12 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type LoginDto = {
-  idUser?: string | undefined;
+  idUser: string;
   email: string;
   passwordHash: string;
 };
@@ -17,7 +20,7 @@ export const LoginDto$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id_user: z.string().optional(),
+  id_user: z.string(),
   email: z.string(),
   password_hash: z.string(),
 }).transform((v) => {
@@ -29,7 +32,7 @@ export const LoginDto$inboundSchema: z.ZodType<
 
 /** @internal */
 export type LoginDto$Outbound = {
-  id_user?: string | undefined;
+  id_user: string;
   email: string;
   password_hash: string;
 };
@@ -40,7 +43,7 @@ export const LoginDto$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   LoginDto
 > = z.object({
-  idUser: z.string().optional(),
+  idUser: z.string(),
   email: z.string(),
   passwordHash: z.string(),
 }).transform((v) => {
@@ -61,4 +64,18 @@ export namespace LoginDto$ {
   export const outboundSchema = LoginDto$outboundSchema;
   /** @deprecated use `LoginDto$Outbound` instead. */
   export type Outbound = LoginDto$Outbound;
+}
+
+export function loginDtoToJSON(loginDto: LoginDto): string {
+  return JSON.stringify(LoginDto$outboundSchema.parse(loginDto));
+}
+
+export function loginDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<LoginDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LoginDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LoginDto' from JSON`,
+  );
 }

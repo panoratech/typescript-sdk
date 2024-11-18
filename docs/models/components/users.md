@@ -1,11 +1,18 @@
 # Users
 
-## Example Usage
+
+## Supported Types
+
+### `string`
 
 ```typescript
-import { Users } from "@panora/sdk/models/components";
+const value: string = "<value>";
+```
 
-let value: Users = {
+### `components.UnifiedFilestorageUserOutput`
+
+```typescript
+const value: components.UnifiedFilestorageUserOutput = {
   name: "Joe Doe",
   email: "joe.doe@gmail.com",
   isMe: true,
@@ -22,19 +29,5 @@ let value: Users = {
   createdAt: new Date("2024-10-01T12:00:00Z"),
   modifiedAt: new Date("2024-10-01T12:00:00Z"),
 };
-```
-
-## Supported Types
-
-### `string`
-
-```typescript
-const value: string = /* values here */
-```
-
-### `components.UnifiedFilestorageUserOutput`
-
-```typescript
-const value: components.UnifiedFilestorageUserOutput = /* values here */
 ```
 

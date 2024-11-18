@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   LineItem,
   LineItem$inboundSchema,
@@ -138,6 +141,33 @@ export namespace UnifiedAccountingTransactionOutputFieldMappings$ {
     UnifiedAccountingTransactionOutputFieldMappings$Outbound;
 }
 
+export function unifiedAccountingTransactionOutputFieldMappingsToJSON(
+  unifiedAccountingTransactionOutputFieldMappings:
+    UnifiedAccountingTransactionOutputFieldMappings,
+): string {
+  return JSON.stringify(
+    UnifiedAccountingTransactionOutputFieldMappings$outboundSchema.parse(
+      unifiedAccountingTransactionOutputFieldMappings,
+    ),
+  );
+}
+
+export function unifiedAccountingTransactionOutputFieldMappingsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UnifiedAccountingTransactionOutputFieldMappings,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UnifiedAccountingTransactionOutputFieldMappings$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UnifiedAccountingTransactionOutputFieldMappings' from JSON`,
+  );
+}
+
 /** @internal */
 export const UnifiedAccountingTransactionOutputRemoteData$inboundSchema:
   z.ZodType<
@@ -170,6 +200,33 @@ export namespace UnifiedAccountingTransactionOutputRemoteData$ {
     UnifiedAccountingTransactionOutputRemoteData$outboundSchema;
   /** @deprecated use `UnifiedAccountingTransactionOutputRemoteData$Outbound` instead. */
   export type Outbound = UnifiedAccountingTransactionOutputRemoteData$Outbound;
+}
+
+export function unifiedAccountingTransactionOutputRemoteDataToJSON(
+  unifiedAccountingTransactionOutputRemoteData:
+    UnifiedAccountingTransactionOutputRemoteData,
+): string {
+  return JSON.stringify(
+    UnifiedAccountingTransactionOutputRemoteData$outboundSchema.parse(
+      unifiedAccountingTransactionOutputRemoteData,
+    ),
+  );
+}
+
+export function unifiedAccountingTransactionOutputRemoteDataFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UnifiedAccountingTransactionOutputRemoteData,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UnifiedAccountingTransactionOutputRemoteData$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UnifiedAccountingTransactionOutputRemoteData' from JSON`,
+  );
 }
 
 /** @internal */
@@ -323,4 +380,25 @@ export namespace UnifiedAccountingTransactionOutput$ {
     UnifiedAccountingTransactionOutput$outboundSchema;
   /** @deprecated use `UnifiedAccountingTransactionOutput$Outbound` instead. */
   export type Outbound = UnifiedAccountingTransactionOutput$Outbound;
+}
+
+export function unifiedAccountingTransactionOutputToJSON(
+  unifiedAccountingTransactionOutput: UnifiedAccountingTransactionOutput,
+): string {
+  return JSON.stringify(
+    UnifiedAccountingTransactionOutput$outboundSchema.parse(
+      unifiedAccountingTransactionOutput,
+    ),
+  );
+}
+
+export function unifiedAccountingTransactionOutputFromJSON(
+  jsonString: string,
+): SafeParseResult<UnifiedAccountingTransactionOutput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UnifiedAccountingTransactionOutput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UnifiedAccountingTransactionOutput' from JSON`,
+  );
 }

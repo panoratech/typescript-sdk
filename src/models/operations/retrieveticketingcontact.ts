@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type RetrieveTicketingContactRequest = {
   /**
@@ -79,6 +82,26 @@ export namespace RetrieveTicketingContactRequest$ {
   export type Outbound = RetrieveTicketingContactRequest$Outbound;
 }
 
+export function retrieveTicketingContactRequestToJSON(
+  retrieveTicketingContactRequest: RetrieveTicketingContactRequest,
+): string {
+  return JSON.stringify(
+    RetrieveTicketingContactRequest$outboundSchema.parse(
+      retrieveTicketingContactRequest,
+    ),
+  );
+}
+
+export function retrieveTicketingContactRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<RetrieveTicketingContactRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RetrieveTicketingContactRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RetrieveTicketingContactRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const RetrieveTicketingContactResponseBody$inboundSchema: z.ZodType<
   RetrieveTicketingContactResponseBody,
@@ -131,4 +154,25 @@ export namespace RetrieveTicketingContactResponseBody$ {
     RetrieveTicketingContactResponseBody$outboundSchema;
   /** @deprecated use `RetrieveTicketingContactResponseBody$Outbound` instead. */
   export type Outbound = RetrieveTicketingContactResponseBody$Outbound;
+}
+
+export function retrieveTicketingContactResponseBodyToJSON(
+  retrieveTicketingContactResponseBody: RetrieveTicketingContactResponseBody,
+): string {
+  return JSON.stringify(
+    RetrieveTicketingContactResponseBody$outboundSchema.parse(
+      retrieveTicketingContactResponseBody,
+    ),
+  );
+}
+
+export function retrieveTicketingContactResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<RetrieveTicketingContactResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RetrieveTicketingContactResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RetrieveTicketingContactResponseBody' from JSON`,
+  );
 }

@@ -1,5 +1,5 @@
 # Attachments
-(*ats.attachments*)
+(*accounting.attachments*)
 
 ## Overview
 
@@ -23,13 +23,13 @@ const panora = new Panora({
 });
 
 async function run() {
-  const result = await panora.ats.attachments.list({
+  const result = await panora.accounting.attachments.list({
     xConnectionToken: "<value>",
     remoteData: true,
     limit: 10,
     cursor: "1b8b05bb-5273-4012-b520-8657b0b90874",
   });
-  
+
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -45,7 +45,7 @@ The standalone function version of this method:
 
 ```typescript
 import { PanoraCore } from "@panora/sdk/core.js";
-import { atsAttachmentsList } from "@panora/sdk/funcs/atsAttachmentsList.js";
+import { accountingAttachmentsList } from "@panora/sdk/funcs/accountingAttachmentsList.js";
 
 // Use `PanoraCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -54,7 +54,7 @@ const panora = new PanoraCore({
 });
 
 async function run() {
-  const res = await atsAttachmentsList(panora, {
+  const res = await accountingAttachmentsList(panora, {
     xConnectionToken: "<value>",
     remoteData: true,
     limit: 10,
@@ -80,25 +80,24 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.ListAtsAttachmentRequest](../../models/operations/listatsattachmentrequest.md)                                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.ListAccountingAttachmentsRequest](../../models/operations/listaccountingattachmentsrequest.md)                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[operations.ListAtsAttachmentResponse](../../models/operations/listatsattachmentresponse.md)\>**
+**Promise\<[operations.ListAccountingAttachmentsResponse](../../models/operations/listaccountingattachmentsresponse.md)\>**
 
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
+| Error Type      | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
-
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## create
 
-Create Attachments in any supported ATS software
+Create attachments in any supported Accounting software
 
 ### Example Usage
 
@@ -110,25 +109,19 @@ const panora = new Panora({
 });
 
 async function run() {
-  const result = await panora.ats.attachments.create({
+  const result = await panora.accounting.attachments.create({
     xConnectionToken: "<value>",
     remoteData: false,
-    unifiedAtsAttachmentInput: {
-      fileUrl: "https://example.com/file.pdf",
-      fileName: "file.pdf",
-      attachmentType: "RESUME",
-      remoteCreatedAt: new Date("2024-10-01T12:00:00Z"),
-      remoteModifiedAt: new Date("2024-10-01T12:00:00Z"),
-      candidateId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-      fieldMappings: {
-        "fav_dish": "broccoli",
-        "fav_color": "red",
-      },
+    unifiedAccountingAttachmentInput: {
+      fileName: "invoice.pdf",
+      fileUrl: "https://example.com/files/invoice.pdf",
+      accountId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      fieldMappings: {},
     },
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -140,7 +133,7 @@ The standalone function version of this method:
 
 ```typescript
 import { PanoraCore } from "@panora/sdk/core.js";
-import { atsAttachmentsCreate } from "@panora/sdk/funcs/atsAttachmentsCreate.js";
+import { accountingAttachmentsCreate } from "@panora/sdk/funcs/accountingAttachmentsCreate.js";
 
 // Use `PanoraCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -149,20 +142,14 @@ const panora = new PanoraCore({
 });
 
 async function run() {
-  const res = await atsAttachmentsCreate(panora, {
+  const res = await accountingAttachmentsCreate(panora, {
     xConnectionToken: "<value>",
     remoteData: false,
-    unifiedAtsAttachmentInput: {
-      fileUrl: "https://example.com/file.pdf",
-      fileName: "file.pdf",
-      attachmentType: "RESUME",
-      remoteCreatedAt: new Date("2024-10-01T12:00:00Z"),
-      remoteModifiedAt: new Date("2024-10-01T12:00:00Z"),
-      candidateId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-      fieldMappings: {
-        "fav_dish": "broccoli",
-        "fav_color": "red",
-      },
+    unifiedAccountingAttachmentInput: {
+      fileName: "invoice.pdf",
+      fileUrl: "https://example.com/files/invoice.pdf",
+      accountId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
+      fieldMappings: {},
     },
   });
 
@@ -173,7 +160,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -183,25 +170,24 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.CreateAtsAttachmentRequest](../../models/operations/createatsattachmentrequest.md)                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.CreateAccountingAttachmentRequest](../../models/operations/createaccountingattachmentrequest.md)                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.UnifiedAtsAttachmentOutput](../../models/components/unifiedatsattachmentoutput.md)\>**
+**Promise\<[components.UnifiedAccountingAttachmentOutput](../../models/components/unifiedaccountingattachmentoutput.md)\>**
 
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
+| Error Type      | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
-
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## retrieve
 
-Retrieve Attachments from any connected Ats software
+Retrieve attachments from any connected Accounting software
 
 ### Example Usage
 
@@ -213,14 +199,14 @@ const panora = new Panora({
 });
 
 async function run() {
-  const result = await panora.ats.attachments.retrieve({
+  const result = await panora.accounting.attachments.retrieve({
     xConnectionToken: "<value>",
     id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
     remoteData: false,
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -232,7 +218,7 @@ The standalone function version of this method:
 
 ```typescript
 import { PanoraCore } from "@panora/sdk/core.js";
-import { atsAttachmentsRetrieve } from "@panora/sdk/funcs/atsAttachmentsRetrieve.js";
+import { accountingAttachmentsRetrieve } from "@panora/sdk/funcs/accountingAttachmentsRetrieve.js";
 
 // Use `PanoraCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -241,7 +227,7 @@ const panora = new PanoraCore({
 });
 
 async function run() {
-  const res = await atsAttachmentsRetrieve(panora, {
+  const res = await accountingAttachmentsRetrieve(panora, {
     xConnectionToken: "<value>",
     id: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
     remoteData: false,
@@ -254,7 +240,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -264,17 +250,17 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.RetrieveAtsAttachmentRequest](../../models/operations/retrieveatsattachmentrequest.md)                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.RetrieveAccountingAttachmentRequest](../../models/operations/retrieveaccountingattachmentrequest.md)                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.UnifiedAtsAttachmentOutput](../../models/components/unifiedatsattachmentoutput.md)\>**
+**Promise\<[components.UnifiedAccountingAttachmentOutput](../../models/components/unifiedaccountingattachmentoutput.md)\>**
 
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
+| Error Type      | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |

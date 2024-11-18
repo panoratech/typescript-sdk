@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type UnifiedMarketingautomationCampaignOutput = {};
 
@@ -36,4 +39,31 @@ export namespace UnifiedMarketingautomationCampaignOutput$ {
     UnifiedMarketingautomationCampaignOutput$outboundSchema;
   /** @deprecated use `UnifiedMarketingautomationCampaignOutput$Outbound` instead. */
   export type Outbound = UnifiedMarketingautomationCampaignOutput$Outbound;
+}
+
+export function unifiedMarketingautomationCampaignOutputToJSON(
+  unifiedMarketingautomationCampaignOutput:
+    UnifiedMarketingautomationCampaignOutput,
+): string {
+  return JSON.stringify(
+    UnifiedMarketingautomationCampaignOutput$outboundSchema.parse(
+      unifiedMarketingautomationCampaignOutput,
+    ),
+  );
+}
+
+export function unifiedMarketingautomationCampaignOutputFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UnifiedMarketingautomationCampaignOutput,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UnifiedMarketingautomationCampaignOutput$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UnifiedMarketingautomationCampaignOutput' from JSON`,
+  );
 }

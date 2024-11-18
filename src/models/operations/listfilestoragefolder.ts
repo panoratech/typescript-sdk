@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ListFilestorageFolderRequest = {
   /**
@@ -43,7 +46,7 @@ export const ListFilestorageFolderRequest$inboundSchema: z.ZodType<
 > = z.object({
   "x-connection-token": z.string(),
   remote_data: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -56,7 +59,7 @@ export const ListFilestorageFolderRequest$inboundSchema: z.ZodType<
 export type ListFilestorageFolderRequest$Outbound = {
   "x-connection-token": string;
   remote_data?: boolean | undefined;
-  limit: number;
+  limit?: number | undefined;
   cursor?: string | undefined;
 };
 
@@ -68,7 +71,7 @@ export const ListFilestorageFolderRequest$outboundSchema: z.ZodType<
 > = z.object({
   xConnectionToken: z.string(),
   remoteData: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -88,6 +91,26 @@ export namespace ListFilestorageFolderRequest$ {
   export const outboundSchema = ListFilestorageFolderRequest$outboundSchema;
   /** @deprecated use `ListFilestorageFolderRequest$Outbound` instead. */
   export type Outbound = ListFilestorageFolderRequest$Outbound;
+}
+
+export function listFilestorageFolderRequestToJSON(
+  listFilestorageFolderRequest: ListFilestorageFolderRequest,
+): string {
+  return JSON.stringify(
+    ListFilestorageFolderRequest$outboundSchema.parse(
+      listFilestorageFolderRequest,
+    ),
+  );
+}
+
+export function listFilestorageFolderRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListFilestorageFolderRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListFilestorageFolderRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListFilestorageFolderRequest' from JSON`,
+  );
 }
 
 /** @internal */
@@ -143,6 +166,26 @@ export namespace ListFilestorageFolderResponseBody$ {
   export type Outbound = ListFilestorageFolderResponseBody$Outbound;
 }
 
+export function listFilestorageFolderResponseBodyToJSON(
+  listFilestorageFolderResponseBody: ListFilestorageFolderResponseBody,
+): string {
+  return JSON.stringify(
+    ListFilestorageFolderResponseBody$outboundSchema.parse(
+      listFilestorageFolderResponseBody,
+    ),
+  );
+}
+
+export function listFilestorageFolderResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<ListFilestorageFolderResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListFilestorageFolderResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListFilestorageFolderResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListFilestorageFolderResponse$inboundSchema: z.ZodType<
   ListFilestorageFolderResponse,
@@ -185,4 +228,24 @@ export namespace ListFilestorageFolderResponse$ {
   export const outboundSchema = ListFilestorageFolderResponse$outboundSchema;
   /** @deprecated use `ListFilestorageFolderResponse$Outbound` instead. */
   export type Outbound = ListFilestorageFolderResponse$Outbound;
+}
+
+export function listFilestorageFolderResponseToJSON(
+  listFilestorageFolderResponse: ListFilestorageFolderResponse,
+): string {
+  return JSON.stringify(
+    ListFilestorageFolderResponse$outboundSchema.parse(
+      listFilestorageFolderResponse,
+    ),
+  );
+}
+
+export function listFilestorageFolderResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListFilestorageFolderResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListFilestorageFolderResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListFilestorageFolderResponse' from JSON`,
+  );
 }

@@ -5,27 +5,27 @@
 import { ClientSDK } from "../lib/sdks.js";
 import { Files } from "./files.js";
 import { Folders } from "./folders.js";
+import { Groups } from "./groups.js";
 import { PanoraFilestorageUsers } from "./panorafilestorageusers.js";
-import { PanoraGroups } from "./panoragroups.js";
 
 export class Filestorage extends ClientSDK {
   private _files?: Files;
   get files(): Files {
-    return (this._files ??= new Files(this.options$));
+    return (this._files ??= new Files(this._options));
   }
 
   private _folders?: Folders;
   get folders(): Folders {
-    return (this._folders ??= new Folders(this.options$));
+    return (this._folders ??= new Folders(this._options));
   }
 
-  private _groups?: PanoraGroups;
-  get groups(): PanoraGroups {
-    return (this._groups ??= new PanoraGroups(this.options$));
+  private _groups?: Groups;
+  get groups(): Groups {
+    return (this._groups ??= new Groups(this._options));
   }
 
   private _users?: PanoraFilestorageUsers;
   get users(): PanoraFilestorageUsers {
-    return (this._users ??= new PanoraFilestorageUsers(this.options$));
+    return (this._users ??= new PanoraFilestorageUsers(this._options));
   }
 }

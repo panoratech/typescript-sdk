@@ -6,7 +6,7 @@
 import { Phone } from "@panora/sdk/models/components";
 
 let value: Phone = {
-  phoneNumber: "434.885.4539 x80306",
+  phoneNumber: "1-937-659-0008 x78974",
   phoneType: "<value>",
 };
 ```

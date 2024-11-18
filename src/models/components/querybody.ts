@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type QueryBody = {
   /**
@@ -52,4 +55,18 @@ export namespace QueryBody$ {
   export const outboundSchema = QueryBody$outboundSchema;
   /** @deprecated use `QueryBody$Outbound` instead. */
   export type Outbound = QueryBody$Outbound;
+}
+
+export function queryBodyToJSON(queryBody: QueryBody): string {
+  return JSON.stringify(QueryBody$outboundSchema.parse(queryBody));
+}
+
+export function queryBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<QueryBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => QueryBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'QueryBody' from JSON`,
+  );
 }

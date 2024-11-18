@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type UnifiedTicketingContactOutput = {
   /**
@@ -133,4 +136,24 @@ export namespace UnifiedTicketingContactOutput$ {
   export const outboundSchema = UnifiedTicketingContactOutput$outboundSchema;
   /** @deprecated use `UnifiedTicketingContactOutput$Outbound` instead. */
   export type Outbound = UnifiedTicketingContactOutput$Outbound;
+}
+
+export function unifiedTicketingContactOutputToJSON(
+  unifiedTicketingContactOutput: UnifiedTicketingContactOutput,
+): string {
+  return JSON.stringify(
+    UnifiedTicketingContactOutput$outboundSchema.parse(
+      unifiedTicketingContactOutput,
+    ),
+  );
+}
+
+export function unifiedTicketingContactOutputFromJSON(
+  jsonString: string,
+): SafeParseResult<UnifiedTicketingContactOutput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UnifiedTicketingContactOutput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UnifiedTicketingContactOutput' from JSON`,
+  );
 }

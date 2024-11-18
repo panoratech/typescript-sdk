@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Address,
   Address$inboundSchema,
@@ -105,6 +108,33 @@ export namespace UnifiedEcommerceCustomerOutputFieldMappings$ {
   export type Outbound = UnifiedEcommerceCustomerOutputFieldMappings$Outbound;
 }
 
+export function unifiedEcommerceCustomerOutputFieldMappingsToJSON(
+  unifiedEcommerceCustomerOutputFieldMappings:
+    UnifiedEcommerceCustomerOutputFieldMappings,
+): string {
+  return JSON.stringify(
+    UnifiedEcommerceCustomerOutputFieldMappings$outboundSchema.parse(
+      unifiedEcommerceCustomerOutputFieldMappings,
+    ),
+  );
+}
+
+export function unifiedEcommerceCustomerOutputFieldMappingsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UnifiedEcommerceCustomerOutputFieldMappings,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UnifiedEcommerceCustomerOutputFieldMappings$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UnifiedEcommerceCustomerOutputFieldMappings' from JSON`,
+  );
+}
+
 /** @internal */
 export const UnifiedEcommerceCustomerOutputRemoteData$inboundSchema: z.ZodType<
   UnifiedEcommerceCustomerOutputRemoteData,
@@ -135,6 +165,33 @@ export namespace UnifiedEcommerceCustomerOutputRemoteData$ {
     UnifiedEcommerceCustomerOutputRemoteData$outboundSchema;
   /** @deprecated use `UnifiedEcommerceCustomerOutputRemoteData$Outbound` instead. */
   export type Outbound = UnifiedEcommerceCustomerOutputRemoteData$Outbound;
+}
+
+export function unifiedEcommerceCustomerOutputRemoteDataToJSON(
+  unifiedEcommerceCustomerOutputRemoteData:
+    UnifiedEcommerceCustomerOutputRemoteData,
+): string {
+  return JSON.stringify(
+    UnifiedEcommerceCustomerOutputRemoteData$outboundSchema.parse(
+      unifiedEcommerceCustomerOutputRemoteData,
+    ),
+  );
+}
+
+export function unifiedEcommerceCustomerOutputRemoteDataFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UnifiedEcommerceCustomerOutputRemoteData,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UnifiedEcommerceCustomerOutputRemoteData$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UnifiedEcommerceCustomerOutputRemoteData' from JSON`,
+  );
 }
 
 /** @internal */
@@ -237,4 +294,24 @@ export namespace UnifiedEcommerceCustomerOutput$ {
   export const outboundSchema = UnifiedEcommerceCustomerOutput$outboundSchema;
   /** @deprecated use `UnifiedEcommerceCustomerOutput$Outbound` instead. */
   export type Outbound = UnifiedEcommerceCustomerOutput$Outbound;
+}
+
+export function unifiedEcommerceCustomerOutputToJSON(
+  unifiedEcommerceCustomerOutput: UnifiedEcommerceCustomerOutput,
+): string {
+  return JSON.stringify(
+    UnifiedEcommerceCustomerOutput$outboundSchema.parse(
+      unifiedEcommerceCustomerOutput,
+    ),
+  );
+}
+
+export function unifiedEcommerceCustomerOutputFromJSON(
+  jsonString: string,
+): SafeParseResult<UnifiedEcommerceCustomerOutput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UnifiedEcommerceCustomerOutput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UnifiedEcommerceCustomerOutput' from JSON`,
+  );
 }

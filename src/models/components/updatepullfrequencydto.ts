@@ -3,20 +3,15 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type UpdatePullFrequencyDto = {
   /**
    * Frequency in seconds
    */
   crm: number;
-  /**
-   * Frequency in seconds
-   */
-  ats: number;
-  /**
-   * Frequency in seconds
-   */
-  hris: number;
   /**
    * Frequency in seconds
    */
@@ -42,8 +37,6 @@ export const UpdatePullFrequencyDto$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   crm: z.number(),
-  ats: z.number(),
-  hris: z.number(),
   accounting: z.number(),
   filestorage: z.number(),
   ecommerce: z.number(),
@@ -53,8 +46,6 @@ export const UpdatePullFrequencyDto$inboundSchema: z.ZodType<
 /** @internal */
 export type UpdatePullFrequencyDto$Outbound = {
   crm: number;
-  ats: number;
-  hris: number;
   accounting: number;
   filestorage: number;
   ecommerce: number;
@@ -68,8 +59,6 @@ export const UpdatePullFrequencyDto$outboundSchema: z.ZodType<
   UpdatePullFrequencyDto
 > = z.object({
   crm: z.number(),
-  ats: z.number(),
-  hris: z.number(),
   accounting: z.number(),
   filestorage: z.number(),
   ecommerce: z.number(),
@@ -87,4 +76,22 @@ export namespace UpdatePullFrequencyDto$ {
   export const outboundSchema = UpdatePullFrequencyDto$outboundSchema;
   /** @deprecated use `UpdatePullFrequencyDto$Outbound` instead. */
   export type Outbound = UpdatePullFrequencyDto$Outbound;
+}
+
+export function updatePullFrequencyDtoToJSON(
+  updatePullFrequencyDto: UpdatePullFrequencyDto,
+): string {
+  return JSON.stringify(
+    UpdatePullFrequencyDto$outboundSchema.parse(updatePullFrequencyDto),
+  );
+}
+
+export function updatePullFrequencyDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdatePullFrequencyDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdatePullFrequencyDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdatePullFrequencyDto' from JSON`,
+  );
 }

@@ -3,14 +3,15 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export enum Vertical {
   Ticketing = "ticketing",
   Marketingautomation = "marketingautomation",
   Crm = "crm",
   Filestorage = "filestorage",
-  Ats = "ats",
-  Hris = "hris",
   Accounting = "accounting",
   Ecommerce = "ecommerce",
 }
@@ -72,4 +73,18 @@ export namespace StatusRequest$ {
   export const outboundSchema = StatusRequest$outboundSchema;
   /** @deprecated use `StatusRequest$Outbound` instead. */
   export type Outbound = StatusRequest$Outbound;
+}
+
+export function statusRequestToJSON(statusRequest: StatusRequest): string {
+  return JSON.stringify(StatusRequest$outboundSchema.parse(statusRequest));
+}
+
+export function statusRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<StatusRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => StatusRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StatusRequest' from JSON`,
+  );
 }

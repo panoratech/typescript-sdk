@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   LineItem,
   LineItem$inboundSchema,
@@ -97,6 +100,33 @@ export namespace UnifiedEcommerceOrderInputFieldMappings$ {
     UnifiedEcommerceOrderInputFieldMappings$outboundSchema;
   /** @deprecated use `UnifiedEcommerceOrderInputFieldMappings$Outbound` instead. */
   export type Outbound = UnifiedEcommerceOrderInputFieldMappings$Outbound;
+}
+
+export function unifiedEcommerceOrderInputFieldMappingsToJSON(
+  unifiedEcommerceOrderInputFieldMappings:
+    UnifiedEcommerceOrderInputFieldMappings,
+): string {
+  return JSON.stringify(
+    UnifiedEcommerceOrderInputFieldMappings$outboundSchema.parse(
+      unifiedEcommerceOrderInputFieldMappings,
+    ),
+  );
+}
+
+export function unifiedEcommerceOrderInputFieldMappingsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UnifiedEcommerceOrderInputFieldMappings,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UnifiedEcommerceOrderInputFieldMappings$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UnifiedEcommerceOrderInputFieldMappings' from JSON`,
+  );
 }
 
 /** @internal */
@@ -199,4 +229,22 @@ export namespace UnifiedEcommerceOrderInput$ {
   export const outboundSchema = UnifiedEcommerceOrderInput$outboundSchema;
   /** @deprecated use `UnifiedEcommerceOrderInput$Outbound` instead. */
   export type Outbound = UnifiedEcommerceOrderInput$Outbound;
+}
+
+export function unifiedEcommerceOrderInputToJSON(
+  unifiedEcommerceOrderInput: UnifiedEcommerceOrderInput,
+): string {
+  return JSON.stringify(
+    UnifiedEcommerceOrderInput$outboundSchema.parse(unifiedEcommerceOrderInput),
+  );
+}
+
+export function unifiedEcommerceOrderInputFromJSON(
+  jsonString: string,
+): SafeParseResult<UnifiedEcommerceOrderInput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UnifiedEcommerceOrderInput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UnifiedEcommerceOrderInput' from JSON`,
+  );
 }

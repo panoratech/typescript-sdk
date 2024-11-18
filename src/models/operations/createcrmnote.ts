@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateCrmNoteRequest = {
   /**
@@ -70,4 +73,22 @@ export namespace CreateCrmNoteRequest$ {
   export const outboundSchema = CreateCrmNoteRequest$outboundSchema;
   /** @deprecated use `CreateCrmNoteRequest$Outbound` instead. */
   export type Outbound = CreateCrmNoteRequest$Outbound;
+}
+
+export function createCrmNoteRequestToJSON(
+  createCrmNoteRequest: CreateCrmNoteRequest,
+): string {
+  return JSON.stringify(
+    CreateCrmNoteRequest$outboundSchema.parse(createCrmNoteRequest),
+  );
+}
+
+export function createCrmNoteRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateCrmNoteRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateCrmNoteRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateCrmNoteRequest' from JSON`,
+  );
 }

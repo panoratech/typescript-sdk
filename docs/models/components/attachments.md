@@ -1,11 +1,18 @@
 # Attachments
 
-## Example Usage
+
+## Supported Types
+
+### `string`
 
 ```typescript
-import { Attachments } from "@panora/sdk/models/components";
+const value: string = "<value>";
+```
 
-let value: Attachments = {
+### `components.UnifiedTicketingAttachmentInput`
+
+```typescript
+const value: components.UnifiedTicketingAttachmentInput = {
   fileName: "features_planning.pdf",
   fileUrl: "https://example.com/features_planning.pdf",
   uploader: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
@@ -16,19 +23,5 @@ let value: Attachments = {
     "fav_color": "red",
   },
 };
-```
-
-## Supported Types
-
-### `string`
-
-```typescript
-const value: string = /* values here */
-```
-
-### `components.UnifiedTicketingAttachmentInput`
-
-```typescript
-const value: components.UnifiedTicketingAttachmentInput = /* values here */
 ```
 

@@ -6,7 +6,7 @@
 import { GetRetriedRequestResponseRequest } from "@panora/sdk/models/operations";
 
 let value: GetRetriedRequestResponseRequest = {
-  retryId: "<value>",
+  retryId: "<id>",
 };
 ```
 

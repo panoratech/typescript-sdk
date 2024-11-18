@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Address,
   Address$inboundSchema,
@@ -171,4 +174,22 @@ export namespace UnifiedCrmContactOutput$ {
   export const outboundSchema = UnifiedCrmContactOutput$outboundSchema;
   /** @deprecated use `UnifiedCrmContactOutput$Outbound` instead. */
   export type Outbound = UnifiedCrmContactOutput$Outbound;
+}
+
+export function unifiedCrmContactOutputToJSON(
+  unifiedCrmContactOutput: UnifiedCrmContactOutput,
+): string {
+  return JSON.stringify(
+    UnifiedCrmContactOutput$outboundSchema.parse(unifiedCrmContactOutput),
+  );
+}
+
+export function unifiedCrmContactOutputFromJSON(
+  jsonString: string,
+): SafeParseResult<UnifiedCrmContactOutput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UnifiedCrmContactOutput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UnifiedCrmContactOutput' from JSON`,
+  );
 }

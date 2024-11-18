@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Variant,
   Variant$inboundSchema,
@@ -88,6 +91,33 @@ export namespace UnifiedEcommerceProductInputFieldMappings$ {
   export type Outbound = UnifiedEcommerceProductInputFieldMappings$Outbound;
 }
 
+export function unifiedEcommerceProductInputFieldMappingsToJSON(
+  unifiedEcommerceProductInputFieldMappings:
+    UnifiedEcommerceProductInputFieldMappings,
+): string {
+  return JSON.stringify(
+    UnifiedEcommerceProductInputFieldMappings$outboundSchema.parse(
+      unifiedEcommerceProductInputFieldMappings,
+    ),
+  );
+}
+
+export function unifiedEcommerceProductInputFieldMappingsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UnifiedEcommerceProductInputFieldMappings,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UnifiedEcommerceProductInputFieldMappings$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UnifiedEcommerceProductInputFieldMappings' from JSON`,
+  );
+}
+
 /** @internal */
 export const UnifiedEcommerceProductInput$inboundSchema: z.ZodType<
   UnifiedEcommerceProductInput,
@@ -169,4 +199,24 @@ export namespace UnifiedEcommerceProductInput$ {
   export const outboundSchema = UnifiedEcommerceProductInput$outboundSchema;
   /** @deprecated use `UnifiedEcommerceProductInput$Outbound` instead. */
   export type Outbound = UnifiedEcommerceProductInput$Outbound;
+}
+
+export function unifiedEcommerceProductInputToJSON(
+  unifiedEcommerceProductInput: UnifiedEcommerceProductInput,
+): string {
+  return JSON.stringify(
+    UnifiedEcommerceProductInput$outboundSchema.parse(
+      unifiedEcommerceProductInput,
+    ),
+  );
+}
+
+export function unifiedEcommerceProductInputFromJSON(
+  jsonString: string,
+): SafeParseResult<UnifiedEcommerceProductInput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UnifiedEcommerceProductInput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UnifiedEcommerceProductInput' from JSON`,
+  );
 }

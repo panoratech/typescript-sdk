@@ -1,26 +1,23 @@
 # RequestFormat
 
-## Example Usage
-
-```typescript
-import { RequestFormat } from "@panora/sdk/models/components";
-
-let value: RequestFormat = {
-  "key": "<value>",
-};
-```
 
 ## Supported Types
 
 ### `{ [k: string]: any }`
 
 ```typescript
-const value: { [k: string]: any } = /* values here */
+const value: { [k: string]: any } = {
+  "key": "<value>",
+};
 ```
 
 ### `{ [k: string]: any }[]`
 
 ```typescript
-const value: { [k: string]: any }[] = /* values here */
+const value: { [k: string]: any }[] = [
+  {
+    "key": "<value>",
+  },
+];
 ```
 

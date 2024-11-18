@@ -45,7 +45,7 @@ export class Webhooks extends ClientSDK {
   async delete(
     request: operations.DeleteRequest,
     options?: RequestOptions,
-  ): Promise<components.WebhookResponse | undefined> {
+  ): Promise<components.WebhookResponse> {
     return unwrapAsync(webhooksDelete(
       this,
       request,
@@ -59,7 +59,7 @@ export class Webhooks extends ClientSDK {
   async updateStatus(
     request: operations.UpdateStatusRequest,
     options?: RequestOptions,
-  ): Promise<components.WebhookResponse | undefined> {
+  ): Promise<components.WebhookResponse> {
     return unwrapAsync(webhooksUpdateStatus(
       this,
       request,

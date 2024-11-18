@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type RetrieveTicketingUserRequest = {
   /**
@@ -70,4 +73,24 @@ export namespace RetrieveTicketingUserRequest$ {
   export const outboundSchema = RetrieveTicketingUserRequest$outboundSchema;
   /** @deprecated use `RetrieveTicketingUserRequest$Outbound` instead. */
   export type Outbound = RetrieveTicketingUserRequest$Outbound;
+}
+
+export function retrieveTicketingUserRequestToJSON(
+  retrieveTicketingUserRequest: RetrieveTicketingUserRequest,
+): string {
+  return JSON.stringify(
+    RetrieveTicketingUserRequest$outboundSchema.parse(
+      retrieveTicketingUserRequest,
+    ),
+  );
+}
+
+export function retrieveTicketingUserRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<RetrieveTicketingUserRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RetrieveTicketingUserRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RetrieveTicketingUserRequest' from JSON`,
+  );
 }

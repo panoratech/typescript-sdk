@@ -1,11 +1,18 @@
 # Tags
 
-## Example Usage
+
+## Supported Types
+
+### `string`
 
 ```typescript
-import { Tags } from "@panora/sdk/models/components";
+const value: string = "<value>";
+```
 
-let value: Tags = {
+### `components.UnifiedTicketingTagOutput`
+
+```typescript
+const value: components.UnifiedTicketingTagOutput = {
   name: "urgent_tag",
   fieldMappings: {
     "fav_dish": "broccoli",
@@ -20,19 +27,5 @@ let value: Tags = {
   createdAt: new Date("2024-10-01T12:00:00Z"),
   modifiedAt: new Date("2024-10-01T12:00:00Z"),
 };
-```
-
-## Supported Types
-
-### `string`
-
-```typescript
-const value: string = /* values here */
-```
-
-### `components.UnifiedTicketingTagOutput`
-
-```typescript
-const value: components.UnifiedTicketingTagOutput = /* values here */
 ```
 

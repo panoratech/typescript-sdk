@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ListAccountingCreditNoteRequest = {
   /**
@@ -43,7 +46,7 @@ export const ListAccountingCreditNoteRequest$inboundSchema: z.ZodType<
 > = z.object({
   "x-connection-token": z.string(),
   remote_data: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -56,7 +59,7 @@ export const ListAccountingCreditNoteRequest$inboundSchema: z.ZodType<
 export type ListAccountingCreditNoteRequest$Outbound = {
   "x-connection-token": string;
   remote_data?: boolean | undefined;
-  limit: number;
+  limit?: number | undefined;
   cursor?: string | undefined;
 };
 
@@ -68,7 +71,7 @@ export const ListAccountingCreditNoteRequest$outboundSchema: z.ZodType<
 > = z.object({
   xConnectionToken: z.string(),
   remoteData: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -88,6 +91,26 @@ export namespace ListAccountingCreditNoteRequest$ {
   export const outboundSchema = ListAccountingCreditNoteRequest$outboundSchema;
   /** @deprecated use `ListAccountingCreditNoteRequest$Outbound` instead. */
   export type Outbound = ListAccountingCreditNoteRequest$Outbound;
+}
+
+export function listAccountingCreditNoteRequestToJSON(
+  listAccountingCreditNoteRequest: ListAccountingCreditNoteRequest,
+): string {
+  return JSON.stringify(
+    ListAccountingCreditNoteRequest$outboundSchema.parse(
+      listAccountingCreditNoteRequest,
+    ),
+  );
+}
+
+export function listAccountingCreditNoteRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAccountingCreditNoteRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListAccountingCreditNoteRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAccountingCreditNoteRequest' from JSON`,
+  );
 }
 
 /** @internal */
@@ -144,6 +167,27 @@ export namespace ListAccountingCreditNoteResponseBody$ {
   export type Outbound = ListAccountingCreditNoteResponseBody$Outbound;
 }
 
+export function listAccountingCreditNoteResponseBodyToJSON(
+  listAccountingCreditNoteResponseBody: ListAccountingCreditNoteResponseBody,
+): string {
+  return JSON.stringify(
+    ListAccountingCreditNoteResponseBody$outboundSchema.parse(
+      listAccountingCreditNoteResponseBody,
+    ),
+  );
+}
+
+export function listAccountingCreditNoteResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAccountingCreditNoteResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListAccountingCreditNoteResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAccountingCreditNoteResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListAccountingCreditNoteResponse$inboundSchema: z.ZodType<
   ListAccountingCreditNoteResponse,
@@ -186,4 +230,24 @@ export namespace ListAccountingCreditNoteResponse$ {
   export const outboundSchema = ListAccountingCreditNoteResponse$outboundSchema;
   /** @deprecated use `ListAccountingCreditNoteResponse$Outbound` instead. */
   export type Outbound = ListAccountingCreditNoteResponse$Outbound;
+}
+
+export function listAccountingCreditNoteResponseToJSON(
+  listAccountingCreditNoteResponse: ListAccountingCreditNoteResponse,
+): string {
+  return JSON.stringify(
+    ListAccountingCreditNoteResponse$outboundSchema.parse(
+      listAccountingCreditNoteResponse,
+    ),
+  );
+}
+
+export function listAccountingCreditNoteResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAccountingCreditNoteResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListAccountingCreditNoteResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAccountingCreditNoteResponse' from JSON`,
+  );
 }

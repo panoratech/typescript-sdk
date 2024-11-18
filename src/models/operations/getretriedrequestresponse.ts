@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetRetriedRequestResponseRequest = {
   /**
@@ -45,4 +48,24 @@ export namespace GetRetriedRequestResponseRequest$ {
   export const outboundSchema = GetRetriedRequestResponseRequest$outboundSchema;
   /** @deprecated use `GetRetriedRequestResponseRequest$Outbound` instead. */
   export type Outbound = GetRetriedRequestResponseRequest$Outbound;
+}
+
+export function getRetriedRequestResponseRequestToJSON(
+  getRetriedRequestResponseRequest: GetRetriedRequestResponseRequest,
+): string {
+  return JSON.stringify(
+    GetRetriedRequestResponseRequest$outboundSchema.parse(
+      getRetriedRequestResponseRequest,
+    ),
+  );
+}
+
+export function getRetriedRequestResponseRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetRetriedRequestResponseRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetRetriedRequestResponseRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetRetriedRequestResponseRequest' from JSON`,
+  );
 }

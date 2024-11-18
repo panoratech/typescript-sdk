@@ -1,11 +1,18 @@
 # Collections
 
-## Example Usage
+
+## Supported Types
+
+### `string`
 
 ```typescript
-import { Collections } from "@panora/sdk/models/components";
+const value: string = "<value>";
+```
 
-let value: Collections = {
+### `components.UnifiedTicketingCollectionOutput`
+
+```typescript
+const value: components.UnifiedTicketingCollectionOutput = {
   name: "My Personal Collection",
   description: "Collect issues",
   collectionType: "PROJECT",
@@ -18,19 +25,5 @@ let value: Collections = {
   createdAt: new Date("2024-10-01T12:00:00Z"),
   modifiedAt: new Date("2024-10-01T12:00:00Z"),
 };
-```
-
-## Supported Types
-
-### `string`
-
-```typescript
-const value: string = /* values here */
-```
-
-### `components.UnifiedTicketingCollectionOutput`
-
-```typescript
-const value: components.UnifiedTicketingCollectionOutput = /* values here */
 ```
 

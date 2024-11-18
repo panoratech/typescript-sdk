@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type UnifiedCrmNoteInput = {
   /**
@@ -97,4 +100,22 @@ export namespace UnifiedCrmNoteInput$ {
   export const outboundSchema = UnifiedCrmNoteInput$outboundSchema;
   /** @deprecated use `UnifiedCrmNoteInput$Outbound` instead. */
   export type Outbound = UnifiedCrmNoteInput$Outbound;
+}
+
+export function unifiedCrmNoteInputToJSON(
+  unifiedCrmNoteInput: UnifiedCrmNoteInput,
+): string {
+  return JSON.stringify(
+    UnifiedCrmNoteInput$outboundSchema.parse(unifiedCrmNoteInput),
+  );
+}
+
+export function unifiedCrmNoteInputFromJSON(
+  jsonString: string,
+): SafeParseResult<UnifiedCrmNoteInput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UnifiedCrmNoteInput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UnifiedCrmNoteInput' from JSON`,
+  );
 }

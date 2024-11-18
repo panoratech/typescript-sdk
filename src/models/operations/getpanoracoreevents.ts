@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetPanoraCoreEventsRequest = {
   page?: number | undefined;
@@ -15,14 +18,14 @@ export const GetPanoraCoreEventsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  page: z.number().default(1),
-  limit: z.number().default(10),
+  page: z.number().optional(),
+  limit: z.number().optional(),
 });
 
 /** @internal */
 export type GetPanoraCoreEventsRequest$Outbound = {
-  page: number;
-  limit: number;
+  page?: number | undefined;
+  limit?: number | undefined;
 };
 
 /** @internal */
@@ -31,8 +34,8 @@ export const GetPanoraCoreEventsRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetPanoraCoreEventsRequest
 > = z.object({
-  page: z.number().default(1),
-  limit: z.number().default(10),
+  page: z.number().optional(),
+  limit: z.number().optional(),
 });
 
 /**
@@ -46,4 +49,22 @@ export namespace GetPanoraCoreEventsRequest$ {
   export const outboundSchema = GetPanoraCoreEventsRequest$outboundSchema;
   /** @deprecated use `GetPanoraCoreEventsRequest$Outbound` instead. */
   export type Outbound = GetPanoraCoreEventsRequest$Outbound;
+}
+
+export function getPanoraCoreEventsRequestToJSON(
+  getPanoraCoreEventsRequest: GetPanoraCoreEventsRequest,
+): string {
+  return JSON.stringify(
+    GetPanoraCoreEventsRequest$outboundSchema.parse(getPanoraCoreEventsRequest),
+  );
+}
+
+export function getPanoraCoreEventsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetPanoraCoreEventsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetPanoraCoreEventsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetPanoraCoreEventsRequest' from JSON`,
+  );
 }

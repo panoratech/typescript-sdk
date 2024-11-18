@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ListAccountingIncomeStatementRequest = {
   /**
@@ -43,7 +46,7 @@ export const ListAccountingIncomeStatementRequest$inboundSchema: z.ZodType<
 > = z.object({
   "x-connection-token": z.string(),
   remote_data: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -56,7 +59,7 @@ export const ListAccountingIncomeStatementRequest$inboundSchema: z.ZodType<
 export type ListAccountingIncomeStatementRequest$Outbound = {
   "x-connection-token": string;
   remote_data?: boolean | undefined;
-  limit: number;
+  limit?: number | undefined;
   cursor?: string | undefined;
 };
 
@@ -68,7 +71,7 @@ export const ListAccountingIncomeStatementRequest$outboundSchema: z.ZodType<
 > = z.object({
   xConnectionToken: z.string(),
   remoteData: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -90,6 +93,27 @@ export namespace ListAccountingIncomeStatementRequest$ {
     ListAccountingIncomeStatementRequest$outboundSchema;
   /** @deprecated use `ListAccountingIncomeStatementRequest$Outbound` instead. */
   export type Outbound = ListAccountingIncomeStatementRequest$Outbound;
+}
+
+export function listAccountingIncomeStatementRequestToJSON(
+  listAccountingIncomeStatementRequest: ListAccountingIncomeStatementRequest,
+): string {
+  return JSON.stringify(
+    ListAccountingIncomeStatementRequest$outboundSchema.parse(
+      listAccountingIncomeStatementRequest,
+    ),
+  );
+}
+
+export function listAccountingIncomeStatementRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAccountingIncomeStatementRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListAccountingIncomeStatementRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAccountingIncomeStatementRequest' from JSON`,
+  );
 }
 
 /** @internal */
@@ -151,6 +175,33 @@ export namespace ListAccountingIncomeStatementResponseBody$ {
   export type Outbound = ListAccountingIncomeStatementResponseBody$Outbound;
 }
 
+export function listAccountingIncomeStatementResponseBodyToJSON(
+  listAccountingIncomeStatementResponseBody:
+    ListAccountingIncomeStatementResponseBody,
+): string {
+  return JSON.stringify(
+    ListAccountingIncomeStatementResponseBody$outboundSchema.parse(
+      listAccountingIncomeStatementResponseBody,
+    ),
+  );
+}
+
+export function listAccountingIncomeStatementResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ListAccountingIncomeStatementResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListAccountingIncomeStatementResponseBody$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ListAccountingIncomeStatementResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListAccountingIncomeStatementResponse$inboundSchema: z.ZodType<
   ListAccountingIncomeStatementResponse,
@@ -197,4 +248,25 @@ export namespace ListAccountingIncomeStatementResponse$ {
     ListAccountingIncomeStatementResponse$outboundSchema;
   /** @deprecated use `ListAccountingIncomeStatementResponse$Outbound` instead. */
   export type Outbound = ListAccountingIncomeStatementResponse$Outbound;
+}
+
+export function listAccountingIncomeStatementResponseToJSON(
+  listAccountingIncomeStatementResponse: ListAccountingIncomeStatementResponse,
+): string {
+  return JSON.stringify(
+    ListAccountingIncomeStatementResponse$outboundSchema.parse(
+      listAccountingIncomeStatementResponse,
+    ),
+  );
+}
+
+export function listAccountingIncomeStatementResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAccountingIncomeStatementResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListAccountingIncomeStatementResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAccountingIncomeStatementResponse' from JSON`,
+  );
 }

@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type QueryRequest = {
   /**
@@ -61,4 +64,18 @@ export namespace QueryRequest$ {
   export const outboundSchema = QueryRequest$outboundSchema;
   /** @deprecated use `QueryRequest$Outbound` instead. */
   export type Outbound = QueryRequest$Outbound;
+}
+
+export function queryRequestToJSON(queryRequest: QueryRequest): string {
+  return JSON.stringify(QueryRequest$outboundSchema.parse(queryRequest));
+}
+
+export function queryRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<QueryRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => QueryRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'QueryRequest' from JSON`,
+  );
 }

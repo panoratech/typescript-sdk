@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type UnifiedTicketingAccountOutput = {
   /**
@@ -115,4 +118,24 @@ export namespace UnifiedTicketingAccountOutput$ {
   export const outboundSchema = UnifiedTicketingAccountOutput$outboundSchema;
   /** @deprecated use `UnifiedTicketingAccountOutput$Outbound` instead. */
   export type Outbound = UnifiedTicketingAccountOutput$Outbound;
+}
+
+export function unifiedTicketingAccountOutputToJSON(
+  unifiedTicketingAccountOutput: UnifiedTicketingAccountOutput,
+): string {
+  return JSON.stringify(
+    UnifiedTicketingAccountOutput$outboundSchema.parse(
+      unifiedTicketingAccountOutput,
+    ),
+  );
+}
+
+export function unifiedTicketingAccountOutputFromJSON(
+  jsonString: string,
+): SafeParseResult<UnifiedTicketingAccountOutput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UnifiedTicketingAccountOutput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UnifiedTicketingAccountOutput' from JSON`,
+  );
 }

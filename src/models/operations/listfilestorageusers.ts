@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ListFilestorageUsersRequest = {
   /**
@@ -43,7 +46,7 @@ export const ListFilestorageUsersRequest$inboundSchema: z.ZodType<
 > = z.object({
   "x-connection-token": z.string(),
   remote_data: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -56,7 +59,7 @@ export const ListFilestorageUsersRequest$inboundSchema: z.ZodType<
 export type ListFilestorageUsersRequest$Outbound = {
   "x-connection-token": string;
   remote_data?: boolean | undefined;
-  limit: number;
+  limit?: number | undefined;
   cursor?: string | undefined;
 };
 
@@ -68,7 +71,7 @@ export const ListFilestorageUsersRequest$outboundSchema: z.ZodType<
 > = z.object({
   xConnectionToken: z.string(),
   remoteData: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -88,6 +91,26 @@ export namespace ListFilestorageUsersRequest$ {
   export const outboundSchema = ListFilestorageUsersRequest$outboundSchema;
   /** @deprecated use `ListFilestorageUsersRequest$Outbound` instead. */
   export type Outbound = ListFilestorageUsersRequest$Outbound;
+}
+
+export function listFilestorageUsersRequestToJSON(
+  listFilestorageUsersRequest: ListFilestorageUsersRequest,
+): string {
+  return JSON.stringify(
+    ListFilestorageUsersRequest$outboundSchema.parse(
+      listFilestorageUsersRequest,
+    ),
+  );
+}
+
+export function listFilestorageUsersRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListFilestorageUsersRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListFilestorageUsersRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListFilestorageUsersRequest' from JSON`,
+  );
 }
 
 /** @internal */
@@ -142,6 +165,26 @@ export namespace ListFilestorageUsersResponseBody$ {
   export type Outbound = ListFilestorageUsersResponseBody$Outbound;
 }
 
+export function listFilestorageUsersResponseBodyToJSON(
+  listFilestorageUsersResponseBody: ListFilestorageUsersResponseBody,
+): string {
+  return JSON.stringify(
+    ListFilestorageUsersResponseBody$outboundSchema.parse(
+      listFilestorageUsersResponseBody,
+    ),
+  );
+}
+
+export function listFilestorageUsersResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<ListFilestorageUsersResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListFilestorageUsersResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListFilestorageUsersResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListFilestorageUsersResponse$inboundSchema: z.ZodType<
   ListFilestorageUsersResponse,
@@ -184,4 +227,24 @@ export namespace ListFilestorageUsersResponse$ {
   export const outboundSchema = ListFilestorageUsersResponse$outboundSchema;
   /** @deprecated use `ListFilestorageUsersResponse$Outbound` instead. */
   export type Outbound = ListFilestorageUsersResponse$Outbound;
+}
+
+export function listFilestorageUsersResponseToJSON(
+  listFilestorageUsersResponse: ListFilestorageUsersResponse,
+): string {
+  return JSON.stringify(
+    ListFilestorageUsersResponse$outboundSchema.parse(
+      listFilestorageUsersResponse,
+    ),
+  );
+}
+
+export function listFilestorageUsersResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListFilestorageUsersResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListFilestorageUsersResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListFilestorageUsersResponse' from JSON`,
+  );
 }

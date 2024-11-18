@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ListEcommerceCustomersRequest = {
   /**
@@ -43,7 +46,7 @@ export const ListEcommerceCustomersRequest$inboundSchema: z.ZodType<
 > = z.object({
   "x-connection-token": z.string(),
   remote_data: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -56,7 +59,7 @@ export const ListEcommerceCustomersRequest$inboundSchema: z.ZodType<
 export type ListEcommerceCustomersRequest$Outbound = {
   "x-connection-token": string;
   remote_data?: boolean | undefined;
-  limit: number;
+  limit?: number | undefined;
   cursor?: string | undefined;
 };
 
@@ -68,7 +71,7 @@ export const ListEcommerceCustomersRequest$outboundSchema: z.ZodType<
 > = z.object({
   xConnectionToken: z.string(),
   remoteData: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -88,6 +91,26 @@ export namespace ListEcommerceCustomersRequest$ {
   export const outboundSchema = ListEcommerceCustomersRequest$outboundSchema;
   /** @deprecated use `ListEcommerceCustomersRequest$Outbound` instead. */
   export type Outbound = ListEcommerceCustomersRequest$Outbound;
+}
+
+export function listEcommerceCustomersRequestToJSON(
+  listEcommerceCustomersRequest: ListEcommerceCustomersRequest,
+): string {
+  return JSON.stringify(
+    ListEcommerceCustomersRequest$outboundSchema.parse(
+      listEcommerceCustomersRequest,
+    ),
+  );
+}
+
+export function listEcommerceCustomersRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListEcommerceCustomersRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListEcommerceCustomersRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListEcommerceCustomersRequest' from JSON`,
+  );
 }
 
 /** @internal */
@@ -143,6 +166,27 @@ export namespace ListEcommerceCustomersResponseBody$ {
   export type Outbound = ListEcommerceCustomersResponseBody$Outbound;
 }
 
+export function listEcommerceCustomersResponseBodyToJSON(
+  listEcommerceCustomersResponseBody: ListEcommerceCustomersResponseBody,
+): string {
+  return JSON.stringify(
+    ListEcommerceCustomersResponseBody$outboundSchema.parse(
+      listEcommerceCustomersResponseBody,
+    ),
+  );
+}
+
+export function listEcommerceCustomersResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<ListEcommerceCustomersResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListEcommerceCustomersResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListEcommerceCustomersResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListEcommerceCustomersResponse$inboundSchema: z.ZodType<
   ListEcommerceCustomersResponse,
@@ -185,4 +229,24 @@ export namespace ListEcommerceCustomersResponse$ {
   export const outboundSchema = ListEcommerceCustomersResponse$outboundSchema;
   /** @deprecated use `ListEcommerceCustomersResponse$Outbound` instead. */
   export type Outbound = ListEcommerceCustomersResponse$Outbound;
+}
+
+export function listEcommerceCustomersResponseToJSON(
+  listEcommerceCustomersResponse: ListEcommerceCustomersResponse,
+): string {
+  return JSON.stringify(
+    ListEcommerceCustomersResponse$outboundSchema.parse(
+      listEcommerceCustomersResponse,
+    ),
+  );
+}
+
+export function listEcommerceCustomersResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListEcommerceCustomersResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListEcommerceCustomersResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListEcommerceCustomersResponse' from JSON`,
+  );
 }

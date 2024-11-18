@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateBatchLinkedUserDto = {
   /**
@@ -61,4 +64,22 @@ export namespace CreateBatchLinkedUserDto$ {
   export const outboundSchema = CreateBatchLinkedUserDto$outboundSchema;
   /** @deprecated use `CreateBatchLinkedUserDto$Outbound` instead. */
   export type Outbound = CreateBatchLinkedUserDto$Outbound;
+}
+
+export function createBatchLinkedUserDtoToJSON(
+  createBatchLinkedUserDto: CreateBatchLinkedUserDto,
+): string {
+  return JSON.stringify(
+    CreateBatchLinkedUserDto$outboundSchema.parse(createBatchLinkedUserDto),
+  );
+}
+
+export function createBatchLinkedUserDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateBatchLinkedUserDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateBatchLinkedUserDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateBatchLinkedUserDto' from JSON`,
+  );
 }

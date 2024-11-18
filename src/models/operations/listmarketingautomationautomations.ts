@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ListMarketingautomationAutomationsRequest = {
   /**
@@ -43,7 +46,7 @@ export const ListMarketingautomationAutomationsRequest$inboundSchema: z.ZodType<
 > = z.object({
   "x-connection-token": z.string(),
   remote_data: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -56,7 +59,7 @@ export const ListMarketingautomationAutomationsRequest$inboundSchema: z.ZodType<
 export type ListMarketingautomationAutomationsRequest$Outbound = {
   "x-connection-token": string;
   remote_data?: boolean | undefined;
-  limit: number;
+  limit?: number | undefined;
   cursor?: string | undefined;
 };
 
@@ -69,7 +72,7 @@ export const ListMarketingautomationAutomationsRequest$outboundSchema:
   > = z.object({
     xConnectionToken: z.string(),
     remoteData: z.boolean().optional(),
-    limit: z.number().default(50),
+    limit: z.number().optional(),
     cursor: z.string().optional(),
   }).transform((v) => {
     return remap$(v, {
@@ -91,6 +94,33 @@ export namespace ListMarketingautomationAutomationsRequest$ {
     ListMarketingautomationAutomationsRequest$outboundSchema;
   /** @deprecated use `ListMarketingautomationAutomationsRequest$Outbound` instead. */
   export type Outbound = ListMarketingautomationAutomationsRequest$Outbound;
+}
+
+export function listMarketingautomationAutomationsRequestToJSON(
+  listMarketingautomationAutomationsRequest:
+    ListMarketingautomationAutomationsRequest,
+): string {
+  return JSON.stringify(
+    ListMarketingautomationAutomationsRequest$outboundSchema.parse(
+      listMarketingautomationAutomationsRequest,
+    ),
+  );
+}
+
+export function listMarketingautomationAutomationsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ListMarketingautomationAutomationsRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListMarketingautomationAutomationsRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ListMarketingautomationAutomationsRequest' from JSON`,
+  );
 }
 
 /** @internal */
@@ -154,6 +184,33 @@ export namespace ListMarketingautomationAutomationsResponseBody$ {
     ListMarketingautomationAutomationsResponseBody$Outbound;
 }
 
+export function listMarketingautomationAutomationsResponseBodyToJSON(
+  listMarketingautomationAutomationsResponseBody:
+    ListMarketingautomationAutomationsResponseBody,
+): string {
+  return JSON.stringify(
+    ListMarketingautomationAutomationsResponseBody$outboundSchema.parse(
+      listMarketingautomationAutomationsResponseBody,
+    ),
+  );
+}
+
+export function listMarketingautomationAutomationsResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ListMarketingautomationAutomationsResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListMarketingautomationAutomationsResponseBody$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ListMarketingautomationAutomationsResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListMarketingautomationAutomationsResponse$inboundSchema:
   z.ZodType<ListMarketingautomationAutomationsResponse, z.ZodTypeDef, unknown> =
@@ -201,4 +258,31 @@ export namespace ListMarketingautomationAutomationsResponse$ {
     ListMarketingautomationAutomationsResponse$outboundSchema;
   /** @deprecated use `ListMarketingautomationAutomationsResponse$Outbound` instead. */
   export type Outbound = ListMarketingautomationAutomationsResponse$Outbound;
+}
+
+export function listMarketingautomationAutomationsResponseToJSON(
+  listMarketingautomationAutomationsResponse:
+    ListMarketingautomationAutomationsResponse,
+): string {
+  return JSON.stringify(
+    ListMarketingautomationAutomationsResponse$outboundSchema.parse(
+      listMarketingautomationAutomationsResponse,
+    ),
+  );
+}
+
+export function listMarketingautomationAutomationsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ListMarketingautomationAutomationsResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListMarketingautomationAutomationsResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ListMarketingautomationAutomationsResponse' from JSON`,
+  );
 }

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The custom field mappings of the object between the remote 3rd party & Panora
@@ -111,6 +114,33 @@ export namespace UnifiedAccountingIncomestatementOutputFieldMappings$ {
     UnifiedAccountingIncomestatementOutputFieldMappings$Outbound;
 }
 
+export function unifiedAccountingIncomestatementOutputFieldMappingsToJSON(
+  unifiedAccountingIncomestatementOutputFieldMappings:
+    UnifiedAccountingIncomestatementOutputFieldMappings,
+): string {
+  return JSON.stringify(
+    UnifiedAccountingIncomestatementOutputFieldMappings$outboundSchema.parse(
+      unifiedAccountingIncomestatementOutputFieldMappings,
+    ),
+  );
+}
+
+export function unifiedAccountingIncomestatementOutputFieldMappingsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UnifiedAccountingIncomestatementOutputFieldMappings,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UnifiedAccountingIncomestatementOutputFieldMappings$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UnifiedAccountingIncomestatementOutputFieldMappings' from JSON`,
+  );
+}
+
 /** @internal */
 export const UnifiedAccountingIncomestatementOutputRemoteData$inboundSchema:
   z.ZodType<
@@ -144,6 +174,33 @@ export namespace UnifiedAccountingIncomestatementOutputRemoteData$ {
   /** @deprecated use `UnifiedAccountingIncomestatementOutputRemoteData$Outbound` instead. */
   export type Outbound =
     UnifiedAccountingIncomestatementOutputRemoteData$Outbound;
+}
+
+export function unifiedAccountingIncomestatementOutputRemoteDataToJSON(
+  unifiedAccountingIncomestatementOutputRemoteData:
+    UnifiedAccountingIncomestatementOutputRemoteData,
+): string {
+  return JSON.stringify(
+    UnifiedAccountingIncomestatementOutputRemoteData$outboundSchema.parse(
+      unifiedAccountingIncomestatementOutputRemoteData,
+    ),
+  );
+}
+
+export function unifiedAccountingIncomestatementOutputRemoteDataFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UnifiedAccountingIncomestatementOutputRemoteData,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UnifiedAccountingIncomestatementOutputRemoteData$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UnifiedAccountingIncomestatementOutputRemoteData' from JSON`,
+  );
 }
 
 /** @internal */
@@ -274,4 +331,26 @@ export namespace UnifiedAccountingIncomestatementOutput$ {
     UnifiedAccountingIncomestatementOutput$outboundSchema;
   /** @deprecated use `UnifiedAccountingIncomestatementOutput$Outbound` instead. */
   export type Outbound = UnifiedAccountingIncomestatementOutput$Outbound;
+}
+
+export function unifiedAccountingIncomestatementOutputToJSON(
+  unifiedAccountingIncomestatementOutput:
+    UnifiedAccountingIncomestatementOutput,
+): string {
+  return JSON.stringify(
+    UnifiedAccountingIncomestatementOutput$outboundSchema.parse(
+      unifiedAccountingIncomestatementOutput,
+    ),
+  );
+}
+
+export function unifiedAccountingIncomestatementOutputFromJSON(
+  jsonString: string,
+): SafeParseResult<UnifiedAccountingIncomestatementOutput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UnifiedAccountingIncomestatementOutput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UnifiedAccountingIncomestatementOutput' from JSON`,
+  );
 }

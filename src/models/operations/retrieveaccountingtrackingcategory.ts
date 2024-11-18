@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type RetrieveAccountingTrackingCategoryRequest = {
   /**
@@ -73,4 +76,31 @@ export namespace RetrieveAccountingTrackingCategoryRequest$ {
     RetrieveAccountingTrackingCategoryRequest$outboundSchema;
   /** @deprecated use `RetrieveAccountingTrackingCategoryRequest$Outbound` instead. */
   export type Outbound = RetrieveAccountingTrackingCategoryRequest$Outbound;
+}
+
+export function retrieveAccountingTrackingCategoryRequestToJSON(
+  retrieveAccountingTrackingCategoryRequest:
+    RetrieveAccountingTrackingCategoryRequest,
+): string {
+  return JSON.stringify(
+    RetrieveAccountingTrackingCategoryRequest$outboundSchema.parse(
+      retrieveAccountingTrackingCategoryRequest,
+    ),
+  );
+}
+
+export function retrieveAccountingTrackingCategoryRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  RetrieveAccountingTrackingCategoryRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RetrieveAccountingTrackingCategoryRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'RetrieveAccountingTrackingCategoryRequest' from JSON`,
+  );
 }

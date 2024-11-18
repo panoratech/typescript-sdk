@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type RagQueryOutput = {
   /**
@@ -66,4 +69,18 @@ export namespace RagQueryOutput$ {
   export const outboundSchema = RagQueryOutput$outboundSchema;
   /** @deprecated use `RagQueryOutput$Outbound` instead. */
   export type Outbound = RagQueryOutput$Outbound;
+}
+
+export function ragQueryOutputToJSON(ragQueryOutput: RagQueryOutput): string {
+  return JSON.stringify(RagQueryOutput$outboundSchema.parse(ragQueryOutput));
+}
+
+export function ragQueryOutputFromJSON(
+  jsonString: string,
+): SafeParseResult<RagQueryOutput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RagQueryOutput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RagQueryOutput' from JSON`,
+  );
 }

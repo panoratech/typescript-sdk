@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ListAccountingPaymentRequest = {
   /**
@@ -43,7 +46,7 @@ export const ListAccountingPaymentRequest$inboundSchema: z.ZodType<
 > = z.object({
   "x-connection-token": z.string(),
   remote_data: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -56,7 +59,7 @@ export const ListAccountingPaymentRequest$inboundSchema: z.ZodType<
 export type ListAccountingPaymentRequest$Outbound = {
   "x-connection-token": string;
   remote_data?: boolean | undefined;
-  limit: number;
+  limit?: number | undefined;
   cursor?: string | undefined;
 };
 
@@ -68,7 +71,7 @@ export const ListAccountingPaymentRequest$outboundSchema: z.ZodType<
 > = z.object({
   xConnectionToken: z.string(),
   remoteData: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -88,6 +91,26 @@ export namespace ListAccountingPaymentRequest$ {
   export const outboundSchema = ListAccountingPaymentRequest$outboundSchema;
   /** @deprecated use `ListAccountingPaymentRequest$Outbound` instead. */
   export type Outbound = ListAccountingPaymentRequest$Outbound;
+}
+
+export function listAccountingPaymentRequestToJSON(
+  listAccountingPaymentRequest: ListAccountingPaymentRequest,
+): string {
+  return JSON.stringify(
+    ListAccountingPaymentRequest$outboundSchema.parse(
+      listAccountingPaymentRequest,
+    ),
+  );
+}
+
+export function listAccountingPaymentRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAccountingPaymentRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListAccountingPaymentRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAccountingPaymentRequest' from JSON`,
+  );
 }
 
 /** @internal */
@@ -143,6 +166,26 @@ export namespace ListAccountingPaymentResponseBody$ {
   export type Outbound = ListAccountingPaymentResponseBody$Outbound;
 }
 
+export function listAccountingPaymentResponseBodyToJSON(
+  listAccountingPaymentResponseBody: ListAccountingPaymentResponseBody,
+): string {
+  return JSON.stringify(
+    ListAccountingPaymentResponseBody$outboundSchema.parse(
+      listAccountingPaymentResponseBody,
+    ),
+  );
+}
+
+export function listAccountingPaymentResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAccountingPaymentResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListAccountingPaymentResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAccountingPaymentResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListAccountingPaymentResponse$inboundSchema: z.ZodType<
   ListAccountingPaymentResponse,
@@ -185,4 +228,24 @@ export namespace ListAccountingPaymentResponse$ {
   export const outboundSchema = ListAccountingPaymentResponse$outboundSchema;
   /** @deprecated use `ListAccountingPaymentResponse$Outbound` instead. */
   export type Outbound = ListAccountingPaymentResponse$Outbound;
+}
+
+export function listAccountingPaymentResponseToJSON(
+  listAccountingPaymentResponse: ListAccountingPaymentResponse,
+): string {
+  return JSON.stringify(
+    ListAccountingPaymentResponse$outboundSchema.parse(
+      listAccountingPaymentResponse,
+    ),
+  );
+}
+
+export function listAccountingPaymentResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAccountingPaymentResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListAccountingPaymentResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAccountingPaymentResponse' from JSON`,
+  );
 }

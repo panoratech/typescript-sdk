@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type RemoteIdRequest = {
   remoteId: string;
@@ -42,4 +45,20 @@ export namespace RemoteIdRequest$ {
   export const outboundSchema = RemoteIdRequest$outboundSchema;
   /** @deprecated use `RemoteIdRequest$Outbound` instead. */
   export type Outbound = RemoteIdRequest$Outbound;
+}
+
+export function remoteIdRequestToJSON(
+  remoteIdRequest: RemoteIdRequest,
+): string {
+  return JSON.stringify(RemoteIdRequest$outboundSchema.parse(remoteIdRequest));
+}
+
+export function remoteIdRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<RemoteIdRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RemoteIdRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RemoteIdRequest' from JSON`,
+  );
 }

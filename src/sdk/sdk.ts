@@ -7,7 +7,6 @@ import { hello } from "../funcs/hello.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import { unwrapAsync } from "../types/fp.js";
 import { Accounting } from "./accounting.js";
-import { Ats } from "./ats.js";
 import { Auth } from "./auth.js";
 import { Connections } from "./connections.js";
 import { Crm } from "./crm.js";
@@ -15,7 +14,6 @@ import { Ecommerce } from "./ecommerce.js";
 import { Events } from "./events.js";
 import { FieldMappings } from "./fieldmappings.js";
 import { Filestorage } from "./filestorage.js";
-import { Hris } from "./hris.js";
 import { LinkedUsers } from "./linkedusers.js";
 import { Marketingautomation } from "./marketingautomation.js";
 import { Passthrough } from "./passthrough.js";
@@ -28,94 +26,84 @@ import { Webhooks } from "./webhooks.js";
 export class Panora extends ClientSDK {
   private _rag?: Rag;
   get rag(): Rag {
-    return (this._rag ??= new Rag(this.options$));
+    return (this._rag ??= new Rag(this._options));
   }
 
   private _filestorage?: Filestorage;
   get filestorage(): Filestorage {
-    return (this._filestorage ??= new Filestorage(this.options$));
+    return (this._filestorage ??= new Filestorage(this._options));
   }
 
   private _auth?: Auth;
   get auth(): Auth {
-    return (this._auth ??= new Auth(this.options$));
+    return (this._auth ??= new Auth(this._options));
   }
 
   private _connections?: Connections;
   get connections(): Connections {
-    return (this._connections ??= new Connections(this.options$));
+    return (this._connections ??= new Connections(this._options));
   }
 
   private _webhooks?: Webhooks;
   get webhooks(): Webhooks {
-    return (this._webhooks ??= new Webhooks(this.options$));
+    return (this._webhooks ??= new Webhooks(this._options));
   }
 
   private _ticketing?: Ticketing;
   get ticketing(): Ticketing {
-    return (this._ticketing ??= new Ticketing(this.options$));
+    return (this._ticketing ??= new Ticketing(this._options));
   }
 
   private _sync?: Sync;
   get sync(): Sync {
-    return (this._sync ??= new Sync(this.options$));
+    return (this._sync ??= new Sync(this._options));
   }
 
   private _crm?: Crm;
   get crm(): Crm {
-    return (this._crm ??= new Crm(this.options$));
+    return (this._crm ??= new Crm(this._options));
   }
 
   private _linkedUsers?: LinkedUsers;
   get linkedUsers(): LinkedUsers {
-    return (this._linkedUsers ??= new LinkedUsers(this.options$));
+    return (this._linkedUsers ??= new LinkedUsers(this._options));
   }
 
   private _projects?: Projects;
   get projects(): Projects {
-    return (this._projects ??= new Projects(this.options$));
+    return (this._projects ??= new Projects(this._options));
   }
 
   private _fieldMappings?: FieldMappings;
   get fieldMappings(): FieldMappings {
-    return (this._fieldMappings ??= new FieldMappings(this.options$));
+    return (this._fieldMappings ??= new FieldMappings(this._options));
   }
 
   private _events?: Events;
   get events(): Events {
-    return (this._events ??= new Events(this.options$));
+    return (this._events ??= new Events(this._options));
   }
 
   private _passthrough?: Passthrough;
   get passthrough(): Passthrough {
-    return (this._passthrough ??= new Passthrough(this.options$));
-  }
-
-  private _hris?: Hris;
-  get hris(): Hris {
-    return (this._hris ??= new Hris(this.options$));
+    return (this._passthrough ??= new Passthrough(this._options));
   }
 
   private _marketingautomation?: Marketingautomation;
   get marketingautomation(): Marketingautomation {
     return (this._marketingautomation ??= new Marketingautomation(
-      this.options$,
+      this._options,
     ));
-  }
-
-  private _ats?: Ats;
-  get ats(): Ats {
-    return (this._ats ??= new Ats(this.options$));
   }
 
   private _accounting?: Accounting;
   get accounting(): Accounting {
-    return (this._accounting ??= new Accounting(this.options$));
+    return (this._accounting ??= new Accounting(this._options));
   }
 
   private _ecommerce?: Ecommerce;
   get ecommerce(): Ecommerce {
-    return (this._ecommerce ??= new Ecommerce(this.options$));
+    return (this._ecommerce ??= new Ecommerce(this._options));
   }
 
   async hello(

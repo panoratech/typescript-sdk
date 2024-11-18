@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type RetrieveMarketingautomationEventRequest = {
   /**
@@ -72,4 +75,31 @@ export namespace RetrieveMarketingautomationEventRequest$ {
     RetrieveMarketingautomationEventRequest$outboundSchema;
   /** @deprecated use `RetrieveMarketingautomationEventRequest$Outbound` instead. */
   export type Outbound = RetrieveMarketingautomationEventRequest$Outbound;
+}
+
+export function retrieveMarketingautomationEventRequestToJSON(
+  retrieveMarketingautomationEventRequest:
+    RetrieveMarketingautomationEventRequest,
+): string {
+  return JSON.stringify(
+    RetrieveMarketingautomationEventRequest$outboundSchema.parse(
+      retrieveMarketingautomationEventRequest,
+    ),
+  );
+}
+
+export function retrieveMarketingautomationEventRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  RetrieveMarketingautomationEventRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RetrieveMarketingautomationEventRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'RetrieveMarketingautomationEventRequest' from JSON`,
+  );
 }

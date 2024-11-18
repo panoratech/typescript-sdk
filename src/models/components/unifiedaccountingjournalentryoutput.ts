@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   LineItem,
   LineItem$inboundSchema,
@@ -142,6 +145,33 @@ export namespace UnifiedAccountingJournalentryOutputFieldMappings$ {
     UnifiedAccountingJournalentryOutputFieldMappings$Outbound;
 }
 
+export function unifiedAccountingJournalentryOutputFieldMappingsToJSON(
+  unifiedAccountingJournalentryOutputFieldMappings:
+    UnifiedAccountingJournalentryOutputFieldMappings,
+): string {
+  return JSON.stringify(
+    UnifiedAccountingJournalentryOutputFieldMappings$outboundSchema.parse(
+      unifiedAccountingJournalentryOutputFieldMappings,
+    ),
+  );
+}
+
+export function unifiedAccountingJournalentryOutputFieldMappingsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UnifiedAccountingJournalentryOutputFieldMappings,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UnifiedAccountingJournalentryOutputFieldMappings$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UnifiedAccountingJournalentryOutputFieldMappings' from JSON`,
+  );
+}
+
 /** @internal */
 export const UnifiedAccountingJournalentryOutputRemoteData$inboundSchema:
   z.ZodType<
@@ -174,6 +204,33 @@ export namespace UnifiedAccountingJournalentryOutputRemoteData$ {
     UnifiedAccountingJournalentryOutputRemoteData$outboundSchema;
   /** @deprecated use `UnifiedAccountingJournalentryOutputRemoteData$Outbound` instead. */
   export type Outbound = UnifiedAccountingJournalentryOutputRemoteData$Outbound;
+}
+
+export function unifiedAccountingJournalentryOutputRemoteDataToJSON(
+  unifiedAccountingJournalentryOutputRemoteData:
+    UnifiedAccountingJournalentryOutputRemoteData,
+): string {
+  return JSON.stringify(
+    UnifiedAccountingJournalentryOutputRemoteData$outboundSchema.parse(
+      unifiedAccountingJournalentryOutputRemoteData,
+    ),
+  );
+}
+
+export function unifiedAccountingJournalentryOutputRemoteDataFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UnifiedAccountingJournalentryOutputRemoteData,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UnifiedAccountingJournalentryOutputRemoteData$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UnifiedAccountingJournalentryOutputRemoteData' from JSON`,
+  );
 }
 
 /** @internal */
@@ -338,4 +395,25 @@ export namespace UnifiedAccountingJournalentryOutput$ {
     UnifiedAccountingJournalentryOutput$outboundSchema;
   /** @deprecated use `UnifiedAccountingJournalentryOutput$Outbound` instead. */
   export type Outbound = UnifiedAccountingJournalentryOutput$Outbound;
+}
+
+export function unifiedAccountingJournalentryOutputToJSON(
+  unifiedAccountingJournalentryOutput: UnifiedAccountingJournalentryOutput,
+): string {
+  return JSON.stringify(
+    UnifiedAccountingJournalentryOutput$outboundSchema.parse(
+      unifiedAccountingJournalentryOutput,
+    ),
+  );
+}
+
+export function unifiedAccountingJournalentryOutputFromJSON(
+  jsonString: string,
+): SafeParseResult<UnifiedAccountingJournalentryOutput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UnifiedAccountingJournalentryOutput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UnifiedAccountingJournalentryOutput' from JSON`,
+  );
 }

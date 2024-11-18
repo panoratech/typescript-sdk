@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateTicketingAttachmentRequest = {
   /**
@@ -73,4 +76,24 @@ export namespace CreateTicketingAttachmentRequest$ {
   export const outboundSchema = CreateTicketingAttachmentRequest$outboundSchema;
   /** @deprecated use `CreateTicketingAttachmentRequest$Outbound` instead. */
   export type Outbound = CreateTicketingAttachmentRequest$Outbound;
+}
+
+export function createTicketingAttachmentRequestToJSON(
+  createTicketingAttachmentRequest: CreateTicketingAttachmentRequest,
+): string {
+  return JSON.stringify(
+    CreateTicketingAttachmentRequest$outboundSchema.parse(
+      createTicketingAttachmentRequest,
+    ),
+  );
+}
+
+export function createTicketingAttachmentRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateTicketingAttachmentRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateTicketingAttachmentRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateTicketingAttachmentRequest' from JSON`,
+  );
 }

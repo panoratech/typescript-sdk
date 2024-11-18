@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type UnifiedFilestorageFolderInput = {
   /**
@@ -118,4 +121,24 @@ export namespace UnifiedFilestorageFolderInput$ {
   export const outboundSchema = UnifiedFilestorageFolderInput$outboundSchema;
   /** @deprecated use `UnifiedFilestorageFolderInput$Outbound` instead. */
   export type Outbound = UnifiedFilestorageFolderInput$Outbound;
+}
+
+export function unifiedFilestorageFolderInputToJSON(
+  unifiedFilestorageFolderInput: UnifiedFilestorageFolderInput,
+): string {
+  return JSON.stringify(
+    UnifiedFilestorageFolderInput$outboundSchema.parse(
+      unifiedFilestorageFolderInput,
+    ),
+  );
+}
+
+export function unifiedFilestorageFolderInputFromJSON(
+  jsonString: string,
+): SafeParseResult<UnifiedFilestorageFolderInput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UnifiedFilestorageFolderInput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UnifiedFilestorageFolderInput' from JSON`,
+  );
 }
