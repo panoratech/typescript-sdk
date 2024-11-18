@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ListTicketingContactsRequest = {
   /**
@@ -43,7 +46,7 @@ export const ListTicketingContactsRequest$inboundSchema: z.ZodType<
 > = z.object({
   "x-connection-token": z.string(),
   remote_data: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -56,7 +59,7 @@ export const ListTicketingContactsRequest$inboundSchema: z.ZodType<
 export type ListTicketingContactsRequest$Outbound = {
   "x-connection-token": string;
   remote_data?: boolean | undefined;
-  limit: number;
+  limit?: number | undefined;
   cursor?: string | undefined;
 };
 
@@ -68,7 +71,7 @@ export const ListTicketingContactsRequest$outboundSchema: z.ZodType<
 > = z.object({
   xConnectionToken: z.string(),
   remoteData: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -88,6 +91,26 @@ export namespace ListTicketingContactsRequest$ {
   export const outboundSchema = ListTicketingContactsRequest$outboundSchema;
   /** @deprecated use `ListTicketingContactsRequest$Outbound` instead. */
   export type Outbound = ListTicketingContactsRequest$Outbound;
+}
+
+export function listTicketingContactsRequestToJSON(
+  listTicketingContactsRequest: ListTicketingContactsRequest,
+): string {
+  return JSON.stringify(
+    ListTicketingContactsRequest$outboundSchema.parse(
+      listTicketingContactsRequest,
+    ),
+  );
+}
+
+export function listTicketingContactsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListTicketingContactsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListTicketingContactsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListTicketingContactsRequest' from JSON`,
+  );
 }
 
 /** @internal */
@@ -143,6 +166,26 @@ export namespace ListTicketingContactsResponseBody$ {
   export type Outbound = ListTicketingContactsResponseBody$Outbound;
 }
 
+export function listTicketingContactsResponseBodyToJSON(
+  listTicketingContactsResponseBody: ListTicketingContactsResponseBody,
+): string {
+  return JSON.stringify(
+    ListTicketingContactsResponseBody$outboundSchema.parse(
+      listTicketingContactsResponseBody,
+    ),
+  );
+}
+
+export function listTicketingContactsResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<ListTicketingContactsResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListTicketingContactsResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListTicketingContactsResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListTicketingContactsResponse$inboundSchema: z.ZodType<
   ListTicketingContactsResponse,
@@ -185,4 +228,24 @@ export namespace ListTicketingContactsResponse$ {
   export const outboundSchema = ListTicketingContactsResponse$outboundSchema;
   /** @deprecated use `ListTicketingContactsResponse$Outbound` instead. */
   export type Outbound = ListTicketingContactsResponse$Outbound;
+}
+
+export function listTicketingContactsResponseToJSON(
+  listTicketingContactsResponse: ListTicketingContactsResponse,
+): string {
+  return JSON.stringify(
+    ListTicketingContactsResponse$outboundSchema.parse(
+      listTicketingContactsResponse,
+    ),
+  );
+}
+
+export function listTicketingContactsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListTicketingContactsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListTicketingContactsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListTicketingContactsResponse' from JSON`,
+  );
 }

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   LineItem,
   LineItem$inboundSchema,
@@ -119,6 +122,33 @@ export namespace UnifiedAccountingPurchaseorderInputFieldMappings$ {
   /** @deprecated use `UnifiedAccountingPurchaseorderInputFieldMappings$Outbound` instead. */
   export type Outbound =
     UnifiedAccountingPurchaseorderInputFieldMappings$Outbound;
+}
+
+export function unifiedAccountingPurchaseorderInputFieldMappingsToJSON(
+  unifiedAccountingPurchaseorderInputFieldMappings:
+    UnifiedAccountingPurchaseorderInputFieldMappings,
+): string {
+  return JSON.stringify(
+    UnifiedAccountingPurchaseorderInputFieldMappings$outboundSchema.parse(
+      unifiedAccountingPurchaseorderInputFieldMappings,
+    ),
+  );
+}
+
+export function unifiedAccountingPurchaseorderInputFieldMappingsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UnifiedAccountingPurchaseorderInputFieldMappings,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UnifiedAccountingPurchaseorderInputFieldMappings$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UnifiedAccountingPurchaseorderInputFieldMappings' from JSON`,
+  );
 }
 
 /** @internal */
@@ -245,4 +275,25 @@ export namespace UnifiedAccountingPurchaseorderInput$ {
     UnifiedAccountingPurchaseorderInput$outboundSchema;
   /** @deprecated use `UnifiedAccountingPurchaseorderInput$Outbound` instead. */
   export type Outbound = UnifiedAccountingPurchaseorderInput$Outbound;
+}
+
+export function unifiedAccountingPurchaseorderInputToJSON(
+  unifiedAccountingPurchaseorderInput: UnifiedAccountingPurchaseorderInput,
+): string {
+  return JSON.stringify(
+    UnifiedAccountingPurchaseorderInput$outboundSchema.parse(
+      unifiedAccountingPurchaseorderInput,
+    ),
+  );
+}
+
+export function unifiedAccountingPurchaseorderInputFromJSON(
+  jsonString: string,
+): SafeParseResult<UnifiedAccountingPurchaseorderInput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UnifiedAccountingPurchaseorderInput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UnifiedAccountingPurchaseorderInput' from JSON`,
+  );
 }

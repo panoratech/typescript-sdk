@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   UnifiedTicketingAttachmentOutput,
   UnifiedTicketingAttachmentOutput$inboundSchema,
@@ -85,6 +88,33 @@ export namespace UnifiedTicketingCommentInputAttachments$ {
     UnifiedTicketingCommentInputAttachments$outboundSchema;
   /** @deprecated use `UnifiedTicketingCommentInputAttachments$Outbound` instead. */
   export type Outbound = UnifiedTicketingCommentInputAttachments$Outbound;
+}
+
+export function unifiedTicketingCommentInputAttachmentsToJSON(
+  unifiedTicketingCommentInputAttachments:
+    UnifiedTicketingCommentInputAttachments,
+): string {
+  return JSON.stringify(
+    UnifiedTicketingCommentInputAttachments$outboundSchema.parse(
+      unifiedTicketingCommentInputAttachments,
+    ),
+  );
+}
+
+export function unifiedTicketingCommentInputAttachmentsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UnifiedTicketingCommentInputAttachments,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UnifiedTicketingCommentInputAttachments$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UnifiedTicketingCommentInputAttachments' from JSON`,
+  );
 }
 
 /** @internal */
@@ -171,4 +201,24 @@ export namespace UnifiedTicketingCommentInput$ {
   export const outboundSchema = UnifiedTicketingCommentInput$outboundSchema;
   /** @deprecated use `UnifiedTicketingCommentInput$Outbound` instead. */
   export type Outbound = UnifiedTicketingCommentInput$Outbound;
+}
+
+export function unifiedTicketingCommentInputToJSON(
+  unifiedTicketingCommentInput: UnifiedTicketingCommentInput,
+): string {
+  return JSON.stringify(
+    UnifiedTicketingCommentInput$outboundSchema.parse(
+      unifiedTicketingCommentInput,
+    ),
+  );
+}
+
+export function unifiedTicketingCommentInputFromJSON(
+  jsonString: string,
+): SafeParseResult<UnifiedTicketingCommentInput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UnifiedTicketingCommentInput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UnifiedTicketingCommentInput' from JSON`,
+  );
 }

@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ListAccountingBalanceSheetsRequest = {
   /**
@@ -43,7 +46,7 @@ export const ListAccountingBalanceSheetsRequest$inboundSchema: z.ZodType<
 > = z.object({
   "x-connection-token": z.string(),
   remote_data: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -56,7 +59,7 @@ export const ListAccountingBalanceSheetsRequest$inboundSchema: z.ZodType<
 export type ListAccountingBalanceSheetsRequest$Outbound = {
   "x-connection-token": string;
   remote_data?: boolean | undefined;
-  limit: number;
+  limit?: number | undefined;
   cursor?: string | undefined;
 };
 
@@ -68,7 +71,7 @@ export const ListAccountingBalanceSheetsRequest$outboundSchema: z.ZodType<
 > = z.object({
   xConnectionToken: z.string(),
   remoteData: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -89,6 +92,27 @@ export namespace ListAccountingBalanceSheetsRequest$ {
     ListAccountingBalanceSheetsRequest$outboundSchema;
   /** @deprecated use `ListAccountingBalanceSheetsRequest$Outbound` instead. */
   export type Outbound = ListAccountingBalanceSheetsRequest$Outbound;
+}
+
+export function listAccountingBalanceSheetsRequestToJSON(
+  listAccountingBalanceSheetsRequest: ListAccountingBalanceSheetsRequest,
+): string {
+  return JSON.stringify(
+    ListAccountingBalanceSheetsRequest$outboundSchema.parse(
+      listAccountingBalanceSheetsRequest,
+    ),
+  );
+}
+
+export function listAccountingBalanceSheetsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAccountingBalanceSheetsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListAccountingBalanceSheetsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAccountingBalanceSheetsRequest' from JSON`,
+  );
 }
 
 /** @internal */
@@ -145,6 +169,33 @@ export namespace ListAccountingBalanceSheetsResponseBody$ {
   export type Outbound = ListAccountingBalanceSheetsResponseBody$Outbound;
 }
 
+export function listAccountingBalanceSheetsResponseBodyToJSON(
+  listAccountingBalanceSheetsResponseBody:
+    ListAccountingBalanceSheetsResponseBody,
+): string {
+  return JSON.stringify(
+    ListAccountingBalanceSheetsResponseBody$outboundSchema.parse(
+      listAccountingBalanceSheetsResponseBody,
+    ),
+  );
+}
+
+export function listAccountingBalanceSheetsResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ListAccountingBalanceSheetsResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListAccountingBalanceSheetsResponseBody$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ListAccountingBalanceSheetsResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListAccountingBalanceSheetsResponse$inboundSchema: z.ZodType<
   ListAccountingBalanceSheetsResponse,
@@ -189,4 +240,25 @@ export namespace ListAccountingBalanceSheetsResponse$ {
     ListAccountingBalanceSheetsResponse$outboundSchema;
   /** @deprecated use `ListAccountingBalanceSheetsResponse$Outbound` instead. */
   export type Outbound = ListAccountingBalanceSheetsResponse$Outbound;
+}
+
+export function listAccountingBalanceSheetsResponseToJSON(
+  listAccountingBalanceSheetsResponse: ListAccountingBalanceSheetsResponse,
+): string {
+  return JSON.stringify(
+    ListAccountingBalanceSheetsResponse$outboundSchema.parse(
+      listAccountingBalanceSheetsResponse,
+    ),
+  );
+}
+
+export function listAccountingBalanceSheetsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAccountingBalanceSheetsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListAccountingBalanceSheetsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAccountingBalanceSheetsResponse' from JSON`,
+  );
 }

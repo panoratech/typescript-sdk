@@ -27,6 +27,8 @@ const panora = new Panora({
 
 async function run() {
   await panora.fieldMappings.getFieldMappingValues();
+
+
 }
 
 run();
@@ -75,10 +77,9 @@ run();
 
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
+| Error Type      | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
-
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## getFieldMappingsEntities
 
@@ -95,6 +96,8 @@ const panora = new Panora({
 
 async function run() {
   await panora.fieldMappings.getFieldMappingsEntities();
+
+
 }
 
 run();
@@ -143,10 +146,9 @@ run();
 
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
+| Error Type      | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
-
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## getFieldMappings
 
@@ -163,6 +165,8 @@ const panora = new Panora({
 
 async function run() {
   await panora.fieldMappings.getFieldMappings();
+
+
 }
 
 run();
@@ -211,10 +215,9 @@ run();
 
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
+| Error Type      | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
-
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## definitions
 
@@ -237,9 +240,9 @@ async function run() {
     description: "My favorite dish",
     dataType: DataType.String,
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -275,7 +278,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -296,10 +299,9 @@ run();
 
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
+| Error Type      | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
-
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## defineCustomField
 
@@ -325,9 +327,9 @@ async function run() {
     sourceProvider: "hubspot",
     linkedUserId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -366,7 +368,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -387,10 +389,9 @@ run();
 
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
+| Error Type      | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
-
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## map
 
@@ -412,9 +413,9 @@ async function run() {
     sourceProvider: "hubspot",
     linkedUserId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -449,7 +450,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -470,6 +471,6 @@ run();
 
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
+| Error Type      | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |

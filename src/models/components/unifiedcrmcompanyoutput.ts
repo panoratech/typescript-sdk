@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Address,
   Address$inboundSchema,
@@ -118,6 +121,20 @@ export namespace CreatedAt$ {
   export type Outbound = CreatedAt$Outbound;
 }
 
+export function createdAtToJSON(createdAt: CreatedAt): string {
+  return JSON.stringify(CreatedAt$outboundSchema.parse(createdAt));
+}
+
+export function createdAtFromJSON(
+  jsonString: string,
+): SafeParseResult<CreatedAt, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreatedAt$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreatedAt' from JSON`,
+  );
+}
+
 /** @internal */
 export const ModifiedAt$inboundSchema: z.ZodType<
   ModifiedAt,
@@ -146,6 +163,20 @@ export namespace ModifiedAt$ {
   export const outboundSchema = ModifiedAt$outboundSchema;
   /** @deprecated use `ModifiedAt$Outbound` instead. */
   export type Outbound = ModifiedAt$Outbound;
+}
+
+export function modifiedAtToJSON(modifiedAt: ModifiedAt): string {
+  return JSON.stringify(ModifiedAt$outboundSchema.parse(modifiedAt));
+}
+
+export function modifiedAtFromJSON(
+  jsonString: string,
+): SafeParseResult<ModifiedAt, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ModifiedAt$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ModifiedAt' from JSON`,
+  );
 }
 
 /** @internal */
@@ -242,4 +273,22 @@ export namespace UnifiedCrmCompanyOutput$ {
   export const outboundSchema = UnifiedCrmCompanyOutput$outboundSchema;
   /** @deprecated use `UnifiedCrmCompanyOutput$Outbound` instead. */
   export type Outbound = UnifiedCrmCompanyOutput$Outbound;
+}
+
+export function unifiedCrmCompanyOutputToJSON(
+  unifiedCrmCompanyOutput: UnifiedCrmCompanyOutput,
+): string {
+  return JSON.stringify(
+    UnifiedCrmCompanyOutput$outboundSchema.parse(unifiedCrmCompanyOutput),
+  );
+}
+
+export function unifiedCrmCompanyOutputFromJSON(
+  jsonString: string,
+): SafeParseResult<UnifiedCrmCompanyOutput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UnifiedCrmCompanyOutput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UnifiedCrmCompanyOutput' from JSON`,
+  );
 }

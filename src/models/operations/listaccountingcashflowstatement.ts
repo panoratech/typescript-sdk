@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ListAccountingCashflowStatementRequest = {
   /**
@@ -43,7 +46,7 @@ export const ListAccountingCashflowStatementRequest$inboundSchema: z.ZodType<
 > = z.object({
   "x-connection-token": z.string(),
   remote_data: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -56,7 +59,7 @@ export const ListAccountingCashflowStatementRequest$inboundSchema: z.ZodType<
 export type ListAccountingCashflowStatementRequest$Outbound = {
   "x-connection-token": string;
   remote_data?: boolean | undefined;
-  limit: number;
+  limit?: number | undefined;
   cursor?: string | undefined;
 };
 
@@ -68,7 +71,7 @@ export const ListAccountingCashflowStatementRequest$outboundSchema: z.ZodType<
 > = z.object({
   xConnectionToken: z.string(),
   remoteData: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -90,6 +93,28 @@ export namespace ListAccountingCashflowStatementRequest$ {
     ListAccountingCashflowStatementRequest$outboundSchema;
   /** @deprecated use `ListAccountingCashflowStatementRequest$Outbound` instead. */
   export type Outbound = ListAccountingCashflowStatementRequest$Outbound;
+}
+
+export function listAccountingCashflowStatementRequestToJSON(
+  listAccountingCashflowStatementRequest:
+    ListAccountingCashflowStatementRequest,
+): string {
+  return JSON.stringify(
+    ListAccountingCashflowStatementRequest$outboundSchema.parse(
+      listAccountingCashflowStatementRequest,
+    ),
+  );
+}
+
+export function listAccountingCashflowStatementRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAccountingCashflowStatementRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListAccountingCashflowStatementRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAccountingCashflowStatementRequest' from JSON`,
+  );
 }
 
 /** @internal */
@@ -152,6 +177,33 @@ export namespace ListAccountingCashflowStatementResponseBody$ {
   export type Outbound = ListAccountingCashflowStatementResponseBody$Outbound;
 }
 
+export function listAccountingCashflowStatementResponseBodyToJSON(
+  listAccountingCashflowStatementResponseBody:
+    ListAccountingCashflowStatementResponseBody,
+): string {
+  return JSON.stringify(
+    ListAccountingCashflowStatementResponseBody$outboundSchema.parse(
+      listAccountingCashflowStatementResponseBody,
+    ),
+  );
+}
+
+export function listAccountingCashflowStatementResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ListAccountingCashflowStatementResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListAccountingCashflowStatementResponseBody$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ListAccountingCashflowStatementResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListAccountingCashflowStatementResponse$inboundSchema: z.ZodType<
   ListAccountingCashflowStatementResponse,
@@ -200,4 +252,31 @@ export namespace ListAccountingCashflowStatementResponse$ {
     ListAccountingCashflowStatementResponse$outboundSchema;
   /** @deprecated use `ListAccountingCashflowStatementResponse$Outbound` instead. */
   export type Outbound = ListAccountingCashflowStatementResponse$Outbound;
+}
+
+export function listAccountingCashflowStatementResponseToJSON(
+  listAccountingCashflowStatementResponse:
+    ListAccountingCashflowStatementResponse,
+): string {
+  return JSON.stringify(
+    ListAccountingCashflowStatementResponse$outboundSchema.parse(
+      listAccountingCashflowStatementResponse,
+    ),
+  );
+}
+
+export function listAccountingCashflowStatementResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ListAccountingCashflowStatementResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListAccountingCashflowStatementResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ListAccountingCashflowStatementResponse' from JSON`,
+  );
 }

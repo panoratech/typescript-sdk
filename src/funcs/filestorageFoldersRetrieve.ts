@@ -3,12 +3,9 @@
  */
 
 import { PanoraCore } from "../core.js";
-import {
-  encodeFormQuery as encodeFormQuery$,
-  encodeSimple as encodeSimple$,
-} from "../lib/encodings.js";
-import * as m$ from "../lib/matchers.js";
-import * as schemas$ from "../lib/schemas.js";
+import { encodeFormQuery, encodeSimple } from "../lib/encodings.js";
+import * as M from "../lib/matchers.js";
+import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
@@ -32,7 +29,7 @@ import { Result } from "../types/fp.js";
  * Retrieve Folders from any connected Filestorage software
  */
 export async function filestorageFoldersRetrieve(
-  client$: PanoraCore,
+  client: PanoraCore,
   request: operations.RetrieveFilestorageFolderRequest,
   options?: RequestOptions,
 ): Promise<
@@ -47,78 +44,83 @@ export async function filestorageFoldersRetrieve(
     | ConnectionError
   >
 > {
-  const input$ = request;
-
-  const parsed$ = schemas$.safeParse(
-    input$,
-    (value$) =>
-      operations.RetrieveFilestorageFolderRequest$outboundSchema.parse(value$),
+  const parsed = safeParse(
+    request,
+    (value) =>
+      operations.RetrieveFilestorageFolderRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
-  if (!parsed$.ok) {
-    return parsed$;
+  if (!parsed.ok) {
+    return parsed;
   }
-  const payload$ = parsed$.value;
-  const body$ = null;
+  const payload = parsed.value;
+  const body = null;
 
-  const pathParams$ = {
-    id: encodeSimple$("id", payload$.id, {
+  const pathParams = {
+    id: encodeSimple("id", payload.id, {
       explode: false,
       charEncoding: "percent",
     }),
   };
 
-  const path$ = pathToFunc("/filestorage/folders/{id}")(pathParams$);
+  const path = pathToFunc("/filestorage/folders/{id}")(pathParams);
 
-  const query$ = encodeFormQuery$({
-    "remote_data": payload$.remote_data,
+  const query = encodeFormQuery({
+    "remote_data": payload.remote_data,
   });
 
-  const headers$ = new Headers({
+  const headers = new Headers({
     Accept: "application/json",
-    "x-connection-token": encodeSimple$(
+    "x-connection-token": encodeSimple(
       "x-connection-token",
-      payload$["x-connection-token"],
+      payload["x-connection-token"],
       { explode: false, charEncoding: "none" },
     ),
   });
 
-  const apiKey$ = await extractSecurity(client$.options$.apiKey);
-  const security$ = apiKey$ == null ? {} : { apiKey: apiKey$ };
+  const secConfig = await extractSecurity(client._options.apiKey);
+  const securityInput = secConfig == null ? {} : { apiKey: secConfig };
+  const requestSecurity = resolveGlobalSecurity(securityInput);
+
   const context = {
     operationID: "retrieveFilestorageFolder",
     oAuth2Scopes: [],
-    securitySource: client$.options$.apiKey,
-  };
-  const securitySettings$ = resolveGlobalSecurity(security$);
 
-  const requestRes = client$.createRequest$(context, {
-    security: securitySettings$,
+    resolvedSecurity: requestSecurity,
+
+    securitySource: client._options.apiKey,
+    retryConfig: options?.retries
+      || client._options.retryConfig
+      || { strategy: "none" },
+    retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+  };
+
+  const requestRes = client._createRequest(context, {
+    security: requestSecurity,
     method: "GET",
-    path: path$,
-    headers: headers$,
-    query: query$,
-    body: body$,
-    timeoutMs: options?.timeoutMs || client$.options$.timeoutMs || -1,
+    path: path,
+    headers: headers,
+    query: query,
+    body: body,
+    timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
     return requestRes;
   }
-  const request$ = requestRes.value;
+  const req = requestRes.value;
 
-  const doResult = await client$.do$(request$, {
+  const doResult = await client._do(req, {
     context,
     errorCodes: ["4XX", "5XX"],
-    retryConfig: options?.retries
-      || client$.options$.retryConfig,
-    retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+    retryConfig: context.retryConfig,
+    retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
     return doResult;
   }
   const response = doResult.value;
 
-  const [result$] = await m$.match<
+  const [result] = await M.match<
     components.UnifiedFilestorageFolderOutput,
     | SDKError
     | SDKValidationError
@@ -128,12 +130,12 @@ export async function filestorageFoldersRetrieve(
     | RequestTimeoutError
     | ConnectionError
   >(
-    m$.json(200, components.UnifiedFilestorageFolderOutput$inboundSchema),
-    m$.fail(["4XX", "5XX"]),
+    M.json(200, components.UnifiedFilestorageFolderOutput$inboundSchema),
+    M.fail(["4XX", "5XX"]),
   )(response);
-  if (!result$.ok) {
-    return result$;
+  if (!result.ok) {
+    return result;
   }
 
-  return result$;
+  return result;
 }

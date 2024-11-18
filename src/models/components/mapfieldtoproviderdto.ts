@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type MapFieldToProviderDto = {
   /**
@@ -79,4 +82,22 @@ export namespace MapFieldToProviderDto$ {
   export const outboundSchema = MapFieldToProviderDto$outboundSchema;
   /** @deprecated use `MapFieldToProviderDto$Outbound` instead. */
   export type Outbound = MapFieldToProviderDto$Outbound;
+}
+
+export function mapFieldToProviderDtoToJSON(
+  mapFieldToProviderDto: MapFieldToProviderDto,
+): string {
+  return JSON.stringify(
+    MapFieldToProviderDto$outboundSchema.parse(mapFieldToProviderDto),
+  );
+}
+
+export function mapFieldToProviderDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<MapFieldToProviderDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => MapFieldToProviderDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MapFieldToProviderDto' from JSON`,
+  );
 }

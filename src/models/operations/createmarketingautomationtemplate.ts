@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateMarketingautomationTemplateRequest = {
   /**
@@ -78,4 +81,31 @@ export namespace CreateMarketingautomationTemplateRequest$ {
     CreateMarketingautomationTemplateRequest$outboundSchema;
   /** @deprecated use `CreateMarketingautomationTemplateRequest$Outbound` instead. */
   export type Outbound = CreateMarketingautomationTemplateRequest$Outbound;
+}
+
+export function createMarketingautomationTemplateRequestToJSON(
+  createMarketingautomationTemplateRequest:
+    CreateMarketingautomationTemplateRequest,
+): string {
+  return JSON.stringify(
+    CreateMarketingautomationTemplateRequest$outboundSchema.parse(
+      createMarketingautomationTemplateRequest,
+    ),
+  );
+}
+
+export function createMarketingautomationTemplateRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateMarketingautomationTemplateRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateMarketingautomationTemplateRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateMarketingautomationTemplateRequest' from JSON`,
+  );
 }

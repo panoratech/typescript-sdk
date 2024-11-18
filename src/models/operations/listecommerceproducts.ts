@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ListEcommerceProductsRequest = {
   /**
@@ -43,7 +46,7 @@ export const ListEcommerceProductsRequest$inboundSchema: z.ZodType<
 > = z.object({
   "x-connection-token": z.string(),
   remote_data: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -56,7 +59,7 @@ export const ListEcommerceProductsRequest$inboundSchema: z.ZodType<
 export type ListEcommerceProductsRequest$Outbound = {
   "x-connection-token": string;
   remote_data?: boolean | undefined;
-  limit: number;
+  limit?: number | undefined;
   cursor?: string | undefined;
 };
 
@@ -68,7 +71,7 @@ export const ListEcommerceProductsRequest$outboundSchema: z.ZodType<
 > = z.object({
   xConnectionToken: z.string(),
   remoteData: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -88,6 +91,26 @@ export namespace ListEcommerceProductsRequest$ {
   export const outboundSchema = ListEcommerceProductsRequest$outboundSchema;
   /** @deprecated use `ListEcommerceProductsRequest$Outbound` instead. */
   export type Outbound = ListEcommerceProductsRequest$Outbound;
+}
+
+export function listEcommerceProductsRequestToJSON(
+  listEcommerceProductsRequest: ListEcommerceProductsRequest,
+): string {
+  return JSON.stringify(
+    ListEcommerceProductsRequest$outboundSchema.parse(
+      listEcommerceProductsRequest,
+    ),
+  );
+}
+
+export function listEcommerceProductsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListEcommerceProductsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListEcommerceProductsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListEcommerceProductsRequest' from JSON`,
+  );
 }
 
 /** @internal */
@@ -143,6 +166,26 @@ export namespace ListEcommerceProductsResponseBody$ {
   export type Outbound = ListEcommerceProductsResponseBody$Outbound;
 }
 
+export function listEcommerceProductsResponseBodyToJSON(
+  listEcommerceProductsResponseBody: ListEcommerceProductsResponseBody,
+): string {
+  return JSON.stringify(
+    ListEcommerceProductsResponseBody$outboundSchema.parse(
+      listEcommerceProductsResponseBody,
+    ),
+  );
+}
+
+export function listEcommerceProductsResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<ListEcommerceProductsResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListEcommerceProductsResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListEcommerceProductsResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListEcommerceProductsResponse$inboundSchema: z.ZodType<
   ListEcommerceProductsResponse,
@@ -185,4 +228,24 @@ export namespace ListEcommerceProductsResponse$ {
   export const outboundSchema = ListEcommerceProductsResponse$outboundSchema;
   /** @deprecated use `ListEcommerceProductsResponse$Outbound` instead. */
   export type Outbound = ListEcommerceProductsResponse$Outbound;
+}
+
+export function listEcommerceProductsResponseToJSON(
+  listEcommerceProductsResponse: ListEcommerceProductsResponse,
+): string {
+  return JSON.stringify(
+    ListEcommerceProductsResponse$outboundSchema.parse(
+      listEcommerceProductsResponse,
+    ),
+  );
+}
+
+export function listEcommerceProductsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListEcommerceProductsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListEcommerceProductsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListEcommerceProductsResponse' from JSON`,
+  );
 }

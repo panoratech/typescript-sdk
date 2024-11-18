@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The custom field mappings of the object between the remote 3rd party & Panora
@@ -95,6 +98,33 @@ export namespace UnifiedAccountingTaxrateOutputFieldMappings$ {
   export type Outbound = UnifiedAccountingTaxrateOutputFieldMappings$Outbound;
 }
 
+export function unifiedAccountingTaxrateOutputFieldMappingsToJSON(
+  unifiedAccountingTaxrateOutputFieldMappings:
+    UnifiedAccountingTaxrateOutputFieldMappings,
+): string {
+  return JSON.stringify(
+    UnifiedAccountingTaxrateOutputFieldMappings$outboundSchema.parse(
+      unifiedAccountingTaxrateOutputFieldMappings,
+    ),
+  );
+}
+
+export function unifiedAccountingTaxrateOutputFieldMappingsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UnifiedAccountingTaxrateOutputFieldMappings,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UnifiedAccountingTaxrateOutputFieldMappings$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UnifiedAccountingTaxrateOutputFieldMappings' from JSON`,
+  );
+}
+
 /** @internal */
 export const UnifiedAccountingTaxrateOutputRemoteData$inboundSchema: z.ZodType<
   UnifiedAccountingTaxrateOutputRemoteData,
@@ -125,6 +155,33 @@ export namespace UnifiedAccountingTaxrateOutputRemoteData$ {
     UnifiedAccountingTaxrateOutputRemoteData$outboundSchema;
   /** @deprecated use `UnifiedAccountingTaxrateOutputRemoteData$Outbound` instead. */
   export type Outbound = UnifiedAccountingTaxrateOutputRemoteData$Outbound;
+}
+
+export function unifiedAccountingTaxrateOutputRemoteDataToJSON(
+  unifiedAccountingTaxrateOutputRemoteData:
+    UnifiedAccountingTaxrateOutputRemoteData,
+): string {
+  return JSON.stringify(
+    UnifiedAccountingTaxrateOutputRemoteData$outboundSchema.parse(
+      unifiedAccountingTaxrateOutputRemoteData,
+    ),
+  );
+}
+
+export function unifiedAccountingTaxrateOutputRemoteDataFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UnifiedAccountingTaxrateOutputRemoteData,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UnifiedAccountingTaxrateOutputRemoteData$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UnifiedAccountingTaxrateOutputRemoteData' from JSON`,
+  );
 }
 
 /** @internal */
@@ -228,4 +285,24 @@ export namespace UnifiedAccountingTaxrateOutput$ {
   export const outboundSchema = UnifiedAccountingTaxrateOutput$outboundSchema;
   /** @deprecated use `UnifiedAccountingTaxrateOutput$Outbound` instead. */
   export type Outbound = UnifiedAccountingTaxrateOutput$Outbound;
+}
+
+export function unifiedAccountingTaxrateOutputToJSON(
+  unifiedAccountingTaxrateOutput: UnifiedAccountingTaxrateOutput,
+): string {
+  return JSON.stringify(
+    UnifiedAccountingTaxrateOutput$outboundSchema.parse(
+      unifiedAccountingTaxrateOutput,
+    ),
+  );
+}
+
+export function unifiedAccountingTaxrateOutputFromJSON(
+  jsonString: string,
+): SafeParseResult<UnifiedAccountingTaxrateOutput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UnifiedAccountingTaxrateOutput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UnifiedAccountingTaxrateOutput' from JSON`,
+  );
 }

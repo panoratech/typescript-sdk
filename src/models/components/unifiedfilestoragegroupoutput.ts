@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   UnifiedFilestorageUserOutput,
   UnifiedFilestorageUserOutput$inboundSchema,
@@ -77,6 +80,20 @@ export namespace Users$ {
   export const outboundSchema = Users$outboundSchema;
   /** @deprecated use `Users$Outbound` instead. */
   export type Outbound = Users$Outbound;
+}
+
+export function usersToJSON(users: Users): string {
+  return JSON.stringify(Users$outboundSchema.parse(users));
+}
+
+export function usersFromJSON(
+  jsonString: string,
+): SafeParseResult<Users, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Users$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Users' from JSON`,
+  );
 }
 
 /** @internal */
@@ -163,4 +180,24 @@ export namespace UnifiedFilestorageGroupOutput$ {
   export const outboundSchema = UnifiedFilestorageGroupOutput$outboundSchema;
   /** @deprecated use `UnifiedFilestorageGroupOutput$Outbound` instead. */
   export type Outbound = UnifiedFilestorageGroupOutput$Outbound;
+}
+
+export function unifiedFilestorageGroupOutputToJSON(
+  unifiedFilestorageGroupOutput: UnifiedFilestorageGroupOutput,
+): string {
+  return JSON.stringify(
+    UnifiedFilestorageGroupOutput$outboundSchema.parse(
+      unifiedFilestorageGroupOutput,
+    ),
+  );
+}
+
+export function unifiedFilestorageGroupOutputFromJSON(
+  jsonString: string,
+): SafeParseResult<UnifiedFilestorageGroupOutput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UnifiedFilestorageGroupOutput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UnifiedFilestorageGroupOutput' from JSON`,
+  );
 }

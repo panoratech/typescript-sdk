@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   LineItem,
   LineItem$inboundSchema,
@@ -107,6 +110,33 @@ export namespace UnifiedAccountingJournalentryInputFieldMappings$ {
   /** @deprecated use `UnifiedAccountingJournalentryInputFieldMappings$Outbound` instead. */
   export type Outbound =
     UnifiedAccountingJournalentryInputFieldMappings$Outbound;
+}
+
+export function unifiedAccountingJournalentryInputFieldMappingsToJSON(
+  unifiedAccountingJournalentryInputFieldMappings:
+    UnifiedAccountingJournalentryInputFieldMappings,
+): string {
+  return JSON.stringify(
+    UnifiedAccountingJournalentryInputFieldMappings$outboundSchema.parse(
+      unifiedAccountingJournalentryInputFieldMappings,
+    ),
+  );
+}
+
+export function unifiedAccountingJournalentryInputFieldMappingsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UnifiedAccountingJournalentryInputFieldMappings,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UnifiedAccountingJournalentryInputFieldMappings$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UnifiedAccountingJournalentryInputFieldMappings' from JSON`,
+  );
 }
 
 /** @internal */
@@ -218,4 +248,25 @@ export namespace UnifiedAccountingJournalentryInput$ {
     UnifiedAccountingJournalentryInput$outboundSchema;
   /** @deprecated use `UnifiedAccountingJournalentryInput$Outbound` instead. */
   export type Outbound = UnifiedAccountingJournalentryInput$Outbound;
+}
+
+export function unifiedAccountingJournalentryInputToJSON(
+  unifiedAccountingJournalentryInput: UnifiedAccountingJournalentryInput,
+): string {
+  return JSON.stringify(
+    UnifiedAccountingJournalentryInput$outboundSchema.parse(
+      unifiedAccountingJournalentryInput,
+    ),
+  );
+}
+
+export function unifiedAccountingJournalentryInputFromJSON(
+  jsonString: string,
+): SafeParseResult<UnifiedAccountingJournalentryInput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UnifiedAccountingJournalentryInput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UnifiedAccountingJournalentryInput' from JSON`,
+  );
 }

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type UnifiedCrmDealOutput = {
   /**
@@ -149,4 +152,22 @@ export namespace UnifiedCrmDealOutput$ {
   export const outboundSchema = UnifiedCrmDealOutput$outboundSchema;
   /** @deprecated use `UnifiedCrmDealOutput$Outbound` instead. */
   export type Outbound = UnifiedCrmDealOutput$Outbound;
+}
+
+export function unifiedCrmDealOutputToJSON(
+  unifiedCrmDealOutput: UnifiedCrmDealOutput,
+): string {
+  return JSON.stringify(
+    UnifiedCrmDealOutput$outboundSchema.parse(unifiedCrmDealOutput),
+  );
+}
+
+export function unifiedCrmDealOutputFromJSON(
+  jsonString: string,
+): SafeParseResult<UnifiedCrmDealOutput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UnifiedCrmDealOutput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UnifiedCrmDealOutput' from JSON`,
+  );
 }

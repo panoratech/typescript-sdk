@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ListCrmContactsRequest = {
   /**
@@ -43,7 +46,7 @@ export const ListCrmContactsRequest$inboundSchema: z.ZodType<
 > = z.object({
   "x-connection-token": z.string(),
   remote_data: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -56,7 +59,7 @@ export const ListCrmContactsRequest$inboundSchema: z.ZodType<
 export type ListCrmContactsRequest$Outbound = {
   "x-connection-token": string;
   remote_data?: boolean | undefined;
-  limit: number;
+  limit?: number | undefined;
   cursor?: string | undefined;
 };
 
@@ -68,7 +71,7 @@ export const ListCrmContactsRequest$outboundSchema: z.ZodType<
 > = z.object({
   xConnectionToken: z.string(),
   remoteData: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -88,6 +91,24 @@ export namespace ListCrmContactsRequest$ {
   export const outboundSchema = ListCrmContactsRequest$outboundSchema;
   /** @deprecated use `ListCrmContactsRequest$Outbound` instead. */
   export type Outbound = ListCrmContactsRequest$Outbound;
+}
+
+export function listCrmContactsRequestToJSON(
+  listCrmContactsRequest: ListCrmContactsRequest,
+): string {
+  return JSON.stringify(
+    ListCrmContactsRequest$outboundSchema.parse(listCrmContactsRequest),
+  );
+}
+
+export function listCrmContactsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListCrmContactsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListCrmContactsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListCrmContactsRequest' from JSON`,
+  );
 }
 
 /** @internal */
@@ -142,6 +163,26 @@ export namespace ListCrmContactsResponseBody$ {
   export type Outbound = ListCrmContactsResponseBody$Outbound;
 }
 
+export function listCrmContactsResponseBodyToJSON(
+  listCrmContactsResponseBody: ListCrmContactsResponseBody,
+): string {
+  return JSON.stringify(
+    ListCrmContactsResponseBody$outboundSchema.parse(
+      listCrmContactsResponseBody,
+    ),
+  );
+}
+
+export function listCrmContactsResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<ListCrmContactsResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListCrmContactsResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListCrmContactsResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListCrmContactsResponse$inboundSchema: z.ZodType<
   ListCrmContactsResponse,
@@ -184,4 +225,22 @@ export namespace ListCrmContactsResponse$ {
   export const outboundSchema = ListCrmContactsResponse$outboundSchema;
   /** @deprecated use `ListCrmContactsResponse$Outbound` instead. */
   export type Outbound = ListCrmContactsResponse$Outbound;
+}
+
+export function listCrmContactsResponseToJSON(
+  listCrmContactsResponse: ListCrmContactsResponse,
+): string {
+  return JSON.stringify(
+    ListCrmContactsResponse$outboundSchema.parse(listCrmContactsResponse),
+  );
+}
+
+export function listCrmContactsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListCrmContactsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListCrmContactsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListCrmContactsResponse' from JSON`,
+  );
 }

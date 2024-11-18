@@ -11,7 +11,7 @@ import { Retryid } from "./retryid.js";
 export class Passthrough extends ClientSDK {
   private _retryid?: Retryid;
   get retryid(): Retryid {
-    return (this._retryid ??= new Retryid(this.options$));
+    return (this._retryid ??= new Retryid(this._options));
   }
 
   /**
@@ -20,7 +20,7 @@ export class Passthrough extends ClientSDK {
   async request(
     request: operations.RequestRequest,
     options?: RequestOptions,
-  ): Promise<operations.RequestResponse> {
+  ): Promise<operations.RequestResponseBody> {
     return unwrapAsync(passthroughRequest(
       this,
       request,

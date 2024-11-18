@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export enum PassThroughRequestDtoMethod {
   Get = "GET",
@@ -14,19 +17,12 @@ export type Data = {};
 
 export type RequestFormat = { [k: string]: any } | Array<{ [k: string]: any }>;
 
-export type Headers = {};
-
 export type PassThroughRequestDto = {
   method: PassThroughRequestDtoMethod;
   path: string | null;
-  data?: Data | undefined;
-  requestFormat?:
-    | { [k: string]: any }
-    | Array<{ [k: string]: any }>
-    | null
-    | undefined;
-  overrideBaseUrl?: { [k: string]: any } | null | undefined;
-  headers?: Headers | undefined;
+  data: Data;
+  requestFormat: { [k: string]: any } | Array<{ [k: string]: any }> | null;
+  overrideBaseUrl: { [k: string]: any } | null;
 };
 
 /** @internal */
@@ -74,6 +70,20 @@ export namespace Data$ {
   export type Outbound = Data$Outbound;
 }
 
+export function dataToJSON(data: Data): string {
+  return JSON.stringify(Data$outboundSchema.parse(data));
+}
+
+export function dataFromJSON(
+  jsonString: string,
+): SafeParseResult<Data, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Data$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Data' from JSON`,
+  );
+}
+
 /** @internal */
 export const RequestFormat$inboundSchema: z.ZodType<
   RequestFormat,
@@ -106,31 +116,18 @@ export namespace RequestFormat$ {
   export type Outbound = RequestFormat$Outbound;
 }
 
-/** @internal */
-export const Headers$inboundSchema: z.ZodType<Headers, z.ZodTypeDef, unknown> =
-  z.object({});
+export function requestFormatToJSON(requestFormat: RequestFormat): string {
+  return JSON.stringify(RequestFormat$outboundSchema.parse(requestFormat));
+}
 
-/** @internal */
-export type Headers$Outbound = {};
-
-/** @internal */
-export const Headers$outboundSchema: z.ZodType<
-  Headers$Outbound,
-  z.ZodTypeDef,
-  Headers
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Headers$ {
-  /** @deprecated use `Headers$inboundSchema` instead. */
-  export const inboundSchema = Headers$inboundSchema;
-  /** @deprecated use `Headers$outboundSchema` instead. */
-  export const outboundSchema = Headers$outboundSchema;
-  /** @deprecated use `Headers$Outbound` instead. */
-  export type Outbound = Headers$Outbound;
+export function requestFormatFromJSON(
+  jsonString: string,
+): SafeParseResult<RequestFormat, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RequestFormat$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RequestFormat' from JSON`,
+  );
 }
 
 /** @internal */
@@ -141,12 +138,11 @@ export const PassThroughRequestDto$inboundSchema: z.ZodType<
 > = z.object({
   method: PassThroughRequestDtoMethod$inboundSchema,
   path: z.nullable(z.string()),
-  data: z.lazy(() => Data$inboundSchema).optional(),
+  data: z.lazy(() => Data$inboundSchema),
   request_format: z.nullable(
     z.union([z.record(z.any()), z.array(z.record(z.any()))]),
-  ).optional(),
-  overrideBaseUrl: z.nullable(z.record(z.any())).optional(),
-  headers: z.lazy(() => Headers$inboundSchema).optional(),
+  ),
+  overrideBaseUrl: z.nullable(z.record(z.any())),
 }).transform((v) => {
   return remap$(v, {
     "request_format": "requestFormat",
@@ -157,14 +153,9 @@ export const PassThroughRequestDto$inboundSchema: z.ZodType<
 export type PassThroughRequestDto$Outbound = {
   method: string;
   path: string | null;
-  data?: Data$Outbound | undefined;
-  request_format?:
-    | { [k: string]: any }
-    | Array<{ [k: string]: any }>
-    | null
-    | undefined;
-  overrideBaseUrl?: { [k: string]: any } | null | undefined;
-  headers?: Headers$Outbound | undefined;
+  data: Data$Outbound;
+  request_format: { [k: string]: any } | Array<{ [k: string]: any }> | null;
+  overrideBaseUrl: { [k: string]: any } | null;
 };
 
 /** @internal */
@@ -175,12 +166,11 @@ export const PassThroughRequestDto$outboundSchema: z.ZodType<
 > = z.object({
   method: PassThroughRequestDtoMethod$outboundSchema,
   path: z.nullable(z.string()),
-  data: z.lazy(() => Data$outboundSchema).optional(),
+  data: z.lazy(() => Data$outboundSchema),
   requestFormat: z.nullable(
     z.union([z.record(z.any()), z.array(z.record(z.any()))]),
-  ).optional(),
-  overrideBaseUrl: z.nullable(z.record(z.any())).optional(),
-  headers: z.lazy(() => Headers$outboundSchema).optional(),
+  ),
+  overrideBaseUrl: z.nullable(z.record(z.any())),
 }).transform((v) => {
   return remap$(v, {
     requestFormat: "request_format",
@@ -198,4 +188,22 @@ export namespace PassThroughRequestDto$ {
   export const outboundSchema = PassThroughRequestDto$outboundSchema;
   /** @deprecated use `PassThroughRequestDto$Outbound` instead. */
   export type Outbound = PassThroughRequestDto$Outbound;
+}
+
+export function passThroughRequestDtoToJSON(
+  passThroughRequestDto: PassThroughRequestDto,
+): string {
+  return JSON.stringify(
+    PassThroughRequestDto$outboundSchema.parse(passThroughRequestDto),
+  );
+}
+
+export function passThroughRequestDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<PassThroughRequestDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PassThroughRequestDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PassThroughRequestDto' from JSON`,
+  );
 }

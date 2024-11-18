@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DeleteRequest = {
   /**
@@ -45,4 +48,18 @@ export namespace DeleteRequest$ {
   export const outboundSchema = DeleteRequest$outboundSchema;
   /** @deprecated use `DeleteRequest$Outbound` instead. */
   export type Outbound = DeleteRequest$Outbound;
+}
+
+export function deleteRequestToJSON(deleteRequest: DeleteRequest): string {
+  return JSON.stringify(DeleteRequest$outboundSchema.parse(deleteRequest));
+}
+
+export function deleteRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteRequest' from JSON`,
+  );
 }

@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ListAccountingPhonenumberRequest = {
   /**
@@ -43,7 +46,7 @@ export const ListAccountingPhonenumberRequest$inboundSchema: z.ZodType<
 > = z.object({
   "x-connection-token": z.string(),
   remote_data: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -56,7 +59,7 @@ export const ListAccountingPhonenumberRequest$inboundSchema: z.ZodType<
 export type ListAccountingPhonenumberRequest$Outbound = {
   "x-connection-token": string;
   remote_data?: boolean | undefined;
-  limit: number;
+  limit?: number | undefined;
   cursor?: string | undefined;
 };
 
@@ -68,7 +71,7 @@ export const ListAccountingPhonenumberRequest$outboundSchema: z.ZodType<
 > = z.object({
   xConnectionToken: z.string(),
   remoteData: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -88,6 +91,26 @@ export namespace ListAccountingPhonenumberRequest$ {
   export const outboundSchema = ListAccountingPhonenumberRequest$outboundSchema;
   /** @deprecated use `ListAccountingPhonenumberRequest$Outbound` instead. */
   export type Outbound = ListAccountingPhonenumberRequest$Outbound;
+}
+
+export function listAccountingPhonenumberRequestToJSON(
+  listAccountingPhonenumberRequest: ListAccountingPhonenumberRequest,
+): string {
+  return JSON.stringify(
+    ListAccountingPhonenumberRequest$outboundSchema.parse(
+      listAccountingPhonenumberRequest,
+    ),
+  );
+}
+
+export function listAccountingPhonenumberRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAccountingPhonenumberRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListAccountingPhonenumberRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAccountingPhonenumberRequest' from JSON`,
+  );
 }
 
 /** @internal */
@@ -144,6 +167,27 @@ export namespace ListAccountingPhonenumberResponseBody$ {
   export type Outbound = ListAccountingPhonenumberResponseBody$Outbound;
 }
 
+export function listAccountingPhonenumberResponseBodyToJSON(
+  listAccountingPhonenumberResponseBody: ListAccountingPhonenumberResponseBody,
+): string {
+  return JSON.stringify(
+    ListAccountingPhonenumberResponseBody$outboundSchema.parse(
+      listAccountingPhonenumberResponseBody,
+    ),
+  );
+}
+
+export function listAccountingPhonenumberResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAccountingPhonenumberResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListAccountingPhonenumberResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAccountingPhonenumberResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListAccountingPhonenumberResponse$inboundSchema: z.ZodType<
   ListAccountingPhonenumberResponse,
@@ -187,4 +231,24 @@ export namespace ListAccountingPhonenumberResponse$ {
     ListAccountingPhonenumberResponse$outboundSchema;
   /** @deprecated use `ListAccountingPhonenumberResponse$Outbound` instead. */
   export type Outbound = ListAccountingPhonenumberResponse$Outbound;
+}
+
+export function listAccountingPhonenumberResponseToJSON(
+  listAccountingPhonenumberResponse: ListAccountingPhonenumberResponse,
+): string {
+  return JSON.stringify(
+    ListAccountingPhonenumberResponse$outboundSchema.parse(
+      listAccountingPhonenumberResponse,
+    ),
+  );
+}
+
+export function listAccountingPhonenumberResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAccountingPhonenumberResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListAccountingPhonenumberResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAccountingPhonenumberResponse' from JSON`,
+  );
 }

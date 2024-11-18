@@ -11,21 +11,21 @@ import { Products } from "./products.js";
 export class Ecommerce extends ClientSDK {
   private _products?: Products;
   get products(): Products {
-    return (this._products ??= new Products(this.options$));
+    return (this._products ??= new Products(this._options));
   }
 
   private _orders?: Orders;
   get orders(): Orders {
-    return (this._orders ??= new Orders(this.options$));
+    return (this._orders ??= new Orders(this._options));
   }
 
   private _customers?: Customers;
   get customers(): Customers {
-    return (this._customers ??= new Customers(this.options$));
+    return (this._customers ??= new Customers(this._options));
   }
 
   private _fulfillments?: Fulfillments;
   get fulfillments(): Fulfillments {
-    return (this._fulfillments ??= new Fulfillments(this.options$));
+    return (this._fulfillments ??= new Fulfillments(this._options));
   }
 }

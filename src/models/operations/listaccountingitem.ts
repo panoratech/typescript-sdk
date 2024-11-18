@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ListAccountingItemRequest = {
   /**
@@ -43,7 +46,7 @@ export const ListAccountingItemRequest$inboundSchema: z.ZodType<
 > = z.object({
   "x-connection-token": z.string(),
   remote_data: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -56,7 +59,7 @@ export const ListAccountingItemRequest$inboundSchema: z.ZodType<
 export type ListAccountingItemRequest$Outbound = {
   "x-connection-token": string;
   remote_data?: boolean | undefined;
-  limit: number;
+  limit?: number | undefined;
   cursor?: string | undefined;
 };
 
@@ -68,7 +71,7 @@ export const ListAccountingItemRequest$outboundSchema: z.ZodType<
 > = z.object({
   xConnectionToken: z.string(),
   remoteData: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -88,6 +91,24 @@ export namespace ListAccountingItemRequest$ {
   export const outboundSchema = ListAccountingItemRequest$outboundSchema;
   /** @deprecated use `ListAccountingItemRequest$Outbound` instead. */
   export type Outbound = ListAccountingItemRequest$Outbound;
+}
+
+export function listAccountingItemRequestToJSON(
+  listAccountingItemRequest: ListAccountingItemRequest,
+): string {
+  return JSON.stringify(
+    ListAccountingItemRequest$outboundSchema.parse(listAccountingItemRequest),
+  );
+}
+
+export function listAccountingItemRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAccountingItemRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListAccountingItemRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAccountingItemRequest' from JSON`,
+  );
 }
 
 /** @internal */
@@ -142,6 +163,26 @@ export namespace ListAccountingItemResponseBody$ {
   export type Outbound = ListAccountingItemResponseBody$Outbound;
 }
 
+export function listAccountingItemResponseBodyToJSON(
+  listAccountingItemResponseBody: ListAccountingItemResponseBody,
+): string {
+  return JSON.stringify(
+    ListAccountingItemResponseBody$outboundSchema.parse(
+      listAccountingItemResponseBody,
+    ),
+  );
+}
+
+export function listAccountingItemResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAccountingItemResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListAccountingItemResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAccountingItemResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListAccountingItemResponse$inboundSchema: z.ZodType<
   ListAccountingItemResponse,
@@ -184,4 +225,22 @@ export namespace ListAccountingItemResponse$ {
   export const outboundSchema = ListAccountingItemResponse$outboundSchema;
   /** @deprecated use `ListAccountingItemResponse$Outbound` instead. */
   export type Outbound = ListAccountingItemResponse$Outbound;
+}
+
+export function listAccountingItemResponseToJSON(
+  listAccountingItemResponse: ListAccountingItemResponse,
+): string {
+  return JSON.stringify(
+    ListAccountingItemResponse$outboundSchema.parse(listAccountingItemResponse),
+  );
+}
+
+export function listAccountingItemResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAccountingItemResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListAccountingItemResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAccountingItemResponse' from JSON`,
+  );
 }

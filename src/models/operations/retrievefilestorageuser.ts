@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type RetrieveFilestorageUserRequest = {
   /**
@@ -70,4 +73,24 @@ export namespace RetrieveFilestorageUserRequest$ {
   export const outboundSchema = RetrieveFilestorageUserRequest$outboundSchema;
   /** @deprecated use `RetrieveFilestorageUserRequest$Outbound` instead. */
   export type Outbound = RetrieveFilestorageUserRequest$Outbound;
+}
+
+export function retrieveFilestorageUserRequestToJSON(
+  retrieveFilestorageUserRequest: RetrieveFilestorageUserRequest,
+): string {
+  return JSON.stringify(
+    RetrieveFilestorageUserRequest$outboundSchema.parse(
+      retrieveFilestorageUserRequest,
+    ),
+  );
+}
+
+export function retrieveFilestorageUserRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<RetrieveFilestorageUserRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RetrieveFilestorageUserRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RetrieveFilestorageUserRequest' from JSON`,
+  );
 }

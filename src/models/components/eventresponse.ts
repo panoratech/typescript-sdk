@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Scope of the event
@@ -270,4 +273,18 @@ export namespace EventResponse$ {
   export const outboundSchema = EventResponse$outboundSchema;
   /** @deprecated use `EventResponse$Outbound` instead. */
   export type Outbound = EventResponse$Outbound;
+}
+
+export function eventResponseToJSON(eventResponse: EventResponse): string {
+  return JSON.stringify(EventResponse$outboundSchema.parse(eventResponse));
+}
+
+export function eventResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<EventResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EventResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EventResponse' from JSON`,
+  );
 }

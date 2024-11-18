@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   LineItem,
   LineItem$inboundSchema,
@@ -157,6 +160,33 @@ export namespace UnifiedAccountingPurchaseorderOutputFieldMappings$ {
     UnifiedAccountingPurchaseorderOutputFieldMappings$Outbound;
 }
 
+export function unifiedAccountingPurchaseorderOutputFieldMappingsToJSON(
+  unifiedAccountingPurchaseorderOutputFieldMappings:
+    UnifiedAccountingPurchaseorderOutputFieldMappings,
+): string {
+  return JSON.stringify(
+    UnifiedAccountingPurchaseorderOutputFieldMappings$outboundSchema.parse(
+      unifiedAccountingPurchaseorderOutputFieldMappings,
+    ),
+  );
+}
+
+export function unifiedAccountingPurchaseorderOutputFieldMappingsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UnifiedAccountingPurchaseorderOutputFieldMappings,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UnifiedAccountingPurchaseorderOutputFieldMappings$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UnifiedAccountingPurchaseorderOutputFieldMappings' from JSON`,
+  );
+}
+
 /** @internal */
 export const UnifiedAccountingPurchaseorderOutputRemoteData$inboundSchema:
   z.ZodType<
@@ -190,6 +220,33 @@ export namespace UnifiedAccountingPurchaseorderOutputRemoteData$ {
   /** @deprecated use `UnifiedAccountingPurchaseorderOutputRemoteData$Outbound` instead. */
   export type Outbound =
     UnifiedAccountingPurchaseorderOutputRemoteData$Outbound;
+}
+
+export function unifiedAccountingPurchaseorderOutputRemoteDataToJSON(
+  unifiedAccountingPurchaseorderOutputRemoteData:
+    UnifiedAccountingPurchaseorderOutputRemoteData,
+): string {
+  return JSON.stringify(
+    UnifiedAccountingPurchaseorderOutputRemoteData$outboundSchema.parse(
+      unifiedAccountingPurchaseorderOutputRemoteData,
+    ),
+  );
+}
+
+export function unifiedAccountingPurchaseorderOutputRemoteDataFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UnifiedAccountingPurchaseorderOutputRemoteData,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UnifiedAccountingPurchaseorderOutputRemoteData$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UnifiedAccountingPurchaseorderOutputRemoteData' from JSON`,
+  );
 }
 
 /** @internal */
@@ -366,4 +423,25 @@ export namespace UnifiedAccountingPurchaseorderOutput$ {
     UnifiedAccountingPurchaseorderOutput$outboundSchema;
   /** @deprecated use `UnifiedAccountingPurchaseorderOutput$Outbound` instead. */
   export type Outbound = UnifiedAccountingPurchaseorderOutput$Outbound;
+}
+
+export function unifiedAccountingPurchaseorderOutputToJSON(
+  unifiedAccountingPurchaseorderOutput: UnifiedAccountingPurchaseorderOutput,
+): string {
+  return JSON.stringify(
+    UnifiedAccountingPurchaseorderOutput$outboundSchema.parse(
+      unifiedAccountingPurchaseorderOutput,
+    ),
+  );
+}
+
+export function unifiedAccountingPurchaseorderOutputFromJSON(
+  jsonString: string,
+): SafeParseResult<UnifiedAccountingPurchaseorderOutput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UnifiedAccountingPurchaseorderOutput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UnifiedAccountingPurchaseorderOutput' from JSON`,
+  );
 }

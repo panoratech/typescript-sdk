@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type RetrieveTicketingCommentRequest = {
   /**
@@ -79,6 +82,26 @@ export namespace RetrieveTicketingCommentRequest$ {
   export type Outbound = RetrieveTicketingCommentRequest$Outbound;
 }
 
+export function retrieveTicketingCommentRequestToJSON(
+  retrieveTicketingCommentRequest: RetrieveTicketingCommentRequest,
+): string {
+  return JSON.stringify(
+    RetrieveTicketingCommentRequest$outboundSchema.parse(
+      retrieveTicketingCommentRequest,
+    ),
+  );
+}
+
+export function retrieveTicketingCommentRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<RetrieveTicketingCommentRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RetrieveTicketingCommentRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RetrieveTicketingCommentRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const RetrieveTicketingCommentResponseBody$inboundSchema: z.ZodType<
   RetrieveTicketingCommentResponseBody,
@@ -131,4 +154,25 @@ export namespace RetrieveTicketingCommentResponseBody$ {
     RetrieveTicketingCommentResponseBody$outboundSchema;
   /** @deprecated use `RetrieveTicketingCommentResponseBody$Outbound` instead. */
   export type Outbound = RetrieveTicketingCommentResponseBody$Outbound;
+}
+
+export function retrieveTicketingCommentResponseBodyToJSON(
+  retrieveTicketingCommentResponseBody: RetrieveTicketingCommentResponseBody,
+): string {
+  return JSON.stringify(
+    RetrieveTicketingCommentResponseBody$outboundSchema.parse(
+      retrieveTicketingCommentResponseBody,
+    ),
+  );
+}
+
+export function retrieveTicketingCommentResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<RetrieveTicketingCommentResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RetrieveTicketingCommentResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RetrieveTicketingCommentResponseBody' from JSON`,
+  );
 }

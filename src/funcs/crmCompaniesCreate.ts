@@ -3,13 +3,9 @@
  */
 
 import { PanoraCore } from "../core.js";
-import {
-  encodeFormQuery as encodeFormQuery$,
-  encodeJSON as encodeJSON$,
-  encodeSimple as encodeSimple$,
-} from "../lib/encodings.js";
-import * as m$ from "../lib/matchers.js";
-import * as schemas$ from "../lib/schemas.js";
+import { encodeFormQuery, encodeJSON, encodeSimple } from "../lib/encodings.js";
+import * as M from "../lib/matchers.js";
+import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
@@ -33,7 +29,7 @@ import { Result } from "../types/fp.js";
  * Create Companies in any supported CRM software
  */
 export async function crmCompaniesCreate(
-  client$: PanoraCore,
+  client: PanoraCore,
   request: operations.CreateCrmCompanyRequest,
   options?: RequestOptions,
 ): Promise<
@@ -48,73 +44,78 @@ export async function crmCompaniesCreate(
     | ConnectionError
   >
 > {
-  const input$ = request;
-
-  const parsed$ = schemas$.safeParse(
-    input$,
-    (value$) => operations.CreateCrmCompanyRequest$outboundSchema.parse(value$),
+  const parsed = safeParse(
+    request,
+    (value) => operations.CreateCrmCompanyRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
-  if (!parsed$.ok) {
-    return parsed$;
+  if (!parsed.ok) {
+    return parsed;
   }
-  const payload$ = parsed$.value;
-  const body$ = encodeJSON$("body", payload$.UnifiedCrmCompanyInput, {
+  const payload = parsed.value;
+  const body = encodeJSON("body", payload.UnifiedCrmCompanyInput, {
     explode: true,
   });
 
-  const path$ = pathToFunc("/crm/companies")();
+  const path = pathToFunc("/crm/companies")();
 
-  const query$ = encodeFormQuery$({
-    "remote_data": payload$.remote_data,
+  const query = encodeFormQuery({
+    "remote_data": payload.remote_data,
   });
 
-  const headers$ = new Headers({
+  const headers = new Headers({
     "Content-Type": "application/json",
     Accept: "application/json",
-    "x-connection-token": encodeSimple$(
+    "x-connection-token": encodeSimple(
       "x-connection-token",
-      payload$["x-connection-token"],
+      payload["x-connection-token"],
       { explode: false, charEncoding: "none" },
     ),
   });
 
-  const apiKey$ = await extractSecurity(client$.options$.apiKey);
-  const security$ = apiKey$ == null ? {} : { apiKey: apiKey$ };
+  const secConfig = await extractSecurity(client._options.apiKey);
+  const securityInput = secConfig == null ? {} : { apiKey: secConfig };
+  const requestSecurity = resolveGlobalSecurity(securityInput);
+
   const context = {
     operationID: "createCrmCompany",
     oAuth2Scopes: [],
-    securitySource: client$.options$.apiKey,
-  };
-  const securitySettings$ = resolveGlobalSecurity(security$);
 
-  const requestRes = client$.createRequest$(context, {
-    security: securitySettings$,
+    resolvedSecurity: requestSecurity,
+
+    securitySource: client._options.apiKey,
+    retryConfig: options?.retries
+      || client._options.retryConfig
+      || { strategy: "none" },
+    retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+  };
+
+  const requestRes = client._createRequest(context, {
+    security: requestSecurity,
     method: "POST",
-    path: path$,
-    headers: headers$,
-    query: query$,
-    body: body$,
-    timeoutMs: options?.timeoutMs || client$.options$.timeoutMs || -1,
+    path: path,
+    headers: headers,
+    query: query,
+    body: body,
+    timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
     return requestRes;
   }
-  const request$ = requestRes.value;
+  const req = requestRes.value;
 
-  const doResult = await client$.do$(request$, {
+  const doResult = await client._do(req, {
     context,
     errorCodes: ["4XX", "5XX"],
-    retryConfig: options?.retries
-      || client$.options$.retryConfig,
-    retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+    retryConfig: context.retryConfig,
+    retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
     return doResult;
   }
   const response = doResult.value;
 
-  const [result$] = await m$.match<
+  const [result] = await M.match<
     components.UnifiedCrmCompanyOutput,
     | SDKError
     | SDKValidationError
@@ -124,12 +125,12 @@ export async function crmCompaniesCreate(
     | RequestTimeoutError
     | ConnectionError
   >(
-    m$.json(201, components.UnifiedCrmCompanyOutput$inboundSchema),
-    m$.fail(["4XX", "5XX"]),
+    M.json(201, components.UnifiedCrmCompanyOutput$inboundSchema),
+    M.fail(["4XX", "5XX"]),
   )(response);
-  if (!result$.ok) {
-    return result$;
+  if (!result.ok) {
+    return result;
   }
 
-  return result$;
+  return result;
 }

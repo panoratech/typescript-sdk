@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type UnifiedMarketingautomationContactInput = {};
 
@@ -36,4 +39,26 @@ export namespace UnifiedMarketingautomationContactInput$ {
     UnifiedMarketingautomationContactInput$outboundSchema;
   /** @deprecated use `UnifiedMarketingautomationContactInput$Outbound` instead. */
   export type Outbound = UnifiedMarketingautomationContactInput$Outbound;
+}
+
+export function unifiedMarketingautomationContactInputToJSON(
+  unifiedMarketingautomationContactInput:
+    UnifiedMarketingautomationContactInput,
+): string {
+  return JSON.stringify(
+    UnifiedMarketingautomationContactInput$outboundSchema.parse(
+      unifiedMarketingautomationContactInput,
+    ),
+  );
+}
+
+export function unifiedMarketingautomationContactInputFromJSON(
+  jsonString: string,
+): SafeParseResult<UnifiedMarketingautomationContactInput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UnifiedMarketingautomationContactInput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UnifiedMarketingautomationContactInput' from JSON`,
+  );
 }

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export enum CustomFieldCreateDtoObjectTypeOwner {
   Company = "company",
@@ -169,4 +172,22 @@ export namespace CustomFieldCreateDto$ {
   export const outboundSchema = CustomFieldCreateDto$outboundSchema;
   /** @deprecated use `CustomFieldCreateDto$Outbound` instead. */
   export type Outbound = CustomFieldCreateDto$Outbound;
+}
+
+export function customFieldCreateDtoToJSON(
+  customFieldCreateDto: CustomFieldCreateDto,
+): string {
+  return JSON.stringify(
+    CustomFieldCreateDto$outboundSchema.parse(customFieldCreateDto),
+  );
+}
+
+export function customFieldCreateDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<CustomFieldCreateDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CustomFieldCreateDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CustomFieldCreateDto' from JSON`,
+  );
 }

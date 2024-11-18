@@ -4,6 +4,7 @@
 
 import { ClientSDK } from "../lib/sdks.js";
 import { Addresses } from "./addresses.js";
+import { Attachments } from "./attachments.js";
 import { Balancesheets } from "./balancesheets.js";
 import { Cashflowstatements } from "./cashflowstatements.js";
 import { Companyinfos } from "./companyinfos.js";
@@ -15,7 +16,6 @@ import { Items } from "./items.js";
 import { Journalentries } from "./journalentries.js";
 import { PanoraAccountingContacts } from "./panoraaccountingcontacts.js";
 import { PanoraAccounts } from "./panoraaccounts.js";
-import { PanoraAttachments } from "./panoraattachments.js";
 import { Payments } from "./payments.js";
 import { Phonenumbers } from "./phonenumbers.js";
 import { Purchaseorders } from "./purchaseorders.js";
@@ -27,101 +27,101 @@ import { Vendorcredits } from "./vendorcredits.js";
 export class Accounting extends ClientSDK {
   private _accounts?: PanoraAccounts;
   get accounts(): PanoraAccounts {
-    return (this._accounts ??= new PanoraAccounts(this.options$));
+    return (this._accounts ??= new PanoraAccounts(this._options));
   }
 
   private _addresses?: Addresses;
   get addresses(): Addresses {
-    return (this._addresses ??= new Addresses(this.options$));
+    return (this._addresses ??= new Addresses(this._options));
   }
 
-  private _attachments?: PanoraAttachments;
-  get attachments(): PanoraAttachments {
-    return (this._attachments ??= new PanoraAttachments(this.options$));
+  private _attachments?: Attachments;
+  get attachments(): Attachments {
+    return (this._attachments ??= new Attachments(this._options));
   }
 
   private _balancesheets?: Balancesheets;
   get balancesheets(): Balancesheets {
-    return (this._balancesheets ??= new Balancesheets(this.options$));
+    return (this._balancesheets ??= new Balancesheets(this._options));
   }
 
   private _cashflowstatements?: Cashflowstatements;
   get cashflowstatements(): Cashflowstatements {
-    return (this._cashflowstatements ??= new Cashflowstatements(this.options$));
+    return (this._cashflowstatements ??= new Cashflowstatements(this._options));
   }
 
   private _companyinfos?: Companyinfos;
   get companyinfos(): Companyinfos {
-    return (this._companyinfos ??= new Companyinfos(this.options$));
+    return (this._companyinfos ??= new Companyinfos(this._options));
   }
 
   private _contacts?: PanoraAccountingContacts;
   get contacts(): PanoraAccountingContacts {
-    return (this._contacts ??= new PanoraAccountingContacts(this.options$));
+    return (this._contacts ??= new PanoraAccountingContacts(this._options));
   }
 
   private _creditnotes?: Creditnotes;
   get creditnotes(): Creditnotes {
-    return (this._creditnotes ??= new Creditnotes(this.options$));
+    return (this._creditnotes ??= new Creditnotes(this._options));
   }
 
   private _expenses?: Expenses;
   get expenses(): Expenses {
-    return (this._expenses ??= new Expenses(this.options$));
+    return (this._expenses ??= new Expenses(this._options));
   }
 
   private _incomestatements?: Incomestatements;
   get incomestatements(): Incomestatements {
-    return (this._incomestatements ??= new Incomestatements(this.options$));
+    return (this._incomestatements ??= new Incomestatements(this._options));
   }
 
   private _invoices?: Invoices;
   get invoices(): Invoices {
-    return (this._invoices ??= new Invoices(this.options$));
+    return (this._invoices ??= new Invoices(this._options));
   }
 
   private _items?: Items;
   get items(): Items {
-    return (this._items ??= new Items(this.options$));
+    return (this._items ??= new Items(this._options));
   }
 
   private _journalentries?: Journalentries;
   get journalentries(): Journalentries {
-    return (this._journalentries ??= new Journalentries(this.options$));
+    return (this._journalentries ??= new Journalentries(this._options));
   }
 
   private _payments?: Payments;
   get payments(): Payments {
-    return (this._payments ??= new Payments(this.options$));
+    return (this._payments ??= new Payments(this._options));
   }
 
   private _phonenumbers?: Phonenumbers;
   get phonenumbers(): Phonenumbers {
-    return (this._phonenumbers ??= new Phonenumbers(this.options$));
+    return (this._phonenumbers ??= new Phonenumbers(this._options));
   }
 
   private _purchaseorders?: Purchaseorders;
   get purchaseorders(): Purchaseorders {
-    return (this._purchaseorders ??= new Purchaseorders(this.options$));
+    return (this._purchaseorders ??= new Purchaseorders(this._options));
   }
 
   private _taxrates?: Taxrates;
   get taxrates(): Taxrates {
-    return (this._taxrates ??= new Taxrates(this.options$));
+    return (this._taxrates ??= new Taxrates(this._options));
   }
 
   private _trackingcategories?: Trackingcategories;
   get trackingcategories(): Trackingcategories {
-    return (this._trackingcategories ??= new Trackingcategories(this.options$));
+    return (this._trackingcategories ??= new Trackingcategories(this._options));
   }
 
   private _transactions?: Transactions;
   get transactions(): Transactions {
-    return (this._transactions ??= new Transactions(this.options$));
+    return (this._transactions ??= new Transactions(this._options));
   }
 
   private _vendorcredits?: Vendorcredits;
   get vendorcredits(): Vendorcredits {
-    return (this._vendorcredits ??= new Vendorcredits(this.options$));
+    return (this._vendorcredits ??= new Vendorcredits(this._options));
   }
 }

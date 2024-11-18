@@ -1,6 +1,6 @@
 # RemoteData
 
-The remote data of the bank info in the context of the 3rd Party
+The remote data of the account in the context of the 3rd Party
 
 ## Example Usage
 

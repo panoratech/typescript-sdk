@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   UnifiedTicketingAttachmentInput,
   UnifiedTicketingAttachmentInput$inboundSchema,
@@ -205,6 +208,20 @@ export namespace Collections$ {
   export type Outbound = Collections$Outbound;
 }
 
+export function collectionsToJSON(collections: Collections): string {
+  return JSON.stringify(Collections$outboundSchema.parse(collections));
+}
+
+export function collectionsFromJSON(
+  jsonString: string,
+): SafeParseResult<Collections, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Collections$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Collections' from JSON`,
+  );
+}
+
 /** @internal */
 export const Tags$inboundSchema: z.ZodType<Tags, z.ZodTypeDef, unknown> = z
   .union([UnifiedTicketingTagOutput$inboundSchema, z.string()]);
@@ -227,6 +244,20 @@ export namespace Tags$ {
   export const outboundSchema = Tags$outboundSchema;
   /** @deprecated use `Tags$Outbound` instead. */
   export type Outbound = Tags$Outbound;
+}
+
+export function tagsToJSON(tags: Tags): string {
+  return JSON.stringify(Tags$outboundSchema.parse(tags));
+}
+
+export function tagsFromJSON(
+  jsonString: string,
+): SafeParseResult<Tags, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Tags$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Tags' from JSON`,
+  );
 }
 
 /** @internal */
@@ -261,6 +292,33 @@ export namespace UnifiedTicketingTicketOutputAttachments$ {
     UnifiedTicketingTicketOutputAttachments$outboundSchema;
   /** @deprecated use `UnifiedTicketingTicketOutputAttachments$Outbound` instead. */
   export type Outbound = UnifiedTicketingTicketOutputAttachments$Outbound;
+}
+
+export function unifiedTicketingTicketOutputAttachmentsToJSON(
+  unifiedTicketingTicketOutputAttachments:
+    UnifiedTicketingTicketOutputAttachments,
+): string {
+  return JSON.stringify(
+    UnifiedTicketingTicketOutputAttachments$outboundSchema.parse(
+      unifiedTicketingTicketOutputAttachments,
+    ),
+  );
+}
+
+export function unifiedTicketingTicketOutputAttachmentsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UnifiedTicketingTicketOutputAttachments,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UnifiedTicketingTicketOutputAttachments$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UnifiedTicketingTicketOutputAttachments' from JSON`,
+  );
 }
 
 /** @internal */
@@ -346,6 +404,20 @@ export namespace Comment$ {
   export type Outbound = Comment$Outbound;
 }
 
+export function commentToJSON(comment: Comment): string {
+  return JSON.stringify(Comment$outboundSchema.parse(comment));
+}
+
+export function commentFromJSON(
+  jsonString: string,
+): SafeParseResult<Comment, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Comment$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Comment' from JSON`,
+  );
+}
+
 /** @internal */
 export const Attachments$inboundSchema: z.ZodType<
   Attachments,
@@ -376,6 +448,20 @@ export namespace Attachments$ {
   export const outboundSchema = Attachments$outboundSchema;
   /** @deprecated use `Attachments$Outbound` instead. */
   export type Outbound = Attachments$Outbound;
+}
+
+export function attachmentsToJSON(attachments: Attachments): string {
+  return JSON.stringify(Attachments$outboundSchema.parse(attachments));
+}
+
+export function attachmentsFromJSON(
+  jsonString: string,
+): SafeParseResult<Attachments, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Attachments$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Attachments' from JSON`,
+  );
 }
 
 /** @internal */
@@ -534,4 +620,24 @@ export namespace UnifiedTicketingTicketOutput$ {
   export const outboundSchema = UnifiedTicketingTicketOutput$outboundSchema;
   /** @deprecated use `UnifiedTicketingTicketOutput$Outbound` instead. */
   export type Outbound = UnifiedTicketingTicketOutput$Outbound;
+}
+
+export function unifiedTicketingTicketOutputToJSON(
+  unifiedTicketingTicketOutput: UnifiedTicketingTicketOutput,
+): string {
+  return JSON.stringify(
+    UnifiedTicketingTicketOutput$outboundSchema.parse(
+      unifiedTicketingTicketOutput,
+    ),
+  );
+}
+
+export function unifiedTicketingTicketOutputFromJSON(
+  jsonString: string,
+): SafeParseResult<UnifiedTicketingTicketOutput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UnifiedTicketingTicketOutput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UnifiedTicketingTicketOutput' from JSON`,
+  );
 }

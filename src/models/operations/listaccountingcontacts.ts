@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ListAccountingContactsRequest = {
   /**
@@ -43,7 +46,7 @@ export const ListAccountingContactsRequest$inboundSchema: z.ZodType<
 > = z.object({
   "x-connection-token": z.string(),
   remote_data: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -56,7 +59,7 @@ export const ListAccountingContactsRequest$inboundSchema: z.ZodType<
 export type ListAccountingContactsRequest$Outbound = {
   "x-connection-token": string;
   remote_data?: boolean | undefined;
-  limit: number;
+  limit?: number | undefined;
   cursor?: string | undefined;
 };
 
@@ -68,7 +71,7 @@ export const ListAccountingContactsRequest$outboundSchema: z.ZodType<
 > = z.object({
   xConnectionToken: z.string(),
   remoteData: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -88,6 +91,26 @@ export namespace ListAccountingContactsRequest$ {
   export const outboundSchema = ListAccountingContactsRequest$outboundSchema;
   /** @deprecated use `ListAccountingContactsRequest$Outbound` instead. */
   export type Outbound = ListAccountingContactsRequest$Outbound;
+}
+
+export function listAccountingContactsRequestToJSON(
+  listAccountingContactsRequest: ListAccountingContactsRequest,
+): string {
+  return JSON.stringify(
+    ListAccountingContactsRequest$outboundSchema.parse(
+      listAccountingContactsRequest,
+    ),
+  );
+}
+
+export function listAccountingContactsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAccountingContactsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListAccountingContactsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAccountingContactsRequest' from JSON`,
+  );
 }
 
 /** @internal */
@@ -143,6 +166,27 @@ export namespace ListAccountingContactsResponseBody$ {
   export type Outbound = ListAccountingContactsResponseBody$Outbound;
 }
 
+export function listAccountingContactsResponseBodyToJSON(
+  listAccountingContactsResponseBody: ListAccountingContactsResponseBody,
+): string {
+  return JSON.stringify(
+    ListAccountingContactsResponseBody$outboundSchema.parse(
+      listAccountingContactsResponseBody,
+    ),
+  );
+}
+
+export function listAccountingContactsResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAccountingContactsResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListAccountingContactsResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAccountingContactsResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListAccountingContactsResponse$inboundSchema: z.ZodType<
   ListAccountingContactsResponse,
@@ -185,4 +229,24 @@ export namespace ListAccountingContactsResponse$ {
   export const outboundSchema = ListAccountingContactsResponse$outboundSchema;
   /** @deprecated use `ListAccountingContactsResponse$Outbound` instead. */
   export type Outbound = ListAccountingContactsResponse$Outbound;
+}
+
+export function listAccountingContactsResponseToJSON(
+  listAccountingContactsResponse: ListAccountingContactsResponse,
+): string {
+  return JSON.stringify(
+    ListAccountingContactsResponse$outboundSchema.parse(
+      listAccountingContactsResponse,
+    ),
+  );
+}
+
+export function listAccountingContactsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAccountingContactsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListAccountingContactsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAccountingContactsResponse' from JSON`,
+  );
 }

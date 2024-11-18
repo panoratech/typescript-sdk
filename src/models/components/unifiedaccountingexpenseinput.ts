@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   LineItem,
   LineItem$inboundSchema,
@@ -100,6 +103,33 @@ export namespace UnifiedAccountingExpenseInputFieldMappings$ {
     UnifiedAccountingExpenseInputFieldMappings$outboundSchema;
   /** @deprecated use `UnifiedAccountingExpenseInputFieldMappings$Outbound` instead. */
   export type Outbound = UnifiedAccountingExpenseInputFieldMappings$Outbound;
+}
+
+export function unifiedAccountingExpenseInputFieldMappingsToJSON(
+  unifiedAccountingExpenseInputFieldMappings:
+    UnifiedAccountingExpenseInputFieldMappings,
+): string {
+  return JSON.stringify(
+    UnifiedAccountingExpenseInputFieldMappings$outboundSchema.parse(
+      unifiedAccountingExpenseInputFieldMappings,
+    ),
+  );
+}
+
+export function unifiedAccountingExpenseInputFieldMappingsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UnifiedAccountingExpenseInputFieldMappings,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UnifiedAccountingExpenseInputFieldMappings$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UnifiedAccountingExpenseInputFieldMappings' from JSON`,
+  );
 }
 
 /** @internal */
@@ -210,4 +240,24 @@ export namespace UnifiedAccountingExpenseInput$ {
   export const outboundSchema = UnifiedAccountingExpenseInput$outboundSchema;
   /** @deprecated use `UnifiedAccountingExpenseInput$Outbound` instead. */
   export type Outbound = UnifiedAccountingExpenseInput$Outbound;
+}
+
+export function unifiedAccountingExpenseInputToJSON(
+  unifiedAccountingExpenseInput: UnifiedAccountingExpenseInput,
+): string {
+  return JSON.stringify(
+    UnifiedAccountingExpenseInput$outboundSchema.parse(
+      unifiedAccountingExpenseInput,
+    ),
+  );
+}
+
+export function unifiedAccountingExpenseInputFromJSON(
+  jsonString: string,
+): SafeParseResult<UnifiedAccountingExpenseInput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UnifiedAccountingExpenseInput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UnifiedAccountingExpenseInput' from JSON`,
+  );
 }

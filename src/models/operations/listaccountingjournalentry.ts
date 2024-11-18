@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ListAccountingJournalEntryRequest = {
   /**
@@ -43,7 +46,7 @@ export const ListAccountingJournalEntryRequest$inboundSchema: z.ZodType<
 > = z.object({
   "x-connection-token": z.string(),
   remote_data: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -56,7 +59,7 @@ export const ListAccountingJournalEntryRequest$inboundSchema: z.ZodType<
 export type ListAccountingJournalEntryRequest$Outbound = {
   "x-connection-token": string;
   remote_data?: boolean | undefined;
-  limit: number;
+  limit?: number | undefined;
   cursor?: string | undefined;
 };
 
@@ -68,7 +71,7 @@ export const ListAccountingJournalEntryRequest$outboundSchema: z.ZodType<
 > = z.object({
   xConnectionToken: z.string(),
   remoteData: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -89,6 +92,26 @@ export namespace ListAccountingJournalEntryRequest$ {
     ListAccountingJournalEntryRequest$outboundSchema;
   /** @deprecated use `ListAccountingJournalEntryRequest$Outbound` instead. */
   export type Outbound = ListAccountingJournalEntryRequest$Outbound;
+}
+
+export function listAccountingJournalEntryRequestToJSON(
+  listAccountingJournalEntryRequest: ListAccountingJournalEntryRequest,
+): string {
+  return JSON.stringify(
+    ListAccountingJournalEntryRequest$outboundSchema.parse(
+      listAccountingJournalEntryRequest,
+    ),
+  );
+}
+
+export function listAccountingJournalEntryRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAccountingJournalEntryRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListAccountingJournalEntryRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAccountingJournalEntryRequest' from JSON`,
+  );
 }
 
 /** @internal */
@@ -145,6 +168,28 @@ export namespace ListAccountingJournalEntryResponseBody$ {
   export type Outbound = ListAccountingJournalEntryResponseBody$Outbound;
 }
 
+export function listAccountingJournalEntryResponseBodyToJSON(
+  listAccountingJournalEntryResponseBody:
+    ListAccountingJournalEntryResponseBody,
+): string {
+  return JSON.stringify(
+    ListAccountingJournalEntryResponseBody$outboundSchema.parse(
+      listAccountingJournalEntryResponseBody,
+    ),
+  );
+}
+
+export function listAccountingJournalEntryResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAccountingJournalEntryResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListAccountingJournalEntryResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAccountingJournalEntryResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListAccountingJournalEntryResponse$inboundSchema: z.ZodType<
   ListAccountingJournalEntryResponse,
@@ -188,4 +233,25 @@ export namespace ListAccountingJournalEntryResponse$ {
     ListAccountingJournalEntryResponse$outboundSchema;
   /** @deprecated use `ListAccountingJournalEntryResponse$Outbound` instead. */
   export type Outbound = ListAccountingJournalEntryResponse$Outbound;
+}
+
+export function listAccountingJournalEntryResponseToJSON(
+  listAccountingJournalEntryResponse: ListAccountingJournalEntryResponse,
+): string {
+  return JSON.stringify(
+    ListAccountingJournalEntryResponse$outboundSchema.parse(
+      listAccountingJournalEntryResponse,
+    ),
+  );
+}
+
+export function listAccountingJournalEntryResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAccountingJournalEntryResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListAccountingJournalEntryResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAccountingJournalEntryResponse' from JSON`,
+  );
 }

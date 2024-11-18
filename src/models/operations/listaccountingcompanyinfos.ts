@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ListAccountingCompanyInfosRequest = {
   /**
@@ -43,7 +46,7 @@ export const ListAccountingCompanyInfosRequest$inboundSchema: z.ZodType<
 > = z.object({
   "x-connection-token": z.string(),
   remote_data: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -56,7 +59,7 @@ export const ListAccountingCompanyInfosRequest$inboundSchema: z.ZodType<
 export type ListAccountingCompanyInfosRequest$Outbound = {
   "x-connection-token": string;
   remote_data?: boolean | undefined;
-  limit: number;
+  limit?: number | undefined;
   cursor?: string | undefined;
 };
 
@@ -68,7 +71,7 @@ export const ListAccountingCompanyInfosRequest$outboundSchema: z.ZodType<
 > = z.object({
   xConnectionToken: z.string(),
   remoteData: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -89,6 +92,26 @@ export namespace ListAccountingCompanyInfosRequest$ {
     ListAccountingCompanyInfosRequest$outboundSchema;
   /** @deprecated use `ListAccountingCompanyInfosRequest$Outbound` instead. */
   export type Outbound = ListAccountingCompanyInfosRequest$Outbound;
+}
+
+export function listAccountingCompanyInfosRequestToJSON(
+  listAccountingCompanyInfosRequest: ListAccountingCompanyInfosRequest,
+): string {
+  return JSON.stringify(
+    ListAccountingCompanyInfosRequest$outboundSchema.parse(
+      listAccountingCompanyInfosRequest,
+    ),
+  );
+}
+
+export function listAccountingCompanyInfosRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAccountingCompanyInfosRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListAccountingCompanyInfosRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAccountingCompanyInfosRequest' from JSON`,
+  );
 }
 
 /** @internal */
@@ -145,6 +168,28 @@ export namespace ListAccountingCompanyInfosResponseBody$ {
   export type Outbound = ListAccountingCompanyInfosResponseBody$Outbound;
 }
 
+export function listAccountingCompanyInfosResponseBodyToJSON(
+  listAccountingCompanyInfosResponseBody:
+    ListAccountingCompanyInfosResponseBody,
+): string {
+  return JSON.stringify(
+    ListAccountingCompanyInfosResponseBody$outboundSchema.parse(
+      listAccountingCompanyInfosResponseBody,
+    ),
+  );
+}
+
+export function listAccountingCompanyInfosResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAccountingCompanyInfosResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListAccountingCompanyInfosResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAccountingCompanyInfosResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListAccountingCompanyInfosResponse$inboundSchema: z.ZodType<
   ListAccountingCompanyInfosResponse,
@@ -188,4 +233,25 @@ export namespace ListAccountingCompanyInfosResponse$ {
     ListAccountingCompanyInfosResponse$outboundSchema;
   /** @deprecated use `ListAccountingCompanyInfosResponse$Outbound` instead. */
   export type Outbound = ListAccountingCompanyInfosResponse$Outbound;
+}
+
+export function listAccountingCompanyInfosResponseToJSON(
+  listAccountingCompanyInfosResponse: ListAccountingCompanyInfosResponse,
+): string {
+  return JSON.stringify(
+    ListAccountingCompanyInfosResponse$outboundSchema.parse(
+      listAccountingCompanyInfosResponse,
+    ),
+  );
+}
+
+export function listAccountingCompanyInfosResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAccountingCompanyInfosResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListAccountingCompanyInfosResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAccountingCompanyInfosResponse' from JSON`,
+  );
 }

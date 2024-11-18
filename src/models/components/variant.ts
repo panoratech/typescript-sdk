@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type Variant = {};
 
@@ -31,4 +34,18 @@ export namespace Variant$ {
   export const outboundSchema = Variant$outboundSchema;
   /** @deprecated use `Variant$Outbound` instead. */
   export type Outbound = Variant$Outbound;
+}
+
+export function variantToJSON(variant: Variant): string {
+  return JSON.stringify(Variant$outboundSchema.parse(variant));
+}
+
+export function variantFromJSON(
+  jsonString: string,
+): SafeParseResult<Variant, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Variant$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Variant' from JSON`,
+  );
 }

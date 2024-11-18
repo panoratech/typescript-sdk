@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type RetrieveCrmEngagementRequest = {
   /**
@@ -70,4 +73,24 @@ export namespace RetrieveCrmEngagementRequest$ {
   export const outboundSchema = RetrieveCrmEngagementRequest$outboundSchema;
   /** @deprecated use `RetrieveCrmEngagementRequest$Outbound` instead. */
   export type Outbound = RetrieveCrmEngagementRequest$Outbound;
+}
+
+export function retrieveCrmEngagementRequestToJSON(
+  retrieveCrmEngagementRequest: RetrieveCrmEngagementRequest,
+): string {
+  return JSON.stringify(
+    RetrieveCrmEngagementRequest$outboundSchema.parse(
+      retrieveCrmEngagementRequest,
+    ),
+  );
+}
+
+export function retrieveCrmEngagementRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<RetrieveCrmEngagementRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RetrieveCrmEngagementRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RetrieveCrmEngagementRequest' from JSON`,
+  );
 }

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateProjectDto = {
   /**
@@ -70,4 +73,22 @@ export namespace CreateProjectDto$ {
   export const outboundSchema = CreateProjectDto$outboundSchema;
   /** @deprecated use `CreateProjectDto$Outbound` instead. */
   export type Outbound = CreateProjectDto$Outbound;
+}
+
+export function createProjectDtoToJSON(
+  createProjectDto: CreateProjectDto,
+): string {
+  return JSON.stringify(
+    CreateProjectDto$outboundSchema.parse(createProjectDto),
+  );
+}
+
+export function createProjectDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectDto' from JSON`,
+  );
 }

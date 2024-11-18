@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The custom field mappings of the object between the remote 3rd party & Panora
@@ -99,6 +102,33 @@ export namespace UnifiedAccountingTrackingcategoryOutputFieldMappings$ {
     UnifiedAccountingTrackingcategoryOutputFieldMappings$Outbound;
 }
 
+export function unifiedAccountingTrackingcategoryOutputFieldMappingsToJSON(
+  unifiedAccountingTrackingcategoryOutputFieldMappings:
+    UnifiedAccountingTrackingcategoryOutputFieldMappings,
+): string {
+  return JSON.stringify(
+    UnifiedAccountingTrackingcategoryOutputFieldMappings$outboundSchema.parse(
+      unifiedAccountingTrackingcategoryOutputFieldMappings,
+    ),
+  );
+}
+
+export function unifiedAccountingTrackingcategoryOutputFieldMappingsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UnifiedAccountingTrackingcategoryOutputFieldMappings,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UnifiedAccountingTrackingcategoryOutputFieldMappings$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UnifiedAccountingTrackingcategoryOutputFieldMappings' from JSON`,
+  );
+}
+
 /** @internal */
 export const UnifiedAccountingTrackingcategoryOutputRemoteData$inboundSchema:
   z.ZodType<
@@ -132,6 +162,33 @@ export namespace UnifiedAccountingTrackingcategoryOutputRemoteData$ {
   /** @deprecated use `UnifiedAccountingTrackingcategoryOutputRemoteData$Outbound` instead. */
   export type Outbound =
     UnifiedAccountingTrackingcategoryOutputRemoteData$Outbound;
+}
+
+export function unifiedAccountingTrackingcategoryOutputRemoteDataToJSON(
+  unifiedAccountingTrackingcategoryOutputRemoteData:
+    UnifiedAccountingTrackingcategoryOutputRemoteData,
+): string {
+  return JSON.stringify(
+    UnifiedAccountingTrackingcategoryOutputRemoteData$outboundSchema.parse(
+      unifiedAccountingTrackingcategoryOutputRemoteData,
+    ),
+  );
+}
+
+export function unifiedAccountingTrackingcategoryOutputRemoteDataFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UnifiedAccountingTrackingcategoryOutputRemoteData,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UnifiedAccountingTrackingcategoryOutputRemoteData$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UnifiedAccountingTrackingcategoryOutputRemoteData' from JSON`,
+  );
 }
 
 /** @internal */
@@ -243,4 +300,31 @@ export namespace UnifiedAccountingTrackingcategoryOutput$ {
     UnifiedAccountingTrackingcategoryOutput$outboundSchema;
   /** @deprecated use `UnifiedAccountingTrackingcategoryOutput$Outbound` instead. */
   export type Outbound = UnifiedAccountingTrackingcategoryOutput$Outbound;
+}
+
+export function unifiedAccountingTrackingcategoryOutputToJSON(
+  unifiedAccountingTrackingcategoryOutput:
+    UnifiedAccountingTrackingcategoryOutput,
+): string {
+  return JSON.stringify(
+    UnifiedAccountingTrackingcategoryOutput$outboundSchema.parse(
+      unifiedAccountingTrackingcategoryOutput,
+    ),
+  );
+}
+
+export function unifiedAccountingTrackingcategoryOutputFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UnifiedAccountingTrackingcategoryOutput,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UnifiedAccountingTrackingcategoryOutput$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UnifiedAccountingTrackingcategoryOutput' from JSON`,
+  );
 }

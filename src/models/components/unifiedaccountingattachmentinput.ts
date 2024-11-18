@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The custom field mappings of the object between the remote 3rd party & Panora
@@ -64,6 +67,33 @@ export namespace UnifiedAccountingAttachmentInputFieldMappings$ {
     UnifiedAccountingAttachmentInputFieldMappings$outboundSchema;
   /** @deprecated use `UnifiedAccountingAttachmentInputFieldMappings$Outbound` instead. */
   export type Outbound = UnifiedAccountingAttachmentInputFieldMappings$Outbound;
+}
+
+export function unifiedAccountingAttachmentInputFieldMappingsToJSON(
+  unifiedAccountingAttachmentInputFieldMappings:
+    UnifiedAccountingAttachmentInputFieldMappings,
+): string {
+  return JSON.stringify(
+    UnifiedAccountingAttachmentInputFieldMappings$outboundSchema.parse(
+      unifiedAccountingAttachmentInputFieldMappings,
+    ),
+  );
+}
+
+export function unifiedAccountingAttachmentInputFieldMappingsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UnifiedAccountingAttachmentInputFieldMappings,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UnifiedAccountingAttachmentInputFieldMappings$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UnifiedAccountingAttachmentInputFieldMappings' from JSON`,
+  );
 }
 
 /** @internal */
@@ -130,4 +160,24 @@ export namespace UnifiedAccountingAttachmentInput$ {
   export const outboundSchema = UnifiedAccountingAttachmentInput$outboundSchema;
   /** @deprecated use `UnifiedAccountingAttachmentInput$Outbound` instead. */
   export type Outbound = UnifiedAccountingAttachmentInput$Outbound;
+}
+
+export function unifiedAccountingAttachmentInputToJSON(
+  unifiedAccountingAttachmentInput: UnifiedAccountingAttachmentInput,
+): string {
+  return JSON.stringify(
+    UnifiedAccountingAttachmentInput$outboundSchema.parse(
+      unifiedAccountingAttachmentInput,
+    ),
+  );
+}
+
+export function unifiedAccountingAttachmentInputFromJSON(
+  jsonString: string,
+): SafeParseResult<UnifiedAccountingAttachmentInput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UnifiedAccountingAttachmentInput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UnifiedAccountingAttachmentInput' from JSON`,
+  );
 }

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type SignatureVerificationDto = {
   /**
@@ -59,4 +62,22 @@ export namespace SignatureVerificationDto$ {
   export const outboundSchema = SignatureVerificationDto$outboundSchema;
   /** @deprecated use `SignatureVerificationDto$Outbound` instead. */
   export type Outbound = SignatureVerificationDto$Outbound;
+}
+
+export function signatureVerificationDtoToJSON(
+  signatureVerificationDto: SignatureVerificationDto,
+): string {
+  return JSON.stringify(
+    SignatureVerificationDto$outboundSchema.parse(signatureVerificationDto),
+  );
+}
+
+export function signatureVerificationDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<SignatureVerificationDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SignatureVerificationDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SignatureVerificationDto' from JSON`,
+  );
 }

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type WebhookDto = {
   /**
@@ -12,7 +15,7 @@ export type WebhookDto = {
   /**
    * The description of the webhook.
    */
-  description?: string | null | undefined;
+  description: string | null;
   /**
    * The events that the webhook listen to.
    */
@@ -26,14 +29,14 @@ export const WebhookDto$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   url: z.nullable(z.string()),
-  description: z.nullable(z.string()).optional(),
+  description: z.nullable(z.string()),
   scope: z.nullable(z.array(z.string())),
 });
 
 /** @internal */
 export type WebhookDto$Outbound = {
   url: string | null;
-  description?: string | null | undefined;
+  description: string | null;
   scope: Array<string> | null;
 };
 
@@ -44,7 +47,7 @@ export const WebhookDto$outboundSchema: z.ZodType<
   WebhookDto
 > = z.object({
   url: z.nullable(z.string()),
-  description: z.nullable(z.string()).optional(),
+  description: z.nullable(z.string()),
   scope: z.nullable(z.array(z.string())),
 });
 
@@ -59,4 +62,18 @@ export namespace WebhookDto$ {
   export const outboundSchema = WebhookDto$outboundSchema;
   /** @deprecated use `WebhookDto$Outbound` instead. */
   export type Outbound = WebhookDto$Outbound;
+}
+
+export function webhookDtoToJSON(webhookDto: WebhookDto): string {
+  return JSON.stringify(WebhookDto$outboundSchema.parse(webhookDto));
+}
+
+export function webhookDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<WebhookDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WebhookDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WebhookDto' from JSON`,
+  );
 }

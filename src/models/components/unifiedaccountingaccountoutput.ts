@@ -4,16 +4,19 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The custom field mappings of the object between the remote 3rd party & Panora
  */
-export type UnifiedAccountingAccountOutputFieldMappings = {};
+export type FieldMappings = {};
 
 /**
  * The remote data of the account in the context of the 3rd Party
  */
-export type UnifiedAccountingAccountOutputRemoteData = {};
+export type RemoteData = {};
 
 export type UnifiedAccountingAccountOutput = {
   /**
@@ -59,10 +62,7 @@ export type UnifiedAccountingAccountOutput = {
   /**
    * The custom field mappings of the object between the remote 3rd party & Panora
    */
-  fieldMappings?:
-    | UnifiedAccountingAccountOutputFieldMappings
-    | null
-    | undefined;
+  fieldMappings?: FieldMappings | null | undefined;
   /**
    * The UUID of the account record
    */
@@ -74,7 +74,7 @@ export type UnifiedAccountingAccountOutput = {
   /**
    * The remote data of the account in the context of the 3rd Party
    */
-  remoteData?: UnifiedAccountingAccountOutputRemoteData | null | undefined;
+  remoteData?: RemoteData | null | undefined;
   /**
    * The created date of the account record
    */
@@ -86,69 +86,91 @@ export type UnifiedAccountingAccountOutput = {
 };
 
 /** @internal */
-export const UnifiedAccountingAccountOutputFieldMappings$inboundSchema:
-  z.ZodType<
-    UnifiedAccountingAccountOutputFieldMappings,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({});
-
-/** @internal */
-export type UnifiedAccountingAccountOutputFieldMappings$Outbound = {};
-
-/** @internal */
-export const UnifiedAccountingAccountOutputFieldMappings$outboundSchema:
-  z.ZodType<
-    UnifiedAccountingAccountOutputFieldMappings$Outbound,
-    z.ZodTypeDef,
-    UnifiedAccountingAccountOutputFieldMappings
-  > = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnifiedAccountingAccountOutputFieldMappings$ {
-  /** @deprecated use `UnifiedAccountingAccountOutputFieldMappings$inboundSchema` instead. */
-  export const inboundSchema =
-    UnifiedAccountingAccountOutputFieldMappings$inboundSchema;
-  /** @deprecated use `UnifiedAccountingAccountOutputFieldMappings$outboundSchema` instead. */
-  export const outboundSchema =
-    UnifiedAccountingAccountOutputFieldMappings$outboundSchema;
-  /** @deprecated use `UnifiedAccountingAccountOutputFieldMappings$Outbound` instead. */
-  export type Outbound = UnifiedAccountingAccountOutputFieldMappings$Outbound;
-}
-
-/** @internal */
-export const UnifiedAccountingAccountOutputRemoteData$inboundSchema: z.ZodType<
-  UnifiedAccountingAccountOutputRemoteData,
+export const FieldMappings$inboundSchema: z.ZodType<
+  FieldMappings,
   z.ZodTypeDef,
   unknown
 > = z.object({});
 
 /** @internal */
-export type UnifiedAccountingAccountOutputRemoteData$Outbound = {};
+export type FieldMappings$Outbound = {};
 
 /** @internal */
-export const UnifiedAccountingAccountOutputRemoteData$outboundSchema: z.ZodType<
-  UnifiedAccountingAccountOutputRemoteData$Outbound,
+export const FieldMappings$outboundSchema: z.ZodType<
+  FieldMappings$Outbound,
   z.ZodTypeDef,
-  UnifiedAccountingAccountOutputRemoteData
+  FieldMappings
 > = z.object({});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UnifiedAccountingAccountOutputRemoteData$ {
-  /** @deprecated use `UnifiedAccountingAccountOutputRemoteData$inboundSchema` instead. */
-  export const inboundSchema =
-    UnifiedAccountingAccountOutputRemoteData$inboundSchema;
-  /** @deprecated use `UnifiedAccountingAccountOutputRemoteData$outboundSchema` instead. */
-  export const outboundSchema =
-    UnifiedAccountingAccountOutputRemoteData$outboundSchema;
-  /** @deprecated use `UnifiedAccountingAccountOutputRemoteData$Outbound` instead. */
-  export type Outbound = UnifiedAccountingAccountOutputRemoteData$Outbound;
+export namespace FieldMappings$ {
+  /** @deprecated use `FieldMappings$inboundSchema` instead. */
+  export const inboundSchema = FieldMappings$inboundSchema;
+  /** @deprecated use `FieldMappings$outboundSchema` instead. */
+  export const outboundSchema = FieldMappings$outboundSchema;
+  /** @deprecated use `FieldMappings$Outbound` instead. */
+  export type Outbound = FieldMappings$Outbound;
+}
+
+export function fieldMappingsToJSON(fieldMappings: FieldMappings): string {
+  return JSON.stringify(FieldMappings$outboundSchema.parse(fieldMappings));
+}
+
+export function fieldMappingsFromJSON(
+  jsonString: string,
+): SafeParseResult<FieldMappings, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FieldMappings$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FieldMappings' from JSON`,
+  );
+}
+
+/** @internal */
+export const RemoteData$inboundSchema: z.ZodType<
+  RemoteData,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+
+/** @internal */
+export type RemoteData$Outbound = {};
+
+/** @internal */
+export const RemoteData$outboundSchema: z.ZodType<
+  RemoteData$Outbound,
+  z.ZodTypeDef,
+  RemoteData
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RemoteData$ {
+  /** @deprecated use `RemoteData$inboundSchema` instead. */
+  export const inboundSchema = RemoteData$inboundSchema;
+  /** @deprecated use `RemoteData$outboundSchema` instead. */
+  export const outboundSchema = RemoteData$outboundSchema;
+  /** @deprecated use `RemoteData$Outbound` instead. */
+  export type Outbound = RemoteData$Outbound;
+}
+
+export function remoteDataToJSON(remoteData: RemoteData): string {
+  return JSON.stringify(RemoteData$outboundSchema.parse(remoteData));
+}
+
+export function remoteDataFromJSON(
+  jsonString: string,
+): SafeParseResult<RemoteData, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RemoteData$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RemoteData' from JSON`,
+  );
 }
 
 /** @internal */
@@ -167,14 +189,11 @@ export const UnifiedAccountingAccountOutput$inboundSchema: z.ZodType<
   account_number: z.nullable(z.string()).optional(),
   parent_account: z.nullable(z.string()).optional(),
   company_info_id: z.nullable(z.string()).optional(),
-  field_mappings: z.nullable(
-    z.lazy(() => UnifiedAccountingAccountOutputFieldMappings$inboundSchema),
-  ).optional(),
+  field_mappings: z.nullable(z.lazy(() => FieldMappings$inboundSchema))
+    .optional(),
   id: z.nullable(z.string()).optional(),
   remote_id: z.nullable(z.string()).optional(),
-  remote_data: z.nullable(
-    z.lazy(() => UnifiedAccountingAccountOutputRemoteData$inboundSchema),
-  ).optional(),
+  remote_data: z.nullable(z.lazy(() => RemoteData$inboundSchema)).optional(),
   created_at: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
@@ -207,16 +226,10 @@ export type UnifiedAccountingAccountOutput$Outbound = {
   account_number?: string | null | undefined;
   parent_account?: string | null | undefined;
   company_info_id?: string | null | undefined;
-  field_mappings?:
-    | UnifiedAccountingAccountOutputFieldMappings$Outbound
-    | null
-    | undefined;
+  field_mappings?: FieldMappings$Outbound | null | undefined;
   id?: string | null | undefined;
   remote_id?: string | null | undefined;
-  remote_data?:
-    | UnifiedAccountingAccountOutputRemoteData$Outbound
-    | null
-    | undefined;
+  remote_data?: RemoteData$Outbound | null | undefined;
   created_at?: string | null | undefined;
   modified_at?: string | null | undefined;
 };
@@ -237,14 +250,11 @@ export const UnifiedAccountingAccountOutput$outboundSchema: z.ZodType<
   accountNumber: z.nullable(z.string()).optional(),
   parentAccount: z.nullable(z.string()).optional(),
   companyInfoId: z.nullable(z.string()).optional(),
-  fieldMappings: z.nullable(
-    z.lazy(() => UnifiedAccountingAccountOutputFieldMappings$outboundSchema),
-  ).optional(),
+  fieldMappings: z.nullable(z.lazy(() => FieldMappings$outboundSchema))
+    .optional(),
   id: z.nullable(z.string()).optional(),
   remoteId: z.nullable(z.string()).optional(),
-  remoteData: z.nullable(
-    z.lazy(() => UnifiedAccountingAccountOutputRemoteData$outboundSchema),
-  ).optional(),
+  remoteData: z.nullable(z.lazy(() => RemoteData$outboundSchema)).optional(),
   createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   modifiedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
 }).transform((v) => {
@@ -272,4 +282,24 @@ export namespace UnifiedAccountingAccountOutput$ {
   export const outboundSchema = UnifiedAccountingAccountOutput$outboundSchema;
   /** @deprecated use `UnifiedAccountingAccountOutput$Outbound` instead. */
   export type Outbound = UnifiedAccountingAccountOutput$Outbound;
+}
+
+export function unifiedAccountingAccountOutputToJSON(
+  unifiedAccountingAccountOutput: UnifiedAccountingAccountOutput,
+): string {
+  return JSON.stringify(
+    UnifiedAccountingAccountOutput$outboundSchema.parse(
+      unifiedAccountingAccountOutput,
+    ),
+  );
+}
+
+export function unifiedAccountingAccountOutputFromJSON(
+  jsonString: string,
+): SafeParseResult<UnifiedAccountingAccountOutput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UnifiedAccountingAccountOutput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UnifiedAccountingAccountOutput' from JSON`,
+  );
 }

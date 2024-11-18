@@ -4,12 +4,9 @@
 
 import { PanoraCore } from "../core.js";
 import { dlv } from "../lib/dlv.js";
-import {
-  encodeFormQuery as encodeFormQuery$,
-  encodeSimple as encodeSimple$,
-} from "../lib/encodings.js";
-import * as m$ from "../lib/matchers.js";
-import * as schemas$ from "../lib/schemas.js";
+import { encodeFormQuery, encodeSimple } from "../lib/encodings.js";
+import * as M from "../lib/matchers.js";
+import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
@@ -35,7 +32,7 @@ import {
  * List Notes
  */
 export async function crmNotesList(
-  client$: PanoraCore,
+  client: PanoraCore,
   request: operations.ListCrmNoteRequest,
   options?: RequestOptions,
 ): Promise<
@@ -52,76 +49,81 @@ export async function crmNotesList(
     >
   >
 > {
-  const input$ = request;
-
-  const parsed$ = schemas$.safeParse(
-    input$,
-    (value$) => operations.ListCrmNoteRequest$outboundSchema.parse(value$),
+  const parsed = safeParse(
+    request,
+    (value) => operations.ListCrmNoteRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
-  if (!parsed$.ok) {
-    return haltIterator(parsed$);
+  if (!parsed.ok) {
+    return haltIterator(parsed);
   }
-  const payload$ = parsed$.value;
-  const body$ = null;
+  const payload = parsed.value;
+  const body = null;
 
-  const path$ = pathToFunc("/crm/notes")();
+  const path = pathToFunc("/crm/notes")();
 
-  const query$ = encodeFormQuery$({
-    "cursor": payload$.cursor,
-    "limit": payload$.limit,
-    "remote_data": payload$.remote_data,
+  const query = encodeFormQuery({
+    "cursor": payload.cursor,
+    "limit": payload.limit,
+    "remote_data": payload.remote_data,
   });
 
-  const headers$ = new Headers({
+  const headers = new Headers({
     Accept: "application/json",
-    "x-connection-token": encodeSimple$(
+    "x-connection-token": encodeSimple(
       "x-connection-token",
-      payload$["x-connection-token"],
+      payload["x-connection-token"],
       { explode: false, charEncoding: "none" },
     ),
   });
 
-  const apiKey$ = await extractSecurity(client$.options$.apiKey);
-  const security$ = apiKey$ == null ? {} : { apiKey: apiKey$ };
+  const secConfig = await extractSecurity(client._options.apiKey);
+  const securityInput = secConfig == null ? {} : { apiKey: secConfig };
+  const requestSecurity = resolveGlobalSecurity(securityInput);
+
   const context = {
     operationID: "listCrmNote",
     oAuth2Scopes: [],
-    securitySource: client$.options$.apiKey,
-  };
-  const securitySettings$ = resolveGlobalSecurity(security$);
 
-  const requestRes = client$.createRequest$(context, {
-    security: securitySettings$,
+    resolvedSecurity: requestSecurity,
+
+    securitySource: client._options.apiKey,
+    retryConfig: options?.retries
+      || client._options.retryConfig
+      || { strategy: "none" },
+    retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+  };
+
+  const requestRes = client._createRequest(context, {
+    security: requestSecurity,
     method: "GET",
-    path: path$,
-    headers: headers$,
-    query: query$,
-    body: body$,
-    timeoutMs: options?.timeoutMs || client$.options$.timeoutMs || -1,
+    path: path,
+    headers: headers,
+    query: query,
+    body: body,
+    timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
     return haltIterator(requestRes);
   }
-  const request$ = requestRes.value;
+  const req = requestRes.value;
 
-  const doResult = await client$.do$(request$, {
+  const doResult = await client._do(req, {
     context,
     errorCodes: ["4XX", "5XX"],
-    retryConfig: options?.retries
-      || client$.options$.retryConfig,
-    retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+    retryConfig: context.retryConfig,
+    retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
     return haltIterator(doResult);
   }
   const response = doResult.value;
 
-  const responseFields$ = {
-    HttpMeta: { Response: response, Request: request$ },
+  const responseFields = {
+    HttpMeta: { Response: response, Request: req },
   };
 
-  const [result$, raw$] = await m$.match<
+  const [result, raw] = await M.match<
     operations.ListCrmNoteResponse,
     | SDKError
     | SDKValidationError
@@ -131,13 +133,13 @@ export async function crmNotesList(
     | RequestTimeoutError
     | ConnectionError
   >(
-    m$.json(200, operations.ListCrmNoteResponse$inboundSchema, {
+    M.json(200, operations.ListCrmNoteResponse$inboundSchema, {
       key: "Result",
     }),
-    m$.fail(["4XX", "5XX"]),
-  )(response, { extraFields: responseFields$ });
-  if (!result$.ok) {
-    return haltIterator(result$);
+    M.fail(["4XX", "5XX"]),
+  )(response, { extraFields: responseFields });
+  if (!result.ok) {
+    return haltIterator(result);
   }
 
   const nextFunc = (
@@ -155,22 +157,21 @@ export async function crmNotesList(
     >
   > => {
     const nextCursor = dlv(responseData, "next_cursor");
-
     if (nextCursor == null) {
       return () => null;
     }
 
     return () =>
       crmNotesList(
-        client$,
+        client,
         {
-          ...input$,
+          ...request,
           cursor: nextCursor,
         },
         options,
       );
   };
 
-  const page$ = { ...result$, next: nextFunc(raw$) };
-  return { ...page$, ...createPageIterator(page$, (v) => !v.ok) };
+  const page = { ...result, next: nextFunc(raw) };
+  return { ...page, ...createPageIterator(page, (v) => !v.ok) };
 }

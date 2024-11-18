@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The custom field mappings of the object between the remote 3rd party & Panora
@@ -96,6 +99,33 @@ export namespace UnifiedAccountingPhonenumberOutputFieldMappings$ {
     UnifiedAccountingPhonenumberOutputFieldMappings$Outbound;
 }
 
+export function unifiedAccountingPhonenumberOutputFieldMappingsToJSON(
+  unifiedAccountingPhonenumberOutputFieldMappings:
+    UnifiedAccountingPhonenumberOutputFieldMappings,
+): string {
+  return JSON.stringify(
+    UnifiedAccountingPhonenumberOutputFieldMappings$outboundSchema.parse(
+      unifiedAccountingPhonenumberOutputFieldMappings,
+    ),
+  );
+}
+
+export function unifiedAccountingPhonenumberOutputFieldMappingsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UnifiedAccountingPhonenumberOutputFieldMappings,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UnifiedAccountingPhonenumberOutputFieldMappings$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UnifiedAccountingPhonenumberOutputFieldMappings' from JSON`,
+  );
+}
+
 /** @internal */
 export const UnifiedAccountingPhonenumberOutputRemoteData$inboundSchema:
   z.ZodType<
@@ -128,6 +158,33 @@ export namespace UnifiedAccountingPhonenumberOutputRemoteData$ {
     UnifiedAccountingPhonenumberOutputRemoteData$outboundSchema;
   /** @deprecated use `UnifiedAccountingPhonenumberOutputRemoteData$Outbound` instead. */
   export type Outbound = UnifiedAccountingPhonenumberOutputRemoteData$Outbound;
+}
+
+export function unifiedAccountingPhonenumberOutputRemoteDataToJSON(
+  unifiedAccountingPhonenumberOutputRemoteData:
+    UnifiedAccountingPhonenumberOutputRemoteData,
+): string {
+  return JSON.stringify(
+    UnifiedAccountingPhonenumberOutputRemoteData$outboundSchema.parse(
+      unifiedAccountingPhonenumberOutputRemoteData,
+    ),
+  );
+}
+
+export function unifiedAccountingPhonenumberOutputRemoteDataFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UnifiedAccountingPhonenumberOutputRemoteData,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UnifiedAccountingPhonenumberOutputRemoteData$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UnifiedAccountingPhonenumberOutputRemoteData' from JSON`,
+  );
 }
 
 /** @internal */
@@ -232,4 +289,25 @@ export namespace UnifiedAccountingPhonenumberOutput$ {
     UnifiedAccountingPhonenumberOutput$outboundSchema;
   /** @deprecated use `UnifiedAccountingPhonenumberOutput$Outbound` instead. */
   export type Outbound = UnifiedAccountingPhonenumberOutput$Outbound;
+}
+
+export function unifiedAccountingPhonenumberOutputToJSON(
+  unifiedAccountingPhonenumberOutput: UnifiedAccountingPhonenumberOutput,
+): string {
+  return JSON.stringify(
+    UnifiedAccountingPhonenumberOutput$outboundSchema.parse(
+      unifiedAccountingPhonenumberOutput,
+    ),
+  );
+}
+
+export function unifiedAccountingPhonenumberOutputFromJSON(
+  jsonString: string,
+): SafeParseResult<UnifiedAccountingPhonenumberOutput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UnifiedAccountingPhonenumberOutput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UnifiedAccountingPhonenumberOutput' from JSON`,
+  );
 }

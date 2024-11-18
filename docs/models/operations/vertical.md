@@ -16,7 +16,5 @@ let value: Vertical = Vertical.Ticketing;
 | `Marketingautomation` | marketingautomation   |
 | `Crm`                 | crm                   |
 | `Filestorage`         | filestorage           |
-| `Ats`                 | ats                   |
-| `Hris`                | hris                  |
 | `Accounting`          | accounting            |
 | `Ecommerce`           | ecommerce             |

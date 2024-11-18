@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   LineItem,
   LineItem$inboundSchema,
@@ -126,6 +129,33 @@ export namespace UnifiedAccountingBalancesheetOutputFieldMappings$ {
     UnifiedAccountingBalancesheetOutputFieldMappings$Outbound;
 }
 
+export function unifiedAccountingBalancesheetOutputFieldMappingsToJSON(
+  unifiedAccountingBalancesheetOutputFieldMappings:
+    UnifiedAccountingBalancesheetOutputFieldMappings,
+): string {
+  return JSON.stringify(
+    UnifiedAccountingBalancesheetOutputFieldMappings$outboundSchema.parse(
+      unifiedAccountingBalancesheetOutputFieldMappings,
+    ),
+  );
+}
+
+export function unifiedAccountingBalancesheetOutputFieldMappingsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UnifiedAccountingBalancesheetOutputFieldMappings,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UnifiedAccountingBalancesheetOutputFieldMappings$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UnifiedAccountingBalancesheetOutputFieldMappings' from JSON`,
+  );
+}
+
 /** @internal */
 export const UnifiedAccountingBalancesheetOutputRemoteData$inboundSchema:
   z.ZodType<
@@ -158,6 +188,33 @@ export namespace UnifiedAccountingBalancesheetOutputRemoteData$ {
     UnifiedAccountingBalancesheetOutputRemoteData$outboundSchema;
   /** @deprecated use `UnifiedAccountingBalancesheetOutputRemoteData$Outbound` instead. */
   export type Outbound = UnifiedAccountingBalancesheetOutputRemoteData$Outbound;
+}
+
+export function unifiedAccountingBalancesheetOutputRemoteDataToJSON(
+  unifiedAccountingBalancesheetOutputRemoteData:
+    UnifiedAccountingBalancesheetOutputRemoteData,
+): string {
+  return JSON.stringify(
+    UnifiedAccountingBalancesheetOutputRemoteData$outboundSchema.parse(
+      unifiedAccountingBalancesheetOutputRemoteData,
+    ),
+  );
+}
+
+export function unifiedAccountingBalancesheetOutputRemoteDataFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UnifiedAccountingBalancesheetOutputRemoteData,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UnifiedAccountingBalancesheetOutputRemoteData$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UnifiedAccountingBalancesheetOutputRemoteData' from JSON`,
+  );
 }
 
 /** @internal */
@@ -292,4 +349,25 @@ export namespace UnifiedAccountingBalancesheetOutput$ {
     UnifiedAccountingBalancesheetOutput$outboundSchema;
   /** @deprecated use `UnifiedAccountingBalancesheetOutput$Outbound` instead. */
   export type Outbound = UnifiedAccountingBalancesheetOutput$Outbound;
+}
+
+export function unifiedAccountingBalancesheetOutputToJSON(
+  unifiedAccountingBalancesheetOutput: UnifiedAccountingBalancesheetOutput,
+): string {
+  return JSON.stringify(
+    UnifiedAccountingBalancesheetOutput$outboundSchema.parse(
+      unifiedAccountingBalancesheetOutput,
+    ),
+  );
+}
+
+export function unifiedAccountingBalancesheetOutputFromJSON(
+  jsonString: string,
+): SafeParseResult<UnifiedAccountingBalancesheetOutput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UnifiedAccountingBalancesheetOutput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UnifiedAccountingBalancesheetOutput' from JSON`,
+  );
 }

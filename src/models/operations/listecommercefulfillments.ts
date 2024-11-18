@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ListEcommerceFulfillmentsRequest = {
   /**
@@ -43,7 +46,7 @@ export const ListEcommerceFulfillmentsRequest$inboundSchema: z.ZodType<
 > = z.object({
   "x-connection-token": z.string(),
   remote_data: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -56,7 +59,7 @@ export const ListEcommerceFulfillmentsRequest$inboundSchema: z.ZodType<
 export type ListEcommerceFulfillmentsRequest$Outbound = {
   "x-connection-token": string;
   remote_data?: boolean | undefined;
-  limit: number;
+  limit?: number | undefined;
   cursor?: string | undefined;
 };
 
@@ -68,7 +71,7 @@ export const ListEcommerceFulfillmentsRequest$outboundSchema: z.ZodType<
 > = z.object({
   xConnectionToken: z.string(),
   remoteData: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -88,6 +91,26 @@ export namespace ListEcommerceFulfillmentsRequest$ {
   export const outboundSchema = ListEcommerceFulfillmentsRequest$outboundSchema;
   /** @deprecated use `ListEcommerceFulfillmentsRequest$Outbound` instead. */
   export type Outbound = ListEcommerceFulfillmentsRequest$Outbound;
+}
+
+export function listEcommerceFulfillmentsRequestToJSON(
+  listEcommerceFulfillmentsRequest: ListEcommerceFulfillmentsRequest,
+): string {
+  return JSON.stringify(
+    ListEcommerceFulfillmentsRequest$outboundSchema.parse(
+      listEcommerceFulfillmentsRequest,
+    ),
+  );
+}
+
+export function listEcommerceFulfillmentsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListEcommerceFulfillmentsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListEcommerceFulfillmentsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListEcommerceFulfillmentsRequest' from JSON`,
+  );
 }
 
 /** @internal */
@@ -144,6 +167,27 @@ export namespace ListEcommerceFulfillmentsResponseBody$ {
   export type Outbound = ListEcommerceFulfillmentsResponseBody$Outbound;
 }
 
+export function listEcommerceFulfillmentsResponseBodyToJSON(
+  listEcommerceFulfillmentsResponseBody: ListEcommerceFulfillmentsResponseBody,
+): string {
+  return JSON.stringify(
+    ListEcommerceFulfillmentsResponseBody$outboundSchema.parse(
+      listEcommerceFulfillmentsResponseBody,
+    ),
+  );
+}
+
+export function listEcommerceFulfillmentsResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<ListEcommerceFulfillmentsResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListEcommerceFulfillmentsResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListEcommerceFulfillmentsResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListEcommerceFulfillmentsResponse$inboundSchema: z.ZodType<
   ListEcommerceFulfillmentsResponse,
@@ -187,4 +231,24 @@ export namespace ListEcommerceFulfillmentsResponse$ {
     ListEcommerceFulfillmentsResponse$outboundSchema;
   /** @deprecated use `ListEcommerceFulfillmentsResponse$Outbound` instead. */
   export type Outbound = ListEcommerceFulfillmentsResponse$Outbound;
+}
+
+export function listEcommerceFulfillmentsResponseToJSON(
+  listEcommerceFulfillmentsResponse: ListEcommerceFulfillmentsResponse,
+): string {
+  return JSON.stringify(
+    ListEcommerceFulfillmentsResponse$outboundSchema.parse(
+      listEcommerceFulfillmentsResponse,
+    ),
+  );
+}
+
+export function listEcommerceFulfillmentsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListEcommerceFulfillmentsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListEcommerceFulfillmentsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListEcommerceFulfillmentsResponse' from JSON`,
+  );
 }

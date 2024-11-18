@@ -7,7 +7,7 @@ import { Accounts } from "./accounts.js";
 import { Collections } from "./collections.js";
 import { Comments } from "./comments.js";
 import { Contacts } from "./contacts.js";
-import { PanoraTicketingAttachments } from "./panoraticketingattachments.js";
+import { PanoraAttachments } from "./panoraattachments.js";
 import { Tags } from "./tags.js";
 import { Teams } from "./teams.js";
 import { Tickets } from "./tickets.js";
@@ -16,48 +16,46 @@ import { Users } from "./users.js";
 export class Ticketing extends ClientSDK {
   private _tickets?: Tickets;
   get tickets(): Tickets {
-    return (this._tickets ??= new Tickets(this.options$));
+    return (this._tickets ??= new Tickets(this._options));
   }
 
   private _users?: Users;
   get users(): Users {
-    return (this._users ??= new Users(this.options$));
+    return (this._users ??= new Users(this._options));
   }
 
   private _accounts?: Accounts;
   get accounts(): Accounts {
-    return (this._accounts ??= new Accounts(this.options$));
+    return (this._accounts ??= new Accounts(this._options));
   }
 
   private _contacts?: Contacts;
   get contacts(): Contacts {
-    return (this._contacts ??= new Contacts(this.options$));
+    return (this._contacts ??= new Contacts(this._options));
   }
 
   private _collections?: Collections;
   get collections(): Collections {
-    return (this._collections ??= new Collections(this.options$));
+    return (this._collections ??= new Collections(this._options));
   }
 
   private _comments?: Comments;
   get comments(): Comments {
-    return (this._comments ??= new Comments(this.options$));
+    return (this._comments ??= new Comments(this._options));
   }
 
   private _tags?: Tags;
   get tags(): Tags {
-    return (this._tags ??= new Tags(this.options$));
+    return (this._tags ??= new Tags(this._options));
   }
 
   private _teams?: Teams;
   get teams(): Teams {
-    return (this._teams ??= new Teams(this.options$));
+    return (this._teams ??= new Teams(this._options));
   }
 
-  private _attachments?: PanoraTicketingAttachments;
-  get attachments(): PanoraTicketingAttachments {
-    return (this._attachments ??= new PanoraTicketingAttachments(
-      this.options$,
-    ));
+  private _attachments?: PanoraAttachments;
+  get attachments(): PanoraAttachments {
+    return (this._attachments ??= new PanoraAttachments(this._options));
   }
 }

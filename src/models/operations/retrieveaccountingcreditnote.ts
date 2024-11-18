@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type RetrieveAccountingCreditNoteRequest = {
   /**
@@ -72,4 +75,25 @@ export namespace RetrieveAccountingCreditNoteRequest$ {
     RetrieveAccountingCreditNoteRequest$outboundSchema;
   /** @deprecated use `RetrieveAccountingCreditNoteRequest$Outbound` instead. */
   export type Outbound = RetrieveAccountingCreditNoteRequest$Outbound;
+}
+
+export function retrieveAccountingCreditNoteRequestToJSON(
+  retrieveAccountingCreditNoteRequest: RetrieveAccountingCreditNoteRequest,
+): string {
+  return JSON.stringify(
+    RetrieveAccountingCreditNoteRequest$outboundSchema.parse(
+      retrieveAccountingCreditNoteRequest,
+    ),
+  );
+}
+
+export function retrieveAccountingCreditNoteRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<RetrieveAccountingCreditNoteRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RetrieveAccountingCreditNoteRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RetrieveAccountingCreditNoteRequest' from JSON`,
+  );
 }

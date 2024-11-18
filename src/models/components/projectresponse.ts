@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ProjectResponse = {
   /**
@@ -21,11 +24,11 @@ export type ProjectResponse = {
   /**
    * Frequency of pulling data in seconds
    */
-  pullFrequency?: number | undefined;
+  pullFrequency: number;
   /**
    * Redirect URL for the project
    */
-  redirectUrl?: string | undefined;
+  redirectUrl: string;
   /**
    * User ID associated with the project
    */
@@ -45,8 +48,8 @@ export const ProjectResponse$inboundSchema: z.ZodType<
   id_project: z.string(),
   name: z.string(),
   sync_mode: z.string(),
-  pull_frequency: z.number().optional(),
-  redirect_url: z.string().optional(),
+  pull_frequency: z.number(),
+  redirect_url: z.string(),
   id_user: z.string(),
   id_connector_set: z.string(),
 }).transform((v) => {
@@ -65,8 +68,8 @@ export type ProjectResponse$Outbound = {
   id_project: string;
   name: string;
   sync_mode: string;
-  pull_frequency?: number | undefined;
-  redirect_url?: string | undefined;
+  pull_frequency: number;
+  redirect_url: string;
   id_user: string;
   id_connector_set: string;
 };
@@ -80,8 +83,8 @@ export const ProjectResponse$outboundSchema: z.ZodType<
   idProject: z.string(),
   name: z.string(),
   syncMode: z.string(),
-  pullFrequency: z.number().optional(),
-  redirectUrl: z.string().optional(),
+  pullFrequency: z.number(),
+  redirectUrl: z.string(),
   idUser: z.string(),
   idConnectorSet: z.string(),
 }).transform((v) => {
@@ -106,4 +109,20 @@ export namespace ProjectResponse$ {
   export const outboundSchema = ProjectResponse$outboundSchema;
   /** @deprecated use `ProjectResponse$Outbound` instead. */
   export type Outbound = ProjectResponse$Outbound;
+}
+
+export function projectResponseToJSON(
+  projectResponse: ProjectResponse,
+): string {
+  return JSON.stringify(ProjectResponse$outboundSchema.parse(projectResponse));
+}
+
+export function projectResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ProjectResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ProjectResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ProjectResponse' from JSON`,
+  );
 }

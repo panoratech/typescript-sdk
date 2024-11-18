@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ListAccountingTransactionRequest = {
   /**
@@ -43,7 +46,7 @@ export const ListAccountingTransactionRequest$inboundSchema: z.ZodType<
 > = z.object({
   "x-connection-token": z.string(),
   remote_data: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -56,7 +59,7 @@ export const ListAccountingTransactionRequest$inboundSchema: z.ZodType<
 export type ListAccountingTransactionRequest$Outbound = {
   "x-connection-token": string;
   remote_data?: boolean | undefined;
-  limit: number;
+  limit?: number | undefined;
   cursor?: string | undefined;
 };
 
@@ -68,7 +71,7 @@ export const ListAccountingTransactionRequest$outboundSchema: z.ZodType<
 > = z.object({
   xConnectionToken: z.string(),
   remoteData: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -88,6 +91,26 @@ export namespace ListAccountingTransactionRequest$ {
   export const outboundSchema = ListAccountingTransactionRequest$outboundSchema;
   /** @deprecated use `ListAccountingTransactionRequest$Outbound` instead. */
   export type Outbound = ListAccountingTransactionRequest$Outbound;
+}
+
+export function listAccountingTransactionRequestToJSON(
+  listAccountingTransactionRequest: ListAccountingTransactionRequest,
+): string {
+  return JSON.stringify(
+    ListAccountingTransactionRequest$outboundSchema.parse(
+      listAccountingTransactionRequest,
+    ),
+  );
+}
+
+export function listAccountingTransactionRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAccountingTransactionRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListAccountingTransactionRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAccountingTransactionRequest' from JSON`,
+  );
 }
 
 /** @internal */
@@ -144,6 +167,27 @@ export namespace ListAccountingTransactionResponseBody$ {
   export type Outbound = ListAccountingTransactionResponseBody$Outbound;
 }
 
+export function listAccountingTransactionResponseBodyToJSON(
+  listAccountingTransactionResponseBody: ListAccountingTransactionResponseBody,
+): string {
+  return JSON.stringify(
+    ListAccountingTransactionResponseBody$outboundSchema.parse(
+      listAccountingTransactionResponseBody,
+    ),
+  );
+}
+
+export function listAccountingTransactionResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAccountingTransactionResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListAccountingTransactionResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAccountingTransactionResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListAccountingTransactionResponse$inboundSchema: z.ZodType<
   ListAccountingTransactionResponse,
@@ -187,4 +231,24 @@ export namespace ListAccountingTransactionResponse$ {
     ListAccountingTransactionResponse$outboundSchema;
   /** @deprecated use `ListAccountingTransactionResponse$Outbound` instead. */
   export type Outbound = ListAccountingTransactionResponse$Outbound;
+}
+
+export function listAccountingTransactionResponseToJSON(
+  listAccountingTransactionResponse: ListAccountingTransactionResponse,
+): string {
+  return JSON.stringify(
+    ListAccountingTransactionResponse$outboundSchema.parse(
+      listAccountingTransactionResponse,
+    ),
+  );
+}
+
+export function listAccountingTransactionResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAccountingTransactionResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListAccountingTransactionResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAccountingTransactionResponse' from JSON`,
+  );
 }

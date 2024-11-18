@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type RetrieveAccountingAccountRequest = {
   /**
@@ -70,4 +73,24 @@ export namespace RetrieveAccountingAccountRequest$ {
   export const outboundSchema = RetrieveAccountingAccountRequest$outboundSchema;
   /** @deprecated use `RetrieveAccountingAccountRequest$Outbound` instead. */
   export type Outbound = RetrieveAccountingAccountRequest$Outbound;
+}
+
+export function retrieveAccountingAccountRequestToJSON(
+  retrieveAccountingAccountRequest: RetrieveAccountingAccountRequest,
+): string {
+  return JSON.stringify(
+    RetrieveAccountingAccountRequest$outboundSchema.parse(
+      retrieveAccountingAccountRequest,
+    ),
+  );
+}
+
+export function retrieveAccountingAccountRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<RetrieveAccountingAccountRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RetrieveAccountingAccountRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RetrieveAccountingAccountRequest' from JSON`,
+  );
 }

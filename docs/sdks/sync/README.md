@@ -28,6 +28,8 @@ async function run() {
   await panora.sync.status({
     vertical: Vertical.Ticketing,
   });
+
+
 }
 
 run();
@@ -80,10 +82,9 @@ run();
 
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
+| Error Type      | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
-
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## resync
 
@@ -100,9 +101,9 @@ const panora = new Panora({
 
 async function run() {
   const result = await panora.sync.resync();
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -132,7 +133,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -152,10 +153,9 @@ run();
 
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
+| Error Type      | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
-
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## updatePullFrequency
 
@@ -171,18 +171,15 @@ const panora = new Panora({
 });
 
 async function run() {
-  const result = await panora.sync.updatePullFrequency({
+  await panora.sync.updatePullFrequency({
     crm: 1800,
-    ats: 3600,
-    hris: 7200,
     accounting: 14400,
     filestorage: 28800,
     ecommerce: 43200,
     ticketing: 86400,
   });
-  
-  // Handle the result
-  console.log(result)
+
+
 }
 
 run();
@@ -205,8 +202,6 @@ const panora = new PanoraCore({
 async function run() {
   const res = await syncUpdatePullFrequency(panora, {
     crm: 1800,
-    ats: 3600,
-    hris: 7200,
     accounting: 14400,
     filestorage: 28800,
     ecommerce: 43200,
@@ -219,8 +214,7 @@ async function run() {
 
   const { value: result } = res;
 
-  // Handle the result
-  console.log(result)
+  
 }
 
 run();
@@ -237,14 +231,13 @@ run();
 
 ### Response
 
-**Promise\<[operations.UpdatePullFrequencyResponseBody](../../models/operations/updatepullfrequencyresponsebody.md)\>**
+**Promise\<void\>**
 
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
+| Error Type      | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
-
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## getPullFrequency
 
@@ -261,9 +254,9 @@ const panora = new Panora({
 
 async function run() {
   const result = await panora.sync.getPullFrequency();
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -293,7 +286,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -313,6 +306,6 @@ run();
 
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
+| Error Type      | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |

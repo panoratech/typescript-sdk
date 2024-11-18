@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateFilestorageFileRequest = {
   /**
@@ -72,4 +75,24 @@ export namespace CreateFilestorageFileRequest$ {
   export const outboundSchema = CreateFilestorageFileRequest$outboundSchema;
   /** @deprecated use `CreateFilestorageFileRequest$Outbound` instead. */
   export type Outbound = CreateFilestorageFileRequest$Outbound;
+}
+
+export function createFilestorageFileRequestToJSON(
+  createFilestorageFileRequest: CreateFilestorageFileRequest,
+): string {
+  return JSON.stringify(
+    CreateFilestorageFileRequest$outboundSchema.parse(
+      createFilestorageFileRequest,
+    ),
+  );
+}
+
+export function createFilestorageFileRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateFilestorageFileRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateFilestorageFileRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateFilestorageFileRequest' from JSON`,
+  );
 }

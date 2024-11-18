@@ -27,11 +27,18 @@ async function run() {
     passThroughRequestDto: {
       method: PassThroughRequestDtoMethod.Get,
       path: "/dev",
+      data: {},
+      requestFormat: {
+
+      },
+      overrideBaseUrl: {
+        "key": "https://equatorial-government.com/",
+      },
     },
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -58,6 +65,13 @@ async function run() {
     passThroughRequestDto: {
       method: PassThroughRequestDtoMethod.Get,
       path: "/dev",
+      data: {},
+      requestFormat: {
+  
+      },
+      overrideBaseUrl: {
+        "key": "https://equatorial-government.com/",
+      },
     },
   });
 
@@ -68,7 +82,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -85,10 +99,10 @@ run();
 
 ### Response
 
-**Promise\<[operations.RequestResponse](../../models/operations/requestresponse.md)\>**
+**Promise\<[operations.RequestResponseBody](../../models/operations/requestresponsebody.md)\>**
 
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
+| Error Type      | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |

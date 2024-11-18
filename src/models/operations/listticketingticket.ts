@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ListTicketingTicketRequest = {
   /**
@@ -43,7 +46,7 @@ export const ListTicketingTicketRequest$inboundSchema: z.ZodType<
 > = z.object({
   "x-connection-token": z.string(),
   remote_data: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -56,7 +59,7 @@ export const ListTicketingTicketRequest$inboundSchema: z.ZodType<
 export type ListTicketingTicketRequest$Outbound = {
   "x-connection-token": string;
   remote_data?: boolean | undefined;
-  limit: number;
+  limit?: number | undefined;
   cursor?: string | undefined;
 };
 
@@ -68,7 +71,7 @@ export const ListTicketingTicketRequest$outboundSchema: z.ZodType<
 > = z.object({
   xConnectionToken: z.string(),
   remoteData: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -88,6 +91,24 @@ export namespace ListTicketingTicketRequest$ {
   export const outboundSchema = ListTicketingTicketRequest$outboundSchema;
   /** @deprecated use `ListTicketingTicketRequest$Outbound` instead. */
   export type Outbound = ListTicketingTicketRequest$Outbound;
+}
+
+export function listTicketingTicketRequestToJSON(
+  listTicketingTicketRequest: ListTicketingTicketRequest,
+): string {
+  return JSON.stringify(
+    ListTicketingTicketRequest$outboundSchema.parse(listTicketingTicketRequest),
+  );
+}
+
+export function listTicketingTicketRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListTicketingTicketRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListTicketingTicketRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListTicketingTicketRequest' from JSON`,
+  );
 }
 
 /** @internal */
@@ -142,6 +163,26 @@ export namespace ListTicketingTicketResponseBody$ {
   export type Outbound = ListTicketingTicketResponseBody$Outbound;
 }
 
+export function listTicketingTicketResponseBodyToJSON(
+  listTicketingTicketResponseBody: ListTicketingTicketResponseBody,
+): string {
+  return JSON.stringify(
+    ListTicketingTicketResponseBody$outboundSchema.parse(
+      listTicketingTicketResponseBody,
+    ),
+  );
+}
+
+export function listTicketingTicketResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<ListTicketingTicketResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListTicketingTicketResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListTicketingTicketResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListTicketingTicketResponse$inboundSchema: z.ZodType<
   ListTicketingTicketResponse,
@@ -184,4 +225,24 @@ export namespace ListTicketingTicketResponse$ {
   export const outboundSchema = ListTicketingTicketResponse$outboundSchema;
   /** @deprecated use `ListTicketingTicketResponse$Outbound` instead. */
   export type Outbound = ListTicketingTicketResponse$Outbound;
+}
+
+export function listTicketingTicketResponseToJSON(
+  listTicketingTicketResponse: ListTicketingTicketResponse,
+): string {
+  return JSON.stringify(
+    ListTicketingTicketResponse$outboundSchema.parse(
+      listTicketingTicketResponse,
+    ),
+  );
+}
+
+export function listTicketingTicketResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListTicketingTicketResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListTicketingTicketResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListTicketingTicketResponse' from JSON`,
+  );
 }

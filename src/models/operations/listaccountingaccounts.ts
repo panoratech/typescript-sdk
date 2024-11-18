@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ListAccountingAccountsRequest = {
   /**
@@ -43,7 +46,7 @@ export const ListAccountingAccountsRequest$inboundSchema: z.ZodType<
 > = z.object({
   "x-connection-token": z.string(),
   remote_data: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -56,7 +59,7 @@ export const ListAccountingAccountsRequest$inboundSchema: z.ZodType<
 export type ListAccountingAccountsRequest$Outbound = {
   "x-connection-token": string;
   remote_data?: boolean | undefined;
-  limit: number;
+  limit?: number | undefined;
   cursor?: string | undefined;
 };
 
@@ -68,7 +71,7 @@ export const ListAccountingAccountsRequest$outboundSchema: z.ZodType<
 > = z.object({
   xConnectionToken: z.string(),
   remoteData: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -88,6 +91,26 @@ export namespace ListAccountingAccountsRequest$ {
   export const outboundSchema = ListAccountingAccountsRequest$outboundSchema;
   /** @deprecated use `ListAccountingAccountsRequest$Outbound` instead. */
   export type Outbound = ListAccountingAccountsRequest$Outbound;
+}
+
+export function listAccountingAccountsRequestToJSON(
+  listAccountingAccountsRequest: ListAccountingAccountsRequest,
+): string {
+  return JSON.stringify(
+    ListAccountingAccountsRequest$outboundSchema.parse(
+      listAccountingAccountsRequest,
+    ),
+  );
+}
+
+export function listAccountingAccountsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAccountingAccountsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListAccountingAccountsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAccountingAccountsRequest' from JSON`,
+  );
 }
 
 /** @internal */
@@ -143,6 +166,27 @@ export namespace ListAccountingAccountsResponseBody$ {
   export type Outbound = ListAccountingAccountsResponseBody$Outbound;
 }
 
+export function listAccountingAccountsResponseBodyToJSON(
+  listAccountingAccountsResponseBody: ListAccountingAccountsResponseBody,
+): string {
+  return JSON.stringify(
+    ListAccountingAccountsResponseBody$outboundSchema.parse(
+      listAccountingAccountsResponseBody,
+    ),
+  );
+}
+
+export function listAccountingAccountsResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAccountingAccountsResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListAccountingAccountsResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAccountingAccountsResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListAccountingAccountsResponse$inboundSchema: z.ZodType<
   ListAccountingAccountsResponse,
@@ -185,4 +229,24 @@ export namespace ListAccountingAccountsResponse$ {
   export const outboundSchema = ListAccountingAccountsResponse$outboundSchema;
   /** @deprecated use `ListAccountingAccountsResponse$Outbound` instead. */
   export type Outbound = ListAccountingAccountsResponse$Outbound;
+}
+
+export function listAccountingAccountsResponseToJSON(
+  listAccountingAccountsResponse: ListAccountingAccountsResponse,
+): string {
+  return JSON.stringify(
+    ListAccountingAccountsResponse$outboundSchema.parse(
+      listAccountingAccountsResponse,
+    ),
+  );
+}
+
+export function listAccountingAccountsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAccountingAccountsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListAccountingAccountsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAccountingAccountsResponse' from JSON`,
+  );
 }

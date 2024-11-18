@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateLinkedUserDto = {
   /**
@@ -61,4 +64,22 @@ export namespace CreateLinkedUserDto$ {
   export const outboundSchema = CreateLinkedUserDto$outboundSchema;
   /** @deprecated use `CreateLinkedUserDto$Outbound` instead. */
   export type Outbound = CreateLinkedUserDto$Outbound;
+}
+
+export function createLinkedUserDtoToJSON(
+  createLinkedUserDto: CreateLinkedUserDto,
+): string {
+  return JSON.stringify(
+    CreateLinkedUserDto$outboundSchema.parse(createLinkedUserDto),
+  );
+}
+
+export function createLinkedUserDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateLinkedUserDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateLinkedUserDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateLinkedUserDto' from JSON`,
+  );
 }

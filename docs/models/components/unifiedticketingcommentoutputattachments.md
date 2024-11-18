@@ -1,11 +1,18 @@
 # UnifiedTicketingCommentOutputAttachments
 
-## Example Usage
+
+## Supported Types
+
+### `string`
 
 ```typescript
-import { UnifiedTicketingCommentOutputAttachments } from "@panora/sdk/models/components";
+const value: string = "<value>";
+```
 
-let value: UnifiedTicketingCommentOutputAttachments = {
+### `components.UnifiedTicketingAttachmentOutput`
+
+```typescript
+const value: components.UnifiedTicketingAttachmentOutput = {
   fileName: "features_planning.pdf",
   fileUrl: "https://example.com/features_planning.pdf",
   uploader: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
@@ -24,19 +31,5 @@ let value: UnifiedTicketingCommentOutputAttachments = {
   createdAt: new Date("2024-10-01T12:00:00Z"),
   modifiedAt: new Date("2024-10-01T12:00:00Z"),
 };
-```
-
-## Supported Types
-
-### `string`
-
-```typescript
-const value: string = /* values here */
-```
-
-### `components.UnifiedTicketingAttachmentOutput`
-
-```typescript
-const value: components.UnifiedTicketingAttachmentOutput = /* values here */
 ```
 

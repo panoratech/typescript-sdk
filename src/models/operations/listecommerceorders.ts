@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ListEcommerceOrdersRequest = {
   /**
@@ -43,7 +46,7 @@ export const ListEcommerceOrdersRequest$inboundSchema: z.ZodType<
 > = z.object({
   "x-connection-token": z.string(),
   remote_data: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -56,7 +59,7 @@ export const ListEcommerceOrdersRequest$inboundSchema: z.ZodType<
 export type ListEcommerceOrdersRequest$Outbound = {
   "x-connection-token": string;
   remote_data?: boolean | undefined;
-  limit: number;
+  limit?: number | undefined;
   cursor?: string | undefined;
 };
 
@@ -68,7 +71,7 @@ export const ListEcommerceOrdersRequest$outboundSchema: z.ZodType<
 > = z.object({
   xConnectionToken: z.string(),
   remoteData: z.boolean().optional(),
-  limit: z.number().default(50),
+  limit: z.number().optional(),
   cursor: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -88,6 +91,24 @@ export namespace ListEcommerceOrdersRequest$ {
   export const outboundSchema = ListEcommerceOrdersRequest$outboundSchema;
   /** @deprecated use `ListEcommerceOrdersRequest$Outbound` instead. */
   export type Outbound = ListEcommerceOrdersRequest$Outbound;
+}
+
+export function listEcommerceOrdersRequestToJSON(
+  listEcommerceOrdersRequest: ListEcommerceOrdersRequest,
+): string {
+  return JSON.stringify(
+    ListEcommerceOrdersRequest$outboundSchema.parse(listEcommerceOrdersRequest),
+  );
+}
+
+export function listEcommerceOrdersRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ListEcommerceOrdersRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListEcommerceOrdersRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListEcommerceOrdersRequest' from JSON`,
+  );
 }
 
 /** @internal */
@@ -142,6 +163,26 @@ export namespace ListEcommerceOrdersResponseBody$ {
   export type Outbound = ListEcommerceOrdersResponseBody$Outbound;
 }
 
+export function listEcommerceOrdersResponseBodyToJSON(
+  listEcommerceOrdersResponseBody: ListEcommerceOrdersResponseBody,
+): string {
+  return JSON.stringify(
+    ListEcommerceOrdersResponseBody$outboundSchema.parse(
+      listEcommerceOrdersResponseBody,
+    ),
+  );
+}
+
+export function listEcommerceOrdersResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<ListEcommerceOrdersResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListEcommerceOrdersResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListEcommerceOrdersResponseBody' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListEcommerceOrdersResponse$inboundSchema: z.ZodType<
   ListEcommerceOrdersResponse,
@@ -184,4 +225,24 @@ export namespace ListEcommerceOrdersResponse$ {
   export const outboundSchema = ListEcommerceOrdersResponse$outboundSchema;
   /** @deprecated use `ListEcommerceOrdersResponse$Outbound` instead. */
   export type Outbound = ListEcommerceOrdersResponse$Outbound;
+}
+
+export function listEcommerceOrdersResponseToJSON(
+  listEcommerceOrdersResponse: ListEcommerceOrdersResponse,
+): string {
+  return JSON.stringify(
+    ListEcommerceOrdersResponse$outboundSchema.parse(
+      listEcommerceOrdersResponse,
+    ),
+  );
+}
+
+export function listEcommerceOrdersResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListEcommerceOrdersResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListEcommerceOrdersResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListEcommerceOrdersResponse' from JSON`,
+  );
 }
