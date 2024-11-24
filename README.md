@@ -427,10 +427,6 @@ run();
 * [getProjects](docs/sdks/projects/README.md#getprojects) - Retrieve projects
 * [create](docs/sdks/projects/README.md#create) - Create a project
 
-### [rag](docs/sdks/rag/README.md)
-
-* [query](docs/sdks/rag/README.md#query) - Query using RAG Search
-
 ### [sync](docs/sdks/sync/README.md)
 
 * [status](docs/sdks/sync/README.md#status) - Retrieve sync status of a certain vertical
@@ -781,7 +777,7 @@ const panora = new Panora({
 });
 
 async function run() {
-  const result = await panora.filestorage.files.list({
+  const result = await panora.ticketing.tickets.list({
     xConnectionToken: "<value>",
     remoteData: true,
     limit: 10,
@@ -950,7 +946,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`passthroughRetryidGetRetriedRequestResponse`](docs/sdks/retryid/README.md#getretriedrequestresponse) - Retrieve response of a failed passthrough request due to rate limits
 - [`projectsCreate`](docs/sdks/projects/README.md#create) - Create a project
 - [`projectsGetProjects`](docs/sdks/projects/README.md#getprojects) - Retrieve projects
-- [`ragQuery`](docs/sdks/rag/README.md#query) - Query using RAG Search
 - [`syncGetPullFrequency`](docs/sdks/sync/README.md#getpullfrequency) - Get pull frequency for verticals
 - [`syncResync`](docs/sdks/sync/README.md#resync) - Resync common objects across a vertical
 - [`syncStatus`](docs/sdks/sync/README.md#status) - Retrieve sync status of a certain vertical
