@@ -171,7 +171,7 @@ const panora = new Panora({
 });
 
 async function run() {
-  await panora.sync.updatePullFrequency({
+  const result = await panora.sync.updatePullFrequency({
     crm: 1800,
     accounting: 14400,
     filestorage: 28800,
@@ -179,7 +179,8 @@ async function run() {
     ticketing: 86400,
   });
 
-
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -214,7 +215,8 @@ async function run() {
 
   const { value: result } = res;
 
-  
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -231,7 +233,7 @@ run();
 
 ### Response
 
-**Promise\<void\>**
+**Promise\<[operations.UpdatePullFrequencyResponseBody](../../models/operations/updatepullfrequencyresponsebody.md)\>**
 
 ### Errors
 
