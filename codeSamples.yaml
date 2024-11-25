@@ -1433,7 +1433,6 @@ actions:
 
             async function run() {
               await panora.auth.login.signIn({
-                idUser: "<value>",
                 email: "Stanford_Rice@hotmail.com",
                 passwordHash: "<value>",
               });
@@ -3653,13 +3652,6 @@ actions:
                 passThroughRequestDto: {
                   method: PassThroughRequestDtoMethod.Get,
                   path: "/etc/periodic",
-                  data: {},
-                  requestFormat: {
-
-                  },
-                  overrideBaseUrl: {
-
-                  },
                 },
               });
 
@@ -3733,32 +3725,6 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/rag/query"]["post"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: query
-          source: |-
-            import { Panora } from "@panora/sdk";
-
-            const panora = new Panora({
-              apiKey: "<YOUR_API_KEY_HERE>",
-            });
-
-            async function run() {
-              const result = await panora.rag.query({
-                xConnectionToken: "<value>",
-                queryBody: {
-                  query: "When does Panora incorporated?",
-                  topK: 3,
-                },
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   - target: $["paths"]["/sync/pull_frequencies"]["get"]
     update:
       x-codeSamples:
@@ -3792,7 +3758,7 @@ actions:
             });
 
             async function run() {
-              await panora.sync.updatePullFrequency({
+              const result = await panora.sync.updatePullFrequency({
                 crm: 1800,
                 accounting: 14400,
                 filestorage: 28800,
@@ -3800,7 +3766,8 @@ actions:
                 ticketing: 86400,
               });
 
-
+              // Handle the result
+              console.log(result);
             }
 
             run();

@@ -14,7 +14,13 @@ export type RequestRequest = {
   passThroughRequestDto: components.PassThroughRequestDto;
 };
 
+export type RequestPassthroughResponseBody = {};
+
 export type RequestResponseBody = {};
+
+export type RequestResponse =
+  | RequestResponseBody
+  | RequestPassthroughResponseBody;
 
 /** @internal */
 export const RequestRequest$inboundSchema: z.ZodType<
@@ -80,6 +86,56 @@ export function requestRequestFromJSON(
 }
 
 /** @internal */
+export const RequestPassthroughResponseBody$inboundSchema: z.ZodType<
+  RequestPassthroughResponseBody,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+
+/** @internal */
+export type RequestPassthroughResponseBody$Outbound = {};
+
+/** @internal */
+export const RequestPassthroughResponseBody$outboundSchema: z.ZodType<
+  RequestPassthroughResponseBody$Outbound,
+  z.ZodTypeDef,
+  RequestPassthroughResponseBody
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RequestPassthroughResponseBody$ {
+  /** @deprecated use `RequestPassthroughResponseBody$inboundSchema` instead. */
+  export const inboundSchema = RequestPassthroughResponseBody$inboundSchema;
+  /** @deprecated use `RequestPassthroughResponseBody$outboundSchema` instead. */
+  export const outboundSchema = RequestPassthroughResponseBody$outboundSchema;
+  /** @deprecated use `RequestPassthroughResponseBody$Outbound` instead. */
+  export type Outbound = RequestPassthroughResponseBody$Outbound;
+}
+
+export function requestPassthroughResponseBodyToJSON(
+  requestPassthroughResponseBody: RequestPassthroughResponseBody,
+): string {
+  return JSON.stringify(
+    RequestPassthroughResponseBody$outboundSchema.parse(
+      requestPassthroughResponseBody,
+    ),
+  );
+}
+
+export function requestPassthroughResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<RequestPassthroughResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RequestPassthroughResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RequestPassthroughResponseBody' from JSON`,
+  );
+}
+
+/** @internal */
 export const RequestResponseBody$inboundSchema: z.ZodType<
   RequestResponseBody,
   z.ZodTypeDef,
@@ -124,5 +180,59 @@ export function requestResponseBodyFromJSON(
     jsonString,
     (x) => RequestResponseBody$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'RequestResponseBody' from JSON`,
+  );
+}
+
+/** @internal */
+export const RequestResponse$inboundSchema: z.ZodType<
+  RequestResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => RequestResponseBody$inboundSchema),
+  z.lazy(() => RequestPassthroughResponseBody$inboundSchema),
+]);
+
+/** @internal */
+export type RequestResponse$Outbound =
+  | RequestResponseBody$Outbound
+  | RequestPassthroughResponseBody$Outbound;
+
+/** @internal */
+export const RequestResponse$outboundSchema: z.ZodType<
+  RequestResponse$Outbound,
+  z.ZodTypeDef,
+  RequestResponse
+> = z.union([
+  z.lazy(() => RequestResponseBody$outboundSchema),
+  z.lazy(() => RequestPassthroughResponseBody$outboundSchema),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RequestResponse$ {
+  /** @deprecated use `RequestResponse$inboundSchema` instead. */
+  export const inboundSchema = RequestResponse$inboundSchema;
+  /** @deprecated use `RequestResponse$outboundSchema` instead. */
+  export const outboundSchema = RequestResponse$outboundSchema;
+  /** @deprecated use `RequestResponse$Outbound` instead. */
+  export type Outbound = RequestResponse$Outbound;
+}
+
+export function requestResponseToJSON(
+  requestResponse: RequestResponse,
+): string {
+  return JSON.stringify(RequestResponse$outboundSchema.parse(requestResponse));
+}
+
+export function requestResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<RequestResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RequestResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RequestResponse' from JSON`,
   );
 }
