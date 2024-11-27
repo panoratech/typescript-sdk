@@ -18,7 +18,12 @@ export class PanoraAttachments extends ClientSDK {
   async list(
     request: operations.ListTicketingAttachmentsRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListTicketingAttachmentsResponse>> {
+  ): Promise<
+    PageIterator<
+      operations.ListTicketingAttachmentsResponse,
+      { cursor: string }
+    >
+  > {
     return unwrapResultIterator(ticketingAttachmentsList(
       this,
       request,

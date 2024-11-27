@@ -17,7 +17,9 @@ export class PanoraFilestorageUsers extends ClientSDK {
   async list(
     request: operations.ListFilestorageUsersRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListFilestorageUsersResponse>> {
+  ): Promise<
+    PageIterator<operations.ListFilestorageUsersResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(filestorageUsersList(
       this,
       request,

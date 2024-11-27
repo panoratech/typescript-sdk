@@ -17,7 +17,12 @@ export class Phonenumbers extends ClientSDK {
   async list(
     request: operations.ListAccountingPhonenumberRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListAccountingPhonenumberResponse>> {
+  ): Promise<
+    PageIterator<
+      operations.ListAccountingPhonenumberResponse,
+      { cursor: string }
+    >
+  > {
     return unwrapResultIterator(accountingPhonenumbersList(
       this,
       request,
