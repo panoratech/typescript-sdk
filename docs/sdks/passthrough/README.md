@@ -27,7 +27,6 @@ async function run() {
     passThroughRequestDto: {
       method: PassThroughRequestDtoMethod.Get,
       path: "/dev",
-      data: {},
       requestFormat: {
 
       },
@@ -65,7 +64,6 @@ async function run() {
     passThroughRequestDto: {
       method: PassThroughRequestDtoMethod.Get,
       path: "/dev",
-      data: {},
       requestFormat: {
   
       },
@@ -99,7 +97,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.RequestResponseBody](../../models/operations/requestresponsebody.md)\>**
+**Promise\<[operations.RequestResponse](../../models/operations/requestresponse.md)\>**
 
 ### Errors
 

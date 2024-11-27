@@ -18,7 +18,9 @@ export class Files extends ClientSDK {
   async list(
     request: operations.ListFilestorageFileRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListFilestorageFileResponse>> {
+  ): Promise<
+    PageIterator<operations.ListFilestorageFileResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(filestorageFilesList(
       this,
       request,
