@@ -123,7 +123,6 @@ async function run() {
       accountNumber: "1000",
       parentAccount: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
       companyInfoId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-      fieldMappings: {},
     },
   });
 
@@ -163,7 +162,6 @@ async function run() {
       accountNumber: "1000",
       parentAccount: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
       companyInfoId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-      fieldMappings: {},
     },
   });
 

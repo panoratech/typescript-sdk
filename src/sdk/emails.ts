@@ -17,7 +17,12 @@ export class Emails extends ClientSDK {
   async list(
     request: operations.ListMarketingautomationEmailsRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListMarketingautomationEmailsResponse>> {
+  ): Promise<
+    PageIterator<
+      operations.ListMarketingautomationEmailsResponse,
+      { cursor: string }
+    >
+  > {
     return unwrapResultIterator(marketingautomationEmailsList(
       this,
       request,

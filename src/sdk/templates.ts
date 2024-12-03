@@ -19,7 +19,10 @@ export class Templates extends ClientSDK {
     request: operations.ListMarketingautomationTemplatesRequest,
     options?: RequestOptions,
   ): Promise<
-    PageIterator<operations.ListMarketingautomationTemplatesResponse>
+    PageIterator<
+      operations.ListMarketingautomationTemplatesResponse,
+      { cursor: string }
+    >
   > {
     return unwrapResultIterator(marketingautomationTemplatesList(
       this,
