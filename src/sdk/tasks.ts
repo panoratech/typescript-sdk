@@ -18,7 +18,7 @@ export class Tasks extends ClientSDK {
   async list(
     request: operations.ListCrmTaskRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListCrmTaskResponse>> {
+  ): Promise<PageIterator<operations.ListCrmTaskResponse, { cursor: string }>> {
     return unwrapResultIterator(crmTasksList(
       this,
       request,

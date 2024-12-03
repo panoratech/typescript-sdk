@@ -16,7 +16,9 @@ export class Contacts extends ClientSDK {
   async list(
     request: operations.ListTicketingContactsRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListTicketingContactsResponse>> {
+  ): Promise<
+    PageIterator<operations.ListTicketingContactsResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(ticketingContactsList(
       this,
       request,

@@ -1,6 +1,6 @@
 {
   "name": "@panora/sdk",
-  "version": "0.14.0",
+  "version": "0.15.0",
   "author": "Speakeasy",
   "main": "./index.js",
   "sideEffects": false,
@@ -14,6 +14,8 @@
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
+    "react": "^18 || ^19",
+    "react-dom": "^18 || ^19",
     "zod": ">= 3"
   },
   "devDependencies": {

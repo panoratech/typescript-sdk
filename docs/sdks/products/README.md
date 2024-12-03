@@ -121,13 +121,9 @@ async function run() {
       ],
       description: "best tee ever",
       vendor: "vendor_extern",
-      variants: [
-        {},
-      ],
       tags: [
         "tag_1",
       ],
-      fieldMappings: {},
     },
   });
 
@@ -165,13 +161,9 @@ async function run() {
       ],
       description: "best tee ever",
       vendor: "vendor_extern",
-      variants: [
-        {},
-      ],
       tags: [
         "tag_1",
       ],
-      fieldMappings: {},
     },
   });
 
