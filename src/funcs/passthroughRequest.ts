@@ -30,7 +30,7 @@ export async function passthroughRequest(
   options?: RequestOptions,
 ): Promise<
   Result<
-    operations.RequestResponseBody,
+    operations.RequestResponse,
     | SDKError
     | SDKValidationError
     | UnexpectedClientError
@@ -107,7 +107,7 @@ export async function passthroughRequest(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.RequestResponseBody,
+    operations.RequestResponse,
     | SDKError
     | SDKValidationError
     | UnexpectedClientError
@@ -116,7 +116,8 @@ export async function passthroughRequest(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, operations.RequestResponseBody$inboundSchema),
+    M.json(200, operations.RequestResponse$inboundSchema),
+    M.json(201, operations.RequestResponse$inboundSchema),
     M.fail(["4XX", "5XX"]),
   )(response);
   if (!result.ok) {

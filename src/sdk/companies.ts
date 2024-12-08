@@ -18,7 +18,9 @@ export class Companies extends ClientSDK {
   async list(
     request: operations.ListCrmCompanyRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListCrmCompanyResponse>> {
+  ): Promise<
+    PageIterator<operations.ListCrmCompanyResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(crmCompaniesList(
       this,
       request,

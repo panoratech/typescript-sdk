@@ -18,14 +18,14 @@ export const GetPanoraCoreEventsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  page: z.number().optional(),
-  limit: z.number().optional(),
+  page: z.number().default(1),
+  limit: z.number().default(10),
 });
 
 /** @internal */
 export type GetPanoraCoreEventsRequest$Outbound = {
-  page?: number | undefined;
-  limit?: number | undefined;
+  page: number;
+  limit: number;
 };
 
 /** @internal */
@@ -34,8 +34,8 @@ export const GetPanoraCoreEventsRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetPanoraCoreEventsRequest
 > = z.object({
-  page: z.number().optional(),
-  limit: z.number().optional(),
+  page: z.number().default(1),
+  limit: z.number().default(10),
 });
 
 /**
