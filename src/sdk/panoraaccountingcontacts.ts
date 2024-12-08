@@ -18,7 +18,9 @@ export class PanoraAccountingContacts extends ClientSDK {
   async list(
     request: operations.ListAccountingContactsRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListAccountingContactsResponse>> {
+  ): Promise<
+    PageIterator<operations.ListAccountingContactsResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(accountingContactsList(
       this,
       request,

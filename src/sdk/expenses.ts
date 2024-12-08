@@ -18,7 +18,9 @@ export class Expenses extends ClientSDK {
   async list(
     request: operations.ListAccountingExpenseRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListAccountingExpenseResponse>> {
+  ): Promise<
+    PageIterator<operations.ListAccountingExpenseResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(accountingExpensesList(
       this,
       request,

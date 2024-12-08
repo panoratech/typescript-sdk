@@ -17,7 +17,12 @@ export class Cashflowstatements extends ClientSDK {
   async list(
     request: operations.ListAccountingCashflowStatementRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListAccountingCashflowStatementResponse>> {
+  ): Promise<
+    PageIterator<
+      operations.ListAccountingCashflowStatementResponse,
+      { cursor: string }
+    >
+  > {
     return unwrapResultIterator(accountingCashflowstatementsList(
       this,
       request,
