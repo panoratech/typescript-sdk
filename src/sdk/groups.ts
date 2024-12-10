@@ -17,7 +17,9 @@ export class Groups extends ClientSDK {
   async list(
     request: operations.ListFilestorageGroupRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListFilestorageGroupResponse>> {
+  ): Promise<
+    PageIterator<operations.ListFilestorageGroupResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(filestorageGroupsList(
       this,
       request,

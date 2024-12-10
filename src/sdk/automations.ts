@@ -19,7 +19,10 @@ export class Automations extends ClientSDK {
     request: operations.ListMarketingautomationAutomationsRequest,
     options?: RequestOptions,
   ): Promise<
-    PageIterator<operations.ListMarketingautomationAutomationsResponse>
+    PageIterator<
+      operations.ListMarketingautomationAutomationsResponse,
+      { cursor: string }
+    >
   > {
     return unwrapResultIterator(marketingautomationAutomationsList(
       this,

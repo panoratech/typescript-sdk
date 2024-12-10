@@ -17,7 +17,9 @@ export class Users extends ClientSDK {
   async list(
     request: operations.ListTicketingUsersRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListTicketingUsersResponse>> {
+  ): Promise<
+    PageIterator<operations.ListTicketingUsersResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(ticketingUsersList(
       this,
       request,
