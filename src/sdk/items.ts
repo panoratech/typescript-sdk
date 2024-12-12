@@ -17,7 +17,9 @@ export class Items extends ClientSDK {
   async list(
     request: operations.ListAccountingItemRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListAccountingItemResponse>> {
+  ): Promise<
+    PageIterator<operations.ListAccountingItemResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(accountingItemsList(
       this,
       request,

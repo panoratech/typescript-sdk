@@ -17,7 +17,12 @@ export class Collections extends ClientSDK {
   async list(
     request: operations.ListTicketingCollectionsRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListTicketingCollectionsResponse>> {
+  ): Promise<
+    PageIterator<
+      operations.ListTicketingCollectionsResponse,
+      { cursor: string }
+    >
+  > {
     return unwrapResultIterator(ticketingCollectionsList(
       this,
       request,
