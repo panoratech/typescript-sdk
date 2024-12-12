@@ -17,7 +17,12 @@ export class Companyinfos extends ClientSDK {
   async list(
     request: operations.ListAccountingCompanyInfosRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListAccountingCompanyInfosResponse>> {
+  ): Promise<
+    PageIterator<
+      operations.ListAccountingCompanyInfosResponse,
+      { cursor: string }
+    >
+  > {
     return unwrapResultIterator(accountingCompanyinfosList(
       this,
       request,

@@ -22,15 +22,7 @@ let value: ListEcommerceOrdersResponseBody = {
       customerId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
       items: [
         {
-          name: "Net Income",
-          value: 100000,
-          type: "Operating Activities",
-          parentItem: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
           remoteId: "12345",
-          remoteGeneratedAt: new Date("2024-07-01T12:00:00Z"),
-          companyInfoId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-          createdAt: new Date("2024-06-15T12:00:00Z"),
-          modifiedAt: new Date("2024-06-15T12:00:00Z"),
         },
       ],
       fieldMappings: {},
