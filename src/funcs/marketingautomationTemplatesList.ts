@@ -46,7 +46,8 @@ export async function marketingautomationTemplatesList(
       | RequestAbortedError
       | RequestTimeoutError
       | ConnectionError
-    >
+    >,
+    { cursor: string }
   >
 > {
   const parsed = safeParse(
@@ -100,6 +101,7 @@ export async function marketingautomationTemplatesList(
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
     method: "GET",
+    baseURL: options?.serverURL,
     path: path,
     headers: headers,
     query: query,
@@ -149,24 +151,27 @@ export async function marketingautomationTemplatesList(
 
   const nextFunc = (
     responseData: unknown,
-  ): Paginator<
-    Result<
-      operations.ListMarketingautomationTemplatesResponse,
-      | SDKError
-      | SDKValidationError
-      | UnexpectedClientError
-      | InvalidRequestError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | ConnectionError
-    >
-  > => {
+  ): {
+    next: Paginator<
+      Result<
+        operations.ListMarketingautomationTemplatesResponse,
+        | SDKError
+        | SDKValidationError
+        | UnexpectedClientError
+        | InvalidRequestError
+        | RequestAbortedError
+        | RequestTimeoutError
+        | ConnectionError
+      >
+    >;
+    "~next"?: { cursor: string };
+  } => {
     const nextCursor = dlv(responseData, "next_cursor");
     if (nextCursor == null) {
-      return () => null;
+      return { next: () => null };
     }
 
-    return () =>
+    const nextVal = () =>
       marketingautomationTemplatesList(
         client,
         {
@@ -175,8 +180,10 @@ export async function marketingautomationTemplatesList(
         },
         options,
       );
+
+    return { next: nextVal, "~next": { cursor: nextCursor } };
   };
 
-  const page = { ...result, next: nextFunc(raw) };
+  const page = { ...result, ...nextFunc(raw) };
   return { ...page, ...createPageIterator(page, (v) => !v.ok) };
 }

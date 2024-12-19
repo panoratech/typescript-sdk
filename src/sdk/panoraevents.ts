@@ -17,7 +17,12 @@ export class PanoraEvents extends ClientSDK {
   async list(
     request: operations.ListMarketingAutomationEventsRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListMarketingAutomationEventsResponse>> {
+  ): Promise<
+    PageIterator<
+      operations.ListMarketingAutomationEventsResponse,
+      { cursor: string }
+    >
+  > {
     return unwrapResultIterator(marketingautomationEventsList(
       this,
       request,

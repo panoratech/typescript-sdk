@@ -10,16 +10,7 @@ let value: RequestRequest = {
   xConnectionToken: "<value>",
   passThroughRequestDto: {
     method: PassThroughRequestDtoMethod.Post,
-    path: "/usr/local/src",
-    data: {},
-    requestFormat: [
-      {
-        "key": "<value>",
-      },
-    ],
-    overrideBaseUrl: {
-      "key": "<value>",
-    },
+    path: "/opt/sbin",
   },
 };
 ```
