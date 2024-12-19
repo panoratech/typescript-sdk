@@ -18,7 +18,12 @@ export class Journalentries extends ClientSDK {
   async list(
     request: operations.ListAccountingJournalEntryRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListAccountingJournalEntryResponse>> {
+  ): Promise<
+    PageIterator<
+      operations.ListAccountingJournalEntryResponse,
+      { cursor: string }
+    >
+  > {
     return unwrapResultIterator(accountingJournalentriesList(
       this,
       request,
