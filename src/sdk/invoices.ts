@@ -18,7 +18,9 @@ export class Invoices extends ClientSDK {
   async list(
     request: operations.ListAccountingInvoiceRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListAccountingInvoiceResponse>> {
+  ): Promise<
+    PageIterator<operations.ListAccountingInvoiceResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(accountingInvoicesList(
       this,
       request,

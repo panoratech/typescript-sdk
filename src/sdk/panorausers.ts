@@ -17,7 +17,9 @@ export class PanoraUsers extends ClientSDK {
   async list(
     request: operations.ListCrmUsersRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListCrmUsersResponse>> {
+  ): Promise<
+    PageIterator<operations.ListCrmUsersResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(crmUsersList(
       this,
       request,

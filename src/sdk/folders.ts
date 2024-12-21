@@ -18,7 +18,9 @@ export class Folders extends ClientSDK {
   async list(
     request: operations.ListFilestorageFolderRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListFilestorageFolderResponse>> {
+  ): Promise<
+    PageIterator<operations.ListFilestorageFolderResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(filestorageFoldersList(
       this,
       request,

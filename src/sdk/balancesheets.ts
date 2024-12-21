@@ -17,7 +17,12 @@ export class Balancesheets extends ClientSDK {
   async list(
     request: operations.ListAccountingBalanceSheetsRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListAccountingBalanceSheetsResponse>> {
+  ): Promise<
+    PageIterator<
+      operations.ListAccountingBalanceSheetsResponse,
+      { cursor: string }
+    >
+  > {
     return unwrapResultIterator(accountingBalancesheetsList(
       this,
       request,

@@ -145,7 +145,6 @@ async function run() {
           modifiedAt: new Date("2024-06-15T12:00:00Z"),
         },
       ],
-      fieldMappings: {},
     },
   });
 
@@ -207,7 +206,6 @@ async function run() {
           modifiedAt: new Date("2024-06-15T12:00:00Z"),
         },
       ],
-      fieldMappings: {},
     },
   });
 

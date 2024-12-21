@@ -6,7 +6,6 @@
 import { LoginDto } from "@panora/sdk/models/components";
 
 let value: LoginDto = {
-  idUser: "<value>",
   email: "Micheal.Little@yahoo.com",
   passwordHash: "<value>",
 };
@@ -16,6 +15,6 @@ let value: LoginDto = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `idUser`           | *string*           | :heavy_check_mark: | N/A                |
+| `idUser`           | *string*           | :heavy_minus_sign: | N/A                |
 | `email`            | *string*           | :heavy_check_mark: | N/A                |
 | `passwordHash`     | *string*           | :heavy_check_mark: | N/A                |

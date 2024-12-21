@@ -17,7 +17,9 @@ export class Customers extends ClientSDK {
   async list(
     request: operations.ListEcommerceCustomersRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListEcommerceCustomersResponse>> {
+  ): Promise<
+    PageIterator<operations.ListEcommerceCustomersResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(ecommerceCustomersList(
       this,
       request,

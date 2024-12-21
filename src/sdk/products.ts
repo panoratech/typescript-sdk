@@ -18,7 +18,9 @@ export class Products extends ClientSDK {
   async list(
     request: operations.ListEcommerceProductsRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListEcommerceProductsResponse>> {
+  ): Promise<
+    PageIterator<operations.ListEcommerceProductsResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(ecommerceProductsList(
       this,
       request,

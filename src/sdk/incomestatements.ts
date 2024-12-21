@@ -17,7 +17,12 @@ export class Incomestatements extends ClientSDK {
   async list(
     request: operations.ListAccountingIncomeStatementRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListAccountingIncomeStatementResponse>> {
+  ): Promise<
+    PageIterator<
+      operations.ListAccountingIncomeStatementResponse,
+      { cursor: string }
+    >
+  > {
     return unwrapResultIterator(accountingIncomestatementsList(
       this,
       request,

@@ -19,7 +19,10 @@ export class Campaigns extends ClientSDK {
     request: operations.ListMarketingautomationCampaignsRequest,
     options?: RequestOptions,
   ): Promise<
-    PageIterator<operations.ListMarketingautomationCampaignsResponse>
+    PageIterator<
+      operations.ListMarketingautomationCampaignsResponse,
+      { cursor: string }
+    >
   > {
     return unwrapResultIterator(marketingautomationCampaignsList(
       this,

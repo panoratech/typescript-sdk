@@ -9,7 +9,7 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type LoginDto = {
-  idUser: string;
+  idUser?: string | undefined;
   email: string;
   passwordHash: string;
 };
@@ -20,7 +20,7 @@ export const LoginDto$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id_user: z.string(),
+  id_user: z.string().optional(),
   email: z.string(),
   password_hash: z.string(),
 }).transform((v) => {
@@ -32,7 +32,7 @@ export const LoginDto$inboundSchema: z.ZodType<
 
 /** @internal */
 export type LoginDto$Outbound = {
-  id_user: string;
+  id_user?: string | undefined;
   email: string;
   password_hash: string;
 };
@@ -43,7 +43,7 @@ export const LoginDto$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   LoginDto
 > = z.object({
-  idUser: z.string(),
+  idUser: z.string().optional(),
   email: z.string(),
   passwordHash: z.string(),
 }).transform((v) => {

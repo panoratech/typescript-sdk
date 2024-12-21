@@ -18,22 +18,11 @@ import { LinkedUsers } from "./linkedusers.js";
 import { Marketingautomation } from "./marketingautomation.js";
 import { Passthrough } from "./passthrough.js";
 import { Projects } from "./projects.js";
-import { Rag } from "./rag.js";
 import { Sync } from "./sync.js";
 import { Ticketing } from "./ticketing.js";
 import { Webhooks } from "./webhooks.js";
 
 export class Panora extends ClientSDK {
-  private _rag?: Rag;
-  get rag(): Rag {
-    return (this._rag ??= new Rag(this._options));
-  }
-
-  private _filestorage?: Filestorage;
-  get filestorage(): Filestorage {
-    return (this._filestorage ??= new Filestorage(this._options));
-  }
-
   private _auth?: Auth;
   get auth(): Auth {
     return (this._auth ??= new Auth(this._options));
@@ -99,6 +88,11 @@ export class Panora extends ClientSDK {
   private _accounting?: Accounting;
   get accounting(): Accounting {
     return (this._accounting ??= new Accounting(this._options));
+  }
+
+  private _filestorage?: Filestorage;
+  get filestorage(): Filestorage {
+    return (this._filestorage ??= new Filestorage(this._options));
   }
 
   private _ecommerce?: Ecommerce;

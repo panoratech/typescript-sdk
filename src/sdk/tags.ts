@@ -17,7 +17,9 @@ export class Tags extends ClientSDK {
   async list(
     request: operations.ListTicketingTagsRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListTicketingTagsResponse>> {
+  ): Promise<
+    PageIterator<operations.ListTicketingTagsResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(ticketingTagsList(
       this,
       request,

@@ -18,7 +18,9 @@ export class Comments extends ClientSDK {
   async list(
     request: operations.ListTicketingCommentsRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListTicketingCommentsResponse>> {
+  ): Promise<
+    PageIterator<operations.ListTicketingCommentsResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(ticketingCommentsList(
       this,
       request,

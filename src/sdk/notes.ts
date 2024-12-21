@@ -18,7 +18,7 @@ export class Notes extends ClientSDK {
   async list(
     request: operations.ListCrmNoteRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListCrmNoteResponse>> {
+  ): Promise<PageIterator<operations.ListCrmNoteResponse, { cursor: string }>> {
     return unwrapResultIterator(crmNotesList(
       this,
       request,

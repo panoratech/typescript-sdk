@@ -18,7 +18,9 @@ export class Engagements extends ClientSDK {
   async list(
     request: operations.ListCrmEngagementsRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListCrmEngagementsResponse>> {
+  ): Promise<
+    PageIterator<operations.ListCrmEngagementsResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(crmEngagementsList(
       this,
       request,

@@ -18,7 +18,12 @@ export class Attachments extends ClientSDK {
   async list(
     request: operations.ListAccountingAttachmentsRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListAccountingAttachmentsResponse>> {
+  ): Promise<
+    PageIterator<
+      operations.ListAccountingAttachmentsResponse,
+      { cursor: string }
+    >
+  > {
     return unwrapResultIterator(accountingAttachmentsList(
       this,
       request,

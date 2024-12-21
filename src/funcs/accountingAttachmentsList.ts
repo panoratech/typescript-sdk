@@ -46,7 +46,8 @@ export async function accountingAttachmentsList(
       | RequestAbortedError
       | RequestTimeoutError
       | ConnectionError
-    >
+    >,
+    { cursor: string }
   >
 > {
   const parsed = safeParse(
@@ -98,6 +99,7 @@ export async function accountingAttachmentsList(
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
     method: "GET",
+    baseURL: options?.serverURL,
     path: path,
     headers: headers,
     query: query,
@@ -145,24 +147,27 @@ export async function accountingAttachmentsList(
 
   const nextFunc = (
     responseData: unknown,
-  ): Paginator<
-    Result<
-      operations.ListAccountingAttachmentsResponse,
-      | SDKError
-      | SDKValidationError
-      | UnexpectedClientError
-      | InvalidRequestError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | ConnectionError
-    >
-  > => {
+  ): {
+    next: Paginator<
+      Result<
+        operations.ListAccountingAttachmentsResponse,
+        | SDKError
+        | SDKValidationError
+        | UnexpectedClientError
+        | InvalidRequestError
+        | RequestAbortedError
+        | RequestTimeoutError
+        | ConnectionError
+      >
+    >;
+    "~next"?: { cursor: string };
+  } => {
     const nextCursor = dlv(responseData, "next_cursor");
     if (nextCursor == null) {
-      return () => null;
+      return { next: () => null };
     }
 
-    return () =>
+    const nextVal = () =>
       accountingAttachmentsList(
         client,
         {
@@ -171,8 +176,10 @@ export async function accountingAttachmentsList(
         },
         options,
       );
+
+    return { next: nextVal, "~next": { cursor: nextCursor } };
   };
 
-  const page = { ...result, next: nextFunc(raw) };
+  const page = { ...result, ...nextFunc(raw) };
   return { ...page, ...createPageIterator(page, (v) => !v.ok) };
 }

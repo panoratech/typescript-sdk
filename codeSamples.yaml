@@ -77,7 +77,6 @@ actions:
                   accountNumber: "1000",
                   parentAccount: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
                   companyInfoId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-                  fieldMappings: {},
                 },
               });
 
@@ -208,7 +207,6 @@ actions:
                   fileName: "invoice.pdf",
                   fileUrl: "https://example.com/files/invoice.pdf",
                   accountId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-                  fieldMappings: {},
                 },
               });
 
@@ -447,7 +445,6 @@ actions:
                   currency: "USD",
                   remoteUpdatedAt: "2024-06-15T12:00:00Z",
                   companyInfoId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-                  fieldMappings: {},
                 },
               });
 
@@ -601,7 +598,6 @@ actions:
                       modifiedAt: new Date("2024-06-15T12:00:00Z"),
                     },
                   ],
-                  fieldMappings: {},
                 },
               });
 
@@ -762,7 +758,6 @@ actions:
                       modifiedAt: new Date("2024-06-15T12:00:00Z"),
                     },
                   ],
-                  fieldMappings: {},
                 },
               });
 
@@ -922,7 +917,6 @@ actions:
                       modifiedAt: new Date("2024-06-15T12:00:00Z"),
                     },
                   ],
-                  fieldMappings: {},
                 },
               });
 
@@ -1025,7 +1019,6 @@ actions:
                       modifiedAt: new Date("2024-06-15T12:00:00Z"),
                     },
                   ],
-                  fieldMappings: {},
                 },
               });
 
@@ -1182,7 +1175,6 @@ actions:
                       modifiedAt: new Date("2024-06-15T12:00:00Z"),
                     },
                   ],
-                  fieldMappings: {},
                 },
               });
 
@@ -1433,7 +1425,6 @@ actions:
 
             async function run() {
               await panora.auth.login.signIn({
-                idUser: "<value>",
                 email: "Stanford_Rice@hotmail.com",
                 passwordHash: "<value>",
               });
@@ -2283,18 +2274,9 @@ actions:
                   customerId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
                   items: [
                     {
-                      name: "Net Income",
-                      value: 100000,
-                      type: "Operating Activities",
-                      parentItem: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
                       remoteId: "12345",
-                      remoteGeneratedAt: new Date("2024-07-01T12:00:00Z"),
-                      companyInfoId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-                      createdAt: new Date("2024-06-15T12:00:00Z"),
-                      modifiedAt: new Date("2024-06-15T12:00:00Z"),
                     },
                   ],
-                  fieldMappings: {},
                 },
               });
 
@@ -2378,13 +2360,9 @@ actions:
                   ],
                   description: "best tee ever",
                   vendor: "vendor_extern",
-                  variants: [
-                    {},
-                  ],
                   tags: [
                     "tag_1",
                   ],
-                  fieldMappings: {},
                 },
               });
 
@@ -3653,13 +3631,6 @@ actions:
                 passThroughRequestDto: {
                   method: PassThroughRequestDtoMethod.Get,
                   path: "/etc/periodic",
-                  data: {},
-                  requestFormat: {
-
-                  },
-                  overrideBaseUrl: {
-
-                  },
                 },
               });
 
@@ -3733,32 +3704,6 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/rag/query"]["post"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: query
-          source: |-
-            import { Panora } from "@panora/sdk";
-
-            const panora = new Panora({
-              apiKey: "<YOUR_API_KEY_HERE>",
-            });
-
-            async function run() {
-              const result = await panora.rag.query({
-                xConnectionToken: "<value>",
-                queryBody: {
-                  query: "When does Panora incorporated?",
-                  topK: 3,
-                },
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   - target: $["paths"]["/sync/pull_frequencies"]["get"]
     update:
       x-codeSamples:
@@ -3792,7 +3737,7 @@ actions:
             });
 
             async function run() {
-              await panora.sync.updatePullFrequency({
+              const result = await panora.sync.updatePullFrequency({
                 crm: 1800,
                 accounting: 14400,
                 filestorage: 28800,
@@ -3800,7 +3745,8 @@ actions:
                 ticketing: 86400,
               });
 
-
+              // Handle the result
+              console.log(result);
             }
 
             run();
@@ -4331,15 +4277,6 @@ actions:
                   ],
                   comment: {
                     body: "Assigned to Eric !",
-                    htmlBody: "<p>Assigned to Eric !</p>",
-                    isPrivate: false,
-                    creatorType: "USER",
-                    ticketId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-                    contactId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-                    userId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-                    attachments: [
-                      "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
-                    ],
                   },
                   accountId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",
                   contactId: "801f9ede-c698-4e66-a7fc-48d19eebaa4f",

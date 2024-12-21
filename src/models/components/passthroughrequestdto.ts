@@ -17,12 +17,19 @@ export type Data = {};
 
 export type RequestFormat = { [k: string]: any } | Array<{ [k: string]: any }>;
 
+export type Headers = {};
+
 export type PassThroughRequestDto = {
   method: PassThroughRequestDtoMethod;
   path: string | null;
-  data: Data;
-  requestFormat: { [k: string]: any } | Array<{ [k: string]: any }> | null;
-  overrideBaseUrl: { [k: string]: any } | null;
+  data?: Data | undefined;
+  requestFormat?:
+    | { [k: string]: any }
+    | Array<{ [k: string]: any }>
+    | null
+    | undefined;
+  overrideBaseUrl?: { [k: string]: any } | null | undefined;
+  headers?: Headers | undefined;
 };
 
 /** @internal */
@@ -131,6 +138,47 @@ export function requestFormatFromJSON(
 }
 
 /** @internal */
+export const Headers$inboundSchema: z.ZodType<Headers, z.ZodTypeDef, unknown> =
+  z.object({});
+
+/** @internal */
+export type Headers$Outbound = {};
+
+/** @internal */
+export const Headers$outboundSchema: z.ZodType<
+  Headers$Outbound,
+  z.ZodTypeDef,
+  Headers
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Headers$ {
+  /** @deprecated use `Headers$inboundSchema` instead. */
+  export const inboundSchema = Headers$inboundSchema;
+  /** @deprecated use `Headers$outboundSchema` instead. */
+  export const outboundSchema = Headers$outboundSchema;
+  /** @deprecated use `Headers$Outbound` instead. */
+  export type Outbound = Headers$Outbound;
+}
+
+export function headersToJSON(headers: Headers): string {
+  return JSON.stringify(Headers$outboundSchema.parse(headers));
+}
+
+export function headersFromJSON(
+  jsonString: string,
+): SafeParseResult<Headers, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Headers$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Headers' from JSON`,
+  );
+}
+
+/** @internal */
 export const PassThroughRequestDto$inboundSchema: z.ZodType<
   PassThroughRequestDto,
   z.ZodTypeDef,
@@ -138,11 +186,12 @@ export const PassThroughRequestDto$inboundSchema: z.ZodType<
 > = z.object({
   method: PassThroughRequestDtoMethod$inboundSchema,
   path: z.nullable(z.string()),
-  data: z.lazy(() => Data$inboundSchema),
+  data: z.lazy(() => Data$inboundSchema).optional(),
   request_format: z.nullable(
     z.union([z.record(z.any()), z.array(z.record(z.any()))]),
-  ),
-  overrideBaseUrl: z.nullable(z.record(z.any())),
+  ).optional(),
+  overrideBaseUrl: z.nullable(z.record(z.any())).optional(),
+  headers: z.lazy(() => Headers$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "request_format": "requestFormat",
@@ -153,9 +202,14 @@ export const PassThroughRequestDto$inboundSchema: z.ZodType<
 export type PassThroughRequestDto$Outbound = {
   method: string;
   path: string | null;
-  data: Data$Outbound;
-  request_format: { [k: string]: any } | Array<{ [k: string]: any }> | null;
-  overrideBaseUrl: { [k: string]: any } | null;
+  data?: Data$Outbound | undefined;
+  request_format?:
+    | { [k: string]: any }
+    | Array<{ [k: string]: any }>
+    | null
+    | undefined;
+  overrideBaseUrl?: { [k: string]: any } | null | undefined;
+  headers?: Headers$Outbound | undefined;
 };
 
 /** @internal */
@@ -166,11 +220,12 @@ export const PassThroughRequestDto$outboundSchema: z.ZodType<
 > = z.object({
   method: PassThroughRequestDtoMethod$outboundSchema,
   path: z.nullable(z.string()),
-  data: z.lazy(() => Data$outboundSchema),
+  data: z.lazy(() => Data$outboundSchema).optional(),
   requestFormat: z.nullable(
     z.union([z.record(z.any()), z.array(z.record(z.any()))]),
-  ),
-  overrideBaseUrl: z.nullable(z.record(z.any())),
+  ).optional(),
+  overrideBaseUrl: z.nullable(z.record(z.any())).optional(),
+  headers: z.lazy(() => Headers$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     requestFormat: "request_format",

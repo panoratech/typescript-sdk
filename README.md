@@ -24,19 +24,25 @@ Panora API: A unified API to ship integrations
 
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
+<!-- $toc-max-depth=2 -->
+* [@panora/sdk](#panorasdk)
+  * [🏗 **Welcome to your new SDK!** 🏗](#welcome-to-your-new-sdk)
+  * [SDK Installation](#sdk-installation)
+  * [Requirements](#requirements)
+  * [SDK Example Usage](#sdk-example-usage)
+  * [Available Resources and Operations](#available-resources-and-operations)
+  * [Error Handling](#error-handling)
+  * [Server Selection](#server-selection)
+  * [Custom HTTP Client](#custom-http-client)
+  * [Retries](#retries)
+  * [Authentication](#authentication)
+  * [Pagination](#pagination)
+  * [Standalone functions](#standalone-functions)
+  * [Debugging](#debugging)
+* [Development](#development)
+  * [Maturity](#maturity)
+  * [Contributions](#contributions)
 
-* [SDK Installation](#sdk-installation)
-* [Requirements](#requirements)
-* [SDK Example Usage](#sdk-example-usage)
-* [Available Resources and Operations](#available-resources-and-operations)
-* [Standalone functions](#standalone-functions)
-* [Pagination](#pagination)
-* [Retries](#retries)
-* [Error Handling](#error-handling)
-* [Server Selection](#server-selection)
-* [Custom HTTP Client](#custom-http-client)
-* [Authentication](#authentication)
-* [Debugging](#debugging)
 <!-- End Table of Contents [toc] -->
 
 <!-- Start SDK Installation [installation] -->
@@ -427,10 +433,6 @@ run();
 * [getProjects](docs/sdks/projects/README.md#getprojects) - Retrieve projects
 * [create](docs/sdks/projects/README.md#create) - Create a project
 
-### [rag](docs/sdks/rag/README.md)
-
-* [query](docs/sdks/rag/README.md#query) - Query using RAG Search
-
 ### [sync](docs/sdks/sync/README.md)
 
 * [status](docs/sdks/sync/README.md#status) - Retrieve sync status of a certain vertical
@@ -503,19 +505,7 @@ run();
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
-All SDK methods return a response object or throw an error. By default, an API error will throw a `errors.SDKError`.
-
-If a HTTP request fails, an operation my also throw an error from the `models/errors/httpclienterrors.ts` module:
-
-| HTTP Client Error                                    | Description                                          |
-| ---------------------------------------------------- | ---------------------------------------------------- |
-| RequestAbortedError                                  | HTTP request was aborted by the client               |
-| RequestTimeoutError                                  | HTTP request timed out due to an AbortSignal signal  |
-| ConnectionError                                      | HTTP client was unable to make a request to a server |
-| InvalidRequestError                                  | Any input used to create a request is invalid        |
-| UnexpectedClientError                                | Unrecognised or unexpected error                     |
-
-In addition, when custom error responses are specified for an operation, the SDK may throw their associated Error type. You can refer to respective *Errors* tables in SDK docs for more details on possible error types for each operation. For example, the `hello` method may throw the following errors:
+If the request fails due to, for example 4XX or 5XX status codes, it will throw a `SDKError`.
 
 | Error Type      | Status Code | Content Type |
 | --------------- | ----------- | ------------ |
@@ -538,14 +528,24 @@ async function run() {
     console.log(result);
   } catch (err) {
     switch (true) {
-      case (err instanceof SDKValidationError): {
-        // Validation errors can be pretty-printed
-        console.error(err.pretty());
-        // Raw value may also be inspected
-        console.error(err.rawValue);
+      // The server response does not match the expected SDK schema
+      case (err instanceof SDKValidationError):
+        {
+          // Pretty-print will provide a human-readable multi-line error message
+          console.error(err.pretty());
+          // Raw value may also be inspected
+          console.error(err.rawValue);
+          return;
+        }
+        sdkerror.js;
+      // Server returned an error status code or an unknown content type
+      case (err instanceof SDKError): {
+        console.error(err.statusCode);
+        console.error(err.rawResponse.body);
         return;
       }
       default: {
+        // Other errors such as network errors, see HTTPClientErrors for more details
         throw err;
       }
     }
@@ -556,7 +556,17 @@ run();
 
 ```
 
-Validation errors can also occur when either method arguments or data returned from the server do not match the expected format. The `SDKValidationError` that is thrown as a result will capture the raw value that failed validation in an attribute called `rawValue`. Additionally, a `pretty()` method is available on this error that can be used to log a nicely formatted string since validation errors can list many issues and the plain error string may be difficult read when debugging.
+Validation errors can also occur when either method arguments or data returned from the server do not match the expected format. The `SDKValidationError` that is thrown as a result will capture the raw value that failed validation in an attribute called `rawValue`. Additionally, a `pretty()` method is available on this error that can be used to log a nicely formatted multi-line string since validation errors can list many issues and the plain error string may be difficult read when debugging.
+
+In some rare cases, the SDK can fail to get a response from the server or even make the request due to unexpected circumstances such as network conditions. These types of errors are captured in the `models/errors/httpclienterrors.ts` module:
+
+| HTTP Client Error                                    | Description                                          |
+| ---------------------------------------------------- | ---------------------------------------------------- |
+| RequestAbortedError                                  | HTTP request was aborted by the client               |
+| RequestTimeoutError                                  | HTTP request timed out due to an AbortSignal signal  |
+| ConnectionError                                      | HTTP client was unable to make a request to a server |
+| InvalidRequestError                                  | Any input used to create a request is invalid        |
+| UnexpectedClientError                                | Unrecognised or unexpected error                     |
 <!-- End Error Handling [errors] -->
 
 <!-- Start Server Selection [server] -->
@@ -781,7 +791,7 @@ const panora = new Panora({
 });
 
 async function run() {
-  const result = await panora.filestorage.files.list({
+  const result = await panora.ticketing.tickets.list({
     xConnectionToken: "<value>",
     remoteData: true,
     limit: 10,
@@ -950,7 +960,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`passthroughRetryidGetRetriedRequestResponse`](docs/sdks/retryid/README.md#getretriedrequestresponse) - Retrieve response of a failed passthrough request due to rate limits
 - [`projectsCreate`](docs/sdks/projects/README.md#create) - Create a project
 - [`projectsGetProjects`](docs/sdks/projects/README.md#getprojects) - Retrieve projects
-- [`ragQuery`](docs/sdks/rag/README.md#query) - Query using RAG Search
 - [`syncGetPullFrequency`](docs/sdks/sync/README.md#getpullfrequency) - Get pull frequency for verticals
 - [`syncResync`](docs/sdks/sync/README.md#resync) - Resync common objects across a vertical
 - [`syncStatus`](docs/sdks/sync/README.md#status) - Retrieve sync status of a certain vertical
