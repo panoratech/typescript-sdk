@@ -17,7 +17,12 @@ export class Creditnotes extends ClientSDK {
   async list(
     request: operations.ListAccountingCreditNoteRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListAccountingCreditNoteResponse>> {
+  ): Promise<
+    PageIterator<
+      operations.ListAccountingCreditNoteResponse,
+      { cursor: string }
+    >
+  > {
     return unwrapResultIterator(accountingCreditnotesList(
       this,
       request,

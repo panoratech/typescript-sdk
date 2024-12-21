@@ -18,7 +18,12 @@ export class Purchaseorders extends ClientSDK {
   async list(
     request: operations.ListAccountingPurchaseOrderRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListAccountingPurchaseOrderResponse>> {
+  ): Promise<
+    PageIterator<
+      operations.ListAccountingPurchaseOrderResponse,
+      { cursor: string }
+    >
+  > {
     return unwrapResultIterator(accountingPurchaseordersList(
       this,
       request,

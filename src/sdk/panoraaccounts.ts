@@ -18,7 +18,9 @@ export class PanoraAccounts extends ClientSDK {
   async list(
     request: operations.ListAccountingAccountsRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListAccountingAccountsResponse>> {
+  ): Promise<
+    PageIterator<operations.ListAccountingAccountsResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(accountingAccountsList(
       this,
       request,

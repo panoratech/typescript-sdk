@@ -17,7 +17,12 @@ export class Vendorcredits extends ClientSDK {
   async list(
     request: operations.ListAccountingVendorCreditRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListAccountingVendorCreditResponse>> {
+  ): Promise<
+    PageIterator<
+      operations.ListAccountingVendorCreditResponse,
+      { cursor: string }
+    >
+  > {
     return unwrapResultIterator(accountingVendorcreditsList(
       this,
       request,

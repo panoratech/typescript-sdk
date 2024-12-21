@@ -17,7 +17,9 @@ export class Addresses extends ClientSDK {
   async list(
     request: operations.ListAccountingAddressRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListAccountingAddressResponse>> {
+  ): Promise<
+    PageIterator<operations.ListAccountingAddressResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(accountingAddressesList(
       this,
       request,

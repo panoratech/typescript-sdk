@@ -46,7 +46,8 @@ export async function accountingPhonenumbersList(
       | RequestAbortedError
       | RequestTimeoutError
       | ConnectionError
-    >
+    >,
+    { cursor: string }
   >
 > {
   const parsed = safeParse(
@@ -98,6 +99,7 @@ export async function accountingPhonenumbersList(
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
     method: "GET",
+    baseURL: options?.serverURL,
     path: path,
     headers: headers,
     query: query,
@@ -145,24 +147,27 @@ export async function accountingPhonenumbersList(
 
   const nextFunc = (
     responseData: unknown,
-  ): Paginator<
-    Result<
-      operations.ListAccountingPhonenumberResponse,
-      | SDKError
-      | SDKValidationError
-      | UnexpectedClientError
-      | InvalidRequestError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | ConnectionError
-    >
-  > => {
+  ): {
+    next: Paginator<
+      Result<
+        operations.ListAccountingPhonenumberResponse,
+        | SDKError
+        | SDKValidationError
+        | UnexpectedClientError
+        | InvalidRequestError
+        | RequestAbortedError
+        | RequestTimeoutError
+        | ConnectionError
+      >
+    >;
+    "~next"?: { cursor: string };
+  } => {
     const nextCursor = dlv(responseData, "next_cursor");
     if (nextCursor == null) {
-      return () => null;
+      return { next: () => null };
     }
 
-    return () =>
+    const nextVal = () =>
       accountingPhonenumbersList(
         client,
         {
@@ -171,8 +176,10 @@ export async function accountingPhonenumbersList(
         },
         options,
       );
+
+    return { next: nextVal, "~next": { cursor: nextCursor } };
   };
 
-  const page = { ...result, next: nextFunc(raw) };
+  const page = { ...result, ...nextFunc(raw) };
   return { ...page, ...createPageIterator(page, (v) => !v.ok) };
 }

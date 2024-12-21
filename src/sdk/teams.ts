@@ -17,7 +17,9 @@ export class Teams extends ClientSDK {
   async list(
     request: operations.ListTicketingTeamsRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListTicketingTeamsResponse>> {
+  ): Promise<
+    PageIterator<operations.ListTicketingTeamsResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(ticketingTeamsList(
       this,
       request,

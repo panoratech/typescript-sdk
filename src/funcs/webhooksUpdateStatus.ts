@@ -31,7 +31,7 @@ export async function webhooksUpdateStatus(
   options?: RequestOptions,
 ): Promise<
   Result<
-    components.WebhookResponse,
+    components.WebhookResponse | undefined,
     | SDKError
     | SDKValidationError
     | UnexpectedClientError
@@ -85,6 +85,7 @@ export async function webhooksUpdateStatus(
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
     method: "PUT",
+    baseURL: options?.serverURL,
     path: path,
     headers: headers,
     body: body,
@@ -107,7 +108,7 @@ export async function webhooksUpdateStatus(
   const response = doResult.value;
 
   const [result] = await M.match<
-    components.WebhookResponse,
+    components.WebhookResponse | undefined,
     | SDKError
     | SDKValidationError
     | UnexpectedClientError
@@ -116,7 +117,8 @@ export async function webhooksUpdateStatus(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(201, components.WebhookResponse$inboundSchema),
+    M.nil(200, components.WebhookResponse$inboundSchema.optional()),
+    M.json(201, components.WebhookResponse$inboundSchema.optional()),
     M.fail(["4XX", "5XX"]),
   )(response);
   if (!result.ok) {

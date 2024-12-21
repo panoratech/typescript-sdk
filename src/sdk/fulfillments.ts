@@ -17,7 +17,12 @@ export class Fulfillments extends ClientSDK {
   async list(
     request: operations.ListEcommerceFulfillmentsRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListEcommerceFulfillmentsResponse>> {
+  ): Promise<
+    PageIterator<
+      operations.ListEcommerceFulfillmentsResponse,
+      { cursor: string }
+    >
+  > {
     return unwrapResultIterator(ecommerceFulfillmentsList(
       this,
       request,

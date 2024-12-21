@@ -18,7 +18,9 @@ export class Deals extends ClientSDK {
   async list(
     request: operations.ListCrmDealsRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListCrmDealsResponse>> {
+  ): Promise<
+    PageIterator<operations.ListCrmDealsResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(crmDealsList(
       this,
       request,

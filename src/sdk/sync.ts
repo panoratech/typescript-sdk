@@ -44,7 +44,7 @@ export class Sync extends ClientSDK {
   async updatePullFrequency(
     request: components.UpdatePullFrequencyDto,
     options?: RequestOptions,
-  ): Promise<void> {
+  ): Promise<operations.UpdatePullFrequencyResponseBody | undefined> {
     return unwrapAsync(syncUpdatePullFrequency(
       this,
       request,

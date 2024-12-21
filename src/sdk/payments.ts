@@ -18,7 +18,9 @@ export class Payments extends ClientSDK {
   async list(
     request: operations.ListAccountingPaymentRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListAccountingPaymentResponse>> {
+  ): Promise<
+    PageIterator<operations.ListAccountingPaymentResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(accountingPaymentsList(
       this,
       request,

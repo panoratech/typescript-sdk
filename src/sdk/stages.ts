@@ -17,7 +17,9 @@ export class Stages extends ClientSDK {
   async list(
     request: operations.ListCrmStagesRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListCrmStagesResponse>> {
+  ): Promise<
+    PageIterator<operations.ListCrmStagesResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(crmStagesList(
       this,
       request,

@@ -17,7 +17,12 @@ export class Trackingcategories extends ClientSDK {
   async list(
     request: operations.ListAccountingTrackingCategorysRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListAccountingTrackingCategorysResponse>> {
+  ): Promise<
+    PageIterator<
+      operations.ListAccountingTrackingCategorysResponse,
+      { cursor: string }
+    >
+  > {
     return unwrapResultIterator(accountingTrackingcategoriesList(
       this,
       request,

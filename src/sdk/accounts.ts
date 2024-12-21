@@ -17,7 +17,9 @@ export class Accounts extends ClientSDK {
   async list(
     request: operations.ListTicketingAccountRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListTicketingAccountResponse>> {
+  ): Promise<
+    PageIterator<operations.ListTicketingAccountResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(ticketingAccountsList(
       this,
       request,

@@ -1,19 +1,20 @@
 lockVersion: 2.0.0
 id: caaaa8c3-6dd7-43a5-841e-c3193e68cc73
 management:
-  docChecksum: b61e31f00ae44ce87e930935e8780921
+  docChecksum: a08fa2d210c75c15bc81e0b4da1bbe45
   docVersion: "1.0"
-  speakeasyVersion: 1.440.2
-  generationVersion: 2.460.1
-  releaseVersion: 0.14.0
-  configChecksum: 138a3672d0c0397a44733f29151c0c51
+  speakeasyVersion: 1.459.2
+  generationVersion: 2.483.1
+  releaseVersion: 0.15.0
+  configChecksum: 097955fa7e7d88bbc42dc3ce38ef6f9d
   repoURL: https://github.com/panoratech/typescript-sdk.git
   installationURL: https://github.com/panoratech/typescript-sdk
   published: true
 features:
   typescript:
     additionalDependencies: 0.1.0
-    core: 3.18.5
+    constsAndDefaults: 0.1.11
+    core: 3.18.12
     defaultEnabledRetries: 0.1.0
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.1.2
@@ -24,7 +25,7 @@ features:
     groups: 2.81.2
     nameOverrides: 2.81.2
     nullables: 0.1.0
-    pagination: 2.82.7
+    pagination: 2.82.8
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.2.0
@@ -59,6 +60,7 @@ generatedFiles:
   - docs/models/components/eventresponse.md
   - docs/models/components/eventresponsestatus.md
   - docs/models/components/fieldmappings.md
+  - docs/models/components/headers.md
   - docs/models/components/items.md
   - docs/models/components/lineitem.md
   - docs/models/components/linkeduserresponse.md
@@ -72,8 +74,6 @@ generatedFiles:
   - docs/models/components/passthroughrequestdtomethod.md
   - docs/models/components/phone.md
   - docs/models/components/projectresponse.md
-  - docs/models/components/querybody.md
-  - docs/models/components/ragqueryoutput.md
   - docs/models/components/remotedata.md
   - docs/models/components/requestformat.md
   - docs/models/components/resyncstatusdto.md
@@ -432,9 +432,10 @@ generatedFiles:
   - docs/models/operations/listticketingusersrequest.md
   - docs/models/operations/listticketingusersresponse.md
   - docs/models/operations/listticketingusersresponsebody.md
-  - docs/models/operations/queryrequest.md
   - docs/models/operations/remoteidrequest.md
+  - docs/models/operations/requestpassthroughresponsebody.md
   - docs/models/operations/requestrequest.md
+  - docs/models/operations/requestresponse.md
   - docs/models/operations/requestresponsebody.md
   - docs/models/operations/retrieveaccountingaccountrequest.md
   - docs/models/operations/retrieveaccountingaddressrequest.md
@@ -495,6 +496,7 @@ generatedFiles:
   - docs/models/operations/retrieveticketingticketrequest.md
   - docs/models/operations/retrieveticketinguserrequest.md
   - docs/models/operations/statusrequest.md
+  - docs/models/operations/updatepullfrequencyresponsebody.md
   - docs/models/operations/updatestatusrequest.md
   - docs/models/operations/vertical.md
   - docs/sdks/accounting/README.md
@@ -555,7 +557,6 @@ generatedFiles:
   - docs/sdks/products/README.md
   - docs/sdks/projects/README.md
   - docs/sdks/purchaseorders/README.md
-  - docs/sdks/rag/README.md
   - docs/sdks/retryid/README.md
   - docs/sdks/stages/README.md
   - docs/sdks/sync/README.md
@@ -710,7 +711,6 @@ generatedFiles:
   - src/funcs/passthroughRetryidGetRetriedRequestResponse.ts
   - src/funcs/projectsCreate.ts
   - src/funcs/projectsGetProjects.ts
-  - src/funcs/ragQuery.ts
   - src/funcs/syncGetPullFrequency.ts
   - src/funcs/syncResync.ts
   - src/funcs/syncStatus.ts
@@ -778,8 +778,6 @@ generatedFiles:
   - src/models/components/passthroughrequestdto.ts
   - src/models/components/phone.ts
   - src/models/components/projectresponse.ts
-  - src/models/components/querybody.ts
-  - src/models/components/ragqueryoutput.ts
   - src/models/components/resyncstatusdto.ts
   - src/models/components/security.ts
   - src/models/components/signatureverificationdto.ts
@@ -959,7 +957,6 @@ generatedFiles:
   - src/models/operations/listticketingteams.ts
   - src/models/operations/listticketingticket.ts
   - src/models/operations/listticketingusers.ts
-  - src/models/operations/query.ts
   - src/models/operations/remoteid.ts
   - src/models/operations/request.ts
   - src/models/operations/retrieveaccountingaccount.ts
@@ -1019,6 +1016,7 @@ generatedFiles:
   - src/models/operations/retrieveticketingticket.ts
   - src/models/operations/retrieveticketinguser.ts
   - src/models/operations/status.ts
+  - src/models/operations/updatepullfrequency.ts
   - src/models/operations/updatestatus.ts
   - src/sdk/accounting.ts
   - src/sdk/accounts.ts
@@ -1078,7 +1076,6 @@ generatedFiles:
   - src/sdk/products.ts
   - src/sdk/projects.ts
   - src/sdk/purchaseorders.ts
-  - src/sdk/rag.ts
   - src/sdk/retryid.ts
   - src/sdk/sdk.ts
   - src/sdk/stages.ts
@@ -1542,6 +1539,9 @@ examples:
     speakeasy-default-update-pull-frequency:
       requestBody:
         application/json: {"crm": 1800, "accounting": 14400, "filestorage": 28800, "ecommerce": 43200, "ticketing": 86400}
+      responses:
+        "201":
+          application/json: {}
   getPullFrequency:
     speakeasy-default-get-pull-frequency:
       responses:
@@ -1895,6 +1895,11 @@ examples:
           x-connection-token: "<value>"
       requestBody:
         application/json: {"method": "GET", "path": "/dev", "request_format": {}, "overrideBaseUrl": {"key": "https://equatorial-government.com/"}}
+      responses:
+        "200":
+          application/json: {}
+        "201":
+          application/json: {}
   getRetriedRequestResponse:
     speakeasy-default-get-retried-request-response:
       parameters:
@@ -2465,6 +2470,9 @@ examples:
         query: {}
         header:
           x-connection-token: "<value>"
+      responses:
+        "201":
+          application/json: {}
   retrieveMarketingautomationList:
     "":
       parameters:
@@ -2513,6 +2521,9 @@ examples:
         query: {}
         header:
           x-connection-token: "<value>"
+      responses:
+        "201":
+          application/json: {}
   retrieveMarketingautomationTemplate:
     "":
       parameters:
@@ -3607,7 +3618,7 @@ examples:
           x-connection-token: "<value>"
       responses:
         "200":
-          application/json: {"order_status": "UNSHIPPED", "order_number": "19823838833", "payment_status": "SUCCESS", "currency": "AUD", "total_price": 300, "total_discount": 10, "total_shipping": 120, "total_tax": 120, "fulfillment_status": "PENDING", "customer_id": "801f9ede-c698-4e66-a7fc-48d19eebaa4f", "items": [{"name": "Net Income", "value": 100000, "type": "Operating Activities", "parent_item": "801f9ede-c698-4e66-a7fc-48d19eebaa4f", "remote_id": "report_item_1234", "remote_generated_at": "2024-07-01T12:00:00Z", "company_info_id": "801f9ede-c698-4e66-a7fc-48d19eebaa4f", "created_at": "2024-06-15T12:00:00Z", "modified_at": "2024-06-15T12:00:00Z"}], "id": "801f9ede-c698-4e66-a7fc-48d19eebaa4f", "remote_id": "id_1", "created_at": "2024-10-01T12:00:00Z", "modified_at": "2024-10-01T12:00:00Z"}
+          application/json: {"order_status": "UNSHIPPED", "order_number": "19823838833", "payment_status": "SUCCESS", "currency": "AUD", "total_price": 300, "total_discount": 10, "total_shipping": 120, "total_tax": 120, "fulfillment_status": "PENDING", "customer_id": "801f9ede-c698-4e66-a7fc-48d19eebaa4f", "items": [{"remote_id": "report_item_1234"}], "id": "801f9ede-c698-4e66-a7fc-48d19eebaa4f", "remote_id": "id_1", "created_at": "2024-10-01T12:00:00Z", "modified_at": "2024-10-01T12:00:00Z"}
   listEcommerceCustomers:
     "":
       parameters:
@@ -3674,3 +3685,4 @@ examples:
       responses:
         "200":
           application/json: []
+generatedTests: {}

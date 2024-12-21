@@ -17,7 +17,9 @@ export class Taxrates extends ClientSDK {
   async list(
     request: operations.ListAccountingTaxRateRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListAccountingTaxRateResponse>> {
+  ): Promise<
+    PageIterator<operations.ListAccountingTaxRateResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(accountingTaxratesList(
       this,
       request,

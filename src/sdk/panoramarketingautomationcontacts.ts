@@ -18,7 +18,12 @@ export class PanoraMarketingautomationContacts extends ClientSDK {
   async list(
     request: operations.ListMarketingAutomationContactsRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.ListMarketingAutomationContactsResponse>> {
+  ): Promise<
+    PageIterator<
+      operations.ListMarketingAutomationContactsResponse,
+      { cursor: string }
+    >
+  > {
     return unwrapResultIterator(marketingautomationContactsList(
       this,
       request,
